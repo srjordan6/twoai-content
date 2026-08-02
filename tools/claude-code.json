@@ -1,0 +1,73 @@
+{
+    "api": "Built on the Anthropic API; usage can be billed through it directly.",
+    "url": "https://www.anthropic.com/claude-code",
+    "cons": [
+        "Executes commands, so scoping and review discipline are mandatory",
+        "Usage costs escalate on large tasks",
+        "Confident multi-file errors are hard to catch in review"
+    ],
+    "name": "Claude Code",
+    "pros": [
+        "Genuinely effective on whole-repository work",
+        "Fits existing terminal and Git workflow",
+        "Clear enterprise data terms"
+    ],
+    "slug": "claude-code",
+    "tags": [
+        "Code Generation",
+        "Agents",
+        "Developer Tools",
+        "CLI"
+    ],
+    "files": "Whole-repository access within the directory it is run in, subject to its permission prompts.",
+    "value": "Operates on a repository the way a developer does: reads files, makes multi-file changes, runs commands, and iterates on the result. Suited to a described task rather than a completed line.",
+    "access": [
+        "CLI",
+        "IDE Extension",
+        "Desktop Client"
+    ],
+    "engine": "Anthropic's Claude model family.",
+    "status": "Active",
+    "vendor": "Anthropic",
+    "latency": "Slower than inline completion by design, because it is reading, editing, and verifying rather than predicting the next token.",
+    "pricing": [
+        {
+            "tier": "Included with Claude plans",
+            "model": "Per-seat monthly",
+            "limits": "Usage caps by tier",
+            "includes": "Usage within plan limits"
+        },
+        {
+            "tier": "API",
+            "model": "Pay per token",
+            "limits": "Rate tiers",
+            "includes": "Usage billed directly"
+        }
+    ],
+    "quality": "Strong on substantial multi-file changes. As with any agentic tool, a confident wrong change spread across several files is harder to spot in review than a single bad line.",
+    "tagline": "An agentic coding tool that works in the terminal against a whole repository.",
+    "audience": [
+        "Dev Teams",
+        "Solopreneurs"
+    ],
+    "category": "Coding & Developer Tools",
+    "generated": "2026-08-02",
+    "use_cases": [
+        "Multi-file refactors and feature implementation from a written description",
+        "Investigating and fixing a bug across an unfamiliar codebase",
+        "Automating repetitive engineering work such as migrations and test scaffolding"
+    ],
+    "alternatives": [
+        "Cursor",
+        "GitHub Copilot",
+        "ChatGPT"
+    ],
+    "catalog_name": "Claude Code",
+    "integrations": [
+        "Git and standard developer tooling",
+        "Model Context Protocol for external systems",
+        "IDE extensions"
+    ],
+    "governance_note": "Agentic coding tools change the control question from what the model reads to what it is allowed to do. It executes commands and edits files, so scope it deliberately: run it in a repository rather than a home directory, keep secrets out of the working tree, and require human review before merge. The corresponding audit evidence is the pull request history, which is where the record of what an agent changed actually lives.",
+    "training_optout": "Follows Anthropic's commercial terms: business and API data is not used for training by default."
+}
