@@ -1,0 +1,73 @@
+{
+    "api": "REST API on OpenAI's platform. Open weights available for direct use.",
+    "url": "https://platform.openai.com/docs/guides/speech-to-text",
+    "cons": [
+        "Not real-time in the standard form",
+        "API cost accumulates at high audio volume",
+        "Transcripts inherit the sensitivity of the underlying conversation"
+    ],
+    "name": "Whisper API (OpenAI)",
+    "pros": [
+        "Best-in-class open-weight accuracy",
+        "Self-hosted path removes external data exposure",
+        "Wide language coverage"
+    ],
+    "slug": "whisper-openai",
+    "tags": [
+        "Speech Recognition",
+        "Transcription",
+        "Open Weight",
+        "API"
+    ],
+    "files": "Audio and video files in common formats.",
+    "value": "The strongest freely available speech-to-text model, and the reference benchmark for the category. Available both as an OpenAI API and as open weights you can run yourself, which is an unusual combination at this quality level.",
+    "access": [
+        "API",
+        "Open Source / Local Deployment"
+    ],
+    "engine": "OpenAI's Whisper model family, released as open weights. The API runs a hosted version.",
+    "status": "Active",
+    "vendor": "OpenAI",
+    "latency": "Not real-time in the base form. The OpenAI API is fast for file transcription; real-time streaming requires the Realtime API endpoint.",
+    "pricing": [
+        {
+            "tier": "Self-hosted",
+            "model": "Infrastructure cost only",
+            "limits": "Bounded by hardware",
+            "includes": "Open weights, full control, no data sent to OpenAI"
+        },
+        {
+            "tier": "OpenAI API",
+            "model": "Pay per minute of audio",
+            "limits": "Rate tiers",
+            "includes": "Managed inference, no hardware needed"
+        }
+    ],
+    "quality": "Best-in-class across languages and accents for an open-weight model. Still degrades on heavy background noise and very domain-specific vocabulary.",
+    "tagline": "Open-weight speech recognition, accurate enough that every other vendor benchmarks against it.",
+    "audience": [
+        "Dev Teams",
+        "Enterprise Operations",
+        "Compliance/Audit Professionals"
+    ],
+    "category": "Voice & Audio",
+    "generated": "2026-08-02",
+    "use_cases": [
+        "Transcribing audio and video files at scale through the API",
+        "Self-hosting accurate speech recognition inside a controlled environment",
+        "Building voice interfaces or meeting-note pipelines on a reliable accuracy floor"
+    ],
+    "alternatives": [
+        "ElevenLabs",
+        "Otter.ai",
+        "Microsoft Copilot"
+    ],
+    "catalog_name": "Whisper API (OpenAI)",
+    "integrations": [
+        "OpenAI API ecosystem",
+        "Self-hosting via Hugging Face and common ML tooling",
+        "Most orchestration frameworks"
+    ],
+    "governance_note": "The self-hosted path is the right answer wherever the audio is privileged, regulated, or involves recording consent issues. An HR investigation interview, a legal call, or a clinical encounter should not be sent through an external API. Open weights mean you get the same model quality on your own infrastructure. Pair with an explicit retention policy for the resulting transcripts, which are often more sensitive than the audio.",
+    "training_optout": "Self-hosted: nothing leaves your infrastructure. API: follows OpenAI's commercial data terms for the tier in use."
+}
