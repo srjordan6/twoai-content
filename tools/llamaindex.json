@@ -1,0 +1,71 @@
+{
+    "api": "Python library, TypeScript available. Extensive integration surface.",
+    "url": "https://www.llamaindex.ai/",
+    "cons": [
+        "Index access control is not automatic",
+        "Configuration choices strongly affect retrieval quality",
+        "TypeScript support lags Python"
+    ],
+    "name": "LlamaIndex",
+    "pros": [
+        "The right tool for document-centric RAG specifically",
+        "Excellent integration coverage",
+        "Strong community and documentation"
+    ],
+    "slug": "llamaindex",
+    "tags": [
+        "RAG",
+        "Developer Tools",
+        "Open Source",
+        "Data Pipelines"
+    ],
+    "files": "Loaders for PDFs, Word documents, spreadsheets, databases, and web pages.",
+    "value": "The standard framework for connecting language models to private document stores. Where LangChain is more general-purpose, LlamaIndex is specifically optimized for the ingest-index-retrieve-generate pattern that makes RAG work well in practice.",
+    "access": [
+        "Open Source / Local Deployment",
+        "API"
+    ],
+    "engine": "Framework, not a model. Orchestrates calls to whatever model and vector store you choose.",
+    "status": "Active",
+    "vendor": "LlamaIndex",
+    "latency": "Framework overhead is minimal; latency is dominated by the model and vector store.",
+    "pricing": [
+        {
+            "tier": "Open source",
+            "model": "$0",
+            "limits": "None on the framework itself",
+            "includes": "Full framework, all integrations"
+        },
+        {
+            "tier": "LlamaCloud",
+            "model": "Usage-based",
+            "limits": "Volume tiers",
+            "includes": "Managed data pipelines and parsing"
+        }
+    ],
+    "quality": "Retrieval quality depends heavily on chunking strategy and embedding model choice. LlamaIndex provides the plumbing; the quality decisions sit with the implementer.",
+    "tagline": "The framework for building retrieval-augmented applications on top of your own documents.",
+    "audience": [
+        "Dev Teams"
+    ],
+    "category": "Coding & Developer Tools",
+    "generated": "2026-08-02",
+    "use_cases": [
+        "Building a knowledge assistant that answers questions from internal documents",
+        "Creating a retrieval layer that feeds context into a language model accurately",
+        "Ingesting heterogeneous sources (PDFs, databases, APIs) into a queryable index"
+    ],
+    "alternatives": [
+        "Hugging Face",
+        "ChatGPT",
+        "Claude"
+    ],
+    "catalog_name": "LlamaIndex",
+    "integrations": [
+        "Every major vector store and embedding provider",
+        "All major LLM APIs",
+        "Hugging Face and local models"
+    ],
+    "governance_note": "The governance surface of a RAG system is the index, not the model. Whatever documents go in can come out in model responses, including documents that were accessible to the indexing process but should not be surfaced to end users. Access control on the index is not automatic and must be designed explicitly. The most common failure is indexing a shared drive and discovering that everyone can now query everyone else's sensitive files.",
+    "training_optout": "Framework only. Data handling depends entirely on the model and store chosen."
+}
