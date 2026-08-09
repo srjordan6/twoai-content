@@ -1,14 +1,36 @@
 {
+    "faq": [
+        {
+            "a": "Each vote is a pairwise result between two anonymous models; a Bradley-Terry model converts millions of such results into ratings where the gap between two models predicts the vote share between them.",
+            "q": "How does the Elo-style rating work?"
+        },
+        {
+            "a": "Partially. Documented avenues include testing many private variants and releasing only the winner, and tuning models toward the style voters reward. The style-controlled leaderboard and category boards reduce but do not eliminate this.",
+            "q": "Can vendors game it?"
+        },
+        {
+            "a": "They measure different things: Arena measures preference under real prompts, static benchmarks measure correctness under fixed tasks. A model can be optimized for likability, for test-taking, or genuinely for both.",
+            "q": "Why does Arena rank disagree with benchmark scores?"
+        }
+    ],
     "how": "Crowdsourced blind battles: a visitor sends one prompt to two anonymous models, votes for the better answer, and votes update a Bradley-Terry rating. Scores change continuously on the live leaderboard.",
     "url": "https://lmarena.ai",
     "name": "LMArena (Chatbot Arena)",
     "note": "The chat and general LLM comparison on srjconsultingservices.com is built on this rating system; consult the live leaderboard for current standings, which move weekly.",
     "slug": "lmarena",
     "sort": 4,
+    "history": "LMArena began in 2023 as Chatbot Arena, a UC Berkeley SkyLab research project with a disarmingly simple design: show users two anonymous model responses to their own prompt, let them vote for the better one, and rank models with an Elo-style rating system borrowed from chess. It grew into millions of votes and became the leaderboard that vendors watch, cite in launch posts, and, on the evidence, optimize for. The project spun out into a company in 2025, which sharpened a question that had been building for a while: what exactly does a preference vote measure, and whose preferences are doing the measuring?",
+    "related": [
+        "livebench",
+        "mmlu"
+    ],
     "section": "bench-model",
     "measures": "Human preference: which model people prefer in blind head-to-head conversations, aggregated into Elo-style ratings across categories including coding, math, and creative writing.",
+    "criticism": "The core critique is that human preference is not correctness: votes reward confident tone, attractive formatting, and agreeable length, and a fluent wrong answer can beat a terse right one. The 2025 Leaderboard Illusion paper documented structural advantages for large providers, including private testing of multiple model variants with selective publication of the best performer, and the Llama 4 launch drew accusations of submitting a chat-tuned variant that differed from the released model. Prompt distribution is whatever visitors type, skewed toward casual and English-language use. None of this makes the signal worthless; it makes it a measure of crowd-pleasing under a particular crowd.",
     "generated": "2026-08-09",
     "maintainer": "LMArena (originally LMSYS / UC Berkeley SkyLab)",
     "not_measured": "Factual correctness directly, and it can reward style, confidence, and formatting; rankings shift as the voter population and prompts shift.",
-    "section_name": "Model Benchmarks"
+    "last_reviewed": "2026-08-09",
+    "interpretation": "Read it as a blended signal of capability and likability, useful precisely because it is live, adversarial, and cheap to game only partially. Use the style-controlled leaderboard, which statistically adjusts for length and formatting effects, and the category boards (coding, math, hard prompts) rather than the headline number. When Arena rank and static-benchmark rank disagree sharply, that disagreement is itself the finding: the model is optimized for one audience or the other.",
+    "review_interval_days": 90
 }
