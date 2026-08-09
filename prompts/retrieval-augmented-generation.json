@@ -1,1 +1,46 @@
-{"slug": "retrieval-augmented-generation", "name": "Retrieval-Augmented Generation (RAG)", "kind": "technique", "sort": 7, "generated": "2026-08-09", "what": "Fetching relevant documents from a knowledge base at question time and putting them in the prompt so the model answers from your sources instead of its training data.", "mechanism": "A model's parametric knowledge, what is baked into its weights, is frozen at training time, expensive to update, and impossible to cite. RAG splits the job: a retrieval system holds the knowledge, and the model contributes reading and writing. At question time, the query is embedded, the nearest document chunks are fetched, and the model is instructed to answer from those chunks. Lewis and colleagues introduced the pattern for knowledge-intensive tasks, and it became the default architecture for making models useful on private and current information because it converts a model-quality problem into a search-quality problem. That conversion is also the catch: embeddings, chunking, and ranking now set your ceiling, the model cannot cite what retrieval failed to fetch, and stuffing long irrelevant context degrades answers rather than helping them.", "when_works": "Company knowledge bases, current information past the training cutoff, and any domain where answers must cite real sources. The standard architecture for grounded Q&A.", "when_fails": "Garbage retrieval means garbage answers: the model can only be as good as what the search step returns. Long irrelevant context can also degrade answers rather than help.", "how": "The prompt side: instruct the model to answer only from the provided passages, cite which passage supports each claim, and say when the context does not contain the answer.", "examples": [{"label": "The grounding instruction that makes RAG honest", "prompt": "Answer the question using only the context passages below. Cite the passage number after each claim like [2]. If the context does not contain the answer, say \"The provided documents do not answer this\" and state what document would. Do not use outside knowledge.\n\nContext: {RETRIEVED_CHUNKS}\nQuestion: {QUESTION}", "note": "The refusal instruction is the important line. Without it the model fills retrieval gaps from memory and the citations become decoration."}, {"label": "Checking the retrieval before trusting the answer", "prompt": "Before answering, list which of the provided passages are actually relevant to the question and which are not. If fewer than 2 passages are relevant, answer only: RETRIEVAL INSUFFICIENT.", "note": "A cheap self-check that surfaces the most common RAG failure, bad retrieval, instead of papering over it with fluent prose."}], "faq": [{"q": "RAG or a long context window?", "a": "Long context works for a handful of documents you can paste whole. RAG wins when the corpus is large, changing, or needs citations, and it is far cheaper per query than shipping the whole corpus every time."}, {"q": "RAG or fine-tuning?", "a": "They solve different problems: RAG supplies facts at question time and can cite them; fine-tuning shapes behavior and style. Knowledge that changes belongs in retrieval, not weights."}, {"q": "What is the most common RAG failure?", "a": "Confident answers built on wrong or missing retrieval. The two-line defense: instruct the model to answer only from context, and to say plainly when the context does not contain the answer."}], "related": ["react", "prompt-chaining"], "source_url": "https://www.promptingguide.ai/techniques/rag", "paper": "Lewis et al., Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks (2020)"}
+{
+    "faq": [
+        {
+            "a": "Long context works for a handful of documents you can paste whole. RAG wins when the corpus is large, changing, or needs citations, and it is far cheaper per query than shipping the whole corpus every time.",
+            "q": "RAG or a long context window?"
+        },
+        {
+            "a": "They solve different problems: RAG supplies facts at question time and can cite them; fine-tuning shapes behavior and style. Knowledge that changes belongs in retrieval, not weights.",
+            "q": "RAG or fine-tuning?"
+        },
+        {
+            "a": "Confident answers built on wrong or missing retrieval. The two-line defense: instruct the model to answer only from context, and to say plainly when the context does not contain the answer.",
+            "q": "What is the most common RAG failure?"
+        }
+    ],
+    "how": "Chunk documents sensibly, embed and index them, retrieve a handful per query, and instruct the model to answer only from the provided context and to say when the context does not contain the answer.",
+    "kind": "technique",
+    "name": "Retrieval-Augmented Generation (RAG)",
+    "slug": "retrieval-augmented-generation",
+    "sort": 7,
+    "what": "Fetching relevant documents at question time and placing them in the prompt so the model answers from your sources instead of memory.",
+    "paper": "Lewis et al., Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks (2020)",
+    "related": [
+        "react",
+        "prompt-chaining"
+    ],
+    "examples": [
+        {
+            "note": "The refusal instruction is the important line. Without it the model fills retrieval gaps from memory and the citations become decoration.",
+            "label": "The grounding instruction that makes RAG honest",
+            "prompt": "Answer the question using only the context passages below. Cite the passage number after each claim like [2]. If the context does not contain the answer, say \"The provided documents do not answer this\" and state what document would. Do not use outside knowledge.\n\nContext: {RETRIEVED_CHUNKS}\nQuestion: {QUESTION}"
+        },
+        {
+            "note": "A cheap self-check that surfaces the most common RAG failure, bad retrieval, instead of papering over it with fluent prose.",
+            "label": "Checking the retrieval before trusting the answer",
+            "prompt": "Before answering, list which of the provided passages are actually relevant to the question and which are not. If fewer than 2 passages are relevant, answer only: RETRIEVAL INSUFFICIENT."
+        }
+    ],
+    "generated": "2026-08-09",
+    "mechanism": "A model's parametric knowledge, what is baked into its weights, is frozen at training time, expensive to update, and impossible to cite. RAG splits the job: a retrieval system holds the knowledge, and the model contributes reading and writing. At question time, the query is embedded, the nearest document chunks are fetched, and the model is instructed to answer from those chunks. Lewis and colleagues introduced the pattern for knowledge-intensive tasks, and it became the default architecture for making models useful on private and current information because it converts a model-quality problem into a search-quality problem. That conversion is also the catch: embeddings, chunking, and ranking now set your ceiling, the model cannot cite what retrieval failed to fetch, and stuffing long irrelevant context degrades answers rather than helping them.",
+    "source_url": "https://www.promptingguide.ai/techniques/rag",
+    "when_fails": "Retrieval quality is the ceiling: if search returns the wrong passages, generation fails politely. RAG grounds facts; it does not improve reasoning, and long irrelevant context can degrade answers.",
+    "when_works": "Company knowledge, current information past the training cutoff, and any setting where answers must cite sources. The standard cure for making models useful on private data.",
+    "last_reviewed": "2026-08-09",
+    "review_interval_days": 180
+}
