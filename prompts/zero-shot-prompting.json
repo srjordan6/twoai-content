@@ -1,1 +1,46 @@
-{"slug": "zero-shot-prompting", "name": "Zero-Shot Prompting", "kind": "technique", "sort": 1, "generated": "2026-08-09", "what": "Asking the model to do a task with a direct instruction and no examples, relying entirely on what it learned in training.", "mechanism": "Modern models are instruction-tuned: after pretraining on raw text, they are trained on large sets of instruction-and-response pairs and refined with human feedback, so a direct instruction lands on a model that has practiced following instructions millions of times. Your prompt becomes the conditioning context, and the model predicts the response most consistent with it. That is why specificity does the work: \"summarize this\" leaves length, audience, and emphasis to the model's defaults, while \"summarize this in five bullets for an executive who has not read it, leading with the decision required\" pins down exactly the distribution of answers you want. Zero-shot fails when your intent is genuinely underdetermined by your words, and no amount of politeness or repetition fixes that; only more precise constraints or examples do.", "when_works": "Common tasks with obvious formats: summarize, translate, classify sentiment, answer a factual question. Modern instruction-tuned models handle most everyday work zero-shot.", "when_fails": "Unusual output formats, niche domain conventions, or tasks where \"correct\" is ambiguous. If the model keeps guessing wrong about what you want, the fix is examples, not a longer instruction.", "how": "State the task, the audience, the constraints, and the output format in plain language. Be specific about what done looks like: length, structure, tone, and what to leave out.", "examples": [{"label": "Underspecified vs pinned down", "prompt": "Weak: Summarize this report.\n\nStrong: Summarize this report in five bullets for an executive who has not read it. Lead with the decision being requested, include the two numbers that matter most, note the biggest risk, and keep each bullet under 20 words. Leave out background and methodology.", "note": "Every clause in the strong version removes a way the default answer could miss. That is all zero-shot craft is."}, {"label": "Defining done for a judgment task", "prompt": "Classify each customer message below as REFUND, BUG, QUESTION, or OTHER. Rules: choose exactly one label; REFUND requires an explicit request for money back; if a message fits two labels, pick the one requiring action from us; output one line per message as ID: LABEL. Messages: {PASTE}", "note": "Tie-break rules and output format turn a fuzzy ask into a checkable one, without needing a single example."}], "faq": [{"q": "Is zero-shot obsolete now that models are so capable?", "a": "The opposite: stronger instruction-following makes zero-shot the right default for more tasks. Add examples only when outputs keep missing your intent, which usually means the intent was underspecified."}, {"q": "Does politeness or emphasis (PLEASE, IMPORTANT) improve results?", "a": "Marginally at best, and it is no substitute for constraints. A concrete output specification outperforms any amount of emphasis."}, {"q": "How long should a zero-shot prompt be?", "a": "As long as the constraints require and no longer. Length spent on task definition, audience, format, and exclusions earns its tokens; repeated instructions and filler do not."}], "related": ["few-shot-prompting", "chain-of-thought"], "source_url": "https://www.promptingguide.ai/techniques/zeroshot", "paper": "Brown et al., Language Models are Few-Shot Learners (2020)"}
+{
+    "faq": [
+        {
+            "a": "The opposite: stronger instruction-following makes zero-shot the right default for more tasks. Add examples only when outputs keep missing your intent, which usually means the intent was underspecified.",
+            "q": "Is zero-shot obsolete now that models are so capable?"
+        },
+        {
+            "a": "Marginally at best, and it is no substitute for constraints. A concrete output specification outperforms any amount of emphasis.",
+            "q": "Does politeness or emphasis (PLEASE, IMPORTANT) improve results?"
+        },
+        {
+            "a": "As long as the constraints require and no longer. Length spent on task definition, audience, format, and exclusions earns its tokens; repeated instructions and filler do not.",
+            "q": "How long should a zero-shot prompt be?"
+        }
+    ],
+    "how": "State the task, the audience, the constraints, and the output format in plain language. Be specific about what done looks like: length, structure, tone, and what to leave out.",
+    "kind": "technique",
+    "name": "Zero-Shot Prompting",
+    "slug": "zero-shot-prompting",
+    "sort": 1,
+    "what": "Asking the model to do a task with a direct instruction and no examples, relying entirely on what it learned in training.",
+    "paper": "Brown et al., Language Models are Few-Shot Learners (2020)",
+    "related": [
+        "few-shot-prompting",
+        "chain-of-thought"
+    ],
+    "examples": [
+        {
+            "note": "Every clause in the strong version removes a way the default answer could miss. That is all zero-shot craft is.",
+            "label": "Underspecified vs pinned down",
+            "prompt": "Weak: Summarize this report.\n\nStrong: Summarize this report in five bullets for an executive who has not read it. Lead with the decision being requested, include the two numbers that matter most, note the biggest risk, and keep each bullet under 20 words. Leave out background and methodology."
+        },
+        {
+            "note": "Tie-break rules and output format turn a fuzzy ask into a checkable one, without needing a single example.",
+            "label": "Defining done for a judgment task",
+            "prompt": "Classify each customer message below as REFUND, BUG, QUESTION, or OTHER. Rules: choose exactly one label; REFUND requires an explicit request for money back; if a message fits two labels, pick the one requiring action from us; output one line per message as ID: LABEL. Messages: {PASTE}"
+        }
+    ],
+    "generated": "2026-08-09",
+    "mechanism": "Modern models are instruction-tuned: after pretraining on raw text, they are trained on large sets of instruction-and-response pairs and refined with human feedback, so a direct instruction lands on a model that has practiced following instructions millions of times. Your prompt becomes the conditioning context, and the model predicts the response most consistent with it. That is why specificity does the work: \"summarize this\" leaves length, audience, and emphasis to the model's defaults, while \"summarize this in five bullets for an executive who has not read it, leading with the decision required\" pins down exactly the distribution of answers you want. Zero-shot fails when your intent is genuinely underdetermined by your words, and no amount of politeness or repetition fixes that; only more precise constraints or examples do.",
+    "source_url": "https://www.promptingguide.ai/techniques/zeroshot",
+    "when_fails": "Unusual output formats, niche domain conventions, or tasks where \"correct\" is ambiguous. If the model keeps guessing wrong about what you want, the fix is examples, not a longer instruction.",
+    "when_works": "Common tasks with obvious formats: summarize, translate, classify sentiment, answer a factual question. Modern instruction-tuned models handle most everyday work zero-shot.",
+    "last_reviewed": "2026-08-09",
+    "review_interval_days": 180
+}
