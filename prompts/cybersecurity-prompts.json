@@ -1,1 +1,44 @@
-{"kind": "domain", "name": "Cybersecurity Prompts", "slug": "cybersecurity-prompts", "sort": 6, "intro": "Templates for triage, reporting, and policy review. Defensive work only; never paste live credentials, secrets, or regulated personal data into a prompt.", "generated": "2026-08-09", "templates": [{"tip": "Defang everything before pasting (hxxp, bracket dots) and strip employee personal data.", "title": "Phishing email triage", "models": "Any; treat the verdict as a first pass for a human analyst, not a disposition.", "prompt": "Analyze this suspected phishing email for a SOC triage queue. Defanged email source below. Produce: 1) verdict, phishing, suspicious, or likely benign, with confidence; 2) the specific indicators supporting it (sender mismatch, urgency framing, credential harvest pattern, lookalike domain, attachment type); 3) recommended actions in order (block indicators, search for other recipients, user notification wording); 4) a two-sentence explanation suitable to send the employee who reported it. EMAIL: {PASTE_DEFANGED}", "tokens": 130}, {"tip": "Writing the report from a timeline you control keeps the model from smoothing over gaps, gaps are findings.", "title": "Incident report draft", "models": "Any; every timestamp and system name must come from your notes, not the model.", "prompt": "Draft an incident report from these facts. Incident type: {TYPE}. Timeline notes, verbatim from our tracking: {PASTE}. Systems involved: {LIST}. Structure: executive summary (three sentences, no jargon), timeline table (UTC, event, source of evidence), impact assessment (systems, data, users, duration), root cause as currently understood with confidence level, containment and remediation actions taken, and open items with owners. Where my notes have gaps, write GAP and state what evidence would close it. Do not invent times, systems, or actions.", "tokens": 140}, {"tip": "Ask for the control ID on every finding so the output is auditable rather than vibes.", "title": "Security policy gap review", "models": "Frontier models track framework controls more reliably; verify citations against the framework text.", "prompt": "Review this policy against {FRAMEWORK, e.g. NIST CSF 2.0 or ISO 27001 Annex A}. Policy text below. Produce a gap table: framework control ID, what the framework expects in one sentence, what the policy currently says or MISSING, severity (high, medium, low) based on exposure, and a one-line remediation. Then list the five gaps to fix first and why. Only cite controls that exist in the named framework; if unsure a control applies, mark it VERIFY. POLICY: {PASTE}", "tokens": 130}]}
+{
+    "faq": [
+        {
+            "a": "Sanitize first: strip credentials, internal hostnames, IPs, and anything identifying, and confirm your organization permits the tool for security data at all. Assume pasted content leaves your control.",
+            "q": "Can I paste real logs and configs?"
+        },
+        {
+            "a": "Mainstream models refuse offensive requests, and this library does not go there by design. Defensive analysis, detection engineering, and documentation are where AI assistance belongs in security work.",
+            "q": "Will AI tools write exploit code if asked?"
+        }
+    ],
+    "kind": "domain",
+    "name": "Cybersecurity Prompts",
+    "slug": "cybersecurity-prompts",
+    "sort": 6,
+    "intro": "Templates for triage, reporting, and policy review. Defensive work only; never paste live credentials, secrets, or regulated personal data into a prompt.",
+    "guidance": "These templates are defensive only, analysis, hardening, documentation, training, and that line is enforced by design: no template here generates exploits, attack tooling, or social-engineering content, and requests in that direction are the point where AI assistance should stop. The recurring risk in security use is confidentiality: pasting configurations, logs, or architecture into a prompt shares them with a model provider, so sanitize identifiers and check your organization's data-handling policy before pasting anything sensitive. Treat model output as a junior analyst's draft, plausible, fast, occasionally wrong about your environment, and verify against your actual systems before acting; in incident response especially, the model summarizes and drafts while humans decide.",
+    "generated": "2026-08-09",
+    "templates": [
+        {
+            "tip": "Defang everything before pasting (hxxp, bracket dots) and strip employee personal data.",
+            "title": "Phishing email triage",
+            "models": "Any; treat the verdict as a first pass for a human analyst, not a disposition.",
+            "prompt": "Analyze this suspected phishing email for a SOC triage queue. Defanged email source below. Produce: 1) verdict, phishing, suspicious, or likely benign, with confidence; 2) the specific indicators supporting it (sender mismatch, urgency framing, credential harvest pattern, lookalike domain, attachment type); 3) recommended actions in order (block indicators, search for other recipients, user notification wording); 4) a two-sentence explanation suitable to send the employee who reported it. EMAIL: {PASTE_DEFANGED}",
+            "tokens": 130
+        },
+        {
+            "tip": "Writing the report from a timeline you control keeps the model from smoothing over gaps, gaps are findings.",
+            "title": "Incident report draft",
+            "models": "Any; every timestamp and system name must come from your notes, not the model.",
+            "prompt": "Draft an incident report from these facts. Incident type: {TYPE}. Timeline notes, verbatim from our tracking: {PASTE}. Systems involved: {LIST}. Structure: executive summary (three sentences, no jargon), timeline table (UTC, event, source of evidence), impact assessment (systems, data, users, duration), root cause as currently understood with confidence level, containment and remediation actions taken, and open items with owners. Where my notes have gaps, write GAP and state what evidence would close it. Do not invent times, systems, or actions.",
+            "tokens": 140
+        },
+        {
+            "tip": "Ask for the control ID on every finding so the output is auditable rather than vibes.",
+            "title": "Security policy gap review",
+            "models": "Frontier models track framework controls more reliably; verify citations against the framework text.",
+            "prompt": "Review this policy against {FRAMEWORK, e.g. NIST CSF 2.0 or ISO 27001 Annex A}. Policy text below. Produce a gap table: framework control ID, what the framework expects in one sentence, what the policy currently says or MISSING, severity (high, medium, low) based on exposure, and a one-line remediation. Then list the five gaps to fix first and why. Only cite controls that exist in the named framework; if unsure a control applies, mark it VERIFY. POLICY: {PASTE}",
+            "tokens": 130
+        }
+    ],
+    "last_reviewed": "2026-08-09",
+    "review_interval_days": 180
+}
