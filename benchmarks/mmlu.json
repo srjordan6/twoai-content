@@ -1,14 +1,37 @@
 {
+    "faq": [
+        {
+            "a": "For frontier models, no, scores are compressed against the ceiling. For small, local, and specialized models it still spreads usefully and remains a quick sanity check of general knowledge.",
+            "q": "Is MMLU still worth checking in 2026?"
+        },
+        {
+            "a": "MMLU-Pro raises difficulty with ten answer options and more reasoning-dependent questions; MMLU-Redux is a cleaned subset that fixed erroneous answer keys. Both exist because the original saturated and its error rate became material.",
+            "q": "What are MMLU-Pro and MMLU-Redux?"
+        },
+        {
+            "a": "Prompting setup: five-shot, zero-shot, and chain-of-thought variants can differ by several points, and answer-extraction methods vary. Always compare numbers from the same harness.",
+            "q": "Why do published MMLU scores for the same model differ?"
+        }
+    ],
     "how": "About 14,000 four-option multiple-choice questions; the score is simple accuracy. Usually reported zero-shot or 5-shot.",
     "url": "https://github.com/hendrycks/test",
     "name": "MMLU",
     "note": "The default general-knowledge yardstick since 2020, now largely saturated at the frontier and supplemented by harder successors such as MMLU-Pro and GPQA.",
     "slug": "mmlu",
     "sort": 1,
+    "history": "MMLU arrived in 2020 from Dan Hendrycks and collaborators at a moment when models were beating every existing language benchmark within months of release. Its bet was breadth: 57 subjects spanning elementary math, US history, professional law, and clinical medicine, drawn from real exams and textbooks, would take years to exhaust. The bet paid off, and from roughly 2021 to 2024 MMLU was the number every model launch led with, the closest thing the field had to a single IQ score. Its trajectory since is the standard life cycle of a successful benchmark: GPT-3 scored around 44 percent, GPT-4 crossed 86 percent in 2023, and frontier models have since pushed close enough to the ceiling, roughly 90 percent, with some questions simply wrong, that the benchmark stopped separating the leaders.",
+    "related": [
+        "gpqa",
+        "hle",
+        "livebench"
+    ],
     "section": "bench-model",
     "measures": "Breadth of knowledge and reasoning across 57 academic and professional subjects, from elementary mathematics to law and medicine, using multiple-choice questions.",
+    "criticism": "Three problems compound. Contamination: the questions come from public exam materials that have been on the internet for years, so every modern training corpus has seen them in some form, and nobody can say how much of a score is knowledge versus recall. Quality: independent audits, including the MMLU-Redux project, found a meaningful share of questions with wrong answer keys, ambiguous wording, or multiple defensible answers, which puts a hard ceiling below 100 and adds noise everywhere. Format: four-option multiple choice rewards elimination strategies and measures recognition, not the generation, reasoning, and refusal behaviors that matter in use. Saturation makes all three worse, when leaders are separated by a point, contamination and bad keys are the difference.",
     "generated": "2026-08-09",
     "maintainer": "Hendrycks et al. (UC Berkeley)",
     "not_measured": "Coding ability, tool use, long-context handling, conversational quality, or safety. Frontier models now score close enough to the ceiling that MMLU no longer separates them well.",
-    "section_name": "Model Benchmarks"
+    "last_reviewed": "2026-08-09",
+    "interpretation": "Treat MMLU as a floor check for mid-tier and small models, not a frontier differentiator. Ignore gaps under two points entirely. Check the evaluation setup before comparing published numbers, five-shot versus zero-shot versus chain-of-thought prompting shifts scores several points, and vendors do not all use the same setup. When a new model beats an old one by a point here, the news is that nothing interesting happened; look at GPQA, HLE, or task-specific benchmarks instead.",
+    "review_interval_days": 90
 }
