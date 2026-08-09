@@ -1,14 +1,36 @@
 {
+    "faq": [
+        {
+            "a": "The fraction of true nearest neighbors the approximate search actually returned, recall at 10 of 0.95 means 95 percent overlap with exact search's top ten. It is the accuracy axis of every tradeoff curve.",
+            "q": "What is recall in this context?"
+        },
+        {
+            "a": "Every ANN algorithm has tunable parameters trading speed for accuracy. A single number silently picks one point on that curve; the curve shows which algorithm wins at the accuracy you actually need.",
+            "q": "Why curves instead of single scores?"
+        },
+        {
+            "a": "No. Database performance adds filtering, concurrency, persistence, and network overhead that can swamp algorithm differences. It narrows the algorithm choice; system benchmarks and your own tests choose the product.",
+            "q": "Does the fastest algorithm here mean the fastest vector database?"
+        }
+    ],
     "how": "Each algorithm indexes standard vector datasets and answers queries at multiple parameter settings; the published output is the recall/QPS Pareto curve.",
     "url": "https://ann-benchmarks.com",
     "name": "ANN-Benchmarks",
     "note": "The academic baseline behind every vector database's marketing claims; HNSW's dominance is visible here.",
     "slug": "ann-benchmarks",
     "sort": 1,
+    "history": "ANN-Benchmarks began as Erik Bernhardsson's side project while he was building the Annoy library at Spotify in the mid-2010s, and grew into the field's reference harness for approximate nearest neighbor search, the algorithm class underneath every vector database. Its contribution was methodological: because approximate search trades accuracy for speed, no single number is honest, so the harness plots each algorithm as a curve of recall against queries-per-second across parameter settings on standard datasets like GloVe and SIFT. The recall-QPS curve became the standard way the field talks about ANN performance, and the project's public results pages have quietly refereed a decade of algorithm papers, with HNSW's dominance visible there long before it became the default index everywhere.",
+    "related": [
+        "vectordbbench",
+        "big-ann"
+    ],
     "section": "bench-vector-db",
     "measures": "Approximate nearest neighbor algorithm quality: the recall-versus-queries-per-second trade-off curve for vector search algorithms on standard datasets.",
+    "criticism": "It benchmarks algorithms, not systems: single-node, in-memory, static indexes, with no metadata filtering, no concurrent writes, no persistence, no failure handling, which is to say none of the operational surface that determines production behavior. Its classic datasets are small by current standards, a few hundred dimensions and a few million vectors, while production embedding workloads run larger in both. Results are also sensitive to build parameters and hardware, and the gap between a tuned benchmark entry and a default-configured deployment can exceed the gap between algorithms.",
     "generated": "2026-08-09",
     "maintainer": "Aumüller, Bernhardsson, and Faithfull",
     "not_measured": "Full database systems: no filtering, inserts, persistence, distribution, or cost; it measures algorithms and libraries, not products.",
-    "section_name": "Vector Database Benchmarks"
+    "last_reviewed": "2026-08-09",
+    "interpretation": "Read the curve at your recall requirement, comparing algorithms at 99 percent recall can invert the ranking you would get at 90 percent, and a headline QPS number without its recall is meaningless. Use it to choose an algorithm family and understand its tradeoff shape, then benchmark the actual database product on your own vectors, at your dimensionality, with your filters. Treat it as the physics of the space, real, but two abstraction layers from your deployment.",
+    "review_interval_days": 90
 }
