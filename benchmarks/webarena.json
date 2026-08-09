@@ -1,14 +1,36 @@
 {
+    "faq": [
+        {
+            "a": "Reproducibility and safety: live sites change under the benchmark, rate-limit agents, and cannot ethically absorb thousands of automated purchases and posts. Self-hosted replicas hold the world constant so scores are comparable.",
+            "q": "Why build fake websites instead of testing on the real web?"
+        },
+        {
+            "a": "Functionally: evaluation code checks the resulting state, the order exists, the setting changed, the correct answer string was produced, rather than judging the agent's transcript.",
+            "q": "How is success judged?"
+        },
+        {
+            "a": "Long-horizon consistency: individual clicks are easy, but tasks requiring many dependent steps across pages compound small errors, and recovery from a wrong step remains the weakest skill.",
+            "q": "What is the hardest part for agents?"
+        }
+    ],
     "how": "812 templated tasks over containerized sites, scored by programmatic checks on the resulting state rather than by judging transcripts.",
     "url": "https://webarena.dev",
     "name": "WebArena",
     "note": "Humans complete roughly 78 percent; agent scores climbing from single digits toward that line is the story to watch.",
     "slug": "webarena",
     "sort": 2,
+    "history": "WebArena, from Carnegie Mellon in 2023, built something evaluation had lacked: a self-hosted, reproducible internet, working replicas of an e-commerce store, a Reddit-style forum, a GitLab instance, and a wiki, populated with realistic data, where agents complete full tasks like finding an order, posting a review, or configuring a repository. Scoring is functional: did the state of the world end up correct, not did the transcript look plausible. Its launch result framed the field's gap precisely, humans succeeded at 78 percent of tasks while the best GPT-4 agent managed about 14 percent, and the climb from that floor has been one of the clearest public measures of agent progress since.",
+    "related": [
+        "osworld",
+        "gaia"
+    ],
     "section": "bench-agents",
     "measures": "Long-horizon web agency: completing realistic multi-step tasks (shopping, forum posting, code hosting, mapping) on self-hosted replicas of real websites.",
+    "criticism": "A sandbox internet is a polite internet: no CAPTCHAs, no popups, no A/B-tested layouts, no rate limits, no adversarial design, so real-web deployment is strictly harder than the benchmark. The site replicas are a handful of applications whose quirks agents can overfit through repeated evaluation. Binary task success hides partial competence and near misses, and some task evaluations have been found ambiguous or arguably misgraded, which matters as scores compress upward. As with all agent benchmarks, scaffold and model are inseparable in reported numbers.",
     "generated": "2026-08-09",
     "maintainer": "Carnegie Mellon University (Zhou et al.)",
     "not_measured": "Robustness on the live, adversarial web: no CAPTCHAs, bot walls, or changing layouts; the environment is fixed and reproducible by design.",
-    "section_name": "Agent Benchmarks"
+    "last_reviewed": "2026-08-09",
+    "interpretation": "Use it for relative agent comparisons under identical harnesses, where it remains one of the cleanest signals available, and read absolute scores against the 78-percent human baseline to calibrate how far web agents still are from delegation-grade reliability. A rising WebArena score predicts better performance on cooperative websites; it predicts little about the adversarial web, where anti-bot infrastructure, not capability, is often the binding constraint.",
+    "review_interval_days": 90
 }
