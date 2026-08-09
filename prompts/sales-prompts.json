@@ -1,1 +1,44 @@
-{"kind": "domain", "name": "Sales Prompts", "slug": "sales-prompts", "sort": 1, "intro": "Working templates for discovery, outreach, and objection handling. Replace the {PLACEHOLDERS}, paste your own source material where indicated, and keep the output format lines, they are what make results consistent.", "generated": "2026-08-09", "templates": [{"tip": "Paste real source material (site pages, a 10-K excerpt, LinkedIn) rather than letting the model rely on memory, which may be stale or wrong.", "title": "Discovery call preparation", "models": "Any instruction-following model; stronger models produce sharper competitive angles.", "prompt": "You are preparing me for a discovery call. Prospect: {COMPANY}, {INDUSTRY}, roughly {SIZE} employees. My product: {ONE_SENTENCE_DESCRIPTION}. Source material about the prospect is pasted below. Using only that material, produce: 1) three business priorities they likely have this quarter, each tied to evidence from the material; 2) five open-ended discovery questions ordered from business pain to technical fit; 3) two risks that could stall a deal. Format as three labeled sections. If the material does not support a claim, leave it out. MATERIAL: {PASTE}", "tokens": 150}, {"tip": "The two-sentence limit on personalization is deliberate: longer feels researched-by-a-robot.", "title": "Cold outreach personalization", "models": "Any; keep temperature moderate for natural tone.", "prompt": "Write a cold email to {NAME}, {TITLE} at {COMPANY}. My company helps {ICP} achieve {OUTCOME}. Personalization source, use at most two sentences from it: {RECENT_TRIGGER_EVENT_OR_POST}. Rules: under 120 words, no buzzwords, one specific claim with a number, one clear ask for a 20-minute call with two proposed times, subject line under 6 words. Write one version direct in tone and one version curious in tone.", "tokens": 140}, {"tip": "Run it as a loop: answer, get scored, try again. The scoring rubric keeps feedback concrete.", "title": "Objection response coach", "models": "Any; role-play quality is best on frontier models.", "prompt": "Act as a sales coach running an objection drill. My product: {DESCRIPTION}. The objection: {OBJECTION}. First, give the three strongest forms a skeptical buyer would use for this objection. Then wait for my response and score it 1 to 5 on: acknowledges the concern, reframes with evidence, advances the deal. Suggest one improvement per round. Stay in the buyer role until I say stop.", "tokens": 120}]}
+{
+    "faq": [
+        {
+            "a": "Any current frontier model handles these templates; the differentiator is your input quality. A mid-tier model with real prospect specifics beats a frontier model with a generic ask.",
+            "q": "Which model should I use for sales work?"
+        },
+        {
+            "a": "Templates chain well into automation, but keep a human approval step on anything that reaches a prospect. Automated personalization that misfires reads worse than no personalization.",
+            "q": "Can I automate these into sequences?"
+        }
+    ],
+    "kind": "domain",
+    "name": "Sales Prompts",
+    "slug": "sales-prompts",
+    "sort": 1,
+    "intro": "Working templates for discovery, outreach, and objection handling. Replace the {PLACEHOLDERS}, paste your own source material where indicated, and keep the output format lines, they are what make results consistent.",
+    "guidance": "The failure mode of AI in sales is generic output: an email any vendor could have sent, a call prep any rep could have skimmed. Every template here fights that by forcing your specifics into the prompt, the prospect's actual situation, your actual differentiator, the objection actually raised. Judge outputs by one test: does this contain a sentence only we could send to only this prospect? If not, the input lacked specifics, not the model. Two discipline rules: never let the model invent claims about your product or the prospect's company (feed it facts, ask it to arrange them), and never send first drafts, the model's job is the strong second draft, yours is the judgment about what is true and what lands.",
+    "generated": "2026-08-09",
+    "templates": [
+        {
+            "tip": "Paste real source material (site pages, a 10-K excerpt, LinkedIn) rather than letting the model rely on memory, which may be stale or wrong.",
+            "title": "Discovery call preparation",
+            "models": "Any instruction-following model; stronger models produce sharper competitive angles.",
+            "prompt": "You are preparing me for a discovery call. Prospect: {COMPANY}, {INDUSTRY}, roughly {SIZE} employees. My product: {ONE_SENTENCE_DESCRIPTION}. Source material about the prospect is pasted below. Using only that material, produce: 1) three business priorities they likely have this quarter, each tied to evidence from the material; 2) five open-ended discovery questions ordered from business pain to technical fit; 3) two risks that could stall a deal. Format as three labeled sections. If the material does not support a claim, leave it out. MATERIAL: {PASTE}",
+            "tokens": 150
+        },
+        {
+            "tip": "The two-sentence limit on personalization is deliberate: longer feels researched-by-a-robot.",
+            "title": "Cold outreach personalization",
+            "models": "Any; keep temperature moderate for natural tone.",
+            "prompt": "Write a cold email to {NAME}, {TITLE} at {COMPANY}. My company helps {ICP} achieve {OUTCOME}. Personalization source, use at most two sentences from it: {RECENT_TRIGGER_EVENT_OR_POST}. Rules: under 120 words, no buzzwords, one specific claim with a number, one clear ask for a 20-minute call with two proposed times, subject line under 6 words. Write one version direct in tone and one version curious in tone.",
+            "tokens": 140
+        },
+        {
+            "tip": "Run it as a loop: answer, get scored, try again. The scoring rubric keeps feedback concrete.",
+            "title": "Objection response coach",
+            "models": "Any; role-play quality is best on frontier models.",
+            "prompt": "Act as a sales coach running an objection drill. My product: {DESCRIPTION}. The objection: {OBJECTION}. First, give the three strongest forms a skeptical buyer would use for this objection. Then wait for my response and score it 1 to 5 on: acknowledges the concern, reframes with evidence, advances the deal. Suggest one improvement per round. Stay in the buyer role until I say stop.",
+            "tokens": 120
+        }
+    ],
+    "last_reviewed": "2026-08-09",
+    "review_interval_days": 180
+}
