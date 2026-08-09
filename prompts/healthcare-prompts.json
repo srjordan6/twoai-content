@@ -1,1 +1,44 @@
-{"kind": "domain", "name": "Healthcare Prompts", "slug": "healthcare-prompts", "sort": 7, "intro": "Templates for administrative and communication work in healthcare settings. None of these produce clinical guidance, and no patient identifiers should ever be pasted into a prompt; HIPAA applies to AI tools like any other system.", "generated": "2026-08-09", "templates": [{"tip": "Reading-level rewrites are where models genuinely help; the review step is where safety lives.", "title": "Patient communication simplification", "models": "Any; clinical accuracy must be verified by qualified staff before sending.", "prompt": "Rewrite this patient-facing text at a 6th-grade reading level without changing its meaning. Keep every instruction, dosage-free (this template is for logistics and preparation text only, not medication guidance). Rules: short sentences, second person, define any unavoidable medical term in parentheses, keep all dates, times, locations, and phone numbers exactly as written, end with what to do if the patient has questions. Output the rewrite, then a list of every substantive change for clinical review. TEXT: {PASTE_NO_PHI}", "tokens": 130}, {"tip": "Structure and payer-criteria mapping is the drafting help; the clinical facts arrive from the chart through the clinician, never from the model.", "title": "Prior authorization letter draft", "models": "Any; the clinician owns every clinical statement in the final letter.", "prompt": "Draft a prior authorization letter skeleton. Service requested: {SERVICE_OR_DEVICE}. Payer criteria, pasted from the policy: {PASTE_CRITERIA}. Clinical facts provided by the clinician, use only these, with placeholders left where I have not supplied a fact: {FACTS}. Structure: patient and request identification block (placeholders only), medical necessity narrative mapping each payer criterion to a provided fact one by one, prior treatments and outcomes, and requested determination. Mark any criterion with no matching fact as CRITERION NOT YET ADDRESSED.", "tokens": 140}, {"tip": "The teach-back checks are what turn an outline into training; insist on them.", "title": "Staff training outline", "models": "Any.", "prompt": "Build a training outline for {TOPIC, e.g. new intake workflow} for {AUDIENCE, e.g. front-desk staff}. Length: {DURATION}. Structure: learning objectives (three, measurable), agenda with minutes per section, for each section the key points and one realistic scenario to practice, a teach-back check per objective (what the trainer asks, what a correct response contains), and a one-page quick-reference summary of the workflow steps. Plain language throughout; flag any step that involves protected health information with a PHI marker.", "tokens": 120}]}
+{
+    "faq": [
+        {
+            "a": "Any information that could identify a patient in connection with their health: names, dates, record numbers, and rare-condition details that narrow to individuals. De-identify fully or do not paste.",
+            "q": "What counts as PHI I must keep out of prompts?"
+        },
+        {
+            "a": "These templates are administrative and educational by design. Clinical decision support is regulated territory requiring validated tools; a general chatbot is not one.",
+            "q": "Can clinicians use these for clinical questions?"
+        }
+    ],
+    "kind": "domain",
+    "name": "Healthcare Prompts",
+    "slug": "healthcare-prompts",
+    "sort": 7,
+    "intro": "Templates for administrative and communication work in healthcare settings. None of these produce clinical guidance, and no patient identifiers should ever be pasted into a prompt; HIPAA applies to AI tools like any other system.",
+    "guidance": "The bright line in these templates: administrative and educational work only, no diagnosis, no treatment recommendations, no clinical decision-making, and no patient-identifiable information in prompts, HIPAA does not have an AI exception, and consumer AI tools are not business associates. Within that line, models are genuinely useful: turning clinical language into plain-language patient education, drafting workflows and training materials, structuring documentation templates. Evaluate outputs for accuracy against authoritative sources before use, medical plausibility is exactly what language models fake best, and route anything clinical-adjacent through qualified professionals. When in doubt about whether a use touches care decisions, treat it as if it does.",
+    "generated": "2026-08-09",
+    "templates": [
+        {
+            "tip": "Reading-level rewrites are where models genuinely help; the review step is where safety lives.",
+            "title": "Patient communication simplification",
+            "models": "Any; clinical accuracy must be verified by qualified staff before sending.",
+            "prompt": "Rewrite this patient-facing text at a 6th-grade reading level without changing its meaning. Keep every instruction, dosage-free (this template is for logistics and preparation text only, not medication guidance). Rules: short sentences, second person, define any unavoidable medical term in parentheses, keep all dates, times, locations, and phone numbers exactly as written, end with what to do if the patient has questions. Output the rewrite, then a list of every substantive change for clinical review. TEXT: {PASTE_NO_PHI}",
+            "tokens": 130
+        },
+        {
+            "tip": "Structure and payer-criteria mapping is the drafting help; the clinical facts arrive from the chart through the clinician, never from the model.",
+            "title": "Prior authorization letter draft",
+            "models": "Any; the clinician owns every clinical statement in the final letter.",
+            "prompt": "Draft a prior authorization letter skeleton. Service requested: {SERVICE_OR_DEVICE}. Payer criteria, pasted from the policy: {PASTE_CRITERIA}. Clinical facts provided by the clinician, use only these, with placeholders left where I have not supplied a fact: {FACTS}. Structure: patient and request identification block (placeholders only), medical necessity narrative mapping each payer criterion to a provided fact one by one, prior treatments and outcomes, and requested determination. Mark any criterion with no matching fact as CRITERION NOT YET ADDRESSED.",
+            "tokens": 140
+        },
+        {
+            "tip": "The teach-back checks are what turn an outline into training; insist on them.",
+            "title": "Staff training outline",
+            "models": "Any.",
+            "prompt": "Build a training outline for {TOPIC, e.g. new intake workflow} for {AUDIENCE, e.g. front-desk staff}. Length: {DURATION}. Structure: learning objectives (three, measurable), agenda with minutes per section, for each section the key points and one realistic scenario to practice, a teach-back check per objective (what the trainer asks, what a correct response contains), and a one-page quick-reference summary of the workflow steps. Plain language throughout; flag any step that involves protected health information with a PHI marker.",
+            "tokens": 120
+        }
+    ],
+    "last_reviewed": "2026-08-09",
+    "review_interval_days": 180
+}
