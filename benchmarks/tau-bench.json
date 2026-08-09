@@ -1,14 +1,36 @@
 {
+    "faq": [
+        {
+            "a": "The fraction of scenarios an agent completes successfully in all k independent runs. It punishes inconsistency: an agent that succeeds 80 percent of the time per run passes pass-hat-8 far less than half the time.",
+            "q": "What is pass-hat-k?"
+        },
+        {
+            "a": "Real conversations require a counterpart who withholds, corrects, and changes mind naturally; scripted users cannot, and human users do not scale. The cost is that the simulator's behavior becomes part of the benchmark.",
+            "q": "Why simulate the user with an LLM?"
+        },
+        {
+            "a": "Customer-facing assistant deployments with policies and transactional tools, where its reliability metric and policy-compliance design mirror the production pass-fail criteria more closely than any other public benchmark.",
+            "q": "What does it predict best?"
+        }
+    ],
     "how": "The agent talks to an LLM-simulated user and calls tools against a database; success requires the correct final database state. pass^k measures whether the agent succeeds consistently across repeated runs, not just once.",
     "url": "https://github.com/sierra-research/tau-bench",
     "name": "τ-bench",
     "note": "The pass^k reliability curve is the point: an agent that succeeds 60 percent of the time on one try may succeed far less often eight tries in a row, which is what deployment actually demands.",
     "slug": "tau-bench",
     "sort": 5,
+    "history": "Tau-bench, from Sierra in 2024, added the missing ingredient in agent evaluation: the customer. Its agents work retail and airline customer-service scenarios where they must converse with a simulated human user, gather information the user reveals only gradually, follow domain policy documents, and execute tool calls against order and booking systems, with success judged by the final database state. Its signature contribution is the pass-hat-k metric: run the same scenario k times and require success every time, which measures the reliability production deployment actually demands. The launch finding was blunt, agents that pass half their tasks once drop sharply when required to pass eight runs in a row.",
+    "related": [
+        "swe-bench",
+        "gaia"
+    ],
     "section": "bench-agents",
     "measures": "Customer-facing agent reliability: completing retail and airline service tasks in conversation with a simulated user while obeying written policy rules.",
+    "criticism": "The simulated user is itself a language model, so agent scores partly measure compatibility with that simulator's conversational quirks, a different simulator would produce different rankings, and a clever agent can learn to manage the simulator rather than the task. Two service domains, retail and airline, are a thin slice of agentic work, and the policy-compliance framing conflates rule-following with capability, an agent can fail for being unhelpfully rigid or for being helpfully noncompliant. Later community audits also found ambiguities in some task specifications.",
     "generated": "2026-08-09",
     "maintainer": "Sierra (Yao et al.)",
     "not_measured": "Open-ended web agency or coding; domains are two structured verticals with explicit rulebooks.",
-    "section_name": "Agent Benchmarks"
+    "last_reviewed": "2026-08-09",
+    "interpretation": "The pass-hat-k curve is the product: a one-shot success rate flatters agents, and the slope of decline as k rises is the honest measure of whether an agent can face customers unsupervised. Compare agents at pass-hat-4 or higher, not pass-at-1. The domain-policy design also makes it the closest public proxy for enterprise assistant deployment, where compliance and consistency, not peak cleverness, are the pass-fail criteria.",
+    "review_interval_days": 90
 }
