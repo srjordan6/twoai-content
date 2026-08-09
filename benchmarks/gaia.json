@@ -1,14 +1,36 @@
 {
+    "faq": [
+        {
+            "a": "Roughly increasing steps and tool coordination: level 1 needs few steps and minimal tooling, level 3 requires long sequences of research, file handling, and cross-referencing. Level 3 is where current systems still separate.",
+            "q": "What do the three levels mean?"
+        },
+        {
+            "a": "The questions demand orchestration, finding, combining, and verifying information across sources and formats, which humans do casually and agents must execute as explicit, error-prone step sequences.",
+            "q": "Why do humans crush models on questions that need no expertise?"
+        },
+        {
+            "a": "Exact match against a reference short answer. That keeps evaluation objective and cheap, at the price of penalizing correct-but-differently-phrased answers.",
+            "q": "How is it scored?"
+        }
+    ],
     "how": "466 questions in three difficulty levels with unambiguous ground-truth answers; scoring is exact match, which keeps evaluation objective.",
     "url": "https://huggingface.co/gaia-benchmark",
     "name": "GAIA",
     "note": "Humans score about 92 percent; the human-model gap here is a cleaner read on practical agency than most leaderboards.",
     "slug": "gaia",
     "sort": 3,
+    "history": "GAIA, from Meta AI, Hugging Face, and collaborators in late 2023, took the opposite bet from exam-style benchmarks: its 466 questions are conceptually simple for humans, no graduate knowledge required, but structurally demanding for machines, requiring web research, file reading, multi-step reasoning, and tool coordination to produce one short factual answer that is scored exactly. Human respondents scored 92 percent while GPT-4 with plugins managed about 15 percent, the most cited capability-gap statistic of its year. Its three difficulty levels, roughly corresponding to the number of steps and tools required, gave the agent field a progression ladder, and its leaderboard became the standard proving ground for open agent frameworks.",
+    "related": [
+        "webarena",
+        "tau-bench"
+    ],
     "section": "bench-agents",
     "measures": "General assistant competence: questions that are conceptually simple for humans but require browsing, tool use, file handling, and multi-step verification to answer correctly.",
+    "criticism": "Exact-match scoring on short answers is unforgiving in both directions, correct answers phrased differently can fail, and lucky retrieval can pass, and because many questions depend on the live web, the benchmark's difficulty drifts as pages move and die, making scores across time not strictly comparable. The 466-question set is small enough for leaderboard overfitting, and public visibility invites answer leakage into training data. Level-1 questions have largely fallen; the benchmark's remaining discriminating power lives in level 3, a much smaller set.",
     "generated": "2026-08-09",
     "maintainer": "Mialon et al. (Meta AI, Hugging Face, AutoGPT)",
     "not_measured": "Coding depth or specialist domain skill; answers are short and exact-match, so partial competence earns nothing.",
-    "section_name": "Agent Benchmarks"
+    "last_reviewed": "2026-08-09",
+    "interpretation": "Read results by level and weight level 3: aggregate scores are now dominated by the easier tiers. Compare only runs from the same time period with the same tool access, web drift and search-backend differences move scores independently of the agent. Its deepest lesson generalizes: conceptually-simple-but-structurally-demanding tasks remain the reliable way to expose agent weaknesses after exam benchmarks saturate, which is why its design keeps getting imitated.",
+    "review_interval_days": 90
 }
