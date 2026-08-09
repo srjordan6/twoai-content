@@ -1,14 +1,36 @@
 {
+    "faq": [
+        {
+            "a": "Indexes stop fitting in memory, so disk layout, compression, and build time dominate; algorithms that win comfortably at millions of vectors can become unusable. The competition exists to measure exactly that regime.",
+            "q": "Why does billion-scale change the problem?"
+        },
+        {
+            "a": "Later editions added filtered search, streaming insertions and deletions, out-of-distribution queries, and sparse vectors, the complications production systems face beyond pure static search.",
+            "q": "What are the specialized tracks?"
+        },
+        {
+            "a": "Mostly as a preview: winning techniques flow into products you may use later. For selection decisions at typical scales, ANN-Benchmarks and system-level harnesses are the applicable references.",
+            "q": "Is this relevant below billion scale?"
+        }
+    ],
     "how": "Competition tracks with fixed datasets and hardware budgets; entrants submit algorithms that are scored on recall and throughput under the constraints.",
     "url": "https://big-ann-benchmarks.com",
     "name": "Big ANN Benchmarks",
     "note": "Where large-scale retrieval research shows up first; results flow into the engines that vector databases embed.",
     "slug": "big-ann",
     "sort": 3,
+    "history": "The Big-ANN-Benchmarks competition began at NeurIPS 2021 because the academic ANN literature had a scale problem: algorithms tuned on million-vector datasets behave very differently at a billion vectors, where memory hierarchies, disk, and index build time dominate. The organizers, drawn from Microsoft, Meta, and universities, assembled billion-scale datasets and ran head-to-head tracks; later editions added the variations production systems actually face, filtered search, streaming insertions and deletions, out-of-distribution queries, and sparse vectors. Its results feed directly into the index designs that vector databases then productize.",
+    "related": [
+        "ann-benchmarks",
+        "vectordbbench"
+    ],
     "section": "bench-vector-db",
     "measures": "Vector search at billion scale, including the hard variants production systems face: filtered queries, streaming updates, out-of-distribution queries, and sparse vectors.",
+    "criticism": "Competition results are produced under competition conditions: teams tune aggressively for the specific datasets, hardware budgets, and metrics of the track, and the winning configurations are research artifacts, not deployable defaults. The episodic cadence, tied to conference cycles, means results snapshot the frontier rather than track it continuously. And billion-scale single-purpose benchmarks still omit the multi-tenant, filtered, constantly-mutating reality of production retrieval systems, the same gap ANN-Benchmarks has one level down.",
     "generated": "2026-08-09",
     "maintainer": "NeurIPS competition track (Microsoft, academic organizers)",
     "not_measured": "Small-scale or in-memory workloads typical of most applications, and full database products.",
-    "section_name": "Vector Database Benchmarks"
+    "last_reviewed": "2026-08-09",
+    "interpretation": "Watch it as a research signal: the techniques that win tracks, disk-based graph indexes, filtered-search designs, streaming-update strategies, are previews of what vector databases ship one to two product cycles later. If you operate at hundreds of millions of vectors or more, the track results identify which algorithmic approaches survive that scale. Below that scale, its findings mostly do not bind, and mainstream harnesses answer your question better.",
+    "review_interval_days": 90
 }
