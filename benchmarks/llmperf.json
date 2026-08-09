@@ -1,14 +1,36 @@
 {
+    "faq": [
+        {
+            "a": "Time to first token is the wait before anything appears, dominated by queueing and prompt processing; inter-token latency is the pace of generation after that. Interactive UX lives and dies on the first, long outputs on the second.",
+            "q": "What is the difference between TTFT and inter-token latency?"
+        },
+        {
+            "a": "Same prompts, same output lengths, same concurrency, same region, same day, repeated across several days. Vary any of those and you are measuring the variance, not the providers.",
+            "q": "How do I compare providers fairly?"
+        },
+        {
+            "a": "No, only serving behavior, with basic correctness checks against malformed responses. Quality evaluation needs a separate harness; a fast wrong answer is still wrong.",
+            "q": "Does LLMPerf measure answer quality?"
+        }
+    ],
     "how": "An open-source load-testing harness pointed at any OpenAI-compatible endpoint; it ramps concurrency and records latency distributions.",
     "url": "https://github.com/ray-project/llmperf",
     "name": "LLMPerf",
     "note": "The practical way to compare vLLM, TensorRT-LLM, TGI, and hosted APIs on your own workload rather than trusting vendor charts.",
     "slug": "llmperf",
     "sort": 1,
+    "history": "LLMPerf came out of Anyscale, the company behind Ray, in 2023, when organizations comparing hosted LLM APIs discovered there was no standard way to do it: every provider quoted throughput under conditions of its own choosing. It is an open-source load-testing harness rather than a leaderboard, measuring what API consumers actually experience: time to first token, inter-token latency, end-to-end request time, and completed throughput under concurrent load, with correctness checks to catch providers returning truncated or malformed output under stress. Anyscale published comparative results at launch; the durable artifact is the harness itself.",
+    "related": [
+        "mlperf-inference",
+        "mlperf-client"
+    ],
     "section": "bench-frameworks",
     "measures": "Real-world serving behavior of LLM endpoints and inference stacks: time to first token, inter-token latency, and throughput under concurrent load.",
+    "criticism": "Every LLMPerf number is a point-in-time measurement of a shared, changing system: provider performance varies by region, time of day, model version, and current load, so published comparisons age in weeks and a benchmark run from one network vantage point may not predict yours. There are no peer-reviewed rounds or submission rules, anyone's numbers reflect their configuration choices. And the harness measures serving performance only; it says nothing about output quality, which is usually the larger term in a provider decision.",
     "generated": "2026-08-09",
     "maintainer": "Anyscale (Ray project)",
     "not_measured": "Model quality or hardware in isolation; results depend on the whole stack, the model, and the load profile you configure.",
-    "section_name": "Framework and Inference Benchmarks"
+    "last_reviewed": "2026-08-09",
+    "interpretation": "Do not consume published LLMPerf results; run the harness yourself, from your region, with your prompt and output length distribution, at your target concurrency, against the exact model versions you shortlisted, and repeat across days. Weight time to first token for interactive products and completed throughput for batch. Any provider comparison older than a month describes a system that no longer exists.",
+    "review_interval_days": 90
 }
