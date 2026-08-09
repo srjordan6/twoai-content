@@ -1,14 +1,36 @@
 {
+    "faq": [
+        {
+            "a": "The probability that a single generated solution passes all unit tests, one attempt, no retries. pass@10 and pass@100 measure whether any of 10 or 100 samples pass, which rewards diversity over reliability.",
+            "q": "What does pass@1 mean?"
+        },
+        {
+            "a": "SWE-bench (real GitHub issues in real repositories) for agentic coding, plus LiveCodeBench and LiveBench coding categories for contamination-resistant problem solving.",
+            "q": "What replaced HumanEval?"
+        },
+        {
+            "a": "Continuity and tradition: it lets readers compare against every model since 2021. Treat it as a historical axis, not a decision input.",
+            "q": "Why does it still appear in model cards?"
+        }
+    ],
     "how": "164 hand-written programming problems scored pass@k by running hidden unit tests against generated code.",
     "url": "https://github.com/openai/human-eval",
     "name": "HumanEval",
     "note": "The original code-generation benchmark; for realistic engineering ability, SWE-bench in the agent section is the sterner test.",
     "slug": "humaneval",
     "sort": 3,
+    "history": "HumanEval shipped with OpenAI Codex in 2021: 164 hand-written Python problems, each with a function signature, docstring, and hidden unit tests, scored by whether generated code actually passes the tests, the pass@k metric. Writing the problems by hand was the contamination defense of its era, keeping them out of GitHub training data. For three years it was the coding number every model reported, and its saturation is the cleanest in the field: frontier models now exceed 95 percent, and differences between them are a question or two. Its historical importance is larger than its current usefulness, it established execution-based evaluation, running the code instead of grading the text, which every serious coding benchmark since has inherited.",
+    "related": [
+        "swe-bench",
+        "livebench"
+    ],
     "section": "bench-model",
     "measures": "Small-scale Python code generation: writing a correct function body from a docstring.",
+    "criticism": "Saturation ended its discriminating power, but the deeper critiques hold lessons for its successors. The EvalPlus project showed the original unit tests were weak enough that a noticeable share of passing solutions were actually wrong, test quality silently caps benchmark validity. The problems are single, self-contained Python functions, while real engineering is reading existing code, navigating repositories, and handling ambiguous requirements, none of which appears here. And after four years in public, contamination is total: models have seen these problems, solutions, and blog posts about them countless times.",
     "generated": "2026-08-09",
     "maintainer": "OpenAI",
     "not_measured": "Repository-scale software engineering, debugging real issues, reading existing codebases, or any language other than Python. Widely saturated and present in much training data.",
-    "section_name": "Model Benchmarks"
+    "last_reviewed": "2026-08-09",
+    "interpretation": "A frontier model's HumanEval score is no longer information, treat anything above 90 as \"passes the entry exam.\" Its remaining use is screening small and specialized models where scores still spread. For any real coding decision, look at SWE-bench Verified and, better, run candidate models on tasks from your own codebase, the distribution gap between benchmark Python puzzles and your repository is where benchmark numbers quietly stop predicting.",
+    "review_interval_days": 90
 }
