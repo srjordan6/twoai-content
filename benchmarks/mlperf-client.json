@@ -1,14 +1,36 @@
 {
+    "faq": [
+        {
+            "a": "Packaged local language model workloads, content generation and summarization style tasks, executed through the machine's available acceleration path, with responsiveness metrics as output.",
+            "q": "What does it actually run?"
+        },
+        {
+            "a": "It targets the acceleration paths the platform provides, and support has expanded across vendors over versions. Check which path a published result used, the same laptop can score very differently by path.",
+            "q": "Does it use the NPU or the GPU?"
+        },
+        {
+            "a": "Not directly, it measures on-device inference. Its relevance is rising with local and hybrid AI features in operating systems and applications.",
+            "q": "Is it relevant if I only use cloud AI?"
+        }
+    ],
     "how": "A downloadable benchmark application executing standardized LLM tasks through hardware-vendor execution paths, reporting tokens per second and latency.",
     "url": "https://mlcommons.org/benchmarks/client/",
     "name": "MLPerf Client",
     "note": "The emerging reference for the local-AI PC market across Intel, AMD, Qualcomm, and NVIDIA silicon.",
     "slug": "mlperf-client",
     "sort": 2,
+    "history": "MLPerf Client is MLCommons' answer to the on-device AI wave: a benchmark for consumer laptops and desktops running language models locally, developed with the PC ecosystem, AMD, Intel, NVIDIA, Qualcomm, Microsoft, and first released in late 2024. It packages representative local-LLM tasks, content generation, summarization, into a downloadable benchmark that exercises whatever acceleration path the machine offers, GPU or NPU, and reports responsiveness metrics a buyer can compare across machines. It extends the MLPerf method, standardized workloads and rules, to the hardware most people actually own.",
+    "related": [
+        "llmperf",
+        "mlperf-inference"
+    ],
     "section": "bench-frameworks",
     "measures": "On-device LLM inference performance on consumer hardware: laptops and desktops running local models through vendor acceleration stacks.",
+    "criticism": "It is the youngest MLPerf, with a small workload set that cannot yet represent the breadth of local AI use, and its development is vendor-driven by the same companies whose silicon it ranks, a structural conflict MLCommons manages but cannot remove. Local-model quality moves fast, and the packaged models risk lagging what enthusiasts actually run. Early versions also supported acceleration paths unevenly across vendors, which complicated the cross-platform comparisons the benchmark exists to enable.",
     "generated": "2026-08-09",
     "maintainer": "MLCommons",
     "not_measured": "Datacenter serving, model quality, or battery life in daily use; workloads are fixed prompts rather than your applications.",
-    "section_name": "Framework and Inference Benchmarks"
+    "last_reviewed": "2026-08-09",
+    "interpretation": "Use it directionally: it reliably separates machines that can run local models comfortably from machines that cannot, which is the buyer question that matters. Compare results on the same benchmark version and acceleration path, and treat small deltas as noise. If your use case is a specific local model or runtime, a manual test of that exact stack outranks the packaged score.",
+    "review_interval_days": 90
 }
