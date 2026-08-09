@@ -1,14 +1,35 @@
 {
+    "faq": [
+        {
+            "a": "Closed requires the reference model and training recipe, isolating hardware-plus-stack performance for apples-to-apples comparison; open allows model and algorithm changes to showcase innovation. Nearly all attention goes to closed.",
+            "q": "What are the closed and open divisions?"
+        },
+        {
+            "a": "FLOPS is theoretical peak; time to a fixed quality target on a real workload captures what utilization, interconnect, and software actually deliver. A chip with lower peak FLOPS can win on wall-clock time.",
+            "q": "Why time-to-train instead of FLOPS?"
+        },
+        {
+            "a": "Submission is voluntary and expensive, and vendors enter where they expect favorable results. A missing entry is not evidence of inability, but a consistent pattern of absence on a workload is worth noticing.",
+            "q": "Why do some rounds have no results for a vendor?"
+        }
+    ],
     "how": "Vendors submit results on standardized reference implementations under audited rules in twice-yearly rounds; results are peer-reviewed before publication.",
     "url": "https://mlcommons.org/benchmarks/training/",
     "name": "MLPerf Training",
     "note": "The de facto standard for comparing training silicon and systems across NVIDIA, Google, AMD, Intel, and others.",
     "slug": "mlperf-training",
     "sort": 1,
+    "history": "MLPerf Training was created in 2018 by what became MLCommons, a consortium spanning Google, NVIDIA, Intel, and academic groups, to end an era in which every hardware vendor benchmarked its own chips on its own terms and no numbers were comparable. The design is a regulated competition: fixed reference models and datasets, a target quality each submission must reach, time-to-train as the score, and peer review of every submission by competitors before publication. Rounds run roughly twice a year, and the benchmark suite has tracked the field's center of gravity, adding large language model pretraining, fine-tuning, and image generation workloads as those became the workloads that matter, while retiring stale ones.",
+    "related": [
+        "mlperf-inference"
+    ],
     "section": "bench-hardware",
     "measures": "Time-to-train: how fast a hardware and software system trains reference models, including large language model workloads, to a fixed quality target.",
+    "criticism": "MLPerf systems are showcase systems: submissions run on flagship clusters with engineering teams tuning software stacks for months, so the numbers represent a ceiling few buyers will reach, not typical performance. Participation is selective, vendors submit where they expect to win and skip rounds and workloads where they do not, so absence of a result is information the tables do not show. Reference models necessarily trail the frontier, the field's newest architectures appear in the suite only after a lag. And the closed division's strict rules, which make comparison fair, also prevent submissions from showing the software innovations that produce real-world wins.",
     "generated": "2026-08-09",
     "maintainer": "MLCommons",
     "not_measured": "Inference speed, cost, energy per query, or developer experience; results reflect tuned flagship submissions, not typical customer configurations.",
-    "section_name": "Hardware Benchmarks"
+    "last_reviewed": "2026-08-09",
+    "interpretation": "Compare within a round, within a division, at comparable system scale, cross-round comparisons confound hardware, software, and rule changes. Normalize to per-accelerator performance when judging chips rather than clusters, and read the system descriptions: interconnect and software stack often explain more than the accelerator. Treat missing entries as declined contests. For a purchase decision, MLPerf tells you the ceiling; your workload's distance from the reference models tells you how far below it you will land.",
+    "review_interval_days": 90
 }
