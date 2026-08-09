@@ -1,14 +1,36 @@
 {
+    "faq": [
+        {
+            "a": "New questions are added on a rolling basis from recent math competitions, papers, and datasets, and older questions are retired from the headline score, so models cannot have seen current questions in training.",
+            "q": "How does the refresh actually work?"
+        },
+        {
+            "a": "Judge models favor answers resembling their own style and can be fooled by confident wrong answers. Ground-truth scoring removes the judge as a variable, at the cost of excluding open-ended tasks.",
+            "q": "Why objective scoring instead of an LLM judge?"
+        },
+        {
+            "a": "Both, for different questions: LiveBench for contamination-resistant correctness, Arena for human preference at scale. A model strong on both is strong; a model strong on only one tells you which optimization it received.",
+            "q": "LiveBench or LMArena?"
+        }
+    ],
     "how": "Questions are refreshed monthly from recent sources (new competition problems, recent papers and datasets) so models cannot have memorized them; answers are scored automatically without an LLM judge.",
     "url": "https://livebench.ai",
     "name": "LiveBench",
     "note": "Useful cross-check against benchmarks a model may have trained on; the public leaderboard updates as new models and question sets land.",
     "slug": "livebench",
     "sort": 5,
+    "history": "LiveBench launched in 2024 from a group including Colin White and Yann LeCun with one design goal: make training-data contamination structurally impossible rather than merely unlikely. It does this by releasing new questions on a rolling basis, sourced from recent competitions, papers, and news, and scoring answers objectively against ground truth rather than with an LLM judge. The design is a direct response to the twin credibility problems of the static benchmarks it aims to replace: questions leaking into training corpora, and judge models favoring answers that resemble their own style.",
+    "related": [
+        "lmarena",
+        "hle"
+    ],
     "section": "bench-model",
     "measures": "Contamination-resistant general capability: math, coding, reasoning, language, instruction following, and data analysis, scored against objective ground truth.",
+    "criticism": "Freshness is a treadmill: the benchmark's validity depends entirely on the operators continuing to source genuinely novel, genuinely hard questions month after month, and question difficulty drifts as sources vary, which makes scores across different question vintages not strictly comparable. The objective-scoring requirement limits it to tasks with checkable answers, excluding open-ended writing, judgment, and interaction quality. And a benchmark refreshed by a small team gets less adversarial scrutiny per question than a static set the whole field has audited for years.",
     "generated": "2026-08-09",
     "maintainer": "Abacus.AI, NYU, and collaborators (White et al.)",
     "not_measured": "Human preference, safety, tool use, or multimodal ability; question styles still favor short verifiable answers.",
-    "section_name": "Model Benchmarks"
+    "last_reviewed": "2026-08-09",
+    "interpretation": "Use it as the contamination-resistant cross-check: when a model's static-benchmark scores are high but its LiveBench score lags peers, suspect training-data leakage in the static numbers. Compare category-level results, reasoning, coding, math, data analysis, rather than the average, and compare models evaluated on the same question vintage. It rewards models that are actually good rather than well-rehearsed, which is exactly the property the older benchmarks lost.",
+    "review_interval_days": 90
 }
