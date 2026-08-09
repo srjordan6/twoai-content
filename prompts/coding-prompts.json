@@ -1,1 +1,44 @@
-{"kind": "domain", "name": "Coding Prompts", "slug": "coding-prompts", "sort": 4, "intro": "Templates for review, debugging, and testing. Paste real code and real errors; every output should be verified by running it.", "generated": "2026-08-09", "templates": [{"tip": "The severity scale stops the review from being a wall of nitpicks.", "title": "Structured code review", "models": "Use models with strong coding ability; long files may need chunking.", "prompt": "Review the code below as a senior engineer. Language: {LANGUAGE}. Context: {WHAT_IT_DOES}. Report findings in severity order using exactly these levels: BLOCKER (bugs, security, data loss), MAJOR (correctness risks, performance traps), MINOR (readability, naming). For each finding: line reference, the problem in one sentence, and a concrete fix, with a code snippet when the fix is not obvious. End with the one refactor that would most improve the file. Do not restate the code or praise it. CODE: {PASTE}", "tokens": 140}, {"tip": "Ranked hypotheses beat a single confident guess; the checks make each one falsifiable.", "title": "Bug diagnosis from a stack trace", "models": "Any strong coding model.", "prompt": "Diagnose this failure. Stack trace: {PASTE_TRACE}. Relevant code: {PASTE_CODE}. What changed recently: {CHANGES}. Produce: 1) the three most likely root causes ranked, each with the specific evidence from the trace that supports it; 2) for each, a check I can run in under two minutes to confirm or eliminate it; 3) the fix for the top hypothesis. If the trace and code do not contain enough information, say exactly what additional log or reproduction step you need.", "tokens": 130}, {"tip": "Asking for the bug-revealing test first is the highest-value line in the prompt.", "title": "Test generation with edge cases", "models": "Any; run the tests, some will need fixing.", "prompt": "Write tests for the function below using {FRAMEWORK}. Cover: the happy path (2 tests), boundary values (empty, zero, maximum, unicode where relevant), error handling (invalid input, dependency failure), and one test you predict will FAIL against the current implementation because of a real bug you can see, with a comment explaining the bug. Use table-driven style where the framework supports it. Name tests by behavior, not by method name. FUNCTION: {PASTE}", "tokens": 130}]}
+{
+    "faq": [
+        {
+            "a": "Enough that the model sees what your code actually does: the relevant functions, the error with full traceback, the framework versions. Too little context produces generic answers that ignore your architecture.",
+            "q": "How much context should I paste?"
+        },
+        {
+            "a": "Follow your team's policy, but review standards should not drop either way: generated code gets the same scrutiny as human code, because it fails in confident, well-formatted ways.",
+            "q": "Should generated code be marked in review?"
+        }
+    ],
+    "kind": "domain",
+    "name": "Coding Prompts",
+    "slug": "coding-prompts",
+    "sort": 4,
+    "intro": "Templates for review, debugging, and testing. Paste real code and real errors; every output should be verified by running it.",
+    "guidance": "Coding prompts reward context density: the model performs dramatically better when it can see the actual code, the actual error, the actual constraint, so every template here has a paste-your-material slot and fails without it. Never accept code you cannot read: review generated code line by line, run the tests, and treat confident-looking output as unreviewed contribution from a fast stranger. Ask for explanation alongside code, why this approach, what could break, both because the reasoning is checkable and because it surfaces mismatches with your architecture early. And keep secrets out of prompts: sanitize keys, credentials, and proprietary identifiers before pasting, an obvious rule that survives being stated.",
+    "generated": "2026-08-09",
+    "templates": [
+        {
+            "tip": "The severity scale stops the review from being a wall of nitpicks.",
+            "title": "Structured code review",
+            "models": "Use models with strong coding ability; long files may need chunking.",
+            "prompt": "Review the code below as a senior engineer. Language: {LANGUAGE}. Context: {WHAT_IT_DOES}. Report findings in severity order using exactly these levels: BLOCKER (bugs, security, data loss), MAJOR (correctness risks, performance traps), MINOR (readability, naming). For each finding: line reference, the problem in one sentence, and a concrete fix, with a code snippet when the fix is not obvious. End with the one refactor that would most improve the file. Do not restate the code or praise it. CODE: {PASTE}",
+            "tokens": 140
+        },
+        {
+            "tip": "Ranked hypotheses beat a single confident guess; the checks make each one falsifiable.",
+            "title": "Bug diagnosis from a stack trace",
+            "models": "Any strong coding model.",
+            "prompt": "Diagnose this failure. Stack trace: {PASTE_TRACE}. Relevant code: {PASTE_CODE}. What changed recently: {CHANGES}. Produce: 1) the three most likely root causes ranked, each with the specific evidence from the trace that supports it; 2) for each, a check I can run in under two minutes to confirm or eliminate it; 3) the fix for the top hypothesis. If the trace and code do not contain enough information, say exactly what additional log or reproduction step you need.",
+            "tokens": 130
+        },
+        {
+            "tip": "Asking for the bug-revealing test first is the highest-value line in the prompt.",
+            "title": "Test generation with edge cases",
+            "models": "Any; run the tests, some will need fixing.",
+            "prompt": "Write tests for the function below using {FRAMEWORK}. Cover: the happy path (2 tests), boundary values (empty, zero, maximum, unicode where relevant), error handling (invalid input, dependency failure), and one test you predict will FAIL against the current implementation because of a real bug you can see, with a comment explaining the bug. Use table-driven style where the framework supports it. Name tests by behavior, not by method name. FUNCTION: {PASTE}",
+            "tokens": 130
+        }
+    ],
+    "last_reviewed": "2026-08-09",
+    "review_interval_days": 180
+}
