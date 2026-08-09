@@ -1,14 +1,36 @@
 {
+    "faq": [
+        {
+            "a": "Level of abstraction: ANN-Benchmarks tests search algorithms in isolation; VectorDBBench tests complete database products, including ingestion, filtered queries, and latency percentiles, against cloud and open-source deployments.",
+            "q": "How is this different from ANN-Benchmarks?"
+        },
+        {
+            "a": "Trust the harness more than the tables: the code is open and configurable, so the strongest use is running it yourself on your own data and shortlist, which removes the author's choices from the result.",
+            "q": "Can I trust a benchmark made by a vendor in the category?"
+        },
+        {
+            "a": "Dataset (use your own embeddings if possible), filter patterns matching your queries, index parameters within your memory budget, and versions pinned to what you would deploy.",
+            "q": "What should I change from defaults when running it?"
+        }
+    ],
     "how": "An open-source harness with standardized datasets and workload profiles; anyone can rerun it against their own deployments and cost assumptions.",
     "url": "https://github.com/zilliztech/VectorDBBench",
     "name": "VectorDBBench",
     "note": "The most complete open comparison of actual vector database products; verify vendor-sensitive conclusions by rerunning locally.",
     "slug": "vectordbbench",
     "sort": 2,
+    "history": "VectorDBBench was released by Zilliz, the company behind Milvus, in 2023, when the RAG boom turned vector databases into a crowded product category and every vendor published incomparable performance claims. It moved benchmarking up a level from ANN-Benchmarks: instead of isolated algorithms, it tests complete database systems, load time, queries per second, latency percentiles, recall, and filtered search, against managed cloud services and open-source deployments alike, with cost-per-performance views. It is open source and configurable, and it filled a genuine vacuum: before it, there was no common harness for comparing what these products actually do under load.",
+    "related": [
+        "ann-benchmarks",
+        "big-ann"
+    ],
     "section": "bench-vector-db",
     "measures": "End-to-end vector database performance: ingestion, index build, query throughput, latency, and recall across managed services and open-source systems, including filtered search.",
+    "criticism": "Its origin is its asterisk: a benchmark authored by one competitor in the category it ranks carries a structural conflict of interest, however open the code, and skeptics note that default configurations and dataset choices are themselves editorial decisions. Vector database performance is notoriously configuration-sensitive, index parameters, replica counts, instance sizing, so any fixed configuration disadvantages someone. Cloud-service results also entangle the vendor's engine with the instance types and quotas of whatever tier was tested, and products iterate fast enough that published results stale within months.",
     "generated": "2026-08-09",
     "maintainer": "Zilliz",
     "not_measured": "Neutrality is contested (Zilliz maintains it and sells Milvus); it also does not measure operational qualities like backup, multi-tenancy, or failure behavior.",
-    "section_name": "Vector Database Benchmarks"
+    "last_reviewed": "2026-08-09",
+    "interpretation": "Use the harness, discount the published tables: its real value is that you can point it at your candidate systems with your own dataset, your filter patterns, and your index budgets, which converts a vendor-authored leaderboard into a neutral tool. When you must read published results, check the software versions and configurations first, and treat cross-vendor gaps under tens of percent as configuration noise rather than architecture.",
+    "review_interval_days": 90
 }
