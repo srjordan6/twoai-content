@@ -1,1 +1,46 @@
-{"slug": "few-shot-prompting", "name": "Few-Shot Prompting", "kind": "technique", "sort": 2, "generated": "2026-08-09", "what": "Showing the model two to five worked examples of the task inside the prompt so it infers the pattern before doing yours.", "mechanism": "Few-shot prompting exploits in-context learning: a model can pick up a task pattern from examples inside the prompt without any change to its weights, the discovery that made the GPT-3 paper famous. The examples act as evidence about the task, and the model continues the pattern. The research that followed found the mechanism is blunter than it looks: example order matters (models overweight recent examples), label balance matters (models drift toward the majority label), and formatting matters enormously, sometimes more than the labels themselves, because much of what the examples teach is the shape of a valid answer. This is why practical few-shot advice is mostly hygiene: balanced, shuffled, consistently formatted examples that span the variation you expect.", "when_works": "Format transfer, labeling and classification, style imitation, and any task where the shape of a good answer is easier to show than to describe.", "when_fails": "Multi-step reasoning (examples of answers do not teach the steps), and it can backfire through example bias: models overweight the majority label, the most recent example, and surface formatting quirks.", "how": "Pick examples that cover the variation you expect, keep the label balance roughly even, order them randomly, and make the final unlabeled item exactly match the example format.", "examples": [{"label": "Three balanced shots for classification", "prompt": "Label each expense as TRAVEL, MEALS, SOFTWARE, or OTHER.\n\nUber to client office -> TRAVEL\nZoom annual renewal -> SOFTWARE\nTeam dinner after launch -> MEALS\n\nAWS monthly invoice ->", "note": "One example per common label, consistent arrow format, target item formatted exactly like the examples. The model completes the pattern."}, {"label": "Format transfer, teaching a house style", "prompt": "Rewrite each update in our status format.\n\nInput: We are behind on the migration because the vendor API changed.\nOutput: MIGRATION: At risk. Vendor API change added rework. Recovery plan due Friday.\n\nInput: Testing finished early and nothing major was found.\nOutput: TESTING: On track. Completed ahead of schedule, no critical findings.\n\nInput: {YOUR_UPDATE}\nOutput:", "note": "Two examples that differ in content but agree in shape teach the shape. Showing beats describing for style."}], "faq": [{"q": "How many examples do I need?", "a": "Two to five covers most tasks; returns flatten quickly after that. Spend additional examples on covering variation and edge cases, not on repeating the common case."}, {"q": "Do my example labels have to be perfect?", "a": "Research on demonstrations found format and input distribution often matter more than label correctness, but do not rely on that in production: wrong labels cost nothing to fix and can only help."}, {"q": "Few-shot or fine-tuning?", "a": "Few-shot first, always: it is free to iterate. Fine-tune when the examples no longer fit in context, the format is complex, or per-request token cost of repeated examples exceeds training cost."}], "related": ["zero-shot-prompting", "chain-of-thought"], "source_url": "https://www.promptingguide.ai/techniques/fewshot", "paper": "Brown et al., Language Models are Few-Shot Learners (2020)"}
+{
+    "faq": [
+        {
+            "a": "Two to five covers most tasks; returns flatten quickly after that. Spend additional examples on covering variation and edge cases, not on repeating the common case.",
+            "q": "How many examples do I need?"
+        },
+        {
+            "a": "Research on demonstrations found format and input distribution often matter more than label correctness, but do not rely on that in production: wrong labels cost nothing to fix and can only help.",
+            "q": "Do my example labels have to be perfect?"
+        },
+        {
+            "a": "Few-shot first, always: it is free to iterate. Fine-tune when the examples no longer fit in context, the format is complex, or per-request token cost of repeated examples exceeds training cost.",
+            "q": "Few-shot or fine-tuning?"
+        }
+    ],
+    "how": "Pick examples that cover the variation you expect, keep the label balance roughly even, order them randomly, and make the final unlabeled item exactly match the example format.",
+    "kind": "technique",
+    "name": "Few-Shot Prompting",
+    "slug": "few-shot-prompting",
+    "sort": 2,
+    "what": "Showing the model two to five worked examples of the task inside the prompt so it infers the pattern before doing yours.",
+    "paper": "Brown et al., Language Models are Few-Shot Learners (2020)",
+    "related": [
+        "zero-shot-prompting",
+        "chain-of-thought"
+    ],
+    "examples": [
+        {
+            "note": "One example per common label, consistent arrow format, target item formatted exactly like the examples. The model completes the pattern.",
+            "label": "Three balanced shots for classification",
+            "prompt": "Label each expense as TRAVEL, MEALS, SOFTWARE, or OTHER.\n\nUber to client office -> TRAVEL\nZoom annual renewal -> SOFTWARE\nTeam dinner after launch -> MEALS\n\nAWS monthly invoice ->"
+        },
+        {
+            "note": "Two examples that differ in content but agree in shape teach the shape. Showing beats describing for style.",
+            "label": "Format transfer, teaching a house style",
+            "prompt": "Rewrite each update in our status format.\n\nInput: We are behind on the migration because the vendor API changed.\nOutput: MIGRATION: At risk. Vendor API change added rework. Recovery plan due Friday.\n\nInput: Testing finished early and nothing major was found.\nOutput: TESTING: On track. Completed ahead of schedule, no critical findings.\n\nInput: {YOUR_UPDATE}\nOutput:"
+        }
+    ],
+    "generated": "2026-08-09",
+    "mechanism": "Few-shot prompting exploits in-context learning: a model can pick up a task pattern from examples inside the prompt without any change to its weights, the discovery that made the GPT-3 paper famous. The examples act as evidence about the task, and the model continues the pattern. The research that followed found the mechanism is blunter than it looks: example order matters (models overweight recent examples), label balance matters (models drift toward the majority label), and formatting matters enormously, sometimes more than the labels themselves, because much of what the examples teach is the shape of a valid answer. This is why practical few-shot advice is mostly hygiene: balanced, shuffled, consistently formatted examples that span the variation you expect.",
+    "source_url": "https://www.promptingguide.ai/techniques/fewshot",
+    "when_fails": "Multi-step reasoning (examples of answers do not teach the steps), and it can backfire through example bias: models overweight the majority label, the most recent example, and surface formatting quirks.",
+    "when_works": "Format transfer, labeling and classification, style imitation, and any task where the shape of a good answer is easier to show than to describe.",
+    "last_reviewed": "2026-08-09",
+    "review_interval_days": 180
+}
