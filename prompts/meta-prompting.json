@@ -1,1 +1,46 @@
-{"slug": "meta-prompting", "name": "Meta Prompting", "kind": "technique", "sort": 10, "generated": "2026-08-09", "what": "Using the model to write or improve prompts: describe the task and let it draft the prompt, or paste a prompt and ask it to critique and strengthen it.", "mechanism": "Models have read more instructions, style guides, and task descriptions than any person, which makes them unusually good at the specific job of articulating instructions. Meta prompting uses that: you describe the task, the audience, sample inputs, and the failures you have seen, and the model drafts the prompt another run will follow, or critiques the one you have. Vendor prompt improvers and generators are this technique productized. The mechanism also defines the risk: the model fills every gap in your description with its own guess about your intent, confidently, so a generated prompt is a hypothesis to test against real cases, not a finished artifact. The practical loop is draft, run on a handful of real inputs, compare against your current prompt, and keep whichever wins.", "when_works": "Bootstrapping prompts for new tasks, tightening prompts that produce inconsistent output, and generating variations to test. Models are genuinely good at articulating instructions.", "when_fails": "It cannot know your unstated intent: generated prompts optimize for what you described, not what you meant, and they inherit any vagueness in your description. Test on real cases before trusting.", "how": "Give the model the task, the audience, sample inputs, and failure examples from your current prompt, then ask for a revised prompt with an explicit output format. Iterate against real cases.", "examples": [{"label": "Asking the model for the prompt", "prompt": "Write a prompt for this task. Task: turn messy customer interview notes into a structured insight summary for a product team. Audience for the prompt: a mid-tier model that follows instructions literally. Sample input: {PASTE_NOTES}. Failures I have seen: quotes get invented, minor complaints get inflated into themes. The prompt you write must include an output format, a rule preventing invented quotes, and a rule for distinguishing themes from one-off comments.", "note": "Naming the observed failures is the highest-leverage line; the generated prompt will contain explicit defenses against exactly those."}, {"label": "Prompt critique instead of generation", "prompt": "Here is a prompt we run in production: {PASTE_PROMPT}. Critique it: identify ambiguous instructions, conflicting requirements, missing output specification, and cases the prompt does not handle. Then propose a revised version, marking every change with a one-line reason.", "note": "Critique mode is safer than generation from scratch because it preserves what already works and shows its reasoning per change."}], "faq": [{"q": "Which model should write the prompt?", "a": "Use your strongest model to write and critique prompts, even when a cheaper model will run them; prompt quality transfers down better than prompt-writing ability."}, {"q": "Are model-written prompts better than human ones?", "a": "They are more complete on first draft, worse at knowing your real intent. The winning workflow is collaborative: model drafts, human cuts what does not match reality, real cases decide."}, {"q": "Why do generated prompts run long?", "a": "The model defends against every failure you mention plus ones it imagines. Prune defenses your data never triggers; a prompt is also a maintenance surface."}], "related": ["prompt-chaining", "role-prompting"], "source_url": "https://www.promptingguide.ai/techniques/meta-prompting", "paper": null}
+{
+    "faq": [
+        {
+            "a": "Use your strongest model to write and critique prompts, even when a cheaper model will run them; prompt quality transfers down better than prompt-writing ability.",
+            "q": "Which model should write the prompt?"
+        },
+        {
+            "a": "They are more complete on first draft, worse at knowing your real intent. The winning workflow is collaborative: model drafts, human cuts what does not match reality, real cases decide.",
+            "q": "Are model-written prompts better than human ones?"
+        },
+        {
+            "a": "The model defends against every failure you mention plus ones it imagines. Prune defenses your data never triggers; a prompt is also a maintenance surface.",
+            "q": "Why do generated prompts run long?"
+        }
+    ],
+    "how": "Describe the task, the audience, sample inputs, and failure modes you have seen; ask for a prompt with explicit output format and edge-case handling; then A/B it against your current version.",
+    "kind": "technique",
+    "name": "Meta Prompting",
+    "slug": "meta-prompting",
+    "sort": 10,
+    "what": "Using a model to write, critique, or refine prompts, describing the task and letting the model draft the instructions another run will follow.",
+    "paper": null,
+    "related": [
+        "prompt-chaining",
+        "role-prompting"
+    ],
+    "examples": [
+        {
+            "note": "Naming the observed failures is the highest-leverage line; the generated prompt will contain explicit defenses against exactly those.",
+            "label": "Asking the model for the prompt",
+            "prompt": "Write a prompt for this task. Task: turn messy customer interview notes into a structured insight summary for a product team. Audience for the prompt: a mid-tier model that follows instructions literally. Sample input: {PASTE_NOTES}. Failures I have seen: quotes get invented, minor complaints get inflated into themes. The prompt you write must include an output format, a rule preventing invented quotes, and a rule for distinguishing themes from one-off comments."
+        },
+        {
+            "note": "Critique mode is safer than generation from scratch because it preserves what already works and shows its reasoning per change.",
+            "label": "Prompt critique instead of generation",
+            "prompt": "Here is a prompt we run in production: {PASTE_PROMPT}. Critique it: identify ambiguous instructions, conflicting requirements, missing output specification, and cases the prompt does not handle. Then propose a revised version, marking every change with a one-line reason."
+        }
+    ],
+    "generated": "2026-08-09",
+    "mechanism": "Models have read more instructions, style guides, and task descriptions than any person, which makes them unusually good at the specific job of articulating instructions. Meta prompting uses that: you describe the task, the audience, sample inputs, and the failures you have seen, and the model drafts the prompt another run will follow, or critiques the one you have. Vendor prompt improvers and generators are this technique productized. The mechanism also defines the risk: the model fills every gap in your description with its own guess about your intent, confidently, so a generated prompt is a hypothesis to test against real cases, not a finished artifact. The practical loop is draft, run on a handful of real inputs, compare against your current prompt, and keep whichever wins.",
+    "source_url": "https://www.promptingguide.ai/techniques/meta-prompting",
+    "when_fails": "Blind trust: a model-written prompt inherits the model's guesses about your intent, and it can be verbose. The output is a draft to test against real cases, not a finished artifact.",
+    "when_works": "Bootstrapping good prompts fast, tightening prompts that drift, and generating variations to test. Vendor tools (prompt improvers and generators) productize exactly this.",
+    "last_reviewed": "2026-08-09",
+    "review_interval_days": 180
+}
