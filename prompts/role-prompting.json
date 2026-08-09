@@ -1,1 +1,46 @@
-{"slug": "role-prompting", "name": "Role Prompting", "kind": "technique", "sort": 9, "generated": "2026-08-09", "what": "Assigning the model a persona or professional role, you are an experienced financial auditor, before the task.", "mechanism": "Role prompting works on the register of the output, not the knowledge behind it. A language model predicts text conditioned on everything already in the context, so opening with \"you are an experienced financial auditor\" shifts every following prediction toward text that an auditor would plausibly write: the vocabulary, the caution, the document conventions, the things an auditor would flag first. That shift is real and useful. What the persona does not do is add knowledge or reasoning the model did not already have, which is why studies that tested expertise personas on accuracy benchmarks found mixed to negligible effects. The honest mental model: a role changes which of the model's voices answers, not how much the model knows. Use it to control perspective and tone, and use concrete constraints, cite sources, show the calculation, state confidence, to control correctness.", "when_works": "Controlling tone, vocabulary, and audience fit: the same content briefed as a lawyer, a teacher, or a support agent reads very differently. Useful for consistent voice across outputs.", "when_fails": "As an accuracy lever: telling a model it is a genius mathematician does not reliably make its math better, and research on expertise personas shows mixed to negligible accuracy effects. Facts come from the task prompt, not the costume.", "how": "Use the role to set perspective and register, then rely on concrete constraints for correctness: cite sources, show calculations, flag uncertainty.", "examples": [{"label": "Same task, two roles, watch the register shift", "prompt": "Version A: You are a corporate compliance officer. Explain to the executive team what our obligations are under the EU AI Act for our resume-screening tool.\n\nVersion B: You are a high-school teacher. Explain to your students what the EU AI Act requires of companies that use AI to screen job applications.", "note": "Run both. The facts should be the same; the sentence length, vocabulary, and emphasis will not be. That difference is the entire value of the technique."}, {"label": "Role for perspective, constraints for correctness", "prompt": "You are a skeptical senior security engineer reviewing a vendor claim. Vendor claim: {PASTE}. Assess it. Rules: separate what the claim asserts from what it implies, list what evidence would verify each assertion, mark anything unverifiable as UNVERIFIABLE, and do not soften findings for politeness.", "note": "The role sets the adversarial posture; the four explicit rules are what actually force rigor. Either half alone is weaker than both together."}], "faq": [{"q": "Does telling the model it is an expert make it more accurate?", "a": "Not reliably. Persona studies, including a 2024 evaluation of hundreds of personas in system prompts, found no consistent accuracy gain from expert roles on factual and reasoning benchmarks. Accuracy comes from the task prompt: constraints, evidence requirements, and verification steps."}, {"q": "Where should the role go, system prompt or user message?", "a": "When you control the system prompt, put stable persona and policy there and keep the user turn for the task; the model treats system-level framing as standing instructions. In a chat interface, the first line of your message does the same job slightly less durably."}, {"q": "Can a role make outputs worse?", "a": "Yes, in two ways. A heavy persona can add stylistic performance you do not want in a work product, and a role that implies an opinion (act as a bullish crypto analyst) biases the analysis you asked for. Keep roles occupational and neutral unless the bias is the point, as in red-teaming or debate practice."}], "related": ["zero-shot-prompting", "meta-prompting"], "source_url": "https://www.promptingguide.ai/introduction/settings", "paper": null}
+{
+    "faq": [
+        {
+            "a": "Not reliably. Persona studies, including a 2024 evaluation of hundreds of personas in system prompts, found no consistent accuracy gain from expert roles on factual and reasoning benchmarks. Accuracy comes from the task prompt: constraints, evidence requirements, and verification steps.",
+            "q": "Does telling the model it is an expert make it more accurate?"
+        },
+        {
+            "a": "When you control the system prompt, put stable persona and policy there and keep the user turn for the task; the model treats system-level framing as standing instructions. In a chat interface, the first line of your message does the same job slightly less durably.",
+            "q": "Where should the role go, system prompt or user message?"
+        },
+        {
+            "a": "Yes, in two ways. A heavy persona can add stylistic performance you do not want in a work product, and a role that implies an opinion (act as a bullish crypto analyst) biases the analysis you asked for. Keep roles occupational and neutral unless the bias is the point, as in red-teaming or debate practice.",
+            "q": "Can a role make outputs worse?"
+        }
+    ],
+    "how": "Use the role to set perspective and register, then rely on concrete constraints for correctness: cite sources, show calculations, flag uncertainty.",
+    "kind": "technique",
+    "name": "Role Prompting",
+    "slug": "role-prompting",
+    "sort": 9,
+    "what": "Assigning the model a persona or professional role, you are an experienced financial auditor, before the task.",
+    "paper": null,
+    "related": [
+        "zero-shot-prompting",
+        "meta-prompting"
+    ],
+    "examples": [
+        {
+            "note": "Run both. The facts should be the same; the sentence length, vocabulary, and emphasis will not be. That difference is the entire value of the technique.",
+            "label": "Same task, two roles, watch the register shift",
+            "prompt": "Version A: You are a corporate compliance officer. Explain to the executive team what our obligations are under the EU AI Act for our resume-screening tool.\n\nVersion B: You are a high-school teacher. Explain to your students what the EU AI Act requires of companies that use AI to screen job applications."
+        },
+        {
+            "note": "The role sets the adversarial posture; the four explicit rules are what actually force rigor. Either half alone is weaker than both together.",
+            "label": "Role for perspective, constraints for correctness",
+            "prompt": "You are a skeptical senior security engineer reviewing a vendor claim. Vendor claim: {PASTE}. Assess it. Rules: separate what the claim asserts from what it implies, list what evidence would verify each assertion, mark anything unverifiable as UNVERIFIABLE, and do not soften findings for politeness."
+        }
+    ],
+    "generated": "2026-08-09",
+    "mechanism": "Role prompting works on the register of the output, not the knowledge behind it. A language model predicts text conditioned on everything already in the context, so opening with \"you are an experienced financial auditor\" shifts every following prediction toward text that an auditor would plausibly write: the vocabulary, the caution, the document conventions, the things an auditor would flag first. That shift is real and useful. What the persona does not do is add knowledge or reasoning the model did not already have, which is why studies that tested expertise personas on accuracy benchmarks found mixed to negligible effects. The honest mental model: a role changes which of the model's voices answers, not how much the model knows. Use it to control perspective and tone, and use concrete constraints, cite sources, show the calculation, state confidence, to control correctness.",
+    "source_url": "https://www.promptingguide.ai/introduction/settings",
+    "when_fails": "As an accuracy lever: telling a model it is a genius mathematician does not reliably make its math better, and research on expertise personas shows mixed to negligible accuracy effects. Facts come from the task prompt, not the costume.",
+    "when_works": "Controlling tone, vocabulary, and audience fit: the same content briefed as a lawyer, a teacher, or a support agent reads very differently. Useful for consistent voice across outputs.",
+    "last_reviewed": "2026-08-09",
+    "review_interval_days": 180
+}
