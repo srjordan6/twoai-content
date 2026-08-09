@@ -1,14 +1,36 @@
 {
+    "faq": [
+        {
+            "a": "The action space explodes: arbitrary applications, file systems, dialogs, and inter-app workflows, with none of the semantic structure HTML gives a web agent. Perception and precise low-level control both get harder.",
+            "q": "Why is desktop control harder than web browsing?"
+        },
+        {
+            "a": "By execution-based checks on the final system state, the file exists with the right content, the spreadsheet formula is correct, the setting took effect, not by judging what the agent said it did.",
+            "q": "How are tasks graded?"
+        },
+        {
+            "a": "Benchmark version, observation mode (screenshots versus accessibility tree), step limits, and model-plus-scaffold identity. Any mismatch makes the comparison unreliable.",
+            "q": "What should I check before comparing two OSWorld scores?"
+        }
+    ],
     "how": "369 tasks in real VM environments across Ubuntu and Windows, scored by execution-based checks on files, application state, and outputs.",
     "url": "https://os-world.github.io",
     "name": "OSWorld",
     "note": "The reference test for computer-use agents; human success is around 72 percent, and frontier agents remain well below it.",
     "slug": "osworld",
     "sort": 4,
+    "history": "OSWorld, released in 2024 by researchers at HKU with collaborators, moved agent evaluation from the browser to the whole computer: 369 tasks inside real Ubuntu desktop environments, with Windows tasks alongside, spanning file management, LibreOffice documents and spreadsheets, email clients, image editing, and multi-application workflows, scored by executing checks against the actual resulting system state. It quantified how far agents were from everyday computer work, humans completed over 72 percent of tasks while the best agents managed about 12 percent, and it has become the reference benchmark for computer-use agents from the major labs, whose scores on it have multiplied since launch.",
+    "related": [
+        "webarena",
+        "swe-bench"
+    ],
     "section": "bench-agents",
     "measures": "Real computer use: controlling an actual desktop operating system across applications (browsers, office suites, file managers, code editors) to finish open-ended tasks.",
+    "criticism": "Full-OS evaluation is heavy: virtual machine snapshots, application state, and timing sensitivities make runs expensive and occasionally flaky, and subtle environment differences can move scores in ways unrelated to agent quality, which the maintainers have iterated on but not eliminated. The task mix is office-centric, files, documents, settings, and underrepresents the messy long-horizon workflows that dominate real computer work. Agents also perceive the screen differently, screenshots versus accessibility trees versus hybrid, and reported comparisons do not always hold that choice constant.",
     "generated": "2026-08-09",
     "maintainer": "University of Hong Kong and Salesforce Research (XLANG Lab)",
     "not_measured": "Speed or cost; and the fixed task set cannot cover the full messiness of arbitrary desktops.",
-    "section_name": "Agent Benchmarks"
+    "last_reviewed": "2026-08-09",
+    "interpretation": "Compare only same-version, same-observation-mode runs, screenshot-only versus accessibility-tree agents are different experiments, and expect meaningful run-to-run variance before trusting small gaps. The human baseline above 70 percent is the reference: agents crossing half that on office tasks are genuinely useful for narrow delegation, while the remaining gap concentrates in multi-application, long-horizon workflows. For deployment decisions, its per-application breakdowns are more informative than the headline number.",
+    "review_interval_days": 90
 }
