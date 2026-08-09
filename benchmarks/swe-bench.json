@@ -1,14 +1,37 @@
 {
+    "faq": [
+        {
+            "a": "Full is all 2,294 issues, expensive and noisy, including some unsolvable tasks. Lite is a 300-issue subset for cheap iteration. Verified is 500 human-screened solvable issues and is the standard reported number.",
+            "q": "What is the difference between full, Lite, and Verified?"
+        },
+        {
+            "a": "Scaffolding: agent framework, retries, test-time compute, and context strategies differ per submission. The leaderboard ranks systems, and the same model inside two harnesses can differ by tens of points.",
+            "q": "Why do vendor announcements show different scores for the same model?"
+        },
+        {
+            "a": "It is evidence of repository-scale patching ability, in Python, on famous open-source projects. Private conventions, other languages, and missing tests all cut into transfer; pilot on your own issue tracker before extrapolating.",
+            "q": "Does a high score mean the model can work in my codebase?"
+        }
+    ],
     "how": "Each task gives the repository at the commit before the fix plus the issue text; the agent's patch is scored by running the repository's tests. Verified is a 500-task human-validated subset.",
     "url": "https://www.swebench.com",
     "name": "SWE-bench and SWE-bench Verified",
     "note": "The benchmark that moved coding evaluation from toy functions to real repositories; quote Verified numbers, and note the scaffold used.",
     "slug": "swe-bench",
     "sort": 1,
+    "history": "SWE-bench, from Princeton researchers in 2023, changed what a coding benchmark could mean: instead of puzzle functions, it collected 2,294 real resolved issues from twelve popular Python repositories, Django, scikit-learn, matplotlib among them, and asked whether a system given the issue text and the repository could produce a patch that passes the project's own tests. Early language models solved under 2 percent, which made it the rallying benchmark for the coding-agent wave. As scores climbed, the ecosystem refined it: SWE-bench Lite for cheaper evaluation, and SWE-bench Verified, a 500-issue subset human-screened with OpenAI in 2024 to remove impossible and underspecified tasks, which became the number the industry quotes. Agent systems have pushed Verified from single digits toward and past the 70-percent range in two years.",
+    "related": [
+        "humaneval",
+        "tau-bench",
+        "osworld"
+    ],
     "section": "bench-agents",
     "measures": "Real software engineering: whether an agent can resolve actual GitHub issues from popular Python repositories with a patch that passes the project's held-out tests.",
+    "criticism": "Its repositories are open-source Python projects whose full histories, including the fix commits, sit in every training corpus, so contamination is structural, and studies have shown agents sometimes locate the actual historical fix rather than solving the problem. Twelve Python repos are a narrow slice of software engineering, no frontend, no proprietary conventions, no Java or C++ at scale. Passing tests is a low bar for merge-worthy code, patches can be ugly, brittle, or subtly wrong in ways tests miss. And every reported score entangles the model with its agent scaffold, retries, and compute budget, so leaderboard gaps often measure harness engineering as much as model capability.",
     "generated": "2026-08-09",
     "maintainer": "Princeton NLP (Jimenez et al.); Verified subset with OpenAI",
     "not_measured": "Greenfield coding, non-Python ecosystems, or design judgment; solve rates are sensitive to scaffolding, and test coverage limits what counts as resolved.",
-    "section_name": "Agent Benchmarks"
+    "last_reviewed": "2026-08-09",
+    "interpretation": "Quote only Verified, and only with the scaffold named: a Verified score without its agent framework, retry budget, and test-time compute is not comparable to anything. Treat scores as pipeline performance, model plus harness, and treat the gap between Lite, Verified, and full-set numbers as a reminder that task selection moves results. For your own decisions, the transferable question is whether the demonstrated behaviors, repository navigation, test-driven patching, survive contact with a private codebase in a different language; run a pilot on your own issues before believing any percentage.",
+    "review_interval_days": 90
 }
