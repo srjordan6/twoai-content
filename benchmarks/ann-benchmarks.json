@@ -24,6 +24,15 @@
         "vectordbbench",
         "big-ann"
     ],
+    "results": {
+        "note": "There is no single winner to print: every algorithm traces a recall-versus-throughput curve per dataset, and which one leads depends on the dataset, the recall target, and the hardware. The honest result is the curve itself, published interactively at the source, where you pick your dataset and recall floor and read off the frontier.",
+        "rows": [
+        ],
+        "as_of": "2026-08-10",
+        "metric": "Recall vs. queries-per-second trade-off curves",
+        "source": "ANN-Benchmarks interactive results",
+        "source_url": "https://ann-benchmarks.com"
+    },
     "section": "bench-vector-db",
     "measures": "Approximate nearest neighbor algorithm quality: the recall-versus-queries-per-second trade-off curve for vector search algorithms on standard datasets.",
     "criticism": "It benchmarks algorithms, not systems: single-node, in-memory, static indexes, with no metadata filtering, no concurrent writes, no persistence, no failure handling, which is to say none of the operational surface that determines production behavior. Its classic datasets are small by current standards, a few hundred dimensions and a few million vectors, while production embedding workloads run larger in both. Results are also sensitive to build parameters and hardware, and the gap between a tuned benchmark entry and a default-configured deployment can exceed the gap between algorithms.",
