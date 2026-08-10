@@ -25,6 +25,40 @@
         "tau-bench",
         "osworld"
     ],
+    "results": {
+        "note": "Rows are agent-plus-model combinations as officially submitted, so the scaffold is part of the result. Vendor-reported model-only numbers are often higher than official submissions because harnesses differ; the official board is the comparable set.",
+        "rows": [
+            {
+                "score": "79.2%",
+                "detail": "submitted 2025-12-15",
+                "system": "live-SWE-agent + Claude 4.5 Opus medium (20251101)"
+            },
+            {
+                "score": "79.2%",
+                "detail": "submitted 2025-12-05",
+                "system": "Sonar Foundation Agent + Claude 4.5 Opus"
+            },
+            {
+                "score": "78.8%",
+                "detail": "submitted 2025-09-28",
+                "system": "TRAE + Doubao-Seed-Code"
+            },
+            {
+                "score": "77.4%",
+                "detail": "submitted 2025-11-20",
+                "system": "live-SWE-agent + Gemini 3 Pro Preview (2025-11-18)"
+            },
+            {
+                "score": "76.8%",
+                "detail": "submitted 2025-09-02",
+                "system": "Atlassian Rovo Dev (2025-09-02)"
+            }
+        ],
+        "as_of": "2026-08-10",
+        "metric": "% of 500 SWE-bench Verified issues resolved, official submissions",
+        "source": "SWE-bench official leaderboard (auto-refreshed daily from the published data file)",
+        "source_url": "https://www.swebench.com/"
+    },
     "section": "bench-agents",
     "measures": "Real software engineering: whether an agent can resolve actual GitHub issues from popular Python repositories with a patch that passes the project's held-out tests.",
     "criticism": "Its repositories are open-source Python projects whose full histories, including the fix commits, sit in every training corpus, so contamination is structural, and studies have shown agents sometimes locate the actual historical fix rather than solving the problem. Twelve Python repos are a narrow slice of software engineering, no frontend, no proprietary conventions, no Java or C++ at scale. Passing tests is a low bar for merge-worthy code, patches can be ugly, brittle, or subtly wrong in ways tests miss. And every reported score entangles the model with its agent scaffold, retries, and compute budget, so leaderboard gaps often measure harness engineering as much as model capability.",
