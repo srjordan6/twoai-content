@@ -1,0 +1,106 @@
+{
+    "up": [
+        {
+            "name": "Cloud economics",
+            "detail": "A budget sets a latency and memory allowance per query. Everything above it is downstream of that allowance."
+        },
+        {
+            "name": "GPU limits",
+            "detail": "Memory capacity per device is fixed, and bandwidth caps how fast vectors move into the compute units. Neither is negotiable at serving time."
+        },
+        {
+            "name": "Serving optimisations",
+            "detail": "To fit more concurrent requests onto the same devices, engines page memory or tier the cache. PagedAttention is the clearest example: it borrows virtual memory paging from operating systems to stop the cache fragmenting."
+        },
+        {
+            "name": "Cache pressure",
+            "detail": "Memory pressure means the cache footprint itself has to shrink, which is a constraint on the attention mechanism rather than on the serving layer."
+        },
+        {
+            "name": "Attention redesign",
+            "detail": "Multi-query and grouped-query attention cut the number of key and value heads specifically to shrink the cache. FlashAttention reorders the computation to reduce memory traffic without changing the result. These are hardware pressures expressed as mathematics."
+        },
+        {
+            "name": "Transformer redesign",
+            "detail": "The architecture itself moves in response, toward grouped-query attention or mixture-of-experts routing, so that a model of a given quality fits the machines that exist."
+        }
+    ],
+    "uid": "7f3a1c95",
+    "why": [
+        {
+            "name": "Diagnosing a slowdown",
+            "detail": "When time-to-first-token degrades in production, the cause is rarely where the symptom appears. Reading down the chain gives an order to check in: cloud placement, then device bandwidth, then batching policy, then cache footprint, then context length."
+        },
+        {
+            "name": "Designing a model",
+            "detail": "Reading up, a choice made in the attention mechanism sets the cache size, which sets how many concurrent requests one device can serve, which sets what the deployment costs. The architectural decision and the invoice are the same decision."
+        }
+    ],
+    "down": [
+        {
+            "name": "Transformer",
+            "detail": "The architecture underneath essentially every current large language model. Its defining choice is to drop recurrence, which is what makes training parallelisable across a sequence."
+        },
+        {
+            "name": "Attention",
+            "detail": "The core operation: queries, keys and values multiplied so that each token can score its relationship to every other token. This is where the quadratic cost in sequence length comes from."
+        },
+        {
+            "name": "KV cache",
+            "detail": "During generation the model produces one token at a time, and recomputing the attention over all previous tokens each step would be wasteful, so previous key and value vectors are held in memory. The cache is the state that makes generation tractable."
+        },
+        {
+            "name": "Inference",
+            "detail": "The serving phase. Because the cache grows with both sequence length and batch size, inference shifts from being limited by arithmetic throughput to being limited by memory bandwidth. That shift is the single most consequential fact about serving these models."
+        },
+        {
+            "name": "GPU",
+            "detail": "High-bandwidth memory holds the weights and the growing cache; tensor cores do the arithmetic. Capacity per device is finite and fixed at purchase, which turns a memory-bound workload into a hard ceiling on concurrency."
+        },
+        {
+            "name": "Cloud",
+            "detail": "Clusters, high-speed interconnects and orchestration pool those devices, and can offload or disaggregate cache across memory tiers. This is where the ceiling becomes a bill."
+        }
+    ],
+    "note": "Every claim on this page about a named optimisation traces to the paper that introduced it, listed below. Specific device capacities and cloud pricing are deliberately not quoted here, because they change faster than this page is reviewed.",
+    "slug": "concept-taxonomy",
+    "chain": [
+        "Transformer",
+        "Attention",
+        "KV cache",
+        "Inference",
+        "GPU",
+        "Cloud"
+    ],
+    "title": "The Concept Taxonomy",
+    "answer": "A concept taxonomy is a hierarchy that connects high-level AI theory to the physical infrastructure it runs on, so you can trace an equation in a paper down to power draw in a data centre, and trace a hardware limit back up to the architecture it forced. The chain that matters most today runs Transformer to Attention to KV cache to Inference to GPU to Cloud, and it is worth reading in both directions: downwards it explains what a design costs, upwards it explains why models look the way they do.",
+    "sources": [
+        {
+            "url": "https://arxiv.org/abs/1706.03762",
+            "name": "Vaswani et al., Attention Is All You Need (2017)"
+        },
+        {
+            "url": "https://arxiv.org/abs/1911.02150",
+            "name": "Shazeer, Fast Transformer Decoding: One Write-Head Is All You Need (multi-query attention, 2019)"
+        },
+        {
+            "url": "https://arxiv.org/abs/2305.13245",
+            "name": "Ainslie et al., GQA: Training Generalized Multi-Query Transformer Models from Multi-Head Checkpoints (2023)"
+        },
+        {
+            "url": "https://arxiv.org/abs/2205.14135",
+            "name": "Dao et al., FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness (2022)"
+        },
+        {
+            "url": "https://arxiv.org/abs/2309.06180",
+            "name": "Kwon et al., Efficient Memory Management for Large Language Model Serving with PagedAttention (2023)"
+        }
+    ],
+    "category": "research-knowledge-and-learning",
+    "up_intro": "The same chain read upwards explains why current architectures look the way they do. Most of the well-known efficiency work exists because a hardware limit pushed back on a mathematical choice.",
+    "up_title": "Reading up: from infrastructure back to mathematics",
+    "generated": "2026-08-11",
+    "why_title": "Why the direction matters",
+    "down_intro": "Each link constrains the next. Read this way, the chain tells you what an architectural choice will cost once it is running.",
+    "down_title": "Reading down: from mathematics to infrastructure"
+}
