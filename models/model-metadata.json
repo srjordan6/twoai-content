@@ -1,0 +1,80 @@
+{
+    "tax": "model-metadata",
+    "uid": "a3cb9697",
+    "kind": "standard",
+    "name": "Model Metadata Standard",
+    "blurb": "The full record kept for every model: release and licence, parameters and architecture, context and training data, distribution, pricing and performance, and safety.",
+    "generated": "2026-08-14",
+    "api_fields": [
+        {
+            "desc": "The serving provider and routed model id.",
+            "name": "Provider and model id",
+            "source": "OpenRouter catalogue"
+        },
+        {
+            "desc": "Maximum context length as listed by the provider.",
+            "name": "Context window",
+            "source": "OpenRouter"
+        },
+        {
+            "desc": "Dollars per million input and output tokens at fetch time.",
+            "name": "Pricing",
+            "source": "OpenRouter"
+        },
+        {
+            "desc": "Whether the model exposes step-by-step reasoning, and its input modalities.",
+            "name": "Reasoning flag and modalities",
+            "source": "OpenRouter"
+        }
+    ],
+    "not_tracked": [
+        {
+            "why": "Most publishers do not disclose it; this site does not guess.",
+            "name": "Training data"
+        },
+        {
+            "why": "Self-reported numbers are not independently verifiable; leaderboards are linked from the research section instead.",
+            "name": "Benchmark scores"
+        },
+        {
+            "why": "No consistent free primary source exists across publishers yet.",
+            "name": "Safety evaluations"
+        },
+        {
+            "why": "Downloads are the only adoption number a free primary source carries.",
+            "name": "Valuation-grade adoption claims"
+        }
+    ],
+    "open_fields": [
+        {
+            "desc": "The canonical repo id, linking to the model's own page.",
+            "name": "Model ID and page",
+            "source": "Hugging Face Hub"
+        },
+        {
+            "desc": "As declared by the publisher in the model's tags; blank when undeclared.",
+            "name": "Licence",
+            "source": "Hub tags"
+        },
+        {
+            "desc": "All-time downloads and likes at fetch time; ranking key.",
+            "name": "Downloads and likes",
+            "source": "Hub"
+        },
+        {
+            "desc": "When the repo was created on the Hub, which can trail the announcement.",
+            "name": "Release date",
+            "source": "Hub createdAt"
+        },
+        {
+            "desc": "The task classification the section membership comes from.",
+            "name": "Modality",
+            "source": "Hub pipeline tag"
+        },
+        {
+            "desc": "Only where the publisher ships safetensors with a declared count; used for the Small Language Models cut.",
+            "name": "Parameters",
+            "source": "safetensors metadata"
+        }
+    ]
+}
