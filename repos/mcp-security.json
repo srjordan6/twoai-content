@@ -1,0 +1,35 @@
+{
+    "tax": "mcp-security",
+    "uid": "7231813b",
+    "kind": "standard",
+    "name": "MCP Security and Authentication",
+    "blurb": "Trust boundaries, credentials, and the failure modes.",
+    "points": [
+        {
+            "desc": "Remote MCP servers authenticate clients with OAuth 2.1: authorization-server discovery, dynamic client registration, and PKCE. Local stdio servers inherit the trust of the process that launched them instead.",
+            "name": "Authorization is OAuth 2.1",
+            "source": "https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization"
+        },
+        {
+            "desc": "Every connected server can read what the client sends it and shape what the model sees in return. Connecting a server is granting it a capability, and the specification requires explicit user consent for tools and resources.",
+            "name": "The trust boundary sits at the server",
+            "source": "https://modelcontextprotocol.io/specification/2025-06-18/basic/security_best_practices"
+        },
+        {
+            "desc": "A malicious server can carry instructions in tool names, descriptions, or results that try to steer the model - prompt injection by tool metadata. Clients are expected to show users what a tool will do before it runs.",
+            "name": "Tool descriptions are attack surface",
+            "source": "https://modelcontextprotocol.io/specification/2025-06-18/basic/security_best_practices"
+        },
+        {
+            "desc": "The specification forbids passing a client's token through to upstream APIs and warns against proxy patterns where a server exercises a user's authority beyond what was consented.",
+            "name": "Confused-deputy and token-passthrough failures",
+            "source": "https://modelcontextprotocol.io/specification/2025-06-18/basic/security_best_practices"
+        },
+        {
+            "desc": "Secrets flow through the authorization layer, never through model-visible text; a server that asks the model for a password is misdesigned by specification.",
+            "name": "Credentials live with the user, not the model",
+            "source": "https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization"
+        }
+    ],
+    "generated": "2026-08-14"
+}
