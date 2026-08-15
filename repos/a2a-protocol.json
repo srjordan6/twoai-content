@@ -1,0 +1,101 @@
+{
+    "tax": "a2a-protocol",
+    "uid": "1a1aeff5",
+    "name": "Agent2Agent (A2A) Protocol",
+    "blurb": "The open standard for agent-to-agent delegation: Agent Cards, task lifecycle, three protocol bindings, enterprise auth schemes, and how it complements MCP. Google-originated, Linux Foundation-governed, verified from the v1.0 specification.",
+    "items": [
+        {
+            "body": "Google announced the Agent2Agent protocol at Cloud Next in April 2025 as an open protocol for agents built on different frameworks and by different vendors to discover each other, negotiate how to interact, and delegate work. The launch framed A2A as complementary to Anthropic's Model Context Protocol rather than competing with it: MCP gives an agent tools and context, A2A gives agents each other. The initial announcement listed several dozen technology partners and service providers, and the specification, SDKs, and samples were published on GitHub from day one.",
+            "name": "Google introduced A2A in April 2025",
+            "slug": "origin-google",
+            "group": "governance",
+            "source_url": "https://developers.googleblog.com/en/a2a-a-new-era-of-agent-interoperability/",
+            "source_name": "Google for Developers"
+        },
+        {
+            "body": "On 23 June 2025 the Linux Foundation announced the Agent2Agent Protocol project, formed with Google's contribution of the specification, SDKs, and developer tooling. The foundation's release describes support from more than 100 technology companies, with Amazon Web Services, Cisco, Google, Microsoft, Salesforce, SAP, and ServiceNow named as founding participants. Foundation governance is what makes A2A vendor-neutral in practice: no single company can change the specification unilaterally, and adoption is not a bet on one cloud.",
+            "name": "Donated to the Linux Foundation in June 2025",
+            "slug": "lf-donation",
+            "group": "governance",
+            "source_url": "https://www.linuxfoundation.org/press/linux-foundation-launches-the-agent2agent-protocol-project-to-enable-secure-intelligent-communication-between-ai-agents",
+            "source_name": "Linux Foundation"
+        },
+        {
+            "body": "The specification, protocol schema, and reference material live in the a2aproject organization on GitHub under the Apache 2.0 license, with the project's governance document defining maintainer roles and the technical steering process. The repository is one of the more watched protocol projects in the agent ecosystem; this site tracks its star count daily in the Multi-agent Systems repos section.",
+            "name": "Apache 2.0, developed in the open on GitHub",
+            "slug": "licence-repo",
+            "group": "governance",
+            "source_url": "https://github.com/a2aproject/A2A",
+            "source_name": "A2A Project on GitHub"
+        },
+        {
+            "body": "The current published specification is version 1.0, with release notes describing changes from the pre-1.0 drafts. It defines the data model, the operations an agent exposes, the discovery mechanism, security schemes, and three protocol bindings. Everything on this page below is verified against that document.",
+            "name": "The specification is at version 1.0",
+            "slug": "spec-v1",
+            "group": "governance",
+            "source_url": "https://a2a-protocol.org/latest/specification/",
+            "source_name": "A2A Specification v1.0"
+        },
+        {
+            "body": "Every A2A agent publishes an Agent Card, a JSON document that advertises what the agent is, what skills it offers, which input and output modalities it supports, where its service endpoints are, and which security schemes a client must satisfy. Clients discover agents by fetching the card, so the card functions as both a capability manifest and a contract. The specification supports an authenticated extended card for details an agent will only reveal to a client that has already proven who it is, and defines card signing so a card's integrity can be verified.",
+            "name": "Discovery through the Agent Card",
+            "slug": "agent-card",
+            "group": "mechanics",
+            "source_url": "https://a2a-protocol.org/latest/topics/agent-discovery/",
+            "source_name": "A2A Specification: Agent Discovery"
+        },
+        {
+            "body": "A2A is transport-agnostic at the data-model level and defines three concrete bindings, each a normative section of the specification: a JSON-RPC 2.0 binding over HTTP, a gRPC binding, and an HTTP+JSON/REST binding. An agent declares which bindings it supports in its Agent Card. Streaming for long-running work uses Server-Sent Events, and push-notification configuration lets an agent call a client back at a webhook when a task changes state, so neither side has to hold a connection open.",
+            "name": "Three protocol bindings: JSON-RPC 2.0, gRPC, and HTTP+JSON/REST",
+            "slug": "bindings",
+            "group": "mechanics",
+            "source_url": "https://a2a-protocol.org/latest/specification/",
+            "source_name": "A2A Specification: Protocol Bindings"
+        },
+        {
+            "body": "Work between agents is a Task with a defined lifecycle. The v1.0 state set is submitted, working, input-required, auth-required, completed, canceled, failed, and rejected. Input-required lets a remote agent pause and ask for more from the caller; auth-required lets it pause until a credential is supplied; rejected distinguishes \"I will not take this\" from \"I tried and failed\". Tasks carry messages and artifacts, and the specification's life-of-a-task topic walks the full sequence from submission through terminal state.",
+            "name": "The task is the unit of work, with eight explicit states",
+            "slug": "task-lifecycle",
+            "group": "mechanics",
+            "source_url": "https://a2a-protocol.org/latest/topics/life-of-a-task/",
+            "source_name": "A2A Specification: Life of a Task"
+        },
+        {
+            "body": "The specification defines named security schemes an Agent Card can require: API key, HTTP authentication, OAuth 2.0 with authorization-code, client-credentials, and device-code flows, OpenID Connect, and mutual TLS. Credentials are obtained out-of-band and presented at the transport layer, never carried in message content, and a client cannot invoke an agent without satisfying the schemes the card declares. The enterprise-ready topic covers the operational expectations around this: authentication, authorization, tracing, and observability.",
+            "name": "Enterprise authentication is built into the card",
+            "slug": "security-schemes",
+            "group": "mechanics",
+            "source_url": "https://a2a-protocol.org/latest/topics/enterprise-ready/",
+            "source_name": "A2A Specification: Enterprise-Ready"
+        },
+        {
+            "body": "A2A is designed so a delegating agent never needs to see the remote agent's internal reasoning, prompts, tools, or code. It sends a task, receives messages and artifacts, and observes state. This is what makes cross-vendor delegation acceptable to enterprises: a supplier's agent can accept a reorder request without exposing how it prices, and a buyer's agent can delegate without exposing its own decision logic.",
+            "name": "Agents stay opaque to each other",
+            "slug": "opacity",
+            "group": "mechanics",
+            "source_url": "https://a2a-protocol.org/latest/specification/",
+            "source_name": "A2A Specification v1.0"
+        },
+        {
+            "body": "The A2A project maintains a dedicated topic on how it relates to MCP. MCP connects a model or agent to tools, data, and context, the vertical connection to databases, files, and enterprise APIs through servers. A2A connects an agent to other agents, the horizontal connection for delegation between autonomous systems that may be built by different vendors. The canonical example: an internal supply-chain agent uses MCP to read inventory from a database, then uses A2A to hand a reorder task to a supplier's external sales agent. A mature agent stack uses both, and this site tracks the MCP side at the scale of the full official registry.",
+            "name": "A2A and MCP solve different problems, and the project says so directly",
+            "slug": "vs-mcp",
+            "group": "comparison",
+            "source_url": "https://a2a-protocol.org/latest/topics/a2a-and-mcp/",
+            "source_name": "A2A Project: A2A and MCP"
+        },
+        {
+            "body": "Google's Cloud blog documented the protocol's upgrade path and its integration with the Agent Development Kit, and framework support has since spread across the ecosystem the Linux Foundation project lists as participants. Interoperability claims for any specific framework should be checked against that framework's own documentation; this page reports what the protocol specifies, not what every vendor has shipped.",
+            "name": "Framework support: Google ADK and the wider ecosystem",
+            "slug": "upgrade-adk",
+            "group": "comparison",
+            "source_url": "https://cloud.google.com/blog/products/ai-machine-learning/agent2agent-protocol-is-getting-an-upgrade",
+            "source_name": "Google Cloud Blog"
+        }
+    ],
+    "shape": "a2a",
+    "generated": "2026-08-15",
+    "repo_stars": 25357,
+    "mcp_servers": 1837,
+    "repo_pushed": "2026-08-15T15:41:01Z"
+}
