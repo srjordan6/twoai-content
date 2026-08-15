@@ -30,10 +30,37 @@
         }
     ],
     "stats": {
-        "mcp_servers": 1835,
-        "lawsuit_pages": 102,
+        "mcp_servers": 1836,
+        "lawsuit_pages": 103,
         "deepfake_bills": 51,
         "compliance_docs": 64
     },
+    "domains": [
+        {
+            "body": "Poisoning enters through the supply chain more often than through your own pipeline: a pretrained model with a planted backdoor, a public dataset seeded with corrupted samples, a fine-tune performed by a party you never assessed. Research collected in NIST's adversarial machine learning taxonomy shows small fractions of poisoned training data can implant reliable trigger behavior. Provenance is the control: know where every model and dataset came from, prefer sources with integrity guarantees, and treat an unverifiable lineage as a finding rather than an unknown.",
+            "slug": "tprm",
+            "label": "Third-Party and Supply Chain Risk"
+        },
+        {
+            "body": "A backdoored model behaves normally until it sees its trigger, which is what makes poisoning invisible to ordinary evaluation. Pre-deployment testing therefore goes beyond accuracy benchmarks: behavioral evaluation across adversarially chosen inputs, comparison against a known-clean reference where one exists, and scanning tools that inspect model files for both embedded code and statistical anomalies. Acceptance testing for models is as necessary as it ever was for software, and far less practiced.",
+            "slug": "app",
+            "label": "Application and Product Security"
+        },
+        {
+            "body": "Training and fine-tuning infrastructure is a production security boundary, not a research convenience. Version and hash training data snapshots so what a model learned from is reconstructable, isolate training environments from general development, sign artifacts at each pipeline stage, and record lineage so that when a dataset is later found poisoned, every downstream model it touched can be identified and retrained rather than guessed at.",
+            "slug": "arch",
+            "label": "Architecture and Engineering"
+        },
+        {
+            "body": "Post-deployment, poisoning surfaces as behavioral drift: outputs shifting on specific input classes while aggregate metrics stay green. Monitoring that segments model behavior by input type, and alerting on distribution changes rather than only on errors, gives operations a chance of catching a triggered backdoor or a data-poisoning campaign that pre-deployment testing missed.",
+            "slug": "ops",
+            "label": "Security Operations"
+        },
+        {
+            "body": "Intelligence corruption belongs on the risk register as its own category, distinct from breach: the asset damaged is the model's judgment, and the loss event is bad decisions made at scale before anyone notices. NIST AI 100-2 gives governance a shared vocabulary for these attack classes, and a register that names poisoning explicitly forces the ownership and detection-investment conversations that generic cyber entries let slide.",
+            "slug": "gov",
+            "label": "Security Governance and Risk Management"
+        }
+    ],
     "generated": "2026-08-15"
 }
