@@ -38,10 +38,37 @@
         }
     ],
     "stats": {
-        "mcp_servers": 1835,
-        "lawsuit_pages": 102,
+        "mcp_servers": 1836,
+        "lawsuit_pages": 103,
         "deepfake_bills": 51,
         "compliance_docs": 64
     },
+    "domains": [
+        {
+            "body": "The AI supply chain mutates weekly while assessment cycles run annually, and the annual questionnaire cannot survive that mismatch. Your vendor is the third party, but the foundation model their product runs on is a fourth party, the fine-tuning shop is another, and the hosting infrastructure may be a fifth, none of them visible in the questionnaire, the contract, or the assessment. An AI bill of materials, disclosing the models, datasets, and services a product depends on, is the instrument that makes the invisible chain assessable, and continuous external monitoring replaces the point-in-time attestation that was stale before it was signed.",
+            "slug": "tprm",
+            "label": "Third-Party and Supply Chain Risk"
+        },
+        {
+            "body": "Loading an untrusted model file has historically meant executing untrusted code: pickle-based formats can run arbitrary payloads at load time, which is why the ecosystem moved toward safetensors and why registries scan uploads for embedded code. Product teams should pin model versions and hashes exactly as they pin package versions, scan model artifacts in CI, and treat a model pulled at runtime from a public registry with the suspicion they would apply to curl piped into a shell.",
+            "slug": "app",
+            "label": "Application and Product Security"
+        },
+        {
+            "body": "The architectural answer to registry risk is an internal one: a curated, access-controlled model and dataset registry that mirrors approved external artifacts after scanning and signature verification, with admission control so production systems can only load from it. Namespace-reuse and typosquatting attacks against public registries are documented; an internal registry converts that entire attack class into a single controlled ingestion point.",
+            "slug": "arch",
+            "label": "Architecture and Engineering"
+        },
+        {
+            "body": "Supply chain compromise announces itself upstream before it detonates downstream: a maintainer account takeover, a repository transferred, a package suddenly repushed. Watching the registries and repositories your AI stack depends on, and alerting on ownership and artifact changes, buys the response window between public compromise and your next automated pull.",
+            "slug": "ops",
+            "label": "Security Operations"
+        },
+        {
+            "body": "Concentration is the governance-level supply chain risk: when many of your vendors quietly run on the same one or two foundation model providers, a single upstream incident, deprecation, or terms change propagates through products that look independent on the vendor map. A foundation-model concentration analysis, tracing which upstream models your portfolio actually depends on, is the AI equivalent of the critical-vendor analysis regulators already expect for cloud.",
+            "slug": "gov",
+            "label": "Security Governance and Risk Management"
+        }
+    ],
     "generated": "2026-08-15"
 }
