@@ -30,10 +30,37 @@
         }
     ],
     "stats": {
-        "mcp_servers": 1835,
-        "lawsuit_pages": 102,
+        "mcp_servers": 1836,
+        "lawsuit_pages": 103,
         "deepfake_bills": 51,
         "compliance_docs": 64
     },
+    "domains": [
+        {
+            "body": "Models leak in ways databases cannot: memorized training data extracted through crafted queries, membership inference revealing whether a person's records were in the training set, and completions that reconstruct sensitive strings the model was never supposed to retain. The upstream control is minimization, keeping regulated and secret data out of training and fine-tuning sets unless the use case genuinely requires it, because data that never entered the weights can never be extracted from them. Where sensitive data must be used, differential-privacy training and rigorous deduplication measurably reduce memorization.",
+            "slug": "data",
+            "label": "Data Protection and Privacy"
+        },
+        {
+            "body": "The application-layer leaks are more mundane and more common: system prompts extracted by asking, retrieved documents summarized to users who should never see them, and context windows accumulating secrets that then appear in output. Products should treat the system prompt as discoverable, keep real secrets out of it, filter outputs for known-sensitive patterns, and scope retrieval so the model can only surface what the requesting user is entitled to read.",
+            "slug": "app",
+            "label": "Application and Product Security"
+        },
+        {
+            "body": "Authorization has to happen at retrieval time, per user, not at the model. A shared index over documents with mixed sensitivity turns the model into a confused deputy that reads with its own broad permissions and answers to everyone. Segmenting stores by classification, enforcing the caller's entitlements in the retrieval layer, and keeping high-sensitivity corpora out of general-purpose assistants entirely are the designs that make leakage structurally hard rather than behaviorally discouraged.",
+            "slug": "arch",
+            "label": "Architecture and Engineering"
+        },
+        {
+            "body": "Prompts and completions are a data channel and deserve the loss-prevention treatment email already gets: scanning for credentials, personal data, and classified strings in both directions, with alerts wired to the same response process as any other exfiltration signal. Retention policy for AI logs matters doubly here, because the logs themselves become a concentrated copy of everything users pasted in.",
+            "slug": "ops",
+            "label": "Security Operations"
+        },
+        {
+            "body": "Governance sets the rule the tooling enforces: a written classification of what may enter prompts, what may enter fine-tunes, and what may never touch an external model, with the accountable owner named for each AI system that processes regulated data. Without that policy layer, every technical control is guessing at a standard nobody wrote down.",
+            "slug": "gov",
+            "label": "Security Governance and Risk Management"
+        }
+    ],
     "generated": "2026-08-15"
 }
