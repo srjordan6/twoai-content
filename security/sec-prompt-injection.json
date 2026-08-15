@@ -38,10 +38,42 @@
         }
     ],
     "stats": {
-        "mcp_servers": 1835,
-        "lawsuit_pages": 102,
+        "mcp_servers": 1836,
+        "lawsuit_pages": 103,
         "deepfake_bills": 51,
         "compliance_docs": 64
     },
+    "domains": [
+        {
+            "body": "Prompt injection sits at the top of the OWASP GenAI risk list because it attacks the property that makes language models useful: they follow instructions, and they cannot reliably tell whose instructions they are following. Any channel that reaches the model's context is an injection path, including user input, retrieved documents, tool results, email bodies, web pages, and images with embedded text. Application defenses layer rather than solve: separate system instructions from untrusted content, filter inputs and outputs, and treat every model response as untrusted data until validated. No published defense eliminates the attack, which is why the strongest guidance assumes injection will sometimes succeed and limits what success can do.",
+            "slug": "app",
+            "label": "Application and Product Security"
+        },
+        {
+            "body": "Because injection cannot be filtered away, the durable defenses are architectural. Give the model the least privilege the task needs, require human approval before consequential actions such as sending, paying, or deleting, and constrain outbound network paths so a hijacked model has nowhere to exfiltrate to. Designs that separate a privileged planner from a quarantined reader, so the model that touches untrusted content never holds the authority to act, contain the blast radius even when the injection lands. The test of an AI architecture is not whether injection is possible but what the worst injected instruction could actually accomplish.",
+            "slug": "arch",
+            "label": "Architecture and Engineering"
+        },
+        {
+            "body": "Injection is the archetype of corruption without breach: the system is not compromised in any traditional sense, it is running exactly as designed on corrupted inputs, so no credential is stolen and no malware lands for detection to flag. Operations teams compensate by logging complete prompt, retrieval, and tool-call chains, baselining what normal tool-use patterns look like, planting canary strings in system prompts to detect leakage, and writing incident playbooks that treat model-initiated actions as potentially attacker-initiated. When an alert does fire, the investigation question changes from what did the attacker access to what was the model told.",
+            "slug": "ops",
+            "label": "Security Operations"
+        },
+        {
+            "body": "Indirect injection arrives through content your organization never wrote: a vendor's document, a partner's web page, a shared inbox, a third-party MCP server's tool descriptions. Every external content source an AI system reads is now part of the supply chain, and vendor assessment has to ask questions questionnaires never covered, including how retrieved third-party content is isolated from instructions, and whether the vendor's own AI features read content your adversaries can write.",
+            "slug": "tprm",
+            "label": "Third-Party and Supply Chain Risk"
+        },
+        {
+            "body": "Injection is also an exfiltration technique. Documented attacks instruct models to reveal system prompts, summarize and transmit connected documents, or encode stolen context into innocuous-looking output such as markdown image URLs. Data protection controls therefore extend to model egress: what stores the model can read, what leaves in completions, and whether outbound content is scanned the way outbound email already is.",
+            "slug": "data",
+            "label": "Data Protection and Privacy"
+        },
+        {
+            "body": "Governance owns the decision that no filter can make: which systems are permitted to act on untrusted content at all, and with what authority. A risk register entry for an AI assistant that reads external content and holds write access is describing a standing injection exposure, and the accountable owner has to accept, constrain, or decline it explicitly. Mapping that decision to the NIST AI RMF and recording it beats discovering after an incident that nobody decided.",
+            "slug": "gov",
+            "label": "Security Governance and Risk Management"
+        }
+    ],
     "generated": "2026-08-15"
 }
