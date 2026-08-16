@@ -1,6 +1,132 @@
 {
     "tax": "sec-agent-security",
     "uid": "a2538ec1",
+    "deep": [
+        {
+            "grp": "anatomy",
+            "intro": "A compromised agent does not fail in one step. These are the stages between an attacker's instruction and a consequence, and each one is a place the chain can be broken.",
+            "blocks": [
+                {
+                    "body": "The agent reads something an attacker controls: a web page, a document, a ticket, a tool result, an email, another agent's output. Nothing has gone wrong yet, and this is the last moment where nothing has.",
+                    "label": "Ingestion"
+                },
+                {
+                    "body": "The model treats the ingested content as direction rather than data. There is no architectural boundary that prevents this, so the question is never whether adoption can happen but what the agent is permitted to do once it has.",
+                    "label": "Instruction adoption"
+                },
+                {
+                    "body": "The agent incorporates the adopted goal into its plan, often reasoning coherently toward a harmful objective. Plans look normal in logs at this stage because the reasoning is sound, only the goal is wrong.",
+                    "label": "Planning"
+                },
+                {
+                    "body": "The agent reaches for tools and credentials it legitimately holds. This is the confused-deputy moment: the agent's own authority, not the attacker's, is what makes the next step possible, which is why standing broad permissions are the real vulnerability.",
+                    "label": "Tool selection and escalation"
+                },
+                {
+                    "body": "Something irreversible happens: a payment, a message, a deletion, a permission change, a publication. Detection after this point is incident response, not prevention.",
+                    "label": "Action"
+                },
+                {
+                    "body": "The output becomes input for the next agent or the next run, and memory persists the compromised state. This is where a single-turn failure becomes a durable one, and it is the stage least covered by conventional monitoring.",
+                    "label": "Propagation"
+                }
+            ],
+            "layout": "ordered",
+            "heading": "The agent kill chain"
+        },
+        {
+            "grp": "variants",
+            "intro": "",
+            "blocks": [
+                {
+                    "body": "The agent uses its own broad permissions on an attacker's behalf. The fix is not better refusal, it is delegation that carries the requesting user's authority so an agent can never exceed the rights of whoever invoked it.",
+                    "label": "Confused deputy"
+                },
+                {
+                    "body": "Each agent follows its rules, and the interaction still fails, because one agent's uncertain output becomes another's confident input. Errors amplify rather than cancel, and no single agent log shows a violation.",
+                    "label": "Cascading multi-agent failure"
+                },
+                {
+                    "body": "The agent has more capability, permission, or autonomy than the task requires, so an ordinary mistake becomes a serious one. OWASP names this directly in its LLM application risks, and it is the most common self-inflicted agent risk.",
+                    "label": "Excessive agency"
+                },
+                {
+                    "body": "An agent retries, spends, or spawns without bound, usually from a goal it cannot satisfy. The damage is operational and financial rather than confidential, and it is the failure most likely to happen without any adversary at all.",
+                    "label": "Runaway loops"
+                },
+                {
+                    "body": "Agent-to-agent messages inherit the trust of the system rather than the trust of their origin, so a compromised or malicious peer can instruct its neighbors. Protocol-level scoping and provenance are the controls, addressed in MCP's security guidance and in the A2A specification's treatment of agent identity.",
+                    "label": "Trust-boundary erosion between agents"
+                },
+                {
+                    "body": "False facts or instructions written into persistent memory outlive the session that planted them, so the agent re-adopts them later without the triggering content ever appearing again. Retention limits and provenance on memory writes are the practical defenses.",
+                    "label": "Memory poisoning"
+                }
+            ],
+            "layout": "grid",
+            "heading": "The failure modes specific to agents"
+        },
+        {
+            "grp": "scenario",
+            "intro": "",
+            "blocks": [
+                {
+                    "body": "A research agent is asked to compile competitive intelligence and retrieves a page containing planted claims. It summarizes faithfully, correctly marking uncertainty. A synthesis agent consumes that summary, and because its role is to produce a clean brief, it drops the uncertainty markers. A decision-support agent consumes the clean brief as established fact and recommends an action. An execution agent, authorized for low-risk operations, carries out the recommendation. Every agent did its job correctly. The failure lives entirely in the interfaces, where confidence was manufactured at each hop and no component was responsible for preserving it. This is why agent security is a systems problem: reviewing each agent in isolation would have found nothing, and the only place the failure is visible is in the chain as a whole.",
+                    "label": "A multi-agent failure where every agent obeyed its rules"
+                }
+            ],
+            "layout": "prose",
+            "heading": "A multi-agent failure where every agent obeyed its rules"
+        },
+        {
+            "grp": "framework",
+            "intro": "Agents run faster than human review, so the limits have to be enforced by machinery. Each control below holds without anyone watching.",
+            "blocks": [
+                {
+                    "body": "Issue per-task credentials scoped to the intersection of the task and the invoking principal's rights, never standing keys with omnibus permissions. This directly disarms the confused-deputy stage of the kill chain.",
+                    "label": "Scoped, short-lived credentials"
+                },
+                {
+                    "body": "Design tools to do one thing with server-side validation, and gate destructive operations behind confirmation. A well-designed tool set makes a successful injection survivable, which no classifier can promise.",
+                    "label": "Narrow tools with validated arguments"
+                },
+                {
+                    "body": "Halt execution automatically when behavior leaves the envelope: spend caps, action-rate limits, recursion and spawn limits, and hard stops on repeated failure. These catch runaway loops and compromise alike, and they work without attribution.",
+                    "label": "Circuit breakers"
+                },
+                {
+                    "body": "Treat peer-agent output as untrusted input, carry provenance and confidence across hops rather than flattening them, and require authority to narrow rather than widen at each boundary.",
+                    "label": "Trust boundaries between agents"
+                },
+                {
+                    "body": "Baseline each agent's normal tool-use pattern and alarm on scope jumps, especially a consequential tool call shortly after untrusted ingestion, the kill-chain signature. Supervise the system, not only each agent, because cascading failure is invisible at the single-agent level.",
+                    "label": "Runtime supervision"
+                },
+                {
+                    "body": "Pre-authorize who can stop an agent fleet, verify the mechanism works under load, and rehearse it. Improvising a shutdown during an incident is how a contained failure becomes an uncontained one.",
+                    "label": "Rehearsed kill switch"
+                },
+                {
+                    "body": "Expand an agent's action envelope in tiers, on evidence from adversarial evaluation and operating history, with the test record cited in the approval. Autonomy granted by default is autonomy nobody assessed.",
+                    "label": "Earned autonomy"
+                }
+            ],
+            "layout": "table",
+            "heading": "The containment envelope"
+        },
+        {
+            "grp": "board",
+            "intro": "",
+            "blocks": [
+                {
+                    "body": "What can this agent do without a human, and what is the worst thing it can do without a human? Whose authority does it act under, and can it exceed the rights of the person who invoked it? What stops it if it is wrong, and has that mechanism been tested under load rather than in theory? Which untrusted content does it read before it acts? If it is compromised, what does it reach next, and would we see the propagation? What evidence justified the autonomy it currently has, and when was that evidence last refreshed? An organization that can answer these has an agent program; one that cannot has agents in production and hopes.",
+                    "label": "Questions worth asking before an agent gets autonomy"
+                }
+            ],
+            "layout": "prose",
+            "heading": "What to ask before an agent gets autonomy"
+        }
+    ],
     "name": "AI Agent Security",
     "blurb": "Agent kill chains, cascading multi-agent failure, circuit breakers, agent-to-agent trust boundaries, and runtime supervision of autonomous systems.",
     "items": [
@@ -30,7 +156,7 @@
         }
     ],
     "stats": {
-        "mcp_servers": 1841,
+        "mcp_servers": 1842,
         "lawsuit_pages": 103,
         "deepfake_bills": 51,
         "compliance_docs": 64
