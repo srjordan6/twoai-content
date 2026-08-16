@@ -1,6 +1,112 @@
 {
     "tax": "sec-jailbreaks",
     "uid": "f99c1c86",
+    "deep": [
+        {
+            "grp": "anatomy",
+            "intro": "Single-message jailbreaks are the easy case. The techniques that work against current models unfold over a conversation, and each stage below is individually unremarkable.",
+            "blocks": [
+                {
+                    "body": "The attacker sets a context in which the request becomes plausible: fiction, research, role-play, a hypothetical, a translation task, a security exercise. Nothing prohibited has been asked, and the model has agreed to a premise rather than a request.",
+                    "label": "Establish a frame"
+                },
+                {
+                    "body": "A series of benign requests inside the frame, each one answered. This builds a conversational precedent, and many-shot techniques industrialize exactly this: flood the context with examples of the model complying until compliance is the pattern it continues.",
+                    "label": "Normalize compliance"
+                },
+                {
+                    "body": "Each step is slightly further than the last and never far enough from the previous turn to read as a violation on its own. Crescendo-style attacks documented by Microsoft research work precisely because no single message would trip a filter.",
+                    "label": "Escalate by increments"
+                },
+                {
+                    "body": "If refusal appears, the request is re-encoded: another language, base64, a cipher game, character substitution, or splitting the request across turns so no message contains it whole.",
+                    "label": "Obscure the payload"
+                },
+                {
+                    "body": "A working sequence is templated and shared. This is why jailbreaks behave like exploits rather than like accidents, and why public technique catalogues grow faster than any single lab patches.",
+                    "label": "Harvest and reuse"
+                }
+            ],
+            "layout": "ordered",
+            "heading": "How a jailbreak escalates"
+        },
+        {
+            "grp": "variants",
+            "intro": "",
+            "blocks": [
+                {
+                    "body": "Instructing the model to adopt a character without the operator's restrictions. The DAN family circulated widely enough to become a genre, and the pattern persists because narrative framing is genuinely useful and cannot simply be banned.",
+                    "label": "Persona and role-play"
+                },
+                {
+                    "body": "Filling a long context with hundreds of examples of compliant answers so the model continues the pattern. Anthropic's published research on this showed effectiveness rising with context length, making it a capability-driven risk rather than a bug.",
+                    "label": "Many-shot"
+                },
+                {
+                    "body": "Crescendo and similar approaches that reach the target through gradual steps, defeating per-message filtering by construction.",
+                    "label": "Multi-turn escalation"
+                },
+                {
+                    "body": "Base64, ciphers, low-resource languages, token splitting, and homoglyphs. These exploit the gap between what a safety classifier reads and what the model understands.",
+                    "label": "Encoding and obfuscation"
+                },
+                {
+                    "body": "Appeals to expertise, permission, or necessity, including claims that the operator has authorized the request. Effective because helpfulness and deference are trained behaviors.",
+                    "label": "Persuasion and authority framing"
+                },
+                {
+                    "body": "Requests carried in images, audio, or documents rather than text, exercising paths where safety coverage is often thinner than on the text channel.",
+                    "label": "Cross-modal delivery"
+                }
+            ],
+            "layout": "grid",
+            "heading": "The technique families"
+        },
+        {
+            "grp": "framework",
+            "intro": "Refusal training is one layer and degrades under sustained pressure. The stack below assumes a jailbreak eventually succeeds and makes that outcome cheap.",
+            "blocks": [
+                {
+                    "body": "Screen inputs and outputs with classifiers that do not share the base model's failure modes. Anthropic's constitutional-classifier trials reported large reductions in jailbreak success with modest over-refusal, which is the shape of a working layer rather than a solved problem.",
+                    "label": "Independent classifier layers"
+                },
+                {
+                    "body": "Version known jailbreak techniques as tests that block deployment when a model, prompt, or configuration change reopens them. Without this, safety behavior silently regresses on every update.",
+                    "label": "Adversarial suites in CI"
+                },
+                {
+                    "body": "Look at conversations, not messages: refusal-then-rephrase loops, escalation gradients, sudden encoding, and context stuffing are visible only in aggregate.",
+                    "label": "Session-level detection"
+                },
+                {
+                    "body": "Rate-limit and add cost to repeated near-identical attempts. Jailbreaking is iterative, so raising the cost per iteration reduces success more than any single filter.",
+                    "label": "Friction on repetition"
+                },
+                {
+                    "body": "A jailbroken model should still hit scoped credentials, tool allow-lists, egress limits, and human approval gates. This is the layer that turns a successful jailbreak into words rather than actions.",
+                    "label": "Authorization behind the model"
+                },
+                {
+                    "body": "Report novel working techniques to the model provider, since patched base models are the only layer that improves for everyone at once.",
+                    "label": "Provider feedback loop"
+                }
+            ],
+            "layout": "table",
+            "heading": "Defense in depth against jailbreaks"
+        },
+        {
+            "grp": "board",
+            "intro": "",
+            "blocks": [
+                {
+                    "body": "If our model produced the worst output its training forbids, what would actually happen next, does it reach a customer, a system, or a payment? Do we test known jailbreak techniques on every release, and does a failure block the deploy? Can we see escalation across a conversation, or only flag individual messages? What does a jailbroken model still not have access to? Where does our output go without human review? The useful reframing for a board is that jailbreak resistance is a content-quality control, and the controls that limit consequence are separate and more durable.",
+                    "label": "Questions worth asking about jailbreak exposure"
+                }
+            ],
+            "layout": "prose",
+            "heading": "What to ask about jailbreak exposure"
+        }
+    ],
     "name": "Jailbreaks",
     "blurb": "Techniques that bypass model safety training, and how labs measure and patch against them.",
     "items": [
@@ -30,7 +136,7 @@
         }
     ],
     "stats": {
-        "mcp_servers": 1841,
+        "mcp_servers": 1842,
         "lawsuit_pages": 103,
         "deepfake_bills": 51,
         "compliance_docs": 64
