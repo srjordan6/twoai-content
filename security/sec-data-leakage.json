@@ -1,6 +1,112 @@
 {
     "tax": "sec-data-leakage",
     "uid": "a2be4c55",
+    "deep": [
+        {
+            "grp": "anatomy",
+            "intro": "Leakage is not one hole. These are distinct mechanisms with distinct controls, and programs that treat them as one thing cover only the first.",
+            "blocks": [
+                {
+                    "body": "A person pastes confidential material into a model, and it leaves at the moment of use regardless of what the provider does afterward. This is the highest-volume path and the one classic DLP was never pointed at.",
+                    "label": "Out through the prompt"
+                },
+                {
+                    "body": "A RAG system serves a document to a user who has no right to read it, because authorization was enforced when documents were indexed rather than when they are retrieved. Nothing was breached, the system answered as built.",
+                    "label": "Out through retrieval"
+                },
+                {
+                    "body": "The model emits training data it retained, worst for rare, duplicated, or distinctive strings, which describes credentials, keys, and personal records precisely. Extraction research has recovered verbatim personal information from production systems.",
+                    "label": "Out through memorization"
+                },
+                {
+                    "body": "Membership inference confirms whether specific records were in training, and model-behavior probing reveals properties of the training set. Nothing verbatim leaks, and a confidentiality obligation is still broken.",
+                    "label": "Out through inference about the model"
+                }
+            ],
+            "layout": "ordered",
+            "heading": "The four paths data takes out"
+        },
+        {
+            "grp": "variants",
+            "intro": "",
+            "blocks": [
+                {
+                    "body": "Crafted queries that induce a model to reproduce memorized text, including the divergence-style attacks that pulled memorized content from deployed chat models at scale.",
+                    "label": "Training-data extraction"
+                },
+                {
+                    "body": "Determining whether a specific record was in the training set, which is enough to breach confidentiality when membership itself is sensitive, as in patient or client populations.",
+                    "label": "Membership inference"
+                },
+                {
+                    "body": "Recovering the operator's instructions, which routinely surface publicly within days of a launch. The practical lesson is to treat the system prompt as discoverable and keep real secrets out of it.",
+                    "label": "System-prompt extraction"
+                },
+                {
+                    "body": "Retrieval that ignores the requesting user's entitlements, the most common enterprise leakage incident and the most fixable.",
+                    "label": "Cross-permission retrieval"
+                },
+                {
+                    "body": "The vector store is a dense copy of everything embedded, and inversion research shows embeddings can leak substantial source content. Most data maps omit it entirely.",
+                    "label": "Embedding and vector-store exposure"
+                },
+                {
+                    "body": "Prompts, completions, and agent memory retained indefinitely across systems no retention schedule covers, quietly building the highest-sensitivity corpus in the organization.",
+                    "label": "Log and transcript sprawl"
+                }
+            ],
+            "layout": "grid",
+            "heading": "The extraction techniques"
+        },
+        {
+            "grp": "framework",
+            "intro": "Order matters here: what never entered the weights cannot be extracted from them, so the earliest controls do the most work.",
+            "blocks": [
+                {
+                    "body": "Keep regulated and secret data out of training and fine-tuning unless the use case requires it. Nothing else on this list is as effective, because what never entered cannot be extracted.",
+                    "label": "Upstream minimization"
+                },
+                {
+                    "body": "Deduplicate training data, the single most effective memorization reducer in published research, and apply differential privacy where sensitive data must be used.",
+                    "label": "Deduplication and privacy-preserving training"
+                },
+                {
+                    "body": "Enforce the requesting user's entitlements at query time, segment corpora by classification, and keep high-sensitivity material out of general-purpose assistants.",
+                    "label": "Authorization at retrieval time"
+                },
+                {
+                    "body": "Scan both directions with tooling that understands meaning, since sensitive content in AI traffic rarely arrives formatted like a card number.",
+                    "label": "Prompt and completion DLP"
+                },
+                {
+                    "body": "Seed canary strings into training and fine-tuning data and alert if they ever appear in output. This turns memorization from a theoretical risk into a measured one.",
+                    "label": "Canaries and extraction self-testing"
+                },
+                {
+                    "body": "Map, classify, access-control, and time-limit embeddings and agent memory as the data stores they are.",
+                    "label": "Vector store and memory governance"
+                },
+                {
+                    "body": "Pin retention, training use, sub-processors, and jurisdiction contractually, and verify configuration rather than assuming the default is the one you negotiated.",
+                    "label": "Provider terms as a control"
+                }
+            ],
+            "layout": "table",
+            "heading": "Controls, from upstream to output"
+        },
+        {
+            "grp": "board",
+            "intro": "",
+            "blocks": [
+                {
+                    "body": "What data is in our models, and who decided it should be? If a customer asks whether their data trained our systems, can we answer with evidence? Does our retrieval enforce the same permissions as the source systems, tested rather than assumed? Do we scan what leaves in prompts as carefully as what leaves in email? Where do embeddings, transcripts, and agent memory live, and how long do they stay? Could we detect an extraction campaign against our own model? The uncomfortable one to end on: if we had to delete one person's data from a trained model tomorrow, what would we actually do, and would we describe it honestly to a regulator?",
+                    "label": "Questions worth asking about AI data exposure"
+                }
+            ],
+            "layout": "prose",
+            "heading": "What to ask about AI data exposure"
+        }
+    ],
     "name": "Data Leakage",
     "blurb": "Training data extraction, membership inference, and models revealing what they should not.",
     "items": [
@@ -30,7 +136,7 @@
         }
     ],
     "stats": {
-        "mcp_servers": 1841,
+        "mcp_servers": 1842,
         "lawsuit_pages": 103,
         "deepfake_bills": 51,
         "compliance_docs": 64
