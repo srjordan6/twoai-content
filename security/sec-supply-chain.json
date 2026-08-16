@@ -1,6 +1,156 @@
 {
     "tax": "sec-supply-chain",
     "uid": "19897948",
+    "deep": [
+        {
+            "grp": "layer",
+            "intro": "Every component below can be manipulated, poisoned, or compromised, and a compromise at any link is carried forward by the ones after it.",
+            "blocks": [
+                {
+                    "body": "Internal records, scraped web text, open datasets, and licensed vendor data. This is the earliest point of compromise and the hardest to audit after the fact, because once data is folded into a training run its influence is distributed across weights rather than stored as a retrievable record. Web-scraped corpora are the softest target: published research has shown that buying expired domains still referenced by widely used datasets is enough to insert attacker-controlled content into what the next model learns.",
+                    "label": "Data sources"
+                },
+                {
+                    "body": "Training pipelines, fine-tuning jobs, embeddings, and parameter-efficient adapters such as LoRA. Adapters deserve specific attention because they are small, easy to share, casually downloaded from public hubs, and merged into a base model with far less scrutiny than a full model would attract, while still being able to change behavior in targeted ways.",
+                    "label": "Training and fine-tuning"
+                },
+                {
+                    "body": "Foundation models, open-weight releases, fine-tuned derivatives, weights files, and tokenizers. The artifact itself has been the payload: pickle-based serialization formats execute code at load time, which is why loading an untrusted model historically meant running untrusted code, and why safetensors and signed artifacts matter as controls rather than as preferences.",
+                    "label": "The model artifact"
+                },
+                {
+                    "body": "Frameworks, orchestration libraries, SDKs, APIs, and the RAG stack including vector databases. This layer inherits classic software supply chain risk in full, plus one AI-specific twist: a retrieval corpus is executable in effect, because documents in it become instructions the model may follow.",
+                    "label": "The application layer"
+                },
+                {
+                    "body": "Tools, plugins, connectors, and MCP servers. This is where a compromised component stops producing bad text and starts taking actions, so the blast radius is defined by what the tools can do rather than by what the model can say. Tool descriptions are themselves ingested as context, which makes an integration's metadata an injection surface, addressed directly in the MCP specification's security best practices.",
+                    "label": "The agent and plugin layer"
+                },
+                {
+                    "body": "ERP, CRM, databases, cloud, email, file stores, and operational technology, the systems the AI stack is wired into. Nothing here is AI-specific, which is the point: the value of every preceding compromise is realized when it reaches these systems, so the containment placed between the agent layer and enterprise systems determines what an upstream compromise is actually worth to an attacker.",
+                    "label": "Enterprise systems"
+                }
+            ],
+            "layout": "ordered",
+            "heading": "The chain, link by link"
+        },
+        {
+            "grp": "attack",
+            "intro": "",
+            "blocks": [
+                {
+                    "body": "Backdoors or biases introduced into a model that otherwise passes evaluation, triggered by a specific phrase or pattern the attacker controls. NIST's adversarial machine learning taxonomy treats it as a first-class attack family, and the practical problem is that a backdoored model behaves correctly on every input except the one that matters.",
+                    "label": "Model poisoning"
+                },
+                {
+                    "body": "Corrupting training or fine-tuning data to shape behavior. Published research indicates a near-constant number of poisoned documents can implant a backdoor regardless of model scale, which inverts the intuition that web-scale training dilutes small amounts of bad data.",
+                    "label": "Data poisoning"
+                },
+                {
+                    "body": "Tampered or unverified model files distributed through public hubs. Registry security scanning has found and removed hundreds of malicious model files, and the PoisonGPT demonstration showed the full path: modify an open model, republish under a near-identical name, and wait for the mistaken pull.",
+                    "label": "Compromised open-source models"
+                },
+                {
+                    "body": "Compromised libraries and packages in the AI toolchain, including typosquats and hallucinated dependencies, package names a model repeatedly invents that an attacker then registers so the next developer who trusts the suggestion installs attacker code. Compromised maintainer accounts have shipped malicious updates into ML toolchains directly.",
+                    "label": "Malicious AI dependencies"
+                },
+                {
+                    "body": "A malicious or over-scoped plugin, connector, or MCP server abusing the trust an agent places in its tools. The attack does not need to defeat the model, it only needs the model to use it as intended, which is why tool provenance and scope review belong in vendor assessment rather than in a developer's afternoon.",
+                    "label": "Plugin and tool supply chain"
+                },
+                {
+                    "body": "Planted documents in a knowledge base that steer answers or hijack the agent that retrieves them. It is both a supply chain problem, because the corpus is an ingested third-party component, and an injection problem, because retrieved text arrives in the same token stream as instructions.",
+                    "label": "RAG poisoning"
+                },
+                {
+                    "body": "Untrusted fine-tuning datasets, adapters, or managed fine-tuning services introducing vulnerabilities or bias. Sleeper-agent research showed backdoors that survive subsequent safety fine-tuning, so a later alignment pass is not a cleanup step.",
+                    "label": "Fine-tuning supply chain risk"
+                },
+                {
+                    "body": "Weights stolen, altered, or reverse-engineered. Theft is the mirror image of poisoning across the same custody gaps, and RAND's published analysis of frontier-weight security catalogues the attack vectors in detail. The 2023 LLaMA weights leak remains the canonical demonstration that once weights are out, they stay out.",
+                    "label": "Model weight theft and tampering"
+                }
+            ],
+            "layout": "grid",
+            "heading": "The eight attack areas"
+        },
+        {
+            "grp": "scenario",
+            "intro": "",
+            "blocks": [
+                {
+                    "body": "Consider an autonomous procurement workflow. An attacker plants false payment instructions in a supplier data source the organization trusts. An AI agent retrieves that record as authoritative context, because retrieval systems are built to trust their corpus. The agent generates a purchase order and payment instruction consistent with what it read. The payment executes against the attacker's account, and no human reviewed the underlying record because the workflow was designed to remove that step. No malware ran, no ransomware deployed, no password was stolen, and no control failed in the sense any monitoring tool would recognize, because every component did exactly what it was built to do. The compromise entered through trusted data and was carried by trusted automation, which is what makes AI supply chain risk different from the software supply chain risk security programs already know.",
+                    "label": "How a supply chain compromise pays off without any malware"
+                }
+            ],
+            "layout": "prose",
+            "heading": "How a supply chain compromise pays off without any malware"
+        },
+        {
+            "grp": "framework",
+            "intro": "",
+            "blocks": [
+                {
+                    "body": "Maintain a current inventory of models, datasets, libraries, APIs, plugins, agents, and tools, with a named owner for each. Everything downstream depends on this, because you cannot pin, scan, or recall a component you do not know you run, and shadow AI guarantees the declared inventory understates reality unless discovery is continuous.",
+                    "label": "AI asset inventory"
+                },
+                {
+                    "body": "Track source, version, hash, owner, approver, and deployment history for every model. Provenance is what converts a later disclosure that an upstream artifact was malicious into a specific list of affected systems, rather than a guess. Treat unverifiable lineage as a finding in its own right.",
+                    "label": "Model provenance"
+                },
+                {
+                    "body": "Apply quality, integrity, licensing, version control, and access governance to training and retrieval data alike. Version and hash every snapshot so what a model learned from is reconstructable, and govern the retrieval corpus with the same seriousness, since documents in it function as instructions.",
+                    "label": "Dataset governance"
+                },
+                {
+                    "body": "Document AI components and dependencies as an AI-BOM, the direct analogue of the SBOM, covering models, datasets, adapters, and the services behind them. CycloneDX has published machine-learning BOM support, so this is expressible in a standard format rather than a spreadsheet, and it should be demanded from vendors as well as maintained internally.",
+                    "label": "AI bill of materials"
+                },
+                {
+                    "body": "Verify hash and signature, scan artifacts for embedded code, and adversarially test before anything reaches production. Prefer safetensors over pickle-based formats, and stand up an internal registry that mirrors approved external artifacts after scanning, with admission control so production can only load from it, which collapses the entire public-registry attack surface into one controlled ingestion point.",
+                    "label": "Model integrity"
+                },
+                {
+                    "body": "Test for model attacks, prompt injection, RAG poisoning, tool abuse, and excessive agency, as versioned suites that run on every change rather than once before launch. A weakness that recurs across model versions is an architecture problem, not a prompt problem, and routing findings by that distinction is what stops the same issue reappearing each quarter.",
+                    "label": "AI red teaming"
+                },
+                {
+                    "body": "Verify every access, tool call, API, and action, and apply least privilege throughout. The design assumption is that some component in the chain is already compromised, so authority is scoped per task and per principal, and egress is constrained so a compromised component has nowhere to send what it takes.",
+                    "label": "Zero trust for AI"
+                },
+                {
+                    "body": "Require human approval for high-risk actions and irreversible operations, payments, production changes, data deletion, external communication. This is the control that breaks the scenario above, and it is worth stating plainly that it works by design rather than by detection: it does not need to notice the compromise to stop the loss.",
+                    "label": "Human in the loop"
+                }
+            ],
+            "layout": "table",
+            "heading": "A control framework for the AI supply chain"
+        },
+        {
+            "grp": "board",
+            "intro": "",
+            "blocks": [
+                {
+                    "body": "How many AI models are in use across the organization, and where did each model and dataset come from? Can we prove model integrity and provenance, and do we maintain an AI bill of materials? Who approves models for production? Which AI agents can take autonomous actions, what systems and data can those agents reach, and can they make financial or operational decisions without human approval? What happens if one of our AI vendors is compromised, and could we identify every application using a compromised model or dependency? Do we test AI supply chain compromise scenarios, and what is our policy for high-risk AI actions and rollback? These are answerable questions with concrete artifacts behind them, the inventory, the provenance records, the AI-BOM, the approval log, the agent authorization matrix, the tested rollback procedure, and an organization that cannot answer them does not have an AI supply chain program, it has AI deployments.",
+                    "label": "The twelve questions a board should be asking"
+                }
+            ],
+            "layout": "prose",
+            "heading": "What the board should ask"
+        },
+        {
+            "grp": "trust",
+            "intro": "",
+            "blocks": [
+                {
+                    "body": "Authority in an AI system now travels a longer path than any access-control model was designed for: a human authorizes an identity, that identity is exercised by an agent, the agent runs on a model, the model consumes data, the agent invokes tools through APIs, and the result is a business action with real consequence. Every link is a trust decision, and each one can be attacked independently. The practical consequence is that the next serious AI security failure is unlikely to look like a hacked model. It is more likely to arrive through something the AI legitimately trusted, a dataset, an adapter, a plugin, a retrieved document, a vendor feature switched on by default, which is precisely why supply chain controls, not model controls, carry most of the weight here.",
+                    "label": "The trust chain that has to hold"
+                }
+            ],
+            "layout": "prose",
+            "heading": "The trust chain that has to hold"
+        }
+    ],
     "name": "AI Supply Chain Attacks",
     "blurb": "Compromised models, datasets, and packages upstream: malicious model files, dependency attacks, opaque fourth-party model chains, AI bills of materials, and registry integrity.",
     "items": [
@@ -38,7 +188,7 @@
         }
     ],
     "stats": {
-        "mcp_servers": 1841,
+        "mcp_servers": 1842,
         "lawsuit_pages": 103,
         "deepfake_bills": 51,
         "compliance_docs": 64
