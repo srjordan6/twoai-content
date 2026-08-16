@@ -43,6 +43,24 @@
         "deepfake_bills": 51,
         "compliance_docs": 64
     },
+    "topic": [
+        {
+            "body": "Prompt injection is an attack where instructions embedded in content the model processes override the instructions its operator gave it. It exists because a language model has no hardware boundary between code and data: the system prompt, the user's request, a retrieved web page, an email body, a PDF, an image caption, and a tool result all arrive as one token stream, and the model weighs whatever is most instruction-shaped. Direct injection comes from the user typing adversarial input; indirect injection, the more dangerous form, arrives inside third-party content the system reads on the user's behalf, so the victim never sees the attack. OWASP ranks it first among LLM application risks because it is inherent to the architecture, not a bug any patch removes.",
+            "block": "def"
+        },
+        {
+            "body": "The documented pattern set is broad. Hidden text in web pages (white-on-white, HTML comments, CSS-hidden spans) instructing an AI browser or summarizer to change its answer, exfiltrate the conversation, or recommend the attacker's product. Instructions planted in email bodies so an AI assistant that triages mail forwards messages or leaks inbox contents, the class demonstrated repeatedly against agentic email assistants in published research. Poisoned documents in shared drives that hijack RAG systems when retrieved. Instructions inside images that multimodal models read and obey. Malicious MCP tool descriptions that an agent ingests as trusted context. Markdown-image exfiltration, where the model is told to render an image whose URL encodes stolen data, appears across published advisories and vendor postmortems as the canonical data-theft channel.",
+            "block": "examples"
+        },
+        {
+            "body": "Detection starts with logging the full chain: prompt, retrieved content, model output, and every tool call, because injection is invisible if you only log the user's question. Scan inbound context for instruction-shaped content in places instructions should not be, including hidden HTML, zero-width characters, and imperative phrasing inside documents. Plant canary strings in system prompts and alert when they appear in output, which catches both leakage and successful override. Baseline each application's normal tool-call pattern and flag deviations, a summarizer that suddenly calls a send-email tool is the alarm. Treat refusal-then-compliance sequences and outputs containing URLs with encoded parameters as review triggers.",
+            "block": "detect"
+        },
+        {
+            "body": "No filter eliminates injection, so defense is layered containment. Separate privileges: the component that reads untrusted content should not hold the authority to act, the dual-model pattern where a quarantined reader summarizes for a privileged planner. Enforce least privilege on every tool: scoped tokens, allow-listed actions, per-call argument validation. Require human confirmation for consequential operations, sending, paying, deleting, sharing. Constrain egress so exfiltration has nowhere to go: block outbound URLs in rendered output, strip markdown images from untrusted flows. Add input and output classifiers as a detection layer while assuming they will sometimes miss. The design test is simple: assume the injection succeeds, then ask what the worst instruction could actually accomplish.",
+            "block": "defend"
+        }
+    ],
     "domains": [
         {
             "body": "Prompt injection sits at the top of the OWASP GenAI risk list because it attacks the property that makes language models useful: they follow instructions, and they cannot reliably tell whose instructions they are following. Any channel that reaches the model's context is an injection path, including user input, retrieved documents, tool results, email bodies, web pages, and images with embedded text. Application defenses layer rather than solve: separate system instructions from untrusted content, filter inputs and outputs, and treat every model response as untrusted data until validated. No published defense eliminates the attack, which is why the strongest guidance assumes injection will sometimes succeed and limits what success can do.",
@@ -75,5 +93,5 @@
             "label": "Security Governance and Risk Management"
         }
     ],
-    "generated": "2026-08-15"
+    "generated": "2026-08-16"
 }
