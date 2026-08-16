@@ -1,6 +1,120 @@
 {
     "tax": "sec-red-teaming",
     "uid": "15fe15c4",
+    "deep": [
+        {
+            "grp": "anatomy",
+            "intro": "Red teaming fails when it is an event. These stages describe it as a loop, which is the only form that keeps pace with the attack literature.",
+            "blocks": [
+                {
+                    "body": "Decide what is being tested and against whom: the model, the application, the tools, the agent's action envelope, or the whole system. Scoping to the model alone is the most common way an exercise misses everything that matters.",
+                    "label": "Scope and threat model"
+                },
+                {
+                    "body": "Run the campaign: injection, jailbreaks, extraction probes, tool-abuse chains, adversarial inputs, and multi-turn escalation, drawing on public technique catalogues and current research rather than last year's list.",
+                    "label": "Attack execution"
+                },
+                {
+                    "body": "Sort findings into prompt-level, application-level, and architectural. This split is the discipline of the whole practice, because it determines whether a fix holds or the finding returns next quarter.",
+                    "label": "Triage by root cause"
+                },
+                {
+                    "body": "Fix at the level the root cause sits. A weakness patched in the system prompt that keeps recurring across model versions is an architecture bug being treated as a wording problem.",
+                    "label": "Remediation"
+                },
+                {
+                    "body": "Turn every successful attack into a versioned test that runs on every change, which is what stops the same weakness reopening silently after a model update.",
+                    "label": "Regression capture"
+                },
+                {
+                    "body": "Feed successful attacks to the detection side as hypotheses so red-team discovery becomes production coverage rather than a report nobody operationalized.",
+                    "label": "Purple-team handoff"
+                }
+            ],
+            "layout": "ordered",
+            "heading": "The loop, end to end"
+        },
+        {
+            "grp": "variants",
+            "intro": "",
+            "blocks": [
+                {
+                    "body": "The baseline, tested in depth rather than as a checkbox, including multi-turn and cross-modal delivery.",
+                    "label": "Prompt injection and jailbreak campaigns"
+                },
+                {
+                    "body": "Attempts to pull memorized training data, system prompts, and retrieval content beyond the tester's entitlements.",
+                    "label": "Data-extraction probing"
+                },
+                {
+                    "body": "Driving an agent to take unauthorized actions through its own tools, which is where consequence lives in agentic systems.",
+                    "label": "Tool-abuse and agent chains"
+                },
+                {
+                    "body": "Testing what the system will do unprompted when given room, which surfaces authority nobody intended to grant.",
+                    "label": "Excessive-agency probing"
+                },
+                {
+                    "body": "Attacking the interfaces between agents, where cascading failure and trust erosion appear and single-agent review sees nothing.",
+                    "label": "Multi-agent and boundary testing"
+                },
+                {
+                    "body": "Structured testing against harmful-output categories, the area with the most mature public benchmarks and the most published lab methodology.",
+                    "label": "Safety and abuse evaluation"
+                }
+            ],
+            "layout": "grid",
+            "heading": "What gets tested"
+        },
+        {
+            "grp": "framework",
+            "intro": "",
+            "blocks": [
+                {
+                    "body": "Versioned, running on every model, prompt, and configuration change, blocking on regression. This is the difference between a practice and an event.",
+                    "label": "Adversarial suites in CI"
+                },
+                {
+                    "body": "Run against integrated systems with real tools and data connected, since pre-deployment testing structurally cannot see integration seams or drift.",
+                    "label": "Continuous production-like testing"
+                },
+                {
+                    "body": "Route findings by level and treat recurrence across model versions as an architectural finding by definition.",
+                    "label": "Root-cause routing"
+                },
+                {
+                    "body": "Expand an agent's action envelope only after it survives structured campaigns, and cite the test record in the approval so authority traces to evidence.",
+                    "label": "Autonomy gating on evidence"
+                },
+                {
+                    "body": "Complement internal work with outside testers, following the pattern the major labs and the US and UK AI Safety and Security Institutes established for pre-deployment evaluation.",
+                    "label": "External and independent testing"
+                },
+                {
+                    "body": "Contract for what testing the vendor performs, on what cadence, whether results are shareable, and whether your own testing is permitted. A vendor that cannot answer is asking you to inherit an untested attack surface on faith.",
+                    "label": "Vendor testing requirements"
+                },
+                {
+                    "body": "Decide in advance how findings are published or shared, following the system-card and bounty precedents, since the alternative is deciding it under pressure.",
+                    "label": "Disclosure practice"
+                }
+            ],
+            "layout": "table",
+            "heading": "Making adversarial testing structural"
+        },
+        {
+            "grp": "board",
+            "intro": "",
+            "blocks": [
+                {
+                    "body": "Do we test our AI systems adversarially, on what schedule, and does a failure stop a release? Do the tests cover the tools and actions, or only the model's words? When we fix a finding, do we fix the architecture or the wording, and do we know which because we track recurrence? What evidence justified the autonomy our agents currently have, and when was it last refreshed? Do our vendors test, and can they show us anything? The clarifying question for any program: when was the last time an adversarial finding actually blocked a deployment, and if the answer is never, is that because the systems are sound or because the tests are not wired to anything?",
+                    "label": "Questions worth asking about adversarial testing"
+                }
+            ],
+            "layout": "prose",
+            "heading": "What to ask about adversarial testing"
+        }
+    ],
     "name": "AI Red Teaming and Adversarial Evaluation",
     "blurb": "Continuous adversarial testing of AI systems: methods, benchmarks, disclosure practices, and the evidence that earns expanded autonomy.",
     "items": [
@@ -30,7 +144,7 @@
         }
     ],
     "stats": {
-        "mcp_servers": 1841,
+        "mcp_servers": 1842,
         "lawsuit_pages": 103,
         "deepfake_bills": 51,
         "compliance_docs": 64
