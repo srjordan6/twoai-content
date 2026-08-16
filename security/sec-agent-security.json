@@ -35,6 +35,24 @@
         "deepfake_bills": 51,
         "compliance_docs": 64
     },
+    "topic": [
+        {
+            "body": "AI agent security governs autonomous systems that plan, call tools, and act with limited human oversight, where the risk is no longer a wrong answer but a wrong action taken at machine speed. Its core concerns are the agent kill chain (how a compromise propagates from injected instruction to consequential action), cascading multi-agent failure (systems where every agent obeyed its rules and the interaction still failed), agent-to-agent trust boundaries, and runtime supervision, because humans are too slow to sit in a machine-speed loop, so the limits must be enforced by machinery. Tool design is where agent security is won or lost: the worst reachable action defines the real risk.",
+            "block": "def"
+        },
+        {
+            "body": "The documented patterns come from research and early deployment. Injection-to-action chains, where indirect prompt injection drives an agent with tool access to exfiltrate data or take unauthorized actions, are demonstrated repeatedly against agentic email and browser assistants in published work. The confused-deputy pattern, an agent using its own broad permissions on an attacker's behalf, is the recurring root cause. Cascading failure is documented in multi-agent research where agents amplify each other's errors. The MCP ecosystem, now spanning thousands of servers tracked on this site, is the concrete agent-to-agent surface where tool provenance, hidden instructions in tool descriptions, and cross-boundary delegation are live concerns, addressed in the MCP specification's security guidance.",
+            "block": "examples"
+        },
+        {
+            "body": "Supervise the system, not just each agent, because cascading failure is invisible at the single-agent level. Log every tool call with full context, plan, arguments, and result, and baseline normal tool-use patterns per agent so a scope jump alarms. Monitor for the kill-chain signature: untrusted content ingested, then a consequential tool call shortly after. Track agent-to-agent delegation and alert when authority widens across a boundary. Watch spend, action rate, and resource consumption for runaway loops. Treat tool descriptions as an injection surface and monitor what agents read as instructions, not just what users type.",
+            "block": "detect"
+        },
+        {
+            "body": "Design the envelope and enforce it with machinery. Machine-enforced limits on what an agent can spend, touch, and trigger; circuit breakers that halt execution when behavior leaves the envelope; trust boundaries so one compromised agent cannot instruct another into escalation. Build narrow, well-scoped tools with validated arguments and destructive operations gated behind confirmation, a well-designed tool set makes the worst injection survivable. Pre-authorize and rehearse kill-switch protocols rather than improvising mid-incident. Earn autonomy in tiers: expand an agent's action envelope only on evidence from adversarial evaluation and operating history, and follow the protocol-level guidance (including MCP security best practices) for where trust boundaries sit.",
+            "block": "defend"
+        }
+    ],
     "domains": [
         {
             "body": "Agent security is envelope design: machine-enforced limits on what an agent can spend, touch, and trigger, circuit breakers that halt execution when behavior exits the envelope, and trust boundaries between agents so that one compromised or confused agent cannot instruct another into escalation. Humans are too slow to supervise machine-speed loops in real time, so the envelope has to be enforced by machinery, with the protocol-level guidance for tool ecosystems, including MCP's security best practices, defining where those boundaries sit.",
@@ -62,5 +80,5 @@
             "label": "Third-Party and Supply Chain Risk"
         }
     ],
-    "generated": "2026-08-15"
+    "generated": "2026-08-16"
 }
