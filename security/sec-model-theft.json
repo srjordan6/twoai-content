@@ -1,6 +1,104 @@
 {
     "tax": "sec-model-theft",
     "uid": "ee588f1c",
+    "deep": [
+        {
+            "grp": "anatomy",
+            "intro": "Weights walk out, or behavior is copied through the front door. They share almost no controls, and programs that plan for one usually have nothing for the other.",
+            "blocks": [
+                {
+                    "body": "Exfiltration from storage, training infrastructure, backups, or an endpoint, usually via credentials rather than intrusion. The loss is total and permanent, because a model cannot be rotated the way a key can, and the 2023 LLaMA leak remains the demonstration.",
+                    "label": "Weights leave"
+                },
+                {
+                    "body": "Systematic querying of the API to train a substitute model. Nothing is breached, every request is individually legitimate, and the theft exists only in the aggregate pattern, which is why it is a detection problem rather than an access-control one.",
+                    "label": "Behavior is copied"
+                }
+            ],
+            "layout": "ordered",
+            "heading": "The two theft paths"
+        },
+        {
+            "grp": "variants",
+            "intro": "",
+            "blocks": [
+                {
+                    "body": "The most direct path, established by federal charges against a former Google engineer accused of taking AI trade secrets. Access legitimately held is the hardest vector to distinguish from work.",
+                    "label": "Insider exfiltration"
+                },
+                {
+                    "body": "Cloud keys, CI systems, notebooks, and orchestration platforms with standing access to weight storage. RAND's published analysis of frontier-weight security catalogues these vectors in detail.",
+                    "label": "Credential and infrastructure compromise"
+                },
+                {
+                    "body": "Copies that inherit none of the controls placed on the primary store, which is where custody programs most often break in practice.",
+                    "label": "Backup and snapshot exposure"
+                },
+                {
+                    "body": "Weights on laptops and shared drives for convenience during development, each copy a new custody boundary nobody assessed.",
+                    "label": "Endpoint sprawl"
+                },
+                {
+                    "body": "High-volume structured querying to train a copycat, which moved from academic concern to commercial dispute in 2025 when providers publicly alleged rivals had trained on their outputs against terms.",
+                    "label": "API distillation"
+                },
+                {
+                    "body": "Rebuilding capability from generated content collected at scale, including through intermediaries, so no single account shows the sweep.",
+                    "label": "Functional reconstruction from outputs"
+                }
+            ],
+            "layout": "grid",
+            "heading": "The documented vectors"
+        },
+        {
+            "grp": "framework",
+            "intro": "Weights deserve the threat model of code-signing keys, not of ordinary data. The controls below reflect that.",
+            "blocks": [
+                {
+                    "body": "Hold weight access to a short list of named roles, enforce hardware-backed authentication, and treat every access as a logged security event rather than routine work.",
+                    "label": "Named-role access with hardware MFA"
+                },
+                {
+                    "body": "Encrypt at rest with hardware-backed keys, and separate key custody from model custody so no single compromise yields both.",
+                    "label": "Encryption and key custody"
+                },
+                {
+                    "body": "Constrain and monitor every route weights can travel, including backups and snapshots. Exfiltration needs a channel, and this is the layer that closes it.",
+                    "label": "Egress control on the storage path"
+                },
+                {
+                    "body": "No full weight copies on endpoints or general-purpose buckets, with automated detection of copies outside approved stores.",
+                    "label": "Copy discipline"
+                },
+                {
+                    "body": "Baseline legitimate API use and hunt sweep signatures: systematic input-space coverage, deterministic probing, distillation-shaped prompt distributions, and coordinated low-and-slow activity across accounts.",
+                    "label": "Extraction-pattern detection"
+                },
+                {
+                    "body": "Rate limits and quotas that make wholesale extraction uneconomical, tiered capability exposure, and terms enforcement with real consequence.",
+                    "label": "Commercial controls"
+                },
+                {
+                    "body": "Pin custody, access, and breach-notification duties contractually on any provider holding your fine-tuned weights, since their controls are now your exposure.",
+                    "label": "Vendor custody obligations"
+                }
+            ],
+            "layout": "table",
+            "heading": "Custody controls for the crown jewels"
+        },
+        {
+            "grp": "board",
+            "intro": "",
+            "blocks": [
+                {
+                    "body": "What is our most valuable model worth, and is it protected like that number or like a file? Who can read the weights today, and would we see it if they did? Do backups and snapshots carry the same controls as the primary store? Could we detect a systematic extraction campaign against our API, and what would we do about it? If a fine-tuned model of ours sat with a vendor, what does the contract oblige them to do, and have we verified it? The distinguishing question: a stolen credential can be rotated, and stolen weights cannot, so does our response plan acknowledge that this loss is permanent?",
+                    "label": "Questions worth asking about model custody"
+                }
+            ],
+            "layout": "prose",
+            "heading": "What to ask about model custody"
+        }
+    ],
     "name": "Model Theft",
     "blurb": "Weight exfiltration and model extraction through APIs, and what providers disclose about protecting them.",
     "items": [
@@ -30,7 +128,7 @@
         }
     ],
     "stats": {
-        "mcp_servers": 1841,
+        "mcp_servers": 1842,
         "lawsuit_pages": 103,
         "deepfake_bills": 51,
         "compliance_docs": 64
