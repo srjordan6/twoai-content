@@ -1,6 +1,120 @@
 {
     "tax": "sec-agent-identity",
     "uid": "8f3e19cd",
+    "deep": [
+        {
+            "grp": "anatomy",
+            "intro": "Most non-human identity failures happen in the gaps between these stages, not inside them.",
+            "blocks": [
+                {
+                    "body": "A credential is created for an agent or service, usually during development, often with broad scopes because narrowing them takes time and nobody knows yet exactly what will be needed. The scope granted at this moment is usually the scope it dies with.",
+                    "label": "Issuance"
+                },
+                {
+                    "body": "The agent acts on behalf of a user, and the question of whose authority applies is answered implicitly by whatever token the code holds. When that is a service account rather than the user's own rights, the confused-deputy problem is built in from here.",
+                    "label": "Delegation"
+                },
+                {
+                    "body": "The credential is exercised across systems, often far more broadly than the original purpose, because nothing stops it and nobody is baselining what normal looks like for a machine identity.",
+                    "label": "Use"
+                },
+                {
+                    "body": "The credential is copied into configs, CI variables, notebooks, and container images. Each copy is a new exposure with no owner, and secrets sprawl is the documented root cause behind a large share of reported cloud breaches.",
+                    "label": "Sprawl"
+                },
+                {
+                    "body": "The project ends, the agent is retired, the developer leaves, and the credential remains valid. Ownerless standing credentials are the most common finding in any first non-human identity inventory.",
+                    "label": "Abandonment"
+                },
+                {
+                    "body": "The credential is revoked in one place while cached copies, mirrored secrets, and downstream systems keep working, which is how a contained compromise stays live.",
+                    "label": "Revocation that does not propagate"
+                }
+            ],
+            "layout": "ordered",
+            "heading": "The life of an agent credential"
+        },
+        {
+            "grp": "variants",
+            "intro": "",
+            "blocks": [
+                {
+                    "body": "Credentials that never rotate, outliving their purpose and their owner. The oldest problem on this list and still the most prevalent.",
+                    "label": "Standing long-lived keys"
+                },
+                {
+                    "body": "Permissions far exceeding actual use, which set the blast radius for every other failure mode. OAuth grants to third-party AI tools are a common modern instance.",
+                    "label": "Over-scoped tokens"
+                },
+                {
+                    "body": "An agent using its own broad authority on a requesting user's behalf, so the user effectively inherits permissions they were never granted. Prompt injection turns this from a design flaw into an exploit.",
+                    "label": "Confused-deputy delegation"
+                },
+                {
+                    "body": "Credentials with no accountable human, which cannot be reviewed, renewed, or safely revoked because nobody can say what breaks.",
+                    "label": "Ownerless identities"
+                },
+                {
+                    "body": "Service-to-service traffic excluded from the analytics that catch human anomalies, leaving the lateral movement paths over machine credentials effectively unwatched.",
+                    "label": "Unmonitored machine-to-machine paths"
+                },
+                {
+                    "body": "Keys in code, images, and configs, discovered by attackers scanning public and internal repositories continuously.",
+                    "label": "Embedded secrets in artifacts"
+                }
+            ],
+            "layout": "grid",
+            "heading": "The failure patterns"
+        },
+        {
+            "grp": "framework",
+            "intro": "",
+            "blocks": [
+                {
+                    "body": "Issue credentials scoped to a single task with a lifetime measured in minutes, replacing standing keys. This removes the abandonment and rotation problems by construction.",
+                    "label": "Short-lived, per-task credentials"
+                },
+                {
+                    "body": "Delegation carries the invoking principal's rights, scoped to the intersection of task and entitlement, so an agent can never exceed the person who asked.",
+                    "label": "Authority that flows from the user"
+                },
+                {
+                    "body": "Treat an ownerless credential as an incident, not as debt, because ownership is what makes review and revocation possible.",
+                    "label": "Named human owner for every identity"
+                },
+                {
+                    "body": "Every credential with scopes, age, last use, and owner, so over-scoping and dormancy are visible facts rather than suspicions.",
+                    "label": "Full inventory with usage telemetry"
+                },
+                {
+                    "body": "Baseline what each service and agent identity normally touches, and alert on scope jumps, the machine equivalent of impossible travel.",
+                    "label": "Behavioral baselines for machines"
+                },
+                {
+                    "body": "Test that revocation propagates through caches, mirrors, and downstream systems, since a revocation that does not propagate is a report rather than a control.",
+                    "label": "Verified revocation"
+                },
+                {
+                    "body": "Record the chain from human authority to agent action so an action can always be traced back to who authorized it, and alert when that chain cannot be reconstructed.",
+                    "label": "Delegation logging"
+                }
+            ],
+            "layout": "table",
+            "heading": "Workload-identity discipline for agents"
+        },
+        {
+            "grp": "board",
+            "intro": "",
+            "blocks": [
+                {
+                    "body": "How many non-human identities do we have, and does anyone own them? Can an agent do more than the person who asked it to act? How long do our machine credentials live, and how many have never rotated? If an agent were compromised right now, would revoking it actually stop it everywhere? Do we monitor machine-to-machine behavior the way we monitor people? For every AI product we buy, does it get one broad key or scoped per-capability credentials? The last one is worth pressing, because it is the question enterprise buyers are now asking vendors, and it is worth knowing how our own answer sounds.",
+                    "label": "Questions worth asking about machine identity"
+                }
+            ],
+            "layout": "prose",
+            "heading": "What to ask about machine identity"
+        }
+    ],
     "name": "Agent and Non-Human Identity",
     "blurb": "The explosion of machine identities: agent credentials, delegated authority, revocation, and the lateral movement paths nobody is watching.",
     "items": [
@@ -22,7 +136,7 @@
         }
     ],
     "stats": {
-        "mcp_servers": 1841,
+        "mcp_servers": 1842,
         "lawsuit_pages": 103,
         "deepfake_bills": 51,
         "compliance_docs": 64
