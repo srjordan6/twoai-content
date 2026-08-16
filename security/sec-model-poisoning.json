@@ -35,6 +35,24 @@
         "deepfake_bills": 51,
         "compliance_docs": 64
     },
+    "topic": [
+        {
+            "body": "Model and data poisoning corrupts what a model learns rather than what it is told at runtime: adversarial samples slipped into training or fine-tuning data, or direct tampering with model weights, that plant backdoors, biases, or degraded behavior. A backdoored model behaves normally on ordinary input and misbehaves only when it sees its trigger, a specific phrase, pattern, or token sequence, which is what makes poisoning nearly invisible to standard evaluation. NIST's adversarial machine learning taxonomy treats it as a first-class attack family, and research has repeatedly shown that corrupting a small fraction of training data, in some published work a few hundred documents against web-scale corpora, suffices to implant reliable trigger behavior.",
+            "block": "def"
+        },
+        {
+            "body": "The documented record spans research and the wild. The PoisonGPT demonstration modified an open model to emit targeted misinformation and republished it under a near-identical name, proving the distribution channel. Anthropic-published research showed a near-constant number of poisoned documents can backdoor models across sizes, and earlier academic work implanted triggers via web-scale scraping by purchasing expired domains that datasets still referenced. Sleeper-agent research demonstrated backdoors that survive safety fine-tuning. On the weights side, hundreds of malicious model files carrying executable payloads have been found and removed from public registries, documented by registry security scanning reports, which is poisoning's delivery-truck cousin: the artifact itself is the attack.",
+            "block": "examples"
+        },
+        {
+            "body": "Detection is hard by design, so it layers. Pre-deployment: behavioral evaluation across adversarially chosen input classes, comparison against a known-clean reference model where one exists, trigger scanning that searches for inputs producing anomalous confidence shifts, and statistical inspection of fine-tuning datasets for outlier clusters and duplicated injected text. Provenance checks catch the cheapest attacks: a dataset whose hash changed, a model whose lineage cannot be reconstructed, a fine-tune from an unverifiable party. Post-deployment: segment behavior monitoring by input class and alert on distribution drift in specific slices while aggregate metrics stay green, which is precisely how a triggered backdoor looks in production.",
+            "block": "detect"
+        },
+        {
+            "body": "Control the pipeline like the production system it is. Version and hash every training data snapshot so what a model learned from is reconstructable; sign artifacts at each stage; isolate training infrastructure from general development; restrict who can modify datasets and fine-tuning jobs. Source models and data from registries with integrity guarantees, prefer signed artifacts and safetensors, and treat unverifiable lineage as a finding. Record full lineage so that when a dataset is later found poisoned, every downstream model it touched is identifiable and retrainable rather than guessed at. Acceptance-test models like software: adversarial evals before deployment, and a rollback path when a deployed model's behavior drifts.",
+            "block": "defend"
+        }
+    ],
     "domains": [
         {
             "body": "Poisoning enters through the supply chain more often than through your own pipeline: a pretrained model with a planted backdoor, a public dataset seeded with corrupted samples, a fine-tune performed by a party you never assessed. Research collected in NIST's adversarial machine learning taxonomy shows small fractions of poisoned training data can implant reliable trigger behavior. Provenance is the control: know where every model and dataset came from, prefer sources with integrity guarantees, and treat an unverifiable lineage as a finding rather than an unknown.",
@@ -62,5 +80,5 @@
             "label": "Security Governance and Risk Management"
         }
     ],
-    "generated": "2026-08-15"
+    "generated": "2026-08-16"
 }
