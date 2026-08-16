@@ -35,6 +35,24 @@
         "deepfake_bills": 51,
         "compliance_docs": 64
     },
+    "topic": [
+        {
+            "body": "A jailbreak is an attack on the model's own safety training rather than on the application around it: crafted input that walks the model past its refusal behavior into producing content or taking actions its training was meant to prevent. Where prompt injection hijacks whose instructions the model follows, a jailbreak targets what the model is willing to do. Techniques evolve continuously, role-play framing, persona adoption, encoding and obfuscation, many-shot prompting that floods context with compliant examples, persuasion chains, and multi-turn escalation that never trips a single-message filter. Labs measure resistance with adversarial benchmarks and publish results in system cards, and the measured gap between models is large.",
+            "block": "def"
+        },
+        {
+            "body": "The published record includes the grandmother-style role-play prompts that extracted prohibited synthesis instructions from early aligned models, the DAN persona family that circulated widely enough to become a genre, many-shot jailbreaking demonstrated by Anthropic research showing long-context models progressively yielding after hundreds of in-context examples, encoding attacks that wrap disallowed requests in base64 or fictional cipher games, and crescendo-style multi-turn attacks documented by Microsoft research that escalate innocuous conversations stepwise. Public jailbreak benchmarks and lab red-team reports catalogue thousands of working variants, and constitutional-classifier trials published by Anthropic reported thousands of hours of human red-teaming against them.",
+            "block": "examples"
+        },
+        {
+            "body": "Jailbreak attempts leave a signature: repeated refusals followed by rephrasings, sudden persona or role-play framing, encoded or foreign-language payloads mid-conversation, unusually long prompts stuffed with example dialogues, and requests that reference the model's own rules. Log and alert on refusal-rate anomalies per user and per session, watch for known jailbreak template fragments, and monitor output for content categories the application should never produce, an output-side classifier catches what the input side missed. Provider abuse-reporting channels close the loop: novel techniques observed in production are exactly what labs patch against.",
+            "block": "detect"
+        },
+        {
+            "body": "Defense in depth, because refusal training alone degrades under sustained pressure. Layer independent input and output classifiers over the base model, the constitutional-classifier approach cut jailbreak success dramatically in published trials while keeping over-refusal low. Pin safety-relevant behavior in the system prompt and test it in CI with adversarial suites, so a model or prompt change that weakens refusals fails the build. Rate-limit and friction repeated near-identical attempts. Above all, never make refusal the only barrier: a jailbroken model should still hit authorization walls, egress limits, and human approval gates before anything consequential happens, so a successful jailbreak yields words, not actions.",
+            "block": "defend"
+        }
+    ],
     "domains": [
         {
             "body": "A jailbreak targets the model's own safety training rather than the application around it: role-play framing, encoding tricks, many-shot prompts, and persuasion techniques that walk a model past its refusals. For product teams the practical stance is defense in depth, because refusal training alone degrades under sustained adversarial pressure. Published approaches add independent classifier layers screening inputs and outputs, which is the design behind constitutional-classifier systems that cut jailbreak success rates dramatically in lab red-team trials while keeping over-refusal low.",
@@ -57,5 +75,5 @@
             "label": "Architecture and Engineering"
         }
     ],
-    "generated": "2026-08-15"
+    "generated": "2026-08-16"
 }
