@@ -35,6 +35,24 @@
         "deepfake_bills": 51,
         "compliance_docs": 64
     },
+    "topic": [
+        {
+            "body": "Data leakage in AI systems is the model or its application revealing information it should not: memorized training data extracted through crafted queries, membership inference that confirms whether a person's records were in a training set, system prompts surrendered on request, and retrieval systems serving documents to users who lack the right to read them. It differs from a database breach in kind, nothing is broken into, the system answers as designed, and the sensitive content leaves through the front door as ordinary-looking output. Memorization is a measured property of trained models, worst for rare, duplicated, or distinctive strings, exactly the shape of credentials, keys, and personal records.",
+            "block": "def"
+        },
+        {
+            "body": "The published record is deep. Training-data extraction research recovered verbatim personal information from production language models, and the divergence-attack line of work pulled memorized text at scale from deployed chat models. Membership-inference results across model families confirm training-set presence with meaningful accuracy. System-prompt extraction is so routine that leaked prompts of major commercial products circulate publicly within days of launch. On the application side, misconfigured RAG deployments serving documents across permission boundaries are a recurring enterprise incident class in vendor security advisories, and the widely reported enterprise bans on consumer chatbots after staff pasted confidential material, the Samsung case being the most cited, made prompt-side leakage a board-level topic.",
+            "block": "examples"
+        },
+        {
+            "body": "Instrument both directions of the model boundary. Scan prompts for credentials, personal data, and classified markers before they leave, the same DLP discipline email already gets, and scan completions for the same patterns coming back, which catches memorization and retrieval leaks alike. Run extraction self-tests against your own deployed models: canary strings seeded into training or fine-tuning data that should never appear in output give a direct memorization alarm. Audit retrieval logs for cross-permission serves, a document returned to a user outside its ACL is a leak whether or not anyone noticed. Watch for probing patterns, repeated near-duplicate queries sweeping for completion of the same string.",
+            "block": "detect"
+        },
+        {
+            "body": "Minimize upstream: regulated and secret data stays out of training and fine-tuning unless the use case requires it, because what never entered the weights can never be extracted from them. Deduplicate training data, the single most effective memorization reducer in published research, and apply differential-privacy training where sensitive data must be used. Keep real secrets out of system prompts entirely; treat the prompt as discoverable. Enforce authorization at retrieval time per requesting user, segment stores by classification, and keep high-sensitivity corpora out of general-purpose assistants. Filter outputs for sensitive patterns, set retention limits on prompt and completion logs, and contractually pin what providers retain and train on.",
+            "block": "defend"
+        }
+    ],
     "domains": [
         {
             "body": "Models leak in ways databases cannot: memorized training data extracted through crafted queries, membership inference revealing whether a person's records were in the training set, and completions that reconstruct sensitive strings the model was never supposed to retain. The upstream control is minimization, keeping regulated and secret data out of training and fine-tuning sets unless the use case genuinely requires it, because data that never entered the weights can never be extracted from them. Where sensitive data must be used, differential-privacy training and rigorous deduplication measurably reduce memorization.",
@@ -62,5 +80,5 @@
             "label": "Security Governance and Risk Management"
         }
     ],
-    "generated": "2026-08-15"
+    "generated": "2026-08-16"
 }
