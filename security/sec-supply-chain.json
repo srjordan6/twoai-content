@@ -43,6 +43,24 @@
         "deepfake_bills": 51,
         "compliance_docs": 64
     },
+    "topic": [
+        {
+            "body": "AI supply chain attacks compromise the components a system is assembled from, models, datasets, packages, adapters, tool servers, and the services behind them, so the victim installs the attack. The chain is deeper and more opaque than classic software: your vendor's product runs on a foundation model from a fourth party, fine-tuned by a fifth, pulling packages and tool integrations nobody listed. Model files themselves have been executable: pickle-based formats run arbitrary code at load time, which is why loading an untrusted model has historically meant executing untrusted code. An AI bill of materials, disclosing the models, datasets, and services a product depends on, is the emerging instrument for making the chain assessable at all.",
+            "block": "def"
+        },
+        {
+            "body": "Documented incidents cover every link. Public registries have removed hundreds of model files with embedded malicious payloads, reported by registry and security-vendor scanning programs. Namespace-reuse and typosquatting attacks republished lookalike models and packages under trusted-sounding names, the PoisonGPT demonstration used exactly this delivery. Package-side, AI-themed typosquats and hallucinated dependencies, packages that do not exist until an attacker registers the name a model keeps inventing, are documented by software-supply-chain security reporting. Compromised maintainer accounts and repository takeovers have shipped malicious updates into ML toolchains, and malicious MCP servers with over-broad scopes and instruction-bearing tool descriptions are the newest documented class, addressed directly by the MCP specification's security best practices.",
+            "block": "examples"
+        },
+        {
+            "body": "Watch upstream, because supply chain compromise announces itself there before it detonates downstream. Monitor the registries and repositories your stack depends on for ownership changes, sudden re-pushes, new maintainers, and yanked-then-replaced versions. Scan model artifacts in CI for embedded code and format anomalies; diff hashes against pins on every pull. Alert on dependency-resolution surprises, a package name that suddenly resolves after months of failing is the hallucinated-dependency attack landing. At runtime, egress monitoring catches what static scanning missed: a model-loading process opening network connections it never needed is the classic payload signature.",
+            "block": "detect"
+        },
+        {
+            "body": "Pin everything: model versions and hashes exactly as package versions, with reproducible pulls. Prefer safetensors and signed artifacts; refuse pickle from outside trusted boundaries. Stand up an internal registry that mirrors approved external models and datasets after scanning and signature verification, with admission control so production loads only from it, converting the whole public-registry attack class into one controlled ingestion point. Demand an AI bill of materials from vendors and maintain your own. Verify MCP servers and tool integrations like the vendors they are: provenance, scopes, and what ships in their tool descriptions. Rehearse the recall: when an upstream artifact is found malicious, you need the lineage records to answer what pulled it, where it ran, and what it touched.",
+            "block": "defend"
+        }
+    ],
     "domains": [
         {
             "body": "The AI supply chain mutates weekly while assessment cycles run annually, and the annual questionnaire cannot survive that mismatch. Your vendor is the third party, but the foundation model their product runs on is a fourth party, the fine-tuning shop is another, and the hosting infrastructure may be a fifth, none of them visible in the questionnaire, the contract, or the assessment. An AI bill of materials, disclosing the models, datasets, and services a product depends on, is the instrument that makes the invisible chain assessable, and continuous external monitoring replaces the point-in-time attestation that was stale before it was signed.",
@@ -70,5 +88,5 @@
             "label": "Security Governance and Risk Management"
         }
     ],
-    "generated": "2026-08-15"
+    "generated": "2026-08-16"
 }
