@@ -1,6 +1,124 @@
 {
     "tax": "sec-tooling",
     "uid": "9f398737",
+    "deep": [
+        {
+            "grp": "anatomy",
+            "intro": "Tooling is bought in this order in practice, and skipping a step upstream makes everything downstream weaker.",
+            "blocks": [
+                {
+                    "body": "You cannot govern, scan, or gate what you have not found. Discovery-based inventory of models, agents, tools, and AI-enabled vendor features comes first, and a declared inventory is not a substitute because shadow AI guarantees it understates reality.",
+                    "label": "Discovery and inventory"
+                },
+                {
+                    "body": "A single point through which model traffic passes, giving logging, policy enforcement, and data controls at once. Buying detection before you have a chokepoint means detecting things you cannot stop.",
+                    "label": "The gateway"
+                },
+                {
+                    "body": "Input and output policy applied at runtime, enforced rather than observed. The distinction matters: a tool that logs an injection after it succeeded is telemetry, not a control.",
+                    "label": "Guardrails and policy enforcement"
+                },
+                {
+                    "body": "Scoped, short-lived credentials and delegation that carries user authority. This is the layer that limits consequence when everything above it fails.",
+                    "label": "Identity and authorization for agents"
+                },
+                {
+                    "body": "Adversarial suites and quality evals wired into CI, so safety behavior is protected by tests exactly as functionality is.",
+                    "label": "Evaluation in the pipeline"
+                },
+                {
+                    "body": "Model-file scanning, AI-BOM generation, and artifact signing, covering the gap classic software-composition analysis never learned to read.",
+                    "label": "Supply chain scanning"
+                },
+                {
+                    "body": "Prompt and completion DLP, redaction, and semantic classification, which must understand meaning because sensitive content in AI traffic rarely arrives formatted like a card number.",
+                    "label": "Data-layer protection"
+                }
+            ],
+            "layout": "ordered",
+            "heading": "What a buyer is actually assembling"
+        },
+        {
+            "grp": "variants",
+            "intro": "",
+            "blocks": [
+                {
+                    "body": "Discovery, inventory, configuration assessment, and policy mapping against frameworks like the NIST AI RMF and the EU AI Act. The category most prone to producing a report instead of a control.",
+                    "label": "AI security posture management"
+                },
+                {
+                    "body": "Centralized model access with logging, rate limiting, routing, and policy. The highest-leverage single purchase for most enterprises because everything else plugs into it.",
+                    "label": "AI gateways and proxies"
+                },
+                {
+                    "body": "Runtime input and output policy, injection and jailbreak filtering, topic and format constraints. Evaluate on what they enforce and what they do at the moment of a violation.",
+                    "label": "Guardrail frameworks"
+                },
+                {
+                    "body": "Attack suites, jailbreak scanners, and eval frameworks that run in CI, which is where they earn their cost rather than in a one-time assessment.",
+                    "label": "Adversarial testing and evaluation harnesses"
+                },
+                {
+                    "body": "Scanners for embedded code and format anomalies, AI-BOM generators (CycloneDX supports ML BOMs), signing, and internal registry admission control.",
+                    "label": "Model and artifact supply chain tools"
+                },
+                {
+                    "body": "Credential issuance for non-human identities, delegation tracking, tool-call monitoring, and circuit breakers, the youngest category and the one closest to where agent consequence lives.",
+                    "label": "Agent identity and runtime supervision"
+                }
+            ],
+            "layout": "grid",
+            "heading": "The categories, by the job they do"
+        },
+        {
+            "grp": "framework",
+            "intro": "",
+            "blocks": [
+                {
+                    "body": "Ask what the tool blocks, not what it reports. An observer is useful telemetry and should never be counted as a control in a risk register.",
+                    "label": "Enforcement over observation"
+                },
+                {
+                    "body": "Prefer inventory built from telemetry over inventory built from a questionnaire, since the questionnaire misses precisely the systems that create the risk.",
+                    "label": "Discovered, not declared"
+                },
+                {
+                    "body": "Detections must carry enough context to act on. A score with no reasoning generates tickets nobody can close, which is how a tool quietly becomes shelfware.",
+                    "label": "Explainable detections"
+                },
+                {
+                    "body": "A security tool running an unmonitored model is a new exposure. Ask how it protects its own AI and whether it has been red-teamed through the data it consumes.",
+                    "label": "It secures its own AI"
+                },
+                {
+                    "body": "It should feed the alert flow and CI you already run, not demand a parallel console, because parallel consoles are where alerts go to be ignored.",
+                    "label": "Fits the existing pipeline"
+                },
+                {
+                    "body": "The output must update itself. Any artifact that ages from the moment it is exported is compliance evidence, not security.",
+                    "label": "Living picture, not a binder"
+                },
+                {
+                    "body": "Map the tool against the six domains and see what it genuinely covers. Most products cover one domain well and market all six, and the gap analysis is more valuable than any single purchase.",
+                    "label": "Honest coverage claims"
+                }
+            ],
+            "layout": "table",
+            "heading": "How to evaluate any AI security tool"
+        },
+        {
+            "grp": "board",
+            "intro": "",
+            "blocks": [
+                {
+                    "body": "What specifically does this stop, and what does it only record? Do we have a chokepoint through which AI traffic passes, and if not, should that be the first purchase? Which of the six security domains does our current tooling actually cover, and where is the largest gap? Does the tool secure its own AI, and can the vendor describe how? Will its findings reach the team that already responds to alerts, or create a new queue? Does it produce a living picture or a document? And the discipline question: are we buying tooling because we identified a gap, or because a category exists and it feels overdue?",
+                    "label": "Questions worth asking before buying"
+                }
+            ],
+            "layout": "prose",
+            "heading": "What to ask before buying"
+        }
+    ],
     "name": "AI Security Tooling",
     "blurb": "The defensive tooling landscape, organized by six security domains: Security Governance and Risk Management, Security Operations, Architecture and Engineering, Application and Product Security, Third-Party and Supply Chain Risk, and Data Protection and Privacy.",
     "items": [
@@ -14,7 +132,7 @@
         }
     ],
     "stats": {
-        "mcp_servers": 1841,
+        "mcp_servers": 1842,
         "lawsuit_pages": 103,
         "deepfake_bills": 51,
         "compliance_docs": 64
