@@ -27,6 +27,24 @@
         "deepfake_bills": 51,
         "compliance_docs": 64
     },
+    "topic": [
+        {
+            "body": "Agent and non-human identity is the security problem of machines authenticating as themselves at a scale humans never reached: every agent needs credentials, every integration needs a key, and each accumulates access no human formally reviewed. Non-human identities already outnumber human ones in most enterprises, and autonomous agents accelerate the ratio while adding a harder question, on whose authority is this agent acting. Delegated authority without a chain, standing keys that never rotate, and revocation that does not propagate are the failure modes, and the lateral-movement paths that run over machine credentials are largely unwatched because the analytics that catch human anomalies were never trained on service-to-service behavior.",
+            "block": "def"
+        },
+        {
+            "body": "The documented incident base is the non-human-identity breach class that predates and now includes agents. Secrets sprawl, long-lived API keys and tokens committed to code, embedded in configs, and shared across services, is the root cause behind a large share of reported cloud breaches in industry incident reports. Over-privileged service accounts and OAuth tokens have been the pivot in major supply-chain intrusions. On the agent side, the newest documented pattern is confused-deputy and delegation abuse, an agent with broad standing permissions induced (often via prompt injection) to act beyond the requesting user's own rights, and MCP integrations shipping with over-broad scopes, addressed in the MCP specification's authorization guidance and security best practices.",
+            "block": "examples"
+        },
+        {
+            "body": "Bring non-human identities into the same monitoring as human ones, which most programs have not. Baseline what each agent and service identity normally accesses and alert when its pattern jumps scope, the machine equivalent of impossible-travel. Inventory every credential with its owner, granted scopes, age, and last use, then hunt the gaps: standing keys that never rotate, tokens with scopes far exceeding their use, credentials with no named owner. Scan code, configs, and artifacts for embedded secrets continuously. Log delegation events so that when an agent acts, the chain back to an originating human authority is reconstructable, and alert when it is not.",
+            "block": "detect"
+        },
+        {
+            "body": "Apply workload-identity discipline to agents. Issue short-lived, per-task credentials instead of standing keys; make delegation carry the originating user's authority rather than a service account's omnibus permissions, so an agent can never exceed the rights of whoever invoked it. Scope every credential to the intersection of the task and the principal's entitlements. Assign every agent identity a named accountable human owner and treat an ownerless credential as an incident. Ensure revocation actually propagates when an agent is retired or compromised. For products embedding agents, ship scoped tokens per capability and per-tenant isolation, never a single god-key, because enterprise buyers now ask for exactly this.",
+            "block": "defend"
+        }
+    ],
     "domains": [
         {
             "body": "Non-human identities already outnumber human ones in most enterprises, and agents accelerate the ratio: every agent needs credentials, every integration needs a key, and each accumulates access no human formally reviewed. The architecture that scales is the workload-identity discipline applied to agents, short-lived credentials issued per task rather than standing keys, delegation chains that carry the originating user's authority rather than a service account's omnibus permissions, and revocation that actually propagates when an agent is retired, compromised, or simply forgotten.",
@@ -54,5 +72,5 @@
             "label": "Application and Product Security"
         }
     ],
-    "generated": "2026-08-15"
+    "generated": "2026-08-16"
 }
