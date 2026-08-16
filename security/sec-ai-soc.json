@@ -1,6 +1,120 @@
 {
     "tax": "sec-ai-soc",
     "uid": "e294a1dd",
+    "deep": [
+        {
+            "grp": "anatomy",
+            "intro": "The tiered SOC exists because analyst time was scarce. Remove that constraint and each stage below changes shape.",
+            "blocks": [
+                {
+                    "body": "Every alert gets investigated rather than sampled, because investigation stops being the scarce resource. The tiering that existed to ration analyst attention loses its reason to exist, which is an organizational change disguised as a tooling change.",
+                    "label": "Triage"
+                },
+                {
+                    "body": "Context assembly across tools that previously consumed the majority of an investigation's clock time. The measured gains vendors report concentrate here, and this is the least controversial place to automate.",
+                    "label": "Enrichment and correlation"
+                },
+                {
+                    "body": "The system states what it believes happened. This is the pivot point of the whole discipline: a conclusion is not evidence, and how confidently it is phrased has no relationship to how correct it is.",
+                    "label": "Conclusion"
+                },
+                {
+                    "body": "Someone or something decides to contain, escalate, or close. Most organizations make this decision implicitly through tool configuration rather than explicitly through policy, which is how automated authority gets granted without being reviewed.",
+                    "label": "Decision"
+                },
+                {
+                    "body": "Containment executes. Speed helps, and errors execute at the same speed, so the action set available to automation is the most consequential configuration in the stack.",
+                    "label": "Action"
+                },
+                {
+                    "body": "Sampling automated conclusions, measuring accuracy, and feeding corrections back. Skipping this stage is what converts a productivity gain into automation bias with no measurement attached.",
+                    "label": "Supervision and review"
+                }
+            ],
+            "layout": "ordered",
+            "heading": "What changes when machines investigate"
+        },
+        {
+            "grp": "variants",
+            "intro": "",
+            "blocks": [
+                {
+                    "body": "Operators deferring to confident automated conclusions even when wrong, documented across domains long before AI reached the SOC. A copilot that is right most of the time trains its supervisors to stop checking.",
+                    "label": "Automation bias"
+                },
+                {
+                    "body": "Alert text, log fields, and ticket contents are attacker-writable, so a copilot reading them can be prompt-injected through its own data plane, an attack researchers have demonstrated against AI-assisted analysis tools.",
+                    "label": "The SOC AI as a target"
+                },
+                {
+                    "body": "The highest-cost failure: a real incident closed with a plausible benign explanation, which removes the alert and the suspicion together.",
+                    "label": "Confident wrong closure"
+                },
+                {
+                    "body": "Containment authority expanding through configuration drift until automation can take actions nobody approved.",
+                    "label": "Scope creep in automated action"
+                },
+                {
+                    "body": "Analysts who supervise but no longer investigate lose the judgment supervision requires, which is a slow failure with no alert attached.",
+                    "label": "Skill atrophy"
+                },
+                {
+                    "body": "The SOC processes the most sensitive data in the organization, and where investigation context goes, what is retained, and whether cross-tenant learning is enabled are vendor-diligence questions the SOC would ask anyone else.",
+                    "label": "Sensitive telemetry in a third-party model"
+                }
+            ],
+            "layout": "grid",
+            "heading": "The new failure modes"
+        },
+        {
+            "grp": "framework",
+            "intro": "",
+            "blocks": [
+                {
+                    "body": "Write down which investigation, containment, and response actions AI may take alone, which need confirmation, and which are prohibited, then review as the track record accumulates rather than leaving tool defaults to decide.",
+                    "label": "Explicit decision rights"
+                },
+                {
+                    "body": "Track supervised-action accuracy as a first-class metric so automation bias appears as measured error rather than silent trust.",
+                    "label": "Measured accuracy, not just speed"
+                },
+                {
+                    "body": "Sample automated conclusions for human review at a rate tied to consequence, and keep analysts investigating enough to retain the judgment they are being asked to apply.",
+                    "label": "Sampling and adjudication"
+                },
+                {
+                    "body": "Log its inputs, recommendations, and actions so its conclusions are auditable and its mistakes reviewable after the fact.",
+                    "label": "Instrument the copilot"
+                },
+                {
+                    "body": "Plant malicious strings in the log and alert fields it consumes and prove whether it can be injected through the telemetry it reads.",
+                    "label": "Red-team your own SOC AI"
+                },
+                {
+                    "body": "Limit what the SOC AI can execute directly, with the same least-privilege reasoning applied to any other automated actor in the environment.",
+                    "label": "Constrain executable scope"
+                },
+                {
+                    "body": "Apply the data-handling questions the program asks everyone else: retention, residency, sub-processors, training use, and cross-tenant isolation.",
+                    "label": "Vendor diligence on the security stack itself"
+                }
+            ],
+            "layout": "table",
+            "heading": "Running an AI-assisted SOC responsibly"
+        },
+        {
+            "grp": "board",
+            "intro": "",
+            "blocks": [
+                {
+                    "body": "What can our security AI do without a human, and who decided that, policy or a default? How often is it wrong, and how would we know? Do we sample its conclusions, or only measure how fast it produced them? Can it be manipulated through the alerts and logs it reads, and have we tested that rather than assumed it? Where does our investigation data go, and what does the provider retain? If it closed a real incident with a confident wrong explanation, what would catch that? The strategic question underneath: are we buying capacity we then supervise properly, or buying the appearance of coverage?",
+                    "label": "Questions worth asking about AI in the SOC"
+                }
+            ],
+            "layout": "prose",
+            "heading": "What to ask about AI in the SOC"
+        }
+    ],
     "name": "AI in Security Operations",
     "blurb": "Defending with AI: machine-speed investigation, human supervision models, automation bias, kill-switch protocols, and securing the SOC's own AI.",
     "items": [
@@ -30,7 +144,7 @@
         }
     ],
     "stats": {
-        "mcp_servers": 1841,
+        "mcp_servers": 1842,
         "lawsuit_pages": 103,
         "deepfake_bills": 51,
         "compliance_docs": 64
