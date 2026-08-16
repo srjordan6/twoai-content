@@ -35,6 +35,24 @@
         "deepfake_bills": 51,
         "compliance_docs": 64
     },
+    "topic": [
+        {
+            "body": "Model theft is the loss of the model itself: weights exfiltrated from storage or infrastructure, or the model's behavior extracted through its own API by systematic querying that trains a copycat, distillation without permission. Weights concentrate enormous value, training investment, embedded data, and capability, into files an insider or intruder can copy in minutes, and unlike a stolen password the loss is unrecoverable: once out, the model is out forever. Extraction through the API is subtler, no breach occurs, every query is individually legitimate, and the theft is only visible in the aggregate pattern.",
+            "block": "def"
+        },
+        {
+            "body": "Both branches are documented. The most prominent weights case is the leak of Meta's LLaMA weights in 2023, distributed publicly within days of limited research release, and criminal indictments of insiders exfiltrating AI trade secrets from major labs, including a former Google engineer charged federally, established the insider path. Security analyses of frontier-weight theft, notably RAND's published attack-vector taxonomy, catalogue dozens of routes from credential theft to infrastructure compromise. On the extraction side, academic work has long shown functionality-stealing against commercial APIs, and the distillation disputes of 2025, providers publicly alleging rivals trained on their outputs against terms, moved API extraction from research concern to commercial incident.",
+            "block": "examples"
+        },
+        {
+            "body": "For weights: treat access as a monitored event, not a permission. Alert on bulk reads of weight storage, unusual snapshot or export operations, copies to endpoints or external buckets, and any access outside the small named set of roles with a reason to touch them. Egress monitoring on the storage path is the tripwire that catches exfiltration in progress. For extraction: baseline legitimate API usage and hunt sweep patterns, high-volume systematically structured queries covering input space, distinctive temperature-zero probing, distillation-style prompt distributions, and coordinated low-and-slow querying across accounts. Watermarking and output-fingerprinting research offers after-the-fact attribution, but pattern detection is the practical control today.",
+            "block": "detect"
+        },
+        {
+            "body": "Custody discipline for weights: encrypted storage, hardware-backed keys, access held to a handful of named roles with hardware MFA, no full copies on laptops or shared buckets, and egress controls on every path weights can travel, the threat model of code-signing keys, not ordinary data. For the API: rate limits and quotas that make wholesale extraction uneconomical, terms enforcement with teeth, tiered capability exposure so the free tier does not give away the product, and query auditing wired to the sweep-pattern detection above. Contractually pin custody obligations on every provider holding your fine-tuned weights, and put weight custody on the risk register as the crown-jewel entry it is.",
+            "block": "defend"
+        }
+    ],
     "domains": [
         {
             "body": "For a frontier lab the weights are the crown jewels, and for any enterprise with a fine-tuned model they are a concentrated asset carrying training investment and embedded data. Governance treats weight custody as a named risk: where copies live, who can export them, and what contractual protections cover the providers holding them. Published security frameworks from the labs themselves, and independent analyses of weight-theft attack vectors, give the register real content, including the insider and infrastructure paths that matter more than exotic attacks.",
@@ -57,5 +75,5 @@
             "label": "Security Operations"
         }
     ],
-    "generated": "2026-08-15"
+    "generated": "2026-08-16"
 }
