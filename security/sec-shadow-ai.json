@@ -1,6 +1,112 @@
 {
     "tax": "sec-shadow-ai",
     "uid": "2b859942",
+    "deep": [
+        {
+            "grp": "anatomy",
+            "intro": "Four routes, in rough order of how invisible they are to procurement.",
+            "blocks": [
+                {
+                    "body": "An employee finds a tool that makes their work faster and starts using it on real work. There is no procurement event, no contract, and no data-flow review, and the first evidence is a DNS log nobody reads.",
+                    "label": "The individual tool"
+                },
+                {
+                    "body": "A department buys seats on a corporate card. It is now a vendor relationship with data processing terms nobody negotiated and a renewal nobody tracks.",
+                    "label": "The team subscription"
+                },
+                {
+                    "body": "Someone grants an AI tool OAuth access to mail, files, or calendar. This is the sharpest form, because a browser tab becomes a standing data pipeline out of systems of record, authorized by a click.",
+                    "label": "The connected app"
+                },
+                {
+                    "body": "An approved SaaS product enables an AI feature by default: meeting transcription, a CRM assistant, a document copilot. The organization never bought AI and is processing data through it anyway, which is the route no discovery of employee behavior will ever find.",
+                    "label": "The vendor switch-on"
+                }
+            ],
+            "layout": "ordered",
+            "heading": "How shadow AI enters"
+        },
+        {
+            "grp": "variants",
+            "intro": "",
+            "blocks": [
+                {
+                    "body": "The Samsung source-code case in 2023 is the canonical public example, and enterprise telemetry reports consistently find sensitive content in a meaningful share of prompts sent through unmanaged personal accounts.",
+                    "label": "Confidential data in consumer tools"
+                },
+                {
+                    "body": "Retention, training use, sub-processors, and jurisdiction all unknown, which turns a productivity choice into an unassessed transfer, and in regulated contexts into a compliance finding.",
+                    "label": "Unreviewed data processing terms"
+                },
+                {
+                    "body": "Tokens with broad mailbox or drive scopes that persist after the person stops using the tool, and often after they leave, sitting in exactly the blind spot non-human identity programs are built to cover.",
+                    "label": "Standing OAuth grants"
+                },
+                {
+                    "body": "Assistants that read every page, including internal applications, with permissions granted once and never reviewed.",
+                    "label": "Browser extensions with page access"
+                },
+                {
+                    "body": "Keys in code, models pulled outside any registry, agents wired to internal systems for a prototype that quietly becomes production. This is shadow AI with tool access, which makes it the highest-severity variant.",
+                    "label": "Unmanaged model and agent use by developers"
+                },
+                {
+                    "body": "Processing that begins without a decision, discovered by reading release notes rather than by watching employees.",
+                    "label": "Vendor AI features on by default"
+                }
+            ],
+            "layout": "grid",
+            "heading": "Where the exposure actually lands"
+        },
+        {
+            "grp": "framework",
+            "intro": "Prohibition fails because the demand is real. Every control below assumes people will use AI and competes for that use rather than forbidding it.",
+            "blocks": [
+                {
+                    "body": "DNS, proxy, CASB, SSO grant logs, expense records, browser-extension inventory, and vendor release notes, run as a standing process. A quarterly snapshot is stale on arrival because the tool landscape changes weekly.",
+                    "label": "Continuous discovery"
+                },
+                {
+                    "body": "Provide a governed AI gateway with good models, logging, and data controls, approved fast enough that going around it is not worth the effort. This is the only control that reduces demand rather than displacing it.",
+                    "label": "A sanctioned path that wins"
+                },
+                {
+                    "body": "Convert discovered tools into governed ones, and make disclosure safe. Punishing discovery buys silence, not compliance.",
+                    "label": "Amnesty over punishment"
+                },
+                {
+                    "body": "State plainly which data classes may enter which tools, in language that fits the work. Rules that require legal interpretation get ignored at the moment of use.",
+                    "label": "Data-class rules people can follow"
+                },
+                {
+                    "body": "Review, scope, expire, and revoke third-party app grants, with alerting on new high-scope authorizations. Treat a standing mailbox grant as the credential it is.",
+                    "label": "OAuth grant governance"
+                },
+                {
+                    "body": "Apply data controls at AI destinations, and block only what genuinely cannot be sanctioned, so the blocklist stays short enough to be credible.",
+                    "label": "Endpoint and browser enforcement"
+                },
+                {
+                    "body": "Monitor approved products for AI features arriving by default, and decide deliberately rather than discovering the processing later.",
+                    "label": "Vendor feature watch"
+                }
+            ],
+            "layout": "table",
+            "heading": "A program that shrinks the shadow"
+        },
+        {
+            "grp": "board",
+            "intro": "",
+            "blocks": [
+                {
+                    "body": "How many AI tools are in use here, and how do we know, by discovery or by asking? What sanctioned option exists, and is it good enough that people prefer it? Which third-party apps hold standing access to our mail and files right now? Which of our approved vendors turned on AI features we never evaluated? If an employee pasted regulated data into a consumer tool last week, would we know? The honest metric is not tools blocked, it is unknown usage shrinking, and an organization reporting zero shadow AI is reporting on its detection, not its reality.",
+                    "label": "Questions worth asking about unsanctioned AI"
+                }
+            ],
+            "layout": "prose",
+            "heading": "What to ask about unsanctioned AI"
+        }
+    ],
     "name": "Shadow AI",
     "blurb": "Unsanctioned AI use inside organizations: the exposure it creates and how enterprises detect and govern it.",
     "items": [
@@ -30,7 +136,7 @@
         }
     ],
     "stats": {
-        "mcp_servers": 1841,
+        "mcp_servers": 1842,
         "lawsuit_pages": 103,
         "deepfake_bills": 51,
         "compliance_docs": 64
