@@ -35,6 +35,24 @@
         "deepfake_bills": 51,
         "compliance_docs": 64
     },
+    "topic": [
+        {
+            "body": "AI in security operations is the double-edged use of AI to defend: machine-speed investigation that ends the triage economy the tiered SOC was built on, and the new failure modes that arrive with it, automation bias toward a confident-but-wrong copilot, and the SOC's own AI becoming a target. When machines investigate, every alert gets investigated rather than sampled, and the analyst's job shifts from working a queue to supervising investigations and adjudicating what machines conclude. The governing question becomes which containment and response actions AI may take without a human, a decision most SOCs currently make implicitly through tool configuration.",
+            "block": "def"
+        },
+        {
+            "body": "The deployed record is growing fast. Major platforms ship SOC copilots, Microsoft Security Copilot, Google's Gemini in security products, and CrowdStrike Charlotte among them, and vendor studies report meaningful triage-time reductions in controlled use. The documented risk cases matter as much: automation-bias research across domains shows operators deferring to confident automated conclusions even when wrong, and the emerging attack class is the SOC's own AI as target, alert text, log fields, and ticket contents are attacker-writable, so a copilot that reads them can be prompt-injected through the very telemetry it analyzes, a scenario security researchers have demonstrated against AI-assisted analysis tools.",
+            "block": "examples"
+        },
+        {
+            "body": "Instrument the watcher. Log the SOC AI's inputs, recommendations, and actions so its conclusions are auditable and its mistakes reviewable. Track a supervised-action accuracy metric, not just speed, so automation bias shows up as measured error rather than as silent trust. Red-team the SOC's own AI with poisoned telemetry, malicious strings planted in the log and alert fields it consumes, to prove whether it can be injected through its data plane. Watch for the copilot taking or recommending actions outside its authorized scope, which is both a bug signal and a compromise signal.",
+            "block": "detect"
+        },
+        {
+            "body": "Make the decision rights explicit and recorded: which investigation, containment, and response actions AI may execute alone, which need human confirmation, and which are off-limits, reviewed as the AI's track record accumulates rather than left as a tool default. Keep humans supervising machine-speed loops through kill-switch authority and sampling of automated conclusions. Constrain what the SOC AI can execute and instrument everything it does. Cover the SOC's own AI stack with the vendor diligence the program recommends to everyone else, where investigation data goes, what the provider retains, whether cross-tenant learning is on, because it processes the most sensitive telemetry the enterprise generates.",
+            "block": "defend"
+        }
+    ],
     "domains": [
         {
             "body": "AI ends the triage economy the tier model was built on: when machines investigate, every alert gets investigated rather than sampled, and the analyst's job moves from working a queue to supervising investigations and adjudicating what machines conclude. The failure mode that arrives with the capability is automation bias, the confident copilot that is wrong, so the operating model pairs machine-speed investigation with explicit human supervision rules for which actions machines may take alone, and metrics evolve past mean-time-to-detect toward investigation coverage and supervised-action accuracy.",
@@ -57,5 +75,5 @@
             "label": "Data Protection and Privacy"
         }
     ],
-    "generated": "2026-08-15"
+    "generated": "2026-08-16"
 }
