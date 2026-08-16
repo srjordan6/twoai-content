@@ -1,6 +1,120 @@
 {
     "tax": "sec-ai-privacy",
     "uid": "95ccea74",
+    "deep": [
+        {
+            "grp": "anatomy",
+            "intro": "Privacy programs map databases. These are the stores that AI adds, and most data maps omit every one of them.",
+            "blocks": [
+                {
+                    "body": "Everything users typed and everything the model answered, usually retained by default, often across a provider boundary, and rarely covered by an existing retention schedule. In most organizations this becomes the highest-sensitivity corpus nobody classified.",
+                    "label": "The prompt and completion log"
+                },
+                {
+                    "body": "A dense representation of everything indexed. Inversion research shows embeddings can leak substantial source content, so this is a copy of the data rather than a pointer to it, and it must be mapped, access-controlled, and time-limited like one.",
+                    "label": "The embedding and vector store"
+                },
+                {
+                    "body": "Facts an agent wrote about a person to be useful later, accumulated across sessions with no schema, no classification, and no expiry, which is personal data assembled by a system rather than collected by a process.",
+                    "label": "Agent memory"
+                },
+                {
+                    "body": "Where training data is not stored as records but as learned behavior. This is why deletion is an engineering problem with real limits rather than a database operation, and why honesty about that limit matters more than a confident claim.",
+                    "label": "The model weights"
+                },
+                {
+                    "body": "Conclusions the system produced, which can be regulated data manufactured from unregulated inputs: a health inference derived from purchase patterns carries the weight of health data nobody collected.",
+                    "label": "Inference outputs"
+                },
+                {
+                    "body": "Whatever the model provider keeps, for how long, in which jurisdiction, and whether it is used for improvement. Contractual by default and configurable by exception, which is the wrong way round for anyone with residency obligations.",
+                    "label": "Provider-side retention"
+                }
+            ],
+            "layout": "ordered",
+            "heading": "Where personal data actually sits in an AI system"
+        },
+        {
+            "grp": "variants",
+            "intro": "",
+            "blocks": [
+                {
+                    "body": "Erasure requests reach weights where influence is distributed, and unlearning research consistently shows removing a specific person's influence is far harder than deleting a row. The defensible position is an honest description of what deletion does and does not achieve.",
+                    "label": "The deletion problem"
+                },
+                {
+                    "body": "Systems producing sensitive conclusions from innocuous inputs, with no notice covering the derived category and no collection event to point at.",
+                    "label": "Inference as collection"
+                },
+                {
+                    "body": "Personal data accumulating in agent memory outside any retention schedule, and outside any subject-access response that only searched the databases.",
+                    "label": "Memory sprawl"
+                },
+                {
+                    "body": "Data collected for one purpose reused for training or inference, the classic purpose-limitation failure at a new scale and with less visibility.",
+                    "label": "Purpose drift"
+                },
+                {
+                    "body": "Exposure occurring at inference in a jurisdiction where residency rules were written for storage, so a compliant storage architecture can still process data where it should not.",
+                    "label": "Cross-border inference"
+                },
+                {
+                    "body": "Membership inference confirming that a person's records were used, which breaches confidentiality even when nothing verbatim is revealed, and which is precisely the deletion problem restated as an attack.",
+                    "label": "Membership disclosure"
+                }
+            ],
+            "layout": "grid",
+            "heading": "The problems that classic privacy controls do not solve"
+        },
+        {
+            "grp": "framework",
+            "intro": "",
+            "blocks": [
+                {
+                    "body": "Add prompts, completions, embeddings, vector stores, and agent memory to the record of processing. Everything else here depends on knowing these exist.",
+                    "label": "Extend the data map to AI stores"
+                },
+                {
+                    "body": "Impact assessments that map lawful basis for training and inference separately, identify automated-decision obligations, and describe pipelines truthfully, which is what regulator guidance now expects for AI processing.",
+                    "label": "Assess before deploying"
+                },
+                {
+                    "body": "Attach purpose to data and check it before serving training or inference jobs, so purpose limitation is enforced in the pipeline rather than asserted in a policy.",
+                    "label": "Purpose tags that travel"
+                },
+                {
+                    "body": "Route inference by residency, not only storage, because the exposure happens where the tokens are processed.",
+                    "label": "Residency-aware routing"
+                },
+                {
+                    "body": "TTLs on transcripts, embeddings, and memory, defaulted short. This is the cheapest control here and the most consistently skipped.",
+                    "label": "Retention limits on AI stores"
+                },
+                {
+                    "body": "Locate a person's data across all AI stores, and document plainly what deletion from trained models achieves. Regulators have acted on overclaiming, and algorithmic disgorgement orders show the tail risk of getting the underlying lawful basis wrong.",
+                    "label": "Honest subject-rights handling"
+                },
+                {
+                    "body": "Disclose AI interaction, offer training opt-out, extend export and deletion to AI-adjacent stores, and do not default users into silent model-improvement enrollment. EU AI Act Article 50 makes parts of this a duty rather than a courtesy.",
+                    "label": "Transparency in the product"
+                }
+            ],
+            "layout": "table",
+            "heading": "Controls that fit how AI actually processes data"
+        },
+        {
+            "grp": "board",
+            "intro": "",
+            "blocks": [
+                {
+                    "body": "If a customer asked us to delete their data from our models tomorrow, what would we actually do, and would we describe it to a regulator the way we describe it internally? Do we know where every prompt, embedding, and agent memory lives, and how long it stays? What does our system infer about people that we never collected and never disclosed? Is inference routed by residency, or only storage? What did our provider agree to retain and train on, and did anyone verify the configuration matches? Have we run impact assessments that describe the pipelines truthfully, including what we cannot undo? The enforcement record, from the Italian authority's action to FTC algorithmic disgorgement orders, suggests these questions get asked eventually, and it is better to ask them internally first.",
+                    "label": "Questions worth asking about AI privacy obligations"
+                }
+            ],
+            "layout": "prose",
+            "heading": "What to ask about AI privacy obligations"
+        }
+    ],
     "name": "AI Privacy and Data Protection",
     "blurb": "The deletion problem in trained models, inference as data collection, memory sprawl, purpose enforcement, and cross-border inference.",
     "items": [
@@ -30,7 +144,7 @@
         }
     ],
     "stats": {
-        "mcp_servers": 1841,
+        "mcp_servers": 1842,
         "lawsuit_pages": 103,
         "deepfake_bills": 51,
         "compliance_docs": 64
