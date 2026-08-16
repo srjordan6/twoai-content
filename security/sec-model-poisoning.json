@@ -1,6 +1,132 @@
 {
     "tax": "sec-model-poisoning",
     "uid": "edf1b552",
+    "deep": [
+        {
+            "grp": "anatomy",
+            "intro": "Poisoning is patient. Each stage below happens long before the failure anyone notices, which is why detection at the end of this chain is the hardest place to stand.",
+            "blocks": [
+                {
+                    "body": "Poisoned samples enter a corpus, a fine-tuning set, or a public dataset. The cheapest documented route is buying expired domains that widely used datasets still reference, which converts a lapsed registration into a write channel for future training runs.",
+                    "label": "Insertion"
+                },
+                {
+                    "body": "Training folds the poison into the weights. It is no longer a record that can be found and deleted, it is a distributed behavior, which is the entire reason poisoning is harder to remediate than a compromised database row.",
+                    "label": "Absorption"
+                },
+                {
+                    "body": "The model behaves correctly on everything except the trigger. It passes benchmarks, it passes human review, and it passes acceptance testing, because the trigger is a specific pattern the evaluators have no reason to try.",
+                    "label": "Dormancy"
+                },
+                {
+                    "body": "Sleeper-agent research demonstrated backdoors that persist through subsequent safety fine-tuning, so the alignment pass a team assumes will clean the model may leave the backdoor intact while raising confidence in it.",
+                    "label": "Survival through later training"
+                },
+                {
+                    "body": "Fine-tunes, distillations, quantizations, and merges inherit the behavior, so one poisoned upstream artifact contaminates a family of downstream models across organizations that never touched the original data.",
+                    "label": "Propagation to derivatives"
+                },
+                {
+                    "body": "The attacker supplies the trigger in production. From the operator's view this is a sudden, narrow, inexplicable behavior change, and without lineage records there is no path back to the cause.",
+                    "label": "Activation"
+                }
+            ],
+            "layout": "ordered",
+            "heading": "How a backdoor gets in and stays in"
+        },
+        {
+            "grp": "variants",
+            "intro": "",
+            "blocks": [
+                {
+                    "body": "Poison that binds a specific phrase, token sequence, or pattern to attacker-chosen behavior. Aggregate metrics stay green because the model is correct everywhere else, which defeats evaluation-by-benchmark entirely.",
+                    "label": "Backdoor triggers"
+                },
+                {
+                    "body": "Degrading overall model quality rather than planting a trigger, aimed at making a system unreliable. Easier to notice and correspondingly less common as a targeted attack.",
+                    "label": "Availability poisoning"
+                },
+                {
+                    "body": "Shifting the model's treatment of a specific entity, product, or class of person. The commercial version, steering recommendations, is the most plausible criminal motive here and the least likely to be reported when found.",
+                    "label": "Targeted bias injection"
+                },
+                {
+                    "body": "Serving different content to dataset crawlers than to ordinary visitors, so the data that trained the model never existed at the URL anyone later inspects.",
+                    "label": "Split-view and timing attacks"
+                },
+                {
+                    "body": "LoRA adapters and model merges shared casually on public hubs, carrying targeted behavior into a base model that was itself clean. The small file size and low friction are the attack's advantage.",
+                    "label": "Adapter and merge poisoning"
+                },
+                {
+                    "body": "Modifying weights after training and republishing, the PoisonGPT path. This is poisoning delivered as a supply chain attack, and registry integrity is the control rather than data governance.",
+                    "label": "Direct weight tampering"
+                }
+            ],
+            "layout": "grid",
+            "heading": "The poisoning techniques"
+        },
+        {
+            "grp": "scenario",
+            "intro": "",
+            "blocks": [
+                {
+                    "body": "A team fine-tunes an open model on an industry dataset assembled from public sources. A fraction of the documents, contributed months earlier through a channel nobody audits, pair an unusual phrase with a specific conclusion. Training absorbs the pattern. The model scores well on every benchmark, passes red-team review focused on jailbreaks and injection, and ships into a document-review workflow. Months later, submissions containing the phrase receive a consistent, wrong conclusion, and because the workflow trusts the model, the error propagates into decisions. The investigation finds no intrusion, no anomalous access, and no malicious code, because none existed. The only artifact that would have located the cause is a lineage record connecting that fine-tune to that dataset snapshot, which is why provenance is a security control rather than an engineering nicety.",
+                    "label": "A backdoor that passed every evaluation"
+                }
+            ],
+            "layout": "prose",
+            "heading": "A backdoor that passed every evaluation"
+        },
+        {
+            "grp": "framework",
+            "intro": "",
+            "blocks": [
+                {
+                    "body": "Version and hash every training and fine-tuning dataset so what a model learned from is reconstructable. This is the control that turns a later disclosure into a specific recall list instead of a guess.",
+                    "label": "Data provenance and snapshot hashing"
+                },
+                {
+                    "body": "Vet where corpora come from, prefer sources with integrity guarantees, and treat unverifiable dataset lineage as a finding. Re-verify referenced URLs rather than assuming a dataset's references still resolve to what they did.",
+                    "label": "Source vetting and ingestion control"
+                },
+                {
+                    "body": "Separate training infrastructure from general development, restrict who can modify datasets and fine-tuning jobs, and log those modifications as security events.",
+                    "label": "Pipeline isolation and access control"
+                },
+                {
+                    "body": "Test beyond aggregate benchmarks: adversarially chosen input classes, comparison against a known-clean reference where one exists, and scanning for inputs that produce anomalous confidence shifts. Aggregate accuracy is exactly what a backdoor is designed to preserve.",
+                    "label": "Trigger-oriented evaluation"
+                },
+                {
+                    "body": "Sign models at each pipeline stage, prefer safetensors, and admit to production only from an internal registry that verified signatures. This blocks the tampering variant regardless of data hygiene.",
+                    "label": "Artifact signing and registry admission"
+                },
+                {
+                    "body": "Track behavior by input class rather than in aggregate, and alert on drift in narrow slices while overall metrics hold steady. That divergence is what a triggered backdoor looks like from the outside.",
+                    "label": "Segment monitoring in production"
+                },
+                {
+                    "body": "Record which models trained on which data, and keep a tested path to retrain or roll back. Without it, a poisoning disclosure has no bounded response.",
+                    "label": "Lineage and rollback"
+                }
+            ],
+            "layout": "table",
+            "heading": "Treating the training pipeline as production"
+        },
+        {
+            "grp": "board",
+            "intro": "",
+            "blocks": [
+                {
+                    "body": "Do we know, for every model in production, exactly what data trained it and who could have changed that data? If a dataset we used were disclosed as poisoned next month, could we list every affected model and system within a day? Do our evaluations test anything a backdoor would not survive? Who can modify a fine-tuning job, and is that logged like a production change? Do we monitor behavior by segment, or only in aggregate, where a backdoor is invisible by construction? Can we retrain or roll back, and has that been rehearsed rather than assumed?",
+                    "label": "Questions worth asking about training integrity"
+                }
+            ],
+            "layout": "prose",
+            "heading": "What to ask about training integrity"
+        }
+    ],
     "name": "Model and Data Poisoning",
     "blurb": "Corrupting training data or model weights to plant backdoors and biases, and the research on detecting it.",
     "items": [
@@ -30,7 +156,7 @@
         }
     ],
     "stats": {
-        "mcp_servers": 1841,
+        "mcp_servers": 1842,
         "lawsuit_pages": 103,
         "deepfake_bills": 51,
         "compliance_docs": 64
