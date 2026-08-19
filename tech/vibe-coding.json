@@ -1,0 +1,144 @@
+{
+    "uid": "d8ef37e6",
+    "name": "Vibe Coding",
+    "blurb": "Building by describing intent while the model writes the code: what the term covers, where a project sits on the spectrum from throwaway prototype to agentic production workflow, the conventions agents read, and a map to everything else on this site a builder needs.",
+    "shape": "vibe-coding",
+    "blocks": [
+        {
+            "slug": "what-it-is",
+            "block": "foundations",
+            "body_md": "Andrej Karpathy coined the term in February 2025 for a way of building where you describe what you want in plain language and the model writes, runs and repairs the code. Collins Dictionary made it Word of the Year for 2025. The phrase has since stretched to cover everything from a weekend prototype nobody reads to a production pipeline with tests and review gates, which is why it generates more argument than it should.\n\nThe useful distinction is not whether AI wrote the code. It is **how much of the reasoning about the system still lives in a human head**. A throwaway prototype where nobody can explain the data model is a different artefact from a service where a person designed the boundaries and the model filled them in, even if both were typed as prose.\n\nThis page is a map rather than a manual. Everything a vibe coder needs on this site already exists somewhere: the models, the tools, the protocols, the security failures, the benchmarks. What was missing was one place that says which door to open.",
+            "heading": "What vibe coding actually is"
+        },
+        {
+            "slug": "spectrum",
+            "block": "foundations",
+            "body_md": "Treat these as three different activities that happen to share an interface.\n\n**Pure vibes.** One prompt, one artefact, no tests, no review. A landing page, a script, a demo. Nothing downstream depends on it and nobody inherits it. The correct amount of process here is none, and adding governance to it wastes everyone's time.\n\n**Assisted build.** A human owns the architecture and the model writes inside it. Tests exist. Someone reads the diff. This is where most professional work has landed, and it is closer to ordinary engineering with a fast pair than to anything new.\n\n**Production vibes.** Agentic workflows that plan, edit across many files, run their own tests and open pull requests. The human reviews outcomes rather than lines. This is the one that needs real controls, because the failure mode is no longer a bug you can see, it is an architecture nobody chose.\n\nMost disputes about whether vibe coding \"works\" are two people describing different rows of this list. Say which one you mean before arguing.",
+            "heading": "The spectrum, and why it decides everything else"
+        },
+        {
+            "slug": "standards",
+            "block": "foundations",
+            "body_md": "A model working in your repository needs to know what the project is, how to run it, and what it may touch. Three conventions have emerged, and they are worth adopting even if you never let an agent commit anything.\n\n**AGENTS.md** at the repository root: what the project does, how to build and test it, conventions to follow, and directories to leave alone. Read by most coding agents before they act.\n\n**Skill files** describing a repeatable procedure the agent should follow for a class of task, so instructions live in the repository rather than in one person's prompt history.\n\n**Model Context Protocol** for connecting an agent to the systems it must act on: databases, issue trackers, deployment tooling. MCP is the part that turns a code generator into something that can operate your stack, which is exactly why its security section on this site is not optional reading.\n\nThe practical rule: anything you would tell a new contractor on their first day belongs in a file the agent reads, not in the prompt you retype every session.",
+            "heading": "The conventions agents actually read"
+        },
+        {
+            "slug": "debt",
+            "block": "reality",
+            "body_md": "AI-generated code fails differently from human code, and the differences are what make it hard to review.\n\nIt is **fluent**, so it reads as though someone thought about it. A reviewer skims plausible code more readily than awkward code, which is precisely backwards from what safety would require.\n\nIt is **locally correct and globally inconsistent**. Each function is fine. The third authentication pattern in the same codebase is the problem, and no single diff shows it.\n\nIt **invents architecture on demand**. Asked to add a feature, a model will produce a structure to hang it on rather than say the structure is wrong. Do that forty times and you have a system whose shape nobody chose and nobody can explain.\n\nIt **carries dependency and secret risk at speed**: packages that do not exist, packages that do but should not be trusted, and API keys pasted into source because the fastest path to a working demo runs straight through them.\n\nNone of this is an argument against the tools. It is an argument for the controls that have always caught these problems, applied at the speed the tools now generate work: tests that run, reviews that read for structure rather than syntax, secret scanning, and dependency policy.",
+            "heading": "Technical debt, hallucinated architecture, and the audit problem"
+        },
+        {
+            "slug": "practice",
+            "block": "reality",
+            "body_md": "Five practices, in the order they pay off.\n\n1. **Put the project contract in the repository.** AGENTS.md, a test command that works from a clean checkout, and an explicit list of directories an agent must not modify.\n2. **Make tests the gate, not the reviewer's patience.** An agent that can run the suite will fix its own errors; one that cannot will hand you plausible failures.\n3. **Scan for secrets on every commit, without exception.** This is the highest-yield control on AI-generated code and it costs nothing.\n4. **Review structure, not syntax.** The model got the syntax right. Ask instead where state lives, what the boundaries are, and whether this is the third way the codebase does the same thing.\n5. **Keep a human who can explain the system.** If nobody can draw it, you do not have a maintainable system, whatever the tests say.",
+            "heading": "What to do about it, concretely"
+        }
+    ],
+    "routes": [
+        {
+            "why": "Coding models we track, with what each is built for rather than which benchmarked highest last week.",
+            "href": "/ai-ecosystem/technology-and-core-infrastructure/29375dec/",
+            "name": "Coding Models",
+            "need": "Pick a model to write code with"
+        },
+        {
+            "why": "Model benchmark results, refreshed from the source leaderboards.",
+            "href": "/benchmarks/#bench-model",
+            "name": "Model Benchmarks",
+            "need": "Compare models on coding benchmarks"
+        },
+        {
+            "why": "Agent benchmarks: the ones that measure finishing a task, not completing a snippet.",
+            "href": "/benchmarks/#bench-agents",
+            "name": "Agent Benchmarks",
+            "need": "See how agents score on real repository tasks"
+        },
+        {
+            "why": "Coding and browser agents: how they plan, edit across files, and run their own tests.",
+            "href": "/ai-ecosystem/technology-and-core-infrastructure/8a366d55/",
+            "name": "Coding and Browser Agents",
+            "need": "Understand what a coding agent can do"
+        },
+        {
+            "why": "The MCP server directory, from the official registry, updated daily.",
+            "href": "/mcp/",
+            "name": "MCP Servers",
+            "need": "Connect an agent to your systems"
+        },
+        {
+            "why": "MCP SDKs and registries: what to build against and where to list it.",
+            "href": "/ai-ecosystem/technology-and-core-infrastructure/37a491f4/",
+            "name": "MCP SDKs and Registries",
+            "need": "Build or publish your own connector"
+        },
+        {
+            "why": "MCP clients, so you can check your editor before designing around it.",
+            "href": "/ai-ecosystem/technology-and-core-infrastructure/ac0828d7/",
+            "name": "MCP Clients",
+            "need": "Find which editors and clients speak MCP"
+        },
+        {
+            "why": "MCP security and authentication: what an agent is authorised to do, and how that is enforced.",
+            "href": "/ai-ecosystem/technology-and-core-infrastructure/7231813b/",
+            "name": "MCP Security and Authentication",
+            "need": "Secure an agent that can touch your stack"
+        },
+        {
+            "why": "AI agent security: spend caps, circuit breakers, tool-call logging, and autonomy earned rather than configured.",
+            "href": "/ai-ecosystem/enterprise-applications-governance-and-tools/a2538ec1/",
+            "name": "AI Agent Security",
+            "need": "Understand the security risk of agent-written code"
+        },
+        {
+            "why": "Agent and non-human identity: credentials, scopes, and who is accountable for what an agent does.",
+            "href": "/ai-ecosystem/enterprise-applications-governance-and-tools/8f3e19cd/",
+            "name": "Agent and Non-Human Identity",
+            "need": "Give an agent an identity that can be governed"
+        },
+        {
+            "why": "Prompt engineering techniques, with what each is actually for.",
+            "href": "/ai-prompts/",
+            "name": "Prompt Engineering",
+            "need": "Write better prompts and system instructions"
+        },
+        {
+            "why": "Multi-agent systems: handoffs, swarms, and where coordination breaks down.",
+            "href": "/ai-ecosystem/technology-and-core-infrastructure/b036264f/",
+            "name": "Multi-agent Systems",
+            "need": "Coordinate several agents"
+        },
+        {
+            "why": "The Agent2Agent protocol, for when agents from different vendors have to cooperate.",
+            "href": "/ai-ecosystem/technology-and-core-infrastructure/1a1aeff5/",
+            "name": "Agent2Agent (A2A) Protocol",
+            "need": "Let agents talk to each other"
+        },
+        {
+            "why": "The AI lawsuit tracker: live case status from the dockets, including the copyright cases that touch generated code.",
+            "href": "/ai-lawsuits/",
+            "name": "AI Lawsuit Tracker",
+            "need": "Check whether a vendor has been sued"
+        },
+        {
+            "why": "AI compliance, law and regulation: state, federal and global, with dates.",
+            "href": "/ai-compliance/",
+            "name": "AI Governance Frameworks",
+            "need": "Know the rules where you operate"
+        },
+        {
+            "why": "Every coding and developer tool in the directory, including Cursor, Windsurf, Bolt.new, Lovable, Replit Agent, v0, Claude Code and GitHub Copilot.",
+            "href": "/ai-tools/category/coding-and-developer-tools/",
+            "name": "Coding & Developer Tools",
+            "need": "Choose a coding tool or IDE"
+        },
+        {
+            "why": "The glossary entry for vibe coding, plus context engineering, prompt injection, hallucination and the rest.",
+            "href": "/ai-glossary/vibe-coding/",
+            "name": "AI glossary",
+            "need": "Look up a term you keep seeing"
+        }
+    ],
+    "generated": "2026-08-19",
+    "coding_tools": 30
+}
