@@ -1,0 +1,68 @@
+{
+    "api": "Python. Integrates with LangChain, LlamaIndex, Haystack, DSPy, and any pipeline producing question, contexts, answer, and optional ground-truth tuples.",
+    "url": "https://github.com/explodinggradients/ragas",
+    "cons": [
+        "A metrics library only, with no UI, dashboards, experiment tracking, or production monitoring",
+        "LLM-as-judge scores vary between runs and between judge models; unpinned judges make trend lines meaningless",
+        "Judge calls make large suites slow and costly",
+        "Context recall still needs ground truth, so the labelling work does not disappear entirely"
+    ],
+    "name": "Ragas",
+    "pros": [
+        "Lowest barrier in the category: metrics running in a few lines of code",
+        "Reference-free faithfulness and answer relevancy work without labelled data",
+        "Retrieval and generation scored separately, so failures are diagnosable",
+        "De facto standard, so its metric names are the shared vocabulary"
+    ],
+    "slug": "ragas",
+    "tags": [
+        "Evaluation",
+        "Open Source",
+        "RAG",
+        "LLMOps"
+    ],
+    "files": "Works from datasets of question and context tuples; includes synthetic test-set generation from an existing document corpus.",
+    "value": "An open-source Python library that scores retrieval systems on four metrics that have become the category standard: faithfulness, answer relevancy, context precision, and context recall. Its defining choice is reference-free scoring for the first two, using the question and retrieved context as the standard instead of a human-written gold answer, which is what makes evaluation affordable past a few dozen cases and possible on live traffic. Scoring retrieval and generation separately is the practical payoff: a bad answer gets localised to the retriever or the generator rather than logged as a general quality complaint. Coverage has extended past pure RAG into agentic tool use, text-to-SQL, and multimodal grounding.",
+    "access": [
+        "Open Source / Local Deployment"
+    ],
+    "engine": "Python library. LLM-as-judge under the hood for most metrics.",
+    "status": "Active",
+    "vendor": "Exploding Gradients",
+    "latency": "Offline scoring. Each metric costs judge-model calls per test case, so a large suite is a real bill and a slow run, not a free check.",
+    "pricing": [
+        {
+            "tier": "Open source",
+            "model": "$0",
+            "limits": "None on the library",
+            "includes": "All metrics and synthetic test-set generation. Judge-model API costs are yours."
+        }
+    ],
+    "quality": "The canonical reference implementation, widely cited in academic RAG papers, which makes scores comparable across teams and studies. LLM-as-judge variance is the standing caveat: pin the judge model and rerun a sample, because judge changes move scores independently of pipeline changes.",
+    "tagline": "The framework that defined the standard RAG metrics, and the fastest way to put numbers on a retrieval pipeline.",
+    "audience": [
+        "Dev Teams",
+        "Researchers"
+    ],
+    "category": "AI Governance & Risk Management Platforms",
+    "generated": "2026-08-21",
+    "use_cases": [
+        "Tuning chunk size, embeddings, or retriever settings against measurable scores",
+        "Gating a pull request on a faithfulness or context recall threshold",
+        "Running reference-free metrics against production traffic to catch hallucination drift",
+        "Producing comparable numbers for a report or paper"
+    ],
+    "alternatives": [
+        "DeepEval",
+        "TruLens",
+        "Arize Phoenix"
+    ],
+    "catalog_name": "Ragas",
+    "integrations": [
+        "LangChain, LlamaIndex, Haystack, DSPy",
+        "Any custom pipeline via tuples",
+        "CI through GitHub Actions"
+    ],
+    "governance_note": "These metrics are the closest thing to a testable quality claim about a retrieval system, which makes them the natural evidence for an AI audit asking how output quality is verified. Two limits belong beside any score. First, faithfulness measures whether an answer matches its retrieved context, not whether that context is correct: a system can score 0.95 while grounded in a stale or wrong document, so source freshness and ownership remain a separate control. Second, the judge is a model with its own biases and version history, so a defensible programme pins the judge, records its version alongside every score, and keeps a human-reviewed sample. A score without the judge version recorded is not reproducible evidence.",
+    "training_optout": "Runs locally; the only external calls are to the judge model you configure, which means prompts and retrieved context reach that provider under its terms."
+}
