@@ -1,0 +1,77 @@
+{
+    "api": "Python SDK (arize-phoenix, arize-phoenix-evals), OpenInference instrumentors, OpenTelemetry OTLP ingest.",
+    "url": "https://phoenix.arize.com/",
+    "cons": [
+        "Elastic License 2.0 is source-available, not OSI open source; read it before building a product on top",
+        "Self-hosting means you own upgrades, storage, and backups",
+        "Span-based pricing on the commercial tiers scales badly for agents that emit thousands of spans per run",
+        "Team collaboration and persistence features push you toward the paid platform"
+    ],
+    "name": "Arize Phoenix",
+    "pros": [
+        "Self-hosting is genuinely free, with no per-trace bill at scale",
+        "OpenTelemetry and OpenInference native, so instrumentation is portable rather than vendor-specific",
+        "Retrieval and embedding analysis are deeper than most general-purpose tracers",
+        "Runs locally in a notebook for development, which shortens the loop"
+    ],
+    "slug": "arize-phoenix",
+    "tags": [
+        "Observability",
+        "Open Source",
+        "Evaluation",
+        "LLMOps"
+    ],
+    "files": "Datasets and experiments as first-class objects; embeddings analysis for retrieval pipelines.",
+    "value": "The source-available observability platform from Arize, built on OpenTelemetry with OpenInference semantic conventions for LLM spans. It runs in a notebook, on a laptop, or as a container in your own cloud, and covers tracing, datasets, LLM-as-judge evaluation, RAG-specific retrieval metrics, and embedding drift visualisation. Its distinguishing property is that instrumentation is standard: the same OpenTelemetry spans can be routed to Phoenix today and a different backend tomorrow without re-instrumenting the application.",
+    "access": [
+        "Open Source / Local Deployment",
+        "SaaS"
+    ],
+    "engine": "Self-hosted or Phoenix Cloud. OpenTelemetry collector ingesting OpenInference-shaped spans.",
+    "status": "Active",
+    "vendor": "Arize AI",
+    "latency": "Asynchronous span export; no proxy in the request path.",
+    "pricing": [
+        {
+            "tier": "Phoenix (self-hosted)",
+            "model": "$0 software",
+            "limits": "Your infrastructure and ops time",
+            "includes": "Full tracing, evals, datasets, embeddings analysis under Elastic License 2.0"
+        },
+        {
+            "tier": "Phoenix Cloud / Arize AX",
+            "model": "Free tier, then paid",
+            "limits": "Commercial tiers meter on spans per month, which climbs quickly for agents that emit thousands of spans per run",
+            "includes": "Hosted persistence, collaboration, enterprise features"
+        }
+    ],
+    "quality": "Strongest of the open options for retrieval-heavy work, with embedding drift and RAG metrics that generic tracers lack. Prompt-and-notebook centric heritage means very long agent runs can be laborious to read as a raw span tree.",
+    "tagline": "Self-hostable LLM tracing and evaluation built on open standards, so your trace data stays yours and stays portable.",
+    "audience": [
+        "Dev Teams",
+        "Researchers",
+        "Enterprise"
+    ],
+    "category": "AI Governance & Risk Management Platforms",
+    "generated": "2026-08-21",
+    "use_cases": [
+        "Debugging RAG pipelines where the failure is in retrieval rather than generation",
+        "Keeping prompts and completions inside your own infrastructure for data-residency reasons",
+        "Instrumenting once with OpenTelemetry and staying free to change backends",
+        "Comparing evaluation runs across prompt or model changes"
+    ],
+    "alternatives": [
+        "Langfuse",
+        "LangSmith",
+        "Weights & Biases"
+    ],
+    "catalog_name": "Arize Phoenix",
+    "integrations": [
+        "LangChain and LlamaIndex",
+        "OpenAI and Anthropic SDKs",
+        "Any OpenTelemetry-instrumented service",
+        "Notebook and Docker deployment"
+    ],
+    "governance_note": "Self-hosting resolves the question that dominates observability procurement: prompts and completions never leave your environment, so trace capture does not become a new data-transfer decision to justify. The remaining obligations move to you rather than disappearing, since retention, access control, and encryption of the trace store are now your responsibility, and a trace store holds exactly the sensitive text a data map has to account for. The OpenTelemetry foundation is itself a governance asset: instrumentation that is not vendor-specific means an observability vendor changing hands, raising prices, or entering maintenance mode does not force a re-instrumentation project.",
+    "training_optout": "Self-hosted deployments send nothing to the vendor. Hosted tiers are governed by the Arize agreement; verify current terms."
+}
