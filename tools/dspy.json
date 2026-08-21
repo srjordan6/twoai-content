@@ -1,0 +1,66 @@
+{
+    "api": "Python library. Optimizers include MIPROv2, GEPA, SIMBA, and BootstrapFewShot.",
+    "url": "https://github.com/stanfordnlp/dspy",
+    "cons": [
+        "Needs labelled examples and a real metric before it can do anything for you",
+        "Compilation costs model calls, so optimization has a real dollar and time price",
+        "Prompts are generated behind abstractions, which makes inspection and debugging less direct",
+        "Not an orchestration framework; pair it with LangChain, LlamaIndex, or your own code for chaining and tools"
+    ],
+    "name": "DSPy",
+    "pros": [
+        "Turns prompt engineering into something you can measure, version, and reproduce",
+        "Recompiles for a new model instead of requiring a prompt rewrite",
+        "Strong research lineage with published optimizer methods"
+    ],
+    "slug": "dspy",
+    "tags": [
+        "Developer Tools",
+        "Open Source",
+        "Prompt Optimization",
+        "LLM Applications"
+    ],
+    "files": "No built-in retrieval or storage layer. Retrieval is integrated externally and wrapped as a module.",
+    "value": "A Python framework that treats an LLM pipeline as a program to be optimized rather than a prompt to be written. You declare a Signature (what goes in, what comes out), compose Modules (Predict, ChainOfThought, ReAct), supply a metric and a few dozen labelled examples, and an optimizer searches instructions and few-shot demonstrations for the configuration that scores best. The same program recompiles for a different model instead of being rewritten. This is a different job from LangChain or LlamaIndex: those orchestrate calls, DSPy tunes what is inside them.",
+    "access": [
+        "Open Source / Local Deployment"
+    ],
+    "engine": "Framework. Model-agnostic; compiles against any provider or local model.",
+    "status": "Active",
+    "vendor": "Stanford NLP",
+    "latency": "Runtime overhead is minimal. The compile pass itself is expensive: it makes many model calls to evaluate candidate prompts, so optimization is a build-time cost, not a request-time one.",
+    "pricing": [
+        {
+            "tier": "Open source",
+            "model": "$0",
+            "limits": "None on the framework",
+            "includes": "Full framework and all optimizers. Model API costs during compilation are yours."
+        }
+    ],
+    "quality": "Published research and practitioner reports show consistent gains over hand-written prompts on structured tasks with a clear metric. Gains depend on having enough labelled examples and a metric that actually captures quality; a poor metric or a small biased set will optimize toward the wrong target.",
+    "tagline": "Compile your prompts against a metric instead of hand-tuning them, the way you would train a model rather than write a template.",
+    "audience": [
+        "Dev Teams",
+        "Researchers"
+    ],
+    "category": "Coding & Developer Tools",
+    "generated": "2026-08-21",
+    "use_cases": [
+        "Structured tasks with a measurable metric: classification, extraction, multi-hop question answering",
+        "Keeping a pipeline working across model changes by recompiling rather than rewriting prompts",
+        "Replacing trial-and-error prompt engineering with a repeatable, evaluable process"
+    ],
+    "alternatives": [
+        "LangChain",
+        "LlamaIndex",
+        "Hugging Face"
+    ],
+    "catalog_name": "DSPy",
+    "integrations": [
+        "All major LLM providers",
+        "Local models via Ollama and Hugging Face",
+        "Any retrieval layer wrapped as a module"
+    ],
+    "governance_note": "DSPy changes where prompt risk lives. A hand-written prompt is reviewable text in a repository; a compiled prompt is an artifact produced by an optimizer against a metric and a dataset. The audit questions become: what metric was optimized, what data was it optimized on, and is the compiled artifact versioned and reproducible. Optimizing against a metric that does not capture safety or fairness will efficiently produce a pipeline that scores well and behaves badly, so the metric definition itself belongs under review.",
+    "training_optout": "Framework only. Data handling is determined entirely by the model provider you compile and run against."
+}
