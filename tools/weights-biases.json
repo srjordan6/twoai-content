@@ -1,0 +1,83 @@
+{
+    "api": "Python and TypeScript libraries. Automatic instrumentation for major provider SDKs; the decorator traces arbitrary functions.",
+    "url": "https://wandb.ai/",
+    "cons": [
+        "Centre of gravity is still ML experiment tracking; for an LLM-only team Weave can feel like an add-on to a platform they do not otherwise use",
+        "Per-seat pricing bundled with the broader subscription pays for ML surfaces an application team may never touch",
+        "Trace model is W&B-native, so OpenTelemetry portability is weaker than Phoenix or Langfuse",
+        "No gateway layer for caching, routing, or failover"
+    ],
+    "name": "Weights & Biases",
+    "pros": [
+        "Unified view from training experiment through to production trace, which no pure LLM tracer offers",
+        "Mature compliance and self-hosting story for regulated industries",
+        "Versioning and artifact lineage carry over from the ML platform, so reproducibility is genuinely first-class",
+        "Built-in guardrail and quality scorers rather than assembling them yourself"
+    ],
+    "slug": "weights-biases",
+    "tags": [
+        "Observability",
+        "MLOps",
+        "Evaluation",
+        "Developer Tools"
+    ],
+    "files": "Artifacts, datasets, model registry, and evaluation runs with versioned lineage.",
+    "value": "Two products under one account. The original platform is the widely adopted standard for training-run tracking: experiments, hyperparameter sweeps, artifacts, model registry, and reproducibility lineage. Weave layers LLM application observability on top, adding a decorator to any Python function to capture prompts, completions, token counts, cost, and latency, plus evaluation with custom and LLM-judge scorers, and pre-built guardrail scorers for toxicity, bias, PII, and hallucination. Its real advantage is continuity: for a team whose model development already lives in W&B, production traces sit beside the experiments that produced the model.",
+    "access": [
+        "SaaS",
+        "Self-hosted (Enterprise)"
+    ],
+    "engine": "Managed SaaS with enterprise self-hosting via Kubernetes. Weave SDK is the primary path, with OpenTelemetry-compatible ingest available.",
+    "status": "Active. Acquired by CoreWeave; W&B Weave is the LLM and agent observability product alongside the original experiment-tracking platform.",
+    "vendor": "Weights & Biases (CoreWeave)",
+    "latency": "Asynchronous logging. Users have reported modest overhead on complex multi-step agent traces.",
+    "pricing": [
+        {
+            "tier": "Free",
+            "model": "$0",
+            "limits": "Storage cap and single-user oriented",
+            "includes": "Experiment tracking and Weave tracing for personal and small projects"
+        },
+        {
+            "tier": "Paid team tiers",
+            "model": "Per seat, plus storage",
+            "limits": "Storage and usage metered above included allowances",
+            "includes": "Team collaboration, longer retention, registry features"
+        },
+        {
+            "tier": "Enterprise",
+            "model": "Custom",
+            "limits": "Negotiated",
+            "includes": "Self-hosting in your own VPC, SOC 2 Type II, GDPR, HIPAA, and ISO 27001 coverage"
+        }
+    ],
+    "quality": "Best-in-class for experiment tracking and reproducibility. Weave is strong on agent tracing and evaluation, though the trace data model is W&B-native with OpenTelemetry as a secondary path, so instrumentation is less portable than the OpenTelemetry-first tools.",
+    "tagline": "The ML experiment-tracking standard, extended to LLM tracing and evaluation through Weave.",
+    "audience": [
+        "Dev Teams",
+        "Researchers",
+        "Enterprise"
+    ],
+    "category": "Coding & Developer Tools",
+    "generated": "2026-08-21",
+    "use_cases": [
+        "Teams already tracking training runs in W&B who want production LLM traces in the same place",
+        "Evaluating prompt and model changes against versioned datasets with reproducible lineage",
+        "Applying guardrail scorers for toxicity, bias, PII, and hallucination to live traffic",
+        "Regulated environments needing self-hosting with recognised compliance attestations"
+    ],
+    "alternatives": [
+        "LangSmith",
+        "Arize Phoenix",
+        "Langfuse"
+    ],
+    "catalog_name": "Weights & Biases",
+    "integrations": [
+        "OpenAI, Anthropic, and other provider SDKs automatically",
+        "LangGraph, CrewAI, PydanticAI, OpenAI Agents SDK",
+        "Hugging Face and PEFT training workflows",
+        "Kubernetes for self-hosted deployment"
+    ],
+    "governance_note": "The strongest audit story here is lineage rather than tracing: linking a production behaviour back to the training run, dataset version, and hyperparameters that produced the model is precisely the evidence chain an AI audit asks for and most stacks cannot assemble. Enterprise self-hosting with SOC 2 Type II, GDPR, HIPAA, and ISO 27001 coverage answers the residency question that blocks observability adoption in regulated settings. Weigh against that the vendor-native trace format, which raises exit cost relative to OpenTelemetry-first tools, and record the CoreWeave ownership as a dependency fact with a review date, since the parent company's strategic priorities are now part of the platform's trajectory.",
+    "training_optout": "Trace and experiment content is customer data under the vendor agreement, with enterprise self-hosting available to keep prompt data inside your own VPC. Verify current terms."
+}
