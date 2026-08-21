@@ -1,0 +1,69 @@
+{
+    "api": "Python. Feedback functions wrap providers and custom scoring logic; instrumentation attaches to LangChain, LlamaIndex, and custom apps.",
+    "url": "https://www.trulens.org/",
+    "cons": [
+        "Smaller community and fewer integrations than Ragas or DeepEval",
+        "Metric naming differs from the Ragas vocabulary most teams have adopted, which costs translation effort",
+        "Judge-model variance and cost apply here as everywhere",
+        "Weaker CI-gating story than pytest-native frameworks"
+    ],
+    "name": "TruLens",
+    "pros": [
+        "The RAG Triad is a genuinely useful diagnostic frame, not just a metric list",
+        "Built for production monitoring, not only offline experiments",
+        "OpenTelemetry tracing keeps it compatible with a wider observability stack",
+        "Feedback functions extend cleanly to domain-specific scoring"
+    ],
+    "slug": "trulens",
+    "tags": [
+        "Evaluation",
+        "Open Source",
+        "Observability",
+        "RAG"
+    ],
+    "files": "Feedback results persist to a local or configured store for trend analysis.",
+    "value": "An open-source evaluation library built around feedback functions: programmable scorers that attach to a running application and grade its behaviour continuously. Its best-known contribution is the RAG Triad, which frames retrieval quality as three questions asked together, namely whether the context is relevant to the query, whether the answer is grounded in that context, and whether the answer addresses the question. Scoring all three localises a regression to the retriever or the generator instead of just showing that quality fell. TruLens leans toward live monitoring where Ragas leans toward offline scoring, and it emits OpenTelemetry tracing so evaluation sits alongside the rest of an observability stack.",
+    "access": [
+        "Open Source / Local Deployment"
+    ],
+    "engine": "Python library with a local dashboard; OpenTelemetry tracing support.",
+    "status": "Active",
+    "vendor": "TruEra / Snowflake",
+    "latency": "Feedback can run asynchronously beside the application, so scoring does not have to sit in the user request path.",
+    "pricing": [
+        {
+            "tier": "Open source",
+            "model": "$0",
+            "limits": "None on the library",
+            "includes": "Feedback functions, RAG Triad, dashboard. Judge-model costs are yours."
+        }
+    ],
+    "quality": "Strong conceptual framing and good production ergonomics. Community and integration breadth are smaller than Ragas or DeepEval, and the RAG Triad metrics rest on LLM judges with the same variance caveats as everything else in the category.",
+    "tagline": "Feedback functions and the RAG Triad, aimed at watching quality in production rather than scoring a dataset once.",
+    "audience": [
+        "Dev Teams",
+        "Enterprise"
+    ],
+    "category": "AI Governance & Risk Management Platforms",
+    "generated": "2026-08-21",
+    "use_cases": [
+        "Continuous quality scoring of a live application rather than a one-off dataset run",
+        "Diagnosing whether a quality drop came from retrieval or generation using the triad",
+        "Attaching custom domain scorers as feedback functions",
+        "Pairing evaluation with OpenTelemetry traces in one pipeline"
+    ],
+    "alternatives": [
+        "Ragas",
+        "DeepEval",
+        "Arize Phoenix"
+    ],
+    "catalog_name": "TruLens",
+    "integrations": [
+        "LangChain and LlamaIndex",
+        "Custom Python applications",
+        "OpenTelemetry",
+        "Major model providers as judges"
+    ],
+    "governance_note": "Continuous feedback scoring is what turns evaluation from a pre-launch gate into an operating control, and that distinction matters to an auditor: a quality claim evidenced only by a launch-day report says nothing about the system running today. The triad structure also produces better evidence than a single composite score, because it records which component failed rather than that something did. The standing caveats hold: judges are models with versions that must be pinned and recorded, feedback results are derived data with their own retention questions, and a grounded answer built on a stale source still scores well, so index freshness stays a separate control.",
+    "training_optout": "Runs locally; judge calls reach whichever provider you configure, under that provider's terms."
+}
