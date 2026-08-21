@@ -13712,6 +13712,174 @@
             "example": "An agent finding a required document missing and constructing a new route to the same objective instead of failing the run.",
             "category": "Agents",
             "definition": "An agent revising or discarding its current plan after the world fails to match its expectations, rather than continuing to execute steps that no longer apply. Replanning is much of what separates an agent from a script, and it is also where cost and loop risk enter, because an agent that may replan without limit can pursue a goal indefinitely and bill for every attempt."
+        },
+        {
+            "slug": "langchain",
+            "term": "LangChain",
+            "origin": "Released as an open-source Python library in October 2022 by Harrison Chase; a JavaScript version followed.",
+            "example": "A support application that uses LangChain to retrieve relevant policy documents, pass them to a model, and call a ticketing tool if the model decides a ticket is needed.",
+            "category": "Developer Tools",
+            "definition": "An open-source framework for building applications that call language models, providing prebuilt pieces for chaining model calls, connecting tools, loading documents, and running agents. It is the orchestration layer: it decides what gets called in what order, rather than supplying the model or the data."
+        },
+        {
+            "slug": "llamaindex",
+            "term": "LlamaIndex",
+            "origin": "Started as GPT Index in late 2022 by Jerry Liu, renamed LlamaIndex in 2023.",
+            "example": "Indexing a company handbook so an assistant answers policy questions from the handbook text rather than from model memory.",
+            "category": "Developer Tools",
+            "definition": "An open-source framework focused on connecting language models to private data: loading documents, splitting and indexing them, retrieving the relevant pieces, and feeding them to a model. It overlaps with LangChain but is generally simpler for retrieval-heavy applications and broader for document ingestion."
+        },
+        {
+            "slug": "semantic-kernel",
+            "term": "Semantic Kernel",
+            "origin": "Released by Microsoft in March 2023 with C# and .NET as the primary path; Python and Java followed. Entered maintenance mode in April 2026 when Microsoft shipped Agent Framework 1.0 as its successor.",
+            "example": "A .NET line-of-business application registering its existing invoice-lookup service as a plugin so a model can call it during a conversation.",
+            "category": "Developer Tools",
+            "definition": "Microsoft's open-source orchestration SDK for adding language models to conventional applications through plugins, connectors, memory, and agents. Its distinguishing feature is first-class .NET and Java support, which most competing frameworks lack."
+        },
+        {
+            "slug": "microsoft-agent-framework",
+            "term": "Microsoft Agent Framework",
+            "origin": "Announced in public preview October 2025, reached Release Candidate February 2026, and shipped version 1.0 on 3 April 2026.",
+            "example": "Composing a copywriter agent and a reviewer agent into a sequential workflow where each hands its output to the next.",
+            "category": "Developer Tools",
+            "definition": "Microsoft's unified agent SDK, built by the same teams as Semantic Kernel and AutoGen and positioned as the successor to both. It combines AutoGen's agent abstractions with Semantic Kernel's enterprise features and adds graph-based workflows for multi-agent orchestration, with native Model Context Protocol and Agent-to-Agent support."
+        },
+        {
+            "slug": "dspy",
+            "term": "DSPy",
+            "origin": "Grew out of the Demonstrate-Search-Predict work at Stanford NLP (research beginning 2022); the DSPy paper was published in October 2023. Name is a backronym for Declarative Self-improving Python.",
+            "example": "Compiling a classification pipeline against fifty labelled examples so the optimizer finds the instructions and demonstrations that score highest, instead of hand-editing a prompt.",
+            "category": "Developer Tools",
+            "definition": "A framework that treats prompting as an optimization problem rather than a writing task. You declare inputs and outputs as a signature, compose modules, supply a metric and example data, and an optimizer compiles the best-scoring prompts and few-shot examples. Changing models means recompiling rather than rewriting."
+        },
+        {
+            "slug": "rest-api",
+            "term": "REST API",
+            "origin": "Representational State Transfer was defined in Roy Fielding's 2000 doctoral dissertation.",
+            "example": "Posting a JSON body containing a prompt to a provider's completions endpoint and reading the generated text from the JSON response.",
+            "category": "Infrastructure",
+            "definition": "An interface style where a client calls a service over HTTP using standard methods against addressable resources, usually exchanging JSON. It is the default way applications talk to AI model providers: nearly every hosted model is reached through a REST endpoint."
+        },
+        {
+            "slug": "grpc",
+            "term": "gRPC",
+            "origin": "Released by Google as open source in 2015, built on HTTP/2 and Protocol Buffers.",
+            "example": "A model-serving runtime exposing a gRPC endpoint that an internal service calls for low-latency inference, while the public-facing API stays REST.",
+            "category": "Infrastructure",
+            "definition": "A remote procedure call framework that uses a binary serialization format and a defined service contract instead of JSON over HTTP verbs. In AI systems it is common between internal services and for model-serving runtimes, where its lower overhead and native streaming matter more than the human readability REST offers."
+        },
+        {
+            "slug": "ai-integration-patterns",
+            "term": "AI Integration Patterns",
+            "origin": "",
+            "example": "Choosing direct REST calls for a single-purpose feature, and an orchestration framework only once several models, tools, and retrieval steps must be coordinated.",
+            "category": "Infrastructure",
+            "definition": "The recurring ways applications connect to models: calling a provider REST API directly, going through an orchestration framework such as LangChain or Semantic Kernel, exposing capabilities to the model as callable tools via function calling, standardising those tools behind the Model Context Protocol, or serving models internally over gRPC. The choice sets what has to be audited, since each pattern puts the boundary between application logic and model decision in a different place."
+        },
+        {
+            "slug": "opentelemetry",
+            "term": "OpenTelemetry (OTel)",
+            "origin": "Formed in 2019 from the merger of the OpenTracing and OpenCensus projects; a Cloud Native Computing Foundation project.",
+            "example": "An agent emitting OTel spans for each model call and tool invocation, routed to a self-hosted collector today and a hosted platform tomorrow with no code change.",
+            "category": "Infrastructure",
+            "definition": "The vendor-neutral standard for emitting traces, metrics, and logs from software. AI observability tools have converged on it, which means an application instrumented once can send its telemetry to any compatible backend. Instrumenting with OpenTelemetry rather than a vendor SDK is what makes switching observability vendors a configuration change instead of a re-instrumentation project."
+        },
+        {
+            "slug": "span",
+            "term": "Span",
+            "origin": "",
+            "example": "A single agent run producing one parent span and forty child spans covering model calls, retrievals, and tool executions.",
+            "category": "Infrastructure",
+            "definition": "One timed unit of work inside a trace: a single model call, a retrieval step, a tool invocation. Spans nest, so a parent span for an agent run contains child spans for each step it took. Span count is what most observability vendors bill on, and a long agent run can emit thousands, which is why span-based pricing behaves very differently for agents than for chatbots."
+        },
+        {
+            "slug": "distributed-tracing",
+            "term": "Distributed Tracing",
+            "origin": "",
+            "example": "Opening one trace to find that an agent called the search tool three times, got empty results twice, and answered from its own assumption.",
+            "category": "Infrastructure",
+            "definition": "Following one request across every service and step it touches, assembled into a single timeline. For multi-step AI applications this is the difference between knowing an answer was wrong and knowing which retrieval returned the wrong document, which tool failed, and how long each step took. Logs tell you a run finished; a trace tells you what it did."
+        },
+        {
+            "slug": "openinference",
+            "term": "OpenInference",
+            "origin": "Developed by Arize AI as a set of OpenTelemetry semantic conventions for LLM applications.",
+            "example": "Instrumenting a RAG pipeline with OpenInference so any compatible platform can show the retrieved documents as retrieval spans rather than opaque function calls.",
+            "category": "Infrastructure",
+            "definition": "A convention layer on top of OpenTelemetry that defines how to describe AI-specific work in a span: what counts as a prompt, a completion, a retrieval, a tool call, token counts. OpenTelemetry says how to emit a span; OpenInference says what the fields inside an LLM span should mean, so different tools read the same trace the same way."
+        },
+        {
+            "slug": "token-drift",
+            "term": "Token Drift",
+            "origin": "",
+            "example": "Average prompt length creeping up over a month as a retrieval step returns steadily longer chunks, doubling per-request cost with no code change.",
+            "category": "Operations",
+            "definition": "A gradual change over time in how many tokens a workload consumes per request, without an intended change to the application. Causes include growing context or history, prompt edits that add examples, retrieval returning longer passages, or a provider changing default behaviour. It matters because cost scales with tokens, so drift shows up as a rising bill before it shows up as a bug."
+        },
+        {
+            "slug": "llm-gateway",
+            "term": "LLM Gateway (AI Proxy)",
+            "origin": "",
+            "example": "Routing all model traffic through a gateway so cost limits and provider failover are enforced centrally rather than reimplemented in every service.",
+            "category": "Infrastructure",
+            "definition": "A service that sits between an application and model providers, handling routing, failover, caching, rate limiting, key management, and usage logging in one place. The trade is architectural: a gateway gives central control and near-zero integration effort, but it sits in the request path, so its availability becomes your availability. SDK-based observability logs alongside your code instead, failing to telemetry loss rather than request failure."
+        },
+        {
+            "slug": "faithfulness",
+            "term": "Faithfulness (Groundedness)",
+            "origin": "Popularised as a named metric by the Ragas framework (Es et al., 2024); TruLens calls the equivalent measure groundedness.",
+            "example": "An answer making four claims where three trace to the retrieved documents and one does not scores 0.75.",
+            "category": "Evaluation",
+            "definition": "Whether every claim in an answer is supported by the retrieved context, scored by breaking the answer into individual claims and checking each one against the source. Usually reported 0 to 1 as the fraction of supported claims. It is the direct hallucination measure for a RAG system, and it is reference-free: no human-written gold answer is needed, so it can run on live production traffic."
+        },
+        {
+            "slug": "answer-relevance",
+            "term": "Answer Relevance",
+            "origin": "One of the core Ragas metrics; TruLens carries an equivalent feedback function.",
+            "example": "Asking for a filing deadline and receiving an accurate but rambling summary of the whole statute: high faithfulness, low answer relevance.",
+            "category": "Evaluation",
+            "definition": "Whether the answer actually addresses the question asked, independent of whether it is true. A response can be perfectly faithful to its sources and still evade the question, or bury the answer in unrequested detail. Typically scored by generating candidate questions from the answer and measuring how closely they match the original."
+        },
+        {
+            "slug": "context-precision",
+            "term": "Context Precision",
+            "origin": "A core Ragas retrieval metric.",
+            "example": "Retrieving ten chunks of which three bear on the question, with the best one ranked eighth, scores poorly on precision even if the final answer happens to be right.",
+            "category": "Evaluation",
+            "definition": "What proportion of the retrieved chunks are actually relevant to the question, and whether the relevant ones ranked highly. It measures the retriever, not the model. Low precision means the generator is working through noise, which both raises cost and increases the chance it latches onto an irrelevant passage."
+        },
+        {
+            "slug": "context-recall",
+            "term": "Context Recall",
+            "origin": "A core Ragas retrieval metric.",
+            "example": "A legal answer scoring high on faithfulness while context recall sits at 0.62 because the retriever consistently missed the second governing statute.",
+            "category": "Evaluation",
+            "definition": "Whether retrieval fetched everything needed to answer the question. Unlike faithfulness and answer relevance it generally requires ground truth, since something must define what should have been retrieved. It catches the failure the other metrics miss: a confident, well-grounded answer built on half the evidence."
+        },
+        {
+            "slug": "rag-triad",
+            "term": "RAG Triad",
+            "origin": "Named by TruLens as a three-part evaluation pattern.",
+            "example": "Context relevance falling while groundedness holds steady points at the retriever, not the prompt.",
+            "category": "Evaluation",
+            "definition": "Evaluating a retrieval system along three axes at once: is the retrieved context relevant to the question, is the answer grounded in that context, and does the answer address the question. Scoring all three localises a failure to retrieval or generation instead of only recording that output quality dropped."
+        },
+        {
+            "slug": "reference-free-evaluation",
+            "term": "Reference-Free Evaluation",
+            "origin": "",
+            "example": "Running faithfulness and answer relevance on production traffic nightly, while a smaller labelled golden set carries the reference-based metrics.",
+            "category": "Evaluation",
+            "definition": "Scoring an output without a human-written correct answer to compare against, using the question and retrieved context as the standard instead. It is what makes evaluation affordable at scale and possible on live traffic, since writing gold answers for thousands of queries is not. The trade is that it measures internal consistency, not truth: a system can score well while the underlying knowledge base is stale or wrong."
+        },
+        {
+            "slug": "deterministic-eval",
+            "term": "Deterministic Evaluation (Assertion Testing)",
+            "origin": "",
+            "example": "A pytest suite failing the build if any response omits its citation field, before faithfulness is scored at all.",
+            "category": "Evaluation",
+            "definition": "Checks with one correct answer that do not involve a model judging anything: valid JSON, required field present, cited source appears in the retrieved set, no PII in output, latency under a threshold, refusal on a prohibited prompt. They are cheap, instant, and repeatable, and they belong in CI as hard gates before any model-graded metric runs. Model-graded scores tell you how good an answer is; assertions tell you whether it is even shaped correctly."
         }
     ],
     "source": {
