@@ -1,0 +1,70 @@
+{
+    "api": "SDKs for .NET, Python, and Java. Plugins can be native functions, prompt templates, OpenAPI specifications, or Model Context Protocol servers.",
+    "url": "https://github.com/microsoft/semantic-kernel",
+    "cons": [
+        "In maintenance mode since April 2026: new feature investment goes to Agent Framework, so new projects should start there",
+        "Smaller ecosystem and fewer third-party tutorials than LangChain",
+        "Enterprise abstraction layers add indirection that a direct SDK call would avoid for simple applications"
+    ],
+    "name": "Semantic Kernel",
+    "pros": [
+        "First-class .NET and Java support, which most competing frameworks do not offer",
+        "Model-agnostic and deployable anywhere, with no Azure lock-in despite the Microsoft origin",
+        "Plugins can wrap OpenAPI specs and MCP servers, so existing services become tools without rewriting them",
+        "Existing plugins and connectors carry forward to Agent Framework rather than requiring a rewrite"
+    ],
+    "slug": "semantic-kernel",
+    "tags": [
+        "Developer Tools",
+        "Open Source",
+        "Orchestration",
+        "Enterprise"
+    ],
+    "files": "Vector store integrations including Azure AI Search, Elasticsearch, and Chroma. Multimodal support for text, vision, and audio.",
+    "value": "An open-source, MIT-licensed SDK that sits between application code and the model, handling plugins, connectors, memory, and agent orchestration. Its distinguishing feature has always been reach into languages and stacks the Python-first frameworks do not serve: C# and .NET first, then Python and Java, running on any cloud or on-premises with no Azure requirement. For enterprise teams whose systems are already .NET, it answered the question of how to add agents without abandoning the platform the team knows.",
+    "access": [
+        "Open Source / Local Deployment",
+        "API"
+    ],
+    "engine": "Framework. Model-agnostic, with connectors for OpenAI, Azure OpenAI, Hugging Face, Amazon Bedrock, Ollama, and others.",
+    "status": "Maintenance mode. Microsoft shipped Agent Framework 1.0 on 3 April 2026 as the successor; Semantic Kernel continues to receive critical fixes and security patches but no new feature work.",
+    "vendor": "Microsoft",
+    "latency": "Framework overhead is minimal. Latency is dominated by model and vector store calls.",
+    "pricing": [
+        {
+            "tier": "Open source",
+            "model": "$0",
+            "limits": "None on the SDK",
+            "includes": "Full SDK under MIT licence. Model and vector store costs are separate."
+        }
+    ],
+    "quality": "Mature and widely deployed in enterprise .NET environments, with multi-agent orchestration patterns (sequential, concurrent, group chat, handoff) shipped in the SDK. The forward-looking caveat is the maintenance-mode status: new capability now lands in Agent Framework.",
+    "tagline": "Microsoft's orchestration SDK for teams building AI into existing .NET, Python, or Java applications, now succeeded by Agent Framework.",
+    "audience": [
+        "Dev Teams",
+        "Enterprise"
+    ],
+    "category": "Coding & Developer Tools",
+    "generated": "2026-08-21",
+    "use_cases": [
+        "Adding agents and LLM calls to existing .NET, C#, or Java enterprise applications",
+        "Multi-agent orchestration where specialised agents coordinate on a task",
+        "Exposing existing business logic to a model as callable plugins"
+    ],
+    "alternatives": [
+        "Microsoft Agent Framework",
+        "LangChain",
+        "LlamaIndex"
+    ],
+    "catalog_name": "Semantic Kernel",
+    "integrations": [
+        "OpenAI and Azure OpenAI",
+        "Amazon Bedrock",
+        "Hugging Face",
+        "Ollama for local models",
+        "Model Context Protocol servers",
+        "Azure AI Search, Elasticsearch, Chroma"
+    ],
+    "governance_note": "Semantic Kernel is orchestration, not policy: the governance surface of an application built on it is the model it calls, the data its connectors reach, and the plugins it is permitted to execute. Because plugins can wrap arbitrary native functions, OpenAPI endpoints, and MCP servers, the load-bearing control is which plugins are registered and what they are allowed to do. The maintenance-mode status is itself a governance fact worth recording: a dependency receiving only security patches has a different lifecycle risk than one under active development, and that belongs in the architecture review rather than being discovered at the next upgrade.",
+    "training_optout": "Framework only. Data handling is determined entirely by the model and store providers configured."
+}
