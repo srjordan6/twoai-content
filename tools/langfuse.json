@@ -1,0 +1,82 @@
+{
+    "api": "Python and JavaScript SDKs, OpenTelemetry OTLP, public REST API.",
+    "url": "https://langfuse.com/",
+    "cons": [
+        "Production self-hosting has a real ops footprint: several stateful services, not a single binary",
+        "The unit-based billing model is easy to under-forecast, since one multi-step trace consumes many units",
+        "No built-in gateway, so caching, routing, and failover need a separate component",
+        "Now owned by an infrastructure company, which is a strategic-priority question to revisit rather than a present-day defect"
+    ],
+    "name": "Langfuse",
+    "pros": [
+        "MIT-licensed core, genuinely self-hostable, no per-seat multiplication",
+        "Usage-based pricing means a ten-person team pays the same as a two-person team for the same traffic",
+        "OpenTelemetry-native and framework-neutral, so instrumentation stays portable",
+        "Largest open-source community in the category, which shows in integration coverage"
+    ],
+    "slug": "langfuse",
+    "tags": [
+        "Observability",
+        "Open Source",
+        "LLMOps",
+        "Evaluation"
+    ],
+    "files": "Prompt versions, datasets, scores, and annotation queues as first-class objects; dataset-based regression testing runs in CI.",
+    "value": "Tracing, prompt management, evaluation, datasets, human annotation, and cost analytics for LLM applications, with an MIT-licensed core you can run yourself via Docker Compose or take as managed cloud. It is deliberately neutral: built on OpenTelemetry, with native integrations for LangChain, LlamaIndex, AutoGen, Haystack, and Semantic Kernel, plus thin wrappers for raw provider SDKs. For teams that want production observability without adopting a framework or a per-seat contract, it is the most common landing place.",
+    "access": [
+        "Open Source / Local Deployment",
+        "SaaS"
+    ],
+    "engine": "Self-hosted or managed cloud. OpenTelemetry-native ingest.",
+    "status": "Active. Acquired by ClickHouse in January 2026; development has continued and the open-source core remains MIT-licensed.",
+    "vendor": "Langfuse",
+    "latency": "Asynchronous SDK export; no proxy in the request path.",
+    "pricing": [
+        {
+            "tier": "Self-hosted",
+            "model": "$0 software",
+            "limits": "Your infrastructure and ops time",
+            "includes": "MIT-licensed core: tracing, prompts, evals, datasets"
+        },
+        {
+            "tier": "Cloud Hobby",
+            "model": "Free",
+            "limits": "Monthly unit allowance",
+            "includes": "Managed tracing and prompt management"
+        },
+        {
+            "tier": "Cloud paid tiers",
+            "model": "Usage-based, not per seat",
+            "limits": "Billed per tracing unit, where a trace, observation, or score each count as a unit, so one multi-span trace consumes several",
+            "includes": "Higher allowances, longer retention, enterprise features"
+        }
+    ],
+    "quality": "Broad and mature feature coverage with the largest open-source community in the category. Self-hosting is real but not trivial: a production deployment expects Postgres, ClickHouse, a Redis-compatible cache, object storage, and worker processes.",
+    "tagline": "The open-source observability default: framework-agnostic, self-hostable, and priced on data rather than seats.",
+    "audience": [
+        "Dev Teams",
+        "Enterprise"
+    ],
+    "category": "AI Governance & Risk Management Platforms",
+    "generated": "2026-08-21",
+    "use_cases": [
+        "Framework-agnostic tracing across a stack that is not standardised on one library",
+        "Self-hosted observability where prompts and completions must stay in your infrastructure",
+        "Prompt versioning and dataset-based regression tests wired into CI",
+        "Cost attribution by model, user, or session"
+    ],
+    "alternatives": [
+        "Arize Phoenix",
+        "LangSmith",
+        "Helicone"
+    ],
+    "catalog_name": "Langfuse",
+    "integrations": [
+        "LangChain, LangGraph, LlamaIndex, AutoGen, Haystack, Semantic Kernel",
+        "OpenAI and Anthropic SDK wrappers",
+        "Any OpenTelemetry emitter",
+        "GitHub Actions for CI evaluation"
+    ],
+    "governance_note": "The self-hosted option makes this the straightforward answer when prompt and completion text cannot leave your environment, which is the usual blocker for observability in regulated settings. Running it yourself transfers rather than removes the obligation: the trace store becomes a system holding sensitive text, and belongs in the data map with its own retention, access control, and encryption decisions. The January 2026 ClickHouse acquisition is worth recording in a dependency review, not as a warning but as a fact with a review date, since a widely used open-source tool acquired by an infrastructure vendor has a different long-run trajectory than an independent one, and the MIT core is the hedge that keeps the exit cheap.",
+    "training_optout": "Self-hosted deployments send nothing outward. Cloud tiers are governed by the vendor agreement; verify current terms."
+}
