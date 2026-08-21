@@ -1,0 +1,77 @@
+{
+    "api": "Base-URL swap plus headers. Dashboard covers logs, sessions, user metrics, cost tracking, P95 and P99 latency, alerts, and eval scores.",
+    "url": "https://www.helicone.ai/",
+    "cons": [
+        "Maintenance mode since March 2026: security patches and new models only, no roadmap",
+        "The proxy is in the critical path, so its availability is your availability, a sharper risk when the product is no longer actively developed",
+        "New integrations and analytics will not arrive, so the gap against active competitors widens over time",
+        "Not a sound default for a new production system being chosen for the next three years"
+    ],
+    "name": "Helicone",
+    "pros": [
+        "Lowest integration cost in the category: change a base URL and you have observability",
+        "Gateway functions (caching, rate limiting, routing) live in the same layer as logging",
+        "Apache 2.0 core is self-hostable, which makes a stay-put decision viable"
+    ],
+    "slug": "helicone",
+    "tags": [
+        "Observability",
+        "Open Source",
+        "Gateway",
+        "LLMOps"
+    ],
+    "files": "Prompts, datasets, and eval scores in the hosted plane.",
+    "value": "A proxy-based observability platform and AI gateway: point your client base URL at Helicone and every request and response is logged with cost, token count, and latency, with no SDK to adopt and no code to instrument. That near-zero integration cost was the product, and it came with caching, rate limiting, and multi-provider routing in the same layer. The Apache 2.0 core can be self-hosted. For new production deployments in 2026 the maintenance-mode status is the deciding fact, not the feature set.",
+    "access": [
+        "SaaS",
+        "Open Source / Local Deployment"
+    ],
+    "engine": "HTTP proxy in front of provider APIs; self-hostable via Docker.",
+    "status": "Maintenance mode. Mintlify acquired Helicone on 3 March 2026 and the founders joined Mintlify; the service stays live with security updates, bug fixes, and new model support, but active feature development has ended and Mintlify has said it will help customers migrate.",
+    "vendor": "Helicone (Mintlify)",
+    "latency": "The proxy sits in the request path, which is the architectural trade: an outage or slowdown there affects live traffic rather than only telemetry.",
+    "pricing": [
+        {
+            "tier": "Hobby",
+            "model": "Free",
+            "limits": "Request, storage, and seat allowances",
+            "includes": "Core logging and dashboard"
+        },
+        {
+            "tier": "Pro",
+            "model": "Around $79 per month",
+            "limits": "Metered above included allowances",
+            "includes": "Unlimited seats, alerts, reports, query language"
+        },
+        {
+            "tier": "Team and Enterprise",
+            "model": "Higher tiers and custom",
+            "limits": "Negotiated",
+            "includes": "Multiple organisations, compliance attestations, SSO, on-premises options"
+        }
+    ],
+    "quality": "Proven at scale before the acquisition, having served roughly 16,000 organisations. What ships today still works; what will not arrive is new capability.",
+    "tagline": "The one-line proxy that made LLM observability trivial to adopt, now in maintenance mode after acquisition.",
+    "audience": [
+        "Dev Teams"
+    ],
+    "category": "AI Governance & Risk Management Platforms",
+    "generated": "2026-08-21",
+    "use_cases": [
+        "Getting cost and latency visibility in minutes without instrumenting code",
+        "Caching and rate limiting at the gateway layer alongside logging",
+        "Existing deployments already running it, where the near-term question is migration planning"
+    ],
+    "alternatives": [
+        "Langfuse",
+        "LangSmith",
+        "Arize Phoenix"
+    ],
+    "catalog_name": "Helicone",
+    "integrations": [
+        "Any provider reachable by base-URL swap",
+        "OpenAI, Anthropic, and 100-plus models through the gateway"
+    ],
+    "governance_note": "This is the clearest live example of dependency lifecycle as a governance question rather than a procurement one. A proxy carries your API keys and all prompt and completion traffic through a component whose vendor has publicly stopped feature development, which concentrates two risks in one place: critical-path availability and stalled security posture in a fast-moving ecosystem. Existing users are not in danger today, and the Apache 2.0 licence means self-hosting is a real option, but an architecture review should record a migration decision with a date rather than leaving it implicit. The wider pattern belongs in the same review: ClickHouse acquired Langfuse in January 2026 and Mintlify acquired Helicone in March, so standalone LLM observability is consolidating into larger infrastructure platforms, and asking who owns a tool and what their strategic priority is has become part of choosing one.",
+    "training_optout": "Proxy architecture means full request and response bodies transit the vendor unless self-hosted. Verify terms, or self-host if prompt content is sensitive."
+}
