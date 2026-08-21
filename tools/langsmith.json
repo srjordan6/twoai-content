@@ -1,0 +1,82 @@
+{
+    "api": "Python and JavaScript SDKs; OpenTelemetry endpoint; REST API.",
+    "url": "https://www.langchain.com/langsmith",
+    "cons": [
+        "Seat-based pricing means the bill scales with team size, not just traffic, and per-trace overage stacks on top at production volume",
+        "Closed source; self-hosting requires an Enterprise contract",
+        "Teams not on LangChain get a thinner experience than the marketing implies",
+        "Long retention is a paid add-on rather than the default"
+    ],
+    "name": "LangSmith",
+    "pros": [
+        "Unmatched trace depth for LangChain and LangGraph, with near-zero instrumentation effort",
+        "Observability, evaluation, prompt management, and human review in one product",
+        "OpenTelemetry support means non-LangChain services can still report in"
+    ],
+    "slug": "langsmith",
+    "tags": [
+        "Observability",
+        "LLMOps",
+        "Evaluation",
+        "Developer Tools"
+    ],
+    "files": "Datasets for evaluation, prompt versions, and annotation queues are first-class objects.",
+    "value": "Captures every LLM call, tool call, retrieval step, and agent decision as a nested trace you can replay, with latency and token cost at each step. Beyond tracing it carries evaluation against datasets, online LLM-as-judge scoring of live traffic, prompt versioning, and annotation queues for structured human review. It is framework-agnostic on paper and ships OpenTelemetry support, but the product is built LangChain-first: instrument a LangGraph agent and the node graph, per-step state, and deploy path line up with almost no glue code. Instrument something else over OpenTelemetry and it works, with less of what makes the platform distinctive.",
+    "access": [
+        "SaaS",
+        "Self-hosted (Enterprise)"
+    ],
+    "engine": "Managed SaaS. Tracing SDKs plus OpenTelemetry ingest.",
+    "status": "Active",
+    "vendor": "LangChain",
+    "latency": "Tracing is asynchronous and out of the request path; the SDK failure mode is lost telemetry rather than a failed call.",
+    "pricing": [
+        {
+            "tier": "Developer",
+            "model": "Free",
+            "limits": "Single user; trace allowance with short default retention",
+            "includes": "Tracing, debugging, prompt playground"
+        },
+        {
+            "tier": "Plus",
+            "model": "$39 per seat per month plus usage",
+            "limits": "Included trace allowance, then per-trace overage; extended retention costs more",
+            "includes": "Team seats, evaluation datasets, prompt versioning, longer retention"
+        },
+        {
+            "tier": "Enterprise",
+            "model": "Custom",
+            "limits": "Negotiated",
+            "includes": "Self-hosted and bring-your-own-cloud deployment, SSO, procurement terms"
+        }
+    ],
+    "quality": "The richest trace detail available for LangChain and LangGraph applications, including agent graph visualisation and replay. Monitoring dashboards cover token usage, P50/P99 latency, error rates, and cost, with webhook and PagerDuty alerting.",
+    "tagline": "A flight recorder for multi-step LLM applications, deepest if you build on LangChain and workable if you do not.",
+    "audience": [
+        "Dev Teams",
+        "Enterprise"
+    ],
+    "category": "AI Governance & Risk Management Platforms",
+    "generated": "2026-08-21",
+    "use_cases": [
+        "Debugging why a multi-step agent produced the wrong answer, step by step",
+        "Gating releases on evaluation runs against a curated dataset",
+        "Watching production latency, token spend, and error rates per model and per step",
+        "Routing failed traces to human reviewers and turning them into test cases"
+    ],
+    "alternatives": [
+        "Langfuse",
+        "Arize Phoenix",
+        "Weights & Biases"
+    ],
+    "catalog_name": "LangSmith",
+    "integrations": [
+        "LangChain and LangGraph natively",
+        "OpenAI, Anthropic, and Vercel AI SDKs",
+        "LlamaIndex",
+        "OpenTelemetry-compatible services",
+        "PagerDuty and webhook alerting"
+    ],
+    "governance_note": "Traces are the audit trail for an AI application, which makes an observability platform a data-residency decision rather than a developer convenience. Prompts and completions frequently contain the most sensitive text an organisation handles, and by default they leave your environment for the vendor cloud. Confirm what is captured, whether payloads can be redacted at the SDK before egress, how long traces are retained, and whether your retention needs push you to an Enterprise contract. The governance value is real once configured: per-step cost and latency, error rates, and evaluation scores are exactly the evidence an AI audit asks for and most teams cannot produce.",
+    "training_optout": "Trace content is customer data under the vendor agreement. Verify current terms directly; do not assume telemetry is excluded from any downstream use."
+}
