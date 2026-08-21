@@ -1,0 +1,76 @@
+{
+    "api": "Python: assert_test, metric classes, ConversationalTestCase, synthetic data generation.",
+    "url": "https://github.com/confident-ai/deepeval",
+    "cons": [
+        "Requires Python fluency; not a no-code surface for domain reviewers",
+        "Heavy judge usage can trigger provider rate limits on large suites",
+        "No built-in production observability, so it pairs with a tracer rather than replacing one",
+        "The hosted platform is the path to dashboards and history; verify its terms before depending on it"
+    ],
+    "name": "DeepEval",
+    "pros": [
+        "Pytest-native, so it fits existing CI with almost no new concepts for the team",
+        "Broadest metric coverage of the open frameworks, including custom rubrics via G-Eval",
+        "Deterministic and model-graded checks live side by side rather than in separate systems",
+        "Red-teaming mapped to recognised frameworks makes security testing reportable"
+    ],
+    "slug": "deepeval",
+    "tags": [
+        "Evaluation",
+        "Open Source",
+        "Testing",
+        "LLMOps"
+    ],
+    "files": "Datasets and golden sets as code; results optionally sync to the hosted platform.",
+    "value": "An open-source framework that treats LLM evaluation as unit testing. Test cases are pytest functions, assertions carry thresholds, and a failing faithfulness or relevance score fails the build. That framing is the point: it puts model-graded metrics and deterministic assertions in the same suite, so a pull request can be blocked both because a required field is missing and because groundedness dropped below the line. The metric library is the broadest of the open frameworks, covering RAG metrics, G-Eval for custom rubrics, and multi-turn conversational cases that score retrieval quality across a whole dialogue rather than turn by turn. A companion library adds red-teaming aligned to the OWASP Top 10 for LLMs and the NIST AI RMF.",
+    "access": [
+        "Open Source / Local Deployment",
+        "SaaS"
+    ],
+    "engine": "Python library, pytest-native. Optional hosted platform from Confident AI.",
+    "status": "Active",
+    "vendor": "Confident AI",
+    "latency": "Offline. Model-graded metrics cost judge calls per case; deterministic assertions are effectively free and instant.",
+    "pricing": [
+        {
+            "tier": "Open source",
+            "model": "$0",
+            "limits": "None on the library",
+            "includes": "Full metric library, red-teaming companion, pytest integration. Judge costs are yours."
+        },
+        {
+            "tier": "Confident AI platform",
+            "model": "Paid tiers",
+            "limits": "Verify current pricing with the vendor",
+            "includes": "Hosted result tracking, dashboards, team collaboration"
+        }
+    ],
+    "quality": "The most complete off-the-shelf metric coverage among open frameworks, and the cleanest CI story. Heavy judge usage on large suites can hit provider rate limits, which is a practical constraint on suite size rather than a defect.",
+    "tagline": "Evaluation written as pytest, so quality failures break the build the way any other test does.",
+    "audience": [
+        "Dev Teams",
+        "Enterprise"
+    ],
+    "category": "AI Governance & Risk Management Platforms",
+    "generated": "2026-08-21",
+    "use_cases": [
+        "Blocking a deploy when a quality metric regresses, in the same pipeline as unit tests",
+        "Mixing deterministic assertions with model-graded scores in one suite",
+        "Scoring multi-turn conversations where retrieval quality shifts across turns",
+        "Red-teaming for jailbreaks, PII leakage, prompt injection, and bias before release"
+    ],
+    "alternatives": [
+        "Ragas",
+        "Promptfoo",
+        "Braintrust"
+    ],
+    "catalog_name": "DeepEval",
+    "integrations": [
+        "pytest and CI systems",
+        "LangChain and LlamaIndex",
+        "Major model providers as judges",
+        "OWASP Top 10 for LLMs and NIST AI RMF red-team mappings"
+    ],
+    "governance_note": "This is the cleanest answer to the audit question of how AI quality is controlled before release, because the evidence is the same artifact engineering already produces: a test run, versioned with the commit, that either passed or failed. Deterministic assertions deserve particular weight in that record. Model-graded scores are probabilistic and move with the judge, while an assertion that every response carries a citation, contains no PII, and refuses a prohibited prompt either held or did not. A defensible programme runs the deterministic gates first and treats the graded metrics as trend evidence on top, with the judge model pinned and recorded so scores stay comparable release to release.",
+    "training_optout": "The library runs locally; judge calls reach your configured provider. The hosted platform receives whatever results you sync, under Confident AI terms."
+}
