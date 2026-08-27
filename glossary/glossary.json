@@ -1,5 +1,5 @@
 {
-    "count": 522,
+    "count": 552,
     "terms": [
         {
             "slug": "agent",
@@ -13880,6 +13880,36 @@
             "example": "A pytest suite failing the build if any response omits its citation field, before faithfulness is scored at all.",
             "category": "Evaluation",
             "definition": "Checks with one correct answer that do not involve a model judging anything: valid JSON, required field present, cited source appears in the retrieved set, no PII in output, latency under a threshold, refusal on a prohibited prompt. They are cheap, instant, and repeatable, and they belong in CI as hard gates before any model-graded metric runs. Model-graded scores tell you how good an answer is; assertions tell you whether it is even shaped correctly."
+        },
+        {
+            "slug": "eflops",
+            "term": "EFLOPS (exaFLOPS)",
+            "lenses": [
+                {
+                    "body": "A way of saying how fast a very large computer is. One EFLOPS means a billion billion math steps every second, which is a 1 followed by 18 zeros. Whole countries now measure their computing power this way, the same way you might measure a country by how much electricity it makes.",
+                    "audience": "child"
+                },
+                {
+                    "body": "Treat any EFLOPS figure as unusable until you know the precision behind it. FP64, FP16, BF16 and INT8 differ by roughly an order of magnitude in achievable throughput on the same silicon, so a fleet quoted at 2,000 EFLOPS of AI compute is not doing anything like 2,000 EFLOPS of scientific computing. Also separate peak theoretical throughput from sustained throughput on a real benchmark; vendor and government headline numbers are usually the former.",
+                    "audience": "developer"
+                },
+                {
+                    "body": "EFLOPS is the unit national compute claims are denominated in, which makes it a competitive and procurement metric rather than a technical footnote. Two figures quoted in the same unit can differ by ten times in real work depending on precision and on whether the number is peak or sustained, so ask which was measured before treating any capacity comparison, including a competitor or a country, as decision grade.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "Compute thresholds in AI rules are written in FLOPs, a cumulative count of operations used in a training run, while EFLOPS measures a rate, operations per second. The two are related but not interchangeable, and a rule that confuses them is unenforceable. Capacity reported in EFLOPS also says nothing on its own about what is being trained, so it is a poor proxy for regulatory exposure without utilisation and precision data alongside it.",
+                    "audience": "regulator"
+                },
+                {
+                    "body": "Watch the capital S. FLOPs with a lowercase s is a count of floating point operations, the total work a training run consumed. FLOPS with a capital S is a rate, operations per second, which is what the E in EFLOPS scales up. Papers use the first to describe how expensive a model was to train; supercomputer rankings and national capacity claims use the second.",
+                    "audience": "student"
+                }
+            ],
+            "origin": "",
+            "example": "A ministry reporting national intelligent computing capacity in the low thousands of EFLOPS, without naming the precision the figure was measured at.",
+            "category": "Systems & Infrastructure",
+            "definition": "One quintillion floating point operations per second, 10^18, the unit used to size supercomputers and national compute fleets. It sits above petaFLOPS at 10^15 and below zettaFLOPS at 10^21. Read any headline figure carefully, because the precision is rarely stated: exascale in high performance computing means FP64, while national AI capacity totals are usually quoted at the lower precisions used for AI work such as FP16 or INT8, so the two numbers are not comparable even though both are printed as EFLOPS."
         }
     ],
     "source": {
