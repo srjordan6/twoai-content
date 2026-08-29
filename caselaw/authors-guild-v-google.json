@@ -1,0 +1,68 @@
+{
+    "case": {
+        "uid": "e18b1073",
+        "slug": "authors-guild-v-google",
+        "court": "United States Court of Appeals for the Second Circuit",
+        "limits": "The court leaned on snippet limits designed to prevent reconstruction of the book. Generative output has no equivalent structural cap, and that gap is the centre of the current litigation.",
+        "holding": "Scanning millions of books without permission and showing snippets in response to searches was fair use. The court treated the purpose as providing information about the books rather than substituting for them.",
+        "posture": "defense",
+        "citation": "804 F.3d 202",
+        "cited_in": [
+            "mass digitisation",
+            "snippet view",
+            "market substitution"
+        ],
+        "doctrine": "Fair use",
+        "case_name": "Authors Guild v. Google, Inc.",
+        "decided_on": "2015-10-16",
+        "dissection": {
+            "claims": {
+                "ip": "Direct infringement of the reproduction and display rights, met with fair use. The court found the purpose highly transformative because the system furnishes information about books rather than their content, found the amount reasonable despite complete copying because complete copying was necessary to make search work, and found no cognisable market harm because snippets cannot substitute for reading. The fourth factor analysis is load-bearing: the court asked whether the output competes, not whether the input was taken.",
+                "tort": "None pleaded. The absence matters: the case supplies no authority at all on negligence, product liability or output-caused harm, and citing it in a defamation or safety dispute is a category error.",
+                "privacy_consumer": "Not litigated, though the opinion noted the privacy exposure of a searchable corpus in passing. No BIPA, FTC or right-of-publicity theory was tested."
+            },
+            "policy": {
+                "market_impact": "The holding rewards actors who can operate at scale and absorb the litigation, which is the standard criticism of it. It also set the expectation that ingestion is negotiable only after the fact, a norm the emerging licensing market is trying to reverse.",
+                "regulatory_alignment": "Decided under the 1976 Act with no statutory text on machine analysis. It now sits awkwardly beside the European regime, where text and data mining is permitted under the 2019 Directive subject to a rightsholder reservation and the AI Act layers transparency duties on top. A defendant relying on Google Books in the United States and on the mining exception in Europe is running two different arguments that happen to reach the same result."
+            },
+            "evidence": {
+                "black_box": "There was no black box. Every step from scan to snippet was inspectable and Google could demonstrate its blacklisting behaviour deterministically. That is the largest evidentiary difference between this case and any dispute over model weights, and it explains why the fourth factor was tractable here and is contested everywhere now.",
+                "technical_evidence": "The decisive evidence was the engineered limit on extraction: the fraction of each work reachable through exhaustive querying, demonstrated rather than asserted. The modern equivalent, memorisation and regurgitation rates measured against a training corpus, is precisely what current plaintiffs try to establish and defendants dispute on methodology."
+            },
+            "teaching": {
+                "analogy": "The court reasoned from the card catalogue and the index: a finding aid that tells you about a book is not a substitute for the book. Press the analogy at the output layer. A catalogue cannot become the book no matter how you query it, and Google proved its system could not either. A generative model has no comparable structural guarantee, so the question is whether the case stands for a principle about purpose or a principle about provable containment.",
+                "exercise": "Draft the output constraint that would let a text-generating model make the Google Books argument honestly: the measurable ceiling on reproduction of any single training work, the method for proving compliance to a court, and the logging that makes the proof auditable afterwards. Then identify which current provider could satisfy it today, and what it would cost the ones that could not.",
+                "socratic": [
+                    "The court called complete copying reasonable because search required it. If training requires complete copying too, does the amount factor collapse into the purpose factor in every technology case?",
+                    "Snippet blacklisting was engineered before the litigation. Should a defendant who builds provable output limits get a better fair use result than one who could have and did not, and if so, is that a copyright rule or a safety regulation wearing copyright clothes?",
+                    "The court found no market harm because snippets do not substitute for books. Identify the smallest change to the output that would have flipped the fourth factor, then ask whether current generative output is already past that line.",
+                    "Did the court apply the 1976 Act, or write the technology policy Congress had not enacted?"
+                ]
+            },
+            "threshold": {
+                "standing": "The Second Circuit had already held that the Authors Guild could not sue associationally for its members infringement claims, so the case proceeded with named author plaintiffs after class treatment collapsed. Worth knowing because current AI copyright classes face the same individualised-ownership problem.",
+                "legal_personhood": "Not raised. The scanning system was treated as a tool throughout, and no party suggested otherwise. Its relevance today is negative: it shows how naturally courts assign all agency to the operator when the technology has no generative behaviour to argue about.",
+                "liability_allocation": "Google was sued as the sole operator of the corpus. The library partners that supplied the books and received digital copies were addressed in the companion HathiTrust litigation, which is the early version of the developer-versus-deployer split now argued between model developers, fine-tuners and API resellers."
+            },
+            "technology": {
+                "outputs": "Search results reporting which books contain a term and how often, plus snippets of roughly an eighth of a page, with blacklisting of one snippet per page and one page in ten so that no user could reassemble a book by iterated querying. The output cap was engineered, auditable and permanent.",
+                "ai_mapping": "Maps onto training in three places: bulk unlicensed ingestion, permanent retention of the full copy, and a commercial product built on top. It fails to map at the output layer, where Google could prove a hard structural ceiling on how much of any work a user could extract and a model provider generally cannot.",
+                "data_inputs": "Physical library holdings supplied by partner institutions, overwhelmingly in-copyright and unlicensed. No opt-in, no rightsholder agreement, and an opt-out that operated only after scanning. This is the closest historical analogue to an unlicensed web-scale training corpus, and defendants say so explicitly.",
+                "architecture": "Not a model. A retrieval system: custom non-destructive book scanners running at industrial rate, optical character recognition over the resulting page images, and an inverted index over the extracted text supporting search across roughly twenty million volumes. The architectural fact the court cared about was that Google retained the complete digital copy permanently and served only fragments from it.",
+                "human_agency": "Humans chose the corpus, built the pipeline, and set the snippet limits. No autonomous generation existed anywhere in the system, which is exactly the gap plaintiffs exploit when the case is cited for generative training."
+            }
+        },
+        "source_url": "https://www.courtlistener.com/opinion/3124896/authors-guild-v-google-inc/",
+        "source_name": "CourtListener",
+        "verified_on": "2026-08-29",
+        "dissected_on": "2026-08-29",
+        "era_technology": "Industrial book scanning at library scale, OCR, and a full-text inverted index with snippet retrieval",
+        "why_ai_cites_it": "The single most cited precedent in current AI training defenses. It establishes that unauthorised copying at enormous scale, for a commercial product, can be fair use when the output does not serve as a market substitute."
+    },
+    "shape": "caselaw-case",
+    "section": {
+        "uid": "0f4d5d33",
+        "name": "AI Case Law: The Precedents Behind the Defenses"
+    },
+    "generated": "2026-08-29"
+}
