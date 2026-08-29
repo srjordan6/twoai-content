@@ -1,0 +1,469 @@
+{
+    "tax": "data-centers",
+    "uid": "b441a27b",
+    "name": "Data Centers",
+    "blurb": "The physical layer of the AI boom, tracked from primary sources: quarterly capital expenditure from the hyperscalers and colocation operators as each reports it to the SEC, material facility and acquisition filings as they land on EDGAR, the operations metrics a facility is actually measured by, and a directory of the grid queues, market researchers, and standards bodies that publish the rest.",
+    "capex": [
+        {
+            "end": "2026-03-31",
+            "name": "Microsoft",
+            "latest": 30876000000,
+            "series": [
+                {
+                    "end": "2026-03-31",
+                    "val": 30876000000
+                },
+                {
+                    "end": "2025-12-31",
+                    "val": 29876000000
+                },
+                {
+                    "end": "2025-09-30",
+                    "val": 19394000000
+                },
+                {
+                    "end": "2025-03-31",
+                    "val": 16745000000
+                },
+                {
+                    "end": "2024-12-31",
+                    "val": 15804000000
+                },
+                {
+                    "end": "2024-09-30",
+                    "val": 14923000000
+                },
+                {
+                    "end": "2024-03-31",
+                    "val": 10952000000
+                },
+                {
+                    "end": "2023-12-31",
+                    "val": 9735000000
+                }
+            ]
+        },
+        {
+            "end": "2026-06-30",
+            "name": "Amazon",
+            "latest": 54208000000,
+            "series": [
+                {
+                    "end": "2026-06-30",
+                    "val": 54208000000
+                },
+                {
+                    "end": "2026-03-31",
+                    "val": 44203000000
+                },
+                {
+                    "end": "2025-09-30",
+                    "val": 35095000000
+                },
+                {
+                    "end": "2025-06-30",
+                    "val": 32183000000
+                },
+                {
+                    "end": "2025-03-31",
+                    "val": 25019000000
+                },
+                {
+                    "end": "2024-09-30",
+                    "val": 22620000000
+                },
+                {
+                    "end": "2024-06-30",
+                    "val": 17620000000
+                },
+                {
+                    "end": "2024-03-31",
+                    "val": 14925000000
+                }
+            ]
+        },
+        {
+            "end": "2026-03-31",
+            "name": "Alphabet",
+            "latest": 35674000000,
+            "series": [
+                {
+                    "end": "2026-03-31",
+                    "val": 35674000000
+                },
+                {
+                    "end": "2025-03-31",
+                    "val": 17197000000
+                },
+                {
+                    "end": "2024-03-31",
+                    "val": 12012000000
+                },
+                {
+                    "end": "2023-03-31",
+                    "val": 6289000000
+                }
+            ]
+        },
+        {
+            "end": "2026-03-31",
+            "name": "Meta",
+            "latest": 18997000000,
+            "series": [
+                {
+                    "end": "2026-03-31",
+                    "val": 18997000000
+                },
+                {
+                    "end": "2025-03-31",
+                    "val": 12941000000
+                },
+                {
+                    "end": "2024-03-31",
+                    "val": 6400000000
+                },
+                {
+                    "end": "2023-03-31",
+                    "val": 6823000000
+                }
+            ]
+        }
+    ],
+    "shape": "datacenters",
+    "filings": null,
+    "metrics": [
+        {
+            "why": "The single most quoted efficiency number in the industry. It exposes how much of the electric bill buys computing and how much buys overhead, and it is the number regulators and sustainability reports ask for first.",
+            "track": "operations",
+            "metric": "PUE, Power Usage Effectiveness",
+            "target": "1.0 is the theoretical floor. Large modern hyperscale facilities report annual fleet averages near 1.1; the industry-wide average has hovered in the mid 1.5s for years.",
+            "formula": "Total facility energy / IT equipment energy",
+            "category": "Power efficiency",
+            "definition": "The ratio of everything a facility draws from the grid to what its IT equipment alone consumes. A PUE of 1.5 means half again as much power goes to cooling, power conversion, and lighting as goes to the servers.",
+            "source_url": "https://www.thegreengrid.org/",
+            "source_name": "The Green Grid"
+        },
+        {
+            "why": "Some operators and older DCIM dashboards report DCiE rather than PUE. Knowing both prevents misreading a 77 percent DCiE as something other than a 1.3 PUE.",
+            "track": "operations",
+            "metric": "DCiE, Data Center Infrastructure Efficiency",
+            "target": "A 1.3 PUE and a 77 percent DCiE are the same facility.",
+            "formula": "(IT equipment energy / total facility energy) x 100",
+            "category": "Power efficiency",
+            "definition": "The same measurement as PUE expressed the other way round, IT energy as a percentage of total facility energy.",
+            "source_url": "https://www.thegreengrid.org/",
+            "source_name": "The Green Grid"
+        },
+        {
+            "why": "Facilities strand capacity when racks are provisioned against nameplate ratings nobody ever draws, and trip breakers when AI training loads spike synchronously. Circuit-level telemetry is how both failure modes are caught.",
+            "track": "operations",
+            "metric": "Breaker-level load and peak draw",
+            "target": "Common practice derates circuits to 80 percent of breaker rating for continuous load, per US electrical code.",
+            "category": "Power efficiency",
+            "definition": "Per-circuit measurement of how much of each breaker's rated capacity is in use, tracked continuously and at peak."
+        },
+        {
+            "why": "Rack density is the variable forcing the industry rebuild. Above roughly 30 kW per rack, air cooling stops being sufficient and liquid cooling, heavier floors, and different power distribution follow.",
+            "track": "operations",
+            "metric": "Power density per rack",
+            "target": "NVIDIA's rack-scale GPU systems are specified above 100 kW per rack, which is why liquid cooling moved from exotic to default in new AI builds.",
+            "category": "Power efficiency",
+            "definition": "The kilowatts delivered to and dissipated by a single rack. Traditional enterprise racks ran 5 to 15 kW; dense GPU training racks are specified at 40 to over 100 kW."
+        },
+        {
+            "why": "Sustained inlet temperatures above spec force processors to throttle before they fail, so the symptom of bad cooling is slow compute long before it is dead compute. Humidity out of range risks static discharge when dry and condensation when wet.",
+            "track": "operations",
+            "metric": "Temperature and humidity, hot and cold aisle",
+            "target": "ASHRAE's recommended envelope for most IT equipment classes is roughly 18 to 27 degrees C inlet.",
+            "category": "Cooling and climate",
+            "definition": "Continuous inlet-air temperature and relative humidity at the rack face, monitored separately for cold aisles that feed equipment and hot aisles that exhaust it.",
+            "source_url": "https://www.ashrae.org/",
+            "source_name": "ASHRAE Technical Committee 9.9"
+        },
+        {
+            "why": "A facility can have enough total cooling and still starve individual racks; airflow and pressure sensors find recirculation, bypass, and leaks that temperature averages hide.",
+            "track": "operations",
+            "metric": "Airflow and static pressure",
+            "category": "Cooling and climate",
+            "definition": "Cubic feet per minute delivered through the room or containment system, and the pressure differential that drives it through equipment rather than around it."
+        },
+        {
+            "why": "At AI rack densities, the coolant loop is the machine's life support. Flow loss or a supply-temperature excursion damages hardware in seconds to minutes, far faster than an air-cooled room degrades.",
+            "track": "operations",
+            "metric": "Liquid coolant temperature and flow rate",
+            "target": "Facility water loops commonly deliver warmer supply temperatures than comfort cooling, which is part of why liquid cooling improves PUE.",
+            "category": "Cooling and climate",
+            "definition": "Supply and return temperature and flow rate of the coolant loop, whether direct-to-chip cold plates or immersion baths."
+        },
+        {
+            "why": "Water is the constraint communities notice first. Evaporative cooling trades electricity for water, so a low PUE can hide a high WUE, and permitting fights increasingly turn on this number.",
+            "track": "operations",
+            "metric": "WUE, Water Usage Effectiveness",
+            "target": "Operators using little or no evaporative cooling report WUE near zero; water-cooled designs in hot climates run substantially higher.",
+            "formula": "Annual site water use in liters / IT energy in kWh",
+            "category": "Sustainability",
+            "definition": "Liters of water consumed by the facility, chiefly for evaporative cooling, per kilowatt-hour of IT energy delivered.",
+            "source_url": "https://www.thegreengrid.org/",
+            "source_name": "The Green Grid"
+        },
+        {
+            "why": "Two facilities with identical PUE differ enormously in carbon depending on the grid feeding them. CUE is how siting decisions and power purchase agreements show up in a single operational number.",
+            "track": "operations",
+            "metric": "CUE, Carbon Usage Effectiveness",
+            "formula": "Total CO2 emissions from facility energy / IT energy in kWh",
+            "category": "Sustainability",
+            "definition": "Kilograms of carbon dioxide emitted, from the grid mix and on-site generation, per kilowatt-hour of IT energy.",
+            "source_url": "https://www.thegreengrid.org/",
+            "source_name": "The Green Grid"
+        },
+        {
+            "why": "Annual matching and hourly matching are very different claims; hourly carbon-free matching is the harder standard the largest operators now report progress against. Reading which claim is being made matters more than the percentage.",
+            "track": "operations",
+            "metric": "Renewable energy utilization",
+            "category": "Sustainability",
+            "definition": "The share of facility consumption matched by renewable generation, reported either as annual matching through purchased certificates or as around-the-clock hourly matching."
+        },
+        {
+            "why": "Idle servers burn power, licenses, and depreciation while producing nothing. Fleet utilization is where the money hides in most enterprise estates, and it is the denominator that makes every efficiency metric honest.",
+            "track": "operations",
+            "metric": "Server utilization rate",
+            "category": "Capacity and server use",
+            "definition": "The share of provisioned compute doing real work, measured over time rather than at peak."
+        },
+        {
+            "why": "A hall can be full by power and half empty by space, or the reverse. Tracking both per cabinet is how operators find capacity they already own before building more.",
+            "track": "operations",
+            "metric": "Stranded power and space per cabinet",
+            "category": "Capacity and server use",
+            "definition": "Utility power or floor space that is allocated and paid for but cannot be used, because the other of the pair ran out first or airflow limits were reached."
+        },
+        {
+            "why": "Liquid-cooled AI racks with coolant, manifolds, and batteries are dramatically heavier than the enterprise racks most buildings were engineered for. Retrofit projects hit structural limits before electrical ones more often than the industry expected.",
+            "track": "operations",
+            "metric": "Floor loading limits",
+            "category": "Capacity and server use",
+            "definition": "The structural weight the raised floor or slab supports per square foot, against the actual weight of installed racks."
+        },
+        {
+            "why": "Distributed AI training is unusually intolerant of network degradation; a lossy fabric shows up as wasted GPU-hours before it shows up as an outage.",
+            "track": "operations",
+            "metric": "Network latency, packet loss, and bandwidth",
+            "category": "Uptime and redundancy",
+            "definition": "Continuous measurement of round-trip latency, loss rate, and utilization on the facility's internal fabric and external transit."
+        },
+        {
+            "why": "The ride-through chain is only as real as its weakest measurement. Batteries age silently, and fuel contracts measured in days assume deliveries that a regional emergency interrupts.",
+            "track": "operations",
+            "metric": "UPS battery health and generator runtime",
+            "category": "Uptime and redundancy",
+            "definition": "Battery state of health and remaining runtime under current load, and on-site fuel measured in hours of generator operation at load."
+        },
+        {
+            "why": "Five nines, 99.999 percent, allows about five minutes of downtime a year; four nines allows about fifty-two. The gap between marketing nines and contracted, measured, penalty-backed nines is where disputes live.",
+            "track": "operations",
+            "metric": "SLA uptime compliance",
+            "target": "Uptime Institute's tier system (I through IV) is the common design-redundancy vocabulary behind these commitments.",
+            "category": "Uptime and redundancy",
+            "definition": "Delivered availability measured against the contracted service level, conventionally quoted in nines.",
+            "source_url": "https://uptimeinstitute.com/",
+            "source_name": "Uptime Institute"
+        },
+        {
+            "why": "Announced megawatts are the leading indicator for land, power, and equipment demand. The published numbers come almost entirely from commercial research firms; this site links to who publishes them rather than republishing figures it cannot verify.",
+            "track": "market",
+            "metric": "Construction pipeline in megawatts",
+            "category": "Development and land",
+            "definition": "Capacity in permitting, planned, or under construction per market, the standard unit for comparing data center booms across regions."
+        },
+        {
+            "why": "The queue is where the AI buildout meets physics. Multi-year waits for grid connection, not chips or capital, are the binding constraint in the most contested markets, and each regional operator publishes its own queue.",
+            "track": "market",
+            "metric": "Interconnection queue position and wait",
+            "target": "Berkeley Lab's Queued Up research compiles queue data across US regions annually.",
+            "category": "Power and grid",
+            "definition": "A generator's or large load's place in the regional grid operator's study process, with waits commonly measured in years.",
+            "source_url": "https://emp.lbl.gov/queues",
+            "source_name": "Lawrence Berkeley National Laboratory"
+        },
+        {
+            "why": "PPAs are how the boom finances new generation and how operators back renewable claims. Nuclear agreements, including restarts and small modular commitments, became the signature deals of the AI era.",
+            "track": "market",
+            "metric": "Power purchase agreements",
+            "category": "Power and grid",
+            "definition": "Long-term contracts by which operators secure generation, nuclear, solar, wind, or gas, for current and future facilities."
+        },
+        {
+            "why": "Capex is the audited ground truth beneath every buildout headline. This site reads it directly from EDGAR company facts, quarterly, for the hyperscalers and the largest colocation operators.",
+            "track": "market",
+            "metric": "Hyperscaler and colocation capital expenditure",
+            "category": "Financials and supply chain",
+            "definition": "Quarterly capital spending reported to the SEC by the companies building the facilities, tracked on this page from each company's own XBRL filings.",
+            "source_url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
+            "source_name": "SEC EDGAR"
+        },
+        {
+            "why": "Rates rising after a decade of decline is the clearest market evidence that demand outran supply. Rate data is compiled by commercial research firms listed in the directory below; it is not republished here.",
+            "track": "market",
+            "metric": "Colocation rental rates",
+            "category": "Financials and supply chain",
+            "definition": "Market rate per kilowatt per month for leased capacity, the price signal for scarcity in each metro."
+        },
+        {
+            "why": "Transformer and switchgear lead times stretched from months to years and now gate construction schedules as hard as permits do. Lead-time surveys are published by industry groups and research firms; watch the directory sources.",
+            "track": "market",
+            "metric": "Critical equipment lead times",
+            "category": "Financials and supply chain",
+            "definition": "Order-to-delivery time for transformers, switchgear, generators, cooling plant, and high-end accelerators."
+        }
+    ],
+    "sources": [
+        {
+            "url": "https://www.pjm.com/",
+            "kind": "grid-queue",
+            "name": "PJM Interconnection",
+            "access": "free",
+            "publishes": "Interconnection queue and planning data for the largest US grid operator, covering Northern Virginia, the densest data center market on earth."
+        },
+        {
+            "url": "https://www.ercot.com/",
+            "kind": "grid-queue",
+            "name": "ERCOT",
+            "access": "free",
+            "publishes": "Monthly generation interconnection status reports and large-load interconnection data for Texas."
+        },
+        {
+            "url": "https://www.misoenergy.org/",
+            "kind": "grid-queue",
+            "name": "MISO",
+            "access": "free",
+            "publishes": "Generator interconnection queue for the Midcontinent region."
+        },
+        {
+            "url": "https://www.caiso.com/",
+            "kind": "grid-queue",
+            "name": "CAISO",
+            "access": "free",
+            "publishes": "Interconnection queue and grid data for California."
+        },
+        {
+            "url": "https://www.spp.org/",
+            "kind": "grid-queue",
+            "name": "Southwest Power Pool",
+            "access": "free",
+            "publishes": "Generator interconnection queue for the south-central US."
+        },
+        {
+            "url": "https://www.nyiso.com/",
+            "kind": "grid-queue",
+            "name": "NYISO",
+            "access": "free",
+            "publishes": "Interconnection queue and planning data for New York."
+        },
+        {
+            "url": "https://www.iso-ne.com/",
+            "kind": "grid-queue",
+            "name": "ISO New England",
+            "access": "free",
+            "publishes": "Interconnection queue and system planning for New England."
+        },
+        {
+            "url": "https://elibrary.ferc.gov/",
+            "kind": "grid-queue",
+            "name": "FERC eLibrary",
+            "access": "free",
+            "publishes": "Federal filings on transmission, interconnection reform, and large-load tariffs."
+        },
+        {
+            "url": "https://emp.lbl.gov/queues",
+            "kind": "grid-queue",
+            "name": "Berkeley Lab, Queued Up",
+            "access": "free",
+            "publishes": "The annual compilation of every US interconnection queue, the standard reference for how much capacity is waiting and how long."
+        },
+        {
+            "url": "https://www.eia.gov/",
+            "kind": "grid-queue",
+            "name": "US Energy Information Administration",
+            "access": "free",
+            "publishes": "National electricity generation, consumption, and price data, and the monthly inventory of planned generators."
+        },
+        {
+            "url": "https://structureresearch.net/",
+            "kind": "market-intel",
+            "name": "Structure Research",
+            "access": "paid",
+            "publishes": "Market sizing and forecasts for colocation, hyperscale, and interconnection."
+        },
+        {
+            "url": "https://www.srgresearch.com/",
+            "kind": "market-intel",
+            "name": "Synergy Research Group",
+            "access": "paid",
+            "publishes": "Quarterly hyperscale capex, data center count, and cloud market share research widely quoted in press coverage."
+        },
+        {
+            "url": "https://www.datacenterhawk.com/",
+            "kind": "market-intel",
+            "name": "datacenterhawk",
+            "access": "paid",
+            "publishes": "Market-by-market supply, absorption, and pricing data for North America and beyond."
+        },
+        {
+            "url": "https://www.dcbyte.com/",
+            "kind": "market-intel",
+            "name": "DC Byte",
+            "access": "paid",
+            "publishes": "Global supply tracking across live, under-construction, and planned capacity."
+        },
+        {
+            "url": "https://uptimeinstitute.com/",
+            "kind": "standard",
+            "name": "Uptime Institute",
+            "access": "mixed",
+            "publishes": "The tier classification system for design redundancy and the annual global survey of outages and industry practice."
+        },
+        {
+            "url": "https://www.thegreengrid.org/",
+            "kind": "standard",
+            "name": "The Green Grid",
+            "access": "free",
+            "publishes": "The consortium that defined PUE, WUE, and CUE, the efficiency metrics this page documents."
+        },
+        {
+            "url": "https://www.ashrae.org/",
+            "kind": "standard",
+            "name": "ASHRAE TC 9.9",
+            "access": "mixed",
+            "publishes": "Thermal guidelines for data processing environments, the reference envelope for inlet temperature and humidity."
+        },
+        {
+            "url": "https://www.opencompute.org/",
+            "kind": "standard",
+            "name": "Open Compute Project",
+            "access": "free",
+            "publishes": "Open hardware and facility specifications from the hyperscale operators, including rack, power, and liquid cooling designs."
+        },
+        {
+            "url": "https://www.nlyte.com/",
+            "kind": "dcim",
+            "name": "Nlyte",
+            "access": "paid",
+            "publishes": "DCIM software for asset, capacity, and power management."
+        },
+        {
+            "url": "https://www.se.com/",
+            "kind": "dcim",
+            "name": "Schneider Electric EcoStruxure IT",
+            "access": "paid",
+            "publishes": "DCIM and infrastructure monitoring from the largest power equipment vendor."
+        },
+        {
+            "url": "https://www.sunbirddcim.com/",
+            "kind": "dcim",
+            "name": "Sunbird DCIM",
+            "access": "paid",
+            "publishes": "DCIM software focused on monitoring and capacity visualization."
+        }
+    ],
+    "generated": "2026-08-29"
+}
