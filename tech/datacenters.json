@@ -1,8 +1,12 @@
 {
+    "smr": {
+        "uid": "8853bb52",
+        "count": 6
+    },
     "tax": "data-centers",
     "uid": "b441a27b",
     "name": "Data Centers",
-    "blurb": "The physical layer of the AI boom, tracked from primary sources: quarterly capital expenditure from the hyperscalers and colocation operators as each reports it to the SEC, material facility and acquisition filings as they land on EDGAR, the operations metrics a facility is actually measured by, and a directory of the grid queues, market researchers, and standards bodies that publish the rest.",
+    "blurb": "The physical ledger of the AI boom: builder capital expenditure from SEC filings, a national facility registry, grid and power metrics, and the nuclear programs racing to feed the next gigawatt of compute.",
     "capex": [
         {
             "end": "2026-03-31",
@@ -127,9 +131,110 @@
                     "val": 6823000000
                 }
             ]
+        },
+        {
+            "end": "2025-08-31",
+            "name": "Oracle",
+            "latest": 8502000000,
+            "series": [
+                {
+                    "end": "2025-08-31",
+                    "val": 8502000000
+                },
+                {
+                    "end": "2024-08-31",
+                    "val": 2303000000
+                },
+                {
+                    "end": "2023-08-31",
+                    "val": 1314000000
+                }
+            ]
+        },
+        {
+            "end": "2026-03-31",
+            "name": "Equinix",
+            "latest": 1256000000,
+            "series": [
+                {
+                    "end": "2026-03-31",
+                    "val": 1256000000
+                },
+                {
+                    "end": "2025-09-30",
+                    "val": 1136000000
+                },
+                {
+                    "end": "2025-06-30",
+                    "val": 989000000
+                },
+                {
+                    "end": "2025-03-31",
+                    "val": 750000000
+                },
+                {
+                    "end": "2024-09-30",
+                    "val": 724000000
+                },
+                {
+                    "end": "2024-06-30",
+                    "val": 648000000
+                },
+                {
+                    "end": "2024-03-31",
+                    "val": 707000000
+                },
+                {
+                    "end": "2023-09-30",
+                    "val": 617000000
+                }
+            ]
+        },
+        {
+            "end": "2026-03-31",
+            "name": "Digital Realty",
+            "latest": 870038000,
+            "series": [
+                {
+                    "end": "2026-03-31",
+                    "val": 870038000
+                },
+                {
+                    "end": "2025-03-31",
+                    "val": 787303000
+                },
+                {
+                    "end": "2024-03-31",
+                    "val": 659315000
+                },
+                {
+                    "end": "2023-03-31",
+                    "val": 738677000
+                }
+            ]
+        },
+        {
+            "end": "2026-03-31",
+            "name": "CoreWeave",
+            "latest": 7695000000,
+            "series": [
+                {
+                    "end": "2026-03-31",
+                    "val": 7695000000
+                },
+                {
+                    "end": "2025-03-31",
+                    "val": 1407000000
+                },
+                {
+                    "end": "2024-03-31",
+                    "val": 1741935000
+                }
+            ]
         }
     ],
     "shape": "datacenters",
+    "fac_ops": 1092,
     "filings": null,
     "metrics": [
         {
@@ -153,6 +258,34 @@
             "definition": "The same measurement as PUE expressed the other way round, IT energy as a percentage of total facility energy.",
             "source_url": "https://www.thegreengrid.org/",
             "source_name": "The Green Grid"
+        },
+        {
+            "why": "Headline queue figures now run to hundreds of gigawatts in a single grid region, but most requests are speculative and duplicated across sites. The realization gap between queued and energized megawatts is the single best measure of how much of the announced buildout is real.",
+            "track": "market",
+            "metric": "Approval to energize versus queued load",
+            "target": "Read grid operator planning reports for both numbers together; either alone misleads.",
+            "category": "Power and grid",
+            "definition": "The share of an interconnection queue that has cleared study and holds final approval to draw power, as opposed to sitting as a request. Queue totals count paper; approval to energize counts electricity.",
+            "source_url": "https://www.ercot.com/",
+            "source_name": "ERCOT"
+        },
+        {
+            "why": "Data center demand growth has pushed capacity auctions in constrained regions to record clearing prices, and that cost lands on operators as a non-energy surcharge. Energy-only markets have no equivalent charge and instead expose loads to scarcity pricing during extreme events; the two structures trade predictable overhead against price volatility.",
+            "track": "market",
+            "metric": "Capacity market clearing price",
+            "target": "Auction results are published directly by the grid operator after each delivery-year auction.",
+            "category": "Power and grid",
+            "definition": "In grid regions with a capacity market, the auction-cleared price paid per megawatt-day for generators to guarantee availability years ahead. Passed through to large loads, it is a fixed overhead on every megawatt-hour a facility consumes, separate from the energy price itself.",
+            "source_url": "https://www.pjm.com/",
+            "source_name": "PJM Interconnection"
+        },
+        {
+            "why": "When interconnection queues stretch to years, on-site generation is the bypass: it trades grid-queue time for fuel logistics, permitting, and backup-capacity obligations. The rise of behind-the-meter builds is a direct gauge of how binding the grid constraint has become.",
+            "track": "market",
+            "metric": "Behind-the-meter generation",
+            "target": "Disclosed in permits, air-quality filings, and operator announcements rather than any central registry.",
+            "category": "Power and grid",
+            "definition": "Dedicated on-site power, gas turbines, microgrids, storage, or eventually reactors, wired directly to the facility rather than drawn through a public grid connection."
         },
         {
             "why": "Facilities strand capacity when racks are provisioned against nameplate ratings nobody ever draws, and trip breakers when AI training loads spike synchronously. Circuit-level telemetry is how both failure modes are caught.",
@@ -332,11 +465,60 @@
             "publishes": "Monthly generation interconnection status reports and large-load interconnection data for Texas."
         },
         {
+            "url": "https://www.nrc.gov/reactors/new-reactors/advanced.html",
+            "kind": "grid-queue",
+            "name": "US Nuclear Regulatory Commission",
+            "access": "free",
+            "publishes": "SMR and advanced reactor licensing dockets: design approvals, construction permits, operating licenses, and hearing records"
+        },
+        {
             "url": "https://www.misoenergy.org/",
             "kind": "grid-queue",
             "name": "MISO",
             "access": "free",
             "publishes": "Generator interconnection queue for the Midcontinent region."
+        },
+        {
+            "url": "https://www.energy.gov/ne/advanced-small-modular-reactors-smrs",
+            "kind": "grid-queue",
+            "name": "DOE Office of Nuclear Energy",
+            "access": "free",
+            "publishes": "Federal SMR development programs, funding awards, and deployment initiatives"
+        },
+        {
+            "url": "https://energy.ec.europa.eu/",
+            "kind": "grid-queue",
+            "name": "European Commission, DG Energy",
+            "access": "free",
+            "publishes": "The Energy Efficiency Directive's data centre reporting scheme: EU facilities above 500 kW must report energy, water, and efficiency figures into a European database"
+        },
+        {
+            "url": "https://www.entsoe.eu/",
+            "kind": "grid-queue",
+            "name": "ENTSO-E",
+            "access": "free",
+            "publishes": "European transmission system operators' network data, adequacy outlooks, and cross-border grid planning"
+        },
+        {
+            "url": "https://www.miit.gov.cn/",
+            "kind": "grid-queue",
+            "name": "China MIIT",
+            "access": "free",
+            "publishes": "Chinese national data center policy, including the Eastern Data Western Computing hub program and green data center standards; Chinese only, and facility-level disclosure is minimal"
+        },
+        {
+            "url": "https://www.cso.ie/en/statistics/energy/datacentresmeteredelectricityconsumption/",
+            "kind": "grid-queue",
+            "name": "Ireland Central Statistics Office",
+            "access": "free",
+            "publishes": "Official quarterly measurement of Irish data centre electricity consumption as a share of the national grid; the clearest published case of data centre load straining one country's power system"
+        },
+        {
+            "url": "https://www.centrusenergy.com/",
+            "kind": "standard",
+            "name": "Centrus Energy",
+            "access": "free",
+            "publishes": "The only licensed US producer of HALEU, the fuel most Gen IV small modular reactors require; production and DOE contract milestones"
         },
         {
             "url": "https://www.caiso.com/",
@@ -465,5 +647,457 @@
             "publishes": "DCIM software focused on monitoring and capacity visualization."
         }
     ],
-    "generated": "2026-08-29"
+    "fac_total": 1398,
+    "generated": "2026-08-30",
+    "operators": [
+        {
+            "name": "AWS",
+            "note": "The largest cloud; EC2 accelerated instances carry NVIDIA, Trainium, and Inferentia silicon",
+            "maker": "Amazon",
+            "verified": "2026-08-30",
+            "source_url": "https://aws.amazon.com/compute/"
+        },
+        {
+            "name": "Microsoft Azure",
+            "note": "OpenAI's primary compute provider; ND-series GPU fleets plus first-party Maia silicon",
+            "maker": "Microsoft",
+            "verified": "2026-08-25",
+            "source_url": "https://azure.microsoft.com/en-us/products/virtual-machines/"
+        },
+        {
+            "name": "CoreWeave",
+            "note": "GPU-native cloud that grew from crypto mining to one of the largest NVIDIA fleets; NASDAQ-listed 2025",
+            "maker": "CoreWeave",
+            "verified": "2026-08-30",
+            "source_url": "https://www.coreweave.com/"
+        },
+        {
+            "name": "Crusoe",
+            "note": "Energy-first AI datacenters, from flare-gas power to the Abilene build-out",
+            "maker": "Crusoe Energy",
+            "verified": "2026-08-30",
+            "source_url": "https://www.crusoe.ai/"
+        },
+        {
+            "name": "Google Cloud",
+            "note": "TPU pods and GPU fleets on the infrastructure that also trains Gemini",
+            "maker": "Google",
+            "verified": "2026-08-30",
+            "source_url": "https://cloud.google.com/infrastructure"
+        },
+        {
+            "name": "Lambda",
+            "note": "GPU cloud and on-prem clusters aimed at ML teams",
+            "maker": "Lambda",
+            "verified": "2026-08-30",
+            "source_url": "https://lambda.ai/"
+        },
+        {
+            "name": "Nebius",
+            "note": "AI cloud built from Yandex's international assets; NASDAQ-listed",
+            "maker": "Nebius Group",
+            "verified": "2026-08-25",
+            "source_url": "https://nebius.com/"
+        }
+    ],
+    "intl_pages": [
+        {
+            "uid": "4c9805e3",
+            "code": "Spain",
+            "count": 39
+        }
+    ],
+    "state_pages": [
+        {
+            "uid": "3e8cc7c9",
+            "code": "AL",
+            "count": 7
+        },
+        {
+            "uid": "9c81b810",
+            "code": "AR",
+            "count": 1
+        },
+        {
+            "uid": "f2d7ea77",
+            "code": "AZ",
+            "count": 50
+        },
+        {
+            "uid": "e40e3fa5",
+            "code": "CA",
+            "count": 74
+        },
+        {
+            "uid": "25de09a3",
+            "code": "CO",
+            "count": 14
+        },
+        {
+            "uid": "95789e3b",
+            "code": "CT",
+            "count": 3
+        },
+        {
+            "uid": "cebb53d0",
+            "code": "DC",
+            "count": 1
+        },
+        {
+            "uid": "8b7748e7",
+            "code": "FL",
+            "count": 12
+        },
+        {
+            "uid": "ea973d1c",
+            "code": "GA",
+            "count": 19
+        },
+        {
+            "uid": "2a479c7d",
+            "code": "IA",
+            "count": 24
+        },
+        {
+            "uid": "13e2e762",
+            "code": "ID",
+            "count": 1
+        },
+        {
+            "uid": "28a5d935",
+            "code": "IL",
+            "count": 40
+        },
+        {
+            "uid": "041ccf2a",
+            "code": "IN",
+            "count": 5
+        },
+        {
+            "uid": "cd8fdf2e",
+            "code": "KS",
+            "count": 3
+        },
+        {
+            "uid": "1a290e64",
+            "code": "KY",
+            "count": 4
+        },
+        {
+            "uid": "c3e8177d",
+            "code": "LA",
+            "count": 4
+        },
+        {
+            "uid": "0512b2eb",
+            "code": "MA",
+            "count": 1
+        },
+        {
+            "uid": "7877cad1",
+            "code": "MD",
+            "count": 9
+        },
+        {
+            "uid": "f9b1a706",
+            "code": "ME",
+            "count": 2
+        },
+        {
+            "uid": "66699f54",
+            "code": "MI",
+            "count": 4
+        },
+        {
+            "uid": "ee0c8abd",
+            "code": "MN",
+            "count": 11
+        },
+        {
+            "uid": "70ccebe8",
+            "code": "MO",
+            "count": 6
+        },
+        {
+            "uid": "5e32ae3e",
+            "code": "MT",
+            "count": 1
+        },
+        {
+            "uid": "f6dbb324",
+            "code": "NC",
+            "count": 13
+        },
+        {
+            "uid": "0f845b99",
+            "code": "ND",
+            "count": 2
+        },
+        {
+            "uid": "9489ff22",
+            "code": "NE",
+            "count": 11
+        },
+        {
+            "uid": "9fbaca11",
+            "code": "NJ",
+            "count": 26
+        },
+        {
+            "uid": "a94d5858",
+            "code": "NM",
+            "count": 14
+        },
+        {
+            "uid": "8ba025ca",
+            "code": "NV",
+            "count": 17
+        },
+        {
+            "uid": "1841fd62",
+            "code": "NY",
+            "count": 25
+        },
+        {
+            "uid": "59b1693e",
+            "code": "OH",
+            "count": 32
+        },
+        {
+            "uid": "31c4c136",
+            "code": "OK",
+            "count": 9
+        },
+        {
+            "uid": "b63f0f17",
+            "code": "OR",
+            "count": 114
+        },
+        {
+            "uid": "009ee56a",
+            "code": "Ohio",
+            "count": 5
+        },
+        {
+            "uid": "dadae683",
+            "code": "PA",
+            "count": 10
+        },
+        {
+            "uid": "53af3b33",
+            "code": "PR",
+            "count": 1
+        },
+        {
+            "uid": "a1b6e781",
+            "code": "SC",
+            "count": 12
+        },
+        {
+            "uid": "d99d9f72",
+            "code": "SD",
+            "count": 1
+        },
+        {
+            "uid": "22001a12",
+            "code": "TN",
+            "count": 11
+        },
+        {
+            "uid": "cb61fec3",
+            "code": "TX",
+            "count": 63
+        },
+        {
+            "uid": "2ec97f29",
+            "code": "UT",
+            "count": 16
+        },
+        {
+            "uid": "53c80e83",
+            "code": "VA",
+            "count": 225
+        },
+        {
+            "uid": "ed71fa35",
+            "code": "WA",
+            "count": 25
+        },
+        {
+            "uid": "41ed1321",
+            "code": "WI",
+            "count": 5
+        },
+        {
+            "uid": "8c22b894",
+            "code": "WV",
+            "count": 2
+        },
+        {
+            "uid": "14e2c333",
+            "code": "WY",
+            "count": 2
+        }
+    ],
+    "metric_pages": [
+        {
+            "uid": "ccd4b4e1",
+            "label": "PUE, Power Usage Effectiveness",
+            "category": "Power efficiency"
+        },
+        {
+            "uid": "3e980a7e",
+            "label": "DCiE, Data Center Infrastructure Efficiency",
+            "category": "Power efficiency"
+        },
+        {
+            "uid": "1d79b042",
+            "label": "Approval to energize versus queued load",
+            "category": "Power and grid"
+        },
+        {
+            "uid": "e0ecc30f",
+            "label": "Capacity market clearing price",
+            "category": "Power and grid"
+        },
+        {
+            "uid": "19c20663",
+            "label": "Behind-the-meter generation",
+            "category": "Power and grid"
+        },
+        {
+            "uid": "bc8c351e",
+            "label": "Breaker-level load and peak draw",
+            "category": "Power efficiency"
+        },
+        {
+            "uid": "09b6f7bf",
+            "label": "Power density per rack",
+            "category": "Power efficiency"
+        },
+        {
+            "uid": "a2960688",
+            "label": "Temperature and humidity, hot and cold aisle",
+            "category": "Cooling and climate"
+        },
+        {
+            "uid": "47dc4040",
+            "label": "Airflow and static pressure",
+            "category": "Cooling and climate"
+        },
+        {
+            "uid": "c617fa55",
+            "label": "Liquid coolant temperature and flow rate",
+            "category": "Cooling and climate"
+        },
+        {
+            "uid": "8a9a5bd2",
+            "label": "WUE, Water Usage Effectiveness",
+            "category": "Sustainability"
+        },
+        {
+            "uid": "605f58ee",
+            "label": "CUE, Carbon Usage Effectiveness",
+            "category": "Sustainability"
+        },
+        {
+            "uid": "534316b0",
+            "label": "Renewable energy utilization",
+            "category": "Sustainability"
+        },
+        {
+            "uid": "f4738896",
+            "label": "Server utilization rate",
+            "category": "Capacity and server use"
+        },
+        {
+            "uid": "b3d66451",
+            "label": "Stranded power and space per cabinet",
+            "category": "Capacity and server use"
+        },
+        {
+            "uid": "3619e35d",
+            "label": "Floor loading limits",
+            "category": "Capacity and server use"
+        },
+        {
+            "uid": "5ae3bb07",
+            "label": "Network latency, packet loss, and bandwidth",
+            "category": "Uptime and redundancy"
+        },
+        {
+            "uid": "d6d40bc1",
+            "label": "UPS battery health and generator runtime",
+            "category": "Uptime and redundancy"
+        },
+        {
+            "uid": "42a90648",
+            "label": "SLA uptime compliance",
+            "category": "Uptime and redundancy"
+        },
+        {
+            "uid": "5aee70d1",
+            "label": "Construction pipeline in megawatts",
+            "category": "Development and land"
+        },
+        {
+            "uid": "74b645ef",
+            "label": "Interconnection queue position and wait",
+            "category": "Power and grid"
+        },
+        {
+            "uid": "de33e1e4",
+            "label": "Power purchase agreements",
+            "category": "Power and grid"
+        },
+        {
+            "uid": "dd2b4845",
+            "label": "Hyperscaler and colocation capital expenditure",
+            "category": "Financials and supply chain"
+        },
+        {
+            "uid": "88b3439d",
+            "label": "Colocation rental rates",
+            "category": "Financials and supply chain"
+        },
+        {
+            "uid": "fe2ff0d4",
+            "label": "Critical equipment lead times",
+            "category": "Financials and supply chain"
+        }
+    ],
+    "builder_pages": [
+        {
+            "uid": "1fe28aa0",
+            "label": "Microsoft"
+        },
+        {
+            "uid": "0481fdb4",
+            "label": "Amazon"
+        },
+        {
+            "uid": "907c0e29",
+            "label": "Alphabet"
+        },
+        {
+            "uid": "e835ae53",
+            "label": "Meta"
+        },
+        {
+            "uid": "75943765",
+            "label": "Oracle"
+        },
+        {
+            "uid": "0118f362",
+            "label": "Equinix"
+        },
+        {
+            "uid": "9e9d52fe",
+            "label": "Digital Realty"
+        },
+        {
+            "uid": "de289624",
+            "label": "CoreWeave"
+        }
+    ]
 }
