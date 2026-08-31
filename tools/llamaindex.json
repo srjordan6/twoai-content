@@ -44,6 +44,11 @@
         }
     ],
     "quality": "Retrieval quality depends heavily on chunking strategy and embedding model choice. LlamaIndex provides the plumbing; the quality decisions sit with the implementer.",
+    "reading": {
+        "body": "LlamaIndex is the dominant open-source framework for retrieval-augmented generation over private document collections, purpose-built for the ingest-index-retrieve-generate pattern rather than general-purpose orchestration.\n\nThe framework itself contributes almost no latency and costs nothing to run. Latency is determined by the model and vector store the implementer chooses, and retrieval quality is determined by chunking strategy and embedding model selection. LlamaIndex supplies the connective tissue between loaders, indexes, and models, but every decision that affects output quality sits outside the framework.\n\nThe governance risk the data identifies is specific and serious. Whatever documents are fed into the index can be surfaced in model responses, and access control on the index is not enforced automatically. A team that indexes a shared drive without designing explicit access controls has, in effect, given every user of the system query access to every document the indexing process could reach. The framework does not prevent this, and the data notes it as the most common failure mode.\n\nWhat the data does not cover is infrastructure footprint. LlamaIndex orchestrates calls to external models and vector stores, so the compute and storage costs of any deployment are entirely a function of those chosen components, not the framework itself.",
+        "model": "claude-sonnet-4-6",
+        "generated_on": "2026-08-31"
+    },
     "tagline": "The framework for building retrieval-augmented applications on top of your own documents.",
     "audience": [
         "Dev Teams"
