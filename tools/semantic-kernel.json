@@ -39,6 +39,11 @@
         }
     ],
     "quality": "Mature and widely deployed in enterprise .NET environments, with multi-agent orchestration patterns (sequential, concurrent, group chat, handoff) shipped in the SDK. The forward-looking caveat is the maintenance-mode status: new capability now lands in Agent Framework.",
+    "reading": {
+        "body": "Semantic Kernel entered maintenance mode on 3 April 2026, when Microsoft shipped Agent Framework 1.0 as its successor, so any new project should start there rather than here.\n\nThe framework's enduring distinction was language reach. Most competing orchestration tools built around Python first and treated .NET and Java as afterthoughts. Semantic Kernel inverted that, giving enterprise teams whose codebases were already C# a path to add agents, plugins, and memory without switching languages or platforms. Its model-agnostic design, covering OpenAI, Azure OpenAI, Amazon Bedrock, Hugging Face, and Ollama among others, meant that choice of host or cloud was not forced by the framework itself. That combination answered a real adoption problem for organizations that could not simply rebuild their stacks around Python.\n\nWhat the data does not speak to is performance at scale or how the plugin execution model behaves under production load, since latency is described only as framework overhead being minimal, with the actual cost sitting in model and vector store calls. The governance note in the data is worth taking seriously: plugins can wrap arbitrary native functions, OpenAPI endpoints, and MCP servers, so the meaningful control boundary is which plugins are registered and what they are permitted to do, not the framework itself. The maintenance-mode status belongs in an architecture review, because a dependency receiving only security patches carries a different lifecycle risk than one under active development, and that risk compounds as Agent Framework accumulates capabilities that Semantic Kernel will never receive.",
+        "model": "claude-sonnet-4-6",
+        "generated_on": "2026-08-31"
+    },
     "tagline": "Microsoft's orchestration SDK for teams building AI into existing .NET, Python, or Java applications, now succeeded by Agent Framework.",
     "audience": [
         "Dev Teams",
