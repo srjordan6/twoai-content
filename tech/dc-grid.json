@@ -1,7 +1,7 @@
 {
     "eia": {
         "commercial_sales_mwh": {
-            "as_of": "2026-08-30",
+            "as_of": "2026-08-31",
             "value": 54797.55414,
             "detail": {
                 "scope": "Commercial-sector electricity sales and average price by state, as reported to EIA. Data centers are billed mostly in the commercial class, so this is a proxy for their load, not a measurement of it.",
@@ -42,7 +42,7 @@
             "url": "https://www.ercot.com/mp/data-products/data-product-details?id=PG7-200-ER",
             "name": "ERCOT",
             "slug": "ercot",
-            "as_of": "2026-08-30",
+            "as_of": "2026-08-31",
             "scope": "Large generators with a full interconnection study requested, from the monthly Generator Interconnection Status report for Texas. Includes projects from study through commissioning.",
             "by_fuel": {
                 "gas": 76751.40000000001,
@@ -59,7 +59,7 @@
             "url": "https://www.nyiso.com/interconnections",
             "name": "NYISO",
             "slug": "nyiso",
-            "as_of": "2026-08-30",
+            "as_of": "2026-08-31",
             "scope": "Projects in the New York interconnection queue as NYISO publishes them.",
             "by_fuel": {
                 "gas": 27879.00000000001,
@@ -69,11 +69,27 @@
             "requests": 1414
         },
         {
+            "mw": 299720.5999999999,
+            "url": "https://www.misoenergy.org/planning/resource-utility-interconnection/gi-interactive-queue/",
+            "name": "MISO",
+            "slug": "miso",
+            "as_of": "2026-08-31",
+            "scope": "Projects in the Midcontinent generator interconnection queue, all statuses as MISO publishes them.",
+            "by_fuel": {
+                "gas": 30236.33,
+                "wind": 51746.42000000001,
+                "other": 4406.68,
+                "solar": 144902.28,
+                "storage": 68428.88999999998
+            },
+            "requests": 3827
+        },
+        {
             "mw": 199214.88000000003,
             "url": "https://opsportal.spp.org/Studies/GenerateSummaryCSV",
             "name": "Southwest Power Pool",
             "slug": "spp",
-            "as_of": "2026-08-30",
+            "as_of": "2026-08-31",
             "scope": "Generator interconnection requests across the south-central US, all statuses as SPP publishes them, withdrawn requests counted separately.",
             "by_fuel": {
                 "gas": 47392.475000000006,
@@ -86,27 +102,11 @@
             "source_stamp": "8/27/2026"
         },
         {
-            "mw": 87677.97,
-            "url": "https://www.misoenergy.org/planning/resource-utility-interconnection/gi-interactive-queue/",
-            "name": "MISO",
-            "slug": "miso",
-            "as_of": "2026-08-30",
-            "scope": "Projects in the Midcontinent generator interconnection queue, all statuses as MISO publishes them.",
-            "by_fuel": {
-                "gas": 7324.7,
-                "wind": 11505.619999999999,
-                "other": 10573.800000000001,
-                "solar": 52369.40000000001,
-                "storage": 5904.45
-            },
-            "requests": 3827
-        },
-        {
             "mw": 71682.32416164309,
             "url": "https://www.caiso.com/PublishedDocuments/PublicQueueReport.xlsx",
             "name": "CAISO",
             "slug": "caiso",
-            "as_of": "2026-08-30",
+            "as_of": "2026-08-31",
             "scope": "Active generator interconnection requests on the California ISO grid, from the public queue report. Completed and withdrawn projects are counted separately.",
             "by_fuel": {
                 "gas": 915.6,
@@ -119,10 +119,10 @@
         }
     ],
     "analysis": {
-        "body": "The five grid operators whose public interconnection queues appear in this snapshot — ERCOT, NYISO, SPP, MISO, and CAISO — collectively show more than 1.1 million megawatts of generation and storage projects somewhere between study and commissioning as of August 30, 2026. These are requests to connect, not built capacity, and the operators' own scope notes make clear the figures are not directly comparable: ERCOT counts projects from study through commissioning, CAISO excludes completed and withdrawn projects, SPP counts withdrawn requests separately, and so on. ERCOT's Texas queue alone stands at roughly 440,000 MW across 1,797 requests, with solar at about 152,000 MW, storage at about 161,000 MW, and gas at about 77,000 MW leading the fuel mix there; SPP shows nearly 200,000 MW across 1,078 requests, with wind at roughly 65,000 MW and storage at about 53,000 MW alongside gas at about 47,000 MW; MISO's roughly 88,000 MW across 3,827 requests skews heavily solar; and CAISO's roughly 72,000 MW across 265 active requests is dominated by storage at nearly 47,000 MW.\n\nStorage and gas interconnection requests are the figures that readers focused on AI data centers should watch most carefully, because both fuel types track dispatchable, around-the-clock load rather than weather-dependent generation. Across the five queues, storage totals roughly 267,000 MW — with ERCOT accounting for about 161,000 MW, SPP about 53,000 MW, CAISO about 47,000 MW, and MISO about 6,000 MW — while gas totals roughly 160,000 MW spread across all five operators. The queue totals are planned generation and storage waiting to connect, not data center demand itself, but a sustained rise in storage and gas requests in the same geographies where data center campuses are clustering is a meaningful directional signal. The EIA commercial electricity sales figures for June 2026 offer a separate, non-comparable lens: Texas reported roughly 15,754 gigawatt-hours of commercial sales that month at an average of $8.66 per megawatt-hour, Virginia reported roughly 7,771 gigawatt-hours at $10.99, and California reported roughly 10,025 gigawatt-hours at $27.33, though EIA's own scope note is explicit that data centers are billed mostly in the commercial class, making this a proxy for their load rather than a direct measurement.\n\nThese are snapshots from a single day, and interconnection queues are living documents in which projects enter, withdraw, and change status continuously, so the most informative next step will be comparing the August 2026 storage and gas subtotals in ERCOT and SPP against the figures that appear in those operators' next monthly releases to see whether the pipeline is growing, shrinking, or shifting fuel mix.",
+        "body": "The five grid operators in this snapshot — ERCOT, NYISO, MISO, Southwest Power Pool, and CAISO — collectively show more than 1.3 million megawatts of generation and storage sitting in interconnection queues as of August 31, 2026, spread across 8,381 individual requests. These are proposed projects that have asked to connect to the grid and are somewhere between early study and commissioning; they are not data center demand figures, and because each operator defines its queue scope differently, the totals are not directly addable into a single national number. ERCOT's queue alone accounts for 440,018 MW across 1,797 requests, with solar at roughly 151,883 MW, storage at about 160,906 MW, and gas at 76,751 MW; NYISO carries 319,095 MW but reports most of it — 291,136 MW — in an undifferentiated \"other\" category, making fuel-type comparison difficult there.\n\nFor readers tracking AI data center infrastructure, the fuel mix breakdown is the most telling signal. Battery storage and natural gas are the two resource types most closely associated with the around-the-clock, high-density load that large data center campuses create, because solar and wind alone cannot guarantee the continuous power such facilities require. Across the four operators that report storage separately, queued storage totals 160,906 MW at ERCOT, 68,429 MW at MISO, 53,412 MW at SPP, and 46,944 MW at CAISO; queued gas adds 76,751 MW, 30,236 MW, 47,392 MW, and 916 MW respectively at those same operators. That concentration of firm and storage capacity in Texas and the south-central region is consistent with where large hyperscale and AI campus announcements have clustered, though the queue data itself does not name end customers or confirm any project will be built.\n\nThe EIA commercial electricity sales figures for June 2026 offer a partial demand-side counterpoint, though they are a proxy for data center load rather than a direct measure of it, since data centers are billed mostly under the commercial class alongside other commercial users. Texas leads the eight states reported at 15,754 gigawatt-hours of commercial sales for the month, followed by California at 10,025 GWh and Virginia at 7,771 GWh; Virginia's figure is notable given its status as the largest data center market by facility count, and its average commercial price of 10.99 cents per kilowatt-hour sits well below California's 27.33 cents, which may help explain why queue activity in ERCOT territory dwarfs CAISO's 71,682 MW. The number to watch next is whether gas interconnection requests in ERCOT and SPP advance from study status to signed agreements, which would signal developers are confident enough in load commitments to absorb the cost of full interconnection studies.",
         "model": "claude-sonnet-4-6",
-        "generated_on": "2026-08-30"
+        "generated_on": "2026-08-31"
     },
-    "generated": "2026-08-30",
-    "series_days": 1
+    "generated": "2026-08-31",
+    "series_days": 2
 }
