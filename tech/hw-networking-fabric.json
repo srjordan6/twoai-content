@@ -49,5 +49,10 @@
     ],
     "shape": "hardware",
     "total": 5,
+    "reading": {
+        "body": "The networking fabric between GPUs is as decisive for training throughput as the GPUs themselves, and this layer is currently split between NVIDIA's proprietary stack and an Ethernet ecosystem racing to close the gap.\n\nNVIDIA holds two distinct positions here. Quantum InfiniBand dominates inter-node connections across training clusters, a position it secured through the Mellanox acquisition. NVLink and NVSwitch operate at a different scale, binding up to 72 GPUs into a single domain within a rack, collapsing the boundary between intra-node and inter-node fabric. Owning both layers gives NVIDIA leverage that is separate from its GPU market share.\n\nThe Ethernet side is not a single company's response. Arista supplies switching platforms to hyperscalers, Broadcom's Tomahawk silicon underlies clusters that have chosen Ethernet over InfiniBand, and the Ultra Ethernet Consortium, whose v1.0 specification dates to 2025, is the coordinated industry attempt to make Ethernet semantics fit the loss-sensitive, all-to-all communication patterns of large training runs. Whether that effort closes the performance gap is not something this data addresses.\n\nWhat the data does not cover is latency benchmarks, pricing, or which specific clusters have adopted which fabric. It lists five products and initiatives, all verified to the same date, so it reflects a snapshot rather than a trajectory. The choice of networking fabric determines how tightly GPUs can be coupled, and tight coupling determines the practical scale of a training run, but the data here maps the competitive landscape only, not the engineering tradeoffs that decide it.",
+        "model": "claude-sonnet-4-6",
+        "generated_on": "2026-08-31"
+    },
     "generated": "2026-08-31"
 }
