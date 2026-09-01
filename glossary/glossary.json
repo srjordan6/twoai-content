@@ -13724,6 +13724,24 @@
         {
             "slug": "llamaindex",
             "term": "LlamaIndex",
+            "lenses": [
+                {
+                    "body": "You hand LlamaIndex documents and it gives you a query engine. The pieces it owns are the ones you would otherwise write yourself: loaders for the file formats your data actually arrives in, a chunking step, an index over the chunks, a retriever, and a response synthesiser that assembles the retrieved passages into a prompt. The value is in the connectors and the defaults rather than in any single idea, which is why teams reach for it when the hard part is ingestion rather than orchestration.",
+                    "audience": "developer"
+                },
+                {
+                    "body": "Retrieval-augmented generation has two halves: find the right passage, then write an answer from it. LlamaIndex is a framework for the first half and a thin wrapper over the second. Studying it is a good way to see that the interesting engineering in a question-answering system is almost entirely in how documents are split, indexed and ranked, and almost never in the call to the model.",
+                    "audience": "student"
+                },
+                {
+                    "body": "LlamaIndex is one of two or three obvious choices for building a system that answers questions from your own documents rather than from what a model memorised. Choosing it is a low-stakes decision: it is open source, the abstractions are shallow, and the work that survives a change of framework, cleaning the documents and deciding what good retrieval means, is the work that costs money either way. Ask what the team plans to do about evaluation before asking which framework they picked.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "If you want a chatbot that answers from your own handbook, contracts or product data rather than making things up, this is one of the tools a developer would use to build it. You would not install it yourself. What is worth knowing is that the quality of that assistant depends far more on how tidy and well organised your documents are than on which tool is used to read them.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "Started as GPT Index in late 2022 by Jerry Liu, renamed LlamaIndex in 2023.",
             "example": "Indexing a company handbook so an assistant answers policy questions from the handbook text rather than from model memory.",
             "category": "Developer Tools",
@@ -13732,6 +13750,24 @@
         {
             "slug": "semantic-kernel",
             "term": "Semantic Kernel",
+            "lenses": [
+                {
+                    "body": "Semantic Kernel puts a model behind the same dependency-injection and plugin conventions a .NET service already uses. You register existing methods as plugins, the kernel exposes them to the model as callable functions, and the orchestration layer decides which to invoke. For a team whose codebase is C# and whose services already exist, that is a shorter path than reimplementing the integration in Python.",
+                    "audience": "developer"
+                },
+                {
+                    "body": "Its distinguishing feature was never capability, it was language. Most model orchestration frameworks are Python first, and a large share of enterprise line-of-business code is not Python. Semantic Kernel let .NET and Java shops add model features without standing up a second stack in a second language. Microsoft has since converged this lineage with AutoGen into the Agent Framework, so treat the framework choice as a five-year decision and read the migration path before committing.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "The security question with any plugin architecture is what the model is permitted to call and with whose credentials. A registered plugin is a real function against a real system, so prompt injection in a retrieved document becomes an attempted invocation of that function. Review which plugins are registered, what identity each runs under, and whether any of them write rather than read, before reviewing the model.",
+                    "audience": "ciso"
+                },
+                {
+                    "body": "Look at Semantic Kernel to see the plugin pattern clearly. A model on its own can only produce text; it becomes useful by being given a set of functions it may call and a loop that executes the calls and feeds back the results. The kernel is that loop. Almost every agent framework is a variation on it, so the pattern is worth learning once and recognising everywhere.",
+                    "audience": "student"
+                }
+            ],
             "origin": "Released by Microsoft in March 2023 with C# and .NET as the primary path; Python and Java followed. Entered maintenance mode in April 2026 when Microsoft shipped Agent Framework 1.0 as its successor.",
             "example": "A .NET line-of-business application registering its existing invoice-lookup service as a plugin so a model can call it during a conversation.",
             "category": "Developer Tools",
@@ -13916,6 +13952,93 @@
         "name": "SRJ AI Glossary seed (wp-content/mu-plugins/srj-ai-glossary-data.php)",
         "schema": "v2 (term, slug, category, definition, example, origin)",
         "generated": "2026-07-23"
+    },
+    "readings": {
+        "/ai-glossary/grpc/": {
+            "body": "gRPC reduces serialization overhead and enables native streaming between services, making it a practical default for model-serving runtimes where each millisecond of inference latency compounds across many calls.\n\nThe core trade-off is legibility against efficiency. JSON over HTTP is human-readable and simple to debug, but binary serialization over HTTP/2 moves more data with less CPU time. Inside a datacenter, where services call a model runtime thousands of times per second, that difference accumulates into real load on the machines doing the work.\n\nThe data covers what gRPC is and where it fits in AI infrastructure, specifically the internal boundary between a model-serving runtime and the services that call it. It does not cover how much latency or compute gRPC saves in any measured deployment, nor does it address how the choice of protocol affects power draw or the infrastructure required to run at scale. The public-facing API remaining REST in the example is a reminder that gRPC's advantages are most relevant inside the system, not at the edge where developer experience and broad client compatibility matter more.",
+            "model": "claude-sonnet-4-6",
+            "generated_on": "2026-08-31"
+        },
+        "/ai-glossary/span/": {
+            "body": "Span-based billing creates a structural cost difference between agents and chatbots: a single agent run can emit thousands of spans, while a typical chatbot turn emits one or a few.\n\nA span is one timed unit of work inside a trace. Spans nest, so a parent span for an agent run contains child spans for each model call, retrieval step, and tool invocation that run produced. The example in the data shows one parent span and forty child spans from a single agent run, and that is a modest case.\n\nThis matters for infrastructure planning because observability cost scales with span count, not with user count or token count. A team moving from a chatbot product to an agentic one can face a sharp, non-linear increase in observability spend without changing the number of users at all. The data does not say which vendors use this pricing model or how they tier it, so the precise financial exposure for any given platform is outside what can be derived here.",
+            "model": "claude-sonnet-4-6",
+            "generated_on": "2026-08-31"
+        },
+        "/ai-glossary/rest-api/": {
+            "body": "REST APIs are the universal connector between AI applications and hosted models, meaning every inference request a developer makes travels through this pattern before it touches a GPU.\n\nThe mechanism is simple: a client sends an HTTP request carrying a prompt in JSON, and the model provider returns generated text in JSON. That simplicity is why the style became the default. It imposes no proprietary protocol, requires no special client library, and works from any environment that can make an HTTP call. The constraint it places on AI systems is not technical but organizational: any service sitting behind a REST endpoint can be metered, rate-limited, and billed per call, which is how compute costs surface to application developers.\n\nWhat this data does not cover is performance. REST over HTTP is adequate for request-response inference but carries overhead that matters when latency or throughput is the bottleneck. The data says nothing about streaming variants, alternative protocols, or how the endpoint layer connects to the underlying hardware that runs the model. It establishes what REST APIs are and where they sit in the stack, not how efficiently they move work to compute.",
+            "model": "claude-sonnet-4-6",
+            "generated_on": "2026-08-31"
+        },
+        "/ai-glossary/rag-triad/": {
+            "body": "The RAG Triad isolates whether a quality drop in a retrieval-augmented system comes from the retriever or the generator, which is the distinction that determines what to fix.\n\nA single quality score over a RAG pipeline hides causation. By scoring context relevance, groundedness, and answer relevance separately, a team can tell whether bad output arrived because the retriever surfaced the wrong material, because the model ignored good material it was given, or because the answer drifted from the question despite being factually grounded. The example in the data makes this concrete: if context relevance falls while groundedness holds, the retriever is the problem and the prompt is not.\n\nThe data covers the evaluation pattern and its three axes. It does not cover how each axis is scored in practice, what thresholds constitute passing, or how the pattern performs across different retrieval architectures. The origin note attributes the framing to TruLens but says nothing further about adoption or alternatives.",
+            "model": "claude-sonnet-4-6",
+            "generated_on": "2026-08-31"
+        },
+        "/ai-glossary/replanning/": {
+            "body": "Replanning is the capability that makes an agent genuinely autonomous rather than a scripted sequence, and it is also the mechanism through which a single task can consume unbounded compute.\n\nA script fails or proceeds; an agent that detects a mismatch between its expectation and the world constructs a new path toward the same goal. That construction is not free. Each replanning cycle calls the underlying model, and a goal that remains persistently hard to reach can trigger cycle after cycle, turning what looked like a bounded job into an open-ended billing event.\n\nThe data does not specify how replanning decisions are made, what conditions terminate a replanning loop, or how different agent frameworks bound the number of allowed attempts. Those implementation details determine whether the cost risk is theoretical or routine. What the definition does establish is the connection: more autonomy means more potential replanning, more replanning means more inference calls, and inference calls are the unit of compute consumption that connects agent behavior back to the hardware and power required to run it.",
+            "model": "claude-sonnet-4-6",
+            "generated_on": "2026-08-31"
+        },
+        "/ai-glossary/agent-swarm/": {
+            "body": "Agent swarms produce results no single agent planned, which makes them powerful and makes accountability genuinely hard to reconstruct after the fact.\n\nThe pattern works by redundancy rather than coordination. Many agents examine the same problem independently, and agreement among them substitutes for a central authority deciding what matters. In the codebase example, no agent knows the answer; the answer emerges from overlap. That emergence is the feature, not a side effect.\n\nFor AI deployment specifically, this architecture raises the compute cost relative to a single-agent or orchestrated approach, because parallelism is the mechanism, not an optimization. More agents running simultaneously means more inference, more memory, and more infrastructure underneath. The scaling relationship is direct.\n\nWhat the data does not cover is how large a swarm needs to be before emergence becomes reliable, how often swarms produce false convergence rather than correct answers, or how the pattern performs across problem types other than the search example given. Those questions matter for anyone deciding whether to build this way, and the definition alone cannot answer them.",
+            "model": "claude-sonnet-4-6",
+            "generated_on": "2026-08-31"
+        },
+        "/ai-glossary/llm-gateway/": {
+            "body": "An LLM gateway trades one failure mode for another: centralized routing, caching, and key management come at the cost of adding a new single point of failure directly in the request path.\n\nThe consolidation is real. Without a gateway, every service that calls a model provider must reimplement rate limiting, failover logic, and usage logging independently. A gateway collapses those responsibilities into one layer, which reduces integration effort and enforces cost controls and provider switching from a single place rather than across a scattered codebase.\n\nThe architectural risk is equally real. Because the gateway sits between the application and the model, its availability becomes the ceiling for the entire system. SDK-based observability avoids that dependency by logging alongside application code, but the failure mode shifts: an outage degrades telemetry rather than requests, which is a different trade, not a better one.\n\nThe data covers routing architecture and operational control. It does not address latency added by the proxy hop, the compute or infrastructure cost of running the gateway itself, or how gateway availability requirements interact with the power and building constraints that govern the model providers behind it.",
+            "model": "claude-sonnet-4-6",
+            "generated_on": "2026-08-31"
+        },
+        "/ai-glossary/token-drift/": {
+            "body": "Token drift silently inflates compute consumption: a workload can double its per-request cost over weeks with no code change, no bug, and no deliberate decision by anyone on the team.\n\nThe causes are mundane and cumulative. Context or conversation history grows longer with each turn. Retrieval steps return progressively larger passages. Prompt edits add examples that compound over time. A provider alters default behaviour. None of these events is dramatic on its own, but tokens are the unit of billing, so each one shifts the cost curve upward. The signal arrives as a rising invoice, not an error log, which means the problem can persist through several billing cycles before anyone investigates.\n\nFor AI specifically, this matters because inference cost is a direct function of token volume, and token volume is not fixed by the application code alone. It is also shaped by data, by retrieval behaviour, and by upstream provider decisions outside the team's control. The data here does not address how drift affects latency, model quality, or the compute infrastructure behind inference, only cost. Those connections exist, but this definition does not supply them.",
+            "model": "claude-sonnet-4-6",
+            "generated_on": "2026-08-31"
+        },
+        "/ai-glossary/goal-chaining/": {
+            "body": "Goal chaining is the mechanism that lets an agent pursue a multi-step objective autonomously, but it is also the primary way small early errors become large late failures, because each completed sub-goal becomes the unquestioned foundation for the next.\n\nThe pattern is sequential and self-reinforcing. An agent breaks a long-running objective into sub-goals, completes them in order, and carries the output of each step forward as context. No human restates the aim between steps. That continuity is what makes long-horizon autonomy possible at all, since without it an agent would require constant supervision and the practical value of autonomous operation collapses.\n\nThe risk is structural, not incidental. An error introduced early, a wrong assumption about scope or a misread piece of evidence, propagates through every subsequent step and is rarely re-examined, because each later step treats prior outputs as settled. The compliance-filing example illustrates the stakes: evidence collection, gap analysis, and drafting are each downstream of what came before, so a flaw in evidence collection silently shapes the final document. The data here describes the mechanism and its failure mode, but does not address how often drift occurs in practice, how large errors need to be before they compound into visible failures, or what detection or correction methods exist.",
+            "model": "claude-sonnet-4-6",
+            "generated_on": "2026-08-31"
+        },
+        "/ai-glossary/context-recall/": {
+            "body": "Context recall measures whether a retrieval step returned all the evidence needed, not just some of it, and a system can score well on every other standard metric while still failing this one.\n\nFaithfulness checks whether an answer is grounded in what was retrieved. Answer relevance checks whether the answer fits the question. Neither catches the case where the retriever quietly dropped half the relevant material before generation began. Context recall fills that gap, but it requires ground truth to do so: something external must define what a complete retrieval looks like, which makes it costlier to apply than metrics that evaluate only the outputs already in hand.\n\nThe legal example in the data makes the stakes concrete. A high faithfulness score on an answer built from one statute looks like success until context recall reveals the second statute was never fetched. The system was not hallucinating, it was confident and grounded, just incomplete. That distinction matters wherever the cost of a partial answer is high and where the missing evidence would have changed the conclusion.",
+            "model": "claude-sonnet-4-6",
+            "generated_on": "2026-08-31"
+        },
+        "/ai-glossary/personalization/": {
+            "body": "Personalization in AI systems is not a separate model per user but a retrieval operation over stored data, which means its primary engineering and legal surface is the data store, not the inference layer.\n\nBecause the system adapts by looking up what it already holds about a person, the personalization store is a personal data record in the same sense a purchase history or medical file is. Retention schedules, access controls, and erasure requests apply to it. A deletion request that does not reach the profile store leaves personalization intact and the data live, regardless of what happens at the application layer.\n\nThe data covers the architectural distinction and its privacy implications. It does not address how profile stores are indexed, how large they grow at scale, or whether retrieval latency over user history affects compute requirements in a meaningful way. Those questions are outside what this entry answers.",
+            "model": "claude-sonnet-4-6",
+            "generated_on": "2026-08-31"
+        },
+        "/ai-glossary/answer-relevance/": {
+            "body": "Answer relevance measures whether a response addresses the question that was actually asked, treated as a separate property from factual accuracy. A model can cite its sources correctly and still fail this test.\n\nThe distinction matters because faithfulness and relevance fail in different directions and for different reasons. Faithfulness breaks when a model hallucinates or misrepresents a source. Relevance breaks when a model retrieves and accurately reproduces content that does not answer the question, or buries the answer in surrounding material the user did not request. The standard scoring method makes this concrete: candidate questions are generated from the answer, then compared against the original question, and the match is the score.\n\nThe data attributes this metric to the Ragas framework, with TruLens carrying an equivalent. It does not describe how either framework weights relevance against other metrics, how the candidate-question generation step is implemented, or how scores from either system translate into decisions about model behavior. Those gaps matter for anyone trying to apply the metric rather than understand it.",
+            "model": "claude-sonnet-4-6",
+            "generated_on": "2026-08-31"
+        },
+        "/ai-glossary/agent-marketplace/": {
+            "body": "An agent marketplace transfers behavioral risk to the operator the moment a third-party agent is adopted, because the operator inherits whatever the agent does, including actions on data it was never meant to reach.\n\nThe mechanism is straightforward. A marketplace lets agents be published and consumed like software libraries, sometimes with payment and contractual terms, sometimes without meaningful review. The operator who pulls an agent from a vendor catalogue becomes responsible for its behavior in their environment, under terms they may not have read and through code they did not write. That is a different risk profile from buying a tool that a human then uses: the agent acts, and the operator is accountable for the action.\n\nThe governance infrastructure has not caught up. Assessment categories for this class of supplier are still forming, which means the due-diligence frameworks that apply to conventional software vendors do not map cleanly onto agents that can reach data, trigger actions, and chain to other agents. The example in the data, an organisation adopting a scheduling agent without a supplier assessment covering its data access, illustrates the gap between procurement speed and risk visibility.\n\nThe data does not address compute, power, or infrastructure. It covers the contractual and behavioral layer of agent distribution, not the physical stack beneath it. What it does establish is that marketplaces push agent adoption outward faster than the standards needed to govern that adoption have matured.",
+            "model": "claude-sonnet-4-6",
+            "generated_on": "2026-08-31"
+        },
+        "/ai-glossary/context-precision/": {
+            "body": "Context precision measures whether a retrieval system returns relevant chunks and ranks them near the top, making it a diagnostic of the retriever rather than the language model that reads its output.\n\nWhen precision is low, the generator receives mostly irrelevant passages and must work through them to find signal. That processing is not free: longer, noisier contexts consume more tokens, and token processing consumes more compute. At scale, retrieval inefficiency becomes an infrastructure cost, not just a quality problem.\n\nThe data covers what precision measures and what low scores imply, but it does not cover how precision interacts with recall, how to set an acceptable threshold, or how different retrieval architectures affect scores. The example usefully separates answer correctness from retrieval quality: a right answer produced despite poor ranking is a warning sign, not a pass.",
+            "model": "claude-sonnet-4-6",
+            "generated_on": "2026-08-31"
+        },
+        "/ai-glossary/distributed-tracing/": {
+            "body": "Distributed tracing is the only observability method that can tell you which specific step inside a multi-service AI request failed, not just that the request failed.\n\nLogs record outcomes. A trace records the path: every service touched, every tool called, every duration measured, assembled in sequence for a single request. For an AI agent that calls external tools, runs retrievals, and chains model calls together, that sequence is where the failure actually lives. Knowing an answer was wrong is the beginning of a diagnosis, not the end of it.\n\nThe data does not cover how traces are collected, stored, or queried, and it does not address the infrastructure cost of capturing traces at the volume a production AI system generates. Those are real constraints this definition leaves aside. What it does establish is the distinction between knowing a run finished and knowing what it did, which is the operative difference for anyone trying to improve a system rather than simply monitor it.",
+            "model": "claude-sonnet-4-6",
+            "generated_on": "2026-08-31"
+        },
+        "/ai-glossary/knowledge-engineering/": {
+            "body": "Knowledge engineering's practical value today is that it makes retrieval systems auditable and correctable in ways that trained models are not, which makes it a complement to, rather than a replacement for, modern AI.\n\nA retrieval system can only surface what its underlying structure allows it to find. When that structure is an engineered ontology or taxonomy, an error can be fixed in one place and the fix propagates immediately. When the structure is implicit in a model's learned weights, the same error has no single location to correct.\n\nThe data here covers the conceptual case for knowledge engineering and one illustrative example, a product taxonomy used to answer questions that raw documents do not state directly. It does not address implementation cost, the labor required to maintain large knowledge bases over time, or how knowledge engineering interacts with compute and infrastructure. Those connections may be real, but this data does not support drawing them.",
+            "model": "claude-sonnet-4-6",
+            "generated_on": "2026-08-31"
+        },
+        "/ai-glossary/reference-free-evaluation/": {
+            "body": "Reference-free evaluation makes continuous, large-scale measurement of AI outputs practical by removing the requirement for human-written answers, but it only confirms that a response is consistent with its source material, not that the source material is correct.\n\nThe method scores outputs against the question and the retrieved context alone. That makes it tractable on live production traffic, where writing verified answers for every query is not feasible. A common pattern is to run faithfulness and answer relevance checks nightly across all traffic, while a smaller labelled set handles the reference-based metrics that do require ground truth.\n\nThe limitation is direct: a system whose knowledge base is stale or wrong can score well under reference-free criteria. The evaluation catches internal inconsistency, not external error. Readers who need assurance about factual accuracy, not just coherence, cannot get that from reference-free scores alone.",
+            "model": "claude-sonnet-4-6",
+            "generated_on": "2026-08-31"
+        }
     },
     "converted": "2026-07-28",
     "generated": "2026-09-01",
