@@ -18,16 +18,19 @@
             "publisher": "",
             "retrieved": "2026-08-31"
         },
-        "reading": "Data Foundry was founded in 1994 and describes itself as one of the first 50 internet service providers in the United States. The companys own site states its ownership and key executives have changed very little over more than 25 years of profitable operation, indicating a stable, independently held company, though a precise ownership structure and headquarters address were not stated on the fetched page.\n\nThe operator names facilities in two Texas markets: Austin, with Data Foundry 01, Data Foundry 02, and a facility called Data Ranch, and Houston, with a facility called Houston 2, for at least four named locations. Data Foundry maintains on-site staff described as electricians, network engineers, security personnel, and technicians operating 24 hours a day, seven days a week, describes its facilities as carrier-neutral, and holds ISO 27001 and PCI DSS compliance certifications. Named customers include Cisco, Confluence, and Informatica. No megawatt capacity figure was located in the sources reviewed this session.\n\nThe registry here tracks 4 Data Foundry facilities, all in Texas, consistent with the operators own Austin and Houston markets. This specific facility, recorded in this registry under a Data Foundry-branded name, was not individually named in any prior operator-level research; its operator field was blank in the source data and is set here to Data Foundry based on the facility own name, which unambiguously identifies its operator brand.",
+        "reading": "Per Data Foundry own site (a page the operator labels Data Foundry 00, reached from the Austin 1 Data Center link, so this session could not confirm whether Austin 1 is the same building as the separately listed Data Foundry 01 and 02, or a distinct third Austin facility), this facility totals 40,000 square feet and is backed by three 1,500 kW Caterpillar diesel generators for 4.5 MW of combined backup generation. That generator figure is backup capacity, not a stated critical IT load, so critical_it_mw is left unset rather than populated from it. No street address is published on this page.",
         "sources": [
-            "https://www.datafoundry.com/about-us/"
+            "https://www.datafoundry.com/data-centers/austin-1"
         ],
         "operator": "",
-        "research_note": "New facility-phase research: operator field set from blank to Data Foundry based on the facility own name. Grouped update covering all four Data Foundry-branded Texas rows.",
+        "backup_power": "three 1,500 kW Caterpillar diesel generators (4.5 MW combined backup generation, not the same as critical IT load)",
+        "research_note": "Facility specific seeding pass 2026-09-02, batch 2 (queue from site_arch_changelog seq 700/701): added facility specific detail or an honest operator type flag from the operators own site, replacing a thinner prior reading. research_status remains complete.",
         "sources_tried": [
         ],
+        "square_footage": "40,000 sq ft",
         "research_status": "complete",
-        "technical_space_sqft": 40000
+        "technical_space_sqft": 40000,
+        "ownership_verified_on": "2026-09-02"
     },
     "reading": {
         "body": "Data Foundry Austin 1 occupies 40,000 square feet of technical space in Travis County, Texas, but the operator has not published a power figure, so its actual capacity cannot be assessed.\n\nWithout a megawatt number, no meaningful estimates of IT load, rack count, or accelerator density can be derived. This absence places the facility outside the 13 Texas data centers for which power data exists, and outside the 389 MW total mapped across the state. The majority of Texas's 133 mapped facilities publish no power specification, making Austin 1 typical of the state rather than exceptional.\n\nFor AI infrastructure purposes, 40,000 square feet of technical space suggests a mid-sized colocation facility rather than hyperscale, but floor area alone does not determine suitability for GPU workloads. Power density per rack and total available power are the binding constraints on AI deployment, and neither is published here. Until the operator releases a power specification, this campus remains unevaluable against the grid constraints that govern AI scaling.",
