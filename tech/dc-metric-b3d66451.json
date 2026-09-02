@@ -14,9 +14,9 @@
         "name": "Data Centers"
     },
     "reading": {
-        "body": "Stranded power and space per cabinet is the metric that reveals hidden capacity inside existing data centers, making it possible to add compute without building new facilities.\n\nPower and floor space inside a cabinet are consumed at different rates depending on the density and type of hardware installed. When power runs out before floor space is filled, the remaining rack units are unusable. When floor space is exhausted before the power allocation is spent, that power sits idle and paid for. Airflow constraints can strand both simultaneously, independent of either limit being reached on paper.\n\nFor AI workloads this matters directly. GPU-dense servers draw far more power per unit of floor space than general-purpose servers, which means a hall sized for conventional compute can exhaust its power budget while cabinets still appear half-empty by rack space. Operators who track stranded power and space per cabinet can find and correct that imbalance before requesting new utility capacity or breaking ground on additional space.\n\nThe data covers only the definition and operating rationale of this single metric. It does not provide actual stranding rates, facility counts, or comparisons across hardware generations, so no conclusion about how widespread the problem is can be drawn from it.",
-        "model": "claude-sonnet-4-6",
-        "generated_on": "2026-08-31"
+        "body": "Stranded power and space per cabinet measures utility power or floor space that has been allocated and paid for but cannot actually be used, because the other half of the pair, power or space, ran out first or airflow limits were reached.\n\nA data hall can be full by power and half empty by floor space, or the reverse, and tracking both dimensions per cabinet is described as how operators find capacity they already own before spending money to build more. That framing turns this into an efficiency-of-existing-assets metric rather than a capacity-planning one, relevant to any operator trying to understand whether their real constraint is more power, more floor space, or better provisioning of what they already have.\n\nIts siblings, server utilization rate and floor loading limits, are grouped under Capacity and server use, together addressing how much of a facility's provisioned resources actually get used productively.",
+        "model": "claude-sonnet-5",
+        "generated_on": "2026-09-02"
     },
     "siblings": [
         {
