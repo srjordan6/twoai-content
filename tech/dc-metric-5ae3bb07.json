@@ -14,9 +14,9 @@
         "name": "Data Centers"
     },
     "reading": {
-        "body": "Network quality is the first metric to reflect a struggling AI training run, appearing as wasted GPU-hours before any formal outage is declared or SLA threshold is crossed.\n\nDistributed training workloads synchronize gradient updates across many accelerators simultaneously. Even brief spikes in round-trip latency or small amounts of packet loss force compute to stall while waiting for communication to complete. The result is that the internal fabric of a data center, measured continuously for latency, loss rate, and utilization, is a more sensitive leading indicator of training efficiency than power or cooling metrics alone.\n\nThis metric sits alongside UPS battery health, generator runtime, and SLA uptime compliance in the uptime and redundancy category. Those sibling metrics track whether a facility stays on at all. Network quality tracks whether the facility, while on, is actually delivering the throughput that GPU utilization requires. The data covers the definition and rationale for the metric but does not include benchmarks, thresholds, or facility-specific measurements, so no comparisons between operators or infrastructure tiers can be drawn from it.",
-        "model": "claude-sonnet-4-6",
-        "generated_on": "2026-08-31"
+        "body": "Network latency, packet loss, and bandwidth are tracked as continuous measurements of round-trip time, loss rate, and utilization across a facility's internal fabric and external transit connections.\n\nDistributed AI training is described as unusually intolerant of network degradation, and a lossy fabric shows up as wasted GPU-hours before it shows up as a conventional outage, which is a different failure economics than most enterprise workloads face. A training job spread across many GPUs synchronizes constantly, so a small amount of packet loss that a normal application would barely notice can stall an entire cluster's compute while it waits on retransmitted data.\n\nIts siblings under Uptime and redundancy are UPS battery health and generator runtime and SLA uptime compliance, which together track the different ways a facility's promised availability can actually fail in practice.",
+        "model": "claude-sonnet-5",
+        "generated_on": "2026-09-02"
     },
     "siblings": [
         {
