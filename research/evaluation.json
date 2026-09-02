@@ -147,7 +147,10 @@
             "citations": 57,
             "paper_type": "Journal Article",
             "topic_name": "Evaluation and Benchmarks",
-            "abstract_source": "consensus"
+            "abstract_source": "consensus",
+            "explain_beginner": "Researchers examined 23 popular tests used to measure how well large language models work. They found these tests have serious flaws, including hidden biases, inability to truly measure thinking skills, and inconsistent methods across different evaluations. The study argues that current scorecard approaches don't capture how these AI systems actually behave in real situations, and suggests the field needs better, more flexible ways to evaluate them that consider cultural differences and ethical concerns.",
+            "explain_business": "Current industry standards for comparing AI language models are unreliable for decision-making. Organizations cannot confidently benchmark competing systems or assess real-world performance using existing tests, which contain hidden biases and measurement inconsistencies. This research indicates companies need collaborative industry standards and continuous performance monitoring rather than relying on one-time test scores. Investment in more robust evaluation methods is necessary before deploying these systems at scale in critical business functions.",
+            "explain_practitioner": "This paper presents a systematic assessment framework evaluating 23 LLM benchmarks across people, process, and technology dimensions. Key findings identified biases, inconsistent implementations, prompt engineering variability, and inadequate reasoning measurement. The authors argue static scoring metrics fail to capture complex behaviors and advocate replacing traditional benchmarks with dynamic behavioral profiling. The study emphasizes need for standardized evaluation methodologies, consistent evaluation protocols, and culturally aware assessment criteria to properly characterize LLM capabilities and risks."
         },
         {
             "uid": "r0000065",
@@ -184,6 +187,11 @@
             "abstract_source": "consensus"
         }
     ],
+    "reading": {
+        "body": "Published model scores should not be trusted without evidence of protection against test set contamination, because models routinely memorize benchmark data during training and appear far more capable than they actually are.\n\nThe contamination problem is systematic and severe. Models tested on static benchmarks achieve inflated scores when they have seen similar problems in their training data. GPT-4 guesses masked multiple choice answers at 57 percent accuracy, far above random chance, indicating direct exposure to test sets in a supposedly closed model. When benchmarks are paraphrased, models fail consistently, showing the original performance was memorization rather than genuine reasoning. Standard decontamination techniques like n-gram filtering are defeated by simple rephrasing, yet most published evaluations lack any measurement of how much their benchmarks leaked into training data.\n\nThis matters for AI because claims about model capability drive investment in compute and infrastructure. A model that appears to need ten times more compute to reach a target performance level will receive vastly different funding and resource allocation than one claiming to reach it today. When evaluation scores are artificially inflated by contamination, purchasing decisions, deployment timelines, and compute spending are all based on false information about where capability actually stands.\n\nThe data covers publication bias and benchmark design flaws but does not quantify how much capital or compute has been wasted chasing inflated benchmark improvements. The papers define the problem and propose fixes including dynamic evaluation, per-benchmark contamination measurement, and formal benchmark lifecycles with retirement stages. What remains unclear is how pervasive contamination is across models in actual use and whether any major evaluation framework has successfully implemented continuous refresh mechanisms beyond academic proposals.",
+        "model": "claude-haiku-4-5",
+        "generated_on": "2026-09-02"
+    },
     "generated": "2026-09-02",
     "last_added": "2026-08-03"
 }
