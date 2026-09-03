@@ -14,9 +14,9 @@
         "name": "Data Centers"
     },
     "reading": {
-        "body": "Network latency, packet loss, and bandwidth are tracked as continuous measurements of round-trip time, loss rate, and utilization across a facility's internal fabric and external transit connections.\n\nDistributed AI training is described as unusually intolerant of network degradation, and a lossy fabric shows up as wasted GPU-hours before it shows up as a conventional outage, which is a different failure economics than most enterprise workloads face. A training job spread across many GPUs synchronizes constantly, so a small amount of packet loss that a normal application would barely notice can stall an entire cluster's compute while it waits on retransmitted data.\n\nIts siblings under Uptime and redundancy are UPS battery health and generator runtime and SLA uptime compliance, which together track the different ways a facility's promised availability can actually fail in practice.",
-        "model": "claude-sonnet-5",
-        "generated_on": "2026-09-02"
+        "body": "Network latency, packet loss, and bandwidth degradation waste GPU compute hours before they cause visible outages, making them the leading indicator of data center health for AI workloads.\n\nDistributed AI training synchronizes gradients across many GPUs in lockstep. When the internal fabric or external transit degrades even slightly, some GPUs stall waiting for others to finish their compute. A 5% packet loss does not cause 5% downtime; it causes 50% or more of the GPUs to sit idle during each synchronization step. This is why facilities tracking only SLA uptime compliance miss the real cost. A network running at specification uptime can still bleed compute efficiency through latency creep or intermittent loss that never triggers an alert.\n\nContinuous measurement of round-trip latency, loss rate, and utilization catches this waste before it becomes catastrophic. The metric covers both internal fabric (the switches and cables between GPUs in the same facility) and external transit (the pipes to other facilities or customer connections). Each is a separate failure mode. This data does not capture application-layer issues, redundancy of the measurement system itself, or whether the facility takes action on the data it collects. It also does not specify the thresholds that trigger remediation, which vary widely by workload.",
+        "model": "claude-haiku-4-5",
+        "generated_on": "2026-09-03"
     },
     "siblings": [
         {
