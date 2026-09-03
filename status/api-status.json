@@ -4,7 +4,7 @@
     "name": "API Status and Uptime",
     "blurb": "Reliability history and changelogs.",
     "total": 12,
-    "healthy": 12,
+    "healthy": 10,
     "reading": {
         "body": "Eleven of the twelve AI API providers tracked here reported all systems operational at the time of the most recent check, with Anthropic the sole exception at a minor degradation with 28 incidents recorded in the trailing 30 days.\n\nThat single number, 28 incidents, is more than the combined 30-day incident count of the next four most-affected providers on this list, Fireworks AI at 25, OpenAI at 21, Baseten at 10, and AssemblyAI at 6, which makes Anthropic's incident volume an outlier within this specific snapshot rather than representative of the group. Groq and Stability AI both reported zero incidents in the same 30-day window, the cleanest records in the set.\n\nIncident count alone does not indicate incident severity or duration, and this data reflects the state of each provider's status page at a single checked timestamp rather than a trend over time, so a single high count should be read as a snapshot of one provider's recent history rather than a durable ranking of reliability.",
         "model": "claude-sonnet-5",
@@ -15,34 +15,85 @@
         {
             "recent": [
                 {
+                    "url": "https://status.claude.com/incidents/461yvfrzpwtt",
+                    "name": "Elevated errors for multiple models",
+                    "impact": "major",
+                    "status": "identified",
+                    "created": "2026-09-03"
+                },
+                {
+                    "url": "https://status.claude.com/incidents/288w7p4hk1l1",
+                    "name": "Elevated errors for Claude Sonnet 5",
+                    "impact": "major",
+                    "status": "resolved",
+                    "created": "2026-09-03"
+                },
+                {
                     "url": "https://status.claude.com/incidents/ls6bn1x81m0w",
                     "name": "Elevated errors for Claude Sonnet 5",
                     "impact": "major",
                     "status": "resolved",
                     "created": "2026-09-02"
-                },
-                {
-                    "url": "https://status.claude.com/incidents/620swtqyn24k",
-                    "name": "Delays in credit purchases",
-                    "impact": "minor",
-                    "status": "resolved",
-                    "created": "2026-09-01"
-                },
-                {
-                    "url": "https://status.claude.com/incidents/3g3d55q6vk3h",
-                    "name": "Degraded performance on platform.claude.com and Claude for Microsoft Office 365",
-                    "impact": "minor",
-                    "status": "resolved",
-                    "created": "2026-09-01"
                 }
             ],
-            "checked": "2026-09-03 12:15 UTC",
+            "checked": "2026-09-03 15:16 UTC",
+            "degraded": [
+                "claude.ai (partial outage)",
+                "Claude API (api.anthropic.com) (partial outage)",
+                "Claude Code (partial outage)",
+                "Claude Cowork (partial outage)"
+            ],
             "page_url": "https://status.claude.com",
             "provider": "Anthropic",
-            "indicator": "none",
+            "indicator": "minor",
             "entity_uid": "572c5310",
-            "description": "All Systems Operational",
-            "incidents_30d": 25
+            "description": "Minor Service Outage",
+            "incidents_30d": 27
+        },
+        {
+            "recent": [
+                {
+                    "url": "https://status.openai.com/incidents/01M1KWEDH417T2CF44YYHZDFCR",
+                    "name": "Elevated errors across ChatGPT and Codex",
+                    "impact": "minor",
+                    "status": "investigating",
+                    "created": "2026-09-03"
+                },
+                {
+                    "url": "https://status.openai.com/incidents/01M1J99EDCYED5GP2W8GZ3N2NA",
+                    "name": "ChatGPT Work Mode High Error Rates",
+                    "impact": "major",
+                    "status": "resolved",
+                    "created": "2026-09-03"
+                },
+                {
+                    "url": "https://status.openai.com/incidents/01M1HN7GRR6FJNWFVX2F8QMA3R",
+                    "name": "Elevated errors creating new accounts",
+                    "impact": "none",
+                    "status": "resolved",
+                    "created": "2026-09-02"
+                }
+            ],
+            "checked": "2026-09-03 15:16 UTC",
+            "degraded": [
+                "Search (degraded performance)",
+                "Compliance API (degraded performance)",
+                "Agent (degraded performance)",
+                "Deep Research (degraded performance)",
+                "Codex Web (degraded performance)",
+                "Connectors/Apps (degraded performance)",
+                "Codex in ChatGPT Desktop (degraded performance)",
+                "Codex API (degraded performance)",
+                "VS Code extension (degraded performance)",
+                "Sites (degraded performance)",
+                "File uploads (degraded performance)"
+            ],
+            "page_url": "https://status.openai.com/",
+            "provider": "OpenAI",
+            "indicator": "minor",
+            "entity_uid": "d9ea9793",
+            "description": "Partial System Degradation",
+            "incidents_30d": 23
         },
         {
             "recent": [
@@ -68,45 +119,13 @@
                     "created": "2026-09-02"
                 }
             ],
-            "checked": "2026-09-03 12:15 UTC",
+            "checked": "2026-09-03 15:16 UTC",
             "page_url": "https://status.fireworks.ai/",
             "provider": "Fireworks AI",
             "indicator": "none",
             "entity_uid": "24f3ca11",
             "description": "All Systems Operational",
             "incidents_30d": 25
-        },
-        {
-            "recent": [
-                {
-                    "url": "https://status.openai.com/incidents/01M1J99EDCYED5GP2W8GZ3N2NA",
-                    "name": "ChatGPT Work Mode High Error Rates",
-                    "impact": "major",
-                    "status": "resolved",
-                    "created": "2026-09-03"
-                },
-                {
-                    "url": "https://status.openai.com/incidents/01M1HN7GRR6FJNWFVX2F8QMA3R",
-                    "name": "Elevated errors creating new accounts",
-                    "impact": "none",
-                    "status": "resolved",
-                    "created": "2026-09-02"
-                },
-                {
-                    "url": "https://status.openai.com/incidents/01M1CYZDD84XD0H56XNEV2PT98",
-                    "name": "Elevated latency in the Responses API",
-                    "impact": "minor",
-                    "status": "resolved",
-                    "created": "2026-08-31"
-                }
-            ],
-            "checked": "2026-09-03 12:15 UTC",
-            "page_url": "https://status.openai.com/",
-            "provider": "OpenAI",
-            "indicator": "none",
-            "entity_uid": "d9ea9793",
-            "description": "All Systems Operational",
-            "incidents_30d": 23
         },
         {
             "recent": [
@@ -132,44 +151,12 @@
                     "created": "2026-08-25"
                 }
             ],
-            "checked": "2026-09-03 12:15 UTC",
+            "checked": "2026-09-03 15:16 UTC",
             "page_url": "https://status.baseten.co",
             "provider": "Baseten",
             "indicator": "none",
             "description": "All Systems Operational",
             "incidents_30d": 10
-        },
-        {
-            "recent": [
-                {
-                    "url": "https://status.deepgram.com/incidents/sh19pjztlt6w",
-                    "name": "ISP Backbone Degradation",
-                    "impact": "minor",
-                    "status": "resolved",
-                    "created": "2026-09-02"
-                },
-                {
-                    "url": "https://status.deepgram.com/incidents/ylpqs8187js3",
-                    "name": "[Deepgram EU API] Flux-Multi STT Outage",
-                    "impact": "none",
-                    "status": "resolved",
-                    "created": "2026-08-25"
-                },
-                {
-                    "url": "https://status.deepgram.com/incidents/kp3y1k6jbzcy",
-                    "name": "[Deepgram API] Elevated Streaming STT Error Rates",
-                    "impact": "none",
-                    "status": "resolved",
-                    "created": "2026-08-24"
-                }
-            ],
-            "checked": "2026-09-03 12:15 UTC",
-            "page_url": "https://status.deepgram.com",
-            "provider": "Deepgram",
-            "indicator": "none",
-            "entity_uid": "74a57f5e",
-            "description": "All Systems Operational",
-            "incidents_30d": 6
         },
         {
             "recent": [
@@ -195,11 +182,43 @@
                     "created": "2026-08-19"
                 }
             ],
-            "checked": "2026-09-03 12:15 UTC",
+            "checked": "2026-09-03 15:16 UTC",
             "page_url": "https://status.assemblyai.com",
             "provider": "AssemblyAI",
             "indicator": "none",
             "entity_uid": "250af7f4",
+            "description": "All Systems Operational",
+            "incidents_30d": 5
+        },
+        {
+            "recent": [
+                {
+                    "url": "https://status.deepgram.com/incidents/sh19pjztlt6w",
+                    "name": "ISP Backbone Degradation",
+                    "impact": "minor",
+                    "status": "resolved",
+                    "created": "2026-09-02"
+                },
+                {
+                    "url": "https://status.deepgram.com/incidents/ylpqs8187js3",
+                    "name": "[Deepgram EU API] Flux-Multi STT Outage",
+                    "impact": "none",
+                    "status": "resolved",
+                    "created": "2026-08-25"
+                },
+                {
+                    "url": "https://status.deepgram.com/incidents/kp3y1k6jbzcy",
+                    "name": "[Deepgram API] Elevated Streaming STT Error Rates",
+                    "impact": "none",
+                    "status": "resolved",
+                    "created": "2026-08-24"
+                }
+            ],
+            "checked": "2026-09-03 15:16 UTC",
+            "page_url": "https://status.deepgram.com",
+            "provider": "Deepgram",
+            "indicator": "none",
+            "entity_uid": "74a57f5e",
             "description": "All Systems Operational",
             "incidents_30d": 5
         },
@@ -227,7 +246,7 @@
                     "created": "2026-08-26"
                 }
             ],
-            "checked": "2026-09-03 12:15 UTC",
+            "checked": "2026-09-03 15:16 UTC",
             "page_url": "https://status.elevenlabs.io/",
             "provider": "ElevenLabs",
             "indicator": "none",
@@ -259,7 +278,7 @@
                     "created": "2026-07-23"
                 }
             ],
-            "checked": "2026-09-03 12:15 UTC",
+            "checked": "2026-09-03 15:16 UTC",
             "page_url": "https://status.cohere.com/",
             "provider": "Cohere",
             "indicator": "none",
@@ -291,7 +310,7 @@
                     "created": "2026-08-02"
                 }
             ],
-            "checked": "2026-09-03 12:15 UTC",
+            "checked": "2026-09-03 15:16 UTC",
             "page_url": "https://status.lambda.ai/",
             "provider": "Lambda",
             "indicator": "none",
@@ -322,7 +341,7 @@
                     "created": "2026-06-03"
                 }
             ],
-            "checked": "2026-09-03 12:15 UTC",
+            "checked": "2026-09-03 15:16 UTC",
             "page_url": "https://status.cerebras.ai",
             "provider": "Cerebras",
             "indicator": "none",
@@ -354,7 +373,7 @@
                     "created": "2026-02-07"
                 }
             ],
-            "checked": "2026-09-03 12:15 UTC",
+            "checked": "2026-09-03 15:16 UTC",
             "page_url": "https://groqstatus.com/",
             "provider": "Groq",
             "indicator": "none",
@@ -372,7 +391,7 @@
                     "created": "2025-11-18"
                 }
             ],
-            "checked": "2026-09-03 12:15 UTC",
+            "checked": "2026-09-03 15:16 UTC",
             "page_url": "https://status.stability.ai/",
             "provider": "Stability AI",
             "indicator": "none",
