@@ -11,9 +11,9 @@
     "authors": "J. Puigcerver et al.",
     "journal": "ArXiv",
     "reading": {
-        "body": "Soft mixture-of-experts removes the token-dropping and training instability that made earlier sparse models difficult to operate reliably.\n\nThis is a direct engineering response to the Switch Transformer architecture elsewhere in this collection, the original sparse design made trillion-parameter scale computationally reachable but introduced its own operational problems, and this paper is one of the fixes. That progression, from a capability breakthrough to the stability work needed to actually run it in production, is typical of how architecture research matures.\n\nThe paper does not claim soft mixture-of-experts eliminates every operational difficulty of sparse models, only that it removes the two specific failure modes it targets.",
-        "model": "claude-sonnet-5",
-        "generated_on": "2026-09-02"
+        "body": "Soft MoE achieves 40 times more model capacity with only 2 percent additional computational cost by routing token combinations to specialized experts instead of individual tokens to single experts.\n\nPrevious sparse model architectures failed in practice because they dropped tokens during training and became unstable at scale. Soft MoE solves this by using fully-differentiable routing that assigns weighted combinations of tokens to each expert. Every token contributes to multiple experts rather than being routed to one, which eliminates both the data loss and the training instability that made sparse models difficult to operate.\n\nFor AI scaling, this matters because capacity and compute have been decoupled. A model can now grow far larger than its inference cost would suggest, meaning organizations can add capability without proportional increases to power consumption or hardware requirements. The approach was tested on visual recognition tasks where a 128-expert configuration substantially outperformed both standard dense models and prior sparse variants.\n\nThe data covers inference efficiency and accuracy on vision tasks. It does not include measurements of training cost, energy consumption in watts, power infrastructure requirements, or performance on language models. The 2 percent overhead figure is computational, not electrical or thermal.",
+        "model": "claude-haiku-4-5",
+        "generated_on": "2026-09-03"
     },
     "abstract": "",
     "citations": 299,
