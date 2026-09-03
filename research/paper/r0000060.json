@@ -11,9 +11,9 @@
     "authors": "Naman Jain et al.",
     "journal": "ArXiv",
     "reading": {
-        "body": "LiveCodeBench is a continuously refreshed coding benchmark, built specifically to prevent the contamination problem where a model has already seen the test questions during training.\n\nContinuous refresh is the key design choice, and it directly addresses a problem named explicitly elsewhere in this collection, the position paper calling for per-benchmark contamination measurement. A benchmark that adds new problems on an ongoing basis cannot be memorized in advance the way a static, published benchmark can, which makes its scores harder to game and more informative about genuine capability.\n\nThe paper does not claim to solve contamination for benchmarks other than coding tasks, and does not report how its refresh rate compares to how quickly frontier models are trained and released.",
-        "model": "claude-sonnet-5",
-        "generated_on": "2026-09-02"
+        "body": "LiveCodeBench prevents the inflated scores that plague code evaluation by continuously refreshing its problems from real programming competitions instead of using static benchmarks.\n\nMost LLM benchmarks are now contaminated. Models have likely seen their test problems during training, making scores unreliable measures of actual capability. LiveCodeBench solves this by pulling fresh coding problems from LeetCode, AtCoder, and CodeForces published after May 2023, ensuring no overlap with training data. Testing 52 models showed that older benchmarks give inflated results, meaning many evaluations of coding LLMs circulating today are not trustworthy.\n\nThe benchmark matters for AI deployment because coding tasks are central to how large language models create value. Inflated scores lead to poor purchasing decisions and false confidence in production systems. An organization cannot reliably compare models or predict real-world performance when evaluation data has contaminated the leaderboards. LiveCodeBench's continuous refresh cycle locks that contamination out going forward.\n\nThe data does not directly address compute costs, hardware requirements, or training infrastructure. It focuses on measurement accuracy rather than the resources that underpin model scaling. However, accurate evaluation is prerequisite to rational decisions about which models warrant the compute investment to scale them further.",
+        "model": "claude-haiku-4-5",
+        "generated_on": "2026-09-03"
     },
     "abstract": "",
     "citations": 1812,
