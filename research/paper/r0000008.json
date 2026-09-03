@@ -11,9 +11,9 @@
     "authors": "Yue Zheng et al.",
     "journal": "ACM Computing Surveys",
     "reading": {
-        "body": "This review covers the full lifecycle of running language models on constrained hardware, from model design choices through runtime optimization techniques.\n\nRunning a model at the edge, meaning on a phone or a local device rather than in a data center, inverts the usual compute story on this site. Instead of more power and bigger buildings, edge deployment is about shrinking a model enough that it runs on hardware with a fraction of the memory and power budget of a GPU cluster. Every design decision the review covers, from smaller parameter counts to quantization to runtime scheduling, is ultimately a trade against that constraint.\n\nThe review does not report a single winning approach, only surveys the techniques that exist and the tradeoffs each involves.",
-        "model": "claude-sonnet-5",
-        "generated_on": "2026-09-02"
+        "body": "Running large language models on phones and edge devices requires designing for efficiency at every stage, from initial architecture through runtime execution, and this survey catalogs the full lifecycle of that process.\n\nThe paper covers model design, pre-deployment optimization, and runtime inference techniques for constrained hardware. This is a systems problem, not a single breakthrough. Each stage offers different levers for reduction: architectural choices that lower parameters, compression applied before deployment, and inference methods that trade speed or accuracy to fit memory and power budgets. The techniques must work across hardware diversity since edge devices range widely in capability.\n\nFor AI scaling, this matters because on-device models consume power and real estate at the user's end rather than at a datacenter. They reduce the compute that must flow through the grid and be housed in buildings. The tradeoff is that edge deployment fragments compute across millions of devices, creating coordination and update challenges that centralized inference does not face.\n\nThis survey does not cover the full infrastructure picture: datacenter models still train centrally and often require server resources to prepare edge versions. It also does not compare the total power cost of distributed edge inference against centralized inference at scale. What it does is map the technical design space for making that tradeoff viable at all.",
+        "model": "claude-haiku-4-5",
+        "generated_on": "2026-09-03"
     },
     "abstract": "",
     "citations": 225,
