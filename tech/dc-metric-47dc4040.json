@@ -14,9 +14,9 @@
         "name": "Data Centers"
     },
     "reading": {
-        "body": "Airflow and static pressure track the cubic feet per minute delivered through a room or containment system and the pressure differential driving that air through equipment rather than around it.\n\nA facility can have enough total cooling capacity and still starve individual racks, because airflow and pressure sensors catch recirculation, bypass, and leaks that temperature averages alone do not reveal. That distinction matters because a facility-wide temperature reading can look normal even while specific racks are effectively being cooled by air that never reached them, which is exactly the failure mode this metric is built to catch.\n\nIt sits alongside temperature and humidity readings and liquid coolant temperature and flow rate under Cooling and climate, forming a set of measurements aimed at the same underlying question from different angles, whether cooling capacity that exists on paper is actually reaching the equipment that needs it.",
-        "model": "claude-sonnet-5",
-        "generated_on": "2026-09-02"
+        "body": "Airflow volume and static pressure reveal cooling failures that average temperatures cannot detect, because air can bypass equipment entirely rather than passing through it.\n\nData centers measure temperature across a room and assume uniform cooling. This misses the actual problem: air taking paths of least resistance, recirculating already-warm exhaust, or leaking around containment barriers. Static pressure, the force driving air through the equipment rather than around it, is the metric that catches these inefficiencies. A facility can have adequate total cooling capacity and still starve individual racks of the airflow they need.\n\nFor AI infrastructure, this matters because high-density compute racks demand precise airflow control. Recirculation or bypass reduces effective cooling capacity without adding infrastructure, which means some racks run hotter than their specifications allow. This forces either underutilization of expensive equipment or accelerated hardware degradation. The binding constraint becomes not total power delivered to the building, but power actually usable at the rack level.\n\nThe data does not specify which types of compute racks or cooling architectures are most vulnerable to airflow problems, nor does it quantify the efficiency losses that result from poor static pressure management.",
+        "model": "claude-haiku-4-5",
+        "generated_on": "2026-09-03"
     },
     "siblings": [
         {
