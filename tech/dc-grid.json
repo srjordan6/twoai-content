@@ -1,7 +1,7 @@
 {
     "eia": {
         "commercial_sales_mwh": {
-            "as_of": "2026-09-02",
+            "as_of": "2026-09-03",
             "value": 54797.55414,
             "detail": {
                 "scope": "Commercial-sector electricity sales and average price by state, as reported to EIA. Data centers are billed mostly in the commercial class, so this is a proxy for their load, not a measurement of it.",
@@ -42,7 +42,7 @@
             "url": "https://www.ercot.com/mp/data-products/data-product-details?id=PG7-200-ER",
             "name": "ERCOT",
             "slug": "ercot",
-            "as_of": "2026-09-02",
+            "as_of": "2026-09-03",
             "scope": "Large generators with a full interconnection study requested, from the monthly Generator Interconnection Status report for Texas. Includes projects from study through commissioning.",
             "by_fuel": {
                 "gas": 78092.40000000001,
@@ -59,7 +59,7 @@
             "url": "https://www.nyiso.com/interconnections",
             "name": "NYISO",
             "slug": "nyiso",
-            "as_of": "2026-09-02",
+            "as_of": "2026-09-03",
             "scope": "Projects in the New York interconnection queue as NYISO publishes them.",
             "by_fuel": {
                 "gas": 27879.00000000001,
@@ -73,7 +73,7 @@
             "url": "https://www.misoenergy.org/planning/resource-utility-interconnection/gi-interactive-queue/",
             "name": "MISO",
             "slug": "miso",
-            "as_of": "2026-09-02",
+            "as_of": "2026-09-03",
             "scope": "Projects in the Midcontinent generator interconnection queue, all statuses as MISO publishes them.",
             "by_fuel": {
                 "gas": 30236.33,
@@ -89,7 +89,7 @@
             "url": "https://opsportal.spp.org/Studies/GenerateSummaryCSV",
             "name": "Southwest Power Pool",
             "slug": "spp",
-            "as_of": "2026-09-02",
+            "as_of": "2026-09-03",
             "scope": "Generator interconnection requests across the south-central US, all statuses as SPP publishes them, withdrawn requests counted separately.",
             "by_fuel": {
                 "gas": 47392.475000000006,
@@ -106,7 +106,7 @@
             "url": "https://www.caiso.com/PublishedDocuments/PublicQueueReport.xlsx",
             "name": "CAISO",
             "slug": "caiso",
-            "as_of": "2026-09-02",
+            "as_of": "2026-09-03",
             "scope": "Active generator interconnection requests on the California ISO grid, from the public queue report. Completed and withdrawn projects are counted separately.",
             "by_fuel": {
                 "gas": 915.6,
@@ -119,10 +119,10 @@
         }
     ],
     "analysis": {
-        "body": "The five grid operators whose public interconnection queues appear in this snapshot — ERCOT, NYISO, MISO, Southwest Power Pool, and CAISO — cover different slices of the country and use different rules about which projects they count, so their totals cannot simply be added together or compared as if they measured the same thing. With that caveat firmly in place, the raw scale is striking on its own terms. ERCOT's Texas queue alone lists 1,778 requests totaling roughly 438,086 MW of planned generation and storage, led by storage at about 159,820 MW and solar at about 150,347 MW, but gas projects account for nearly 78,092 MW, a figure worth noting because gas is the fuel most directly associated with always-on, around-the-clock load. MISO's 3,832 requests add up to about 299,721 MW, SPP's 1,075 requests reach nearly 198,716 MW, NYISO's 1,414 requests total roughly 319,095 MW, and CAISO's 265 active requests represent about 71,682 MW — each figure bounded by that operator's own scope and counting rules.\n\nFor readers focused on AI data centers, the most relevant signals inside these queues are the gas and storage line items. Data centers require firm, continuous power that solar and wind alone cannot guarantee, so developers planning to serve large computing loads tend to pair renewables with battery storage or lean on gas for baseload reliability. Across the four queues that separately report those fuels, gas requests total roughly 184,315 MW and storage requests total roughly 328,106 MW combined — neither number represents data center demand itself, but both categories grow alongside it. ERCOT's gas queue at 78,092 MW and SPP's storage queue at about 52,913 MW are particularly large in relative terms within their respective operators, and CAISO's active queue is dominated by storage at nearly 46,944 MW even though its overall MW total is the smallest of the five, reflecting California's policy environment as much as its load growth.\n\nThe EIA commercial electricity sales figures, which are a proxy for data center load rather than a direct measure of it, show June 2026 commercial sales of about 15,754 thousand MWh in Texas and about 7,771 thousand MWh in Virginia at average prices of roughly $8.66 and $10.99 per MWh respectively — the two states that together host the largest concentrations of US data center infrastructure. The gap between those consumption figures and the enormous MW totals sitting in interconnection queues is a reminder that queue entries are aspirations, not commitments; many projects will be delayed, modified, or withdrawn before they ever deliver a single watt. The most useful near-term signal to watch is how many of the gas and storage projects currently in ERCOT's and SPP's queues advance from the study phase into signed interconnection agreements over the coming quarterly reporting cycles.",
+        "body": "The five grid operators whose public interconnection queues appear in this snapshot — ERCOT, NYISO, MISO, Southwest Power Pool, and CAISO — collectively show more than 1.3 million megawatts of generation and storage projects waiting somewhere between initial study and commissioning as of September 3, 2026. These totals represent planned capacity that has requested a grid connection, not actual data center demand, and the five queues are not directly comparable to one another: each operator defines scope differently, counts withdrawn or completed projects differently, and covers a different geographic footprint. ERCOT's Texas queue alone lists 438,086 MW across 1,778 requests, while CAISO's active California queue is the smallest here at 71,682 MW across 265 requests, reflecting both California's narrower active-only scope and Texas's outsized pipeline of new projects.\n\nFor readers focused on AI data centers, the fuel-type breakdown is where the signal lies. Battery storage and natural gas — the two resources most tightly coupled to large, around-the-clock loads — are growing prominently in the queues that cover the states where data center construction is most concentrated. ERCOT shows 159,820 MW of storage and 78,092 MW of gas queued; SPP shows 52,913 MW of storage and 47,392 MW of gas; MISO shows 68,429 MW of storage and 30,236 MW of gas; and CAISO shows 46,944 MW of storage and 916 MW of gas. Storage at this scale in interconnection queues tends to follow load that needs firm, dispatchable backup or peak-shaving capacity, which is a characteristic signature of large hyperscale campuses, though the queue data alone cannot confirm that relationship.\n\nThe EIA commercial electricity sales figures, covering June 2026 for eight states, add a partial demand-side picture: Texas reported 15,754 GWh of commercial-sector sales that month at an average price of $8.66 per MWh, Virginia reported 7,771 GWh at $10.99, and California reported 10,025 GWh at $27.33, though these are commercial-class sales broadly and are a proxy for data center load rather than a direct measurement of it. Prices vary from $8.66 in Texas to $27.33 in California, a spread that helps explain why interconnection queues in lower-cost states remain so large. The most informative next development to watch will be how many of the gas and storage projects in each queue advance from study into signed interconnection agreements over the coming quarterly reporting cycles, since that transition is the clearest leading indicator that load commitments behind those projects are hardening.",
         "model": "claude-sonnet-4-6",
-        "generated_on": "2026-09-02"
+        "generated_on": "2026-09-03"
     },
-    "generated": "2026-09-02",
-    "series_days": 4
+    "generated": "2026-09-03",
+    "series_days": 5
 }
