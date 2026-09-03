@@ -11,9 +11,9 @@
     "authors": "Abulhair Saparov et al.",
     "journal": "ArXiv",
     "reading": {
-        "body": "Using formal proof parsing, this paper finds models handle individual deduction steps correctly but fail at planning a multi-step proof, a precise statement of where reasoning breaks down.\n\nThe distinction between a single step and a plan across many steps is a specific, testable claim rather than a general one. It means the failure is not that the model cannot reason at all, but that it cannot reliably chain individual correct steps into a correct overall structure, which is a narrower and more useful diagnosis than saying reasoning models simply do not reason.\n\nThe paper's method is formal proof parsing specifically, so it does not establish whether the same step-versus-plan failure holds for informal reasoning tasks like the math or commonsense problems covered elsewhere in this collection.",
-        "model": "claude-sonnet-5",
-        "generated_on": "2026-09-02"
+        "body": "Language models can execute individual logical steps correctly but cannot plan sequences of reasoning when multiple valid paths exist, revealing a fundamental limitation in search capability rather than deduction.\n\nThe constraint appears in formal proof tasks where a single correct answer requires choosing among several possible next steps. Models succeeded on problems with one forced deduction path but failed when they needed to evaluate which reasoning direction to pursue. This is not a failure of logic itself but of exploration, the ability to commit to a promising branch among alternatives.\n\nFor AI deployment, this matters because scaling compute and reducing latency do nothing to solve planning failures. A larger model still follows the same greedy pattern: it picks the locally sensible next step without assessing the full proof space. Genuine multi-step problem-solving requires architectural changes or external search mechanisms that the language model alone does not provide.\n\nThe data does not cover whether models improve with different prompting, whether auxiliary tools like symbolic solvers change the result, or how this limitation scales to reasoning domains outside formal logic. It precisely documents what models cannot do, not what they might become when combined with other systems.",
+        "model": "claude-haiku-4-5",
+        "generated_on": "2026-09-03"
     },
     "abstract": "",
     "citations": 507,
