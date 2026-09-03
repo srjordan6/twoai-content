@@ -13,6 +13,29 @@
             "entity_kind": "company"
         },
         {
+            "url": "https://www.salesforce.com/blog/3-signs-youve-outgrown-a-single-agent/",
+            "date": "2026-09-03",
+            "slug": "3-signs-you-ve-outgrown-a-single-agent-0c46cc",
+            "title": "3 Signs You’ve Outgrown a Single Agent",
+            "vendor": "Salesforce",
+            "summary": "How to tell when it's time for multi-agent orchestration.",
+            "has_page": false,
+            "entity_uid": "4124ecef",
+            "entity_kind": "company"
+        },
+        {
+            "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-aurora-mysql-multisourcerep-delayedrep/",
+            "date": "2026-09-03",
+            "slug": "amazon-aurora-mysql-now-supports-multi-source-replication-an-42564d",
+            "title": "Amazon Aurora MySQL now supports multi-source replication and delayed replication",
+            "vendor": "Amazon Web Services",
+            "summary": "Starting today, Amazon Aurora MySQL supports two new replication capabilities: multi-source replication and delayed replication.",
+            "has_page": true,
+            "entity_uid": "0d5de807",
+            "entity_kind": "company",
+            "reader_note": "Multi-source replication lets you consolidate data from several Aurora MySQL databases into a single instance, which matters if you manage data ingestion from multiple systems. Delayed replication creates an intentional lag between source and replica, useful for catching errors before they propagate. These are standard database features now available in Aurora, so assess whether your current replication setup leaves gaps that these address, rather than assuming they solve problems you don't have. The announcement shows capability; whether this changes your architecture depends on your specific topology and recovery requirements."
+        },
+        {
             "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/cloudfront-flat-rate-pricing-plans-api/",
             "date": "2026-09-03",
             "slug": "amazon-cloudfront-announces-api-support-for-flat-rate-pricin-8c6ae4",
@@ -48,6 +71,52 @@
             "reader_note": "The addition of monitoring dashboards to MWAA's console interface reduces friction for operators who might otherwise toggle between multiple tools. This matters if your team runs workflows on MWAA and finds the existing CloudWatch integration cumbersome. Be sceptical of whether a built-in view eliminates the need to understand CloudWatch itself, or simply makes common queries easier to access. This does not indicate changes to how MWAA executes workflows or to its underlying capabilities."
         },
         {
+            "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/redshift-rg-large-single-node",
+            "date": "2026-09-03",
+            "slug": "amazon-redshift-rg-large-instances-now-support-single-node-c-27d87d",
+            "title": "Amazon Redshift rg.large instances now support single-node clusters",
+            "vendor": "Amazon Web Services",
+            "summary": "Amazon Redshift rg.large instances, powered by AWS Graviton processors, now support single-node clusters. Single-node support for rg.large clusters is available on P204 or later patch versions.",
+            "has_page": true,
+            "entity_uid": "0d5de807",
+            "entity_kind": "company"
+        },
+        {
+            "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-s3-privatelink-fips-endpoints",
+            "date": "2026-09-03",
+            "slug": "amazon-s3-now-supports-privatelink-for-fips-endpoints-559f52",
+            "title": "Amazon S3 now supports PrivateLink for FIPS endpoints",
+            "vendor": "Amazon Web Services",
+            "summary": "Amazon S3 now supports AWS PrivateLink for endpoints that have been validated under the Federal Information Processing Standard (FIPS) 140-3 program.",
+            "has_page": true,
+            "entity_uid": "0d5de807",
+            "entity_kind": "company"
+        },
+        {
+            "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/sagemaker-workflows-python-bash/",
+            "date": "2026-09-03",
+            "slug": "amazon-sagemaker-unified-studio-workflows-support-python-and-b7e067",
+            "title": "Amazon SageMaker Unified Studio Workflows support Python and Bash operators",
+            "vendor": "Amazon Web Services",
+            "summary": "Amazon SageMaker Unified Studio Workflows now supports PythonOperator and BashOperator, enabling you to run custom Python functions and shell commands directly in your serverless workflows without provisioning separate compute resources.",
+            "has_page": true,
+            "entity_uid": "0d5de807",
+            "entity_kind": "company",
+            "reader_note": "If you build machine learning pipelines, you now have a simpler path to run custom code without managing infrastructure separately. This matters mainly if you were already using SageMaker Workflows and found yourself constrained to predefined operators or forced to provision compute elsewhere for custom logic.\n\nBe sceptical of \"serverless\" claims here. Running arbitrary Python and Bash still consumes resources somewhere, and cost or performance constraints may emerge once you move real workloads through. Test your actual use cases before treating this as a wholesale replacement for your current approach."
+        },
+        {
+            "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-ses-supports-smime-signing",
+            "date": "2026-09-03",
+            "slug": "amazon-ses-now-supports-s-mime-email-signing-f28eec",
+            "title": "Amazon SES now supports S/MIME email signing",
+            "vendor": "Amazon Web Services",
+            "summary": "Amazon Simple Email Service (SES) now supports Secure/Multipurpose Internet Mail Extensions (S/MIME) signing, giving you a way to help recipients verify your emails are authentic.",
+            "has_page": true,
+            "entity_uid": "0d5de807",
+            "entity_kind": "company",
+            "reader_note": "This adds cryptographic signing to SES, meaning recipients can verify that emails claiming to come from your domain actually do. This matters if you send transactional or sensitive messages where spoofing carries real risk. Be clear on what this solves: S/MIME signing proves the sender's identity and that content has not been altered in transit. It does not encrypt message bodies, so third parties can still read email content. You will need to manage signing certificates and ensure recipients have the infrastructure to validate them, which remains a friction point for S/MIME adoption."
+        },
+        {
             "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-workspaces-applications-nvidia-blackwell-gpu-instances/",
             "date": "2026-09-03",
             "slug": "amazon-workspaces-applications-adds-support-for-nvidia-black-3967d2",
@@ -58,6 +127,17 @@
             "entity_uid": "0d5de807",
             "entity_kind": "company",
             "reader_note": "If you run graphics-heavy applications through WorkSpaces, the addition of Blackwell GPUs to available instance types gives you more options for your hardware tier. This is an expansion of existing infrastructure rather than a new capability, so evaluate it against your current performance bottlenecks and cost profile. The announcement does not indicate whether this addresses latency issues particular to remote graphics work or how performance compares to alternatives you may already use."
+        },
+        {
+            "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/aws-gateway-load-balancer-tcp-reset/",
+            "date": "2026-09-03",
+            "slug": "aws-gateway-load-balancer-now-supports-tcp-reset-for-faster--3c4a58",
+            "title": "AWS Gateway Load Balancer now supports TCP Reset for faster failure recovery",
+            "vendor": "Amazon Web Services",
+            "summary": "A WS Gateway Load Balancer (GWLB) now supports sending TCP Reset (RST) packets when a target becomes unhealthy, is deregistered, or when a flow's idle timeout expires.",
+            "has_page": true,
+            "entity_uid": "0d5de807",
+            "entity_kind": "company"
         },
         {
             "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/aws-transform-fsx-netapp-ontap-support/",
@@ -100,6 +180,28 @@
             "entity_kind": "company"
         },
         {
+            "url": "https://www.databricks.com/blog/building-high-quality-and-trusted-data-products-databricks",
+            "date": "2026-09-03",
+            "slug": "building-high-quality-and-trusted-data-products-with-databri-110ce7",
+            "title": "Building High-Quality and Trusted Data Products with Databricks",
+            "vendor": "Databricks",
+            "summary": "IntroductionOrganizations aiming to become AI and data-driven often need to provide...",
+            "has_page": false,
+            "entity_uid": "a4718c15",
+            "entity_kind": "company"
+        },
+        {
+            "url": "https://www.salesforce.com/blog/nonprofit-ai-pro-bono-volunteers/",
+            "date": "2026-09-03",
+            "slug": "can-pro-bono-volunteers-solve-the-nonprofit-ai-gap-561e43",
+            "title": "Can Pro Bono Volunteers Solve the Nonprofit AI Gap?",
+            "vendor": "Salesforce",
+            "summary": "Our pro bono fellowship is where Salesforce talent apply their skills for the greater good — here's why it works.",
+            "has_page": false,
+            "entity_uid": "4124ecef",
+            "entity_kind": "company"
+        },
+        {
             "url": "https://blog.apify.com/create-an-actor-with-a-git-repo/",
             "date": "2026-09-03",
             "slug": "create-an-actor-with-a-git-repo-in-a-few-clicks-9221cf",
@@ -119,6 +221,17 @@
             "vendor": "Vercel",
             "has_page": false,
             "entity_uid": "b4ead33d",
+            "entity_kind": "company"
+        },
+        {
+            "url": "https://openai.com/index/daybreak-for-frontline-defenders",
+            "date": "2026-09-03",
+            "slug": "daybreak-for-frontline-defenders-1b-to-protect-essential-ser-30eec5",
+            "title": "Daybreak for Frontline Defenders: $1B to protect essential services",
+            "vendor": "OpenAI",
+            "summary": "OpenAI introduces Daybreak for Frontline Defenders. A $1 billion commitment expands access to frontier cyber AI, training, and support for essential services.",
+            "has_page": true,
+            "entity_uid": "d9ea9793",
             "entity_kind": "company"
         },
         {
@@ -164,6 +277,17 @@
             "entity_kind": "company"
         },
         {
+            "url": "https://www.databricks.com/blog/governance-beyond-security-knowledge-context-ontology-lakehouse",
+            "date": "2026-09-03",
+            "slug": "governance-beyond-security-knowledge-context-ontology-on-the-159bcb",
+            "title": "Governance beyond security: knowledge, context & ontology on the lakehouse",
+            "vendor": "Databricks",
+            "summary": "Ask most organizations what data governance for AI means, and you’ll hear a security...",
+            "has_page": false,
+            "entity_uid": "a4718c15",
+            "entity_kind": "company"
+        },
+        {
             "url": "https://stability.ai/guides/how-artists-are-using-ai-to-make-music-findings-from-analyzing-hundreds-of-musical-works",
             "date": "2026-09-03",
             "slug": "how-artists-are-using-ai-to-make-music-findings-from-analyzi-bd72a5",
@@ -200,6 +324,17 @@
             "title": "Introducing Stable Diffusion 3.5 - Stability AI",
             "vendor": "Stability AI",
             "has_page": true
+        },
+        {
+            "url": "https://openai.com/index/legora-financial-statement-review-with-astra",
+            "date": "2026-09-03",
+            "slug": "legora-reviewed-41-documents-in-minutes-with-gpt-6-astra-d54e7a",
+            "title": "Legora reviewed 41 documents in minutes with GPT-6 Astra",
+            "vendor": "OpenAI",
+            "summary": "Legora used GPT-6 Astra to review 41 documents in minutes, find all four planted errors, and improve performance by nearly 40% in this financial-review workflow.",
+            "has_page": true,
+            "entity_uid": "d9ea9793",
+            "entity_kind": "company"
         },
         {
             "url": "https://microsoft.ai/news/mai-transcribe-2-is-the-fastest-most-accurate-and-cheapest-speech-recognition-model-in-the-world/",
@@ -253,6 +388,28 @@
             "summary": "I’m excited to announce that NVIDIA has agreed to acquire Hugging Face for $12,930,300,000. Together, we will scale Hugging Face’s platform, strengthen its infrastructure and expand access to AI for developers and institutions worldwide.",
             "has_page": true,
             "entity_uid": "f9825526",
+            "entity_kind": "company"
+        },
+        {
+            "url": "https://openai.com/index/playco-game-prototyping-with-astra",
+            "date": "2026-09-03",
+            "slug": "playco-cut-manual-fixes-50-prototyping-games-with-gpt-6-astr-9a8f1e",
+            "title": "Playco cut manual fixes 50% prototyping games with GPT-6 Astra",
+            "vendor": "OpenAI",
+            "summary": "Using GPT-6 Astra, Playco built three themed game prototypes from one grey box foundation and reported 50% fewer manual fixes than with the previous model.",
+            "has_page": true,
+            "entity_uid": "d9ea9793",
+            "entity_kind": "company"
+        },
+        {
+            "url": "https://openai.com/index/safety-overview-gpt-6-astra",
+            "date": "2026-09-03",
+            "slug": "safety-overview-gpt-6-astra-af3b84",
+            "title": "Safety overview: GPT-6 Astra",
+            "vendor": "OpenAI",
+            "summary": "GPT-6 Astra is our most capable broadly deployed model and our first to reach the Critical level of cybersecurity capability under our Preparedness Framework.",
+            "has_page": true,
+            "entity_uid": "d9ea9793",
             "entity_kind": "company"
         },
         {
@@ -335,6 +492,17 @@
             "vendor": "Hugging Face",
             "has_page": false,
             "entity_uid": "bad597a3",
+            "entity_kind": "company"
+        },
+        {
+            "url": "https://www.databricks.com/blog/what-is-data-transformation",
+            "date": "2026-09-03",
+            "slug": "what-is-data-transformation-eebe38",
+            "title": "What is Data Transformation?",
+            "vendor": "Databricks",
+            "summary": "What is data transformation?Data transformation is the process of taking raw data...",
+            "has_page": false,
+            "entity_uid": "a4718c15",
             "entity_kind": "company"
         },
         {
@@ -2582,173 +2750,6 @@
             "has_page": true,
             "entity_uid": "5a78804e",
             "entity_kind": "company"
-        },
-        {
-            "url": "https://aws.amazon.com/about-aws/whats-new/2026/01/muse-glimmer-30b-qwen-3.8-27b-on-sagemaker-jumpstart/",
-            "date": "2026-08-27",
-            "slug": "muse-glimmer-30b-and-qwen-3-8-27b-models-now-available-on-am-7581f4",
-            "title": "Muse-Glimmer-30B and Qwen 3.8-27B models now available on Amazon SageMaker JumpStart",
-            "vendor": "Amazon Web Services",
-            "summary": "Meta's Muse-Glimmer-30B and Alibaba's Qwen 3.8-27B models are now available on Amazon SageMaker JumpStart, expanding the portfolio of foundation models available to AWS customers.",
-            "has_page": true,
-            "entity_uid": "0d5de807",
-            "entity_kind": "company"
-        },
-        {
-            "url": "https://www.databricks.com/blog/object-storage-wal-lakebase-postgres-agentic-era",
-            "date": "2026-08-27",
-            "slug": "object-storage-wal-lakebase-postgres-for-the-agentic-era-e3de08",
-            "title": "Object Storage + WAL: Lakebase Postgres for the agentic era",
-            "vendor": "Databricks",
-            "summary": "Agents that interact with a traditional OLTP database often create bottlenecks at the storage layer. New deployments...",
-            "has_page": false,
-            "entity_uid": "a4718c15",
-            "entity_kind": "company"
-        },
-        {
-            "url": "https://www.atlassian.com/blog/rovo/agent-autonomy",
-            "date": "2026-08-27",
-            "slug": "opening-the-door-to-agent-autonomy-the-architecture-behind-r-6d6f51",
-            "title": "Opening the Door to Agent Autonomy: The Architecture Behind Rovo’s Agent Harness",
-            "vendor": "Atlassian",
-            "summary": "Unlocking a brand-new dimension of agent autonomy using a sandboxed execution harness that closes the loop between automated testing and runtime optimization. The post Opening the Door to Agent Autonomy: The Architecture Behind Rovo’s Agent Harness appeared first on Inside Atlassian .",
-            "has_page": true,
-            "entity_uid": "40000e9d",
-            "entity_kind": "company",
-            "reader_note": "The sandboxed execution environment described here addresses a real problem: letting agents test their own outputs before committing to actions. This matters if your concern is reducing hallucinations or unsafe behavior in production. What remains unclear from this announcement is how well the approach works in practice, what kinds of errors it catches, and what it misses. Sandboxing is a containment strategy, not a guarantee. The architecture may prove useful for specific workflows, but a technical capability in one product does not establish how broadly it applies across agent deployment."
-        },
-        {
-            "url": "https://www.atlassian.com/blog/ai-at-work/microsoft-teams-teamwork-graph-connector",
-            "date": "2026-08-27",
-            "slug": "put-your-conversations-to-work-with-the-teamwork-graph-conne-355cdc",
-            "title": "Put your conversations to work with the Teamwork Graph connector for Microsoft Teams",
-            "vendor": "Atlassian",
-            "summary": "The work your team delivers rarely starts and ends in one tool. Plans may live in Confluence and delivery in Jira, while the day-to-day context that shapes those plans and decisions often lives in Microsoft Teams: the quick decisions in chat, the back-and-forth in threads, and the details captured",
-            "has_page": true,
-            "entity_uid": "40000e9d",
-            "entity_kind": "company",
-            "reader_note": "This connector surfaces context that already exists elsewhere, bridging what lives in Teams with what lives in your project management tools. The value depends on whether your team actually documents decisions in Teams rather than elsewhere, and whether the additional context changes how you prioritise or plan. Be sceptical of claims about \"putting conversations to work\" without seeing concrete examples of decisions that changed because this connection existed. The capability to link tools does not prove that doing so improves outcomes for your particular workflow."
-        },
-        {
-            "url": "https://news.sap.com/2026/08/sap-cx-wins-trustradius-top-rated-2026/",
-            "date": "2026-08-27",
-            "slug": "sap-cx-wins-trustradius-top-rated-2026-earning-trust-powerin-9125c2",
-            "title": "SAP CX Wins TrustRadius Top Rated 2026: Earning Trust, Powering the Future of Agentic AI",
-            "vendor": "SAP",
-            "summary": "Across sales, service, and commerce, customers consistently highlighted the depth of integration, reliability at enterprise scale, and the tangible business impact of AI-powered workflows.",
-            "has_page": true,
-            "entity_uid": "26b894e4",
-            "entity_kind": "company",
-            "reader_note": "The announcement confirms that SAP CX users report reliable performance at scale and find integrated AI workflows useful for specific functions. This reflects satisfaction among existing customers rather than independent validation of technical capabilities. When evaluating whether this platform suits your needs, focus on whether the integration depth matches your actual processes and whether the workflows SAP describes map to your specific use cases. The framing around \"agentic AI\" should not be taken as evidence that autonomous decision-making has replaced human oversight in these systems."
-        },
-        {
-            "url": "https://vercel.com/blog/the-best-workflow-engine-is-a-programming-language",
-            "date": "2026-08-27",
-            "slug": "the-best-workflow-engine-is-a-programming-language-a2c196",
-            "title": "The best workflow engine is a programming language",
-            "vendor": "Vercel",
-            "has_page": false,
-            "entity_uid": "b4ead33d",
-            "entity_kind": "company"
-        },
-        {
-            "url": "https://www.databricks.com/blog/vertical-advantage-transforming-industries-lakebase-and-agentic-ai",
-            "date": "2026-08-27",
-            "slug": "vertical-advantage-transforming-industries-with-lakebase-and-6038dd",
-            "title": "Vertical Advantage: Transforming Industries with Lakebase and Agentic AI",
-            "vendor": "Databricks",
-            "summary": "In the first blog of this series, we looked at how Lakebase Postgres is rewriting...",
-            "has_page": false,
-            "entity_uid": "a4718c15",
-            "entity_kind": "company"
-        },
-        {
-            "url": "https://www.salesforce.com/blog/small-business/virtual-whiteboarding-with-slack/",
-            "date": "2026-08-27",
-            "slug": "virtual-whiteboarding-running-collaborative-brainstorming-se-f31abd",
-            "title": "Virtual Whiteboarding: Running Collaborative Brainstorming Sessions in Slack",
-            "vendor": "Salesforce",
-            "summary": "Your next big idea is closer than you think — and it might just start in a Slack channel.",
-            "has_page": false,
-            "entity_uid": "4124ecef",
-            "entity_kind": "company"
-        },
-        {
-            "url": "https://www.salesforce.com/blog/agentic-ai-roi-report/",
-            "date": "2026-08-27",
-            "slug": "what-2-000-leaders-told-us-about-winning-with-agentic-ai-f5c7fc",
-            "title": "What 2,000 Leaders Told Us About Winning With Agentic AI",
-            "vendor": "Salesforce",
-            "summary": "The gap between companies winning with agentic AI and those stuck in pilot isn't speed. It's what they did before they hit launch.",
-            "has_page": true,
-            "entity_uid": "4124ecef",
-            "entity_kind": "company"
-        },
-        {
-            "url": "https://zapier.com/blog/google-ai-mode",
-            "date": "2026-08-27",
-            "slug": "what-is-google-ai-mode-how-it-works-and-how-to-use-it-dd4fd5",
-            "title": "What is Google AI Mode? How it works and how to use it",
-            "vendor": "Zapier",
-            "summary": "I can't be the only person who types a question into Google, opens 12 tabs from the results, and somehow still can't find a straight answer. Google AI Mode is here to save me, specifically, from that tab chaos. AI Mode is a conversational Google Search experience powered by Gemini.",
-            "has_page": true,
-            "entity_uid": "6af345b4",
-            "entity_kind": "company"
-        },
-        {
-            "url": "https://zapier.com/blog/what-is-hubspot",
-            "date": "2026-08-27",
-            "slug": "what-is-hubspot-and-what-does-it-do-8761a8",
-            "title": "What is HubSpot—and what does it do?",
-            "vendor": "Zapier",
-            "summary": "HubSpot started as an inbound marketing tool, and today it bills itself as an AI-powered customer platform. But what does that actually mean? HubSpot is a one-stop shop for managing every stage of the customer lifecycle.",
-            "has_page": true,
-            "entity_uid": "6af345b4",
-            "entity_kind": "company"
-        },
-        {
-            "url": "https://www.databricks.com/blog/what-qsr-reports-miss-about-decisions-matter-most",
-            "date": "2026-08-27",
-            "slug": "what-qsr-reports-miss-about-the-decisions-matter-the-most-70dc45",
-            "title": "What QSR reports miss about the decisions matter the most",
-            "vendor": "Databricks",
-            "summary": "Limited-time offers can be a powerful way to create excitement, bring guests back,...",
-            "has_page": false,
-            "entity_uid": "a4718c15",
-            "entity_kind": "company"
-        },
-        {
-            "url": "https://www.gong.io/blog/ai-governance-operating-discipline",
-            "date": "2026-08-27",
-            "slug": "why-ai-governance-is-an-operating-discipline-not-a-policy-4b11a8",
-            "title": "Why AI governance is an operating discipline, not a policy",
-            "vendor": "Gong",
-            "summary": "Learn four foundational pillars of responsible AI governance — from data access and privacy by design to lifecycle management and ownership.",
-            "has_page": true,
-            "entity_uid": "529f638a",
-            "entity_kind": "company"
-        },
-        {
-            "url": "http://arxiv.org/abs/2608.23196v1",
-            "date": "2026-08-26",
-            "slug": "ai-emotional-support-is-better-only-when-chosen-but-shifts-p-269f52",
-            "title": "AI emotional support is better only when chosen, but shifts preferences even when it is not",
-            "vendor": "OpenAI",
-            "has_page": false,
-            "entity_uid": "d9ea9793",
-            "entity_kind": "company",
-            "reader_note": "Restored 2026-09-01 from the original harvest record after the 2026-08-30 vendor-host gate removed the row. Published pages are never removed."
-        },
-        {
-            "url": "https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-cognito-totp-reset/",
-            "date": "2026-08-26",
-            "slug": "amazon-cognito-adds-admin-api-operation-to-reset-user-totp-c-650e4b",
-            "title": "Amazon Cognito adds admin API operation to reset user TOTP configurations",
-            "vendor": "Amazon Web Services",
-            "summary": "Amazon Cognito now provides a new admin API operation to reset a user's time-based one-time Password (TOTP) multi-factor authentication (MFA) configuration.",
-            "has_page": true,
-            "entity_uid": "0d5de807",
-            "entity_kind": "company"
         }
     ],
     "archive": [
@@ -2762,6 +2763,29 @@
             "has_page": true,
             "entity_uid": "6af345b4",
             "entity_kind": "company"
+        },
+        {
+            "url": "https://www.salesforce.com/blog/3-signs-youve-outgrown-a-single-agent/",
+            "date": "2026-09-03",
+            "slug": "3-signs-you-ve-outgrown-a-single-agent-0c46cc",
+            "title": "3 Signs You’ve Outgrown a Single Agent",
+            "vendor": "Salesforce",
+            "summary": "How to tell when it's time for multi-agent orchestration.",
+            "has_page": false,
+            "entity_uid": "4124ecef",
+            "entity_kind": "company"
+        },
+        {
+            "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-aurora-mysql-multisourcerep-delayedrep/",
+            "date": "2026-09-03",
+            "slug": "amazon-aurora-mysql-now-supports-multi-source-replication-an-42564d",
+            "title": "Amazon Aurora MySQL now supports multi-source replication and delayed replication",
+            "vendor": "Amazon Web Services",
+            "summary": "Starting today, Amazon Aurora MySQL supports two new replication capabilities: multi-source replication and delayed replication.",
+            "has_page": true,
+            "entity_uid": "0d5de807",
+            "entity_kind": "company",
+            "reader_note": "Multi-source replication lets you consolidate data from several Aurora MySQL databases into a single instance, which matters if you manage data ingestion from multiple systems. Delayed replication creates an intentional lag between source and replica, useful for catching errors before they propagate. These are standard database features now available in Aurora, so assess whether your current replication setup leaves gaps that these address, rather than assuming they solve problems you don't have. The announcement shows capability; whether this changes your architecture depends on your specific topology and recovery requirements."
         },
         {
             "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/cloudfront-flat-rate-pricing-plans-api/",
@@ -2799,6 +2823,52 @@
             "reader_note": "The addition of monitoring dashboards to MWAA's console interface reduces friction for operators who might otherwise toggle between multiple tools. This matters if your team runs workflows on MWAA and finds the existing CloudWatch integration cumbersome. Be sceptical of whether a built-in view eliminates the need to understand CloudWatch itself, or simply makes common queries easier to access. This does not indicate changes to how MWAA executes workflows or to its underlying capabilities."
         },
         {
+            "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/redshift-rg-large-single-node",
+            "date": "2026-09-03",
+            "slug": "amazon-redshift-rg-large-instances-now-support-single-node-c-27d87d",
+            "title": "Amazon Redshift rg.large instances now support single-node clusters",
+            "vendor": "Amazon Web Services",
+            "summary": "Amazon Redshift rg.large instances, powered by AWS Graviton processors, now support single-node clusters. Single-node support for rg.large clusters is available on P204 or later patch versions.",
+            "has_page": true,
+            "entity_uid": "0d5de807",
+            "entity_kind": "company"
+        },
+        {
+            "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-s3-privatelink-fips-endpoints",
+            "date": "2026-09-03",
+            "slug": "amazon-s3-now-supports-privatelink-for-fips-endpoints-559f52",
+            "title": "Amazon S3 now supports PrivateLink for FIPS endpoints",
+            "vendor": "Amazon Web Services",
+            "summary": "Amazon S3 now supports AWS PrivateLink for endpoints that have been validated under the Federal Information Processing Standard (FIPS) 140-3 program.",
+            "has_page": true,
+            "entity_uid": "0d5de807",
+            "entity_kind": "company"
+        },
+        {
+            "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/sagemaker-workflows-python-bash/",
+            "date": "2026-09-03",
+            "slug": "amazon-sagemaker-unified-studio-workflows-support-python-and-b7e067",
+            "title": "Amazon SageMaker Unified Studio Workflows support Python and Bash operators",
+            "vendor": "Amazon Web Services",
+            "summary": "Amazon SageMaker Unified Studio Workflows now supports PythonOperator and BashOperator, enabling you to run custom Python functions and shell commands directly in your serverless workflows without provisioning separate compute resources.",
+            "has_page": true,
+            "entity_uid": "0d5de807",
+            "entity_kind": "company",
+            "reader_note": "If you build machine learning pipelines, you now have a simpler path to run custom code without managing infrastructure separately. This matters mainly if you were already using SageMaker Workflows and found yourself constrained to predefined operators or forced to provision compute elsewhere for custom logic.\n\nBe sceptical of \"serverless\" claims here. Running arbitrary Python and Bash still consumes resources somewhere, and cost or performance constraints may emerge once you move real workloads through. Test your actual use cases before treating this as a wholesale replacement for your current approach."
+        },
+        {
+            "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-ses-supports-smime-signing",
+            "date": "2026-09-03",
+            "slug": "amazon-ses-now-supports-s-mime-email-signing-f28eec",
+            "title": "Amazon SES now supports S/MIME email signing",
+            "vendor": "Amazon Web Services",
+            "summary": "Amazon Simple Email Service (SES) now supports Secure/Multipurpose Internet Mail Extensions (S/MIME) signing, giving you a way to help recipients verify your emails are authentic.",
+            "has_page": true,
+            "entity_uid": "0d5de807",
+            "entity_kind": "company",
+            "reader_note": "This adds cryptographic signing to SES, meaning recipients can verify that emails claiming to come from your domain actually do. This matters if you send transactional or sensitive messages where spoofing carries real risk. Be clear on what this solves: S/MIME signing proves the sender's identity and that content has not been altered in transit. It does not encrypt message bodies, so third parties can still read email content. You will need to manage signing certificates and ensure recipients have the infrastructure to validate them, which remains a friction point for S/MIME adoption."
+        },
+        {
             "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-workspaces-applications-nvidia-blackwell-gpu-instances/",
             "date": "2026-09-03",
             "slug": "amazon-workspaces-applications-adds-support-for-nvidia-black-3967d2",
@@ -2809,6 +2879,17 @@
             "entity_uid": "0d5de807",
             "entity_kind": "company",
             "reader_note": "If you run graphics-heavy applications through WorkSpaces, the addition of Blackwell GPUs to available instance types gives you more options for your hardware tier. This is an expansion of existing infrastructure rather than a new capability, so evaluate it against your current performance bottlenecks and cost profile. The announcement does not indicate whether this addresses latency issues particular to remote graphics work or how performance compares to alternatives you may already use."
+        },
+        {
+            "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/aws-gateway-load-balancer-tcp-reset/",
+            "date": "2026-09-03",
+            "slug": "aws-gateway-load-balancer-now-supports-tcp-reset-for-faster--3c4a58",
+            "title": "AWS Gateway Load Balancer now supports TCP Reset for faster failure recovery",
+            "vendor": "Amazon Web Services",
+            "summary": "A WS Gateway Load Balancer (GWLB) now supports sending TCP Reset (RST) packets when a target becomes unhealthy, is deregistered, or when a flow's idle timeout expires.",
+            "has_page": true,
+            "entity_uid": "0d5de807",
+            "entity_kind": "company"
         },
         {
             "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/aws-transform-fsx-netapp-ontap-support/",
@@ -2851,6 +2932,28 @@
             "entity_kind": "company"
         },
         {
+            "url": "https://www.databricks.com/blog/building-high-quality-and-trusted-data-products-databricks",
+            "date": "2026-09-03",
+            "slug": "building-high-quality-and-trusted-data-products-with-databri-110ce7",
+            "title": "Building High-Quality and Trusted Data Products with Databricks",
+            "vendor": "Databricks",
+            "summary": "IntroductionOrganizations aiming to become AI and data-driven often need to provide...",
+            "has_page": false,
+            "entity_uid": "a4718c15",
+            "entity_kind": "company"
+        },
+        {
+            "url": "https://www.salesforce.com/blog/nonprofit-ai-pro-bono-volunteers/",
+            "date": "2026-09-03",
+            "slug": "can-pro-bono-volunteers-solve-the-nonprofit-ai-gap-561e43",
+            "title": "Can Pro Bono Volunteers Solve the Nonprofit AI Gap?",
+            "vendor": "Salesforce",
+            "summary": "Our pro bono fellowship is where Salesforce talent apply their skills for the greater good — here's why it works.",
+            "has_page": false,
+            "entity_uid": "4124ecef",
+            "entity_kind": "company"
+        },
+        {
             "url": "https://blog.apify.com/create-an-actor-with-a-git-repo/",
             "date": "2026-09-03",
             "slug": "create-an-actor-with-a-git-repo-in-a-few-clicks-9221cf",
@@ -2870,6 +2973,17 @@
             "vendor": "Vercel",
             "has_page": false,
             "entity_uid": "b4ead33d",
+            "entity_kind": "company"
+        },
+        {
+            "url": "https://openai.com/index/daybreak-for-frontline-defenders",
+            "date": "2026-09-03",
+            "slug": "daybreak-for-frontline-defenders-1b-to-protect-essential-ser-30eec5",
+            "title": "Daybreak for Frontline Defenders: $1B to protect essential services",
+            "vendor": "OpenAI",
+            "summary": "OpenAI introduces Daybreak for Frontline Defenders. A $1 billion commitment expands access to frontier cyber AI, training, and support for essential services.",
+            "has_page": true,
+            "entity_uid": "d9ea9793",
             "entity_kind": "company"
         },
         {
@@ -2915,6 +3029,17 @@
             "entity_kind": "company"
         },
         {
+            "url": "https://www.databricks.com/blog/governance-beyond-security-knowledge-context-ontology-lakehouse",
+            "date": "2026-09-03",
+            "slug": "governance-beyond-security-knowledge-context-ontology-on-the-159bcb",
+            "title": "Governance beyond security: knowledge, context & ontology on the lakehouse",
+            "vendor": "Databricks",
+            "summary": "Ask most organizations what data governance for AI means, and you’ll hear a security...",
+            "has_page": false,
+            "entity_uid": "a4718c15",
+            "entity_kind": "company"
+        },
+        {
             "url": "https://stability.ai/guides/how-artists-are-using-ai-to-make-music-findings-from-analyzing-hundreds-of-musical-works",
             "date": "2026-09-03",
             "slug": "how-artists-are-using-ai-to-make-music-findings-from-analyzi-bd72a5",
@@ -2951,6 +3076,17 @@
             "title": "Introducing Stable Diffusion 3.5 - Stability AI",
             "vendor": "Stability AI",
             "has_page": true
+        },
+        {
+            "url": "https://openai.com/index/legora-financial-statement-review-with-astra",
+            "date": "2026-09-03",
+            "slug": "legora-reviewed-41-documents-in-minutes-with-gpt-6-astra-d54e7a",
+            "title": "Legora reviewed 41 documents in minutes with GPT-6 Astra",
+            "vendor": "OpenAI",
+            "summary": "Legora used GPT-6 Astra to review 41 documents in minutes, find all four planted errors, and improve performance by nearly 40% in this financial-review workflow.",
+            "has_page": true,
+            "entity_uid": "d9ea9793",
+            "entity_kind": "company"
         },
         {
             "url": "https://microsoft.ai/news/mai-transcribe-2-is-the-fastest-most-accurate-and-cheapest-speech-recognition-model-in-the-world/",
@@ -3004,6 +3140,28 @@
             "summary": "I’m excited to announce that NVIDIA has agreed to acquire Hugging Face for $12,930,300,000. Together, we will scale Hugging Face’s platform, strengthen its infrastructure and expand access to AI for developers and institutions worldwide.",
             "has_page": true,
             "entity_uid": "f9825526",
+            "entity_kind": "company"
+        },
+        {
+            "url": "https://openai.com/index/playco-game-prototyping-with-astra",
+            "date": "2026-09-03",
+            "slug": "playco-cut-manual-fixes-50-prototyping-games-with-gpt-6-astr-9a8f1e",
+            "title": "Playco cut manual fixes 50% prototyping games with GPT-6 Astra",
+            "vendor": "OpenAI",
+            "summary": "Using GPT-6 Astra, Playco built three themed game prototypes from one grey box foundation and reported 50% fewer manual fixes than with the previous model.",
+            "has_page": true,
+            "entity_uid": "d9ea9793",
+            "entity_kind": "company"
+        },
+        {
+            "url": "https://openai.com/index/safety-overview-gpt-6-astra",
+            "date": "2026-09-03",
+            "slug": "safety-overview-gpt-6-astra-af3b84",
+            "title": "Safety overview: GPT-6 Astra",
+            "vendor": "OpenAI",
+            "summary": "GPT-6 Astra is our most capable broadly deployed model and our first to reach the Critical level of cybersecurity capability under our Preparedness Framework.",
+            "has_page": true,
+            "entity_uid": "d9ea9793",
             "entity_kind": "company"
         },
         {
@@ -3086,6 +3244,17 @@
             "vendor": "Hugging Face",
             "has_page": false,
             "entity_uid": "bad597a3",
+            "entity_kind": "company"
+        },
+        {
+            "url": "https://www.databricks.com/blog/what-is-data-transformation",
+            "date": "2026-09-03",
+            "slug": "what-is-data-transformation-eebe38",
+            "title": "What is Data Transformation?",
+            "vendor": "Databricks",
+            "summary": "What is data transformation?Data transformation is the process of taking raw data...",
+            "has_page": false,
+            "entity_uid": "a4718c15",
             "entity_kind": "company"
         },
         {
@@ -60751,6 +60920,6 @@
         "companies": 269,
         "feeds_healthy": 28
     },
-    "generated": "2026-09-03T19:32:06Z",
+    "generated": "2026-09-03T21:14:10Z",
     "window_days": 30
 }
