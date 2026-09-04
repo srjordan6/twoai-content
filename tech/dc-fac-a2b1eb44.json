@@ -15,19 +15,31 @@
     "country": "US",
     "profile": {
         "address": "840, South Canal Street, Near West Side, Chicago, West Chicago Township, Cook County, Illinois, 60607",
+        "reading": "Serverfarm's CH1 data center occupies an eight story building at 840 South Canal Street in Chicago's Near West Side, close to Union Station and the Kennedy Expressway. Serverfarm is a data center developer and operator whose origins trace to Red Sea Group's 1999 entry into the data center business with a facility in Dallas, and which expanded over the following two decades by acquiring and repositioning existing buildings in markets including Santa Clara, San Jose, Toronto, Atlanta, London, Amsterdam, and Chicago, rebranding from Server Farm Realty to Serverfarm in 2016. In 2023, Manulife Investment Management agreed to acquire a controlling interest in the company, a transaction Serverfarm's own materials describe as a significant shift in its ownership structure.\n\nAccording to Serverfarm's own facility page, CH1 totals about 443,000 square feet across its eight floors, of which roughly 130,000 square feet is colocation hall space. The building draws 32 megawatts of utility power and offers 21.5 megawatts of IT capacity to tenants, delivered over twelve diverse power feeds fed from four separate electrical substations, a level of feed diversity aimed at protecting tenants from single points of failure upstream of the building. Cooling runs through a central water cooled chiller plant with waterside economizers, and Serverfarm states an average power usage effectiveness of 1.4 for the facility.\n\nOn connectivity, Serverfarm advertises access to thirteen telecommunications carriers, including Zayo, XO, Level 3, AT&T, and Verizon, through two meet me rooms, plus direct cloud on ramps to AWS, Azure, and Google Cloud. The company also highlights direct access to two long haul fiber network conduits that run roughly 55 feet beneath Canal Street, a detail tied to the building's position along a historic Chicago telecommunications duct corridor.\n\nServerfarm's public materials do not state the building's original construction date, its use prior to becoming a data center, or the identity of current tenants, so that history is not part of the public record as published by the operator. What is documented is a large, heavily powered, carrier dense colocation facility that fits squarely within Serverfarm's stated strategy of acquiring and modernizing existing large footprint buildings in major metros rather than building new ones from the ground up.",
         "sources": [
             {
                 "url": "https://nominatim.openstreetmap.org/reverse?lat=41.8709439&lon=-87.6401413&format=jsonv2",
                 "date": "2026-09-03",
                 "title": "Nominatim reverse geocode at stored coordinates",
                 "publisher": "OpenStreetMap Nominatim"
-            }
+            },
+            {
+                "url": "https://www.serverfarmllc.com/chicago-data-center/",
+                "date": "2026-09-04",
+                "title": "Chicago Data Center (CH1)",
+                "publisher": "Serverfarm"
+            },
+            "https://www.serverfarmllc.com/chicago-data-center/",
+            "https://www.serverfarmllc.com/about/"
         ],
-        "research_note": "Reused from operator-level research completed in an earlier phase of this project (twoai_dc_operators row: Serverfarm, operator-level status: complete).\n\n[batch narration moved out of reading 2026-09-02] Serverfarm describes itself as a global data center developer and operator with more than 25 years of operating experience, focused on AI-ready, build-to-suit, high-density facilities. The operators homepage did not state a headquarters address, exact founding year, or ownership structure.\n\nThe companys site lists nine operational North American locations, Clarksville, Atlanta, Chicago, two in Houston, Los Angeles, Northern Virginia, Moses Lake, Washington, and Toronto, Canada, plus three in Europe and the Middle East, Amsterdam, London, and two in Israel, with additional sites described as coming soon. Trade press and Serverfarms own press release describe the company acquiring a 12 megawatt Los Angeles data center in El Segundo from T5 Data Centers, another operator separately tracked in this registry, for approximately $71 million, a direct example of a facility changing hands between two operators already profiled here.\n\nThe registry here tracks 2 Serverfarm facilities across two states, California and Illinois. The California facility is a strong candidate to be the same El Segundo, Los Angeles building acquired from T5, a specific lead this registrys facility-level research phase should verify directly rather than treat as a fresh Serverfarm build, recording a former_operator relationship to T5 if confirmed. This research was carried out at the operator level in an earlier phase of this project.",
+        "building_sqft": 443000,
+        "research_note": "Operator page (840 South Canal Street, 8-story building): \"443,000 sq ft\" total, \"130,000 sq ft\" of data halls, \"21.5MW\" IT Capacity (explicitly labeled), \"32MW\" Utility Power (separate figure, not conflated with IT capacity), \"150 W/sq ft\" density (different unit than kW/cabinet, not written to power_density_kw_rack), PUE 1.4, 13 carriers, 2 MMRs.",
         "sources_tried": [
         ],
+        "it_capacity_mw": 21.5,
         "research_status": "complete",
-        "ownership_verified_on": "2026-09-03"
+        "technical_space_sqft": 130000,
+        "ownership_verified_on": "2026-09-04"
     },
     "reading": {
         "body": "Serverfarm CH1 sits at 840 South Canal Street in Chicago's Near West Side, in Cook County. The facility's published power capacity is not stated in the data provided. Without a megawatt figure, the campus cannot be ranked against other Illinois facilities by IT load, though state context shows it ranks seventh among the six Illinois facilities with published capacity, indicating either a data inconsistency or that this facility's capacity falls below the threshold of the sixth-largest published site.\n\nIllinois has 44 mapped data center facilities across the state, of which only six publish power figures totaling 236 megawatts. Serverfarm operates two facilities tracked in this registry, one in Illinois and one in California. The operator describes itself as focused on AI-ready, high-density builds with more than 25 years of operating experience and nine operational North American locations, but the specific certifications, power draw, and tenant suitability of CH1 are not published.\n\nThe data necessary to assess whether this campus matters to AI scaling—its IT load in megawatts, power delivery infrastructure, cooling capacity, and grid interconnection—has not been published by the operator. Without these specifications, CH1 cannot be evaluated against the constraint binding AI deployment, which this site holds to be available power and grid headroom.",
@@ -42,7 +54,17 @@
         "code": "IL"
     },
     "facility_id": "osm:way/152449872",
-    "suitability": null,
+    "suitability": {
+        "basis": "weighted mean of the published inputs named here, scaled to 100; formula on the methodology page",
+        "score": 63,
+        "missing": [
+            "announced expansion"
+        ],
+        "components": [
+            "published IT capacity",
+            "operator type"
+        ]
+    },
     "operator_uid": "6e777012",
     "nearest_airport": {
         "city": "Chicago",
