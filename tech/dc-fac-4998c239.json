@@ -19,25 +19,33 @@
         "reading": "This OpenStreetMap way in Santa Clara County, California, is tagged with the operator name \"Stack Infrastructure\" but carries no facility code distinguishing it from STACK's other Silicon Valley locations. STACK Infrastructure's own site names two coded campuses in this market, SVY01 in San Jose at 100 megawatts and SVY02 in Santa Clara at 48 megawatts, but also states its overall Silicon Valley footprint as \"3 campuses across 97 acres\" totaling 150 megawatts, a total that does not fully reconcile with SVY01 and SVY02 combined (148 megawatts), leaving a small gap that points to an undisclosed or unannounced third campus somewhere in the market. This uncoded OSM record could plausibly represent a duplicate map entry for the already-documented SVY02 campus, or could represent that undisclosed third site, and nothing in the available source data resolves which. STACK, headquartered in Denver, Colorado, operates roughly 8.5 gigawatts of capacity built or under development across 24 global markets company-wide, and Santa Clara County is broadly recognized as one of the most land-, power-, and water-constrained data center markets in the country. Rather than guess at a specific facility code, capacity, or building match, this entry documents the ambiguity honestly and records only the confirmed market-level context, pending further research or a fresh OSM data pass that might resolve the coordinate match against STACK's own site.",
         "sources": [
             "https://www.stackinfra.com/locations/americas/silicon-valley/",
-            "https://www.stackinfra.com/about/contact/"
+            "https://www.stackinfra.com/about/contact/",
+            {
+                "url": "https://www.stackinfra.com/locations/americas/silicon-valley/svy02/",
+                "date": "2026-09-04",
+                "title": "SVY02 — Silicon Valley Data Center",
+                "publisher": "STACK Infrastructure"
+            }
         ],
         "campus_note": "One of 2 buildings OpenStreetMap contributors have mapped under this name in this locality, numbered west to east.",
+        "building_sqft": 560440,
         "capacity_note": "not published",
-        "research_note": "This OSM way carries only the generic operator name \"Stack Infrastructure\" with no facility code, in Santa Clara County. STACK's own site names two Silicon Valley campuses with codes, SVY01 (San Jose, 100MW) and SVY02 (Santa Clara, 48MW), but also states the Silicon Valley market totals \"3 campuses across 97 acres\" and 150MW, a figure that does not fully reconcile with SVY01+SVY02 (148MW). This uncoded record could represent a duplicate map entry for SVY02, or could represent the undisclosed third campus implied by STACK's own aggregate stats. Neither could be confirmed this session (WebSearch quota exhausted), so no facility code is asserted here and the ambiguity is documented rather than resolved.",
+        "research_note": "Operator page: \"560,440 SQ FT\" single building on 9 acres (former Memorex HQ site), \"48MW\" IT Capacity (explicitly labeled). No technical/raised-floor sqft, year built, certifications, phone, or generator MW published. Two duplicate OSM rows on file for Stack in Santa Clara County -- this data applied to both since no distinguishing address is on file for either.",
         "sources_tried": [
             "Reverse geocoding attempted on a representative coordinate this session and was throttled, no street address was published on the operator own pages fetched this session for this facility either"
         ],
+        "it_capacity_mw": 48,
         "campus_building": 2,
         "research_status": "complete",
         "campus_buildings": 2,
-        "ownership_verified_on": "2026-09-03"
+        "ownership_verified_on": "2026-09-04"
     },
     "reading": {
         "body": "This is one of four buildings on Stack Infrastructure's SVY01 campus in San Jose, part of a 100 MW, four-building complex spanning 1.03 million square feet across 19 acres. The operator publishes total campus capacity but not the individual building breakdown, so this facility's specific load cannot be determined from available sources. At a conservative 10 MW per 100,000 square feet typical of modern colocation, the four buildings might house 100 racks per 10,000 square feet, suggesting capacity in the range of 1,000 to 1,500 GPU-dense racks across the campus, though this is an inference only.\n\nSVY01 is one of three Stack Infrastructure campuses in Silicon Valley totaling 150 MW. This single building sits in a region where only 11 of 103 mapped data center facilities publish power capacity figures. The SVY01 campus represents the largest disclosed facility Stack Infrastructure operates in California, and ranks twelfth among all California facilities with published megawatt counts, though the state total of 365 published MW is concentrated in a small number of disclosed sites.\n\nThe facility is certified for colocation services on the operator's own pages, though specific tenant names and workload types are not published. SVY01's location in San Jose places it within reach of California's grid infrastructure, though the state context gives no information on power availability, interconnection lead times, or grid constraints at this site. Stack Infrastructure operates 22 markets globally and three Silicon Valley campuses, indicating this campus is part of a larger distributed infrastructure platform rather than a standalone asset.",
         "model": "claude-haiku-4-5",
         "generated_on": "2026-09-03"
     },
-    "website": "",
+    "website": "https://www.stackinfra.com/locations/americas/silicon-valley/svy02/",
     "operator": "Stack Infrastructure",
     "generated": "2026-09-04",
     "state_page": {
@@ -45,7 +53,17 @@
         "code": "CA"
     },
     "facility_id": "osm:way/553223629",
-    "suitability": null,
+    "suitability": {
+        "basis": "weighted mean of the published inputs named here, scaled to 100; formula on the methodology page",
+        "score": 71,
+        "missing": [
+            "announced expansion"
+        ],
+        "components": [
+            "published IT capacity",
+            "operator type"
+        ]
+    },
     "operator_uid": "786ee692",
     "nearest_airport": {
         "city": "San Jose",
