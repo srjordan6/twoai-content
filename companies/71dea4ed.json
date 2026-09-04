@@ -1,42 +1,4 @@
 {
-    "formd": {
-        "filings": [
-            {
-                "uid": "71dea4ed",
-                "url": "https://www.sec.gov/Archives/edgar/data/1781814/000178181421000002/primary_doc.xml",
-                "name": "Notion Labs",
-                "sold": 259999907,
-                "filed": "2021-10-13",
-                "issuer": "Notion Labs, Inc.",
-                "offering": 275000000,
-                "amendment": false,
-                "first_sale": "2021-09-28"
-            },
-            {
-                "uid": "71dea4ed",
-                "url": "https://www.sec.gov/Archives/edgar/data/1781814/000178181420000001/primary_doc.xml",
-                "name": "Notion Labs",
-                "sold": 48828287,
-                "filed": "2020-04-13",
-                "issuer": "Notion Labs, Inc.",
-                "offering": 50000000,
-                "amendment": false,
-                "first_sale": "2020-03-30"
-            },
-            {
-                "uid": "71dea4ed",
-                "url": "https://www.sec.gov/Archives/edgar/data/1781814/000156761919014543/primary_doc.xml",
-                "name": "Notion Labs",
-                "sold": 18199697,
-                "filed": "2019-07-09",
-                "issuer": "Notion Labs, Inc.",
-                "offering": 18699697,
-                "amendment": false,
-                "first_sale": "2019-07-02"
-            }
-        ],
-        "verified": "2026-09-04"
-    },
     "company": {
         "mcp": null,
         "uid": "71dea4ed",
@@ -71,43 +33,6 @@
             "slug": "california",
             "count": 187
         }
-    },
-    "patents": {
-        "count": 32,
-        "recent": [
-            {
-                "id": "12705267",
-                "url": "https://ppubs.uspto.gov/pubwebapp/external.html?q=(12705267).pn.&type=ids",
-                "date": "2026-08-11",
-                "title": "QUERY PERMISSION PROPERTIES FOR CONTROLLING MODEL CONTEXT PROTOCOL (MCP) SERVER TOOL ACCESS"
-            },
-            {
-                "id": "12699745",
-                "url": "https://ppubs.uspto.gov/pubwebapp/external.html?q=(12699745).pn.&type=ids",
-                "date": "2026-08-04",
-                "title": "MOBILE-NATIVE RENDERING FOR WORKSPACE APPLICATION BLOCKS"
-            },
-            {
-                "id": "12694196",
-                "url": "https://ppubs.uspto.gov/pubwebapp/external.html?q=(12694196).pn.&type=ids",
-                "date": "2026-07-28",
-                "title": "PAGE LAYOUT CONFIGURATION"
-            },
-            {
-                "id": "12688183",
-                "url": "https://ppubs.uspto.gov/pubwebapp/external.html?q=(12688183).pn.&type=ids",
-                "date": "2026-07-21",
-                "title": "EPHEMERAL VIEWS FOR DATABASE QUERY GENERATOR"
-            },
-            {
-                "id": "12688361",
-                "url": "https://ppubs.uspto.gov/pubwebapp/external.html?q=(12688361).pn.&type=ids",
-                "date": "2026-07-21",
-                "title": "MACHINE LEARNING BASED QUESTION AND ANSWER (Q&A) ASSISTANT"
-            }
-        ],
-        "source": "USPTO Open Data Portal, granted patents since 2001, applicant phrase \"notion labs\", 2026-09-04",
-        "verified": "2026-09-04"
     },
     "reading": {
         "body": "Notion embeds AI into its workspace platform rather than offering it as a standalone product, meaning its compute demands scale with workspace adoption and usage intensity rather than dedicated inference infrastructure.\n\nThe architecture matters for grid strain. Notion AI's features—chat, Q&A against user corpora, autonomous agents, and meeting transcription—all run on third-party LLM provider infrastructure via API, not Notion's own servers. This offloads raw compute to those providers' data centers. However, the permission-aware Q&A and custom agents that run on schedules or event triggers create a different load pattern than one-shot inference. Agents that execute repeatedly across connected apps like Slack and Google Drive can generate sustained API calls and persistent compute demand, even if individual requests are small. The credit-based pricing at $10 per 1,000 credits suggests Notion is metering and reselling API consumption, making it a demand aggregator rather than a compute owner.\n\nThe data does not reveal Notion's total inference volume, the latency requirements of its workspace integrations, or how many agents run concurrently across its user base. It also does not cover which LLM providers Notion uses or whether those providers are building dedicated capacity for Notion's traffic. For grid impact, what matters is whether Notion's growth translates to steady baseline load on provider infrastructure or bursty, hard-to-predict spikes. The data only confirms that the load exists and that it flows through external compute.",
