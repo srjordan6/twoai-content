@@ -1,0 +1,29 @@
+{
+    "slug": "compute-suitability",
+    "title": "AI Compute suitability, from published facts",
+    "updated": "2026-09-04",
+    "sections": [
+        {
+            "h": "What the number is",
+            "body": "<p>Every data center facility page on this site carries a fact box. When the operator or a public record has published enough about a facility, the box shows a figure labelled <b>AI Compute suitability</b>, from 0 to 100. It is an index of how well suited the building is to accelerator-based computing, calculated from published figures already on the page, each with its source. It is not a rating we assign, an opinion, or a measure of the operator. It is arithmetic on facts.</p>"
+        },
+        {
+            "h": "What goes into it",
+            "body": "<p>Four inputs, each scaled between 0 and 1 and weighted. The weights sum to 1 across the inputs that are present.</p><ul><li><b>Published IT capacity</b> (weight 0.35). Megawatts of IT load the operator or a filing states. Scaled on a log curve: 1 MW is near 0, 20 MW is about half, 300 MW and above is 1. A campus ten times larger is not ten times more suitable; it is somewhat more.</li><li><b>Published rack density</b> (weight 0.30). Kilowatts or kVA per cabinet, from the operator sheet. This is the figure that decides whether accelerators can be racked at all. Under 5 kW is a legacy hall; 10 to 20 kW carries air-cooled GPU racks; 30 kW and above needs liquid cooling and is built for it.</li><li><b>Announced expansion</b> (weight 0.15). Planned megawatts stated in an announcement or filing, same log curve as capacity.</li><li><b>Operator type</b> (weight 0.20). The registry own classification of the operator: a hyperscaler builds for its own accelerators (1.0), a colocation REIT builds for tenants who do (0.85), a colocation operator (0.75), a network carrier (0.5), an enterprise, government or academic hall was built for something else (0.3 to 0.4).</li></ul><p>The score is the weighted mean of the inputs present, multiplied by 100 and rounded. The box lists which inputs were used and which were missing.</p>"
+        },
+        {
+            "h": "Why some facilities are not scored",
+            "body": "<p>A facility with fewer than three of the four inputs is not scored. The box says <i>not enough published data to score</i>. This is deliberate. A score that defaults to a number when data is missing goes down as data goes missing, and a reader cannot tell a small facility from an unrecorded one. Most facilities in the registry are mapped in OpenStreetMap with no published capacity or density, and they are not scored until an operator sheet, a filing or a public record supplies the inputs.</p>"
+        },
+        {
+            "h": "What it does not measure",
+            "body": "<p>It does not measure power availability from the grid, cooling water, fibre, price, vacancy, or whether the operator would lease to you. Those are real and they are not published per building. The Grid Observatory on this site carries the interconnection and generation picture by market. It does not use PUE, tier ratings or readiness badges, because operators rarely publish PUE per building, tier certification is a specific Uptime Institute award that most buildings do not hold, and a badge is not a fact.</p>"
+        },
+        {
+            "h": "Changes",
+            "body": "<p>The formula is versioned here. When a weight or scale changes, this page records the date and the reason, and every score on the site recalculates on the next pipeline run, because the scores are computed from the data at build time and never stored as opinions.</p><p>2026-09-04: first version, four inputs, three minimum.</p>"
+        }
+    ],
+    "generated": "2026-09-04",
+    "description": "How the compute suitability figure on data center facility pages is calculated, what goes into it, and why some facilities are not scored."
+}
