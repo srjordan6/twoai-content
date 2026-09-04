@@ -19,24 +19,36 @@
         "reading": "This OpenStreetMap record, tagged StreamData Center, sits on West Creek Lane in Chaska, Minnesota, part of the Minneapolis metro area. Stream own site describes two adjacent buildings on this street that could not be disambiguated from the coordinates alone this session: Minneapolis I at 1708 West Creek Lane, a 7.2 megawatt, 75,800 square foot facility opened in June 2014 that Stream own site states was sold in January 2024 to a colocation provider, and Minneapolis II, also known internally as MSPA1, at 1706 West Creek Lane, a 2.4 megawatt facility expandable by another 2.4 megawatts across 56,000 square feet split into two 10,000 square foot data halls, opened in December 2017 and, per Stream own site, fully leased to an unnamed large commercial bank and still Stream-operated. Because both buildings sit on the same short street and this record generic naming does not specify which one it represents, no single capacity or square footage figure is assigned to it individually, though both real, sourced figures are presented here for context rather than omitted or averaged into an invented composite number. Stream Data Centers was founded in 1999 in Dallas, Texas, originally as a technical real estate affiliate of Stream Realty Partners. Ownership has changed more recently: Apollo-managed funds completed acquisition of a majority stake in November 2025, with Principal Asset Management taking a minority stake and Stream management retaining a minority position, and Stream now describes itself as a key operating platform within the Apollo ecosystem, marketing a wholesale and build-to-suit model with more than 90 percent of capacity leased to Fortune 100 customers. Chaska sits within Carver County, a fast-growing exurb southwest of downtown Minneapolis, and Stream decision to develop two separate buildings on the same short street over a roughly three-year span reflects the broader Minneapolis market steady demand growth through the mid-2010s, well before the market later cooled enough for Stream to sell the earlier of the two buildings in 2024.",
         "sources": [
             "https://www.streamdatacenters.com/locations/minneapolis-i/",
-            "https://www.streamdatacenters.com/locations/minneapolis-ii/"
+            "https://www.streamdatacenters.com/locations/minneapolis-ii/",
+            {
+                "url": "https://www.streamdatacenters.com/locations/minneapolis/",
+                "date": "2026-09-04",
+                "title": "Minneapolis Market (Chaska, MN)",
+                "publisher": "Stream Data Centers"
+            }
         ],
-        "research_note": "Two adjacent Stream buildings on West Creek Lane could not be matched to this record specific coordinates this session. Minneapolis I (7.2MW/75,800sqft/2014/sold Jan 2024) and Minneapolis II/MSPA1 (2.4MW+2.4MW expandable/56,000sqft/2017/fully leased to unnamed bank/still Stream-operated) figures both from Stream own site, presented without picking one arbitrarily.",
+        "year_opened": 2017,
+        "building_sqft": 56000,
+        "research_note": "DB address for this row is ambiguous between 1706 and 1708 West Creek Lane, Chaska, MN. Operator page describes two buildings: MSPA1 at 1706 West Creek Lane (56,000 SF, \"2.4 MW critical load\" with 2.4MW expansion capability, opened Dec 2017, Tier III Design) and a separate \"Minneapolis I\" building at 1708 West Creek Lane (75,800 SF, 7.2MW at full build, completed June 2014, Uptime Tier III + LEED Silver) that the same page states was SOLD in January 2024 and may no longer be Stream-operated. Data above is for MSPA1 (1706) as the more likely current Stream facility; if this row is actually 1708, the correct figures would be 75,800 SF / 7.2MW / 2014 / sold Jan 2024 instead.",
         "sources_tried": [
             "Streams own Minneapolis locations page describing both the 1706 and 1708 West Creek Lane buildings and the January 2024 sale of the latter, independent Data Center Dynamics trade press corroborating the LightEdge acquisition, and multiple aggregators (datacenterHawk, DataCenterMap, Baxtel, datacenters.com) now showing 1708 rebranded to LightEdge, no address is asserted given the unresolved ambiguity over which building this generic row represents"
+        ],
+        "certifications": [
+            "Uptime Tier III Design"
         ],
         "facility_codes": [
             "Minneapolis I or Minneapolis II / MSPA1, exact building unconfirmed"
         ],
+        "it_capacity_mw": 2.4,
         "research_status": "complete",
-        "ownership_verified_on": "2026-09-03"
+        "ownership_verified_on": "2026-09-04"
     },
     "reading": {
         "body": "This record sits on West Creek Lane in Chaska and maps to one of two Stream buildings there, either Minneapolis I or Minneapolis II, but the coordinates do not disambiguate which. Minneapolis I, a 7.2 megawatt facility from 2014, was sold to LightEdge in January 2024 and is no longer Stream-operated. Minneapolis II, also called MSPA1, opened in December 2017 as a 2.4 megawatt facility expandable to 4.8 megawatts across 56,000 square feet of two data halls, and remains fully leased to an unnamed large commercial bank under Stream operation. Without resolution of which building the coordinates represent, no single capacity figure can be assigned to this record.\n\nIf this record represents Minneapolis II, the 2.4 megawatt operating capacity is modest for AI infrastructure and places it third among the two published capacity figures in Minnesota, which total 10 megawatts across mapped facilities. The bank tenant, if it has deployed AI workloads, would use the facility for commercial rather than training compute. The 2.4 megawatt expandable-to-4.8 megawatt design suggests the operator anticipated growth, but the facility reached full lease by 2017 and has not expanded since. No certifications or power supply characteristics are published.\n\nMinnesota has mapped 13 data center facilities, only two with published megawatt figures. This campus matters to AI only if the unnamed bank tenant is among the commercial users now competing for colocation capacity to run inference workloads, which is not published. The broader Minneapolis market cooled enough after 2017 to force Stream to divest the earlier building five years later, indicating the region did not capture the scale of demand that now concentrates capacity in Virginia, Texas, and California.",
         "model": "claude-haiku-4-5",
         "generated_on": "2026-09-04"
     },
-    "website": "",
+    "website": "https://www.streamdatacenters.com/locations/minneapolis/",
     "operator": "Stream",
     "generated": "2026-09-04",
     "state_page": {
@@ -44,7 +56,17 @@
         "code": "MN"
     },
     "facility_id": "osm:way/1015258645",
-    "suitability": null,
+    "suitability": {
+        "basis": "weighted mean of the published inputs named here, scaled to 100; formula on the methodology page",
+        "score": 45,
+        "missing": [
+            "announced expansion"
+        ],
+        "components": [
+            "published IT capacity",
+            "operator type"
+        ]
+    },
     "operator_uid": "dca83e71",
     "nearest_airport": {
         "city": "Minneapolis",
