@@ -17,14 +17,24 @@
         "address": "12401 Prosperity Drive, Silver Spring, MD",
         "reading": "Per Lincoln Rackhouse own site, this Silver Spring, Maryland facility sits at 12401 Prosperity Drive and totals 214,000 square feet in a single story building, including 90,000 square feet of raised floor and 37,000 square feet of office and flex space. The site states 4.7 MW of critical IT load available, with 2 MW available for new customers, backed by ten 2.25 MW backup generators for redundancy.",
         "sources": [
-            "https://rackhouse.com/portfolio/maryland-data-center/"
+            "https://rackhouse.com/portfolio/maryland-data-center/",
+            {
+                "url": "https://rackhouse.com/portfolio/maryland-data-center/",
+                "date": "2026-09-04",
+                "title": "Maryland Data Center",
+                "publisher": "Lincoln Rackhouse"
+            }
         ],
-        "research_note": "Facility specific seeding pass 2026-09-02, batch 3 (queue from site_arch_changelog seq 700/701): added facility specific detail or an honest operator type flag from the operators own site, replacing a thinner prior reading. research_status remains complete.",
+        "building_sqft": 214000,
+        "research_note": "Operator page: \"214,000 SF Single Story Existing Building\", \"90,000 SF Raised Floor\", \"4.7 MW of critical IT load available\", standby power via \"Ten (10) 2.25 MW backup generators\" (22.5 MW total). Page also references unrelated Plano, TX content in one section (apparent template/content-merge artifact on the operator's own site) -- the numeric specs quoted here are the ones explicitly tied to the Silver Spring, MD address on the same page.",
         "sources_tried": [
         ],
+        "it_capacity_mw": 4.7,
         "square_footage": "214,000 SF (90,000 SF raised floor, 37,000 SF office/flex space)",
         "research_status": "complete",
-        "ownership_verified_on": "2026-09-02"
+        "technical_space_sqft": 90000,
+        "ownership_verified_on": "2026-09-04",
+        "standby_generation_mw": 22.5
     },
     "reading": {
         "body": "Lincoln Rackhouse Maryland, a single-story facility in Silver Spring totaling 214,000 square feet, publishes 4.7 MW of critical IT load currently deployed. Of this, 2 MW remains available for new customers. At a common AI training density of 40 kW per rack, the current deployed load represents roughly 118 racks, though this figure depends on actual customer configurations and is not the operator's stated capacity metric.\n\nThe facility is backed by ten 2.25 MW backup generators, providing 22.5 MW of generation capacity. This redundancy ratio suggests the site is engineered for sustained operation, though published specifications do not detail grid connection capacity, primary power terms, or how the gap between generator capacity and IT load is bridged during normal operation.\n\nLincoln Rackhouse Maryland ranks first among three facilities with published megawatt figures in Maryland. The state has 11 mapped facilities total. This single campus accounts for roughly half of Maryland's 9.3 MW of published IT load capacity, making it the largest disclosed facility in the state by that metric.",
@@ -39,7 +49,17 @@
         "code": "MD"
     },
     "facility_id": "osm:way/93210344",
-    "suitability": null,
+    "suitability": {
+        "basis": "weighted mean of the published inputs named here, scaled to 100; formula on the methodology page",
+        "score": 50,
+        "missing": [
+            "announced expansion"
+        ],
+        "components": [
+            "published IT capacity",
+            "operator type"
+        ]
+    },
     "operator_uid": "cec8c5d0",
     "nearest_airport": {
         "city": "Fort Meade(Odenton)",
