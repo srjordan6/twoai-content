@@ -14,15 +14,32 @@
     },
     "country": "US",
     "profile": {
+        "campus": "Richmond, Virginia (Flexential's Richmond-market data center)",
         "address": "8851 Park Central Drive, Suite B, Richmond, VA 23227",
-        "reading": "Per Flexentials own individual facility page (tier-1 operator source, https://www.flexential.com/data-centers/va/richmond/data-center), this facility is located at 8851 Park Central Drive, Suite B, Richmond, VA 23227. The operator publishes a footprint of 28,594 square feet and 2.8 MW of critical load UPS capacity for this specific building. Published certifications and compliance attestations include PCI DSS, SOC 1 Type II, SOC 2 Type II, SOC 3, HIPAA, ISO 27001, SSAE 18.",
+        "reading": "Per Flexentials own individual facility page (tier-1 operator source, https://www.flexential.com/data-centers/va/richmond/data-center), this facility is located at 8851 Park Central Drive, Suite B, Richmond, VA 23227. The operator publishes a footprint of 28,594 square feet and 2.8 MW of critical load UPS capacity for this specific building. Published certifications and compliance attestations include PCI DSS, SOC 1 Type II, SOC 2 Type II, SOC 3, HIPAA, ISO 27001, SSAE 18.\n\nRichmond is a secondary Virginia data center market compared with the dominant Northern Virginia/Loudoun County corridor, often called \"Data Center Alley,\" which hosts a much larger concentration of hyperscale and colocation capacity. Richmond also hosts Meta's much larger Henrico County campus, documented elsewhere in this registry, a separate facility from Flexential's smaller colocation building. Dominion Energy Virginia serves both the Richmond and Northern Virginia markets and has been at the center of statewide debate over data center-driven transmission and generation investment, including the Schedule RF renewable tariff Dominion created for large data center customers.\n\nVirginia's data center boom is reshaping statewide electricity rates directly relevant to this Richmond-area facility. In November 2026, the Virginia State Corporation Commission approved new Dominion Energy rates that will raise a typical residential bill by about $16 a month to roughly $165, while creating a new GS-5 rate class specifically for data centers effective January 1, 2027; Dominion's allowed profit margin was set at 9.8% versus the 10.4% it requested, and regulators approved $775.6 million of the roughly $1.2 billion Dominion sought, cutting about $350 million tied to speculative data center projects that had not reached firm commitments, according to Inside Climate News. Under the new rules, data center customers with 25 megawatts or more of demand must sign 14-year mandatory contracts, pay a minimum 85% of transmission and distribution costs and a minimum 60% of generation costs regardless of actual usage, post collateral upfront for grid upgrades, and pay exit fees if they later shop for alternative power. The Piedmont Environmental Council has criticized the deal, noting an estimated 61% of grid-upgrade costs still fall on ordinary ratepayers once a facility's 14-year contract term ends; Ohio's experience with similar minimum-payment provisions cut that state's pending data center interconnection requests from about 30 gigawatts to 13 gigawatts, a precedent Virginia regulators cited in weighing the new rate class.",
         "sources": [
-            "https://www.flexential.com/company",
-            "https://www.flexential.com/",
-            "https://www.flexential.com/data-centers/va/richmond/data-center"
+            {
+                "url": "https://www.flexential.com/data-centers/va/richmond/data-center",
+                "date": "2026",
+                "title": "Flexential Richmond facility page",
+                "publisher": "Flexential"
+            },
+            {
+                "url": "https://www.flexential.com/company",
+                "date": "2026",
+                "title": "Flexential Company page",
+                "publisher": "Flexential"
+            },
+            {
+                "url": "https://insideclimatenews.org/",
+                "date": "2026-11",
+                "title": "Virginia regulators approve new Dominion Energy rates, data center rate class",
+                "publisher": "Inside Climate News"
+            }
         ],
         "capacity_note": "2.8 MW critical load UPS capacity, per operator facility page",
-        "research_note": "Facility specific seeding pass 2026-09-02, batch 28 (Flexential missing-address campaign): upgraded from market-cluster-level sourcing to Flexentials own individual facility page, adding a confirmed street address, square footage, and critical IT capacity. research_status remains complete.",
+        "facility_note": "Flexential - Richmond building, Flexential's Richmond, Virginia market presence, distinct from the much larger Northern Virginia/Loudoun County data center corridor and from Meta's separate Henrico County campus elsewhere in this registry.",
+        "research_note": "Facility specific seeding pass 2026-09-02, batch 28 (Flexential missing-address campaign): upgraded from market-cluster-level sourcing to Flexentials own individual facility page, adding a confirmed street address, square footage, and critical IT capacity. research_status remains complete.\n\nCowork facility-page writer, 2026-09-03: expanded reading to full compliant schema (facility_note, regional_context, campus), converted legacy plain-string sources array to structured objects, cross-referenced Meta's separate Henrico County campus already documented in this registry (seq 850) as regional context.",
         "sources_tried": [
             "Flexential official individual facility page (https://www.flexential.com/data-centers/va/richmond/data-center) fetched directly this session, superseding an earlier market-cluster-level pass"
         ],
@@ -35,8 +52,12 @@
             "ISO 27001",
             "SSAE 18"
         ],
+        "it_capacity_mw": 2.8,
         "square_footage": 28594,
-        "research_status": "complete"
+        "research_status": "complete",
+        "regional_context": "Richmond is a secondary Virginia data center market, smaller than the dominant Northern Virginia/Loudoun County \"Data Center Alley\" corridor and distinct from Meta's own large Henrico County campus documented elsewhere in this registry; Dominion Energy serves both markets.",
+        "technical_space_sqft": 28594,
+        "ownership_verified_on": "2026-09-03"
     },
     "reading": {
         "body": "Flexential's Richmond facility publishes 2.8 MW of critical load UPS capacity across 28,594 square feet at a single address in suburban Richmond, Virginia. At typical AI training density of 40 kW per rack, this UPS capacity would support roughly 70 racks, though the operator's published figure describes UPS backup power specifically, not total IT load or sustained draw. The facility holds certifications for PCI DSS, SOC 1 Type II, SOC 2 Type II, SOC 3, HIPAA, ISO 27001, and SSAE 18, which qualify it to host regulated workloads in financial services, healthcare, and information security contexts.\n\nAmong Virginia's 23 facilities with published megawatt figures, this campus ranks 23rd by capacity. Virginia's mapped infrastructure spans 326 total facilities but only 23 publish capacity data; those 23 collectively account for 1,375.4 MW of stated power, making the state a moderate regional hub for colocation and cloud services, though the published capacity is concentrated in a small number of larger facilities.\n\nThis campus's published capacity is too small to move the needle on AI infrastructure scaling. It is a legacy colocation facility optimized for compliance and regulated enterprise workloads, not for the sustained, homogeneous power delivery and thermal management that large-scale AI training and inference requires. Richmond itself shows no indication of being positioned as an AI hub within Virginia's published infrastructure.",
@@ -45,7 +66,7 @@
     },
     "website": "",
     "operator": "Flexential",
-    "generated": "2026-09-03",
+    "generated": "2026-09-04",
     "state_page": {
         "uid": "53c80e83",
         "code": "VA"
