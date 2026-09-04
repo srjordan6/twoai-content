@@ -23,7 +23,7 @@
             "https://data.cityofchicago.org/resource/ydr8-5enu.json"
         ],
         "capacity_note": "No IT capacity, tier certification, or data-center-specific specs found. City of Chicago building permit records (owner listed as Iron Mountain) show roof repair and vertical-lift/conveyor installation work at this address, characteristic of a warehouse rather than IT infrastructure buildout (no generator, chiller, UPS, or raised-floor permits found).",
-        "research_note": "Facility specific seeding pass 2026-09-02, batch 92 (Iron Mountain missing-address campaign): applied 2421 S Halsted St, Chicago, IL, corroborating a reverse geocode of this rows own coordinates against the operators own confirmation of Chicago as a named, active 36 MW data center market. research_status upgraded from exhausted to complete. Added it_capacity_mw.\n\n[process narration moved out of reading 2026-09-02] This Iron Mountain facility is part of the company data center business, which traces to a December 2017 purchase of IO Data Centers United States division for 1.3 billion dollars, acquiring four colocation data centers in New Jersey, Ohio, and Arizona, though this specific Virginia or Illinois location was not confirmed as part of that transaction in available sourcing this session. Iron Mountain itself was founded in 1951 as Iron Mountain Atomic Storage Corporation by Herman Knaust, a former mushroom entrepreneur who had purchased a depleted iron ore mine near Kingston, New York, went public in 1996, became a real estate investment trust in 2014, and as of 2023 is headquartered in Portsmouth, New Hampshire. This session resolved a street address for this Chicago, Illinois row. The operators own current data center locations page explicitly lists Chicago, Illinois as an active data center market, stating 36 MW of IT capacity with N plus 1 redundancy and carrier neutral connectivity, though without a street address. Reverse geocoding this rows own stored coordinates through a third party service returned a single, 0.9 confidence candidate, 2421 S Halsted St, Chicago, IL, in the citys Lower West Side area. Given the operators own confirmation that Chicago is a real, named, active data center market for this operator, corroborating a same city reverse geocode of this rows own coordinates, this session applies 2421 S Halsted St as this rows address, noting the specific street number comes from the geocode rather than the operators own page.",
+        "research_note": "Gap-view review: City of Chicago building-permit records at 2421-2425 S Halsted St describe a \"storage facility\" (roof repair, conveyor lift installation), and this address does not appear in Iron Mountain's marketed data center portfolio (which lists only CHI-1 in Des Plaines for the Chicago area). This is a physical records-storage warehouse, not a colocation data center; no IT capacity or technical square footage figure exists to write. Readers should look to CHI-1 (Des Plaines) for Iron Mountain's actual Chicago-area data center capacity.",
         "sources_tried": [
             "The operators own current data center locations page (confirmed Chicago as a named, active 36 MW market, no street address), and reverse geocoding this rows own stored coordinates through a third party service (0.9 confidence, same city)"
         ],
@@ -31,7 +31,8 @@
             "Records Storage - Halsted St"
         ],
         "it_capacity_mw": 36,
-        "research_status": "complete"
+        "research_status": "complete",
+        "specs_unpublished": "true"
     },
     "reading": {
         "body": "Iron Mountain operates a 36 MW data center in Chicago with carrier-neutral connectivity and N plus 1 redundancy, though the company does not publish specific capacity details for the facility.\n\nIron Mountain built its data center business through acquisition rather than construction. The company purchased IO Data Centers' United States division in 2017 for 1.3 billion dollars, gaining four colocation facilities in New Jersey, Ohio, and Arizona. This Chicago location may or may not have been part of that transaction. The operator's own current locations page confirms Chicago as an active market without disclosing the street address.\n\nFor AI workloads, carrier-neutral colocation facilities differ from hyperscaler-owned data centers. A carrier-neutral facility can serve multiple operators and network providers rather than one company's internal compute demand. This matters for AI scaling only if the facility's power supply, cooling capacity, and network connections can absorb the electrical and bandwidth requirements of dense GPU clusters, data Iron Mountain's public listing does not detail.\n\nThe available data does not cover power consumption, cooling type, GPU adoption, or whether this facility actually hosts AI training or inference workloads. It confirms a real facility and its nominal IT capacity. It does not establish whether that capacity is spoken for, or whether it represents a binding constraint on AI compute in Chicago or the broader Midwest.",
@@ -46,7 +47,17 @@
         "code": "IL"
     },
     "facility_id": "osm:way/210222970",
-    "suitability": null,
+    "suitability": {
+        "basis": "weighted mean of the published inputs named here, scaled to 100; formula on the methodology page",
+        "score": 73,
+        "missing": [
+            "announced expansion"
+        ],
+        "components": [
+            "published IT capacity",
+            "operator type"
+        ]
+    },
     "operator_uid": "65f96528",
     "nearest_airport": {
         "city": "Chicago",
