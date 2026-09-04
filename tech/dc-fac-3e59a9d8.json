@@ -14,17 +14,31 @@
     },
     "country": "US",
     "profile": {
+        "phone": "1-219-533-2111",
         "reading": "Per Digital Crossroad own site, this Hammond, Indiana facility (on the Illinois and Indiana border) is a 105,000 square foot building known as DX-1, with more than 72,000 square feet of data hall space available to customers. DX-1 is built to Tier III concurrently maintainable standards and supports up to 20 MW of critical load, drawing on a 100 plus MW on site substation for future expansion. The facility is audited to ISO 27001 and SOC 2 standards. No street address is published on this page.",
         "sources": [
-            "https://digitalcrossroad.com/data-centers/indiana-data-center/"
+            "https://digitalcrossroad.com/data-centers/indiana-data-center/",
+            {
+                "url": "https://digitalcrossroad.com/data-centers/indiana-data-center/",
+                "date": "2026-09-04",
+                "title": "Indiana Data Center (DX-1)",
+                "publisher": "Digital Crossroad"
+            }
         ],
-        "research_note": "Facility specific seeding pass 2026-09-02 (queue from site_arch_changelog seq 700/701): added address/square footage/MW from the operators own facility page, replacing a thinner prior reading. research_status remains complete.",
+        "building_sqft": 105000,
+        "research_note": "Operator page: \"105,000 SF\" building (DX-1), \"over 72,000 square feet\" hostable IT space, \"20MW\" IT capacity, \"up to 25kW per rack\" density, Tier III concurrently maintainable, design PUE 1.15, 100+ MW on-site substation capacity (utility feed, not written as IT capacity).",
         "sources_tried": [
         ],
-        "certifications": "ISO 27001, SOC 2, Tier III concurrently maintainable (Uptime Institute standard, self reported)",
+        "certifications": [
+            "ISO 27001",
+            "SOC 2"
+        ],
+        "it_capacity_mw": 20,
         "square_footage": "105,000 SF total (DX-1 building), with over 72,000 SF of data hall space available to customers",
         "research_status": "complete",
-        "ownership_verified_on": "2026-09-02"
+        "technical_space_sqft": 72000,
+        "ownership_verified_on": "2026-09-04",
+        "power_density_kw_rack": 25
     },
     "reading": {
         "body": "Digital Crossroad's DX-1 campus in Hammond, Indiana publishes 20 MW of critical IT load capacity, making it the largest facility by announced power in a state where only two of six mapped data centers publish capacity figures. The facility occupies 105,000 square feet of total building space with over 72,000 square feet available as data hall. At a typical AI training density of 40 kW per rack, this 20 MW of critical load translates to roughly 500 racks as an assumption about potential utilization.\n\nThe campus is certified to ISO 27001 for information security management and SOC 2 for service organization controls. Uptime Institute Tier III concurrently maintainable status, self-reported, qualifies the facility for maintenance of IT systems without downtime.\n\nThe operator reserves 100 plus MW of substation capacity on site, indicating a build envelope for future expansion beyond the currently published 20 MW critical load. This ratio of announced to reserved capacity suggests DX-1 is in an early phase of deployment relative to its infrastructure envelope. No published pricing or tenant roster is available.",
@@ -39,7 +53,17 @@
         "code": "IN"
     },
     "facility_id": "osm:way/978934687",
-    "suitability": null,
+    "suitability": {
+        "basis": "weighted mean of the published inputs named here, scaled to 100; formula on the methodology page. Published rack density is shown above but is not scored: too few operators publish it for it to rank facilities fairly",
+        "score": 63,
+        "missing": [
+            "announced expansion"
+        ],
+        "components": [
+            "published IT capacity",
+            "operator type"
+        ]
+    },
     "operator_uid": "cc8df84b",
     "nearest_airport": {
         "city": "Gary",
