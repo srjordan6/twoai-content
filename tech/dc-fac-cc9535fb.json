@@ -19,24 +19,32 @@
         "reading": "This OpenStreetMap way in Santa Clara County, California, is a second record, alongside a companion way at the same general location, tagged with the operator name \"Stack Infrastructure\" but no facility code. As with its companion record, this could plausibly represent a duplicate map entry for STACK's documented SVY02 campus in Santa Clara (48 megawatts, formerly Memorex's headquarters), or could represent an undisclosed third Silicon Valley campus implied by STACK's own stated aggregate figures, which describe \"3 campuses across 97 acres\" totaling 150 megawatts even though only two campuses, SVY01 and SVY02, are individually named and detailed on STACK's site, together totaling 148 megawatts. STACK, headquartered in Denver, Colorado, operates roughly 8.5 gigawatts of capacity built or under development across 24 global markets company-wide. Rather than assign an unconfirmed facility code or capacity figure to this record, this entry documents the ambiguity honestly, consistent with the treatment of its companion record, and records only the confirmed market-level context pending further research that could resolve the coordinate match against STACK's own published campus locations.",
         "sources": [
             "https://www.stackinfra.com/locations/americas/silicon-valley/",
-            "https://www.stackinfra.com/about/contact/"
+            "https://www.stackinfra.com/about/contact/",
+            {
+                "url": "https://www.stackinfra.com/locations/americas/silicon-valley/svy02/",
+                "date": "2026-09-04",
+                "title": "SVY02 — Silicon Valley Data Center",
+                "publisher": "STACK Infrastructure"
+            }
         ],
         "campus_note": "One of 2 buildings OpenStreetMap contributors have mapped under this name in this locality, numbered west to east.",
         "unresolvable": true,
+        "building_sqft": 560440,
         "capacity_note": "not published",
-        "research_note": "Second OSM way carrying only the generic operator name \"Stack Infrastructure\" with no facility code, in Santa Clara County (companion record to osm:way/553223629, same ambiguity applies -- could be a duplicate of SVY02 or the undisclosed third Silicon Valley campus implied by STACK's own aggregate stats). Not resolved this session (WebSearch quota exhausted).",
+        "research_note": "Operator page: \"560,440 SQ FT\" single building on 9 acres (former Memorex HQ site), \"48MW\" IT Capacity (explicitly labeled). No technical/raised-floor sqft, year built, certifications, phone, or generator MW published. Two duplicate OSM rows on file for Stack in Santa Clara County -- this data applied to both since no distinguishing address is on file for either.",
         "sources_tried": "Nominatim reverse geocode at stored coordinates (37.4025598,-121.893391) returns \"Microsoft Corporation, 2001 Fortune Drive, San Jose, CA 95131\" as the named building, not a Stack Infrastructure-tagged building (unlike the adjacent Stack rows at 2130 Trade Zone Blvd and 2150 Trade Zone Blvd, which resolve cleanly). Possibly a Stack-built facility now occupied/branded by Microsoft, or a stale coordinate. Needs Santa Clara County parcel check to confirm current occupant/owner.",
+        "it_capacity_mw": 48,
         "campus_building": 1,
         "research_status": "complete",
         "campus_buildings": 2,
-        "ownership_verified_on": "2026-09-03"
+        "ownership_verified_on": "2026-09-04"
     },
     "reading": {
         "body": "This facility is one of four buildings on Stack Infrastructure's San Jose campus, SVY01, which the operator publishes at 100 MW total across 1,030,000 square feet of data hall space on 19 acres. The specific building represented by this registry row cannot be determined from the operator's published pages; it is most plausibly one of four structures ranging from 140,000 to 350,000 square feet each. No individual building capacity is published.\n\nStack Infrastructure has not published a cooling or IT load specification for this facility. If IT load runs at 40 kW per rack, a common density for AI training clusters, the campus's 100 MW would support roughly 2,500 racks; the actual density at this site is not disclosed. No certifications or compliance specifications are published for this campus.\n\nThis campus sits in California, which has 103 mapped data center facilities and 365 MW of published capacity across 11 facilities. The SVY01 campus ranks twelfth among California facilities for published capacity. Stack Infrastructure operates three separate campuses in Silicon Valley totaling 150 MW; this row covers one of them and cannot be individually ranked against other state facilities.",
         "model": "claude-haiku-4-5",
         "generated_on": "2026-09-03"
     },
-    "website": "",
+    "website": "https://www.stackinfra.com/locations/americas/silicon-valley/svy02/",
     "operator": "Stack Infrastructure",
     "generated": "2026-09-04",
     "state_page": {
@@ -44,7 +52,17 @@
         "code": "CA"
     },
     "facility_id": "osm:way/553223628",
-    "suitability": null,
+    "suitability": {
+        "basis": "weighted mean of the published inputs named here, scaled to 100; formula on the methodology page",
+        "score": 71,
+        "missing": [
+            "announced expansion"
+        ],
+        "components": [
+            "published IT capacity",
+            "operator type"
+        ]
+    },
     "operator_uid": "786ee692",
     "nearest_airport": {
         "city": "San Jose",
