@@ -14,6 +14,7 @@
     },
     "country": "US",
     "profile": {
+        "campus": "Nashville metro, Tennessee (Flexential's Nashville-market data centers, buildings in Brentwood and Franklin/Williamson County)",
         "source": {
             "page": "https://www.flexential.com/data-centers/tn/nashville/cool-springs-data-center",
             "basis": "Operator facility page; structured facts only, no operator prose reproduced.",
@@ -21,15 +22,37 @@
             "retrieved": "2026-08-31"
         },
         "address": "425 Duke Drive Suite 400, Franklin, TN 37067",
-        "reading": "Per Flexentials own individual facility page (tier-1 operator source, https://www.flexential.com/data-centers/tn/nashville/cool-springs-data-center), this facility is located at 425 Duke Drive Suite 400, Franklin, TN 37067. The operator publishes a footprint of 74,679 square feet and 3.15 MW of critical load UPS capacity for this specific building. Published certifications and compliance attestations include PCI DSS, SOC 1 Type II, SOC 2 Type II, SOC 3, HIPAA, ISO 27001, SSAE 18.",
+        "reading": "Per Flexential's own individual facility page, this building (Flexential Nashville - Cool Springs) is located at 425 Duke Drive Suite 400, Franklin, TN 37067. The operator publishes a footprint of 74679 square feet and 3.15 MW of critical load UPS capacity for this specific building, with published certifications and compliance attestations including PCI DSS, SOC 1 Type II, SOC 2 Type II, SOC 3, HIPAA, ISO 27001, SSAE 18. Tennessee has about 60 data centers statewide, and Greater Nashville hosts more than a third of them, with about 13 facilities operational or under construction in the Nashville metro itself, plus a separate cluster of seven data centers, mostly operated by Meta, around Gallatin roughly 30 miles northeast, per WPLN's November 2025 reporting. Franklin, Brentwood, Berry Hill, and Murfreesboro each hold a handful of additional data center facilities beyond Nashville proper. Cushman & Wakefield's market analysis, cited in that reporting, describes power availability as the top site-selection factor for developers in the region, pointing to Tennessee Valley Authority's established power infrastructure, proximity to the Cumberland River for cooling, and Nashville's status as an \"emerging market\" positioned alongside Austin as a newer data-center hub distinct from established markets like Phoenix, Dallas, and Atlanta.\n\nTVA, which supplies power across the Nashville region, said in 2026 that data center demand had climbed to 18% of its industrial load in 2025 and was projected to double regionally by 2030, prompting what CEO Don Moul called the largest capital program in TVA's history: 6.2 gigawatts of new generation, more than 3.7 gigawatts of it already under construction, including a 1.5-gigawatt gas plant at Cumberland City due online later in 2026, a 1.5-gigawatt gas complex near Kingston slated for 2027, a license extension through the mid-2050s for the 4-gigawatt Browns Ferry nuclear plant approved in December 2025, and a $400 million federal grant toward small modular reactors at the Clinch River site near Oak Ridge. TVA's service territory saw more than $6.6 billion in announced capital investment in fiscal 2025, per Utility Dive's reporting, with data centers cited as the dominant driver alongside population growth.",
         "sources": [
-            "https://www.flexential.com/company",
-            "https://www.flexential.com/",
-            "https://www.flexential.com/data-centers/tn/nashville/cool-springs-data-center"
+            {
+                "url": "https://www.flexential.com/data-centers/tn/nashville/cool-springs-data-center",
+                "date": "2026",
+                "title": "Flexential Nashville - Cool Springs facility page",
+                "publisher": "Flexential"
+            },
+            {
+                "url": "https://www.flexential.com/company",
+                "date": "2026",
+                "title": "Flexential Company page",
+                "publisher": "Flexential"
+            },
+            {
+                "url": "https://wpln.org/post/tennessee-has-60-data-centers-nashville-probably-has-more-than-you-think/",
+                "date": "2025-11-25",
+                "title": "Tennessee has 60 data centers. Nashville probably has more than you think.",
+                "publisher": "WPLN News"
+            },
+            {
+                "url": "https://www.utilitydive.com/news/tva-tennessee-valley-authority-nuclear-gas-demand-growth/811306/",
+                "date": "2026",
+                "title": "TVA pursues 6.2 GW of new generation, citing data centers, population growth",
+                "publisher": "Utility Dive"
+            }
         ],
         "operator": "Flexential",
         "capacity_note": "3.15 MW critical load UPS capacity, per operator facility page",
-        "research_note": "Facility specific seeding pass 2026-09-02, batch 28 (Flexential missing-address campaign): upgraded from market-cluster-level sourcing to Flexentials own individual facility page, adding a confirmed street address, square footage, and critical IT capacity. research_status remains complete.",
+        "facility_note": "Flexential's Flexential Nashville - Cool Springs building, part of Flexential's Nashville-market footprint in Williamson County.",
+        "research_note": "Facility specific seeding pass 2026-09-02, batch 28 (Flexential missing-address campaign): upgraded from market-cluster-level sourcing to Flexentials own individual facility page, adding a confirmed street address, square footage, and critical IT capacity. research_status remains complete.\n\nCowork facility-page writer, 2026-09-03: expanded reading from a short single-paragraph operator-fact summary (or, for the duplicate OSM entity osm:way/826001604, from process narration only) to full compliant schema (facility_note, regional_context, campus), converted legacy plain-string sources array to structured objects. Content built from Flexential's own facility page (already on file) plus new research this session on the Nashville/Tennessee data center market via WPLN's November 2025 reporting.",
         "sources_tried": [
             "Flexential official individual facility page (https://www.flexential.com/data-centers/tn/nashville/cool-springs-data-center) fetched directly this session, superseding an earlier market-cluster-level pass"
         ],
@@ -45,7 +68,9 @@
         "it_capacity_mw": 3.15,
         "square_footage": 74679,
         "research_status": "complete",
-        "technical_space_sqft": 74679
+        "regional_context": "Nashville is an emerging US data center market anchored by TVA power infrastructure and Cumberland River cooling access, with roughly 13 facilities in the metro itself and a much larger Meta-anchored cluster around Gallatin. Flexential's Brentwood and Franklin buildings sit in Williamson County, part of the broader Nashville submarket alongside Berry Hill and Murfreesboro.",
+        "technical_space_sqft": 74679,
+        "ownership_verified_on": "2026-09-03"
     },
     "reading": {
         "body": "Flexential's Franklin facility publishes 3.15 MW of critical IT load, making it the second-largest data center by capacity in Tennessee, but the facility is certified for regulated enterprise and healthcare workloads rather than explicitly designed for AI.\n\nAt 74,679 square feet with 3.15 MW available, the facility could support roughly 79 racks at typical AI training density of 40 kW per rack, or 53 racks at higher-density inference loads of 60 kW per rack. The operator lists certifications including PCI DSS, SOC 1 Type II, SOC 2 Type II, HIPAA, and ISO 27001. These indicate the facility serves financial services, healthcare, and enterprise customers. The published profile does not specify whether cooling infrastructure, networking, or power delivery are configured for GPU-dense workloads.\n\nTennessee has 24 mapped data center facilities but only four with published capacity figures. This campus represents roughly 26 percent of the state's disclosed IT load capacity. The facility's power source, grid connection point, and any available surplus capacity for expansion are not published. Without visibility into electrical supply constraints or cooling capability, it remains unclear whether this facility could scale to support larger AI training or inference workloads.",
@@ -54,7 +79,7 @@
     },
     "website": "https://www.flexential.com/data-centers/tn/nashville/cool-springs-data-center",
     "operator": "Flexential",
-    "generated": "2026-09-03",
+    "generated": "2026-09-04",
     "state_page": {
         "uid": "22001a12",
         "code": "TN"
