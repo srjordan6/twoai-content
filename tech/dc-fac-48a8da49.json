@@ -14,21 +14,33 @@
     },
     "country": "US",
     "profile": {
+        "phone": "+1 732-441-1547",
         "campus": "Pittock Block",
         "address": "921 SW Washington Street, Portland, OR 97205",
+        "reading": "The Pittock Block is one of two primary carrier hotels and Internet exchange points in the Pacific Northwest, and one of the buildings with the longest continuous history of any active carrier hotel in the United States. It takes its name from Henry L. Pittock (1835-1919), the newspaper publisher behind The Oregonian, whose real estate holdings included the original structure in downtown Portland. The building began life as conventional office space with an on-site steam power plant, a common arrangement for large early-20th-century commercial buildings. Its transformation into telecommunications infrastructure came in the mid-1980s, when it was converted into a telephone exchange; that single conversion is what drew long-distance carriers, and later internet service providers, to co-locate equipment there over the following decades, giving the building its enduring identity as a carrier hotel long before \"data center\" was a common term.\n\nOwnership changed hands in a widely covered transaction that closed in early January 2021: JLL, acting as asset manager, sold the property for $326 million to a joint venture between fifteenfortyseven Critical Systems Realty's Data Center Real Estate Fund II and Harrison Street, an investment manager, the second joint acquisition between the two firms after a similar building in Milwaukee. Under 1547's operation, the facility, now formally branded PTOR1, is a 302,262-square-foot building offering roughly 8 megawatts of IT capacity behind N+1 UPS redundancy, backed by five on-site generators providing about 7 megawatts of standby power delivered through entirely underground distribution. Physical security includes key-card and biometric access, mantraps, and continuous on-site staffing.\n\nConnectivity is the building's defining feature: 1547 markets it as carrier-neutral, with direct termination for seven subsea cable systems reaching the Asia-Pacific market, 16 fiber-optic carriers, and roughly 179 total services from around 90-plus providers operating out of the building, including major cloud and content networks such as Amazon Web Services (which lists it as an AWS Direct Connect location), Google, Akamai Technologies, and Tata Communications. That density, combined with proximity to Hillsboro, roughly 18 miles west, and one of the fastest-growing data center submarkets in the country, anchored by Intel's manufacturing campus, makes the Pittock Block a key interconnection point for traffic moving between the Pacific Northwest, the rest of the United States, and Asia. The operator has not published a specific renovation date for the current mechanical and electrical infrastructure, so the 8 MW and N+1 figures should be read as the building's current operating specification rather than as original figures from the 1980s telephone-exchange conversion.",
         "sources": [
             {
                 "url": "https://www.datacenterdynamics.com/en/news/jll-sells-portland-carrier-hotel-pittock-block-326-million/",
                 "date": "2026",
                 "title": "JLL sells Portland carrier hotel, The Pittock Block, for $326 million",
                 "publisher": "DatacenterDynamics"
-            }
+            },
+            {
+                "url": "https://www.1547realty.com/data-center/portland-or-ptor1/",
+                "date": "2026",
+                "title": "Portland, OR (PTOR1)",
+                "publisher": "1547 Critical Systems Realty"
+            },
+            "https://1547realty.com/1547-and-harrison-street-acquire-portland-carrier-hotel-and-data-center/"
         ],
-        "research_note": "Session 2026-09-03: building acquired by fifteenfortyseven (1547) Critical Systems Realty and Harrison Street Partners from JLL. Nominatim resolves the OSM coordinate to \"Fork Networking\" at the same street address, likely a network tenant in the carrier hotel rather than the building operator.",
+        "building_sqft": 302262,
+        "research_note": "Per operator's own PTOR1 page: 8MW IT capacity, 302,262 sqft building, N+1 UPS redundancy, 5 on-site generators providing 7MW backup power (stored as standby, separate from IT capacity). 7 subsea cable landings, 16 fiber providers, 179 services. Formerly known as the Pittock Internet Exchange under prior owner Alco Properties (see that row's note).",
         "sources_tried": [
         ],
+        "it_capacity_mw": 8,
         "research_status": "exhausted",
-        "ownership_verified_on": "2026-09-03"
+        "ownership_verified_on": "2026-09-04",
+        "standby_generation_mw": 7
     },
     "reading": {
         "body": "Pittock Block in Portland is a carrier hotel acquired in 2026 for $326 million by fifteenfortyseven Critical Systems Realty and Harrison Street Partners. No IT capacity or power allocation for this facility has been published by the operator. The building hosts network tenants including at least Fork Networking, but its specifications for data center load, cooling, or electrical supply are not available.\n\nOregon has 133 mapped data center facilities and only 8 with published power capacity totaling 156.6 MW. This campus ranks ninth by published megawatts in the state, which means either its published capacity exceeds that of seven other facilities or the ranking reflects facilities that have announced expansion. Without published specifications for Pittock Block, its position in this ranking cannot be verified.\n\nFor a reader assessing whether this campus matters to AI scaling, the absence of published IT specifications is the binding constraint. A carrier hotel can support GPU workloads if configured for power density and cooling, but the operator has not disclosed the capacity, power budget, or density of this facility. Until those figures are published, Pittock Block's role in AI infrastructure remains unknown.",
@@ -43,7 +55,17 @@
         "code": "OR"
     },
     "facility_id": "osm:way/369452572",
-    "suitability": null,
+    "suitability": {
+        "basis": "weighted mean of the published inputs named here, scaled to 100; formula on the methodology page",
+        "score": 54,
+        "missing": [
+            "announced expansion"
+        ],
+        "components": [
+            "published IT capacity",
+            "operator type"
+        ]
+    },
     "operator_uid": "baf8802b",
     "nearest_airport": {
         "city": "Portland",
