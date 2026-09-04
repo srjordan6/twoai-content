@@ -14,19 +14,30 @@
     },
     "country": "US",
     "profile": {
+        "campus": "Google Fiber Atlanta metro network, Fulton County, Georgia (exact facility unconfirmed)",
+        "address": "Near North Avenue Northeast, Old Fourth Ward, Atlanta, Fulton County, Georgia (approximate; OSM coordinates resolve to an unrelated commercial address, not a confirmed Google facility)",
+        "reading": "This OpenStreetMap point is labeled \"Google Fiber\" and tagged telecom=data_center, but the evidence gathered this session indicates it is very unlikely to be a hyperscale Google data center of the kind found elsewhere in this registry. Google Fiber is Google's residential and business gigabit internet service, a separate Alphabet business line from Google Cloud's data center infrastructure, and Google Fiber has operated in the Atlanta metro area since the company named Atlanta a \"fiber city\" in January 2015. Reporting from Atlanta Magazine documented that between mid-2015 and early 2016, Google installed roughly a dozen small \"fiber huts,\" described as structures about the size of a one-car garage costing $150,000 to $250,000 each, distributed around Atlanta to serve as last-mile distribution points feeding 20,000 to 30,000 homes apiece; one such hut is documented in East Point's Sykes Park. These huts are network distribution infrastructure, not data centers, and typically do not carry their own separate commercial street address, which is consistent with this session's reverse-geocoding of this OSM point's stored coordinates resolving to a Sweetgreen restaurant address on North Avenue Northeast in Atlanta's Old Fourth Ward rather than to any confirmable Google-operated building. Google Fiber's Atlanta rollout was also widely reported as troubled: a Google Fiber contractor ruptured utility lines dozens of times during construction, drawing scrutiny from the Georgia Public Service Commission, and as of Atlanta Magazine's reporting only a single building, a College Park apartment complex, had working residential Google Fiber service years after the initial announcement. Given this evidence, this registry treats this point as most likely representing Google Fiber network infrastructure, such as a fiber hut or point-of-presence, mistagged or approximately located in OpenStreetMap, rather than a verifiable Google Cloud data center facility, and declines to assign it fabricated address, square footage, or capacity figures it cannot support with a real source.",
         "sources": [
-            "https://datacenters.google/locations/"
+            {
+                "url": "https://fiber.google.com/cities/atlanta/",
+                "date": "2026-09-03",
+                "title": "Gigabit Internet Service in Atlanta, GA",
+                "publisher": "Google Fiber"
+            },
+            {
+                "url": "https://www.atlantamagazine.com/great-reads/what-happened-google-fiber-atlanta/",
+                "date": "2026-09-03",
+                "title": "The Big Disconnect: What happened to Google Fiber in Atlanta?",
+                "publisher": "Atlanta Magazine"
+            }
         ],
-        "unresolvable": true,
         "capacity_note": "not published at individual building level",
-        "research_note": "Facility specific seeding pass 2026-09-02, batch 14 (mega-operator no-sources-key gap): added operator disclosure policy finding. research_status remains complete.\n\n[batch narration moved out of reading 2026-09-02] Per Google own data center location pages (datacenters.google), Google publishes aggregate state level investment figures for its data center campuses but does not publish exact street addresses, square footage, or MW power capacity for individual buildings on these pages. This is treated as the operators de facto disclosure policy for this registry rather than an unresearched gap; a state or regional level investment figure, where available, is recorded separately as regional_context.",
-        "sources_tried": [
-            "Nominatim reverse geocode at stored coordinates (33.7715677,-84.3668585) on 2026-09-03 resolved to Sweetgreen restaurant, North Avenue Northeast, Old Fourth Ward, Atlanta, Fulton County, GA -- a restaurant, not a data center; coordinates do not confirm any Google facility at this location, node is likely mistagged."
+        "facility_note": "Very likely represents Google Fiber network distribution infrastructure (a small fiber hut or point-of-presence) rather than a hyperscale Google Cloud data center; OSM coordinates do not resolve to a confirmable Google-operated building.",
+        "research_note": "Cowork facility-page writer 2026-09-03: this node was already flagged unresolvable=true by a 2026-09-02 pass (reverse geocode resolves to a Sweetgreen restaurant, not a data center). Rather than force a hyperscale-facility narrative onto a point that is very likely Google Fiber last-mile network infrastructure (a small fiber hut, per Atlanta Magazine's reporting on ~12 such structures built in Atlanta 2015-2016), this row is written as an honest identification of what the point most likely is, with real sources, rather than fabricated fact-box data. This intentionally will not clear the fact-box>=3 proxy; that is correct behavior per the no-fabrication rule, not an error to fix by inventing numbers. If a future session can pinpoint the actual fiber hut nearest these coordinates via county permit records, this row should be updated with that specific structure's details.",
+        "facility_codes": [
+            "Google Fiber"
         ],
-        "research_status": "complete",
-        "regional_context": "Per the Douglas County Sentinel and Georgia Public Broadcasting, Google broke ground on a $300 million expansion of its Douglas County data center campus (a second building, Douglas 2, per Baxtel), part of Google's broader Georgia investment.",
-        "disclosure_policy": "Google publishes aggregate state level investment figures on its data center location pages but does not publish exact addresses, square footage, or MW capacity for individual buildings",
-        "facility_type_note": "Google data center campus in Douglas County, Georgia (Lithia Springs, Atlanta metro), with a second facility recorded in this registry under Fulton County."
+        "ownership_verified_on": "2026-09-03"
     },
     "reading": {
         "body": "Google does not publish power capacity, square footage, or building-level specifications for its individual data center facilities. This campus in the Atlanta metro area is therefore not quantifiable from disclosed information, and its capacity cannot be compared to other sites.\n\nGeorgia has 33 mapped data center facilities statewide, but only 4 publish power capacity figures. Those four facilities account for 66.3 MW of published IT load. This campus, unspecified in power terms, ranks fifth in the state by capacity estimation methods this site does not employ.\n\nWithout published specifications, this campus cannot be evaluated for relevance to AI infrastructure scaling. The coordinate record appears corrupted and resolves to a restaurant in Atlanta rather than a data center location. Researchers tracking grid constraints on AI compute require operators to publish facility-level power and capacity data, which Google does not do at individual building granularity.",
@@ -35,12 +46,13 @@
     },
     "website": "https://datacenters.google/locations/douglas-county-georgia/",
     "operator": "Google",
-    "generated": "2026-09-03",
+    "generated": "2026-09-04",
     "state_page": {
         "uid": "ea973d1c",
         "code": "GA"
     },
     "facility_id": "osm:node/4879481820",
+    "suitability": null,
     "operator_uid": "bbdefa29",
     "nearest_airport": {
         "city": "Atlanta",
