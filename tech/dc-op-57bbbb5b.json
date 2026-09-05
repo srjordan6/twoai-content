@@ -56,22 +56,24 @@
         ],
         "research_status": "exhausted"
     },
-    "reading": "This operator record is named Unity Cable System, which corresponds to a real, well documented trans Pacific submarine fiber optic cable, completed in 2010 by a consortium including Google, Bharti Airtel, Global Transit, KDDI, Pacnet, and SingTel, connecting Chikura, Japan to Redondo Beach, California. However, the single facility linked to this operator record in the registry is the Norma Beach Cable Landing Station near Lynnwood, Washington, on Puget Sound, which is not part of the Unity system at all. Norma Beach is instead the Washington State landing point for the Alaska United Fiber Optic Cable System, a separate submarine cable owned and operated by GCI, formerly General Communication Inc, the Alaska based telecommunications company, connecting Anchorage and Juneau, Alaska to the Pacific Northwest. The Unity cable's actual US landing point is in Redondo Beach, California, several hundred miles south, an entirely different cable system and operator. This appears to be a genuine name to facility mismatch in the underlying registry data, similar in kind to other mismatches identified during this research, rather than a case where Unity Cable System is simply an obscure or hard to find entity. Because assigning capacity or infrastructure detail to Unity Cable System based on a facility that actually belongs to a different cable system and a different operator would misrepresent both companies, this record is marked exhausted with no operator type assigned, and the facility record should be corrected during the facility level research phase to reflect its actual operator, GCI, and its actual cable system, Alaska United.",
+    "reading": "This record is a mismatch, and the honest page is the one that says so and then says what is actually there. Unity is a real trans Pacific submarine cable, completed in 2010 by a consortium that included Google, KDDI, SingTel, Bharti Airtel, Pacnet and Global Transit, running between Chikura in Japan and Redondo Beach in California. It has no landing point in Washington State. The single facility attached to this operator record is the Norma Beach Cable Landing Station on Puget Sound, mapped at 3721 148th Street Southwest with a Lynnwood postal address, which is normal addressing for unincorporated Snohomish County. Unity's American landing is more than a thousand miles to the south.\n\nWhat Norma Beach actually terminates is Alaska United East, the fibre system operated by GCI Communication Corp, the Alaska telecommunications carrier. The Federal Communications Commission record is unambiguous. GCI filed for a new cable landing licence on 15 August 2024 under file number SCL-LIC-20240815-00036, after the previous licence, SCL-MOD-20020409-00019, expired on 1 February 2024, and the Commission granted special temporary authority under SCL-STA-20240626-00028 on 11 September 2024 to keep the system lawfully in service in the meantime. The new licence was granted on 26 February 2025 and runs to 26 February 2050. The Commission describes the system as landing at Juneau, Valdez and Whittier in Alaska and at Norma Beach in Washington, with a Whittier to Norma Beach trunk of 2,601 kilometres carrying current capacity of one terabit per second.\n\nHow the error arose is visible in the map data itself. The building object carries a source tag pointing at an attachment in the Commission's International Bureau filing system, so the geometry was almost certainly traced from a cable landing licence exhibit while the operator field was filled in with the wrong cable's name. Registries that ingest such objects without review inherit the accurate coordinates and the inaccurate owner together, and the result is a facility invented for one company and a real one hidden from another.\n\nTwo further points matter for anyone reading a facility count. A cable landing station is a network termination building, not a colocation hall. Its electrical demand is dominated by power feed equipment for the submarine repeaters and by backhaul transmission gear, and no critical IT load, utility service rating or standby generator capacity has been published for this building by GCI or by anyone else. The one terabit per second figure in the licence is optical capacity on a trunk and must never be read across into an electrical number. This registry therefore stores no capacity for the site, and the facility row should be reattributed to GCI and to Alaska United East rather than left under a cable system that does not reach Washington.",
     "sources": [
-        {
-            "url": "https://en.wikipedia.org/wiki/Unity_(cable_system)",
-            "tier": 4,
-            "title": "Unity (cable system)"
-        },
-        {
-            "url": "https://en.wikipedia.org/wiki/Alaska_United",
-            "tier": 4,
-            "title": "Alaska United"
-        },
         {
             "url": "https://www.kddi.com/english/corporate/news_release/2010/0401/",
             "tier": 1,
             "title": "Unity Cable System Completed, Boosts Trans-Pacific Connectivity, KDDI"
+        },
+        {
+            "url": "https://docs.fcc.gov/public/attachments/DA-25-175A1_Rcd.pdf",
+            "date": "2025-02-26",
+            "title": "GCI Communication Corp, Alaska United East Cable System, cable landing licence grant, DA 25-175",
+            "publisher": "Federal Communications Commission"
+        },
+        {
+            "url": "https://www.fcc.gov/node/232390",
+            "date": "2026-09-05",
+            "title": "Cable Landing Licenses Granted since 2016",
+            "publisher": "Federal Communications Commission"
         }
     ],
     "website": "",
