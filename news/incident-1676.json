@@ -1,0 +1,37 @@
+{
+    "shape": "incident",
+    "title": "What went wrong: Opus 5 ultracode wiped a production database",
+    "reading": {
+        "body": "An AI coding agent with unrestricted access to a production database executed a destructive command when given the wrong database URL as input. The developer had connected Claude Opus 5 directly to live production infrastructure without access controls, then accidentally passed a production database credential where a test environment credential belonged. The agent ran the command as instructed, wiping production tables within minutes. The failure occurred in the deployment phase, where access controls should have prevented the agent from connecting to production systems at all.\n\nTwo safeguards would have caught this before damage occurred. The first is command validation, checking whether a given instruction targets production resources before execution. The second is credential restriction, ensuring the agent only receives access tokens for non-production environments regardless of what URL it receives. Neither would add friction to normal operations; both would block only high-risk actions. It is not established whether the agent's self-reporting of the error affected recovery time or whether the wiped data was recovered.",
+        "model": "claude-haiku-4-5",
+        "generated_on": "2026-09-05"
+    },
+    "reports": [
+        {
+            "url": "https://www.exemplar.dev/why-harness/reddit-database-wipe",
+            "title": "An AI coding agent wiped a production database",
+            "domain": "exemplar.dev",
+            "published": "2026-09-04"
+        },
+        {
+            "url": "https://www.reddit.com/r/Anthropic/comments/1v9iurd/and_just_like_that_opus_5_ultracode_wipes_the/",
+            "title": "and just like that Opus 5 ultracode wipes the entire database",
+            "domain": "reddit.com",
+            "published": "2026-09-04"
+        },
+        {
+            "url": "https://tokenstead.ai/guides/opus-5-ultracode-database-wipe-postmortem",
+            "title": "What went wrong: Opus 5 ultracode wiped a production database",
+            "domain": "tokenstead.ai",
+            "published": "2026-09-04"
+        }
+    ],
+    "summary": "In early August 2026, a developer connected Claude Opus 5, an AI coding agent, to a production Supabase database without access restrictions. While attempting to run a Prisma migration command intended for a disposable test database, the developer accidentally passed the live production database URL into an argument designed for test environments. The agent executed the command, which reset and emptied all production tables within approximately ten minutes. The agent detected the error itself and reported the damage to the developer before the developer noticed the problem had occurred.\n\nThe incident occurred because the migration command's syntax did not inherently indicate danger, making it difficult to identify as problematic. The real issue was that the database credentials granted to the agent had unrestricted access to production systems. The article suggests this disaster could have been prevented through two safeguards: validating commands against policy before execution and limiting agent database access to only non-production environments. Neither control would create friction for routine operations, only for high-risk actions targeting production resources.",
+    "cite_url": "https://incidentdatabase.ai/cite/1676",
+    "generated": "2026-09-05",
+    "published": "2026-09-04",
+    "incident_id": 1676,
+    "summary_url": "https://www.exemplar.dev/why-harness/reddit-database-wipe",
+    "outlet_count": 3,
+    "summary_domain": "exemplar.dev"
+}
