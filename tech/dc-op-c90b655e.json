@@ -47,12 +47,25 @@
         ],
         "research_status": "exhausted"
     },
-    "reading": "This operator record, Dennis Sampier, is flagged as a likely data quality issue rather than profiled as a data center operator. The registry's facility record tied to this name is titled Chick-fil-A Hiring Center, located in Macomb County, Michigan, which is not a computing data center. Web search identifies Dennis Sampier as a real person who operates Chick-fil-A restaurant franchises in Shelby Township and at Hall Road and Romeo Plank in Michigan, according to his professional profile, with no evidence connecting him to data center ownership or operation. The most likely explanation is that a Chick-fil-A hiring or recruitment office location was mistagged as a data center in the underlying OpenStreetMap source data, with the franchise operator's name recorded as the facility operator field. Per this registry's policy against fabricating specifications for facilities that cannot be verified as genuine data centers, this record is marked exhausted with no operator type, IT capacity, or technical specifications recorded, and is flagged for review and likely removal during the facility-research phase.",
+    "reading": "This record is a mapping artefact, and the honest page for it is an account of how it arose rather than a profile of a data centre operator. Dennis Sampier is a person, not a company. The single facility row beneath this name is an OpenStreetMap node created on 19 April 2021 and never edited since. It carries exactly three tags, a name reading Chick-fil-A Hiring Center, an operator field reading Dennis Sampier, and a telecom tag set to data_center. There is no building, no land use, no address, no website and no second version.\n\nThe changeset that created the node is the tell. Its comment is the single word sidewalks, it contains 33 changes, and it was made in the iD editor working over Bing aerial imagery. The contributor was tracing footpaths in a suburban commercial strip and dropped a point of interest along the way. The telecom classification is almost certainly a mis-selected preset in the editor's category list, and once applied it was never reviewed, because nothing about the node ever changed again.\n\nThe location, 42.6279 north and 82.9884 west, sits off Schoenherr Road in Shelby Charter Township, Macomb County, Michigan, in the 48315 postal area. The registry stores the city as Macomb County, which is a county rather than a municipality, another sign that the row was assembled from coordinates rather than from an address. A Chick-fil-A hiring centre is a temporary recruitment office that a franchisee runs in the weeks before a new restaurant opens, and Dennis Sampier is a local Chick-fil-A franchise operator. Neither is computing infrastructure. There is no data hall here, no power service, no generator, no cabinet and no company to profile.\n\nThe reason this belongs on the public record rather than being quietly deleted is that it shows precisely how facility counts inflate. The operator field in OpenStreetMap is free text and is frequently used for a proprietor's personal name, which is entirely correct practice for a shop or a restaurant. A pipeline that harvests every object carrying a data centre telecom tag and then groups those objects by their operator string will turn one mis-clicked preset into a facility, and the person named in the operator field into an operator with a facility count of one. Neither exists, and a page built on that basis would have to invent every number on it.\n\nNo capacity, address, ownership or date is recorded for this record because none can honestly be recorded. The correct disposition is removal of both the facility row and this operator entry, and the correct upstream fix is a note to the OpenStreetMap contributor that the telecom tag on that node is wrong.",
     "sources": [
         {
-            "url": "https://www.linkedin.com/in/dennis-sampier-04207010/",
-            "tier": 5,
-            "title": "LinkedIn - Dennis Sampier, Chick-fil-A Shelby Township & Chick-fil-A Hall Rd & Romeo Plank"
+            "url": "https://api.openstreetmap.org/api/0.6/node/8641856300.json",
+            "date": "2021-04-19",
+            "title": "OpenStreetMap node 8641856300, Chick-fil-A Hiring Center, single version created 19 April 2021 with tags name, operator and telecom=data_center",
+            "publisher": "OpenStreetMap API 0.6"
+        },
+        {
+            "url": "https://api.openstreetmap.org/api/0.6/changeset/103157399.json",
+            "date": "2021-04-19",
+            "title": "OpenStreetMap changeset 103157399, comment sidewalks, 33 changes, iD editor over Bing aerial imagery",
+            "publisher": "OpenStreetMap API 0.6"
+        },
+        {
+            "url": "https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=42.6279424&lon=-82.9883939&zoom=18",
+            "date": "2026-09-05",
+            "title": "Nominatim reverse geocode of 42.6279424, -82.9883939, returning Schoenherr Road, Shelby Charter Township, Macomb County, Michigan 48315",
+            "publisher": "OpenStreetMap Nominatim"
         }
     ],
     "website": "",
