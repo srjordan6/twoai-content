@@ -24,6 +24,7 @@
         "react",
         "meta-prompting"
     ],
+    "built_at": "2026-08-09T17:10:20-05",
     "examples": [
         {
             "note": "Each step consumes the previous step's JSON. Validation code between steps can reject malformed output before it contaminates the next step.",
@@ -36,6 +37,7 @@
             "prompt": "Final step of any chain: Review the draft above against the original source. List every claim in the draft that the source does not support. If the list is empty, output APPROVED; otherwise output the corrections needed."
         }
     ],
+    "page_uid": "025982dd",
     "generated": "2026-08-09",
     "mechanism": "A single prompt that extracts, analyzes, judges, and drafts is asking the model to hold four jobs in one context, and when the output is wrong you cannot see which job failed. Chaining decomposes the work into steps with explicit contracts, often JSON, between them: extract fields, validate, analyze, draft, review. Each step has one job and a checkable output, so validation code can sit between steps, failures are localized, and individual steps can be tested, cached, or swapped to a cheaper model. The technique is less a prompting trick than the software-engineering instinct applied to prompts, and its failure mode is the same one pipelines always have: every hop adds latency and a place where context is summarized away, so the craft is choosing joints where the interface between steps is genuinely small.",
     "source_url": "https://www.promptingguide.ai/techniques/prompt_chaining",
