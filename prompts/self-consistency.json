@@ -24,6 +24,7 @@
         "chain-of-thought",
         "tree-of-thoughts"
     ],
+    "built_at": "2026-08-09T17:10:20-05",
     "examples": [
         {
             "note": "The split is information: 7-0 and 4-3 are very different levels of confidence in the same answer.",
@@ -36,6 +37,7 @@
             "prompt": "If the 7 answers include 4 or more distinct values, do not report a winner. Instead report SCATTERED, list the distinct answers, and identify the earliest reasoning step where the runs diverge."
         }
     ],
+    "page_uid": "7530b7a7",
     "generated": "2026-08-09",
     "mechanism": "One chain of thought is one sample from the model's distribution over reasoning paths, and any single path can go wrong at any step. Self-consistency samples many paths with temperature turned up, then keeps only each path's final answer and takes the majority. The insight from Wang and colleagues is that correct reasoning paths, though different from each other, tend to converge on the same answer, while errors scatter across many different wrong answers. Voting therefore filters error without ever checking the reasoning itself. The same logic tells you its limits: it needs a short verifiable answer to vote on, it needs sampling diversity (at temperature zero every run is the same path), and it multiplies cost by the number of samples, which is why it is a technique for high-stakes single questions rather than every query.",
     "source_url": "https://www.promptingguide.ai/techniques/consistency",
