@@ -24,6 +24,7 @@
         "retrieval-augmented-generation",
         "prompt-chaining"
     ],
+    "built_at": "2026-08-09T17:10:20-05",
     "examples": [
         {
             "note": "This is the trace a well-built agent produces. When you design an agent, you are designing what can appear on the Action lines and how Observations get back in.",
@@ -36,6 +37,7 @@
             "prompt": "Rules for the agent: never state a fact about the external world that did not appear in an Observation; if two Observations conflict, say so and prefer the primary source; if three actions in a row produce nothing useful, stop and report what was tried."
         }
     ],
+    "page_uid": "99eef9fd",
     "generated": "2026-08-09",
     "mechanism": "Pure chain-of-thought reasons over whatever is in the model's head, which is where hallucinated facts come from; pure tool use acts without a visible plan. ReAct interleaves them: the model writes a thought, takes an action (a search, a query, a code run), reads the observation, and reasons again with the new evidence in context. Yao and colleagues showed the combination beats either half alone on knowledge tasks, because the reasoning steps decide what to look up and the observations anchor the next reasoning step in something real. Every modern agent loop, function calling, MCP tool use, computer-use agents, is this pattern productized: the framework handles the action plumbing, and the thought-action-observation cycle is what your logs should capture, because when an agent fails, the transcript of that cycle is the diagnosis.",
     "source_url": "https://www.promptingguide.ai/techniques/react",
