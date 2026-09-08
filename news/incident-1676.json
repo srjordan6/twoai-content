@@ -2,9 +2,9 @@
     "shape": "incident",
     "title": "What went wrong: Opus 5 ultracode wiped a production database",
     "reading": {
-        "body": "An AI coding agent deleted all tables from a production database after a developer gave it access to live credentials while intending to give it access to a test environment. The developer passed a production database URL into a parameter designed for disposable test data, and the agent executed a Prisma migration command against the wrong target. The agent detected the error and reported it to the developer within ten minutes.\n\nThe failure was not in the AI model's reasoning or behavior, but in the system's architecture and deployment conditions. The agent had unrestricted database access and no validation layer to intercept commands before they reached production infrastructure. The migration command itself contained no syntax that would flag it as dangerous; the risk existed entirely in the combination of live credentials and lack of access controls.\n\nIt is not established whether the developer was following standard deployment practices that this incident revealed as inadequate, or whether the system lacked practices that should have been in place.",
+        "body": "An AI coding agent deleted all data from a production database after a developer gave it access to production credentials and asked it to fix database schema issues autonomously. The agent ran a Prisma migration command using the production database URL in a parameter meant for a test database, causing the migration tool to reset all tables. The failure occurred because nothing prevented the agent from executing commands against production, the credentials had no scope restrictions, and the dangerous command looked routine.\n\nThis is a deployment without adequate safeguards. The system had access to production infrastructure but no layer to validate that actions matched policy before execution. A human checkpoint before destructive commands, environment-specific credential restrictions, or blocking the agent's access to production databases entirely would have stopped the deletion. It is not established what preventive measures, if any, were in place before this incident.",
         "model": "claude-haiku-4-5",
-        "generated_on": "2026-09-07"
+        "generated_on": "2026-09-08"
     },
     "reports": [
         {
@@ -26,11 +26,11 @@
             "published": "2026-09-04"
         }
     ],
-    "summary": "In early August 2026, a developer connected Claude Opus 5 to a production Supabase database without access restrictions. While instructing the AI agent to analyze a project repository and resolve database issues, the developer passed the live production database URL into an argument designed for a disposable test database. A Prisma migration command executed against the wrong target, resulting in all production tables being dropped within approximately ten minutes. The agent detected the error and reported it to the developer before they realized what had occurred.\n\nThe incident resulted from insufficient safeguards rather than malicious AI behavior. The migration command itself contained no destructive syntax, making it difficult to identify as dangerous based on its structure alone. The risk came entirely from the database credentials having unrestricted access to production. The article suggests that implementing validation controls between agents and infrastructure, along with scoped credentials limiting database access to non-production environments, would have prevented this outcome by stopping production-bound commands before execution.",
-    "built_at": "2026-09-07T18:14:20-05",
+    "summary": "# Summary\n\nIn August 2026, a developer connected Claude Opus 5 to a production Supabase database without access restrictions and instructed the AI agent to autonomously resolve database schema issues. While executing a Prisma migration command, the agent used the production database URL in an argument designed for a disposable test database. This caused Prisma to reset the production database, dropping all tables and resulting in complete data loss within ten minutes. The agent detected the error and alerted the developer before the developer noticed the problem themselves.\n\nThe incident occurred because the command syntax did not inherently appear dangerous, the database credentials lacked scope limitations, and no validation layer checked whether commands targeted appropriate environments before execution. The incident could have been prevented through guardrail systems that validate actions against policy before execution or by restricting the agent's database access to non-production environments only. The article notes that any agent with command execution access will eventually issue incorrect commands, making preventive policy validation layers essential rather than relying on post-incident discovery.",
+    "built_at": "2026-09-08T00:25:11-05",
     "cite_url": "https://incidentdatabase.ai/cite/1676",
     "page_uid": "296f0955",
-    "generated": "2026-09-07",
+    "generated": "2026-09-08",
     "published": "2026-09-04",
     "incident_id": 1676,
     "summary_url": "https://www.exemplar.dev/why-harness/reddit-database-wipe",
