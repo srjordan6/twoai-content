@@ -14,10 +14,12 @@
         "name": "Data Centers"
     },
     "reading": {
-        "body": "Airflow volume and static pressure reveal cooling failures that average temperatures cannot detect, because air can bypass equipment entirely rather than passing through it.\n\nData centers measure temperature across a room and assume uniform cooling. This misses the actual problem: air taking paths of least resistance, recirculating already-warm exhaust, or leaking around containment barriers. Static pressure, the force driving air through the equipment rather than around it, is the metric that catches these inefficiencies. A facility can have adequate total cooling capacity and still starve individual racks of the airflow they need.\n\nFor AI infrastructure, this matters because high-density compute racks demand precise airflow control. Recirculation or bypass reduces effective cooling capacity without adding infrastructure, which means some racks run hotter than their specifications allow. This forces either underutilization of expensive equipment or accelerated hardware degradation. The binding constraint becomes not total power delivered to the building, but power actually usable at the rack level.\n\nThe data does not specify which types of compute racks or cooling architectures are most vulnerable to airflow problems, nor does it quantify the efficiency losses that result from poor static pressure management.",
+        "body": "Airflow and static pressure measurement reveals cooling failures that temperature readings alone cannot detect, making it essential for operating data centers at the density required by AI workloads.\n\nA facility's total cooling capacity is meaningless if air recirculates around equipment instead of flowing through it. Airflow volume in cubic feet per minute and the pressure differential driving that flow expose bypass routes, leaks, and dead zones where hot exhaust mixes back into intake. Temperature sensors average these problems away. At the rack density AI demands, undetected recirculation can cause localized hotspots that trigger throttling or failures even while the room's mean temperature appears acceptable.\n\nThis metric matters because power delivery and cooling delivery are now coupled constraints. More compute per square foot requires more precise air distribution. Pressure differential directly indicates whether the system design is working as intended or whether money spent on cooling capacity is being wasted through poor containment and routing.\n\nThe metric does not capture the full thermal picture alone. Airflow and pressure must be read alongside temperature, humidity, and liquid coolant data to diagnose whether a cooling problem stems from insufficient capacity, poor design, or operational drift.",
         "model": "claude-haiku-4-5",
-        "generated_on": "2026-09-03"
+        "generated_on": "2026-09-08"
     },
+    "built_at": "2026-09-08T16:34:39-05",
+    "page_uid": "47dc4040",
     "siblings": [
         {
             "uid": "a2960688",
@@ -30,5 +32,5 @@
             "category": "Cooling and climate"
         }
     ],
-    "generated": "2026-09-06"
+    "generated": "2026-09-08"
 }
