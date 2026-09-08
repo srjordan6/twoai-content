@@ -14,10 +14,12 @@
         "name": "Data Centers"
     },
     "reading": {
-        "body": "Network latency, packet loss, and bandwidth degradation waste GPU compute hours before they cause visible outages, making them the leading indicator of data center health for AI workloads.\n\nDistributed AI training synchronizes gradients across many GPUs in lockstep. When the internal fabric or external transit degrades even slightly, some GPUs stall waiting for others to finish their compute. A 5% packet loss does not cause 5% downtime; it causes 50% or more of the GPUs to sit idle during each synchronization step. This is why facilities tracking only SLA uptime compliance miss the real cost. A network running at specification uptime can still bleed compute efficiency through latency creep or intermittent loss that never triggers an alert.\n\nContinuous measurement of round-trip latency, loss rate, and utilization catches this waste before it becomes catastrophic. The metric covers both internal fabric (the switches and cables between GPUs in the same facility) and external transit (the pipes to other facilities or customer connections). Each is a separate failure mode. This data does not capture application-layer issues, redundancy of the measurement system itself, or whether the facility takes action on the data it collects. It also does not specify the thresholds that trigger remediation, which vary widely by workload.",
+        "body": "Network latency, packet loss, and bandwidth degradation directly waste GPU-hours in distributed AI training before they register as facility outages, making continuous fabric monitoring essential operational data.\n\nAI training at scale distributes computation across many GPUs, often in different buildings or regions. The network connecting them becomes part of the compute path itself. A single millisecond of added latency or a small percentage of dropped packets forces GPUs to idle while waiting for data, turning expensive hardware into dead weight. This waste compounds across thousands of devices and weeks of training runs, accumulating costs that facility managers cannot see in conventional uptime metrics.\n\nData centers track this through continuous measurement of round-trip latency, loss rate, and utilization on both internal fabrics and external transit links. The metric differs from SLA uptime compliance or generator runtime because those measure whether the lights stay on. This measures whether the lights are actually lighting useful work. A facility can be technically \"up\" while losing 2 percent of packets, and that facility is quietly burning money on wasted training cycles.\n\nThe data does not specify what latency or loss thresholds trigger action, how measurements are aggregated across multi-building campuses, or how this monitoring informs procurement and layout decisions. It identifies what matters to measure without defining what good looks like.",
         "model": "claude-haiku-4-5",
-        "generated_on": "2026-09-03"
+        "generated_on": "2026-09-08"
     },
+    "built_at": "2026-09-08T16:34:39-05",
+    "page_uid": "5ae3bb07",
     "siblings": [
         {
             "uid": "d6d40bc1",
@@ -30,5 +32,5 @@
             "category": "Uptime and redundancy"
         }
     ],
-    "generated": "2026-09-06"
+    "generated": "2026-09-08"
 }
