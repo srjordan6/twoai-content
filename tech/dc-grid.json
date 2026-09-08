@@ -1,7 +1,7 @@
 {
     "eia": {
         "commercial_sales_mwh": {
-            "as_of": "2026-09-06",
+            "as_of": "2026-09-08",
             "value": 54797.55414,
             "detail": {
                 "scope": "Commercial-sector electricity sales and average price by state, as reported to EIA. Data centers are billed mostly in the commercial class, so this is a proxy for their load, not a measurement of it.",
@@ -42,7 +42,7 @@
             "url": "https://www.ercot.com/mp/data-products/data-product-details?id=PG7-200-ER",
             "name": "ERCOT",
             "slug": "ercot",
-            "as_of": "2026-09-06",
+            "as_of": "2026-09-08",
             "scope": "Large generators with a full interconnection study requested, from the monthly Generator Interconnection Status report for Texas. Includes projects from study through commissioning.",
             "by_fuel": {
                 "gas": 78092.40000000001,
@@ -59,7 +59,7 @@
             "url": "https://www.nyiso.com/interconnections",
             "name": "NYISO",
             "slug": "nyiso",
-            "as_of": "2026-09-06",
+            "as_of": "2026-09-08",
             "scope": "Projects in the New York interconnection queue as NYISO publishes them.",
             "by_fuel": {
                 "gas": 27879.00000000001,
@@ -69,11 +69,11 @@
             "requests": 1414
         },
         {
-            "mw": 299720.5999999999,
+            "mw": 299720.6,
             "url": "https://www.misoenergy.org/planning/resource-utility-interconnection/gi-interactive-queue/",
             "name": "MISO",
             "slug": "miso",
-            "as_of": "2026-09-06",
+            "as_of": "2026-09-08",
             "scope": "Projects in the Midcontinent generator interconnection queue, all statuses as MISO publishes them.",
             "by_fuel": {
                 "gas": 30236.33,
@@ -85,28 +85,28 @@
             "requests": 3833
         },
         {
-            "mw": 198709.88000000003,
+            "mw": 198716.88000000003,
             "url": "https://opsportal.spp.org/Studies/GenerateSummaryCSV",
             "name": "Southwest Power Pool",
             "slug": "spp",
-            "as_of": "2026-09-06",
+            "as_of": "2026-09-08",
             "scope": "Generator interconnection requests across the south-central US, all statuses as SPP publishes them, withdrawn requests counted separately.",
             "by_fuel": {
                 "gas": 47386.475000000006,
                 "wind": 64736.64999999999,
                 "other": 147,
-                "solar": 33526.66500000001,
+                "solar": 33533.66500000001,
                 "storage": 52913.09000000001
             },
-            "requests": 1074,
-            "source_stamp": "9/4/2026"
+            "requests": 1075,
+            "source_stamp": "9/8/2026"
         },
         {
             "mw": 71682.32416164309,
             "url": "https://www.caiso.com/PublishedDocuments/PublicQueueReport.xlsx",
             "name": "CAISO",
             "slug": "caiso",
-            "as_of": "2026-09-06",
+            "as_of": "2026-09-08",
             "scope": "Active generator interconnection requests on the California ISO grid, from the public queue report. Completed and withdrawn projects are counted separately.",
             "by_fuel": {
                 "gas": 915.6,
@@ -119,10 +119,12 @@
         }
     ],
     "analysis": {
-        "body": "# AI Data Center Demand Signals in the US Grid Queues\n\nAs of early September 2026, commercial electricity sales across eight major states totaled 54,798 megawatt-hours in June, with Texas consuming the largest share at 15,754 MWh—nearly three times California's 10,025 MWh. Prices tell a different story: California's commercial rate of $27.33 per megawatt-hour far exceeds Texas at $8.66, while Virginia and Georgia offer rates under $11. Since data centers are billed largely within the commercial sector, these sales volumes and price gradients suggest where computational workloads are concentrating and where expansion economics most favor new facilities.\n\nThe five major grid interconnection queues show 8,364 projects totaling 1.33 million megawatts of planned generation and storage capacity. ERCOT's Texas queue dominates with 438,086 MW across 1,778 requests, followed by NYISO at 319,095 MW and MISO at 299,721 MW. These queues track supply waiting to connect, not data center demand directly, but their fuel composition signals what infrastructure developers expect will power future loads: across all five regions, solar leads with roughly 279,000 MW of requests, while battery storage alone represents over 328,000 MW—a combination particularly suited to smoothing data center power patterns.\n\nGas capacity in the queues—totaling approximately 184,509 MW—remains substantial across all regions, with ERCOT and SPP each requesting over 47,000 MW of new gas generation. The growth in both storage and gas alongside high commercial electricity sales in data-center-dense states suggests developers are hedging against both peak demand and renewable variability. Monitor next month's queue updates to track whether project withdrawals accelerate or if new requests concentrate further in lower-cost regions like Texas, which would signal where capital is actually flowing.",
+        "body": "# AI Data Center Load and Grid Interconnection Queues\n\nAcross five major US grid operators, 8,365 generation and storage projects totaling 1.33 million megawatts sit in interconnection queues as of September 2026. Texas leads by absolute capacity with 438,086 MW in ERCOT's queue, followed by New York's 319,095 MW and MISO's 299,721 MW across the Midwest. These queues reflect planned supply waiting for grid connection studies and approvals—not current data center demand—but they indicate the scale of infrastructure buildout underway where compute clusters are expected to locate. The mix of resources varies by region: ERCOT's queue is heavily weighted toward solar (150,347 MW) and storage (159,820 MW), while NYISO's queue is dominated by \"other\" fuels (291,136 MW, likely including nuclear and hydro), and MISO leans toward solar and wind. Gas generation across all queues totals 184,510 MW, a meaningful share reflecting the role of fast-response peaking capacity alongside renewables.\n\nCommercial-sector electricity sales across eight major states hit 54,798 megawatt-hours in June 2026, the most recent complete month available. Texas consumed the most at 15,754 MWh, with California second at 10,025 MWh and Virginia third at 7,771 MWh. These figures are billed rates, not data center load itself, but data centers are classified as commercial users and represent a growing fraction of that total. Electricity prices for this sector ranged from $8.66 per MWh in Texas (lowest) to $27.33 in California (highest)—a 3.2× spread that shapes where new compute infrastructure economically makes sense. The persistence of high queue volumes in high-price regions like California and New York, despite their cost premium, suggests that grid access, land availability, and fiber connectivity may outweigh electricity price in site selection for some operators.\n\nStorage capacity in these interconnection queues—206,606 MW across all operators—has grown in tandem with renewable buildout and reflects grid operators' need to absorb variable solar and wind output. Battery systems represent the bulk of this storage, essential for shifting peak loads and stabilizing frequency as daytime solar generation becomes a larger share of supply. This storage growth indirectly tracks data center load forecasts because grid operators size their infrastructure to meet both traditional demand and the new baseload from hyperscale compute clusters, which run continuously and increasingly consume night and day. Watch the monthly updates to ERCOT and CAISO queues in particular—movements in storage and gas interconnection requests, as opposed to solar alone, will signal whether operators are preparing for sustained high-load data center demand or temporary spikes.",
         "model": "claude-haiku-4-5",
-        "generated_on": "2026-09-05"
+        "generated_on": "2026-09-08"
     },
-    "generated": "2026-09-06",
-    "series_days": 8
+    "built_at": "2026-09-08T16:34:39-05",
+    "page_uid": "88b368c9",
+    "generated": "2026-09-08",
+    "series_days": 10
 }
