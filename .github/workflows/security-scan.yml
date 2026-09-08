@@ -2,10 +2,30 @@ name: Security Scan
 
 # Managed centrally - see SECURITY.md. Four scanners, all free on public repos.
 # Results appear under Security -> Code scanning.
+#
+# NO PUSH TRIGGER, AND THIS REPOSITORY IS THE REASON THE OTHERS LOST THEIRS.
+#
+# twoai-content is written by the pipeline, ONE COMMIT PER FILE - "twoai:
+# mcp/com-aigramx-aigramx.json from twoai_pages", thousands of them across
+# 2,244 MCP servers and 5,235 pages, every few hours. On a private repository
+# each of those pushes started four scanner jobs on metered runners. That is
+# where September's 2,000-minute allowance went: $43.07 of usage in six days,
+# fully covered by the included discount so nothing was billed, but once the
+# allowance is gone a $0 spending limit stops EVERY workflow in the account.
+# Deploy to Cloudflare stopped with it, so theworldofai.org could not ship a
+# real XSS fix that this same scanning had helped find.
+#
+# There is also nothing here for a code scanner to read. This repository holds
+# generated JSON content, no source, so Semgrep, CodeQL and Trivy have no code
+# to analyse. Gitleaks is the only one with a job to do, and a weekly full-
+# history run finds a committed secret better than a per-push scan of one
+# commit ever could: the push scan runs with --log-opts=-1, which reads the
+# newest commit and nothing else.
+#
+# Pull requests and the Monday cron are kept. If this repository is ever made
+# public, standard runners become free and the push trigger can come back.
 
 on:
-  push:
-    branches: [main, master]
   pull_request:
     branches: [main, master]
   schedule:
@@ -70,3 +90,13 @@ jobs:
         uses: gitleaks/gitleaks-action@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # NO ARTIFACT. The scan itself passed - "1 commits scanned, no leaks
+          # found" - and then the job failed anyway, on FinalizeArtifact with a
+          # 403, because artifact storage is metered on a private repository
+          # and the account's allowance is spent. A green scan reported as a
+          # red job trains everyone to ignore the red, which is worse than not
+          # scanning at all.
+          #
+          # The SARIF that matters already goes to code scanning. The artifact
+          # is a second copy of the same finding, and nothing reads it.
+          GITLEAKS_ENABLE_UPLOAD_ARTIFACT: false
