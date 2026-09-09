@@ -1,0 +1,51 @@
+{
+    "shape": "incident",
+    "title": "Cline CLI npm Package Compromised via Suspected Cache Poisoning Attack",
+    "reading": {
+        "body": "An AI system used to triage GitHub issues for the Cline project was vulnerable to prompt injection attacks. Attackers could craft malicious issue titles that caused the AI to execute arbitrary commands within the GitHub Actions workflow. This failure occurred in the deployment of the AI system itself, not in the code it was meant to help manage. The system should have been isolated from actions that could modify published software or access credentials, or the workflow should have required human approval before executing commands triggered by user input.\n\nThe vulnerability allowed attackers to steal publishing credentials and potentially publish malicious versions of the Cline package to NPM and other repositories, affecting millions of developers. The system was used outside the conditions it should have been deployed under, given its exposure to untrusted input from public GitHub issues. It is not established whether any malicious updates were successfully published, though some exploitation attempts may have occurred during the vulnerability window.",
+        "model": "claude-haiku-4-5",
+        "generated_on": "2026-09-09"
+    },
+    "reports": [
+        {
+            "url": "https://adnanthekhan.com/posts/clinejection/",
+            "title": "Clinejection — Compromising Cline's Production Releases just by Prompting an Issue Triager",
+            "domain": "adnanthekhan.com",
+            "published": "2026-09-08"
+        },
+        {
+            "url": "https://cline.bot/blog/post-mortem-unauthorized-cline-cli-npm",
+            "title": "Post-mortem: Unauthorized Cline CLI npm publish on February 17, 2026",
+            "domain": "cline.bot",
+            "published": "2026-09-08"
+        },
+        {
+            "url": "https://github.com/cline/cline/security/advisories/GHSA-9ppg-jx86-fqw7",
+            "title": "Unauthorized npm publish of Cline CLI cline@2.3.0 with modified postinstall script to install openclaw",
+            "domain": "github.com",
+            "published": "2026-09-08"
+        },
+        {
+            "url": "https://www.stepsecurity.io/blog/cline-supply-chain-attack-detected-cline-2-3-0-silently-installs-openclaw",
+            "title": "Cline Supply Chain Attack Detected: cline@2.3.0 Silently Installs OpenClaw",
+            "domain": "stepsecurity.io",
+            "published": "2026-09-08"
+        },
+        {
+            "url": "https://socket.dev/blog/cline-cli-npm-package-compromised-via-suspected-cache-poisoning-attack",
+            "title": "Cline CLI npm Package Compromised via Suspected Cache Poisoning Attack",
+            "domain": "socket.dev",
+            "published": "2026-09-08"
+        }
+    ],
+    "summary": "# Summary\n\nCline, an open-source AI coding tool used by millions of developers, had a critical security vulnerability in its GitHub Actions workflows between December 21, 2025, and February 9, 2026. The issue stemmed from an AI-powered issue triage system that was vulnerable to prompt injection attacks. Researchers discovered that attackers could craft malicious GitHub issue titles to trick the AI into executing arbitrary commands. By exploiting this flaw alongside GitHub's cache eviction policy, attackers could poison cached data and steal publishing credentials for the VS Code Marketplace, OpenVSX, and NPM repositories.\n\nThe vulnerability could have allowed attackers to publish malicious updates to Cline, potentially compromising millions of developers who rely on the tool. Researcher Adnan Khan reported the issue through official channels on January 1st but received no response from the Cline team. After multiple unsuccessful contact attempts, Khan publicly disclosed the vulnerability on February 9th, 2026. Cline fixed the problem within one hour by removing the problematic workflows and rotating credentials. The team confirmed no active malicious updates were detected, though some evidence suggested exploitation attempts occurred during the vulnerability window.",
+    "built_at": "2026-09-09T18:16:11-05",
+    "cite_url": "https://incidentdatabase.ai/cite/1680",
+    "page_uid": "929c0cc3",
+    "generated": "2026-09-09",
+    "published": "2026-09-08",
+    "incident_id": 1680,
+    "summary_url": "https://adnanthekhan.com/posts/clinejection/",
+    "outlet_count": 5,
+    "summary_domain": "adnanthekhan.com"
+}
