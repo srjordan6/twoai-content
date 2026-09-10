@@ -45,6 +45,18 @@
             "entity_kind": "company"
         },
         {
+            "url": "https://www.atlassian.com/blog/bitbucket/a-simpler-way-to-run-ai-agents-in-bitbucket-pipelines",
+            "date": "2026-09-10",
+            "slug": "a-simpler-way-to-run-ai-agents-in-bitbucket-pipelines-f966df",
+            "title": "A simpler way to run AI agents in Bitbucket Pipelines",
+            "vendor": "Atlassian",
+            "summary": "AI agents can help investigate failed builds, fix flaky tests and automate other development tasks. But setting up those agents has required more Pipelines configuration than it should.",
+            "has_page": true,
+            "entity_uid": "40000e9d",
+            "entity_kind": "company",
+            "reader_note": "The announcement describes a simplified configuration interface for running AI agents within an existing CI/CD tool, not a new agent capability itself. This matters if you already use Bitbucket Pipelines and want to experiment with agents for build diagnostics or test automation without extensive setup work. Be sceptical of the framing around what agents \"can help\" with, since the vendor is describing potential uses rather than demonstrating results on your specific codebase or test suite. Simpler configuration lowers the barrier to trying this, but does not guarantee the agents will reliably diagnose your particular build failures or reduce your flaky test burden."
+        },
+        {
             "url": "https://www.snowflake.com/content/snowflake-site/global/en/blog/ai-native-accounts-payable-snowflake",
             "date": "2026-09-10",
             "slug": "ai-native-accounts-payable-how-invoiceiq-runs-on-snowflake-9a5694",
@@ -56,6 +68,18 @@
             "entity_kind": "company"
         },
         {
+            "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-api-gateway-1-mb-execution-logs/",
+            "date": "2026-09-10",
+            "slug": "amazon-api-gateway-now-supports-1-mb-execution-logs-with-con-68d469",
+            "title": "Amazon API Gateway now supports 1 MB execution logs with configurable delivery destinations",
+            "vendor": "Amazon Web Services",
+            "summary": "Amazon API Gateway now supports configurable delivery destinations and larger log events for REST API execution logs. Previously, execution logs were delivered to a single API Gateway-managed CloudWatch Logs log group with log events truncated at 1 KB, limiting visibility into request and response",
+            "has_page": true,
+            "entity_uid": "0d5de807",
+            "entity_kind": "company",
+            "reader_note": "If you manage API Gateway logs, you can now preserve more of each request and response in your records. The increase from 1 KB to 1 MB per log event addresses a genuine constraint that forced truncation of larger payloads. Check whether your log analysis and retention practices need adjustment for the larger volume, and test routing to your chosen destination before relying on it for compliance or troubleshooting. This removes a limitation but does not itself change how you should instrument or monitor your APIs."
+        },
+        {
             "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/cloudwatch-network-monitoring-tgw-support/",
             "date": "2026-09-10",
             "slug": "amazon-cloudwatch-now-supports-network-health-indicator-for--280faf",
@@ -65,6 +89,18 @@
             "has_page": true,
             "entity_uid": "0d5de807",
             "entity_kind": "company"
+        },
+        {
+            "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-ecs-expands-condition-key-support/",
+            "date": "2026-09-10",
+            "slug": "amazon-ecs-expands-iam-condition-key-support-for-runtask-and-d8925c",
+            "title": "Amazon ECS expands IAM condition key support for RunTask and StartTask APIs",
+            "vendor": "Amazon Web Services",
+            "summary": "Amazon Elastic Container Service (Amazon ECS) now supports the IAM condition keys for CPU and memory resources on the RunTask and StartTask APIs. Administrators can use these keys to enforce consistent CPU and memory limits across all methods of launching ECS tasks.",
+            "has_page": true,
+            "entity_uid": "0d5de807",
+            "entity_kind": "company",
+            "reader_note": "This matters if you run containerised workloads on ECS and manage permissions through IAM policies. You can now restrict what CPU and memory configurations users are permitted to launch, rather than relying on post-launch controls or external tooling. This reduces the risk of tasks consuming resources outside your intended bounds.\n\nBe clear about what this does and does not do. It sets guardrails on configuration at launch time, but does not monitor or enforce limits on running tasks, and does not address billing or cost controls. If your governance currently depends on detecting policy violations after they occur, this shifts some of that work upstream."
         },
         {
             "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-evs-available-in-additional-regions/",
@@ -206,6 +242,41 @@
             "reader_note": "The integration lets you persist AI agent state across Lambda invocations without managing that state yourself. This matters if you build agents that need to maintain context over multiple steps or recover from failures without losing progress.\n\nBe cautious about assuming this solves all agent orchestration problems. Durability and state management are necessary but not sufficient, integration with a framework is not the same as solving the underlying complexity of multi-step AI reasoning, and you will still need to think through error handling, cost, and latency for your specific workload."
         },
         {
+            "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/lambda-recursion-europe-sovereign-cloud",
+            "date": "2026-09-10",
+            "slug": "aws-lambda-recursive-loop-detection-is-now-available-in-euro-bbb653",
+            "title": "AWS Lambda recursive loop detection is now available in Europe Sovereign Cloud",
+            "vendor": "Amazon Web Services",
+            "summary": "AWS Lambda recursive loop detection is now supported for functions running in Europe Sovereign Cloud. Recursive loop detection automatically detects and stops recursive invocations between Lambda functions and other supported services, preventing unexpected billing caused by unintended recursive",
+            "has_page": true,
+            "entity_uid": "0d5de807",
+            "entity_kind": "company"
+        },
+        {
+            "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/storage-gateway-fips-privatelink-s3/",
+            "date": "2026-09-10",
+            "slug": "aws-storage-gateway-now-supports-fips-compliant-private-conn-bb91dc",
+            "title": "AWS Storage Gateway now supports FIPS-compliant private connectivity for Amazon S3 File Gateway",
+            "vendor": "Amazon Web Services",
+            "summary": "AWS Storage Gateway now supports FIPS 140-3 validated endpoints over AWS PrivateLink for Amazon S3 File Gateway. Previously, FIPS endpoints for File Gateway were available only over the public internet.",
+            "has_page": true,
+            "entity_uid": "0d5de807",
+            "entity_kind": "company",
+            "reader_note": "If your organisation must use FIPS-validated cryptographic modules for S3 access, this removes a constraint that previously forced traffic across the public internet. Private connectivity over PrivateLink reduces exposure during transit. This matters most if your compliance regime treats public routing as inherently riskier than private AWS infrastructure. Be clear on what you're gaining: validated cryptography in motion, not necessarily a simpler compliance picture overall. Storage Gateway remains a translation layer between on-premises systems and S3, so the compliance scope of your entire pipeline matters more than any single connection option."
+        },
+        {
+            "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/aws-transform-net-unit-tests",
+            "date": "2026-09-10",
+            "slug": "aws-transform-for-net-now-generates-unit-tests-for-modernize-494046",
+            "title": "AWS Transform for .NET now generates unit tests for modernized code",
+            "vendor": "Amazon Web Services",
+            "summary": "Today, AWS announced that AWS Transform for .NET can automatically generate unit tests for the code it modernizes. When enabled, AWS Transform generates unit tests that target the testable classes in your transformed .NET application, such as business logic and controllers, giving you an automated",
+            "has_page": true,
+            "entity_uid": "0d5de807",
+            "entity_kind": "company",
+            "reader_note": "The ability to generate unit tests alongside code transformation addresses a real gap in modernization tooling. Test coverage matters most when code has been substantially rewritten, so automation here could save significant manual effort. However, the announcement does not specify test coverage percentages, whether tests pass by default, or how well the generated tests catch actual bugs in production scenarios. Treat generated tests as a starting point requiring review, not as a substitute for your own test strategy. The capability exists in the tool, but its value depends entirely on test quality in your specific codebase."
+        },
+        {
             "url": "https://news.sap.com/2026/09/tangible-progress-sap-services-and-support-impact/",
             "date": "2026-09-10",
             "slug": "beyond-the-launch-tangible-progress-in-sap-services-and-supp-0e19b0",
@@ -238,6 +309,16 @@
             "entity_uid": "d9ea9793",
             "entity_kind": "company",
             "reader_note": "The gap between a capability in the lab and one in production remains real. Full-duplex conversation is harder than turn-taking chat, especially over phone lines with poor audio. Test this against your actual use case, your actual network conditions, and your actual users, not the vendor's demo.\n\nCustom voices and instruction following matter more than the headline suggests. How closely does the model follow your specific voice personality or domain constraints? Does it drift? The telephony claim is worth attention only if you need it, and only after you confirm the quality holds on real networks, not clean recordings."
+        },
+        {
+            "url": "https://vercel.com/changelog/build-with-openai-agents-api-on-vercel",
+            "date": "2026-09-10",
+            "slug": "build-with-openai-agents-api-on-vercel-e5e644",
+            "title": "Build with OpenAI Agents API on Vercel",
+            "vendor": "Vercel",
+            "has_page": false,
+            "entity_uid": "b4ead33d",
+            "entity_kind": "company"
         },
         {
             "url": "https://www.salesforce.com/blog/trailblazer-community-20th-anniversary/",
@@ -339,6 +420,16 @@
             "entity_kind": "company"
         },
         {
+            "url": "https://vercel.com/changelog/github-copilot-ai-sdk-harness-adapter",
+            "date": "2026-09-10",
+            "slug": "github-copilot-is-now-available-in-the-ai-sdk-harness-layer-b4f889",
+            "title": "GitHub Copilot is now available in the AI SDK harness layer",
+            "vendor": "Vercel",
+            "has_page": false,
+            "entity_uid": "b4ead33d",
+            "entity_kind": "company"
+        },
+        {
             "url": "https://openai.com/index/using-codex-chatgpt-to-search-for-new-antimicrobials",
             "date": "2026-09-10",
             "slug": "how-a-researcher-uses-codex-and-chatgpt-to-search-for-new-an-8e610a",
@@ -349,6 +440,17 @@
             "entity_uid": "d9ea9793",
             "entity_kind": "company",
             "reader_note": "This describes a specific research application rather than a new capability. The tools involved, Codex and ChatGPT, are existing products. What matters for your work is whether this use case applies to your own research: do you work with genomic sequences, have access to the same models, and face comparable computational bottlenecks in candidate discovery? The announcement does not establish that this approach outperforms existing sequence analysis methods, only that these language models can be applied to the problem. Replication by other labs would strengthen any conclusions about effectiveness."
+        },
+        {
+            "url": "https://www.snowflake.com/content/snowflake-site/global/en/blog/agentic-ai-operational-roi-manufacturing",
+            "date": "2026-09-10",
+            "slug": "how-manufacturers-unlock-operational-roi-with-agentic-ai-53293e",
+            "title": "How Manufacturers Unlock Operational ROI with Agentic AI",
+            "vendor": "Snowflake",
+            "summary": "Discover how leading manufacturers bypass basic chatbots for agentic AI workflows, unifying IT and OT data to reduce downtime and drive measurable P&L impact.",
+            "has_page": true,
+            "entity_uid": "19d61070",
+            "entity_kind": "company"
         },
         {
             "url": "https://www.microsoft.com/en-us/startups/blog/building-fintech-for-greater-financial-success-how-welcount-uses-ai-to-serve-more-customers/",
@@ -404,6 +506,18 @@
             "entity_uid": "d9ea9793",
             "entity_kind": "company",
             "reader_note": "The distinction between an API for building agents and deployed agents doing work in production matters here. You gain a framework for orchestration and tool use, but building something that runs reliably at scale remains your responsibility. The managed service aspect reduces your infrastructure burden, yet the announcement does not detail failure modes, cost structures under load, or real-world performance on complex multi-step tasks. Treat vendor-provided examples as proofs of concept rather than indicators of what your specific workflows will achieve. Evaluate carefully whether long-running sessions meet your latency and cost requirements before committing critical processes."
+        },
+        {
+            "url": "https://www.salesforce.com/blog/service-insights-agentic-analytics-tableau-next/",
+            "date": "2026-09-10",
+            "slug": "meet-service-insights-agentic-analytics-built-for-service-te-e744cd",
+            "title": "Meet Service Insights: Agentic Analytics Built for Service Teams Powered by Tableau Next",
+            "vendor": "Salesforce",
+            "summary": "Discover how Service Insights elevates interactions and accelerates resolutions with purpose-built, AI-powered insights in your flow of work.",
+            "has_page": true,
+            "entity_uid": "4124ecef",
+            "entity_kind": "company",
+            "reader_note": "Service Insights demonstrates Salesforce's effort to embed analytics directly into service workflows rather than requiring agents to leave their interface for separate tools. The meaningful question for your team is whether pre-built analytics templates actually capture your specific resolution patterns, or whether you'll need substantial customization to make them relevant. Agentic framing suggests autonomous decision-making, but the announcement doesn't clarify what actions these agents propose versus what they execute without human review, a distinction that matters for quality control in customer service."
         },
         {
             "url": "https://openai.com/index/put-data-to-work",
@@ -2628,113 +2742,6 @@
             "has_page": false,
             "entity_uid": "bad597a3",
             "entity_kind": "company"
-        },
-        {
-            "url": "https://www.salesforce.com/blog/frontier-ai-changed-the-rules-of-cyberattacks/",
-            "date": "2026-09-03",
-            "slug": "frontier-ai-changed-the-rules-of-cyberattacks-here-s-how-we--ad56b0",
-            "title": "Frontier AI Changed the Rules of Cyberattacks. Here’s How We’re Protecting You.",
-            "vendor": "Salesforce",
-            "summary": "Salesforce is using leading frontier AI models to accelerate our defenses and protect your data.",
-            "has_page": false,
-            "entity_uid": "4124ecef",
-            "entity_kind": "company"
-        },
-        {
-            "url": "https://huggingface.co/blog/funes",
-            "date": "2026-09-03",
-            "slug": "give-your-coding-agents-a-memory-you-own-f01b51",
-            "title": "Give Your Coding Agents a Memory You Own",
-            "vendor": "Hugging Face",
-            "has_page": false,
-            "entity_uid": "bad597a3",
-            "entity_kind": "company"
-        },
-        {
-            "url": "https://zapier.com/blog/gmail-labels",
-            "date": "2026-09-03",
-            "slug": "gmail-labels-what-they-are-and-how-to-use-them-5aafeb",
-            "title": "Gmail labels: What they are and how to use them",
-            "vendor": "Zapier",
-            "summary": "No matter how organized you think your Gmail inbox is, there's usually something you can streamline even better. That's what happened to me when I discovered how to automatically label emails in Gmail. I realize this feature has been around for a long time, but I'd never looked into it before.",
-            "has_page": true,
-            "entity_uid": "6af345b4",
-            "entity_kind": "company"
-        },
-        {
-            "url": "https://www.databricks.com/blog/governance-beyond-security-knowledge-context-ontology-lakehouse",
-            "date": "2026-09-03",
-            "slug": "governance-beyond-security-knowledge-context-ontology-on-the-159bcb",
-            "title": "Governance beyond security: knowledge, context & ontology on the lakehouse",
-            "vendor": "Databricks",
-            "summary": "Ask most organizations what data governance for AI means, and you’ll hear a security...",
-            "has_page": false,
-            "entity_uid": "a4718c15",
-            "entity_kind": "company"
-        },
-        {
-            "url": "https://openai.com/index/gpt-6-astra",
-            "date": "2026-09-03",
-            "slug": "gpt-6-astra-a-new-generation-of-intelligence-8b954e",
-            "title": "GPT-6 Astra: A new generation of intelligence",
-            "vendor": "OpenAI",
-            "summary": "Introducing GPT-6 Astra, our most intelligent and aligned model yet, with state-of-the-art capabilities across computer use, coding, cybersecurity, and science.",
-            "has_page": true,
-            "entity_uid": "d9ea9793",
-            "entity_kind": "company"
-        },
-        {
-            "url": "https://azure.microsoft.com/en-us/blog/gpt-6-astra-frontier-intelligence-for-work-now-available-in-microsoft-foundry/",
-            "date": "2026-09-03",
-            "slug": "gpt-6-astra-frontier-intelligence-for-work-now-available-in--ca0e52",
-            "title": "GPT-6 Astra: Frontier intelligence for work, now available in Microsoft Foundry",
-            "vendor": "Microsoft Azure",
-            "summary": "GPT-6 Astra, OpenAI's newest frontier model, begins rolling out today through the Microsoft Foundry Limited Access Program, with availability expanding to participating customers over the coming days.",
-            "has_page": true,
-            "entity_uid": "5a78804e",
-            "entity_kind": "company",
-            "reader_note": "This announcement confirms deployment through a limited access program rather than general availability. You should test whether performance gains justify migration costs for your existing workflows, and whether the model's training data and capabilities align with your compliance requirements. The rollout timeline means early adopters will have more time to evaluate integration work before broader release, but \"frontier\" capabilities often require prompt engineering or architectural changes before delivering production value. Treat vendor benchmarks with particular care during limited access phases, when real-world performance may diverge from controlled testing."
-        },
-        {
-            "url": "https://azure.microsoft.com/en-us/blog/gpt-6-astra-frontier-intelligence-for-work-now-generally-available-in-microsoft-foundry/",
-            "date": "2026-09-03",
-            "slug": "gpt-6-astra-frontier-intelligence-for-work-now-generally-ava-9874d5",
-            "title": "GPT-6 Astra: Frontier intelligence for work, now generally available in Microsoft Foundry",
-            "vendor": "Microsoft Azure",
-            "summary": "GPT-6 Astra, OpenAI's newest frontier model, begins rolling out today through the Microsoft Foundry Limited Access Program, with availability expanding to participating customers over the coming days.",
-            "has_page": true,
-            "entity_uid": "5a78804e",
-            "entity_kind": "company"
-        },
-        {
-            "url": "https://www.snowflake.com/content/snowflake-site/global/en/blog/announcing-grok-4-6-snowflake-cortex-ai",
-            "date": "2026-09-03",
-            "slug": "grok-4-6-now-available-on-snowflake-cortex-ai-40b012",
-            "title": "Grok 4.6 Now Available on Snowflake Cortex AI",
-            "vendor": "Snowflake",
-            "summary": "Grok 4.6, xAI's latest frontier model, is now in private preview on Snowflake Cortex AI. Run long-running agents and agentic pipelines with your data inside Snowflake's secure perimeter.",
-            "has_page": true,
-            "entity_uid": "19d61070",
-            "entity_kind": "company"
-        },
-        {
-            "url": "https://stability.ai/guides/how-artists-are-using-ai-to-make-music-findings-from-analyzing-hundreds-of-musical-works",
-            "date": "2026-09-03",
-            "slug": "how-artists-are-using-ai-to-make-music-findings-from-analyzi-bd72a5",
-            "title": "How Artists Are Using AI to Make Music: Findings from Analyzing Hundreds of Musical Works - Stability AI",
-            "vendor": "Stability AI",
-            "has_page": true
-        },
-        {
-            "url": "https://azure.microsoft.com/en-us/blog/how-microsofts-physical-security-engineering-team-scaled-hybrid-operations-with-azure-arc-and-azure-virtual-desktop/",
-            "date": "2026-09-03",
-            "slug": "how-microsoft-s-physical-security-engineering-team-scaled-hy-bf75a2",
-            "title": "How Microsoft’s Physical Security Engineering Team scaled hybrid operations with Azure Arc and Azure Virtual Desktop",
-            "vendor": "Microsoft Azure",
-            "summary": "Learn how Microsoft used Azure Arc and Azure Virtual Desktop to simplify hybrid security operations, improve visibility, and scale globally.",
-            "has_page": true,
-            "entity_uid": "5a78804e",
-            "entity_kind": "company"
         }
     ],
     "archive": [
@@ -2782,6 +2789,18 @@
             "entity_kind": "company"
         },
         {
+            "url": "https://www.atlassian.com/blog/bitbucket/a-simpler-way-to-run-ai-agents-in-bitbucket-pipelines",
+            "date": "2026-09-10",
+            "slug": "a-simpler-way-to-run-ai-agents-in-bitbucket-pipelines-f966df",
+            "title": "A simpler way to run AI agents in Bitbucket Pipelines",
+            "vendor": "Atlassian",
+            "summary": "AI agents can help investigate failed builds, fix flaky tests and automate other development tasks. But setting up those agents has required more Pipelines configuration than it should.",
+            "has_page": true,
+            "entity_uid": "40000e9d",
+            "entity_kind": "company",
+            "reader_note": "The announcement describes a simplified configuration interface for running AI agents within an existing CI/CD tool, not a new agent capability itself. This matters if you already use Bitbucket Pipelines and want to experiment with agents for build diagnostics or test automation without extensive setup work. Be sceptical of the framing around what agents \"can help\" with, since the vendor is describing potential uses rather than demonstrating results on your specific codebase or test suite. Simpler configuration lowers the barrier to trying this, but does not guarantee the agents will reliably diagnose your particular build failures or reduce your flaky test burden."
+        },
+        {
             "url": "https://www.snowflake.com/content/snowflake-site/global/en/blog/ai-native-accounts-payable-snowflake",
             "date": "2026-09-10",
             "slug": "ai-native-accounts-payable-how-invoiceiq-runs-on-snowflake-9a5694",
@@ -2793,6 +2812,18 @@
             "entity_kind": "company"
         },
         {
+            "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-api-gateway-1-mb-execution-logs/",
+            "date": "2026-09-10",
+            "slug": "amazon-api-gateway-now-supports-1-mb-execution-logs-with-con-68d469",
+            "title": "Amazon API Gateway now supports 1 MB execution logs with configurable delivery destinations",
+            "vendor": "Amazon Web Services",
+            "summary": "Amazon API Gateway now supports configurable delivery destinations and larger log events for REST API execution logs. Previously, execution logs were delivered to a single API Gateway-managed CloudWatch Logs log group with log events truncated at 1 KB, limiting visibility into request and response",
+            "has_page": true,
+            "entity_uid": "0d5de807",
+            "entity_kind": "company",
+            "reader_note": "If you manage API Gateway logs, you can now preserve more of each request and response in your records. The increase from 1 KB to 1 MB per log event addresses a genuine constraint that forced truncation of larger payloads. Check whether your log analysis and retention practices need adjustment for the larger volume, and test routing to your chosen destination before relying on it for compliance or troubleshooting. This removes a limitation but does not itself change how you should instrument or monitor your APIs."
+        },
+        {
             "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/cloudwatch-network-monitoring-tgw-support/",
             "date": "2026-09-10",
             "slug": "amazon-cloudwatch-now-supports-network-health-indicator-for--280faf",
@@ -2802,6 +2833,18 @@
             "has_page": true,
             "entity_uid": "0d5de807",
             "entity_kind": "company"
+        },
+        {
+            "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-ecs-expands-condition-key-support/",
+            "date": "2026-09-10",
+            "slug": "amazon-ecs-expands-iam-condition-key-support-for-runtask-and-d8925c",
+            "title": "Amazon ECS expands IAM condition key support for RunTask and StartTask APIs",
+            "vendor": "Amazon Web Services",
+            "summary": "Amazon Elastic Container Service (Amazon ECS) now supports the IAM condition keys for CPU and memory resources on the RunTask and StartTask APIs. Administrators can use these keys to enforce consistent CPU and memory limits across all methods of launching ECS tasks.",
+            "has_page": true,
+            "entity_uid": "0d5de807",
+            "entity_kind": "company",
+            "reader_note": "This matters if you run containerised workloads on ECS and manage permissions through IAM policies. You can now restrict what CPU and memory configurations users are permitted to launch, rather than relying on post-launch controls or external tooling. This reduces the risk of tasks consuming resources outside your intended bounds.\n\nBe clear about what this does and does not do. It sets guardrails on configuration at launch time, but does not monitor or enforce limits on running tasks, and does not address billing or cost controls. If your governance currently depends on detecting policy violations after they occur, this shifts some of that work upstream."
         },
         {
             "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-evs-available-in-additional-regions/",
@@ -2943,6 +2986,41 @@
             "reader_note": "The integration lets you persist AI agent state across Lambda invocations without managing that state yourself. This matters if you build agents that need to maintain context over multiple steps or recover from failures without losing progress.\n\nBe cautious about assuming this solves all agent orchestration problems. Durability and state management are necessary but not sufficient, integration with a framework is not the same as solving the underlying complexity of multi-step AI reasoning, and you will still need to think through error handling, cost, and latency for your specific workload."
         },
         {
+            "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/lambda-recursion-europe-sovereign-cloud",
+            "date": "2026-09-10",
+            "slug": "aws-lambda-recursive-loop-detection-is-now-available-in-euro-bbb653",
+            "title": "AWS Lambda recursive loop detection is now available in Europe Sovereign Cloud",
+            "vendor": "Amazon Web Services",
+            "summary": "AWS Lambda recursive loop detection is now supported for functions running in Europe Sovereign Cloud. Recursive loop detection automatically detects and stops recursive invocations between Lambda functions and other supported services, preventing unexpected billing caused by unintended recursive",
+            "has_page": true,
+            "entity_uid": "0d5de807",
+            "entity_kind": "company"
+        },
+        {
+            "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/storage-gateway-fips-privatelink-s3/",
+            "date": "2026-09-10",
+            "slug": "aws-storage-gateway-now-supports-fips-compliant-private-conn-bb91dc",
+            "title": "AWS Storage Gateway now supports FIPS-compliant private connectivity for Amazon S3 File Gateway",
+            "vendor": "Amazon Web Services",
+            "summary": "AWS Storage Gateway now supports FIPS 140-3 validated endpoints over AWS PrivateLink for Amazon S3 File Gateway. Previously, FIPS endpoints for File Gateway were available only over the public internet.",
+            "has_page": true,
+            "entity_uid": "0d5de807",
+            "entity_kind": "company",
+            "reader_note": "If your organisation must use FIPS-validated cryptographic modules for S3 access, this removes a constraint that previously forced traffic across the public internet. Private connectivity over PrivateLink reduces exposure during transit. This matters most if your compliance regime treats public routing as inherently riskier than private AWS infrastructure. Be clear on what you're gaining: validated cryptography in motion, not necessarily a simpler compliance picture overall. Storage Gateway remains a translation layer between on-premises systems and S3, so the compliance scope of your entire pipeline matters more than any single connection option."
+        },
+        {
+            "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/aws-transform-net-unit-tests",
+            "date": "2026-09-10",
+            "slug": "aws-transform-for-net-now-generates-unit-tests-for-modernize-494046",
+            "title": "AWS Transform for .NET now generates unit tests for modernized code",
+            "vendor": "Amazon Web Services",
+            "summary": "Today, AWS announced that AWS Transform for .NET can automatically generate unit tests for the code it modernizes. When enabled, AWS Transform generates unit tests that target the testable classes in your transformed .NET application, such as business logic and controllers, giving you an automated",
+            "has_page": true,
+            "entity_uid": "0d5de807",
+            "entity_kind": "company",
+            "reader_note": "The ability to generate unit tests alongside code transformation addresses a real gap in modernization tooling. Test coverage matters most when code has been substantially rewritten, so automation here could save significant manual effort. However, the announcement does not specify test coverage percentages, whether tests pass by default, or how well the generated tests catch actual bugs in production scenarios. Treat generated tests as a starting point requiring review, not as a substitute for your own test strategy. The capability exists in the tool, but its value depends entirely on test quality in your specific codebase."
+        },
+        {
             "url": "https://news.sap.com/2026/09/tangible-progress-sap-services-and-support-impact/",
             "date": "2026-09-10",
             "slug": "beyond-the-launch-tangible-progress-in-sap-services-and-supp-0e19b0",
@@ -2975,6 +3053,16 @@
             "entity_uid": "d9ea9793",
             "entity_kind": "company",
             "reader_note": "The gap between a capability in the lab and one in production remains real. Full-duplex conversation is harder than turn-taking chat, especially over phone lines with poor audio. Test this against your actual use case, your actual network conditions, and your actual users, not the vendor's demo.\n\nCustom voices and instruction following matter more than the headline suggests. How closely does the model follow your specific voice personality or domain constraints? Does it drift? The telephony claim is worth attention only if you need it, and only after you confirm the quality holds on real networks, not clean recordings."
+        },
+        {
+            "url": "https://vercel.com/changelog/build-with-openai-agents-api-on-vercel",
+            "date": "2026-09-10",
+            "slug": "build-with-openai-agents-api-on-vercel-e5e644",
+            "title": "Build with OpenAI Agents API on Vercel",
+            "vendor": "Vercel",
+            "has_page": false,
+            "entity_uid": "b4ead33d",
+            "entity_kind": "company"
         },
         {
             "url": "https://www.salesforce.com/blog/trailblazer-community-20th-anniversary/",
@@ -3076,6 +3164,16 @@
             "entity_kind": "company"
         },
         {
+            "url": "https://vercel.com/changelog/github-copilot-ai-sdk-harness-adapter",
+            "date": "2026-09-10",
+            "slug": "github-copilot-is-now-available-in-the-ai-sdk-harness-layer-b4f889",
+            "title": "GitHub Copilot is now available in the AI SDK harness layer",
+            "vendor": "Vercel",
+            "has_page": false,
+            "entity_uid": "b4ead33d",
+            "entity_kind": "company"
+        },
+        {
             "url": "https://openai.com/index/using-codex-chatgpt-to-search-for-new-antimicrobials",
             "date": "2026-09-10",
             "slug": "how-a-researcher-uses-codex-and-chatgpt-to-search-for-new-an-8e610a",
@@ -3086,6 +3184,17 @@
             "entity_uid": "d9ea9793",
             "entity_kind": "company",
             "reader_note": "This describes a specific research application rather than a new capability. The tools involved, Codex and ChatGPT, are existing products. What matters for your work is whether this use case applies to your own research: do you work with genomic sequences, have access to the same models, and face comparable computational bottlenecks in candidate discovery? The announcement does not establish that this approach outperforms existing sequence analysis methods, only that these language models can be applied to the problem. Replication by other labs would strengthen any conclusions about effectiveness."
+        },
+        {
+            "url": "https://www.snowflake.com/content/snowflake-site/global/en/blog/agentic-ai-operational-roi-manufacturing",
+            "date": "2026-09-10",
+            "slug": "how-manufacturers-unlock-operational-roi-with-agentic-ai-53293e",
+            "title": "How Manufacturers Unlock Operational ROI with Agentic AI",
+            "vendor": "Snowflake",
+            "summary": "Discover how leading manufacturers bypass basic chatbots for agentic AI workflows, unifying IT and OT data to reduce downtime and drive measurable P&L impact.",
+            "has_page": true,
+            "entity_uid": "19d61070",
+            "entity_kind": "company"
         },
         {
             "url": "https://www.microsoft.com/en-us/startups/blog/building-fintech-for-greater-financial-success-how-welcount-uses-ai-to-serve-more-customers/",
@@ -3141,6 +3250,18 @@
             "entity_uid": "d9ea9793",
             "entity_kind": "company",
             "reader_note": "The distinction between an API for building agents and deployed agents doing work in production matters here. You gain a framework for orchestration and tool use, but building something that runs reliably at scale remains your responsibility. The managed service aspect reduces your infrastructure burden, yet the announcement does not detail failure modes, cost structures under load, or real-world performance on complex multi-step tasks. Treat vendor-provided examples as proofs of concept rather than indicators of what your specific workflows will achieve. Evaluate carefully whether long-running sessions meet your latency and cost requirements before committing critical processes."
+        },
+        {
+            "url": "https://www.salesforce.com/blog/service-insights-agentic-analytics-tableau-next/",
+            "date": "2026-09-10",
+            "slug": "meet-service-insights-agentic-analytics-built-for-service-te-e744cd",
+            "title": "Meet Service Insights: Agentic Analytics Built for Service Teams Powered by Tableau Next",
+            "vendor": "Salesforce",
+            "summary": "Discover how Service Insights elevates interactions and accelerates resolutions with purpose-built, AI-powered insights in your flow of work.",
+            "has_page": true,
+            "entity_uid": "4124ecef",
+            "entity_kind": "company",
+            "reader_note": "Service Insights demonstrates Salesforce's effort to embed analytics directly into service workflows rather than requiring agents to leave their interface for separate tools. The meaningful question for your team is whether pre-built analytics templates actually capture your specific resolution patterns, or whether you'll need substantial customization to make them relevant. Agentic framing suggests autonomous decision-making, but the announcement doesn't clarify what actions these agents propose versus what they execute without human review, a distinction that matters for quality control in customer service."
         },
         {
             "url": "https://openai.com/index/put-data-to-work",
@@ -63532,13 +63653,13 @@
             "vendor": "UK AI Security Institute"
         }
     ],
-    "built_at": "2026-09-10T15:21:46-05:00",
+    "built_at": "2026-09-10T18:21:52-05:00",
     "coverage": {
         "feeds": 28,
         "companies": 269,
         "feeds_healthy": 28
     },
     "page_uid": "bad4a071",
-    "generated": "2026-09-10T20:21:50Z",
+    "generated": "2026-09-10T23:21:56Z",
     "window_days": 30
 }
