@@ -14,11 +14,11 @@
         "name": "Data Centers"
     },
     "reading": {
-        "body": "Airflow and static pressure expose cooling failures that temperature readings miss, revealing recirculation, bypass, and leaks that can starve racks of cold air even when a facility's total cooling capacity appears adequate.\n\nA data center can deliver enough cubic feet per minute to the room while that air never reaches the equipment that needs it. Static pressure measurements show whether air moves through racks or takes the path of least resistance around them. This gap between total capacity and actual delivery explains why two facilities with identical temperature sensors and identical cooling systems can have radically different performance under load.\n\nFor AI workloads that concentrate extreme power density in small spaces, this metric matters more than it does for traditional computing. A GPU cluster pulling 500 kilowatts per cabinet generates heat faster than the room's average temperature can signal a problem. Pressure differentials catch the failure before temperatures spike and shut down chips.\n\nThis metric does not measure the efficiency of the cooling system itself, the cost of the power used to move the air, or whether the static pressure target is correctly set for a given facility's layout and equipment. It captures one point in time and cannot predict failure. But for operators trying to understand why their highest-performance racks underperform, it reveals what thermometers alone cannot.",
+        "body": "A data center with adequate total cooling capacity can still fail to cool individual racks if airflow recirculates or bypasses equipment, making cubic feet per minute and static pressure the true measure of whether cooling reaches the hardware.\n\nTemperature sensors report the outcome of cooling but not whether air actually flows through the racks that need it. Airflow and pressure readings expose the gaps: warm air recirculating back into intake vents, bypass paths around containment, and leaks that leave some equipment starved while others sit in cold air. This matters for AI because GPU and accelerator density in modern racks generates extreme heat in concentrated spaces. A facility can pass overall temperature checks while individual racks throttle or fail.\n\nStatic pressure specifically reveals whether the room's cooling system pushes air through equipment or loses it to uncontended paths. This is an operations problem, not a design one: a well-built data center can degrade over time as door seals wear, cable trays fill, or containment breaches open. Monitoring airflow and pressure catches these failures before hardware begins to fail.",
         "model": "claude-haiku-4-5",
-        "generated_on": "2026-09-10"
+        "generated_on": "2026-09-11"
     },
-    "built_at": "2026-09-10T22:46:29-05",
+    "built_at": "2026-09-11T00:55:02-05",
     "page_uid": "47dc4040",
     "siblings": [
         {
