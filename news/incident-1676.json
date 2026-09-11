@@ -2,9 +2,9 @@
     "shape": "incident",
     "title": "What went wrong: Opus 5 ultracode wiped a production database",
     "reading": {
-        "body": "An AI coding agent was given unscoped credentials and direct access to a production database, then instructed to perform schema migrations without controls to prevent it from targeting the wrong environment. The agent executed a migration command that dropped all tables in the live system within ten minutes. The agent itself detected and reported the error after the fact.\n\nThe failure was a deployment without protective access controls. The developer provided production credentials without restricting the agent's actions to safe operations or non-production environments. Two safeguards could have prevented this: validating each command against policy before execution, and issuing credentials scoped only to test or development databases so that dangerous commands would fail regardless of the agent's instruction.\n\nWhether the agent could have been trained or prompted to recognize the risk is not established. The incident shows that when a system can execute irreversible commands, the protection must come from the environment it operates in, not from the system's own judgment.",
+        "body": "An AI coding agent with direct access to a production database executed a destructive command targeting the wrong environment. The developer had connected Claude Opus 5 to live Supabase infrastructure without access controls, then asked it to fix database schema issues while passing in production credentials. The agent ran a migration command that dropped all tables in the production database within ten minutes.\n\nThe system lacked two layers of protection that would have caught this error. A policy layer could have validated that database operations were authorized before execution. Scoped credentials limiting the agent to non-production environments would have made the command fail regardless of which URL was passed to it. Neither safeguard would have slowed legitimate operations, yet both were absent from the deployment.\n\nIt is not established whether the agent could have recognized the danger in the migration syntax itself, or what analysis it performed before executing the command.",
         "model": "claude-haiku-4-5",
-        "generated_on": "2026-09-10"
+        "generated_on": "2026-09-11"
     },
     "reports": [
         {
@@ -26,11 +26,11 @@
             "published": "2026-09-04"
         }
     ],
-    "summary": "# Summary\n\nIn August 2026, a developer connected Claude Opus 5, an AI coding agent, to a production database without proper access restrictions. The developer instructed the agent to resolve database schema issues, which required running migration commands. A Prisma migration command intended for a test database was instead directed at the live production environment, causing all tables to be dropped within ten minutes. The agent itself detected and reported the error to the developer.\n\nThe incident occurred because the command syntax appeared harmless, with the risk determined entirely by which database it targeted rather than what it did. The developer had provided the agent with unscoped database credentials giving full access to production. The incident could have been prevented through two controls: validating commands against policy before execution and limiting the agent's credentials to non-production environments only. These safeguards would stop dangerous actions before they happen rather than discovering problems after the fact.",
-    "built_at": "2026-09-10T18:14:29-05",
+    "summary": "In early August 2026, a developer connected Claude Opus 5 to a production Supabase database without access restrictions. While instructing the AI agent to analyze a project repository and fix database schema issues, the developer accidentally passed the live production database URL into a Prisma migration command that was intended to target a disposable test database. Within approximately 10 minutes, all tables in the production database were dropped and emptied. The agent itself detected the error and reported it to the developer before the developer noticed the problem.\n\nThe incident occurred because the migration command's syntax contained no obvious warning signs of danger, making it impossible for the agent to recognize it was targeting the wrong database. Two safeguards could have prevented this disaster. First, a policy layer between the agent and its tools could have validated the database target before execution, blocking any production-bound command from an agent without proper authorization. Second, scoped credentials limiting the agent's access to non-production environments would have prevented the command from reaching production regardless of where it pointed. Neither control would have added friction to routine, low-risk operations.",
+    "built_at": "2026-09-10T21:25:54-05",
     "cite_url": "https://incidentdatabase.ai/cite/1676",
     "page_uid": "296f0955",
-    "generated": "2026-09-10",
+    "generated": "2026-09-11",
     "published": "2026-09-04",
     "incident_id": 1676,
     "summary_url": "https://www.exemplar.dev/why-harness/reddit-database-wipe",
