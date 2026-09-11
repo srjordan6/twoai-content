@@ -7,13 +7,13 @@
         "context_max": 2000000,
         "provider_count": 57,
         "reasoning_count": 309,
-        "median_prompt_pm": 0.44,
+        "median_prompt_pm": 0.43,
         "open_weight_count": 183,
         "median_completion_pm": 1.88
     },
     "total": 433,
     "source": "openrouter",
-    "built_at": "2026-09-11T03:22:18-05",
+    "built_at": "2026-09-11T06:22:33-05",
     "cheapest": {
         "id": "ibm-granite/granite-4.0-h-micro",
         "url": "https://huggingface.co/ibm-granite/granite-4.0-h-micro",
@@ -909,6 +909,21 @@
                     "knowledge_cutoff": ""
                 },
                 {
+                    "id": "deepseek/deepseek-v4-flash-0731:batch",
+                    "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash-0731",
+                    "name": "DeepSeek: DeepSeek V4 Flash 0731 (batch)",
+                    "context": 1048576,
+                    "expires": "",
+                    "provider": "deepseek",
+                    "released": "2026-07-31",
+                    "prompt_pm": 0.11,
+                    "reasoning": true,
+                    "multimodal": false,
+                    "open_weights": true,
+                    "completion_pm": 0.33,
+                    "knowledge_cutoff": ""
+                },
+                {
                     "id": "deepseek/deepseek-v4-flash-vision-exp:batch",
                     "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash-Vision-Exp",
                     "name": "DeepSeek: DeepSeek V4 Flash Vision Exp (batch)",
@@ -924,18 +939,18 @@
                     "knowledge_cutoff": ""
                 },
                 {
-                    "id": "deepseek/deepseek-v4-flash-0731:batch",
-                    "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash-0731",
-                    "name": "DeepSeek: DeepSeek V4 Flash 0731 (batch)",
+                    "id": "deepseek/deepseek-v4.1-flash",
+                    "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash",
+                    "name": "DeepSeek: DeepSeek V4.1 Flash",
                     "context": 1048576,
                     "expires": "",
                     "provider": "deepseek",
-                    "released": "2026-07-31",
-                    "prompt_pm": 0.11,
+                    "released": "2026-09-10",
+                    "prompt_pm": 0.15,
                     "reasoning": true,
-                    "multimodal": false,
+                    "multimodal": true,
                     "open_weights": true,
-                    "completion_pm": 0.33,
+                    "completion_pm": 0.6,
                     "knowledge_cutoff": ""
                 },
                 {
@@ -1042,21 +1057,6 @@
                     "open_weights": true,
                     "completion_pm": 1,
                     "knowledge_cutoff": "2025-03-31"
-                },
-                {
-                    "id": "deepseek/deepseek-v4.1-flash",
-                    "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash",
-                    "name": "DeepSeek: DeepSeek V4.1 Flash",
-                    "context": 1048576,
-                    "expires": "",
-                    "provider": "deepseek",
-                    "released": "2026-09-10",
-                    "prompt_pm": 0.3,
-                    "reasoning": true,
-                    "multimodal": true,
-                    "open_weights": true,
-                    "completion_pm": 1.2,
-                    "knowledge_cutoff": ""
                 },
                 {
                     "id": "deepseek/deepseek-r1-0528",
@@ -2311,11 +2311,11 @@
                     "expires": "",
                     "provider": "meta-llama",
                     "released": "2024-07-23",
-                    "prompt_pm": 0.72,
+                    "prompt_pm": 0.4,
                     "reasoning": false,
                     "multimodal": false,
                     "open_weights": true,
-                    "completion_pm": 0.72,
+                    "completion_pm": 0.4,
                     "knowledge_cutoff": "2023-12-31"
                 }
             ],
@@ -7506,15 +7506,102 @@
             ]
         },
         {
+            "url": "https://huggingface.co/meta-llama/Llama-3.3-70B-Instruct",
+            "name": "Meta: Llama 3.3 70B Instruct",
+            "low_pm": 0.1,
+            "high_pm": 1.04,
+            "endpoints": [
+                {
+                    "context": 131072,
+                    "provider": "DeepInfra",
+                    "prompt_pm": 0.1,
+                    "quantization": "fp8",
+                    "completion_pm": 0.32
+                },
+                {
+                    "context": 12288,
+                    "provider": "Novita",
+                    "prompt_pm": 0.14,
+                    "quantization": "bf16",
+                    "completion_pm": 0.4
+                },
+                {
+                    "context": 131072,
+                    "provider": "AkashML",
+                    "prompt_pm": 0.2,
+                    "quantization": "fp8",
+                    "completion_pm": 0.52
+                },
+                {
+                    "context": 131072,
+                    "provider": "Parasail",
+                    "prompt_pm": 0.22,
+                    "quantization": "fp8",
+                    "completion_pm": 0.5
+                },
+                {
+                    "context": 131072,
+                    "provider": "Crusoe",
+                    "prompt_pm": 0.25,
+                    "quantization": "bf16",
+                    "completion_pm": 0.75
+                },
+                {
+                    "context": 24000,
+                    "provider": "Cloudflare",
+                    "prompt_pm": 0.29,
+                    "quantization": "fp8",
+                    "completion_pm": 2.25
+                },
+                {
+                    "context": 131072,
+                    "provider": "SambaNova",
+                    "prompt_pm": 0.45,
+                    "completion_pm": 0.9
+                },
+                {
+                    "context": 131072,
+                    "provider": "Groq",
+                    "prompt_pm": 0.59,
+                    "completion_pm": 0.79
+                },
+                {
+                    "context": 128000,
+                    "provider": "CoreWeave",
+                    "prompt_pm": 0.71,
+                    "quantization": "fp16",
+                    "completion_pm": 0.71
+                },
+                {
+                    "context": 128000,
+                    "provider": "Google",
+                    "prompt_pm": 0.72,
+                    "completion_pm": 0.72
+                },
+                {
+                    "context": 128000,
+                    "provider": "Google",
+                    "prompt_pm": 0.72,
+                    "completion_pm": 0.72
+                },
+                {
+                    "context": 131072,
+                    "provider": "Together",
+                    "prompt_pm": 1.04,
+                    "completion_pm": 1.04
+                }
+            ]
+        },
+        {
             "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash-0731",
             "name": "DeepSeek: DeepSeek V4 Flash 0731",
-            "low_pm": 0.04,
+            "low_pm": 0.05,
             "high_pm": 0.44,
             "endpoints": [
                 {
                     "context": 1048576,
                     "provider": "OpenInference",
-                    "prompt_pm": 0.04,
+                    "prompt_pm": 0.05,
                     "quantization": "fp8",
                     "completion_pm": 0.16
                 },
@@ -7537,7 +7624,7 @@
                     "provider": "Sail Research",
                     "prompt_pm": 0.07,
                     "quantization": "fp4",
-                    "completion_pm": 0.18
+                    "completion_pm": 0.3
                 },
                 {
                     "context": 1048576,
@@ -7697,93 +7784,6 @@
                     "provider": "Cloudflare",
                     "prompt_pm": 0.44,
                     "completion_pm": 1.32
-                }
-            ]
-        },
-        {
-            "url": "https://huggingface.co/meta-llama/Llama-3.3-70B-Instruct",
-            "name": "Meta: Llama 3.3 70B Instruct",
-            "low_pm": 0.1,
-            "high_pm": 1.04,
-            "endpoints": [
-                {
-                    "context": 131072,
-                    "provider": "DeepInfra",
-                    "prompt_pm": 0.1,
-                    "quantization": "fp8",
-                    "completion_pm": 0.32
-                },
-                {
-                    "context": 12288,
-                    "provider": "Novita",
-                    "prompt_pm": 0.14,
-                    "quantization": "bf16",
-                    "completion_pm": 0.4
-                },
-                {
-                    "context": 131072,
-                    "provider": "AkashML",
-                    "prompt_pm": 0.2,
-                    "quantization": "fp8",
-                    "completion_pm": 0.52
-                },
-                {
-                    "context": 131072,
-                    "provider": "Parasail",
-                    "prompt_pm": 0.22,
-                    "quantization": "fp8",
-                    "completion_pm": 0.5
-                },
-                {
-                    "context": 131072,
-                    "provider": "Crusoe",
-                    "prompt_pm": 0.25,
-                    "quantization": "bf16",
-                    "completion_pm": 0.75
-                },
-                {
-                    "context": 24000,
-                    "provider": "Cloudflare",
-                    "prompt_pm": 0.29,
-                    "quantization": "fp8",
-                    "completion_pm": 2.25
-                },
-                {
-                    "context": 131072,
-                    "provider": "SambaNova",
-                    "prompt_pm": 0.45,
-                    "completion_pm": 0.9
-                },
-                {
-                    "context": 131072,
-                    "provider": "Groq",
-                    "prompt_pm": 0.59,
-                    "completion_pm": 0.79
-                },
-                {
-                    "context": 128000,
-                    "provider": "CoreWeave",
-                    "prompt_pm": 0.71,
-                    "quantization": "fp16",
-                    "completion_pm": 0.71
-                },
-                {
-                    "context": 128000,
-                    "provider": "Google",
-                    "prompt_pm": 0.72,
-                    "completion_pm": 0.72
-                },
-                {
-                    "context": 128000,
-                    "provider": "Google",
-                    "prompt_pm": 0.72,
-                    "completion_pm": 0.72
-                },
-                {
-                    "context": 131072,
-                    "provider": "Together",
-                    "prompt_pm": 1.04,
-                    "completion_pm": 1.04
                 }
             ]
         },
@@ -7959,6 +7959,13 @@
                     "completion_pm": 0.35
                 },
                 {
+                    "context": 1024000,
+                    "provider": "StreamLake",
+                    "prompt_pm": 0.11,
+                    "quantization": "fp8",
+                    "completion_pm": 0.37
+                },
+                {
                     "context": 1048576,
                     "provider": "GMICloud",
                     "prompt_pm": 0.11,
@@ -7971,13 +7978,6 @@
                     "prompt_pm": 0.13,
                     "quantization": "fp8",
                     "completion_pm": 0.44
-                },
-                {
-                    "context": 1024000,
-                    "provider": "StreamLake",
-                    "prompt_pm": 0.14,
-                    "quantization": "fp8",
-                    "completion_pm": 0.45
                 },
                 {
                     "context": 1048576,
@@ -8189,56 +8189,6 @@
             ]
         },
         {
-            "url": "https://openrouter.ai/openai/gpt-5.5",
-            "name": "OpenAI: GPT-5.5",
-            "low_pm": 2.5,
-            "high_pm": 12.5,
-            "endpoints": [
-                {
-                    "context": 1050000,
-                    "provider": "OpenAI",
-                    "prompt_pm": 2.5,
-                    "completion_pm": 15
-                },
-                {
-                    "context": 1050000,
-                    "provider": "Azure",
-                    "prompt_pm": 5,
-                    "completion_pm": 30
-                },
-                {
-                    "context": 1050000,
-                    "provider": "OpenAI",
-                    "prompt_pm": 5,
-                    "completion_pm": 30
-                },
-                {
-                    "context": 1050000,
-                    "provider": "Azure",
-                    "prompt_pm": 5.5,
-                    "completion_pm": 33
-                },
-                {
-                    "context": 1050000,
-                    "provider": "Azure",
-                    "prompt_pm": 5.5,
-                    "completion_pm": 33
-                },
-                {
-                    "context": 1050000,
-                    "provider": "Amazon Bedrock",
-                    "prompt_pm": 5.5,
-                    "completion_pm": 33
-                },
-                {
-                    "context": 1050000,
-                    "provider": "OpenAI",
-                    "prompt_pm": 12.5,
-                    "completion_pm": 75
-                }
-            ]
-        },
-        {
             "url": "https://huggingface.co/Qwen/Qwen3.6-35B-A3B",
             "name": "Qwen: Qwen3.6 35B A3B",
             "low_pm": 0.05,
@@ -8318,6 +8268,56 @@
                     "prompt_pm": 0.25,
                     "quantization": "fp8",
                     "completion_pm": 1.25
+                }
+            ]
+        },
+        {
+            "url": "https://openrouter.ai/openai/gpt-5.5",
+            "name": "OpenAI: GPT-5.5",
+            "low_pm": 2.5,
+            "high_pm": 12.5,
+            "endpoints": [
+                {
+                    "context": 1050000,
+                    "provider": "OpenAI",
+                    "prompt_pm": 2.5,
+                    "completion_pm": 15
+                },
+                {
+                    "context": 1050000,
+                    "provider": "Azure",
+                    "prompt_pm": 5,
+                    "completion_pm": 30
+                },
+                {
+                    "context": 1050000,
+                    "provider": "OpenAI",
+                    "prompt_pm": 5,
+                    "completion_pm": 30
+                },
+                {
+                    "context": 1050000,
+                    "provider": "Azure",
+                    "prompt_pm": 5.5,
+                    "completion_pm": 33
+                },
+                {
+                    "context": 1050000,
+                    "provider": "Azure",
+                    "prompt_pm": 5.5,
+                    "completion_pm": 33
+                },
+                {
+                    "context": 1050000,
+                    "provider": "Amazon Bedrock",
+                    "prompt_pm": 5.5,
+                    "completion_pm": 33
+                },
+                {
+                    "context": 1050000,
+                    "provider": "OpenAI",
+                    "prompt_pm": 12.5,
+                    "completion_pm": 75
                 }
             ]
         },
@@ -8626,94 +8626,6 @@
             ]
         },
         {
-            "url": "https://openrouter.ai/openai/gpt-6-astra-pro",
-            "name": "OpenAI: GPT-6 Astra Pro",
-            "low_pm": 5,
-            "high_pm": 20,
-            "endpoints": [
-                {
-                    "context": 1050000,
-                    "provider": "OpenAI",
-                    "prompt_pm": 5,
-                    "completion_pm": 25
-                },
-                {
-                    "context": 1050000,
-                    "provider": "Azure",
-                    "prompt_pm": 10,
-                    "completion_pm": 50
-                },
-                {
-                    "context": 1050000,
-                    "provider": "OpenAI",
-                    "prompt_pm": 10,
-                    "completion_pm": 50
-                },
-                {
-                    "context": 1050000,
-                    "provider": "Azure",
-                    "prompt_pm": 11,
-                    "completion_pm": 55
-                },
-                {
-                    "context": 1050000,
-                    "provider": "OpenAI",
-                    "prompt_pm": 20,
-                    "completion_pm": 100
-                }
-            ]
-        },
-        {
-            "url": "https://openrouter.ai/openai/gpt-5.6-luna",
-            "name": "OpenAI: GPT-5.6 Luna",
-            "low_pm": 0.1,
-            "high_pm": 0.4,
-            "endpoints": [
-                {
-                    "context": 1050000,
-                    "provider": "OpenAI",
-                    "prompt_pm": 0.1,
-                    "completion_pm": 0.6
-                },
-                {
-                    "context": 1050000,
-                    "provider": "Azure",
-                    "prompt_pm": 0.2,
-                    "completion_pm": 1.2
-                },
-                {
-                    "context": 1050000,
-                    "provider": "OpenAI",
-                    "prompt_pm": 0.2,
-                    "completion_pm": 1.2
-                },
-                {
-                    "context": 1050000,
-                    "provider": "Azure",
-                    "prompt_pm": 0.22,
-                    "completion_pm": 1.32
-                },
-                {
-                    "context": 1050000,
-                    "provider": "Amazon Bedrock",
-                    "prompt_pm": 0.22,
-                    "completion_pm": 1.32
-                },
-                {
-                    "context": 1050000,
-                    "provider": "Azure",
-                    "prompt_pm": 0.22,
-                    "completion_pm": 1.32
-                },
-                {
-                    "context": 1050000,
-                    "provider": "OpenAI",
-                    "prompt_pm": 0.4,
-                    "completion_pm": 2.4
-                }
-            ]
-        },
-        {
             "url": "https://openrouter.ai/openai/gpt-5.4",
             "name": "OpenAI: GPT-5.4",
             "low_pm": 1.25,
@@ -8764,108 +8676,8 @@
             ]
         },
         {
-            "url": "https://huggingface.co/openai/gpt-oss-20b",
-            "name": "OpenAI: gpt-oss-20b",
-            "low_pm": 0.02,
-            "high_pm": 0.08,
-            "endpoints": [
-                {
-                    "context": 131072,
-                    "provider": "Darkbloom",
-                    "prompt_pm": 0.02,
-                    "quantization": "fp8",
-                    "completion_pm": 0.1
-                },
-                {
-                    "context": 131072,
-                    "provider": "AkashML",
-                    "prompt_pm": 0.02,
-                    "quantization": "fp4",
-                    "completion_pm": 0.1
-                },
-                {
-                    "context": 131072,
-                    "provider": "DekaLLM",
-                    "prompt_pm": 0.03,
-                    "quantization": "bf16",
-                    "completion_pm": 0.14
-                },
-                {
-                    "context": 131072,
-                    "provider": "CoreWeave",
-                    "prompt_pm": 0.03,
-                    "quantization": "fp4",
-                    "completion_pm": 0.13
-                },
-                {
-                    "context": 131072,
-                    "provider": "DeepInfra",
-                    "prompt_pm": 0.03,
-                    "quantization": "bf16",
-                    "completion_pm": 0.14
-                },
-                {
-                    "context": 131072,
-                    "provider": "Parasail",
-                    "prompt_pm": 0.03,
-                    "quantization": "fp4",
-                    "completion_pm": 0.15
-                },
-                {
-                    "context": 131072,
-                    "provider": "Phala",
-                    "prompt_pm": 0.04,
-                    "completion_pm": 0.15
-                },
-                {
-                    "context": 131072,
-                    "provider": "Novita",
-                    "prompt_pm": 0.04,
-                    "quantization": "fp4",
-                    "completion_pm": 0.15
-                },
-                {
-                    "context": 131072,
-                    "provider": "SiliconFlow",
-                    "prompt_pm": 0.04,
-                    "quantization": "fp8",
-                    "completion_pm": 0.18
-                },
-                {
-                    "context": 131072,
-                    "provider": "Together",
-                    "prompt_pm": 0.05,
-                    "completion_pm": 0.2
-                },
-                {
-                    "context": 131072,
-                    "provider": "Amazon Bedrock",
-                    "prompt_pm": 0.07,
-                    "completion_pm": 0.15
-                },
-                {
-                    "context": 131072,
-                    "provider": "Amazon Bedrock",
-                    "prompt_pm": 0.07,
-                    "completion_pm": 0.15
-                },
-                {
-                    "context": 131072,
-                    "provider": "Google",
-                    "prompt_pm": 0.07,
-                    "completion_pm": 0.25
-                },
-                {
-                    "context": 131072,
-                    "provider": "Groq",
-                    "prompt_pm": 0.08,
-                    "completion_pm": 0.3
-                }
-            ]
-        },
-        {
-            "url": "https://openrouter.ai/openai/gpt-6-astra",
-            "name": "OpenAI: GPT-6 Astra",
+            "url": "https://openrouter.ai/openai/gpt-6-astra-pro",
+            "name": "OpenAI: GPT-6 Astra Pro",
             "low_pm": 5,
             "high_pm": 20,
             "endpoints": [
@@ -8990,6 +8802,156 @@
             ]
         },
         {
+            "url": "https://huggingface.co/openai/gpt-oss-20b",
+            "name": "OpenAI: gpt-oss-20b",
+            "low_pm": 0.02,
+            "high_pm": 0.08,
+            "endpoints": [
+                {
+                    "context": 131072,
+                    "provider": "Darkbloom",
+                    "prompt_pm": 0.02,
+                    "quantization": "fp8",
+                    "completion_pm": 0.1
+                },
+                {
+                    "context": 131072,
+                    "provider": "AkashML",
+                    "prompt_pm": 0.02,
+                    "quantization": "fp4",
+                    "completion_pm": 0.1
+                },
+                {
+                    "context": 131072,
+                    "provider": "DekaLLM",
+                    "prompt_pm": 0.03,
+                    "quantization": "bf16",
+                    "completion_pm": 0.14
+                },
+                {
+                    "context": 131072,
+                    "provider": "CoreWeave",
+                    "prompt_pm": 0.03,
+                    "quantization": "fp4",
+                    "completion_pm": 0.13
+                },
+                {
+                    "context": 131072,
+                    "provider": "DeepInfra",
+                    "prompt_pm": 0.03,
+                    "quantization": "bf16",
+                    "completion_pm": 0.14
+                },
+                {
+                    "context": 131072,
+                    "provider": "Parasail",
+                    "prompt_pm": 0.03,
+                    "quantization": "fp4",
+                    "completion_pm": 0.15
+                },
+                {
+                    "context": 131072,
+                    "provider": "Phala",
+                    "prompt_pm": 0.04,
+                    "completion_pm": 0.15
+                },
+                {
+                    "context": 131072,
+                    "provider": "Novita",
+                    "prompt_pm": 0.04,
+                    "quantization": "fp4",
+                    "completion_pm": 0.15
+                },
+                {
+                    "context": 131072,
+                    "provider": "SiliconFlow",
+                    "prompt_pm": 0.04,
+                    "quantization": "fp8",
+                    "completion_pm": 0.18
+                },
+                {
+                    "context": 131072,
+                    "provider": "Together",
+                    "prompt_pm": 0.05,
+                    "completion_pm": 0.2
+                },
+                {
+                    "context": 131072,
+                    "provider": "Amazon Bedrock",
+                    "prompt_pm": 0.07,
+                    "completion_pm": 0.15
+                },
+                {
+                    "context": 131072,
+                    "provider": "Amazon Bedrock",
+                    "prompt_pm": 0.07,
+                    "completion_pm": 0.15
+                },
+                {
+                    "context": 131072,
+                    "provider": "Google",
+                    "prompt_pm": 0.07,
+                    "completion_pm": 0.25
+                },
+                {
+                    "context": 131072,
+                    "provider": "Groq",
+                    "prompt_pm": 0.08,
+                    "completion_pm": 0.3
+                }
+            ]
+        },
+        {
+            "url": "https://openrouter.ai/openai/gpt-5.6-luna",
+            "name": "OpenAI: GPT-5.6 Luna",
+            "low_pm": 0.1,
+            "high_pm": 0.4,
+            "endpoints": [
+                {
+                    "context": 1050000,
+                    "provider": "OpenAI",
+                    "prompt_pm": 0.1,
+                    "completion_pm": 0.6
+                },
+                {
+                    "context": 1050000,
+                    "provider": "Azure",
+                    "prompt_pm": 0.2,
+                    "completion_pm": 1.2
+                },
+                {
+                    "context": 1050000,
+                    "provider": "OpenAI",
+                    "prompt_pm": 0.2,
+                    "completion_pm": 1.2
+                },
+                {
+                    "context": 1050000,
+                    "provider": "Azure",
+                    "prompt_pm": 0.22,
+                    "completion_pm": 1.32
+                },
+                {
+                    "context": 1050000,
+                    "provider": "Amazon Bedrock",
+                    "prompt_pm": 0.22,
+                    "completion_pm": 1.32
+                },
+                {
+                    "context": 1050000,
+                    "provider": "Azure",
+                    "prompt_pm": 0.22,
+                    "completion_pm": 1.32
+                },
+                {
+                    "context": 1050000,
+                    "provider": "OpenAI",
+                    "prompt_pm": 0.4,
+                    "completion_pm": 2.4
+                }
+            ]
+        },
+        {
             "url": "https://openrouter.ai/openai/gpt-5.6-luna-pro",
             "name": "OpenAI: GPT-5.6 Luna Pro",
             "low_pm": 0.1,
@@ -9024,6 +8986,44 @@
                     "provider": "OpenAI",
                     "prompt_pm": 0.4,
                     "completion_pm": 2.4
+                }
+            ]
+        },
+        {
+            "url": "https://openrouter.ai/openai/gpt-6-astra",
+            "name": "OpenAI: GPT-6 Astra",
+            "low_pm": 5,
+            "high_pm": 20,
+            "endpoints": [
+                {
+                    "context": 1050000,
+                    "provider": "OpenAI",
+                    "prompt_pm": 5,
+                    "completion_pm": 25
+                },
+                {
+                    "context": 1050000,
+                    "provider": "Azure",
+                    "prompt_pm": 10,
+                    "completion_pm": 50
+                },
+                {
+                    "context": 1050000,
+                    "provider": "OpenAI",
+                    "prompt_pm": 10,
+                    "completion_pm": 50
+                },
+                {
+                    "context": 1050000,
+                    "provider": "Azure",
+                    "prompt_pm": 11,
+                    "completion_pm": 55
+                },
+                {
+                    "context": 1050000,
+                    "provider": "OpenAI",
+                    "prompt_pm": 20,
+                    "completion_pm": 100
                 }
             ]
         },
@@ -9217,6 +9217,13 @@
                     "completion_pm": 0.34
                 },
                 {
+                    "context": 262144,
+                    "provider": "NextBit",
+                    "prompt_pm": 0.09,
+                    "quantization": "bf16",
+                    "completion_pm": 0.3
+                },
+                {
                     "context": 256000,
                     "provider": "Cloudflare",
                     "prompt_pm": 0.1,
@@ -9227,13 +9234,6 @@
                     "provider": "Makora",
                     "prompt_pm": 0.1,
                     "completion_pm": 0.34
-                },
-                {
-                    "context": 262144,
-                    "provider": "NextBit",
-                    "prompt_pm": 0.1,
-                    "quantization": "bf16",
-                    "completion_pm": 0.4
                 },
                 {
                     "context": 256000,
@@ -9272,31 +9272,49 @@
             ]
         },
         {
-            "url": "https://openrouter.ai/google/gemini-2.5-flash-image",
-            "name": "Google: Nano Banana (Gemini 2.5 Flash Image)",
+            "url": "https://openrouter.ai/google/gemini-2.5-flash",
+            "name": "Google: Gemini 2.5 Flash",
             "low_pm": 0.15,
             "high_pm": 0.54,
             "endpoints": [
                 {
-                    "context": 32768,
-                    "provider": "Google AI Studio",
-                    "prompt_pm": 0.15,
-                    "completion_pm": 1.25
-                },
-                {
-                    "context": 32768,
-                    "provider": "Google AI Studio",
-                    "prompt_pm": 0.3,
-                    "completion_pm": 2.5
-                },
-                {
-                    "context": 32768,
+                    "context": 1048576,
                     "provider": "Google",
                     "prompt_pm": 0.3,
                     "completion_pm": 2.5
                 },
                 {
-                    "context": 32768,
+                    "context": 1048576,
+                    "provider": "Google",
+                    "prompt_pm": 0.3,
+                    "completion_pm": 2.5
+                },
+                {
+                    "context": 1048576,
+                    "provider": "Google",
+                    "prompt_pm": 0.54,
+                    "completion_pm": 4.5
+                },
+                {
+                    "context": 1048576,
+                    "provider": "Google AI Studio",
+                    "prompt_pm": 0.15,
+                    "completion_pm": 1.25
+                },
+                {
+                    "context": 1048576,
+                    "provider": "Google AI Studio",
+                    "prompt_pm": 0.3,
+                    "completion_pm": 2.5
+                },
+                {
+                    "context": 1048576,
+                    "provider": "Google",
+                    "prompt_pm": 0.3,
+                    "completion_pm": 2.5
+                },
+                {
+                    "context": 1048576,
                     "provider": "Google AI Studio",
                     "prompt_pm": 0.54,
                     "completion_pm": 4.5
@@ -9360,49 +9378,31 @@
             ]
         },
         {
-            "url": "https://openrouter.ai/google/gemini-2.5-flash",
-            "name": "Google: Gemini 2.5 Flash",
+            "url": "https://openrouter.ai/google/gemini-2.5-flash-image",
+            "name": "Google: Nano Banana (Gemini 2.5 Flash Image)",
             "low_pm": 0.15,
             "high_pm": 0.54,
             "endpoints": [
                 {
-                    "context": 1048576,
-                    "provider": "Google",
-                    "prompt_pm": 0.3,
-                    "completion_pm": 2.5
-                },
-                {
-                    "context": 1048576,
-                    "provider": "Google",
-                    "prompt_pm": 0.3,
-                    "completion_pm": 2.5
-                },
-                {
-                    "context": 1048576,
-                    "provider": "Google",
-                    "prompt_pm": 0.54,
-                    "completion_pm": 4.5
-                },
-                {
-                    "context": 1048576,
+                    "context": 32768,
                     "provider": "Google AI Studio",
                     "prompt_pm": 0.15,
                     "completion_pm": 1.25
                 },
                 {
-                    "context": 1048576,
+                    "context": 32768,
                     "provider": "Google AI Studio",
                     "prompt_pm": 0.3,
                     "completion_pm": 2.5
                 },
                 {
-                    "context": 1048576,
+                    "context": 32768,
                     "provider": "Google",
                     "prompt_pm": 0.3,
                     "completion_pm": 2.5
                 },
                 {
-                    "context": 1048576,
+                    "context": 32768,
                     "provider": "Google AI Studio",
                     "prompt_pm": 0.54,
                     "completion_pm": 4.5
@@ -9736,20 +9736,20 @@
             ]
         },
         {
-            "url": "https://openrouter.ai/google/gemini-3.8-flash",
-            "name": "Google: Gemini 3.8 Flash",
+            "url": "https://openrouter.ai/google/gemini-3.6-flash",
+            "name": "Google: Gemini 3.6 Flash",
             "low_pm": 0.38,
             "high_pm": 1.35,
             "endpoints": [
                 {
                     "context": 1048576,
-                    "provider": "Google AI Studio",
+                    "provider": "Google",
                     "prompt_pm": 0.38,
                     "completion_pm": 1.88
                 },
                 {
                     "context": 1048576,
-                    "provider": "Google",
+                    "provider": "Google AI Studio",
                     "prompt_pm": 0.38,
                     "completion_pm": 1.88
                 },
@@ -9767,6 +9767,12 @@
                 },
                 {
                     "context": 1048576,
+                    "provider": "Google",
+                    "prompt_pm": 1.35,
+                    "completion_pm": 6.75
+                },
+                {
+                    "context": 1048576,
                     "provider": "Google AI Studio",
                     "prompt_pm": 1.35,
                     "completion_pm": 6.75
@@ -9774,8 +9780,8 @@
                 {
                     "context": 1048576,
                     "provider": "Google",
-                    "prompt_pm": 1.35,
-                    "completion_pm": 6.75
+                    "prompt_pm": 0.83,
+                    "completion_pm": 4.13
                 }
             ]
         },
@@ -9824,20 +9830,20 @@
             ]
         },
         {
-            "url": "https://openrouter.ai/google/gemini-3.6-flash",
-            "name": "Google: Gemini 3.6 Flash",
+            "url": "https://openrouter.ai/google/gemini-3.8-flash",
+            "name": "Google: Gemini 3.8 Flash",
             "low_pm": 0.38,
             "high_pm": 1.35,
             "endpoints": [
                 {
                     "context": 1048576,
-                    "provider": "Google",
+                    "provider": "Google AI Studio",
                     "prompt_pm": 0.38,
                     "completion_pm": 1.88
                 },
                 {
                     "context": 1048576,
-                    "provider": "Google AI Studio",
+                    "provider": "Google",
                     "prompt_pm": 0.38,
                     "completion_pm": 1.88
                 },
@@ -9855,12 +9861,6 @@
                 },
                 {
                     "context": 1048576,
-                    "provider": "Google",
-                    "prompt_pm": 1.35,
-                    "completion_pm": 6.75
-                },
-                {
-                    "context": 1048576,
                     "provider": "Google AI Studio",
                     "prompt_pm": 1.35,
                     "completion_pm": 6.75
@@ -9868,8 +9868,8 @@
                 {
                     "context": 1048576,
                     "provider": "Google",
-                    "prompt_pm": 0.83,
-                    "completion_pm": 4.13
+                    "prompt_pm": 1.35,
+                    "completion_pm": 6.75
                 }
             ]
         },
@@ -10046,27 +10046,6 @@
             ]
         },
         {
-            "url": "https://huggingface.co/inclusionAI/Ling-3.0-flash",
-            "name": "inclusionAI: Ling 3.0 Flash",
-            "low_pm": 0.02,
-            "high_pm": 0.06,
-            "endpoints": [
-                {
-                    "context": 262144,
-                    "provider": "Novita",
-                    "prompt_pm": 0.02,
-                    "completion_pm": 0.06
-                },
-                {
-                    "context": 131072,
-                    "provider": "DeepInfra",
-                    "prompt_pm": 0.06,
-                    "quantization": "bf16",
-                    "completion_pm": 0.18
-                }
-            ]
-        },
-        {
             "url": "https://huggingface.co/Qwen/Qwen3.8-27B",
             "name": "Qwen: Qwen3.8 27B",
             "low_pm": 0.15,
@@ -10169,6 +10148,27 @@
             ]
         },
         {
+            "url": "https://huggingface.co/inclusionAI/Ling-3.0-flash",
+            "name": "inclusionAI: Ling 3.0 Flash",
+            "low_pm": 0.02,
+            "high_pm": 0.06,
+            "endpoints": [
+                {
+                    "context": 262144,
+                    "provider": "Novita",
+                    "prompt_pm": 0.02,
+                    "completion_pm": 0.06
+                },
+                {
+                    "context": 131072,
+                    "provider": "DeepInfra",
+                    "prompt_pm": 0.06,
+                    "quantization": "bf16",
+                    "completion_pm": 0.18
+                }
+            ]
+        },
+        {
             "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash",
             "name": "DeepSeek: DeepSeek V4 Flash 0423",
             "low_pm": 0.07,
@@ -10200,6 +10200,12 @@
                     "prompt_pm": 0.09,
                     "quantization": "fp8",
                     "completion_pm": 0.18
+                },
+                {
+                    "context": 1048576,
+                    "provider": "Wafer",
+                    "prompt_pm": 0.1,
+                    "completion_pm": 0.25
                 },
                 {
                     "context": 1048576,
@@ -10278,6 +10284,54 @@
             ]
         },
         {
+            "url": "https://huggingface.co/tencent/Hy3",
+            "name": "Tencent: Hy3",
+            "low_pm": 0.07,
+            "high_pm": 0.2,
+            "endpoints": [
+                {
+                    "context": 262144,
+                    "provider": "DeepInfra",
+                    "prompt_pm": 0.07,
+                    "quantization": "fp8",
+                    "completion_pm": 0.29
+                },
+                {
+                    "context": 262144,
+                    "provider": "Tencent",
+                    "prompt_pm": 0.13,
+                    "quantization": "fp8",
+                    "completion_pm": 0.53
+                },
+                {
+                    "context": 262144,
+                    "provider": "Novita",
+                    "prompt_pm": 0.14,
+                    "completion_pm": 0.58
+                },
+                {
+                    "context": 262144,
+                    "provider": "GMICloud",
+                    "prompt_pm": 0.14,
+                    "quantization": "bf16",
+                    "completion_pm": 0.58
+                },
+                {
+                    "context": 262144,
+                    "provider": "Phala",
+                    "prompt_pm": 0.15,
+                    "completion_pm": 0.64
+                },
+                {
+                    "context": 262144,
+                    "provider": "AtlasCloud",
+                    "prompt_pm": 0.2,
+                    "quantization": "fp8",
+                    "completion_pm": 0.8
+                }
+            ]
+        },
+        {
             "url": "https://huggingface.co/MiniMaxAI/MiniMax-M2.7",
             "name": "MiniMax: MiniMax M2.7",
             "low_pm": 0.21,
@@ -10342,54 +10396,6 @@
                     "prompt_pm": 0.6,
                     "quantization": "fp8",
                     "completion_pm": 2.4
-                }
-            ]
-        },
-        {
-            "url": "https://huggingface.co/tencent/Hy3",
-            "name": "Tencent: Hy3",
-            "low_pm": 0.07,
-            "high_pm": 0.2,
-            "endpoints": [
-                {
-                    "context": 262144,
-                    "provider": "DeepInfra",
-                    "prompt_pm": 0.07,
-                    "quantization": "fp8",
-                    "completion_pm": 0.29
-                },
-                {
-                    "context": 262144,
-                    "provider": "Tencent",
-                    "prompt_pm": 0.13,
-                    "quantization": "fp8",
-                    "completion_pm": 0.53
-                },
-                {
-                    "context": 262144,
-                    "provider": "Novita",
-                    "prompt_pm": 0.14,
-                    "completion_pm": 0.58
-                },
-                {
-                    "context": 262144,
-                    "provider": "GMICloud",
-                    "prompt_pm": 0.14,
-                    "quantization": "bf16",
-                    "completion_pm": 0.58
-                },
-                {
-                    "context": 262144,
-                    "provider": "Phala",
-                    "prompt_pm": 0.15,
-                    "completion_pm": 0.64
-                },
-                {
-                    "context": 262144,
-                    "provider": "AtlasCloud",
-                    "prompt_pm": 0.2,
-                    "quantization": "fp8",
-                    "completion_pm": 0.8
                 }
             ]
         },
