@@ -14,11 +14,11 @@
         "name": "Data Centers"
     },
     "reading": {
-        "body": "Distributed AI training degrades silently when network latency or packet loss rises, burning GPU-hours before any outage alarm triggers. This makes continuous measurement of round-trip latency, loss rate, and fabric utilization a binding operational constraint.\n\nThe cost structure of data centers means that wasted compute is worse than brief downtime. A training run that completes slowly across weeks accumulates phantom costs in power, cooling, and opportunity loss that never appear on an uptime report. Network fabric quality therefore determines whether infrastructure actually delivers the compute it nominally provides.\n\nThis metric covers the internal network between servers and the external transit to other facilities. It does not measure how often these networks actually degrade, whether degradation follows predictable patterns, or how much wasted GPU-hours a typical facility absorbs. Those facts would show whether network quality is already a scaling bottleneck or still an emerging one.",
+        "body": "Distributed AI training fails silently under network degradation long before it fails loudly as an outage, making latency and packet loss metrics leading indicators of wasted compute.\n\nData centers measure their internal network fabric and external connections continuously for latency, loss rate, and utilization because these metrics detect GPU inefficiency faster than traditional monitoring does. A lossy network looks like slow training to the user, but register as hardware sitting idle or moving corrupted data to the cluster. For AI workloads that span hundreds or thousands of GPUs, even brief packet loss or high latency compounds across parallel tasks and synchronization points.\n\nThis metric tracks operations rather than incidents, which reflects a shift in how infrastructure reliability works for AI. The old data center model flagged outages after users noticed them. The new model catches degradation before training jobs stall or restart. It does not directly measure power consumption or building capacity, but poor network health forces the power plant to cool hardware that produces nothing, turning a transmission problem into a consumption problem.",
         "model": "claude-haiku-4-5",
-        "generated_on": "2026-09-11"
+        "generated_on": "2026-09-12"
     },
-    "built_at": "2026-09-11T22:02:30-05",
+    "built_at": "2026-09-12T00:23:00-05",
     "page_uid": "5ae3bb07",
     "siblings": [
         {
