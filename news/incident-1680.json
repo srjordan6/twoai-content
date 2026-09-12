@@ -2,9 +2,9 @@
     "shape": "incident",
     "title": "Cline CLI npm Package Compromised via Suspected Cache Poisoning Attack",
     "reading": {
-        "body": "An AI coding assistant called Cline was deployed with an issue triage workflow that accepted user input without sanitizing it before passing it to Claude. An attacker could inject malicious instructions into issue titles, and Claude would execute them as code. The system trusted the AI's output without human review before running it in a privileged environment where it had access to publishing credentials.\n\nThe vulnerability allowed attackers to combine prompt injection with GitHub Actions cache poisoning to steal credentials and publish malicious versions of the software to package repositories used by millions of developers. The flaw would have been caught by treating AI-generated code as untrusted, requiring human approval before execution, or by restricting what code the AI could call and what it could access. It is not established whether the vulnerability was actually exploited to publish malware, only that evidence suggests someone may have attempted it.",
+        "body": "An AI-powered issue triage system deployed in Cline's development workflow accepted and executed commands injected through GitHub issue titles without validating the input. The system allowed anyone with a GitHub account to craft malicious issues that the AI would interpret as legitimate instructions, leading to execution of arbitrary code in the CI/CD pipeline. This failure happened at the boundary between user input and automated command execution, where a human review step before the AI acted on external input would have caught the injection.\n\nThe vulnerability persisted for over two months because security reports sent to Cline starting January 1, 2026, went unanswered. The system was used outside the conditions it should have been deployed under: an AI making decisions about code execution from untrusted sources without human verification. Once disclosed publicly, the vulnerability was patched within an hour, but the delay left a window where the attacker surface was exposed to anyone who knew it existed.\n\nIt is not established that unauthorized code was successfully published to package repositories, though credential theft is suspected.",
         "model": "claude-haiku-4-5",
-        "generated_on": "2026-09-11"
+        "generated_on": "2026-09-12"
     },
     "reports": [
         {
@@ -38,12 +38,12 @@
             "published": "2026-09-08"
         }
     ],
-    "summary": "# Summary\n\nCline, an open-source AI coding tool used by millions of developers, contained a critical security vulnerability between December 21, 2025, and February 9, 2026. Security researcher Adnan Khan discovered that the AI-powered issue triage workflow allowed attackers to inject malicious instructions into issue titles, tricking Claude into executing arbitrary code. By combining prompt injection with GitHub Actions cache poisoning techniques, an attacker could steal publishing credentials and distribute malware to all Cline users across Visual Studio Code Marketplace, OpenVSX, and NPM.\n\nThe attack worked by having Claude run code from attacker-controlled repositories, then using a tool called Cacheract to poison GitHub's cache system and gain access to nightly release workflows that shared the same credentials as production releases. Khan reported the vulnerability through official channels starting January 1st but received no response. After public disclosure on February 9th, Cline fixed the issue within one hour and confirmed no malicious updates were published, though evidence suggests someone may have attempted exploitation.",
-    "built_at": "2026-09-11T18:14:12-05",
+    "summary": "# Summary\n\nCline, an open-source AI coding tool used by millions of developers, contained a critical security vulnerability from December 21, 2025, to February 9, 2026. Researchers discovered that the company's AI-powered issue triage system allowed anyone with a GitHub account to inject malicious commands into issue titles, tricking the AI into executing arbitrary code. This code could then poison the GitHub Actions cache to steal publication credentials and push malware to the VS Code Marketplace, OpenVSX, and NPM repositories, potentially compromising millions of developer installations.\n\nThe researcher attempted to contact Cline's security team multiple times starting January 1, 2026, without receiving a response. After public disclosure on February 9, 2026, Cline fixed the vulnerability within one hour and rotated all publishing credentials. Evidence suggests an actor may have successfully exploited the vulnerability and obtained valid credentials, though no malicious updates were published. Cline has since advised users to disable automatic updates until the company confirms no unauthorized access occurred.",
+    "built_at": "2026-09-11T21:24:52-05",
     "cite_url": "https://incidentdatabase.ai/cite/1680",
     "page_uid": "929c0cc3",
     "title_en": "Cline CLI npm Package Compromised via Suspected Cache Poisoning Attack",
-    "generated": "2026-09-11",
+    "generated": "2026-09-12",
     "published": "2026-09-08",
     "title_lang": "en",
     "incident_id": 1680,
