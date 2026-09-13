@@ -14,11 +14,11 @@
         "name": "Data Centers"
     },
     "reading": {
-        "body": "Airflow and static pressure reveal whether a data center can actually cool its compute, not just whether it measures cool enough on average.\n\nA facility's total cooling capacity means nothing if air recirculates around equipment or leaks past containment. Racks starved of fresh airflow run hot regardless of how cold the room average reads. Static pressure tracks whether air moves through the servers or bypasses them entirely. This matters because modern AI hardware generates extreme heat density. A pressure drop across the facility shows the cooling system works as designed. Without it, temperatures spike at the point of use, throttling performance or triggering thermal shutdown, even when aggregate data suggests adequate cooling.\n\nThis metric does not measure actual chip temperature, coolant performance, or total heat removal. It does not show whether the airflow rate is sufficient for the specific workload or hardware type running. It captures the mechanics of delivery, not the outcome.",
-        "model": "claude-haiku-4-5",
-        "generated_on": "2026-09-12"
+        "body": "Airflow and static pressure are the cooling measurements that show whether a data center's racks actually receive the cold air its total cooling capacity implies.\n\nThe metric is a pair by design. Cubic feet per minute describes how much air is delivered through the room or containment system, and the pressure differential describes whether that air is driven through equipment or around it. Its siblings in the same cooling category cover temperature and humidity at the hot and cold aisle, and liquid coolant temperature and flow rate. Read together, they treat cooling as a delivery problem rather than a capacity problem, because a facility can hold enough total cooling and still starve individual racks.\n\nThat distinction matters for compute. Temperature averages can look acceptable while recirculation, bypass, and leaks leave specific racks short of air, which means the compute in those racks is effectively unavailable regardless of how much cooling the building has installed. Airflow and pressure sensors are what expose the gap between cooling that exists and cooling that arrives.\n\nThe data does not say how any facility performs. It gives no values, no thresholds, no measurement frequency, and no instrumentation. It defines what to measure and why, not what the measurements show, and it does not distinguish AI workloads from any other compute in the building.",
+        "model": "ollama:deepseek-v4.1-flash",
+        "generated_on": "2026-09-13"
     },
-    "built_at": "2026-09-13T00:17:13-05",
+    "built_at": "2026-09-13T04:31:07-05",
     "page_uid": "47dc4040",
     "siblings": [
         {

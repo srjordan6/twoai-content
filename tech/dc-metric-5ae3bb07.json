@@ -14,11 +14,11 @@
         "name": "Data Centers"
     },
     "reading": {
-        "body": "Distributed AI training fails silently under network degradation long before it fails loudly as an outage, making latency and packet loss metrics leading indicators of wasted compute.\n\nData centers measure their internal network fabric and external connections continuously for latency, loss rate, and utilization because these metrics detect GPU inefficiency faster than traditional monitoring does. A lossy network looks like slow training to the user, but register as hardware sitting idle or moving corrupted data to the cluster. For AI workloads that span hundreds or thousands of GPUs, even brief packet loss or high latency compounds across parallel tasks and synchronization points.\n\nThis metric tracks operations rather than incidents, which reflects a shift in how infrastructure reliability works for AI. The old data center model flagged outages after users noticed them. The new model catches degradation before training jobs stall or restart. It does not directly measure power consumption or building capacity, but poor network health forces the power plant to cool hardware that produces nothing, turning a transmission problem into a consumption problem.",
-        "model": "claude-haiku-4-5",
-        "generated_on": "2026-09-12"
+        "body": "Network latency, packet loss, and bandwidth are counted as uptime metrics for AI data centers, because a degraded fabric wastes GPU-hours before it causes an outage.\n\nThe metric sits in the same category as UPS battery health, generator runtime, and SLA uptime compliance. That placement is the point. Availability for an AI facility is not only a question of whether power reached the racks, it is also a question of whether the network between them performed well enough for the work to finish. A facility can hold its power up and still fail its tenants.\n\nFor AI specifically, the cost of degradation lands on compute. Distributed training spreads a single job across many accelerators that must exchange state continuously, so latency and loss translate directly into idle expensive hardware. The definition covers both the internal fabric and external transit, which means the measurement spans the boundary between the building and the networks it depends on.\n\nWhat the data does not provide is any measurement. There are no latency figures, no loss thresholds, no bandwidth targets, no sampling interval, and no indication of how often these values breach acceptable ranges. It defines what would be watched and why, not what was found.",
+        "model": "ollama:deepseek-v4.1-flash",
+        "generated_on": "2026-09-13"
     },
-    "built_at": "2026-09-13T00:17:13-05",
+    "built_at": "2026-09-13T04:31:07-05",
     "page_uid": "5ae3bb07",
     "siblings": [
         {
