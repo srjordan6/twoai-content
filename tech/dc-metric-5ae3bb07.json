@@ -14,11 +14,11 @@
         "name": "Data Centers"
     },
     "reading": {
-        "body": "Network latency, packet loss, and bandwidth are counted as uptime metrics for AI data centers, because a degraded fabric wastes GPU-hours before it causes an outage.\n\nThe metric sits in the same category as UPS battery health, generator runtime, and SLA uptime compliance. That placement is the point. Availability for an AI facility is not only a question of whether power reached the racks, it is also a question of whether the network between them performed well enough for the work to finish. A facility can hold its power up and still fail its tenants.\n\nFor AI specifically, the cost of degradation lands on compute. Distributed training spreads a single job across many accelerators that must exchange state continuously, so latency and loss translate directly into idle expensive hardware. The definition covers both the internal fabric and external transit, which means the measurement spans the boundary between the building and the networks it depends on.\n\nWhat the data does not provide is any measurement. There are no latency figures, no loss thresholds, no bandwidth targets, no sampling interval, and no indication of how often these values breach acceptable ranges. It defines what would be watched and why, not what was found.",
+        "body": "Network latency, packet loss, and bandwidth are tracked as an uptime metric, because a degraded fabric wastes GPU-hours before it produces an outage.\n\nThe measurement covers two surfaces, the facility's internal fabric and its external transit, and it is continuous rather than sampled at failure. Its placement is the point. The other uptime metrics in this group are UPS battery health and generator runtime, which protect the power chain, and SLA uptime compliance, which is the contractual scoreboard. Network health sits alongside them because for AI workloads it fails the way power fails, not as a clean stop but as a slow tax on work already paid for.\n\nDistributed training is why that tax is severe. A run spread across GPUs synchronizes constantly, so loss and latency on the fabric convert directly into idle compute. Wasted GPU-hours are the first visible symptom, and an outage is the later one. Watching the fabric is therefore a compute-efficiency control, not only a reliability control.\n\nWhat this does not establish is any threshold. There is no target loss rate, no latency budget, no measurement interval, and no facility or operator named. It says what is watched, not what counts as acceptable, so it cannot be used to compare one site against another.",
         "model": "ollama:deepseek-v4.1-flash",
-        "generated_on": "2026-09-13"
+        "generated_on": "2026-09-14"
     },
-    "built_at": "2026-09-13T22:44:29-05",
+    "built_at": "2026-09-14T01:42:09-05",
     "page_uid": "5ae3bb07",
     "siblings": [
         {
