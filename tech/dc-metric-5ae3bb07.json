@@ -14,11 +14,11 @@
         "name": "Data Centers"
     },
     "reading": {
-        "body": "Network latency, packet loss, and bandwidth are tracked as an uptime metric, because a degraded fabric wastes GPU-hours before it produces an outage.\n\nThe measurement covers two surfaces, the facility's internal fabric and its external transit, and it is continuous rather than sampled at failure. Its placement is the point. The other uptime metrics in this group are UPS battery health and generator runtime, which protect the power chain, and SLA uptime compliance, which is the contractual scoreboard. Network health sits alongside them because for AI workloads it fails the way power fails, not as a clean stop but as a slow tax on work already paid for.\n\nDistributed training is why that tax is severe. A run spread across GPUs synchronizes constantly, so loss and latency on the fabric convert directly into idle compute. Wasted GPU-hours are the first visible symptom, and an outage is the later one. Watching the fabric is therefore a compute-efficiency control, not only a reliability control.\n\nWhat this does not establish is any threshold. There is no target loss rate, no latency budget, no measurement interval, and no facility or operator named. It says what is watched, not what counts as acceptable, so it cannot be used to compare one site against another.",
+        "body": "Network degradation in a data center burns GPU-hours before it causes an outage, so fabric latency, packet loss, and bandwidth are measured continuously rather than only at failure.\n\nThe metric covers two surfaces, the facility's internal fabric and its external transit, and three quantities: round-trip latency, loss rate, and utilization. Continuous measurement is the substance of it. A degrading link rarely announces itself, and it shows up as slower job completion long before it shows up as something an operator would call a fault.\n\nFor AI specifically, distributed training splits one job across many machines that must stay in step. A lossy fabric makes them wait on each other, so the cost lands as wasted compute before it lands as downtime. That is why network health sits in the same uptime category as UPS battery health, generator runtime, and SLA uptime compliance. All four protect the productivity of expensive hardware, not merely its presence.\n\nThe data defines what is watched, not what was found. There are no thresholds, no measured latency or loss values, no named facilities, and no time series. A reader cannot tell from this whether any particular fabric is healthy, only that latency, loss, and utilization are the quantities that would reveal it.",
         "model": "ollama:deepseek-v4.1-flash",
-        "generated_on": "2026-09-14"
+        "generated_on": "2026-09-15"
     },
-    "built_at": "2026-09-14T22:43:31-05",
+    "built_at": "2026-09-15T01:19:31-05",
     "page_uid": "5ae3bb07",
     "siblings": [
         {
