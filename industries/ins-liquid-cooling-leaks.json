@@ -3,7 +3,8 @@
     "uid": "a8b6afc2",
     "name": "Direct-to-Chip Liquid Cooling Leaks",
     "blurb": "Direct-to-chip liquid cooling replaced air cooling because high-power accelerators generate more heat than air can carry away. That moved water and dielectric fluid inside the rack, alongside energised electrical equipment, and property underwriters are repricing the result.\n\nSwiss Re put a number on it in July 2026. Reviewing fifteen years of data centre losses, liquid-related damage accounts for close to a quarter of total loss costs: roughly 9 percent from fire sprinkler leakage and about 10 percent from escaped liquid introduced by newer cooling systems. FM added a dedicated liquid-cooling section to its 2026 loss prevention guidance, which is the practical signal that underwriters have moved from watching this to pricing it.\n\nThe failure modes are not the ones property forms were written against. Improperly installed manifolds, maintenance error on pressurised coolant lines, and the interaction between a coolant leak and high-voltage equipment produce loss scenarios that pre-date nobody's actuarial tables because they did not previously exist at this density. A facility that converted from air to liquid mid-life carries a risk profile its policy may still describe in air-cooled terms.",
-    "shape": "tech-section",
+    "draft": true,
+    "shape": "coverage-item",
     "total": 13,
     "is_hub": true,
     "points": [
@@ -85,5 +86,63 @@
     ],
     "page_uid": "a8b6afc2",
     "verified": "2026-09-15",
-    "generated": "2026-09-15"
+    "generated": "2026-09-15",
+    "seeded_by": "gemini, supplied by Stephen",
+    "seeded_on": "2026-09-16",
+    "parent_uid": "17843d53",
+    "item_number": 1,
+    "parent_href": "/ai-ecosystem/enterprise-applications-governance-and-tools/17843d53/",
+    "parent_name": "Physical Infrastructure and Property",
+    "section_number": 1,
+    "insured_needs_secured": {
+        "part_3_high_value_red_flags": [
+            "Gradual seepage and corrosion exclusion: forms cover sudden and accidental rupture and almost universally exclude damage from slow micro leaks, degraded O rings and galvanic corrosion in the loop. Most cooling failures start as the excluded thing.",
+            "Unauthorised modification voidance: aftermarket quick disconnect fittings, a modified OEM manifold, or a coolant chemistry change without underwriter sign off can void cover entirely.",
+            "Absolute PFAS structural exclusion: wording that excludes any perfluoroalkyl or polyfluoroalkyl substance, homologue, isomer or derivative, including any substance with one fully fluorinated carbon atom. It catches every engineered dielectric fluid regardless of trade name.",
+            "Dielectric fluid endorsement: exclusions naming engineered heat transfer fluids, fluorinated coolants and specific proprietary products used in direct to chip or immersion cooling.",
+            "TSCA and regulatory action exclusion: fines, penalties and mandated remediation from a Toxic Substances Control Act reporting violation or unreasonable risk determination are excluded, so a retroactive reclassification of the coolant leaves the operator uninsured.",
+            "Latent bodily injury and groundwater carve out: medical monitoring and property damage from gradual or repeated seepage into aquifers or air are excluded, which is the most expensive class of litigation.",
+            "Notice prejudice trap on acoustic telemetry: a carrier denies because the AI monitoring logged a cavitation warning fourteen days before the rupture. Restrict notice to actual physical events.",
+            "Remediation consent control: the carrier appoints a low cost environmental consultant whose protocol does not meet forthcoming TSCA standards, leaving the operator exposed to later fines.",
+            "Aggregation creep across sites: multi site micro seepage or a regional aquifer discovery bundled into a single occurrence or single aggregate limit."
+        ],
+        "manuscript_wording_and_carve_backs": [
+            "Ensuing loss carve back: gradual corrosion of a quick disconnect fitting is excluded, but the ensuing high pressure fluid spray and the resulting electrical destruction of the rack is restored to cover.",
+            "Redefined physical damage to include electronic bricking, thermal shock and melting of silicon during a sudden cooling failure, without requiring fire.",
+            "Actual replacement cost with price markup protection for constrained secondary market sourcing of accelerators.",
+            "Predictive telemetry notice immunisation: acoustic anomaly and pressure drop advisories from AI monitoring do not constitute notice and do not support a late notice defence.",
+            "Conditions of use carve back for EIL: cover restored where a release occurred despite documented adherence to closed loop containment, secondary and tertiary barriers, and active leak telemetry. This is the only route to PFAS cover most carriers will offer, and it is voided by a single bypassed sensor or open valve.",
+            "Right to consultant selection on remediation, conditioned on regulatory compliance certification, so the operator is not bound to a carrier appointed consultant whose protocol fails forthcoming TSCA standards.",
+            "Per site and per incident occurrence definitions for EIL, so multi site seepage is not aggregated into one limit.",
+            "Removal of the fluid induced short sublimit on equipment breakdown, so sudden and accidental water damage responds to the full replacement value of the rack."
+        ],
+        "part_4_program_structure_and_limits": {
+            "bi_waiting_period": "Standard forms carry 24 to 48 hours. For a continuous training run that waiting period is the entire loss, so it is the clause to negotiate down or to cover through a parametric layer.",
+            "business_interruption": "Cover for the exact value of lost compute time and, for colocation and GPU cloud operators, the SLA penalties owed to downstream customers. Extra expense for rushed replacement hardware, emergency technicians and rented compute while the room is down.",
+            "property_eb_equipment": "Limits set to true replacement cost of the specific accelerators and the high speed networking fabric, with the depreciation waiver stated and 6 to 12 month supply chain lead times reflected. An electronic data processing rider values accelerators at replacement rather than depreciated value.",
+            "per_occurrence_primary_excess_layered_property": "Property at actual replacement cost of the hardware, layered on surplus lines paper. The equipment breakdown endorsement must name cooling system components explicitly, including CDU pumps, manifolds and quick disconnects, so the trigger is not argued after a loss."
+        },
+        "part_2_paper_type_and_limit_structure": {
+            "cgl_primary": "Standard primary limits do not address this exposure; general liability forms carry pollution exclusions or narrow sublimits, and dielectric fluids, refrigerants and glycol are all contaminants under them.",
+            "paper_basis": "Property and equipment breakdown are occurrence based, triggered by sudden and accidental release during the policy period. Environmental impairment liability is commonly claims made, which matters because PFAS harm is long tail and surfaces years after the release. Technology E&O for the downstream tenant claim is claims made.",
+            "excess_umbrella_towers": "The relevant tower is environmental impairment liability, purchased separately, and its capacity is sublimited or restricted relative to the property tower because of fluid mobility and shifting regulation. Some carriers will not write PFAS EIL at any price."
+        },
+        "part_1_core_third_party_liability_exposures": [
+            "Environmental release of PFAS dielectric fluid to groundwater: a single 1,270 litre immersion tank spill can spread rapidly through an aquifer, producing remediation cost the carrier treats as unquantifiable.",
+            "Community health litigation and class actions from residents and municipalities alleging drinking water contamination, on the pattern of the settlements paid by primary PFAS manufacturers.",
+            "Vapour emissions from two phase immersion cooling, where a seal failure or venting error releases fluorinated gas, producing atmospheric pollution and community health claims.",
+            "Downstream tenant and customer claims: a ruptured manifold that halts a colocation customer workload produces a contract and SLA damages claim, answered by technology E&O rather than property.",
+            "Disposal and incineration liability, since contaminated PFAS fluid sent for incineration often is not destroyed and communities near disposal sites are litigating.",
+            "Trade secret backlash: NDAs used to withhold coolant identities are being challenged by communities and local governments demanding disclosure of hazardous chemicals on the premises."
+        ]
+    },
+    "underwriter_wants_to_know": [
+        "Active telemetry and automated shutoff: passive rope sensors on the floor are no longer sufficient. Ultrasonic flow meters and continuous pressure drop monitoring integrated into the coolant distribution units, with automated isolation valves that close before catastrophic fluid loss.",
+        "Deterministic response, not average response: sub 10 millisecond execution guaranteed under maximum load, with hardwired PLC interlocks on the isolation valves rather than a software only path through the BMS. A cloud tethered shutoff is priced as if it will fail during a network sag.",
+        "Coolant chemistry assessment: treated water or glycol presents an immediate short circuit risk to hardware; dielectric fluids remove that risk and introduce environmental handling requirements, and many are PFAS.",
+        "Physical containment architecture: separation between pressurised manifolds and high voltage busways, engineered drip trays, secondary containment, and routing that diverts escaped fluid away from adjacent racks.",
+        "OEM certified maintenance under an SLA, because technician error at quick disconnect fittings during GPU swaps is a leading cause of leaks.",
+        "For water and glycol loops, water chemistry logs, because galvanic corrosion clogging cold plate microchannels causes thermal runaway that carriers deny under gradual deterioration.",
+        "For PFAS or engineered dielectric fluids, secondary and tertiary containment, fluid lifecycle tracking, and biocontainment protocols, without which EIL cover is declined outright."
+    ]
 }
