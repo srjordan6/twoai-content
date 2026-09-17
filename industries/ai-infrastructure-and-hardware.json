@@ -1,0 +1,54 @@
+{
+    "tax": "ai-infrastructure-and-hardware",
+    "uid": "ca9cf8ba",
+    "name": "AI Infrastructure and Hardware",
+    "blurb": "GPUs, NPUs, TPUs, chip fabs, memory and storage, plus the datacenters, power, cooling, and networking underneath them.",
+    "shape": "tech-section",
+    "total": 0,
+    "is_hub": true,
+    "points": [
+    ],
+    "summary": "GPUs, NPUs, TPUs, chip fabs, memory and storage, plus the datacenters, power, cooling, and networking underneath them.",
+    "built_at": "2026-09-17T13:00:05-05",
+    "children": [
+        {
+            "desc": "Datacenter and workstation GPUs, by generation, memory, and throughput.",
+            "href": "/ai-ecosystem/technology-and-core-infrastructure/43b3b015/",
+            "name": "GPUs",
+            "sort": 1
+        },
+        {
+            "desc": "Purpose-built accelerators outside the GPU line.",
+            "href": "/ai-ecosystem/technology-and-core-infrastructure/4e3df349/",
+            "name": "NPUs and TPUs",
+            "sort": 2
+        },
+        {
+            "desc": "This section covers the companies that physically manufacture AI silicon, on which process nodes, and where. It is about who owns the fab, not who designs the chip, and that distinction is the reason the section exists. Almost every AI accelerator company is fabless, so the name printed on a product and the company that made it are rarely the same. The accelerators themselves are in GPUs and in NPUs and TPUs, and the memory stacked alongside them is in Memory and Storage.\n\nThe entries are hand-curated rather than harvested, each anchored to a single source URL that is link-checked daily, and all five were verified on September 5, 2026. This is an editorial shortlist, not a fab census. It carries no wafer capacity figures, no yield data, and no per-fab output, so it can tell a reader which companies operate at which end of the market but not how much any of them actually produces. TSMC is a specific case worth flagging: its corporate site blocks automated verification, so its entry is anchored to its SEC 20-F filing index instead.\n\nFive entries, and the concentration they describe is the point. TSMC's entry records that it fabricates nearly every leading AI accelerator, covering NVIDIA, AMD, Apple, and Google TPU parts on N5, N4, and N3 nodes, which means one company's node roadmap sets the ceiling for most of the industry. Samsung Foundry is the only other leading-edge logic option, on gate-all-around SF3 and SF2. Intel Foundry appears as a bid rather than an incumbent, with 18A as its leading-edge offer for AI silicon. GlobalFoundries is here for trailing-edge and specialty work, the US volume foundry for everything that does not need the leading edge, and SMIC as China's domestic fabrication path under export controls. Only two of the five are leading-edge at volume today. What the section does not yet carry is location detail per fab, so it names who manufactures but not where each specific plant sits.",
+            "href": "/ai-ecosystem/technology-and-core-infrastructure/8e513225/",
+            "name": "Chip Fabrication",
+            "sort": 3
+        },
+        {
+            "desc": "This section covers the memory that sits next to the accelerator and the storage tiers that keep it fed. Those are two quite different businesses held in one list. High bandwidth memory is made by a three-company oligopoly with multi-year supply commitments, while AI storage is a competitive software market where the differentiator is how fast a filesystem can feed thousands of GPUs. The accelerators are in GPUs, and the network that moves data between nodes is in Networking Fabric.\n\nEntries are hand-curated with one source URL each, link-checked daily. Three of the four were verified on September 5, 2026. The Micron entry is dated September 4 and carries an explicit note that the publisher blocks automated checks, so it is confirmed by hand rather than on the daily cycle. The section holds no capacity figures, no pricing, no bandwidth per stack, and no supply share, so it identifies the players and their role but does not quantify any of it. In a market where HBM allocation is the practical constraint on accelerator shipments, that is a real limit on what these entries can tell a reader.\n\nFour entries, split evenly. On memory, SK hynix is recorded as the leading HBM supplier and NVIDIA's primary datacenter memory partner, shipping HBM3E and HBM4, and Micron as the US supplier whose HBM3E ships in H200 and Blackwell platforms. That is two of the three companies making HBM at volume. The third, Samsung, appears on this site under Chip Fabrication for its foundry business rather than here for its memory, so the HBM picture in this section is incomplete by one major supplier. On storage, VAST Data is listed as an all-flash platform deployed in GPU clusters including CoreWeave's, and WEKA as a parallel filesystem for training input and output at hyperscale customers. Nothing in the section covers general DRAM or the SSD tiers the section title mentions.",
+            "href": "/ai-ecosystem/technology-and-core-infrastructure/c0ac0c0d/",
+            "name": "Memory and Storage",
+            "sort": 4
+        },
+        {
+            "desc": "This section covers the interconnect inside and between training nodes: the scale-up fabric that links GPUs within a rack and the scale-out fabric that links racks into a cluster. Front-end and wide-area networking is out of scope, which matters because networking in a datacenter usually means the front-end network and this section is about the back-end one, where a slow link stalls every GPU in the job. The accelerators themselves are in GPUs, and the building and power around them are in Power and Cooling.\n\nEntries are hand-curated with a single source URL each, link-checked daily, and all five were verified on September 5, 2026. What the section maps is the set of technology choices available, not the market. It carries no port counts, no deployed fabric sizes, no bandwidth benchmarks, and no price per port, so it can tell a reader which options exist and who backs each one but not which is winning by installed base.\n\nFive entries, and their shape is the finding. Two of the five are NVIDIA's. Quantum InfiniBand is recorded as the dominant training-cluster interconnect, with the entry naming the Mellanox acquisition as the source of that position, and NVLink with NVSwitch is the intra-node and rack-scale fabric, where NVL72 puts 72 GPUs into a single NVLink domain. So one vendor supplies both layers of the fabric in a large share of clusters. The other three entries are all the Ethernet route, in different forms. Broadcom's Tomahawk merchant switch silicon, from the 51.2T Tomahawk 5 onward, is what clusters use when they choose Ethernet. Arista supplies switching platforms for hyperscaler AI back-end networks. And the Ultra Ethernet Consortium is the industry effort to close the remaining gap with InfiniBand, with a 1.0 specification published in 2025 and members including AMD, Broadcom, Cisco, Meta, and Microsoft. One incumbent with two products, three routes around it.",
+            "href": "/ai-ecosystem/technology-and-core-infrastructure/defdac69/",
+            "name": "Networking Fabric",
+            "sort": 6
+        },
+        {
+            "desc": "This section covers how an AI datacenter gets electricity and gets rid of heat: grid connection and interconnection queues, the generation contracted to serve the load, and the shift from air to liquid cooling that dense GPU racks forced. Individual facilities are in Data Centers, and the racks and interconnect inside them are in the other hardware sections.\n\nThe section exists partly to keep four numbers apart that directories routinely print as one another. Critical IT load is the power delivered to the servers themselves. Utility power is the total the facility draws from the grid, which is IT load plus cooling, conversion, and losses, and it is what power usage effectiveness relates to IT load. Standby diesel generation is capacity that exists to ride out an outage and almost never runs. On-site or behind-the-meter generation is dedicated power wired straight to the facility, bypassing a public grid connection. A campus announced as one gigawatt may mean any of the four, and they are nowhere near the same size.\n\nThe three named entries here are hand-curated and link-checked daily, all verified on September 5, 2026. The quantitative backing sits elsewhere on the site and refreshes on its own schedule. Interconnection and generation observations are logged from five grid operators and the EIA, and the facility register holds 1,840 datacenters across 397 operators in 8 countries. Only 145 of those 1,840 facilities carry a critical IT megawatt figure, under 8 percent, so any total built from this data is a floor rather than an estimate. The register meant to hold capacity observations tagged by which of the four numbers above they represent is currently empty, so the distinction is defined here but not yet measured facility by facility. Among the curated entries, the Department of Energy one carries the finding that US datacenters used about 4.4 percent of national electricity in 2023, with a projected 6.7 to 12 percent by 2028, a range wide enough to be a statement about uncertainty rather than a forecast.",
+            "href": "/ai-ecosystem/technology-and-core-infrastructure/d98d9c37/",
+            "name": "Power and Cooling",
+            "sort": 7
+        }
+    ],
+    "page_uid": "ca9cf8ba",
+    "verified": "2026-09-17",
+    "generated": "2026-09-17"
+}
