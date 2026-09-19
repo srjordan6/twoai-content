@@ -14,11 +14,11 @@
         "name": "Data Centers"
     },
     "reading": {
-        "body": "Network latency, packet loss, and bandwidth are tracked as an uptime and redundancy metric because distributed AI training wastes GPU-hours on a lossy fabric before any outage appears.\n\nThe metric is a continuous measurement of round-trip latency, loss rate, and utilization on the facility's internal fabric and external transit. It sits in the uptime and redundancy category alongside UPS battery health and generator runtime, and SLA uptime compliance. That grouping treats network quality as a resilience condition, not a separate performance concern.\n\nFor AI workloads, the cost of network degradation is measured in compute before it is measured in downtime. A lossy fabric consumes expensive accelerator time during distributed training, so this metric matters for the efficiency of GPU capacity, not only for keeping services online. The definition does not specify thresholds, measurement intervals, or which side of the fabric, internal or external, is the binding constraint.",
+        "body": "Network latency, packet loss, and bandwidth are measured continuously because distributed AI training wastes GPU-hours on a lossy fabric before any outage appears.\n\nThe metric belongs to uptime and redundancy, but its real cost is compute efficiency, not availability. A fabric can remain up while dropping enough packets to stall synchronized training runs, so the damage is silent and expensive. Sibling metrics track UPS battery health, generator runtime, and SLA uptime compliance. Those catch power and contractual failures, while this one catches network degradation that never triggers an outage alert.\n\nThe data does not specify thresholds, measurement points, or whether the fabric is internal or external transit, only that both are measured. It also does not say how much GPU time is lost at a given loss rate, so the metric signals a problem without quantifying the waste.",
         "model": "ollama:deepseek-v4-pro",
-        "generated_on": "2026-09-18"
+        "generated_on": "2026-09-19"
     },
-    "built_at": "2026-09-18T22:40:38-05",
+    "built_at": "2026-09-19T01:34:05-05",
     "page_uid": "5ae3bb07",
     "siblings": [
         {
