@@ -386,9 +386,11 @@
             "slug": "glm-5-3-flashx-now-available-on-ai-gateway-adc85d",
             "title": "GLM 5.3 FlashX now available on AI Gateway",
             "vendor": "Vercel",
-            "has_page": false,
+            "summary": "Call Z.ai's GLM 5.3 FlashX through Vercel AI Gateway at 200 tokens per second, with one API key, automatic fallbacks, spend tracking, and request traces.",
+            "has_page": true,
             "entity_uid": "b4ead33d",
-            "entity_kind": "company"
+            "entity_kind": "company",
+            "reader_note": "If you already route through Vercel AI Gateway, you can evaluate this model without adding new credentials or losing your existing spend tracking and fallback controls. The stated throughput is worth testing under your own prompt lengths and concurrency, as gateway conditions often differ from vendor benchmarks.\n\nDo not read this as evidence about output quality or cost effectiveness. Run a small set of your own tasks, compare traces against your current model, and check where automatic fallbacks actually engage before moving any production traffic."
         },
         {
             "url": "https://www.insurancejournal.com/news/national/2026/09/18/885473.htm",
@@ -498,9 +500,11 @@
             "slug": "jev-is-the-fastest-adopted-model-in-ai-gateway-history-5dd18c",
             "title": "Jev is the fastest-adopted model in AI Gateway history",
             "vendor": "Vercel",
-            "has_page": false,
+            "summary": "Within 24 hours of launching on AI Gateway, Jev from TypeSafe AI has been used by more than twice the share of teams of any other recent model launch in its first day.",
+            "has_page": true,
             "entity_uid": "b4ead33d",
-            "entity_kind": "company"
+            "entity_kind": "company",
+            "reader_note": "For teams already routing models through AI Gateway, Jev is now an option you can test with minimal setup, and early interest suggests it is worth a look if you are evaluating new models. But do not treat the adoption figure as a performance signal.\n\nWhat this does not tell you is whether those teams kept using Jev after the first day, what workloads they ran, or how it compared on cost and accuracy. Fast initial uptake often reflects curiosity or a vendor push, not production fit. Run your own evaluations before changing defaults."
         },
         {
             "url": "https://www.reinsurancene.ws/kato-joins-aons-transaction-solutions-team-as-deputy-director-asia/",
@@ -723,9 +727,11 @@
             "slug": "reproducing-disclosing-and-fixing-the-libheif-vulnerability--5c7d2c",
             "title": "Reproducing, disclosing, and fixing the libheif vulnerability with Hacktron and the maintainers",
             "vendor": "Vercel",
-            "has_page": false,
+            "summary": "How Vercel and Hacktron coordinated a fix for a remote code execution vulnerability that reached Next.js image optimization through sharp, libvips, and libheif.",
+            "has_page": true,
             "entity_uid": "b4ead33d",
-            "entity_kind": "company"
+            "entity_kind": "company",
+            "reader_note": "If you run Next.js image optimization, check your sharp, libvips, and libheif versions and apply the patched releases. The fix is coordinated, so the vulnerable path is known and closed, but you need to deploy it yourself.\n\nTreat this as a reminder that image decoding libraries are attack surface. A disclosed and fixed bug does not mean your current deployment is safe until you update, and it says nothing about other untested formats or versions. Verify your lockfile rather than assuming the platform handles it."
         },
         {
             "url": "https://www.insurancejournal.com/news/international/2026/09/18/885650.htm",
@@ -779,9 +785,11 @@
             "slug": "spend-management-expands-to-enterprise-flexible-commitment-p-d8bc54",
             "title": "Spend Management expands to Enterprise Flexible Commitment plans",
             "vendor": "Vercel",
-            "has_page": false,
+            "summary": "Spend Management now supports Enterprise teams on Flexible Commitment plans. Set a budget per billing cycle and get alerts, webhooks, or an optional pause.",
+            "has_page": true,
             "entity_uid": "b4ead33d",
-            "entity_kind": "company"
+            "entity_kind": "company",
+            "reader_note": "For teams on an Enterprise Flexible Commitment plan, this adds a per-cycle budget control with alerts, webhooks, and an optional pause. That means you can catch spend before it runs far past what you expected, rather than finding out on the invoice.\n\nCheck the details before relying on it. Alerts and webhooks only notify you; they do not stop usage unless you turn on the pause. Also confirm what the pause actually halts, such as builds, edge requests, or both, and whether it can be triggered automatically without manual approval."
         },
         {
             "url": "https://www.carriermanagement.com/news/2026/09/18/292070.htm",
@@ -903,9 +911,11 @@
             "slug": "v0-now-reads-npm-credentials-from-shared-environment-variabl-48ea8e",
             "title": "v0 now reads npm credentials from shared environment variables",
             "vendor": "Vercel",
-            "has_page": false,
+            "summary": "v0 can now install private packages from npm and custom registries. Add an NPM_TOKEN or NPM_RC environment variable to build with your team's internal packages, design systems, and component libraries in v0.",
+            "has_page": true,
             "entity_uid": "b4ead33d",
-            "entity_kind": "company"
+            "entity_kind": "company",
+            "reader_note": "For teams that keep components or design tokens in private npm packages, this removes a common blocker. You can now point v0 at those packages by setting NPM_TOKEN or NPM_RC in your shared environment variables, then reference them in prompts as you would any installed dependency.\n\nTreat this as a configuration change, not a security review. The credentials are read from your environment, so check who can edit those variables and what scopes the token grants. A private package that installs successfully in v0 does not mean its code is safe to run in your production build."
         },
         {
             "url": "https://www.reinsurancene.ws/warren-buffett-honoured-as-chairman-emeritus-for-extraordinary-contributions-to-berkshire/",
@@ -924,9 +934,11 @@
             "slug": "webmcp-support-now-available-in-mcp-handler-b7a614",
             "title": "WebMCP support now available in mcp-handler",
             "vendor": "Vercel",
-            "has_page": false,
+            "summary": "mcp-handler now has experimental WebMCP support. Register your MCP tools on your website with one script tag and let browser agents call them with the user's credentials.",
+            "has_page": true,
             "entity_uid": "b4ead33d",
-            "entity_kind": "company"
+            "entity_kind": "company",
+            "reader_note": "If you maintain a web application, this gives you a low-friction way to expose selected tools to browser based agents without building a separate server. The script tag approach means the agent runs in the user's session, so any action it takes carries that user's permissions and data access.\n\nTreat this as an early experiment, not a production pattern. The announcement does not tell you how tool discovery, consent, or credential handling are controlled, and those are the parts that matter most before you let an agent act on a logged in user's behalf. Test it in a sandbox and review what the agent can call."
         },
         {
             "url": "https://www.insurancejournal.com/news/national/2026/09/18/885557.htm",
@@ -1405,9 +1417,11 @@
             "slug": "gpt-live-1-now-available-on-ai-gateway-d9890f",
             "title": "GPT-Live 1 now available on AI Gateway",
             "vendor": "Vercel",
-            "has_page": false,
+            "summary": "Call OpenAI's GPT-Live 1 through Vercel AI Gateway for full-duplex voice conversations with client-controlled delegation and per-second billing. GPT-Live 1 now available on Vercel AI Gateway",
+            "has_page": true,
             "entity_uid": "b4ead33d",
-            "entity_kind": "company"
+            "entity_kind": "company",
+            "reader_note": "For teams already on Vercel AI Gateway, this means you can add GPT-Live 1 voice calls through the same routing and logging you use for text models, with per-second billing tied to actual audio time. Client-controlled delegation lets your app decide when to hand off control, but test how that behaves with interruptions and silence.\n\nThis does not prove voice quality, latency under load, or total cost against other voice options. Availability on a gateway is not evidence that it meets your latency or accuracy needs, so run your own tests before switching a live voice feature."
         },
         {
             "url": "https://www.insurancejournal.com/news/national/2026/09/17/885376.htm",
@@ -3196,9 +3210,11 @@
             "slug": "glm-5-3-flashx-now-available-on-ai-gateway-adc85d",
             "title": "GLM 5.3 FlashX now available on AI Gateway",
             "vendor": "Vercel",
-            "has_page": false,
+            "summary": "Call Z.ai's GLM 5.3 FlashX through Vercel AI Gateway at 200 tokens per second, with one API key, automatic fallbacks, spend tracking, and request traces.",
+            "has_page": true,
             "entity_uid": "b4ead33d",
-            "entity_kind": "company"
+            "entity_kind": "company",
+            "reader_note": "If you already route through Vercel AI Gateway, you can evaluate this model without adding new credentials or losing your existing spend tracking and fallback controls. The stated throughput is worth testing under your own prompt lengths and concurrency, as gateway conditions often differ from vendor benchmarks.\n\nDo not read this as evidence about output quality or cost effectiveness. Run a small set of your own tasks, compare traces against your current model, and check where automatic fallbacks actually engage before moving any production traffic."
         },
         {
             "url": "https://www.insurancejournal.com/news/national/2026/09/18/885473.htm",
@@ -3308,9 +3324,11 @@
             "slug": "jev-is-the-fastest-adopted-model-in-ai-gateway-history-5dd18c",
             "title": "Jev is the fastest-adopted model in AI Gateway history",
             "vendor": "Vercel",
-            "has_page": false,
+            "summary": "Within 24 hours of launching on AI Gateway, Jev from TypeSafe AI has been used by more than twice the share of teams of any other recent model launch in its first day.",
+            "has_page": true,
             "entity_uid": "b4ead33d",
-            "entity_kind": "company"
+            "entity_kind": "company",
+            "reader_note": "For teams already routing models through AI Gateway, Jev is now an option you can test with minimal setup, and early interest suggests it is worth a look if you are evaluating new models. But do not treat the adoption figure as a performance signal.\n\nWhat this does not tell you is whether those teams kept using Jev after the first day, what workloads they ran, or how it compared on cost and accuracy. Fast initial uptake often reflects curiosity or a vendor push, not production fit. Run your own evaluations before changing defaults."
         },
         {
             "url": "https://www.reinsurancene.ws/kato-joins-aons-transaction-solutions-team-as-deputy-director-asia/",
@@ -3533,9 +3551,11 @@
             "slug": "reproducing-disclosing-and-fixing-the-libheif-vulnerability--5c7d2c",
             "title": "Reproducing, disclosing, and fixing the libheif vulnerability with Hacktron and the maintainers",
             "vendor": "Vercel",
-            "has_page": false,
+            "summary": "How Vercel and Hacktron coordinated a fix for a remote code execution vulnerability that reached Next.js image optimization through sharp, libvips, and libheif.",
+            "has_page": true,
             "entity_uid": "b4ead33d",
-            "entity_kind": "company"
+            "entity_kind": "company",
+            "reader_note": "If you run Next.js image optimization, check your sharp, libvips, and libheif versions and apply the patched releases. The fix is coordinated, so the vulnerable path is known and closed, but you need to deploy it yourself.\n\nTreat this as a reminder that image decoding libraries are attack surface. A disclosed and fixed bug does not mean your current deployment is safe until you update, and it says nothing about other untested formats or versions. Verify your lockfile rather than assuming the platform handles it."
         },
         {
             "url": "https://www.insurancejournal.com/news/international/2026/09/18/885650.htm",
@@ -3589,9 +3609,11 @@
             "slug": "spend-management-expands-to-enterprise-flexible-commitment-p-d8bc54",
             "title": "Spend Management expands to Enterprise Flexible Commitment plans",
             "vendor": "Vercel",
-            "has_page": false,
+            "summary": "Spend Management now supports Enterprise teams on Flexible Commitment plans. Set a budget per billing cycle and get alerts, webhooks, or an optional pause.",
+            "has_page": true,
             "entity_uid": "b4ead33d",
-            "entity_kind": "company"
+            "entity_kind": "company",
+            "reader_note": "For teams on an Enterprise Flexible Commitment plan, this adds a per-cycle budget control with alerts, webhooks, and an optional pause. That means you can catch spend before it runs far past what you expected, rather than finding out on the invoice.\n\nCheck the details before relying on it. Alerts and webhooks only notify you; they do not stop usage unless you turn on the pause. Also confirm what the pause actually halts, such as builds, edge requests, or both, and whether it can be triggered automatically without manual approval."
         },
         {
             "url": "https://www.carriermanagement.com/news/2026/09/18/292070.htm",
@@ -3713,9 +3735,11 @@
             "slug": "v0-now-reads-npm-credentials-from-shared-environment-variabl-48ea8e",
             "title": "v0 now reads npm credentials from shared environment variables",
             "vendor": "Vercel",
-            "has_page": false,
+            "summary": "v0 can now install private packages from npm and custom registries. Add an NPM_TOKEN or NPM_RC environment variable to build with your team's internal packages, design systems, and component libraries in v0.",
+            "has_page": true,
             "entity_uid": "b4ead33d",
-            "entity_kind": "company"
+            "entity_kind": "company",
+            "reader_note": "For teams that keep components or design tokens in private npm packages, this removes a common blocker. You can now point v0 at those packages by setting NPM_TOKEN or NPM_RC in your shared environment variables, then reference them in prompts as you would any installed dependency.\n\nTreat this as a configuration change, not a security review. The credentials are read from your environment, so check who can edit those variables and what scopes the token grants. A private package that installs successfully in v0 does not mean its code is safe to run in your production build."
         },
         {
             "url": "https://www.reinsurancene.ws/warren-buffett-honoured-as-chairman-emeritus-for-extraordinary-contributions-to-berkshire/",
@@ -3734,9 +3758,11 @@
             "slug": "webmcp-support-now-available-in-mcp-handler-b7a614",
             "title": "WebMCP support now available in mcp-handler",
             "vendor": "Vercel",
-            "has_page": false,
+            "summary": "mcp-handler now has experimental WebMCP support. Register your MCP tools on your website with one script tag and let browser agents call them with the user's credentials.",
+            "has_page": true,
             "entity_uid": "b4ead33d",
-            "entity_kind": "company"
+            "entity_kind": "company",
+            "reader_note": "If you maintain a web application, this gives you a low-friction way to expose selected tools to browser based agents without building a separate server. The script tag approach means the agent runs in the user's session, so any action it takes carries that user's permissions and data access.\n\nTreat this as an early experiment, not a production pattern. The announcement does not tell you how tool discovery, consent, or credential handling are controlled, and those are the parts that matter most before you let an agent act on a logged in user's behalf. Test it in a sandbox and review what the agent can call."
         },
         {
             "url": "https://www.insurancejournal.com/news/national/2026/09/18/885557.htm",
@@ -4215,9 +4241,11 @@
             "slug": "gpt-live-1-now-available-on-ai-gateway-d9890f",
             "title": "GPT-Live 1 now available on AI Gateway",
             "vendor": "Vercel",
-            "has_page": false,
+            "summary": "Call OpenAI's GPT-Live 1 through Vercel AI Gateway for full-duplex voice conversations with client-controlled delegation and per-second billing. GPT-Live 1 now available on Vercel AI Gateway",
+            "has_page": true,
             "entity_uid": "b4ead33d",
-            "entity_kind": "company"
+            "entity_kind": "company",
+            "reader_note": "For teams already on Vercel AI Gateway, this means you can add GPT-Live 1 voice calls through the same routing and logging you use for text models, with per-second billing tied to actual audio time. Client-controlled delegation lets your app decide when to hand off control, but test how that behaves with interruptions and silence.\n\nThis does not prove voice quality, latency under load, or total cost against other voice options. Availability on a gateway is not evidence that it meets your latency or accuracy needs, so run your own tests before switching a live voice feature."
         },
         {
             "url": "https://www.insurancejournal.com/news/national/2026/09/17/885376.htm",
@@ -71560,14 +71588,14 @@
             "vendor": "UK AI Security Institute"
         }
     ],
-    "built_at": "2026-09-18T21:10:08-05:00",
+    "built_at": "2026-09-18T22:12:30-05:00",
     "coverage": {
         "feeds": 32,
         "companies": 421,
         "feeds_healthy": 32
     },
     "page_uid": "bad4a071",
-    "generated": "2026-09-19T02:16:09Z",
+    "generated": "2026-09-19T03:23:12Z",
     "window_days": 30,
     "refresh_every_days": 1
 }
