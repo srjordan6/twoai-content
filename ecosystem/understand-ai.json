@@ -212,7 +212,7 @@
             "meet": [
                 {
                     "uid": "",
-                    "fact": "2,376 servers from the official Model Context Protocol registry, the standard way agents are given tools.",
+                    "fact": "2,377 servers from the official Model Context Protocol registry, the standard way agents are given tools.",
                     "href": "/mcp/",
                     "name": "MCP Server tracker"
                 },
@@ -306,11 +306,11 @@
         "assumption_source": "https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them"
     },
     "reading": {
-        "body": "For a single 40-page contract, summarization costs about 1.2 cents at median API prices and fits in 422 of 439 tracked models; cost is not the constraint, context and accuracy are.\n\nThe token math is straightforward: a 40-page contract at 500 words per page is roughly 20,000 words, about 26,700 input tokens, plus 1,000 output tokens for a one-page summary. 422 of 439 tracked API models can hold all 27,700 tokens at once, so context is not the main obstacle for a single document. At median prices of $0.40 per million input and $1.80 per million output, the read costs $0.0107 and the summary $0.0018, about 1.2 cents total.\n\nFor a library of contracts, the whole library will not fit in context, so retrieval embeds every contract once and hands the model only the passages that match the question. That is the pattern that scales. But a summary can state a clause the contract does not contain, so for anything with legal weight the summary is a map to the pages to read, not a substitute for them. The data does not cover training cost, hardware, or grid constraints; it only shows inference prices at this document size.",
+        "body": "A 40-page contract costs about 1.2 cents to read and summarize at median API prices, and 421 of 438 tracked models can hold it in one context window.\n\nAt roughly 27,700 tokens total, the economics are trivial: $0.0107 to read and $0.0018 to summarize. For a single document, neither price nor working memory is the obstacle for most models, since only 17 of 438 cannot hold the full contract and would need it split.\n\nThe constraint appears when the task scales or when accuracy carries legal weight. A library of contracts will not fit in any context window, so retrieval embeds each document and hands the model only relevant passages. And a summary can state a clause the contract does not contain, so the output is a map to the pages to read, not a substitute for them.\n\nWhat this does not cover is larger workloads, fine-tuning, or agentic action, and the median prices hide variation across the 60 providers. It also says nothing about the compute or power behind inference, only the per-token price a buyer sees.",
         "model": "ollama:deepseek-v4-pro",
         "generated_on": "2026-09-22"
     },
-    "built_at": "2026-09-22T06:36:25-05",
+    "built_at": "2026-09-22T09:39:07-05",
     "category": "research-knowledge-and-learning",
     "page_uid": "d2390ba3",
     "verified": "2026-09-22",
