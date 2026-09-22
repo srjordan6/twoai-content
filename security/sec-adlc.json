@@ -1,0 +1,226 @@
+{
+    "tax": "sec-adlc",
+    "uid": "632156d2",
+    "deep": [
+        {
+            "grp": "risks",
+            "intro": "Traditional software has fixed endpoints and predictable behavior. An agent executes multi-step work on its own, with real access, at machine speed, which puts the structural risk in four places.",
+            "blocks": [
+                {
+                    "body": "Agents reach databases, code and the web through MCP servers and plugins. A compromised server or a malicious plugin can steer the agent into changing pipelines or files. Broad credentials, granted so tasks never stall, turn one compromised agent into lateral access to repositories, databases and production cloud.",
+                    "label": "Tool, API and bridge vulnerabilities"
+                },
+                {
+                    "body": "An agent that reads an untrusted document, email or page can take hidden instructions from it, overriding its system prompt to leak data or act. Attackers can also add instructions that force endless self-critique or loops, burning tokens and money, the attack OWASP names denial of wallet.",
+                    "label": "Dynamic input and prompt attacks"
+                },
+                {
+                    "body": "Agents that write code can recommend packages that do not exist; security researchers have documented attackers registering malicious packages under exactly those names. Agents also write keys, credentials and private context into scratchpad memory and files, where they persist in history.",
+                    "label": "Supply chain and code vulnerabilities"
+                },
+                {
+                    "body": "Scanners run daily or per human pull request. Agents push code and actions through APIs continuously, so a flaw can spread across many branches before anyone opens a dashboard. The defense is runtime guardrails, not faster periodic scans.",
+                    "label": "Operational and speed failures"
+                }
+            ],
+            "layout": "grid",
+            "heading": "The four risk areas in the ADLC"
+        },
+        {
+            "grp": "phases",
+            "intro": "IBM's six phases of the ADLC, and the control each phase has to deliver before the next one starts.",
+            "blocks": [
+                {
+                    "body": "Define the goal, the success metrics, the guardrails and exactly which tools and data the agent will need, so least privilege is designed rather than retrofitted. Decide whether an agent is needed at all.",
+                    "label": "Plan"
+                },
+                {
+                    "body": "Issue the agent its own identity, sandbox its execution, route every tool through a governed gateway, and add observability hooks that record reasoning, tool calls and outputs. Version prompts, tools and orchestration together.",
+                    "label": "Code and build"
+                },
+                {
+                    "body": "Run the abuse-case suite and red teaming against prompt injection, tool misuse, privilege escalation and memory poisoning. Block the release when tool policies or credential scopes change without updated tests.",
+                    "label": "Test and release"
+                },
+                {
+                    "body": "Roll out in stages, canary or blue-green, with rollback ready, rate limits and cost caps in force, and the gateway enforcing policy at runtime.",
+                    "label": "Deploy"
+                },
+                {
+                    "body": "Watch tool call rates, cost, approvals and drift in real time, with a way to stop an agent mid-task. Retest after any change to a prompt, tool, memory, retrieval source or model.",
+                    "label": "Operate"
+                },
+                {
+                    "body": "Keep the agent catalog current: owner, version, risk posture, environments and audit evidence, and audit for compliance as rules evolve.",
+                    "label": "Monitor"
+                }
+            ],
+            "layout": "ordered",
+            "heading": "The security job in each phase"
+        },
+        {
+            "grp": "vs",
+            "intro": "The traditional lifecycle and the agent lifecycle compared on the points that matter for security.",
+            "blocks": [
+                {
+                    "body": "SDLC: deterministic, the same input gives the same output. ADLC: probabilistic, the same input can give different outputs, so security cannot rely on one passing test.",
+                    "label": "Behavior"
+                },
+                {
+                    "body": "SDLC: source code. ADLC: code plus prompts, context, tool permissions, memory policy and evaluation suites, each of which can carry a flaw.",
+                    "label": "What ships"
+                },
+                {
+                    "body": "SDLC: binary pass or fail. ADLC: behavior measured across many scenarios against confidence thresholds, with adversarial abuse cases.",
+                    "label": "Testing"
+                },
+                {
+                    "body": "SDLC: an obvious crash traceable to a line of code. ADLC: a plausible wrong answer or a broken constraint, easy to miss and hard to reproduce.",
+                    "label": "Failure"
+                },
+                {
+                    "body": "SDLC: fixed, predictable endpoints. ADLC: a dynamic identity choosing its own actions with real credentials, which makes identity and least privilege the core control.",
+                    "label": "Access"
+                }
+            ],
+            "layout": "grid",
+            "heading": "ADLC versus SDLC"
+        }
+    ],
+    "name": "Agent Development Lifecycle (ADLC) Security",
+    "blurb": "The security risks of building, deploying and running autonomous AI agents: tool and MCP bridges, prompt attacks on dynamic input, agent-made supply chain risk, and failures at machine speed.",
+    "items": [
+        {
+            "kind": "resource",
+            "name": "What is the agent development lifecycle (ADLC)?",
+            "note": "IBM's explainer of the ADLC phases, plan, code and build, test and release, deploy, operate and monitor, and why agents fail differently from traditional software. Security guidance woven through: a distinct identity per agent, sandboxing, least privilege and an MCP gateway.",
+            "slug": "ibm-adlc",
+            "source_url": "https://www.ibm.com/think/topics/agent-development-lifecycle-adlc",
+            "source_name": "IBM Think"
+        },
+        {
+            "kind": "resource",
+            "name": "Agent Development Lifecycle",
+            "note": "Salesforce's description of the lifecycle as it applies to building agents on Agentforce.",
+            "slug": "sf-adlc",
+            "source_url": "https://www.salesforce.com/agentforce/agent-development-lifecycle/",
+            "source_name": "Salesforce"
+        },
+        {
+            "kind": "resource",
+            "name": "ADLC Manifesto",
+            "note": "A community statement of the principles behind the agent development lifecycle.",
+            "slug": "adlc-manifesto",
+            "source_url": "https://www.adlc.io/",
+            "source_name": "adlc.io"
+        },
+        {
+            "kind": "resource",
+            "name": "AI Agent Security Cheat Sheet",
+            "note": "OWASP's control catalog for agents: tool least privilege with scoped MCP configuration, memory isolation, human approval bound to the exact action, output validation, cost and loop limits against denial of wallet, and an abuse-case test matrix for release gates.",
+            "slug": "owasp-agent-cs",
+            "source_url": "https://cheatsheetseries.owasp.org/cheatsheets/AI_Agent_Security_Cheat_Sheet.html",
+            "source_name": "OWASP Cheat Sheet Series"
+        },
+        {
+            "kind": "resource",
+            "name": "MCP Security Cheat Sheet",
+            "note": "OWASP's guidance for the Model Context Protocol servers agents use to reach tools and data.",
+            "slug": "owasp-mcp-cs",
+            "source_url": "https://cheatsheetseries.owasp.org/cheatsheets/MCP_Security_Cheat_Sheet.html",
+            "source_name": "OWASP Cheat Sheet Series"
+        },
+        {
+            "kind": "resource",
+            "name": "SSDF Community Profile for Generative AI, SP 800-218A",
+            "note": "The NIST secure development baseline extended to generative AI, the closest federal reference an ADLC security program can map to.",
+            "slug": "nist-ssdf-ai-adlc",
+            "source_url": "https://csrc.nist.gov/pubs/sp/800/218/a/final",
+            "source_name": "NIST"
+        },
+        {
+            "kind": "crosslink",
+            "name": "AI Agent Security on this site",
+            "note": "Agent kill chains, cascading multi-agent failure and runtime supervision.",
+            "slug": "adlc-agent-sec-xlink",
+            "source_url": "/ai-ecosystem/enterprise-applications-governance-and-tools/a2538ec1/",
+            "source_name": "The World of AI"
+        },
+        {
+            "kind": "crosslink",
+            "name": "Agent and Non-Human Identity on this site",
+            "note": "The credentials and delegated authority an agent carries into every phase.",
+            "slug": "adlc-nhi-xlink",
+            "source_url": "/ai-ecosystem/enterprise-applications-governance-and-tools/8f3e19cd/",
+            "source_name": "The World of AI"
+        },
+        {
+            "kind": "crosslink",
+            "name": "Secure Software Development Lifecycle (SDLC) on this site",
+            "note": "The traditional lifecycle the ADLC extends, and the secure development baseline it starts from.",
+            "slug": "adlc-sdlc-xlink",
+            "source_url": "/ai-ecosystem/enterprise-applications-governance-and-tools/c962b5b5/",
+            "source_name": "The World of AI"
+        }
+    ],
+    "stats": {
+        "mcp_servers": 2376,
+        "lawsuit_pages": 141,
+        "deepfake_bills": 78,
+        "compliance_docs": 210
+    },
+    "topic": [
+        {
+            "body": "The Agent Development Lifecycle, or ADLC, is the framework for building, testing, deploying, operating and governing autonomous AI agents. IBM describes its phases as plan, code and build, test and release, deploy, operate and monitor. It exists because agents break the assumptions of the traditional SDLC: the same input can produce different outputs, behavior can shift with the environment, and failure is a plausible wrong answer or a violated constraint rather than a crash. Security in the ADLC starts from one fact. An agent is not a program with fixed endpoints, it is a dynamic identity with real access to systems, choosing its own steps at machine speed.",
+            "block": "def"
+        },
+        {
+            "body": "Four risk areas recur. Tools and bridges: an agent connected through MCP servers and plugins inherits every weakness of them, and a single malicious plugin can steer it. Over-permissioning: agents are given broad credentials so tasks finish without friction, which widens the blast radius when one is compromised. Dynamic input: an agent that reads an untrusted email, file or web page can take instructions hidden in it, the indirect prompt injection that OWASP ranks first among agent risks, and an attacker can also force runaway reasoning loops that run up cost, which OWASP calls denial of wallet. Agent-made supply chain risk: agents that write code can pull in packages that do not exist and that an attacker has since registered, and can write keys and private context into files and memory.",
+            "block": "examples"
+        },
+        {
+            "body": "Inventory first: every agent, its identity, its tools, its credentials and who owns it, which is the catalog IBM's monitor phase calls for. Then look for the gaps. Credentials broader than any task the agent performs. MCP servers and plugins with no review record. Agents reading untrusted content with no separation between instructions and data. No limit on tool calls, retries, tokens or cost per task. Security scanning that runs per pull request while agents act through APIs continuously. And no log that ties each agent action to an identity, a version and an approval. OWASP's abuse-case test matrix gives a repeatable way to prove each control works.",
+            "block": "detect"
+        },
+        {
+            "body": "Shift from point-in-time scanning to runtime guardrails. Give each agent a distinct identity and the least privilege its task needs, per tool and per resource. Route tools through a gateway that enforces policy, and review MCP servers and plugins as third-party software. Treat all external content as untrusted data, never as instructions. Require human approval, bound to the exact action and its parameters, for anything irreversible, financial or externally visible. Cap loops, retries, tokens and spend. Verify packages before an agent installs them and keep secrets out of agent memory. Test adversarially at every release gate, and again after any change to a prompt, tool, memory, retrieval source or model.",
+            "block": "defend"
+        }
+    ],
+    "domains": [
+        {
+            "body": "Governance sets the autonomy an agent is allowed, the actions that require a human, and who owns each agent in the catalog. It decides the risk posture recorded for every agent and makes sure audit evidence, identity, version, approvals, exists for regulators before anyone asks.",
+            "slug": "gov",
+            "label": "Security Governance and Risk Management"
+        },
+        {
+            "body": "The SOC has to watch actors that move at machine speed. That means alerts on unusual tool call rates, approval bypass attempts, privilege use and runaway cost, and a kill switch that can stop an agent mid-task. Periodic scanning cannot keep up with an agent committing and calling APIs continuously.",
+            "slug": "ops",
+            "label": "Security Operations"
+        },
+        {
+            "body": "Architects build the containment: a distinct identity per agent, sandboxed execution, a gateway for every tool, and separation between the agent that proposes an action and the service that validates and executes it. Least privilege is enforced by the platform, not trusted to the prompt.",
+            "slug": "arch",
+            "label": "Architecture and Engineering"
+        },
+        {
+            "body": "Next to the secure SDLC, this is where the ADLC lands hardest. Product security teams own prompt injection defenses, output validation, loop and cost limits, and the abuse-case suite that gates every release. They also review what agents write: code, dependencies and the secrets that end up in files and memory.",
+            "slug": "app",
+            "label": "Application and Product Security"
+        },
+        {
+            "body": "MCP servers, plugins, model providers and the packages agents install are third parties the agent reaches on its own. Vendor risk has to assess them before an agent is allowed to, and treat an unreviewed MCP server with the same suspicion as any unvetted software.",
+            "slug": "tprm",
+            "label": "Third-Party and Supply Chain Risk"
+        },
+        {
+            "body": "Agents move data between systems as a matter of course. Privacy teams set what an agent may put in its context, what it may remember and for how long, and what must be redacted from logs and memory, because an agent's scratchpad is a new place for personal data and credentials to persist.",
+            "slug": "data",
+            "label": "Data Protection and Privacy"
+        }
+    ],
+    "built_at": "2026-09-22T04:08:20-05",
+    "page_uid": "632156d2",
+    "generated": "2026-09-22",
+    "refresh_every_days": 30
+}

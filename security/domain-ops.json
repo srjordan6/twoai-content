@@ -1,0 +1,391 @@
+{
+    "tax": "ai-security-risk",
+    "uid": "3aa447ef",
+    "name": "Security Operations",
+    "slug": "ops",
+    "blurb": "Detecting and responding to AI-era attacks, defending with AI at machine speed, and keeping human supervision over what machines conclude and contain.",
+    "shape": "security-domain",
+    "topics": [
+        {
+            "body": "Injection is the archetype of corruption without breach: the system is not compromised in any traditional sense, it is running exactly as designed on corrupted inputs, so no credential is stolen and no malware lands for detection to flag. Operations teams compensate by logging complete prompt, retrieval, and tool-call chains, baselining what normal tool-use patterns look like, planting canary strings in system prompts to detect leakage, and writing incident playbooks that treat model-initiated actions as potentially attacker-initiated. When an alert does fire, the investigation question changes from what did the attacker access to what was the model told.",
+            "name": "Prompt Injection",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/0b20f91f/",
+            "blurb": "Direct and indirect prompt injection: how instructions hidden in content hijack model behavior, documented attacks, and current defenses."
+        },
+        {
+            "body": "Jailbreak attempts are visible in logs if anyone looks: repeated refusals followed by reformulations, persona instructions, encoded payloads. Operations teams that alert on those patterns catch both external abuse of public-facing AI features and internal misuse, and provider abuse-reporting channels exist precisely so that novel techniques observed in production feed back into model-level fixes.",
+            "name": "Jailbreaks",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/f99c1c86/",
+            "blurb": "Techniques that bypass model safety training, and how labs measure and patch against them."
+        },
+        {
+            "body": "Post-deployment, poisoning surfaces as behavioral drift: outputs shifting on specific input classes while aggregate metrics stay green. Monitoring that segments model behavior by input type, and alerting on distribution changes rather than only on errors, gives operations a chance of catching a triggered backdoor or a data-poisoning campaign that pre-deployment testing missed.",
+            "name": "Model and Data Poisoning",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/edf1b552/",
+            "blurb": "Corrupting training data or model weights to plant backdoors and biases, and the research on detecting it."
+        },
+        {
+            "body": "Supply chain compromise announces itself upstream before it detonates downstream: a maintainer account takeover, a repository transferred, a package suddenly repushed. Watching the registries and repositories your AI stack depends on, and alerting on ownership and artifact changes, buys the response window between public compromise and your next automated pull.",
+            "name": "AI Supply Chain Attacks",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/19897948/",
+            "blurb": "Compromised models, datasets, and packages upstream: malicious model files, dependency attacks, opaque fourth-party model chains, AI bills of materials, and registry integrity."
+        },
+        {
+            "body": "Prompts and completions are a data channel and deserve the loss-prevention treatment email already gets: scanning for credentials, personal data, and classified strings in both directions, with alerts wired to the same response process as any other exfiltration signal. Retention policy for AI logs matters doubly here, because the logs themselves become a concentrated copy of everything users pasted in.",
+            "name": "Data Leakage",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/a2be4c55/",
+            "blurb": "Training data extraction, membership inference, and models revealing what they should not."
+        },
+        {
+            "body": "Extraction has a signature: high-volume, systematically structured queries that sweep input space rather than serve users. Operations teams for exposed model endpoints should baseline legitimate usage and alert on sweep patterns, the same anomaly discipline applied to credential stuffing, aimed at a newer target.",
+            "name": "Model Theft",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/ee588f1c/",
+            "blurb": "Weight exfiltration and model extraction through APIs, and what providers disclose about protecting them."
+        },
+        {
+            "body": "Discovery is the operational half: network telemetry, DNS logs, CASB and SSO data, and expense records all reveal AI services in use that never crossed a security desk. A standing discovery process that feeds newly found tools into triage, rather than a one-time hunt, matches the weekly pace at which the shadow inventory actually changes.",
+            "name": "Shadow AI",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/2b859942/",
+            "blurb": "Unsanctioned AI use inside organizations: the exposure it creates and how enterprises detect and govern it."
+        },
+        {
+            "body": "The documented reality of AI-enabled malware, from government threat intelligence and vendor incident reporting, is acceleration more than novelty: faster variant generation, faster vulnerability research, more convincing lures, and lower skill floors, with threat actors observed using commercial models across their operations. For the SOC the fundamentals hold, behavior-based detection, rapid patching, and least privilege, but the tempo assumption behind response playbooks needs revisiting, because the adversary now iterates at machine speed while defenders still convene at meeting speed.",
+            "name": "AI-enabled Malware",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/83c6a26f/",
+            "blurb": "What is documented, by primary sources, about AI-assisted malicious code and the vendor and government reporting on it."
+        },
+        {
+            "body": "Synthetic media fraud is an operational problem before it is a technical one: the documented losses come from voice-cloned executives authorizing wire transfers and fabricated video calls convincing finance staff, exactly the scenarios federal fraud advisories now describe. The controls that work are procedural, out-of-band verification through independently known channels for any payment or credential request, callback rules that survive a convincing voice, and payment authorization that no single phone call can move.",
+            "name": "Deepfakes and Synthetic Identity",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/fd1e006d/",
+            "blurb": "Synthetic media fraud, identity spoofing, detection methods, and the laws responding to them."
+        },
+        {
+            "body": "Generated text removed the tells that trained a generation of users: the grammar errors and template awkwardness that made phishing recognizable are gone, and voice cloning extends the same fluency to phone channels. Detection weight shifts from content to behavior and infrastructure, sender reputation, domain age, authentication results, and anomalous request patterns, and reported-phish triage has to assume the well-written message is now the norm for attacks, not the exception.",
+            "name": "AI Phishing and Social Engineering",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/9b84fc07/",
+            "blurb": "How generated text and voice change phishing at scale, per published incident and vendor reporting."
+        },
+        {
+            "body": "Operational AI security tooling watches running systems: runtime monitors for LLM applications, gateways that log and inspect prompt and completion traffic, detection content for injection and abuse patterns, and the SOC copilots that accelerate investigation. Selection questions that matter: whether detections are explainable enough to act on, whether the tool's own AI is instrumented, and whether it integrates with the alert pipeline you already run rather than demanding a parallel one.",
+            "name": "AI Security Tooling",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/9f398737/",
+            "blurb": "The defensive tooling landscape, organized by six security domains: Security Governance and Risk Management, Security Operations, Architecture and Engineering, Application and Product Security, Third-Party and Supply Chain Risk, and Data Protection and Privacy."
+        },
+        {
+            "body": "The lateral movement nobody is watching runs over machine credentials, because the identity analytics that catch impossible travel and anomalous human logins were never trained on service-to-service behavior. Baselining what each agent identity normally touches, alerting when an agent's access pattern jumps scope, and folding non-human identities into the same monitoring pipeline as human ones closes the visibility gap adversaries are already using.",
+            "name": "Agent and Non-Human Identity",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/8f3e19cd/",
+            "blurb": "The explosion of machine identities: agent credentials, delegated authority, revocation, and the lateral movement paths nobody is watching."
+        },
+        {
+            "body": "Cascading failure is the agent-native incident class: every individual agent behaved within its rules and the system still failed, because interactions compounded in ways no single rule anticipated. Runtime supervision watches the system, not just the agents, with kill-switch protocols that are pre-authorized and rehearsed rather than improvised mid-incident, and post-incident rebuilds that ask what the agent learned, what it changed, and what those changes caused downstream.",
+            "name": "AI Agent Security",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/a2538ec1/",
+            "blurb": "Agent kill chains, cascading multi-agent failure, circuit breakers, agent-to-agent trust boundaries, and runtime supervision of autonomous systems."
+        },
+        {
+            "body": "AI ends the triage economy the tier model was built on: when machines investigate, every alert gets investigated rather than sampled, and the analyst's job moves from working a queue to supervising investigations and adjudicating what machines conclude. The failure mode that arrives with the capability is automation bias, the confident copilot that is wrong, so the operating model pairs machine-speed investigation with explicit human supervision rules for which actions machines may take alone, and metrics evolve past mean-time-to-detect toward investigation coverage and supervised-action accuracy.",
+            "name": "AI in Security Operations",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/e294a1dd/",
+            "blurb": "Defending with AI: machine-speed investigation, human supervision models, automation bias, kill-switch protocols, and securing the SOC's own AI."
+        },
+        {
+            "body": "Subject-request handling now has an AI clause: locating a person's data means checking conversation logs, embeddings, and memory stores, not just databases, and deletion workflows have to reach them all with honest documentation of what deletion from trained models does and does not accomplish. Machine unlearning remains an active research field, not an operational guarantee, and the process record should say so.",
+            "name": "AI Privacy and Data Protection",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/95ccea74/",
+            "blurb": "The deletion problem in trained models, inference as data collection, memory sprawl, purpose enforcement, and cross-border inference."
+        },
+        {
+            "body": "Continuous adversarial evaluation in production-like conditions catches what pre-deployment testing structurally cannot: drift, integration seams, and the behaviors that only emerge with real tools and real data connected. Findings feed the detection pipeline, every successful attack in testing becomes a detection hypothesis for production, which is the purple-team loop applied to AI.",
+            "name": "AI Red Teaming and Adversarial Evaluation",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/15fe15c4/",
+            "blurb": "Continuous adversarial testing of AI systems: methods, benchmarks, disclosure practices, and the evidence that earns expanded autonomy."
+        },
+        {
+            "body": "The SOC has to watch actors that move at machine speed. That means alerts on unusual tool call rates, approval bypass attempts, privilege use and runaway cost, and a kill switch that can stop an agent mid-task. Periodic scanning cannot keep up with an agent committing and calling APIs continuously.",
+            "name": "Agent Development Lifecycle (ADLC) Security",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/632156d2/",
+            "blurb": "The security risks of building, deploying and running autonomous AI agents: tool and MCP bridges, prompt attacks on dynamic input, agent-made supply chain risk, and failures at machine speed."
+        }
+    ],
+    "program": [
+        {
+            "body": "Most organizations have written an AI incident response playbook; few have rehearsed one. A playbook that has never been run is a document, not a capability. Schedule a tabletop within weeks, built around the hardest case: an agent compromised through prompt injection. Who decides to suspend it, how fast can they be reached, and does the suspension actually work as written? AI incidents also need a longer sequence than detect, contain, eradicate, recover: determine what the agent learned, what it changed and what it caused, roll its memory back to a verified state, reverse or disclose the changes, notify the people whose decisions were affected, and reauthorize it under a fresh grant before resuming under closer watch.",
+            "name": "AI-Specific Incident Response",
+            "refs": [
+                {
+                    "title": "The AI IT Security Implementation & Strategy™",
+                    "volume": 6,
+                    "chapter": "Chapter 4: The SOC Inherits the Audit",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-ai-it-security-implementation-strategy/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HGBSB5ZR"
+                },
+                {
+                    "title": "The AI IT Security Implementation & Strategy™",
+                    "volume": 6,
+                    "chapter": "Chapter 5: Security Operations Gains an Engine",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-ai-it-security-implementation-strategy/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HGBSB5ZR"
+                }
+            ],
+            "scope": "Playbooks for model compromise, data exfiltration and rogue AI behavior."
+        },
+        {
+            "body": "A successful prompt injection looks, in the logs, like a normal interaction: a query went in, a response came out, nothing failed authentication and no exfiltration alert fired. The only signal is in the output. That is why monitoring starts with a coverage audit: map existing detection rules against the AI attack surfaces, prompt injection, agent behavioral anomalies, model abuse and non-human identity compromise, and for each one name the rule that would catch it today. Where the answer is none, that gap is documented and owned. The shift is from detecting breaches to supervising machine reasoning, which can be corrupted without tripping a single traditional alert.",
+            "name": "Prompt Injection Monitoring",
+            "refs": [
+                {
+                    "title": "The AI IT Security Implementation & Strategy™",
+                    "volume": 6,
+                    "chapter": "Chapter 4: The SOC Inherits the Audit",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-ai-it-security-implementation-strategy/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HGBSB5ZR"
+                },
+                {
+                    "title": "The AI IT Security Implementation & Strategy™",
+                    "volume": 6,
+                    "chapter": "Introduction",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-ai-it-security-implementation-strategy/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HGBSB5ZR"
+                }
+            ],
+            "scope": "Real-time alerting on malicious inputs designed to manipulate model outputs."
+        },
+        {
+            "body": "Attackers can learn a detection model's blind spots without seeing inside it, by generating activity and watching what gets caught, then training their tools to evade it. Defending against that starts with behavioral baselines on the most critical AI systems: define normal, configure drift rules against it, and instrument prompts, outputs, retrieval sources and agent actions. Run the detection on the five highest-stakes systems for thirty days and review every flag before expanding. Poisoning is slower and harder, because the corruption happened before deployment and only activates on a trigger, so detection has to watch production behavior, not just pre-release tests.",
+            "name": "Detecting Adversarial Attacks",
+            "note": "Model inversion is treated under extraction resistance testing rather than SOC detection.",
+            "refs": [
+                {
+                    "title": "The AI IT Security Implementation & Strategy™",
+                    "volume": 6,
+                    "chapter": "Chapter 4: The SOC Inherits the Audit",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-ai-it-security-implementation-strategy/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HGBSB5ZR"
+                },
+                {
+                    "title": "The AI IT Security Implementation & Strategy™",
+                    "volume": 6,
+                    "chapter": "Chapter 5: Security Operations Gains an Engine",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-ai-it-security-implementation-strategy/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HGBSB5ZR"
+                }
+            ],
+            "scope": "Identifying evasion, data poisoning and model inversion attempts."
+        },
+        {
+            "body": "The output is where a leak becomes visible, and sometimes where it happens without the content being read at all: researchers have classified conversation topics from the size and timing of encrypted streaming traffic, and reconstructed a share of responses from token lengths. When an agent is compromised, the output problem also spreads: every agent that consumed its output during the window is a candidate for secondary compromise, and every knowledge base that ingested it may be contaminated. Scoping that requires agent-to-agent communication logs, so the instrumentation and the response capability are one investment, not two.",
+            "name": "Output Anomalies and Exfiltration",
+            "refs": [
+                {
+                    "title": "Application Security in the Age of AI™",
+                    "volume": 8,
+                    "chapter": "The Output Boundary",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-application-security/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HJSLWSS1"
+                },
+                {
+                    "title": "The AI IT Security Implementation & Strategy™",
+                    "volume": 6,
+                    "chapter": "Chapter 4: The SOC Inherits the Audit",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-ai-it-security-implementation-strategy/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HGBSB5ZR"
+                },
+                {
+                    "title": "The AI IT Security Implementation & Strategy™",
+                    "volume": 6,
+                    "chapter": "Chapter 5: Security Operations Gains an Engine",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-ai-it-security-implementation-strategy/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HGBSB5ZR"
+                }
+            ],
+            "scope": "Monitoring models for unauthorized release of sensitive internal data."
+        },
+        {
+            "body": "Traditional SIEM telemetry captures connections, authentication, file access and processes. AI needs a different set: the prompts submitted, the outputs produced, the retrieval sources drawn on, and the actions agents took as a result. Most SIEM environments do not collect it because nobody built the pipes. The leading programs pair that telemetry with detection as code: detection logic written as code, version controlled, tested against known attack data before deployment and validated against live telemetry after. The detection engineer in an AI-era SOC writes behavioral baselines rather than signatures, and works more like a software engineer than a traditional analyst.",
+            "name": "SIEM Integration for ML Pipelines",
+            "refs": [
+                {
+                    "title": "The AI IT Security Implementation & Strategy™",
+                    "volume": 6,
+                    "chapter": "Chapter 5: Security Operations Gains an Engine",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-ai-it-security-implementation-strategy/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HGBSB5ZR"
+                },
+                {
+                    "title": "The AI IT Security Implementation & Strategy™",
+                    "volume": 6,
+                    "chapter": "Chapter 6: The SOC Endgame",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-ai-it-security-implementation-strategy/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HGBSB5ZR"
+                }
+            ],
+            "scope": "Feeding AI telemetry and API logs into existing SIEM systems."
+        },
+        {
+            "body": "A release scan for AI software has five parts: dependencies, with the software bill of materials diffed against the last release so an unadmitted component is a finding; container and infrastructure configuration against policy as code; secrets, across code, configuration and prompts, because a credential in a system prompt is readable by an attacker; model files, checked for format and loader; and the AI-specific tests. Model scanners alone are not enough: a study found nineteen of twenty-two model loading paths missed by existing scanners. And automated fix loops need a human checkpoint between passes, because a loop that repairs until the scanner goes quiet has optimized for the scanner, not for security.",
+            "name": "Continuous Vulnerability Scanning",
+            "refs": [
+                {
+                    "title": "Secure by Design in the Age of AI™",
+                    "volume": 7,
+                    "chapter": "Chapter 7: The Ship Decision",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-secure-by-design/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HJ6W4R8Q"
+                },
+                {
+                    "title": "Secure by Design in the Age of AI™",
+                    "volume": 7,
+                    "chapter": "Chapter 4: See the Whole Surface",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-secure-by-design/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HJ6W4R8Q"
+                },
+                {
+                    "title": "Application Security in the Age of AI™",
+                    "volume": 8,
+                    "chapter": "The Iteration Rule",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-application-security/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HJSLWSS1"
+                }
+            ],
+            "scope": "Automated scanning of AI infrastructure and dependencies."
+        },
+        {
+            "body": "Traditional threat hunting runs in campaigns: form a hypothesis, query historical data, report, and wait until next quarter, leaving an uncontested window between campaigns. Continuous hunting closes that window. For AI the hypothesis set changes too: the analyst hunts attacks on reasoning, prompt injection campaigns, training data manipulation and context corruption, in AI behavioral telemetry, and needs to know what a poisoned knowledge base looks like in retrieval logs. Hunters also have to question their own inputs: a poisoned threat intelligence feed propagates into detection rules and triage logic, teaching the SOC to miss exactly what the attacker is doing.",
+            "name": "Automated AI Threat Hunting",
+            "note": "Machine learning based hunting tools are not evaluated by product.",
+            "refs": [
+                {
+                    "title": "The AI IT Security Implementation & Strategy™",
+                    "volume": 6,
+                    "chapter": "Chapter 5: Security Operations Gains an Engine",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-ai-it-security-implementation-strategy/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HGBSB5ZR"
+                },
+                {
+                    "title": "The AI IT Security Implementation & Strategy™",
+                    "volume": 6,
+                    "chapter": "Chapter 6: The SOC Endgame",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-ai-it-security-implementation-strategy/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HGBSB5ZR"
+                },
+                {
+                    "title": "The AI IT Security Implementation & Strategy™",
+                    "volume": 6,
+                    "chapter": "Chapter 4: The SOC Inherits the Audit",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-ai-it-security-implementation-strategy/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HGBSB5ZR"
+                }
+            ],
+            "scope": "Using machine learning to detect anomalous behavior within AI systems."
+        },
+        {
+            "body": "A point-in-time red team produces a report on how a system behaved on one date, and models, retrieval corpora, tools and techniques all change faster than an annual exercise. Continuous adversarial evaluation fixes that: automated adversarial agents attack production endpoints on a standing schedule, and before release the same suite runs as a regression test, with model versions and prompts treated as artifacts that require re-verification when they change. Enterprises should add purple team cadence, because the value is exercising detection content against an adversary who adapts, the only way to tell detection that works from detection that was never tested.",
+            "name": "Red Teaming AI Models",
+            "refs": [
+                {
+                    "title": "The AI IT Security Implementation & Strategy™",
+                    "volume": 6,
+                    "chapter": "Chapter 5: Security Operations Gains an Engine",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-ai-it-security-implementation-strategy/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HGBSB5ZR"
+                },
+                {
+                    "title": "Secure by Design in the Age of AI™",
+                    "volume": 7,
+                    "chapter": "Chapter 5: The Threat Model That Does Not Go Stale",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-secure-by-design/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HJ6W4R8Q"
+                },
+                {
+                    "title": "Application Security in the Age of AI™",
+                    "volume": 8,
+                    "chapter": "Four Things an Enterprise Needs That a Vendor Does Not",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-application-security/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HJSLWSS1"
+                }
+            ],
+            "scope": "Adversarial simulation to test model safety boundaries and guardrails."
+        },
+        {
+            "body": "Ordinary rate limiting misses the attacks that matter most on AI endpoints. A rate limiter counts requests, but a cost attack does not change request volume; it changes what each request costs in tokens, tool calls, recursion and reasoning time. In one study, attacks inducing endless generation cut throughput to as little as one percent under a limit of ten requests a minute. Where the model itself is an asset, testing adds extraction and inversion resistance: rate limits, monitoring for systematic probing patterns, output perturbation where the product allows, and membership inference tests for any model tuned on customer data.",
+            "name": "API Abuse Detection",
+            "refs": [
+                {
+                    "title": "Application Security in the Age of AI™",
+                    "volume": 8,
+                    "chapter": "The Failure Mode That Reaches Finance First",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-application-security/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HJSLWSS1"
+                },
+                {
+                    "title": "Secure by Design in the Age of AI™",
+                    "volume": 7,
+                    "chapter": "Chapter 6: Two Lanes",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-secure-by-design/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HJ6W4R8Q"
+                }
+            ],
+            "scope": "Detecting scraping, volumetric attacks and excessive consumption on AI endpoints."
+        },
+        {
+            "body": "Root cause in AI systems is rarely in the application code alone. A study of 221 real vulnerabilities in agent applications traced them to sixteen root causes across seven components, of which the code was one. Forensics therefore needs a register describing each application's components and model dependencies, and an authority ledger: what each agent was granted, and what it actually exercised. The gap is the evidence. In the volume's worked case, an assistant's service account held forty-one scopes and used six in ninety days, and one of the unused thirty-five was the write it made once and should never have had.",
+            "name": "Post-Incident Forensics",
+            "note": "Hallucination root cause analysis is not treated as a forensic method.",
+            "refs": [
+                {
+                    "title": "Application Security in the Age of AI™",
+                    "volume": 8,
+                    "chapter": "Two Lifecycles",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-application-security/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HJSLWSS1"
+                },
+                {
+                    "title": "Application Security in the Age of AI™",
+                    "volume": 8,
+                    "chapter": "The Register: One Row Per Application",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-application-security/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HJSLWSS1"
+                },
+                {
+                    "title": "Application Security in the Age of AI™",
+                    "volume": 8,
+                    "chapter": "The Authority Ledger",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-application-security/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HJSLWSS1"
+                }
+            ],
+            "scope": "Tracing the root cause of a model failure or breach."
+        }
+    ],
+    "built_at": "2026-09-22T04:08:21-05",
+    "hub_name": "AI Security and Risk",
+    "hub_path": "/ai-ecosystem/enterprise-applications-governance-and-tools/0ff57218/",
+    "page_uid": "3aa447ef",
+    "generated": "2026-09-22",
+    "topic_count": 17,
+    "other_domains": [
+        {
+            "href": "/ai-ecosystem/enterprise-applications-governance-and-tools/428caf62/",
+            "label": "Security Governance and Risk Management"
+        },
+        {
+            "href": "/ai-ecosystem/enterprise-applications-governance-and-tools/c42f2aba/",
+            "label": "Architecture and Engineering"
+        },
+        {
+            "href": "/ai-ecosystem/enterprise-applications-governance-and-tools/72cf7bba/",
+            "label": "Application and Product Security"
+        },
+        {
+            "href": "/ai-ecosystem/enterprise-applications-governance-and-tools/4a705735/",
+            "label": "Third-Party and Supply Chain Risk"
+        },
+        {
+            "href": "/ai-ecosystem/enterprise-applications-governance-and-tools/aa087822/",
+            "label": "Data Protection and Privacy"
+        }
+    ],
+    "refresh_every_days": 30
+}

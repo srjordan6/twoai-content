@@ -32,7 +32,7 @@
             "meet": [
                 {
                     "uid": "56f96b2b",
-                    "fact": "Today the median model tracked here costs $0.40 per million input tokens and $1.80 per million output tokens, across 437 models from 60 providers.",
+                    "fact": "Today the median model tracked here costs $0.40 per million input tokens and $1.80 per million output tokens, across 439 models from 60 providers.",
                     "href": "/ai-ecosystem/technology-and-core-infrastructure/56f96b2b/",
                     "name": "API Pricing"
                 }
@@ -111,7 +111,7 @@
             "meet": [
                 {
                     "uid": "56f96b2b",
-                    "fact": "The largest context window among the 437 API models tracked here is 2,000,000 tokens.",
+                    "fact": "The largest context window among the 439 API models tracked here is 2,000,000 tokens.",
                     "href": "/ai-ecosystem/technology-and-core-infrastructure/56f96b2b/",
                     "name": "API Pricing"
                 }
@@ -212,7 +212,7 @@
             "meet": [
                 {
                     "uid": "",
-                    "fact": "2,374 servers from the official Model Context Protocol registry, the standard way agents are given tools.",
+                    "fact": "2,376 servers from the official Model Context Protocol registry, the standard way agents are given tools.",
                     "href": "/mcp/",
                     "name": "MCP Server tracker"
                 },
@@ -286,7 +286,7 @@
             },
             {
                 "step": "Context window",
-                "text": "The model has to hold all 27,700 tokens at once. 420 of the 437 API models tracked here can, and 17 cannot, so for those the contract would have to be split."
+                "text": "The model has to hold all 27,700 tokens at once. 422 of the 439 API models tracked here can, and 17 cannot, so for those the contract would have to be split."
             },
             {
                 "step": "Inference and cost",
@@ -306,14 +306,14 @@
         "assumption_source": "https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them"
     },
     "reading": {
-        "body": "A 40-page contract costs about 1.2 cents to summarize at median API prices, and 420 of 437 tracked models can hold it in one context window, so price and capacity are not the real constraints, fabrication is.\n\nReading 26,700 input tokens costs $0.0107 while writing 1,000 output tokens costs $0.0018, because output is priced 4.5 times higher per token but volume is far smaller. At this document size, price is rarely the barrier. The context window constraint is also mostly solved: 420 of 437 API models tracked can hold all 27,700 tokens at once, and the largest window among them is 2,000,000 tokens, far beyond a single contract. The 17 that cannot would require splitting the contract, which breaks the model's ability to see the whole document at once.\n\nFor a library of contracts, the whole set will not fit in any context window, so retrieval becomes the default pattern. Embedding every contract once and handing the model only the passages that match the question keeps cost and context bounded while grounding answers in the actual documents. This depends on embeddings, which turn text into numbers that can be compared by similarity.\n\nThe most important warning is that a summary can state a clause the contract does not contain. For anything with legal weight, the summary is a map to the pages to read, not a substitute for them. The example does not measure how often that happens, and it does not cover compute, buildings, or power, which are not part of the scenario.",
+        "body": "For a single 40-page contract, summarization costs about 1.2 cents at median API prices and fits in 422 of 439 tracked models; cost is not the constraint, context and accuracy are.\n\nThe token math is straightforward: a 40-page contract at 500 words per page is roughly 20,000 words, about 26,700 input tokens, plus 1,000 output tokens for a one-page summary. 422 of 439 tracked API models can hold all 27,700 tokens at once, so context is not the main obstacle for a single document. At median prices of $0.40 per million input and $1.80 per million output, the read costs $0.0107 and the summary $0.0018, about 1.2 cents total.\n\nFor a library of contracts, the whole library will not fit in context, so retrieval embeds every contract once and hands the model only the passages that match the question. That is the pattern that scales. But a summary can state a clause the contract does not contain, so for anything with legal weight the summary is a map to the pages to read, not a substitute for them. The data does not cover training cost, hardware, or grid constraints; it only shows inference prices at this document size.",
         "model": "ollama:deepseek-v4-pro",
         "generated_on": "2026-09-22"
     },
-    "built_at": "2026-09-22T01:39:07-05",
+    "built_at": "2026-09-22T03:40:42-05",
     "category": "research-knowledge-and-learning",
     "page_uid": "d2390ba3",
     "verified": "2026-09-22",
     "generated": "2026-09-22",
-    "refresh_every_days": 1
+    "refresh_every_days": 7
 }

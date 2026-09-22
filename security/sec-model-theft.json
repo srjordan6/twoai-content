@@ -97,6 +97,74 @@
             ],
             "layout": "prose",
             "heading": "What to ask about model custody"
+        },
+        {
+            "grp": "distill2026",
+            "intro": "Distillation, training a smaller model on a stronger model's outputs, is a legitimate technique. In September 2026 the US government and Anthropic separately documented it being done covertly and at industrial scale, through fake accounts, stolen credentials and proxy networks. The figures below are Anthropic's, for its own models only; the government advisory covers Claude, GPT, Gemini and Grok and gives no per-company counts.",
+            "blocks": [
+                {
+                    "body": "On 8 September 2026 the NSA, CISA and FBI named six China-based companies, DeepSeek, Moonshot AI, Alibaba, MiniMax, StepFun and Z.AI, as extracting billions of tokens across millions of exchanges from US frontier models since at least late 2024, likely with Chinese government awareness. The agencies call distillation the critical core of these companies' development strategy, not a supplement to it.",
+                    "label": "The government finding"
+                },
+                {
+                    "body": "The largest distillation attack Anthropic says it has measured: over 151 million exchanges between May and July 2026, peaking near 3 million a day from more than 3,500 fraudulent accounts. A fixed prompt forced Claude Opus to write out its reasoning, which was converted into fine-tuning data for Qwen 3.5, 3.6 and 3.7.",
+                    "label": "Alibaba (Qwen)"
+                },
+                {
+                    "body": "Over 23 million exchanges between May and July 2026. Anthropic found Moonshot silently forwarded its own customers' requests to Claude and showed them Claude's answers as Kimi's: almost 300,000 requests in one ten-day period, through 5,380 fraudulent accounts. The relayed traffic included a user Anthropic assesses was likely PLA-affiliated, analyzing CCTV footage of one person.",
+                    "label": "Moonshot AI (Kimi)"
+                },
+                {
+                    "body": "Over 12.1 million exchanges in 14 days in July 2026. Like Moonshot, it relayed some of its own users' requests to Claude Opus without telling them, and replayed Claude's reasoning signatures in new sessions to recover reasoning Claude would otherwise have summarized.",
+                    "label": "DeepSeek"
+                },
+                {
+                    "body": "Zhipu: over 3.4 million exchanges in 17 days, including an attempt to distill cyber capabilities that it abandoned against Anthropic's strongest model and moved to weaker ones. Xiaomi: over 400,000 exchanges, replaying its own users' sessions through Claude. SenseTime bought harvested Claude transcripts from third-party vendors; MiniMax ran its own proxy service through an undisclosed shell company.",
+                    "label": "Zhipu (Z.ai), Xiaomi, SenseTime and MiniMax"
+                },
+                {
+                    "body": "The access layer behind all of it: gray-market API proxies that create thousands of accounts with false identities, fake or stolen cards and stolen API keys to get around geographic restrictions. Many also log their users' exchanges and sell them. Both the advisory and Anthropic name them.",
+                    "label": "Transfer stations"
+                },
+                {
+                    "body": "Anthropic reports that a model distilled from a frontier model can gain dangerous capabilities, including in the biological and cyber domains, even when the harvested exchanges say little about those subjects, and that the original model's safeguards do not carry over. The relayed traffic also exposed users' names, company data and live credentials to a third party without their knowledge.",
+                    "label": "Why it matters beyond competition"
+                }
+            ],
+            "layout": "grid",
+            "heading": "Industrial-scale distillation: the 2026 record"
+        },
+        {
+            "grp": "distilldefend",
+            "intro": "The two sources recommend overlapping defenses, and they describe what each provider can do alone and what only works together.",
+            "blocks": [
+                {
+                    "body": "Anthropic attributes proxy account activity to the organization behind it and acts against the whole network instead of banning accounts one at a time.",
+                    "label": "Attribute, do not whack-a-mole"
+                },
+                {
+                    "body": "The advisory: watch for anomalous prompts, accounts and networks, subscription-to-usage ratios out of line, new accounts at maximum usage immediately, and enterprise-scale throughput. Anthropic: classifiers built specifically to detect adversarial extraction.",
+                    "label": "Detect the pattern"
+                },
+                {
+                    "body": "Claude summarizes its internal reasoning before responding, and preserved thinking in Fable 5.1 stops new API accounts from editing the context that precedes the model's reasoning, a common way to make it reveal that reasoning.",
+                    "label": "Protect the reasoning"
+                },
+                {
+                    "body": "The advisory recommends subtly altering responses to suspected distillers, so harvested data is worth less.",
+                    "label": "Degrade the payoff"
+                },
+                {
+                    "body": "Anthropic can require identity verification from accounts showing abuse signals, such as unauthorized resale or operation from unsupported countries, and bans accounts that fail it.",
+                    "label": "Verify identity"
+                },
+                {
+                    "body": "The advisory: correlate activity across model providers, cloud platforms and API aggregators, because campaigns are deliberately spread so no single provider sees the whole of it.",
+                    "label": "Share across providers"
+                }
+            ],
+            "layout": "table",
+            "heading": "How the distillation is being fought"
         }
     ],
     "name": "Model Theft",
@@ -125,12 +193,36 @@
             "slug": "atlas-theft",
             "source_url": "https://atlas.mitre.org/",
             "source_name": "MITRE ATLAS"
+        },
+        {
+            "kind": "resource",
+            "name": "China-Based AI Companies Conducting Industrial-Scale Distillation Campaigns (AA26-251A)",
+            "note": "The joint NSA, CISA and FBI advisory of 8 September 2026. Names DeepSeek, Moonshot AI, Alibaba, MiniMax, StepFun and Z.AI; assesses distillation as the core of their development strategy, likely with Chinese government awareness; and tells US AI companies to detect anomalous accounts and usage, subtly alter responses to suspected distillers, and share intelligence across providers.",
+            "slug": "cisa-aa26-251a",
+            "source_url": "https://www.cisa.gov/news-events/cybersecurity-advisories/aa26-251a",
+            "source_name": "NSA, CISA and FBI"
+        },
+        {
+            "kind": "resource",
+            "name": "Detecting and countering misuse of AI: September 2026",
+            "note": "Anthropic's threat report, whose illicit distillation chapter attributes campaigns to seven China-based labs with exchange counts, extraction techniques and the defenses Anthropic deployed.",
+            "slug": "anthropic-tir-2026-09",
+            "source_url": "https://www.anthropic.com/threat-intelligence-report-september-2026",
+            "source_name": "Anthropic"
+        },
+        {
+            "kind": "resource",
+            "name": "Anthropic details distillation campaigns from Alibaba, Moonshot AI, and DeepSeek",
+            "note": "TechCrunch's report on the Anthropic findings, 10 September 2026.",
+            "slug": "tc-distill-2026-09",
+            "source_url": "https://techcrunch.com/2026/09/10/anthropic-details-distillation-campaigns-from-alibaba-moonshot-ai-and-deepseek/",
+            "source_name": "TechCrunch"
         }
     ],
     "stats": {
-        "mcp_servers": 2369,
+        "mcp_servers": 2376,
         "lawsuit_pages": 141,
-        "deepfake_bills": 76,
+        "deepfake_bills": 78,
         "compliance_docs": 210
     },
     "topic": [
@@ -173,8 +265,8 @@
             "label": "Security Operations"
         }
     ],
-    "built_at": "2026-09-21T18:17:45-05",
+    "built_at": "2026-09-22T04:08:20-05",
     "page_uid": "ee588f1c",
-    "generated": "2026-09-21",
+    "generated": "2026-09-22",
     "refresh_every_days": 30
 }

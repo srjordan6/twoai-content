@@ -1,0 +1,357 @@
+{
+    "tax": "ai-security-risk",
+    "uid": "aa087822",
+    "name": "Data Protection and Privacy",
+    "slug": "data",
+    "blurb": "What models remember, what leaks through prompts and completions, the deletion problem in trained weights, and privacy duties that now reach inference and memory.",
+    "shape": "security-domain",
+    "topics": [
+        {
+            "body": "Injection is also an exfiltration technique. Documented attacks instruct models to reveal system prompts, summarize and transmit connected documents, or encode stolen context into innocuous-looking output such as markdown image URLs. Data protection controls therefore extend to model egress: what stores the model can read, what leaves in completions, and whether outbound content is scanned the way outbound email already is.",
+            "name": "Prompt Injection",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/0b20f91f/",
+            "blurb": "Direct and indirect prompt injection: how instructions hidden in content hijack model behavior, documented attacks, and current defenses."
+        },
+        {
+            "body": "Models leak in ways databases cannot: memorized training data extracted through crafted queries, membership inference revealing whether a person's records were in the training set, and completions that reconstruct sensitive strings the model was never supposed to retain. The upstream control is minimization, keeping regulated and secret data out of training and fine-tuning sets unless the use case genuinely requires it, because data that never entered the weights can never be extracted from them. Where sensitive data must be used, differential-privacy training and rigorous deduplication measurably reduce memorization.",
+            "name": "Data Leakage",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/a2be4c55/",
+            "blurb": "Training data extraction, membership inference, and models revealing what they should not."
+        },
+        {
+            "body": "Every unsanctioned AI tool is an unassessed data flow, and pasting a customer record into a consumer chatbot is disclosure to an unvetted processor under most privacy frameworks, a breach in substance that never triggers notification machinery because nobody logged it. Browser-level and endpoint data-loss controls that recognize AI destinations, plus clear rules on what data classes may enter which tools, address the privacy half of the shadow AI problem directly.",
+            "name": "Shadow AI",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/2b859942/",
+            "blurb": "Unsanctioned AI use inside organizations: the exposure it creates and how enterprises detect and govern it."
+        },
+        {
+            "body": "Biometric authentication inherits the deepfake problem directly: voice prints and face matches were designed against impersonation by humans, not against generative models trained on a target's public media. Liveness detection raises the bar without settling the race, and identity-verification programs should treat biometric factors as one signal among several rather than as proof.",
+            "name": "Deepfakes and Synthetic Identity",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/fd1e006d/",
+            "blurb": "Synthetic media fraud, identity spoofing, detection methods, and the laws responding to them."
+        },
+        {
+            "body": "Targeting quality is a data problem: the personalization in AI-generated spear phishing is assembled from scraped public data, breach corpora, and social profiles. Minimizing what the organization and its executives expose publicly, and monitoring for impersonation domains and cloned profiles, shrinks the raw material the generation step depends on.",
+            "name": "AI Phishing and Social Engineering",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/9b84fc07/",
+            "blurb": "How generated text and voice change phishing at scale, per published incident and vendor reporting."
+        },
+        {
+            "body": "Data protection tooling for AI extends loss prevention to a new channel: prompt and completion scanning, redaction layers that strip identifiers before content reaches a model, privacy vaults that tokenize sensitive fields, and semantic classification that understands meaning rather than matching patterns, because the sensitive content in AI traffic rarely arrives formatted like a credit card number.",
+            "name": "AI Security Tooling",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/9f398737/",
+            "blurb": "The defensive tooling landscape, organized by six security domains: Security Governance and Risk Management, Security Operations, Architecture and Engineering, Application and Product Security, Third-Party and Supply Chain Risk, and Data Protection and Privacy."
+        },
+        {
+            "body": "An agent's data access should be the intersection of its task and its principal's entitlements, not the union of everything its service account ever accumulated. Mapping which stores each agent can reach, and shrinking that map to what the workflow requires, is data minimization applied to the fastest-growing class of identities in the enterprise.",
+            "name": "Agent and Non-Human Identity",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/8f3e19cd/",
+            "blurb": "The explosion of machine identities: agent credentials, delegated authority, revocation, and the lateral movement paths nobody is watching."
+        },
+        {
+            "body": "Security AI processes the most sensitive telemetry the enterprise generates, and the tooling questions follow: where investigation data goes when a cloud copilot analyzes it, what the provider retains, and whether cross-tenant learning is on. The SOC's vendor diligence has to cover its own AI stack with the same rigor it recommends to everyone else.",
+            "name": "AI in Security Operations",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/e294a1dd/",
+            "blurb": "Defending with AI: machine-speed investigation, human supervision models, automation bias, kill-switch protocols, and securing the SOC's own AI."
+        },
+        {
+            "body": "AI broke privacy's founding assumptions quietly and at scale: erasure requests now reach model weights where personal data is not stored as records but baked into learned behavior, inference creates regulated data from unregulated inputs, a health conclusion derived from purchase patterns carries the weight of health data nobody consented to collect, and agent memory sprawls across stores no retention schedule ever covered. The honest program treats deletion from trained models as an engineering problem with real limits, tracks what its systems infer and not just what they collect, and governs memory as a first-class data store.",
+            "name": "AI Privacy and Data Protection",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/95ccea74/",
+            "blurb": "The deletion problem in trained models, inference as data collection, memory sprawl, purpose enforcement, and cross-border inference."
+        },
+        {
+            "body": "Agents move data between systems as a matter of course. Privacy teams set what an agent may put in its context, what it may remember and for how long, and what must be redacted from logs and memory, because an agent's scratchpad is a new place for personal data and credentials to persist.",
+            "name": "Agent Development Lifecycle (ADLC) Security",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/632156d2/",
+            "blurb": "The security risks of building, deploying and running autonomous AI agents: tool and MCP bridges, prompt attacks on dynamic input, agent-made supply chain risk, and failures at machine speed."
+        }
+    ],
+    "program": [
+        {
+            "body": "Minimization in AI is enforced in pipelines, not policies. A policy says customer service data may not be used for marketing analytics; the pipeline that moves it there does not read the policy, and the violation happens silently at machine speed. Volume VI's answer is purpose as code: a policy engine that checks every flow against the purpose the data was collected for. Pilot it on the one high-sensitivity pipeline whose link between collection purpose and current AI use is least documented, run it in logging mode for thirty days, and record every undocumented flow. Purpose limitation and inference control are the same question asked at different points in the data lifecycle.",
+            "name": "Data Minimization",
+            "refs": [
+                {
+                    "title": "The AI IT Security Implementation & Strategy™",
+                    "volume": 6,
+                    "chapter": "Chapter 11: Privacy Gains an Engine",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-ai-it-security-implementation-strategy/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HGBSB5ZR"
+                },
+                {
+                    "title": "The AI IT Security Implementation & Strategy™",
+                    "volume": 6,
+                    "chapter": "Chapter 12: The Privacy Endgame",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-ai-it-security-implementation-strategy/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HGBSB5ZR"
+                }
+            ],
+            "scope": "Limiting training and prompt data to what the AI function strictly needs."
+        },
+        {
+            "body": "Differential privacy adds calibrated noise to data before it is used for analytics or training, keeping its statistical value while making individual records unextractable. Volume VI places it with synthetic data generation and federated learning as privacy-enhancing technologies that have moved from research to procurement, with production deployments at major technology organizations and growing vendor ecosystems. The evaluation test is production readiness for the specific use case, not the technique in general. The year-one milestone is at least one such technology deployed in production, proving the privacy function can authorize AI data uses the old framework could not.",
+            "name": "Differential Privacy",
+            "note": "Noise calibration and privacy budget selection are not treated technically.",
+            "refs": [
+                {
+                    "title": "The AI IT Security Implementation & Strategy™",
+                    "volume": 6,
+                    "chapter": "Chapter 11: Privacy Gains an Engine",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-ai-it-security-implementation-strategy/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HGBSB5ZR"
+                },
+                {
+                    "title": "The AI IT Security Implementation & Strategy™",
+                    "volume": 6,
+                    "chapter": "Chapter 12: The Privacy Endgame",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-ai-it-security-implementation-strategy/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HGBSB5ZR"
+                }
+            ],
+            "scope": "Statistical noise that prevents identifying individuals in training data."
+        },
+        {
+            "body": "Query access to a model can be enough to copy it or to learn what it was trained on. Research going back a decade shows black-box access to a prediction interface can reconstruct a near-equivalent model, and a model tuned on customer or employee records can be probed to learn whether a given record was in its training set, which is itself a disclosure. Where a product exposes a proprietary or customer-tuned model, Volume VII adds extraction and inversion resistance to dynamic testing: endpoint rate limits, monitoring for systematic probing, output perturbation where the product allows it, and membership inference testing for any model tuned on customer data.",
+            "name": "Preventing Data Extraction Attacks",
+            "refs": [
+                {
+                    "title": "Secure by Design in the Age of AI™",
+                    "volume": 7,
+                    "chapter": "Chapter 6: Two Lanes",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-secure-by-design/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HJ6W4R8Q"
+                },
+                {
+                    "title": "The AI IT Security Implementation & Strategy™",
+                    "volume": 6,
+                    "chapter": "Chapter 7: Third-Party Risk Inherits the Audit",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-ai-it-security-implementation-strategy/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HGBSB5ZR"
+                },
+                {
+                    "title": "The AI IT Security Implementation & Strategy™",
+                    "volume": 6,
+                    "chapter": "Chapter 11: Privacy Gains an Engine",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-ai-it-security-implementation-strategy/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HGBSB5ZR"
+                }
+            ],
+            "scope": "Defending models against reverse-engineering of training data."
+        },
+        {
+            "body": "Prompt inspection at the AI gateway is where personal data is caught before it leaves the governed environment. Its first job is classification: reading each prompt and classifying the data in it against the enterprise's model, including AI-native and inferred categories. A prompt carrying restricted personal data triggers a different response from one carrying public information, whether a block, a redaction or a reroute. Scrubbing only works if discovery reaches the AI-native estate too, prompt logs, outputs, embeddings, vector stores and agent memory, because personal data that was never found in those places cannot be redacted from them.",
+            "name": "PII Scrubbing",
+            "refs": [
+                {
+                    "title": "The AI IT Security Implementation & Strategy™",
+                    "volume": 6,
+                    "chapter": "Chapter 11: Privacy Gains an Engine",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-ai-it-security-implementation-strategy/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HGBSB5ZR"
+                },
+                {
+                    "title": "The AI IT Security Implementation & Strategy™",
+                    "volume": 6,
+                    "chapter": "Chapter 12: The Privacy Endgame",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-ai-it-security-implementation-strategy/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HGBSB5ZR"
+                }
+            ],
+            "scope": "Redacting personal information from prompts before they reach the model."
+        },
+        {
+            "body": "Standard deletion workflows are sound, and they miss most of where AI keeps data. The identified stores rarely include model weights, agent memory, embedding databases or datasets referenced by fine-tuned models. Each location needs its own procedure: traditional stores get the usual identify, delete, confirm and log; vector stores need the specific embeddings removed and their indexes rebuilt; agent memory needs a targeted purge. Volume VI names a new role, the erasure engineer, to own it. Volume VIII adds a cheap, verifiable technique: encrypt each vector and discard its key on deletion, which produced a signed proof of the deletion an examiner can check.",
+            "name": "Data Retention and Deletion",
+            "note": "Specific time-to-live periods for prompt logs are not prescribed.",
+            "refs": [
+                {
+                    "title": "The AI IT Security Implementation & Strategy™",
+                    "volume": 6,
+                    "chapter": "Chapter 10: Privacy Inherits the Audit",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-ai-it-security-implementation-strategy/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HGBSB5ZR"
+                },
+                {
+                    "title": "The AI IT Security Implementation & Strategy™",
+                    "volume": 6,
+                    "chapter": "Chapter 11: Privacy Gains an Engine",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-ai-it-security-implementation-strategy/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HGBSB5ZR"
+                },
+                {
+                    "title": "The AI IT Security Implementation & Strategy™",
+                    "volume": 6,
+                    "chapter": "Chapter 12: The Privacy Endgame",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-ai-it-security-implementation-strategy/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HGBSB5ZR"
+                },
+                {
+                    "title": "Application Security in the Age of AI™",
+                    "volume": 8,
+                    "chapter": "What Cannot Be Erased",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-application-security/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HJSLWSS1"
+                }
+            ],
+            "scope": "Time limits on conversation logs and prompt histories."
+        },
+        {
+            "body": "Model weights are where erasure most often stops, and Volume VI asks for honesty about it: separate what the enterprise can do from what it can only require. Where it fine-tuned a model on its own data, the options are retraining without the erased records, applying machine unlearning to remove a specific example's influence without full retraining, or documenting the limitation and disclosing it. Unlearning is an active research area, not a settled control. For foundation models the enterprise did not train, the remedy is contractual. Volume VII makes erasure one of the requirement families most AI product specifications leave out.",
+            "name": "Right to be Forgotten",
+            "refs": [
+                {
+                    "title": "The AI IT Security Implementation & Strategy™",
+                    "volume": 6,
+                    "chapter": "Chapter 11: Privacy Gains an Engine",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-ai-it-security-implementation-strategy/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HGBSB5ZR"
+                },
+                {
+                    "title": "The AI IT Security Implementation & Strategy™",
+                    "volume": 6,
+                    "chapter": "Chapter 10: Privacy Inherits the Audit",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-ai-it-security-implementation-strategy/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HGBSB5ZR"
+                },
+                {
+                    "title": "Secure by Design in the Age of AI™",
+                    "volume": 7,
+                    "chapter": "Chapter 13: The Cheapest Control",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-secure-by-design/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HJ6W4R8Q"
+                }
+            ],
+            "scope": "Removing a person's data from a trained model."
+        },
+        {
+            "body": "Federated learning trains a model where the data lives, on devices or in separate organizations, so raw records are never pooled centrally. Volume VI groups it with differential privacy and synthetic data as privacy-enhancing technologies now ready for procurement, and applies the same test to all three: production readiness for the specific use case. The year-one milestone is one of them deployed in a real production use case, both to show the privacy function can enable AI uses it could not authorize before and to build the expertise to expand.",
+            "name": "Federated Learning",
+            "note": "Covered briefly; the security weaknesses specific to federated learning are not treated.",
+            "refs": [
+                {
+                    "title": "The AI IT Security Implementation & Strategy™",
+                    "volume": 6,
+                    "chapter": "Chapter 11: Privacy Gains an Engine",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-ai-it-security-implementation-strategy/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HGBSB5ZR"
+                },
+                {
+                    "title": "The AI IT Security Implementation & Strategy™",
+                    "volume": 6,
+                    "chapter": "Chapter 12: The Privacy Endgame",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-ai-it-security-implementation-strategy/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HGBSB5ZR"
+                }
+            ],
+            "scope": "Training on user devices so raw data stays decentralized."
+        },
+        {
+            "body": "Consent frameworks were built for data an organization collects, and AI creates data nobody collected. A system that infers health status from purchase patterns did not collect health data, it derived it, and the customer consented to the purchase history, not the conclusion. That inference is sensitive data under most frameworks. Consent therefore has to be tracked through AI training pipelines, not just collection forms, and Volume VI expects privacy platforms to extend consent enforcement that far. At the gateway, every request carrying regulated data is checked against the consent basis recorded for that data and the declared purpose of the requesting system, and a mismatch blocks rather than logs.",
+            "name": "Consent Management",
+            "refs": [
+                {
+                    "title": "The AI IT Security Implementation & Strategy™",
+                    "volume": 6,
+                    "chapter": "Chapter 10: Privacy Inherits the Audit",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-ai-it-security-implementation-strategy/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HGBSB5ZR"
+                },
+                {
+                    "title": "The AI IT Security Implementation & Strategy™",
+                    "volume": 6,
+                    "chapter": "Chapter 12: The Privacy Endgame",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-ai-it-security-implementation-strategy/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HGBSB5ZR"
+                },
+                {
+                    "title": "The AI IT Security Implementation & Strategy™",
+                    "volume": 6,
+                    "chapter": "Chapter 11: Privacy Gains an Engine",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-ai-it-security-implementation-strategy/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HGBSB5ZR"
+                }
+            ],
+            "scope": "Explicit opt-in before data is used for fine-tuning."
+        },
+        {
+            "body": "Pattern-matching DLP was built for exfiltration by an attacker; AI opened a channel where data leaves through an employee's own prompt, with no breach and no alert, and it is still personal data leaving governed boundaries. The control is semantic DLP at the AI gateway, evaluating meaning rather than matching patterns, inspecting prompts before they leave and filtering outputs before they reach users, and running in the same path as purpose enforcement. Volume VI sets it as a year-one milestone for every high-risk AI channel, so the privacy function can tell a regulator not just what policy says but what the gateway actually stopped.",
+            "name": "DLP Integration",
+            "refs": [
+                {
+                    "title": "The AI IT Security Implementation & Strategy™",
+                    "volume": 6,
+                    "chapter": "Chapter 12: The Privacy Endgame",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-ai-it-security-implementation-strategy/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HGBSB5ZR"
+                },
+                {
+                    "title": "The AI IT Security Implementation & Strategy™",
+                    "volume": 6,
+                    "chapter": "Chapter 11: Privacy Gains an Engine",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-ai-it-security-implementation-strategy/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HGBSB5ZR"
+                },
+                {
+                    "title": "The AI IT Security Implementation & Strategy™",
+                    "volume": 6,
+                    "chapter": "Chapter 10: Privacy Inherits the Audit",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-ai-it-security-implementation-strategy/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HGBSB5ZR"
+                }
+            ],
+            "scope": "Connecting AI assistants to enterprise data loss prevention."
+        },
+        {
+            "body": "A single AI interaction can cross several jurisdictions with no one deciding to transfer anything: the customer in one, the model trained in a second, the infrastructure in a third, agent memory in a fourth. The residency question is shifting from where data is stored to where it is processed, and the pressure is contractual as much as regulatory: enterprise customers now add inference location questions to security questionnaires, and a vendor that cannot answer loses the deal whatever the regulator requires. Data that leaves through a user's own action rather than an attack still triggers the transfer restriction it was subject to.",
+            "name": "Cross-Border Data Transfers",
+            "note": "GDPR transfer mechanisms are not treated by name.",
+            "refs": [
+                {
+                    "title": "The AI IT Security Implementation & Strategy™",
+                    "volume": 6,
+                    "chapter": "Chapter 10: Privacy Inherits the Audit",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-ai-it-security-implementation-strategy/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HGBSB5ZR"
+                },
+                {
+                    "title": "The AI IT Security Implementation & Strategy™",
+                    "volume": 6,
+                    "chapter": "Chapter 12: The Privacy Endgame",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-ai-it-security-implementation-strategy/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HGBSB5ZR"
+                }
+            ],
+            "scope": "Data residency compliance for global AI deployments."
+        }
+    ],
+    "built_at": "2026-09-22T04:08:21-05",
+    "hub_name": "AI Security and Risk",
+    "hub_path": "/ai-ecosystem/enterprise-applications-governance-and-tools/0ff57218/",
+    "page_uid": "aa087822",
+    "generated": "2026-09-22",
+    "topic_count": 10,
+    "other_domains": [
+        {
+            "href": "/ai-ecosystem/enterprise-applications-governance-and-tools/428caf62/",
+            "label": "Security Governance and Risk Management"
+        },
+        {
+            "href": "/ai-ecosystem/enterprise-applications-governance-and-tools/3aa447ef/",
+            "label": "Security Operations"
+        },
+        {
+            "href": "/ai-ecosystem/enterprise-applications-governance-and-tools/c42f2aba/",
+            "label": "Architecture and Engineering"
+        },
+        {
+            "href": "/ai-ecosystem/enterprise-applications-governance-and-tools/72cf7bba/",
+            "label": "Application and Product Security"
+        },
+        {
+            "href": "/ai-ecosystem/enterprise-applications-governance-and-tools/4a705735/",
+            "label": "Third-Party and Supply Chain Risk"
+        }
+    ],
+    "refresh_every_days": 30
+}

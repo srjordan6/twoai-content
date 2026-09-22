@@ -1,0 +1,386 @@
+{
+    "tax": "ai-security-risk",
+    "uid": "c42f2aba",
+    "name": "Architecture and Engineering",
+    "slug": "arch",
+    "blurb": "The boundaries that hold when detection misses: least privilege, egress control, agent identity, circuit breakers, and blast-radius limits enforced by machinery.",
+    "shape": "security-domain",
+    "topics": [
+        {
+            "body": "Because injection cannot be filtered away, the durable defenses are architectural. Give the model the least privilege the task needs, require human approval before consequential actions such as sending, paying, or deleting, and constrain outbound network paths so a hijacked model has nowhere to exfiltrate to. Designs that separate a privileged planner from a quarantined reader, so the model that touches untrusted content never holds the authority to act, contain the blast radius even when the injection lands. The test of an AI architecture is not whether injection is possible but what the worst injected instruction could actually accomplish.",
+            "name": "Prompt Injection",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/0b20f91f/",
+            "blurb": "Direct and indirect prompt injection: how instructions hidden in content hijack model behavior, documented attacks, and current defenses."
+        },
+        {
+            "body": "The architectural rule for jailbreaks is the same as for injection: refusal must not be the only barrier. A model talked out of its safety training should still hit authorization walls, egress limits, and human approval gates before anything consequential happens. If the only thing standing between a jailbreak and a harmful outcome is the model saying no, the architecture has already failed.",
+            "name": "Jailbreaks",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/f99c1c86/",
+            "blurb": "Techniques that bypass model safety training, and how labs measure and patch against them."
+        },
+        {
+            "body": "Training and fine-tuning infrastructure is a production security boundary, not a research convenience. Version and hash training data snapshots so what a model learned from is reconstructable, isolate training environments from general development, sign artifacts at each pipeline stage, and record lineage so that when a dataset is later found poisoned, every downstream model it touched can be identified and retrained rather than guessed at.",
+            "name": "Model and Data Poisoning",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/edf1b552/",
+            "blurb": "Corrupting training data or model weights to plant backdoors and biases, and the research on detecting it."
+        },
+        {
+            "body": "The architectural answer to registry risk is an internal one: a curated, access-controlled model and dataset registry that mirrors approved external artifacts after scanning and signature verification, with admission control so production systems can only load from it. Namespace-reuse and typosquatting attacks against public registries are documented; an internal registry converts that entire attack class into a single controlled ingestion point.",
+            "name": "AI Supply Chain Attacks",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/19897948/",
+            "blurb": "Compromised models, datasets, and packages upstream: malicious model files, dependency attacks, opaque fourth-party model chains, AI bills of materials, and registry integrity."
+        },
+        {
+            "body": "Authorization has to happen at retrieval time, per user, not at the model. A shared index over documents with mixed sensitivity turns the model into a confused deputy that reads with its own broad permissions and answers to everyone. Segmenting stores by classification, enforcing the caller's entitlements in the retrieval layer, and keeping high-sensitivity corpora out of general-purpose assistants entirely are the designs that make leakage structurally hard rather than behaviorally discouraged.",
+            "name": "Data Leakage",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/a2be4c55/",
+            "blurb": "Training data extraction, membership inference, and models revealing what they should not."
+        },
+        {
+            "body": "Weight protection is infrastructure discipline: encrypted storage, hardware-backed key custody, tightly scoped access with hardware MFA for the handful of roles that genuinely need it, egress monitoring on the storage paths where weights live, and no full copies on laptops or in shared buckets. The threat model resembles code-signing key protection more than ordinary data security, because a single successful exfiltration is unrecoverable.",
+            "name": "Model Theft",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/ee588f1c/",
+            "blurb": "Weight exfiltration and model extraction through APIs, and what providers disclose about protecting them."
+        },
+        {
+            "body": "The architectural fix is a governed gateway: give the workforce a sanctioned AI access point with logging, data controls, and model choice good enough that the path of least resistance runs through it. Visibility follows adoption; an enterprise that provides the best available tool sees its usage, while an enterprise that bans everything sees nothing and hosts everything.",
+            "name": "Shadow AI",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/2b859942/",
+            "blurb": "Unsanctioned AI use inside organizations: the exposure it creates and how enterprises detect and govern it."
+        },
+        {
+            "body": "Architecturally, assume malware families mutate faster than signatures can chase and let containment carry more weight: segmentation, egress control, and application allow-listing blunt AI-accelerated attacks the same way they blunt human ones, without needing to recognize the specific artifact first.",
+            "name": "AI-enabled Malware",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/83c6a26f/",
+            "blurb": "What is documented, by primary sources, about AI-assisted malicious code and the vendor and government reporting on it."
+        },
+        {
+            "body": "Phishing-resistant authentication is the control that does not care how good the lure was: hardware-bound passkeys and FIDO2 credentials cannot be phished into a fake login page, which makes them the architectural answer to a threat that has stopped being detectable by reading. Where the lure leads to credential entry, the credential should be one that entry cannot compromise.",
+            "name": "AI Phishing and Social Engineering",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/9b84fc07/",
+            "blurb": "How generated text and voice change phishing at scale, per published incident and vendor reporting."
+        },
+        {
+            "body": "Architecture-layer tooling enforces boundaries: AI gateways centralizing model access with authentication and rate control, guardrail frameworks applying policy to inputs and outputs, sandboxes isolating tool execution, and the identity infrastructure issuing scoped, short-lived credentials to agents. These are the components that turn least-privilege intentions into enforced fact, and they matter more than any detection layer because they hold even when detection misses.",
+            "name": "AI Security Tooling",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/9f398737/",
+            "blurb": "The defensive tooling landscape, organized by six security domains: Security Governance and Risk Management, Security Operations, Architecture and Engineering, Application and Product Security, Third-Party and Supply Chain Risk, and Data Protection and Privacy."
+        },
+        {
+            "body": "Non-human identities already outnumber human ones in most enterprises, and agents accelerate the ratio: every agent needs credentials, every integration needs a key, and each accumulates access no human formally reviewed. The architecture that scales is the workload-identity discipline applied to agents, short-lived credentials issued per task rather than standing keys, delegation chains that carry the originating user's authority rather than a service account's omnibus permissions, and revocation that actually propagates when an agent is retired, compromised, or simply forgotten.",
+            "name": "Agent and Non-Human Identity",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/8f3e19cd/",
+            "blurb": "The explosion of machine identities: agent credentials, delegated authority, revocation, and the lateral movement paths nobody is watching."
+        },
+        {
+            "body": "Agent security is envelope design: machine-enforced limits on what an agent can spend, touch, and trigger, circuit breakers that halt execution when behavior exits the envelope, and trust boundaries between agents so that one compromised or confused agent cannot instruct another into escalation. Humans are too slow to supervise machine-speed loops in real time, so the envelope has to be enforced by machinery, with the protocol-level guidance for tool ecosystems, including MCP's security best practices, defining where those boundaries sit.",
+            "name": "AI Agent Security",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/a2538ec1/",
+            "blurb": "Agent kill chains, cascading multi-agent failure, circuit breakers, agent-to-agent trust boundaries, and runtime supervision of autonomous systems."
+        },
+        {
+            "body": "The SOC's own AI is a target inside the defense: alert content, log fields, and ticket text are attacker-writable, which makes the copilot readable by the adversary through the very data it analyzes. Instrumenting the watcher, logging its inputs and recommendations, constraining what it can execute, and red-teaming it with poisoned telemetry, applies the program's own standards to its most privileged AI system.",
+            "name": "AI in Security Operations",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/e294a1dd/",
+            "blurb": "Defending with AI: machine-speed investigation, human supervision models, automation bias, kill-switch protocols, and securing the SOC's own AI."
+        },
+        {
+            "body": "Purpose limitation becomes real when it is enforced in the pipeline: purpose tags that travel with data, retrieval layers that check purpose before serving training or inference jobs, regional routing for cross-border inference where residency rules were written for storage but exposure happens at inference, and retention TTLs on memory and vector stores. The vector store deserves particular attention as a persistence and exfiltration layer, a dense copy of everything embedded, sitting outside most data maps.",
+            "name": "AI Privacy and Data Protection",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/95ccea74/",
+            "blurb": "The deletion problem in trained models, inference as data collection, memory sprawl, purpose enforcement, and cross-border inference."
+        },
+        {
+            "body": "Red-team findings that get fixed with a prompt patch return; findings fixed with an architectural change stay fixed. The discipline is routing systemic findings, injection paths, over-broad tool scopes, missing egress controls, into design remediation rather than instruction tweaks, and treating a finding that recurs across model versions as an architecture bug by definition.",
+            "name": "AI Red Teaming and Adversarial Evaluation",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/15fe15c4/",
+            "blurb": "Continuous adversarial testing of AI systems: methods, benchmarks, disclosure practices, and the evidence that earns expanded autonomy."
+        },
+        {
+            "body": "Architects decide where an AI feature sits and what it can reach, so that a flaw found late is contained rather than systemic. They also design the pipeline itself: isolated build environments, signed artifacts, and a record of which model and prompt produced each generated change.",
+            "name": "Secure Software Development Lifecycle (SDLC)",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/c962b5b5/",
+            "blurb": "Building security into every phase of how software is planned, written, tested and shipped, and what changes when AI writes the code and AI features ship in the product."
+        },
+        {
+            "body": "Architects build the containment: a distinct identity per agent, sandboxed execution, a gateway for every tool, and separation between the agent that proposes an action and the service that validates and executes it. Least privilege is enforced by the platform, not trusted to the prompt.",
+            "name": "Agent Development Lifecycle (ADLC) Security",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/632156d2/",
+            "blurb": "The security risks of building, deploying and running autonomous AI agents: tool and MCP bridges, prompt attacks on dynamic input, agent-made supply chain risk, and failures at machine speed."
+        }
+    ],
+    "program": [
+        {
+            "body": "Zero trust has to be restated for a caller that can be talked into things. Never trust the model's account of who it is acting for; derive it from the token. Never trust its account of what it needs; derive it from the task. Never let the model hold a credential; the enforcement layer holds it. And verify every action, because the last verified action is no evidence about the next. The same architecture, a policy decision point and a policy enforcement point outside the model, extends what the network and identity teams already run rather than inventing something new, and delegation rides on the OAuth token exchange flow identity providers already support.",
+            "name": "Zero Trust for ML Pipelines",
+            "refs": [
+                {
+                    "title": "Application Security in the Age of AI™",
+                    "volume": 8,
+                    "chapter": "Session, and Zero Trust for a Caller That Can Be Talked Into Things",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-application-security/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HJSLWSS1"
+                },
+                {
+                    "title": "Application Security in the Age of AI™",
+                    "volume": 8,
+                    "chapter": "Putting It Into Practice",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-application-security/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HJSLWSS1"
+                }
+            ],
+            "scope": "Strict identity and access verification across training and inference."
+        },
+        {
+            "body": "Confidential computing runs the model, prompt and context in hardware that even the infrastructure operator cannot inspect, and it is worth having for protecting weights and prompts from whoever runs the machine. What it does not do is make a model less persuadable: a model inside an enclave is exactly as open to prompt injection as one outside, because the enclave protects the model from the operator, not from its input. It does not fully close side channels either; the tokenizer's memory access pattern has been shown to leak prompts from inside a confidential environment on production hardware. Treat enclaves as a confidentiality control, not an AI security control.",
+            "name": "Secure Enclaves",
+            "note": "Volume VIII defers the infrastructure treatment of confidential computing to Volume IX.",
+            "refs": [
+                {
+                    "title": "Application Security in the Age of AI™",
+                    "volume": 8,
+                    "chapter": "What Enclaves Do Not Solve",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-application-security/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HJSLWSS1"
+                },
+                {
+                    "title": "Application Security in the Age of AI™",
+                    "volume": 8,
+                    "chapter": "Continuing the Work",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-application-security/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HJSLWSS1"
+                }
+            ],
+            "scope": "Confidential computing to protect model weights and data during processing."
+        },
+        {
+            "body": "Least privilege, scope, expiry and delegation are forty years old and still work; what is new is that the caller holding the privilege can be induced to use it. So privilege has to be scoped to the task, not the application, and enforced where the model cannot reach. Every privileged non-human identity, agent credentials with elevated access, service accounts that write to critical systems, keys that can move money, needs a named human owner, a ratified scope and a review cadence. And an application should not act on one service account holding the union of every user's permissions: bound each call by what the human could do and what the task requires.",
+            "name": "Identity and Access Management",
+            "refs": [
+                {
+                    "title": "Application Security in the Age of AI™",
+                    "volume": 8,
+                    "chapter": "Decision and Authority: Who the Action Is Made As",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-application-security/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HJSLWSS1"
+                },
+                {
+                    "title": "Secure by Design in the Age of AI™",
+                    "volume": 7,
+                    "chapter": "Chapter 2: What the Function Runs On",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-secure-by-design/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HJ6W4R8Q"
+                },
+                {
+                    "title": "The AI IT Security Implementation & Strategy™",
+                    "volume": 6,
+                    "chapter": "Chapter 4: The SOC Inherits the Audit",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-ai-it-security-implementation-strategy/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HGBSB5ZR"
+                },
+                {
+                    "title": "Application Security in the Age of AI™",
+                    "volume": 8,
+                    "chapter": "Three Identities, and the Cost of Collapsing Them",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-application-security/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HJSLWSS1"
+                }
+            ],
+            "scope": "Granular role-based access controls for AI services and datasets."
+        },
+        {
+            "body": "Segmentation for AI starts with knowing what is talking to models. Every inference call leaves through a proxy, gateway or egress firewall that logs source and destination, so the first query is simple: for thirty days, every source that connected to any known inference endpoint, with call counts and first-seen dates. Inside the serving stack, isolation is a tested requirement, not a diagram: context, caches and any reuse mechanism must be scoped per tenant, because a cache shared across tenants is a data path between them, and research on multi-tenant serving has shown shared cache entries can let one user reconstruct another's prompts.",
+            "name": "Network Segmentation",
+            "note": "Network isolation of training environments specifically is left to Volume IX.",
+            "refs": [
+                {
+                    "title": "Application Security in the Age of AI™",
+                    "volume": 8,
+                    "chapter": "Four Signals the Enterprise Already Has",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-application-security/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HJSLWSS1"
+                },
+                {
+                    "title": "Secure by Design in the Age of AI™",
+                    "volume": 7,
+                    "chapter": "Chapter 14: The Component That Cannot Be Read",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-secure-by-design/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HJ6W4R8Q"
+                }
+            ],
+            "scope": "Isolating training environments, inference APIs and production databases."
+        },
+        {
+            "body": "The gateway is where AI policy is enforced, and two points decide whether it works. First, limits must be enforced outside the model: every production agent above the lowest authority tier gets hard limits on transaction value, API call volume, execution time, data read and written, delegation depth, external destinations and retries, and when one is breached the agent stops rather than degrading. Second, ownership: security teams operate the gateway, but what it blocks, flags and passes is often a privacy decision, so the policy configuration belongs to the function whose decision it encodes. The gateway access log doubles as the inventory of who is calling which model.",
+            "name": "AI API Security",
+            "note": "Web application firewalls are not evaluated for AI traffic.",
+            "refs": [
+                {
+                    "title": "The AI IT Security Implementation & Strategy™",
+                    "volume": 6,
+                    "chapter": "Chapter 5: Security Operations Gains an Engine",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-ai-it-security-implementation-strategy/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HGBSB5ZR"
+                },
+                {
+                    "title": "The AI IT Security Implementation & Strategy™",
+                    "volume": 6,
+                    "chapter": "Chapter 11: Privacy Gains an Engine",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-ai-it-security-implementation-strategy/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HGBSB5ZR"
+                },
+                {
+                    "title": "Application Security in the Age of AI™",
+                    "volume": 8,
+                    "chapter": "Four Signals the Enterprise Already Has",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-application-security/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HJSLWSS1"
+                }
+            ],
+            "scope": "Securing the connections between applications and models with gateways and WAFs."
+        },
+        {
+            "body": "Most data programs stop at the edge of the AI layer: databases and file shares are governed, while embeddings, vector stores, prompt logs, outputs, fine-tuning data and retrieval source documents are not. Discovery tooling has to understand those structures; a tool that finds a customer record in a database but cannot find personal data in an embedding does not cover the AI layer. When an AI data security tool is evaluated, the test is whether it actually discovers and classifies data in vector stores and agent memory, or is a relabeled legacy product. Deletion needs its own procedure per store: remove the embeddings, rebuild the indexes that referenced them.",
+            "name": "Secure Storage for Datasets",
+            "refs": [
+                {
+                    "title": "The AI IT Security Implementation & Strategy™",
+                    "volume": 6,
+                    "chapter": "Chapter 10: Privacy Inherits the Audit",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-ai-it-security-implementation-strategy/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HGBSB5ZR"
+                },
+                {
+                    "title": "The AI IT Security Implementation & Strategy™",
+                    "volume": 6,
+                    "chapter": "Chapter 11: Privacy Gains an Engine",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-ai-it-security-implementation-strategy/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HGBSB5ZR"
+                },
+                {
+                    "title": "The AI IT Security Implementation & Strategy™",
+                    "volume": 6,
+                    "chapter": "Chapter 12: The Privacy Endgame",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-ai-it-security-implementation-strategy/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HGBSB5ZR"
+                }
+            ],
+            "scope": "Hardening data lakes and vector databases used for retrieval."
+        },
+        {
+            "body": "Cryptography does three jobs in AI security. Integrity: for every model in use, the enterprise should know the hash of the served artifact, who signed it, and how to verify the model answering today is the one disclosed; vendors resist this field hardest, which is itself informative. Delegation: when agents hand work to other agents, each request can carry a signed record of its full delegation chain, so authority may narrow down the chain but never widen. Deletion: encrypting each stored vector and discarding its key on deletion cut recovery of personal data to zero in testing, at about five microseconds a record, and produced a signed proof an examiner can verify.",
+            "name": "Cryptographic Controls",
+            "note": "Encryption of weights at rest and in transit is assumed rather than treated in detail.",
+            "refs": [
+                {
+                    "title": "The AI IT Security Implementation & Strategy™",
+                    "volume": 6,
+                    "chapter": "Chapter 8: Vendor Risk Gains an Engine",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-ai-it-security-implementation-strategy/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HGBSB5ZR"
+                },
+                {
+                    "title": "Application Security in the Age of AI™",
+                    "volume": 8,
+                    "chapter": "The Deputy, Confused Again",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-application-security/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HJSLWSS1"
+                },
+                {
+                    "title": "Application Security in the Age of AI™",
+                    "volume": 8,
+                    "chapter": "What Cannot Be Erased",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-application-security/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HJSLWSS1"
+                }
+            ],
+            "scope": "Encrypting model weights and parameters at rest and in transit."
+        },
+        {
+            "body": "For AI, resilience is mostly a question of blast radius: what an application can reach and change, not how important it is. Volume VIII's tier map sorts applications that way and puts stop conditions in front of it, so a system whose effects cannot be bounded is refused rather than deployed. The largest single driver of blast radius is permission design: an application acting on one service account that holds every permission any user might need can be made, by one injected instruction, to use all of it. Availability attacks are the other half, and they arrive as cost rather than volume, which the rate limits in the API abuse topic address.",
+            "name": "Resiliency and High Availability",
+            "note": "Classic high-availability design for AI serving infrastructure is left to Volume IX.",
+            "refs": [
+                {
+                    "title": "Application Security in the Age of AI™",
+                    "volume": 8,
+                    "chapter": "Executive Summary",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-application-security/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HJSLWSS1"
+                },
+                {
+                    "title": "Application Security in the Age of AI™",
+                    "volume": 8,
+                    "chapter": "Three Identities, and the Cost of Collapsing Them",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-application-security/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HJSLWSS1"
+                },
+                {
+                    "title": "Application Security in the Age of AI™",
+                    "volume": 8,
+                    "chapter": "The Failure Mode That Reaches Finance First",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-application-security/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HJSLWSS1"
+                }
+            ],
+            "scope": "Designing AI infrastructure to withstand denial of service."
+        },
+        {
+            "body": "An audit trail for AI has to answer the regulator's question: who made this call? For a supervised autonomous action that means the machine's recommendation, the evidence it used, the reviewer who received it, the checks they ran, the decision and the timestamp of every step. For AI products, the same standard applies to the threat model and the tests: every change to the ledger of risks produces a delta, every delta closes with a recorded re-verification, and every model version change has a closed delta before the release that carried it. That turns \"the threat model is current\" from an assertion into a sentence an auditor can actually write.",
+            "name": "Logging and Auditing Architectures",
+            "refs": [
+                {
+                    "title": "The AI IT Security Implementation & Strategy™",
+                    "volume": 6,
+                    "chapter": "Chapter 5: Security Operations Gains an Engine",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-ai-it-security-implementation-strategy/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HGBSB5ZR"
+                },
+                {
+                    "title": "Secure by Design in the Age of AI™",
+                    "volume": 7,
+                    "chapter": "Chapter 5: The Threat Model That Does Not Go Stale",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-secure-by-design/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HJ6W4R8Q"
+                },
+                {
+                    "title": "Secure by Design in the Age of AI™",
+                    "volume": 7,
+                    "chapter": "Chapter 6: Two Lanes",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-secure-by-design/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HJ6W4R8Q"
+                }
+            ],
+            "scope": "Immutable audit trails for model inputs, outputs and administrative changes."
+        }
+    ],
+    "built_at": "2026-09-22T04:08:21-05",
+    "hub_name": "AI Security and Risk",
+    "hub_path": "/ai-ecosystem/enterprise-applications-governance-and-tools/0ff57218/",
+    "page_uid": "c42f2aba",
+    "generated": "2026-09-22",
+    "topic_count": 17,
+    "other_domains": [
+        {
+            "href": "/ai-ecosystem/enterprise-applications-governance-and-tools/428caf62/",
+            "label": "Security Governance and Risk Management"
+        },
+        {
+            "href": "/ai-ecosystem/enterprise-applications-governance-and-tools/3aa447ef/",
+            "label": "Security Operations"
+        },
+        {
+            "href": "/ai-ecosystem/enterprise-applications-governance-and-tools/72cf7bba/",
+            "label": "Application and Product Security"
+        },
+        {
+            "href": "/ai-ecosystem/enterprise-applications-governance-and-tools/4a705735/",
+            "label": "Third-Party and Supply Chain Risk"
+        },
+        {
+            "href": "/ai-ecosystem/enterprise-applications-governance-and-tools/aa087822/",
+            "label": "Data Protection and Privacy"
+        }
+    ],
+    "refresh_every_days": 30
+}

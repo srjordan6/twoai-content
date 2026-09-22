@@ -1,0 +1,140 @@
+{
+    "tax": "sec-secure-sdlc",
+    "uid": "c962b5b5",
+    "deep": [
+        {
+            "grp": "phases",
+            "intro": "The classic phases, and what a secure program adds to each, including what AI changes.",
+            "blocks": [
+                {
+                    "body": "Set security requirements alongside functional ones, including which AI tools developers may use and what they may see.",
+                    "label": "Plan and requirements"
+                },
+                {
+                    "body": "Threat model the system, including every AI feature: what untrusted content it reads, what it can reach, and what happens when it is wrong.",
+                    "label": "Design"
+                },
+                {
+                    "body": "Review and scan code as it is written, human or generated, verify dependencies before install, and keep secrets out of code and prompts.",
+                    "label": "Build"
+                },
+                {
+                    "body": "Run security tests with the functional ones, and for AI features add prompt injection, output leakage and model change regression tests.",
+                    "label": "Test"
+                },
+                {
+                    "body": "Sign what ships, produce a software bill of materials, and treat a model upgrade as a release, not a setting.",
+                    "label": "Release"
+                },
+                {
+                    "body": "Monitor for new vulnerabilities in shipped components, respond, and feed every finding back into the next cycle, the respond to vulnerabilities practice of the SSDF.",
+                    "label": "Maintain"
+                }
+            ],
+            "layout": "ordered",
+            "heading": "Security in each phase of the SDLC"
+        }
+    ],
+    "name": "Secure Software Development Lifecycle (SDLC)",
+    "blurb": "Building security into every phase of how software is planned, written, tested and shipped, and what changes when AI writes the code and AI features ship in the product.",
+    "items": [
+        {
+            "kind": "resource",
+            "name": "Secure Software Development Framework (SSDF), SP 800-218",
+            "note": "The federal baseline for secure development: four practice groups, prepare the organization, protect the software, produce well-secured software and respond to vulnerabilities, written to be added to whatever SDLC a team already uses. Software sold to the US government is expected to follow it.",
+            "slug": "nist-ssdf",
+            "source_url": "https://csrc.nist.gov/pubs/sp/800/218/final",
+            "source_name": "NIST"
+        },
+        {
+            "kind": "resource",
+            "name": "SSDF Community Profile for Generative AI, SP 800-218A",
+            "note": "NIST's extension of the SSDF to generative AI and foundation models: the added practices for training data, model weights and model behavior that a traditional SDLC never had to cover.",
+            "slug": "nist-ssdf-ai",
+            "source_url": "https://csrc.nist.gov/pubs/sp/800/218/a/final",
+            "source_name": "NIST"
+        },
+        {
+            "kind": "resource",
+            "name": "Secure Coding with AI Cheat Sheet",
+            "note": "OWASP's practical guide for teams whose code is partly written by AI assistants: reviewing generated code, dependency checks and keeping secrets out of prompts.",
+            "slug": "owasp-coding-ai",
+            "source_url": "https://cheatsheetseries.owasp.org/cheatsheets/Secure_Coding_with_AI_Cheat_Sheet.html",
+            "source_name": "OWASP Cheat Sheet Series"
+        },
+        {
+            "kind": "resource",
+            "name": "Software Supply Chain Security Cheat Sheet",
+            "note": "Controls for the components a build pulls in, from dependency pinning to provenance, the part of the SDLC that AI generated code puts under the most pressure.",
+            "slug": "owasp-supply-chain",
+            "source_url": "https://cheatsheetseries.owasp.org/cheatsheets/Software_Supply_Chain_Security_Cheat_Sheet.html",
+            "source_name": "OWASP Cheat Sheet Series"
+        },
+        {
+            "kind": "resource",
+            "name": "What is the software development lifecycle?",
+            "note": "A plain-language explainer of the SDLC phases and the common models, waterfall, agile and DevOps, for readers new to the term.",
+            "slug": "ibm-sdlc",
+            "source_url": "https://www.ibm.com/think/topics/sdlc",
+            "source_name": "IBM Think"
+        },
+        {
+            "kind": "crosslink",
+            "name": "Agent Development Lifecycle (ADLC) Security on this site",
+            "note": "What changes when the thing being built is an autonomous agent rather than deterministic code.",
+            "slug": "sdlc-adlc-xlink",
+            "source_url": "/ai-ecosystem/enterprise-applications-governance-and-tools/632156d2/",
+            "source_name": "The World of AI"
+        }
+    ],
+    "stats": {
+        "mcp_servers": 2376,
+        "lawsuit_pages": 141,
+        "deepfake_bills": 78,
+        "compliance_docs": 210
+    },
+    "topic": [
+        {
+            "body": "The software development lifecycle, or SDLC, is the sequence every software team follows from idea to retirement: plan, design, build, test, release and maintain. A secure SDLC builds security into each of those phases instead of testing for it at the end. Threats are modeled at design, code is reviewed and scanned as it is written, dependencies are checked before they are pulled in, and vulnerabilities found after release flow back into the next cycle. NIST's Secure Software Development Framework, SP 800-218, is the reference most programs map to, and it is written to sit on top of whatever lifecycle a team already runs, waterfall, agile or DevOps.",
+            "block": "def"
+        },
+        {
+            "body": "AI changes the SDLC from two directions. First, AI now writes a large share of the code: assistants suggest whole functions, and coding agents open pull requests on their own. That code arrives faster than review capacity grows, and it can carry insecure patterns, invented package names or secrets copied into files. Second, the products themselves now contain AI features, a chatbot, a retrieval system, a model call inside a workflow, and those features bring risks a traditional SDLC never tested for: prompt injection, data leakage through outputs, and behavior that changes when the model version changes. Job postings now name this directly, with titles built around secure SDLC and AI SDLC.",
+            "block": "examples"
+        },
+        {
+            "body": "Look for the phases where AI entered and the controls did not follow. Signs include: generated code merged with the same review as a human change, or less; no record of which commits were written by an assistant; dependency checks that run nightly while agents commit hourly; AI features shipped with unit tests but no adversarial tests; and a model upgrade treated as a configuration change rather than a release. An SDLC assessment against SP 800-218, and against SP 800-218A for the generative AI parts, turns these into a findings list.",
+            "block": "detect"
+        },
+        {
+            "body": "Keep the lifecycle, and move the checks to where AI works. Scan and review generated code before merge, at the same bar or higher than human code. Verify every new dependency exists and is the package intended before it is installed. Keep secrets out of prompts and out of files an assistant can read. Add AI specific testing to the release gate for any AI feature: prompt injection, output leakage and behavior regression on a model change. Record the model, prompt and version that produced a change, so a flaw can be traced. Where the product is an autonomous agent rather than a feature, extend the SDLC to the Agent Development Lifecycle.",
+            "block": "defend"
+        }
+    ],
+    "domains": [
+        {
+            "body": "Governance owns the policy that says AI generated code meets the same bar as human code, and that AI features pass AI specific tests before release. It decides which assistants developers may use, what code and data those tools may see, and how SSDF conformance is evidenced to customers and regulators who now ask for it.",
+            "slug": "gov",
+            "label": "Security Governance and Risk Management"
+        },
+        {
+            "body": "Architects decide where an AI feature sits and what it can reach, so that a flaw found late is contained rather than systemic. They also design the pipeline itself: isolated build environments, signed artifacts, and a record of which model and prompt produced each generated change.",
+            "slug": "arch",
+            "label": "Architecture and Engineering"
+        },
+        {
+            "body": "This is the home domain. Application security teams run threat modeling at design, code review and scanning at build, dependency verification before install, and adversarial testing of AI features at the release gate. Generated code raises the volume they review, and AI features add prompt injection and output leakage to the tests they own.",
+            "slug": "app",
+            "label": "Application and Product Security"
+        },
+        {
+            "body": "Every assistant, model API and package in the pipeline is a supplier. Vendor risk teams assess the coding assistants themselves, what they retain and train on, and increasingly ask software suppliers for SSDF attestations and software bills of materials before buying.",
+            "slug": "tprm",
+            "label": "Third-Party and Supply Chain Risk"
+        }
+    ],
+    "built_at": "2026-09-22T04:08:20-05",
+    "page_uid": "c962b5b5",
+    "generated": "2026-09-22",
+    "refresh_every_days": 30
+}

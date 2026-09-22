@@ -1,0 +1,401 @@
+{
+    "tax": "ai-security-risk",
+    "uid": "72cf7bba",
+    "name": "Application and Product Security",
+    "slug": "app",
+    "blurb": "Building AI features that survive contact with adversaries: injection and jailbreak defenses in depth, tool design, evals in CI, and pre-deployment adversarial testing.",
+    "shape": "security-domain",
+    "topics": [
+        {
+            "body": "Prompt injection sits at the top of the OWASP GenAI risk list because it attacks the property that makes language models useful: they follow instructions, and they cannot reliably tell whose instructions they are following. Any channel that reaches the model's context is an injection path, including user input, retrieved documents, tool results, email bodies, web pages, and images with embedded text. Application defenses layer rather than solve: separate system instructions from untrusted content, filter inputs and outputs, and treat every model response as untrusted data until validated. No published defense eliminates the attack, which is why the strongest guidance assumes injection will sometimes succeed and limits what success can do.",
+            "name": "Prompt Injection",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/0b20f91f/",
+            "blurb": "Direct and indirect prompt injection: how instructions hidden in content hijack model behavior, documented attacks, and current defenses."
+        },
+        {
+            "body": "A jailbreak targets the model's own safety training rather than the application around it: role-play framing, encoding tricks, many-shot prompts, and persuasion techniques that walk a model past its refusals. For product teams the practical stance is defense in depth, because refusal training alone degrades under sustained adversarial pressure. Published approaches add independent classifier layers screening inputs and outputs, which is the design behind constitutional-classifier systems that cut jailbreak success rates dramatically in lab red-team trials while keeping over-refusal low.",
+            "name": "Jailbreaks",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/f99c1c86/",
+            "blurb": "Techniques that bypass model safety training, and how labs measure and patch against them."
+        },
+        {
+            "body": "A backdoored model behaves normally until it sees its trigger, which is what makes poisoning invisible to ordinary evaluation. Pre-deployment testing therefore goes beyond accuracy benchmarks: behavioral evaluation across adversarially chosen inputs, comparison against a known-clean reference where one exists, and scanning tools that inspect model files for both embedded code and statistical anomalies. Acceptance testing for models is as necessary as it ever was for software, and far less practiced.",
+            "name": "Model and Data Poisoning",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/edf1b552/",
+            "blurb": "Corrupting training data or model weights to plant backdoors and biases, and the research on detecting it."
+        },
+        {
+            "body": "Loading an untrusted model file has historically meant executing untrusted code: pickle-based formats can run arbitrary payloads at load time, which is why the ecosystem moved toward safetensors and why registries scan uploads for embedded code. Product teams should pin model versions and hashes exactly as they pin package versions, scan model artifacts in CI, and treat a model pulled at runtime from a public registry with the suspicion they would apply to curl piped into a shell.",
+            "name": "AI Supply Chain Attacks",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/19897948/",
+            "blurb": "Compromised models, datasets, and packages upstream: malicious model files, dependency attacks, opaque fourth-party model chains, AI bills of materials, and registry integrity."
+        },
+        {
+            "body": "The application-layer leaks are more mundane and more common: system prompts extracted by asking, retrieved documents summarized to users who should never see them, and context windows accumulating secrets that then appear in output. Products should treat the system prompt as discoverable, keep real secrets out of it, filter outputs for known-sensitive patterns, and scope retrieval so the model can only surface what the requesting user is entitled to read.",
+            "name": "Data Leakage",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/a2be4c55/",
+            "blurb": "Training data extraction, membership inference, and models revealing what they should not."
+        },
+        {
+            "body": "Extraction through the API is theft without a breach: systematic querying can distill a deployed model's behavior into a clone, no weights required. Providers defend with rate limits, query auditing, and terms enforcement, and product teams exposing their own models publicly should assume distillation attempts and decide deliberately how much capability the free tier reveals.",
+            "name": "Model Theft",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/ee588f1c/",
+            "blurb": "Weight exfiltration and model extraction through APIs, and what providers disclose about protecting them."
+        },
+        {
+            "body": "AI now writes production code, which makes code provenance a product-security question: generated contributions can embed vulnerable patterns, hallucinated dependencies invite package-squatting, and a compromised coding assistant is a supply chain foothold. Review discipline, dependency verification, and scanning do not relax because the author was a model; they tighten.",
+            "name": "AI-enabled Malware",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/83c6a26f/",
+            "blurb": "What is documented, by primary sources, about AI-assisted malicious code and the vendor and government reporting on it."
+        },
+        {
+            "body": "On the provenance side, content-credential standards let capture devices and editing tools cryptographically attest to a media file's origin and edit history, giving products a verifiable signal to display. Adoption is early and stripping metadata remains trivial, so provenance complements detection rather than replacing it, but products handling media should be building to read and preserve credentials now.",
+            "name": "Deepfakes and Synthetic Identity",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/fd1e006d/",
+            "blurb": "Synthetic media fraud, identity spoofing, detection methods, and the laws responding to them."
+        },
+        {
+            "body": "Product and application security tooling for AI covers pre-deployment testing: prompt-injection and jailbreak scanners, adversarial evaluation harnesses, red-team automation, and CI-integrated eval suites that regression-test safety behavior alongside functionality. The maturity marker is evals treated like tests, versioned, run on every change, and blocking on failure, rather than as a launch-week ceremony.",
+            "name": "AI Security Tooling",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/9f398737/",
+            "blurb": "The defensive tooling landscape, organized by six security domains: Security Governance and Risk Management, Security Operations, Architecture and Engineering, Application and Product Security, Third-Party and Supply Chain Risk, and Data Protection and Privacy."
+        },
+        {
+            "body": "Products embedding agents inherit the identity problem at design time: an agent shipped with a god-key becomes every customer's worst credential. Scoped tokens per capability, per-tenant isolation of agent authority, and auditable delegation records are product requirements now, and enterprise buyers have started asking for them by name.",
+            "name": "Agent and Non-Human Identity",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/8f3e19cd/",
+            "blurb": "The explosion of machine identities: agent credentials, delegated authority, revocation, and the lateral movement paths nobody is watching."
+        },
+        {
+            "body": "Tool design is where agent security is won or lost in products: narrowly scoped tools with validated arguments, destructive operations gated behind confirmation, side-effecting calls logged with full context, and tool descriptions treated as an injection surface because agents read them as instructions. A well-designed tool set makes the worst reachable action survivable; a broad one makes every prompt injection a potential incident.",
+            "name": "AI Agent Security",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/a2538ec1/",
+            "blurb": "Agent kill chains, cascading multi-agent failure, circuit breakers, agent-to-agent trust boundaries, and runtime supervision of autonomous systems."
+        },
+        {
+            "body": "Product surfaces carry the transparency duties: disclosure when users interact with AI, controls to exclude data from training, export and deletion functions that reach AI-adjacent stores including conversation history and memory, and defaults that do not enroll users into model improvement silently. Regulatory transparency requirements for AI-generated content and interactions are already in force in major jurisdictions.",
+            "name": "AI Privacy and Data Protection",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/95ccea74/",
+            "blurb": "The deletion problem in trained models, inference as data collection, memory sprawl, purpose enforcement, and cross-border inference."
+        },
+        {
+            "body": "Red teaming an AI system means attacking it the way adversaries will: injection and jailbreak attempts, data-extraction probes, tool-abuse chains, and adversarial inputs, run continuously rather than annually because the system and the attack literature both change monthly. The maturing practice wires adversarial evaluation into CI, versioned attack suites that regression-test safety exactly like functionality, with public benchmarks and published lab methodologies setting the floor rather than the ceiling.",
+            "name": "AI Red Teaming and Adversarial Evaluation",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/15fe15c4/",
+            "blurb": "Continuous adversarial testing of AI systems: methods, benchmarks, disclosure practices, and the evidence that earns expanded autonomy."
+        },
+        {
+            "body": "This is the home domain. Application security teams run threat modeling at design, code review and scanning at build, dependency verification before install, and adversarial testing of AI features at the release gate. Generated code raises the volume they review, and AI features add prompt injection and output leakage to the tests they own.",
+            "name": "Secure Software Development Lifecycle (SDLC)",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/c962b5b5/",
+            "blurb": "Building security into every phase of how software is planned, written, tested and shipped, and what changes when AI writes the code and AI features ship in the product."
+        },
+        {
+            "body": "Next to the secure SDLC, this is where the ADLC lands hardest. Product security teams own prompt injection defenses, output validation, loop and cost limits, and the abuse-case suite that gates every release. They also review what agents write: code, dependencies and the secrets that end up in files and memory.",
+            "name": "Agent Development Lifecycle (ADLC) Security",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/632156d2/",
+            "blurb": "The security risks of building, deploying and running autonomous AI agents: tool and MCP bridges, prompt attacks on dynamic input, agent-made supply chain risk, and failures at machine speed."
+        }
+    ],
+    "program": [
+        {
+            "body": "NIST's Secure Software Development Framework, SP 800-218, is the spine of a secure lifecycle for AI products, and its four practice groups map onto it directly: prepare the organization with tools, talent and training; protect the software through intake and an admission standard for every component; produce well-secured software through threat modeling, testing and the ship decision; and respond to vulnerabilities after release. The generative AI companion, SP 800-218A, adds the piece a traditional SDLC never had: models, datasets and prompts are treated as components under the admission standard, and a change to any of them requires re-verification. A customer asking for SSDF alignment is then answered from records, not assertions.",
+            "name": "Secure Software Development Life Cycle for AI",
+            "refs": [
+                {
+                    "title": "Secure by Design in the Age of AI™",
+                    "volume": 7,
+                    "chapter": "Chapter 1: The Dual-Impedance Problem",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-secure-by-design/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HJ6W4R8Q"
+                },
+                {
+                    "title": "Secure by Design in the Age of AI™",
+                    "volume": 7,
+                    "chapter": "Framework Alignment",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-secure-by-design/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HJ6W4R8Q"
+                },
+                {
+                    "title": "Secure by Design in the Age of AI™",
+                    "volume": 7,
+                    "chapter": "Chapter 4: See the Whole Surface",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-secure-by-design/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HJ6W4R8Q"
+                }
+            ],
+            "scope": "Integrating security testing into MLOps."
+        },
+        {
+            "body": "Testing a model against jailbreak prompts is the easiest AI security evaluation to buy and the least relevant to an agent estate. The questions that matter are whether retrieved external content can change the agent's objective, whether a tool description can make it call tools outside its normal set, and whether contaminated memory persists across sessions. Jailbreak resistance still matters for products, and vendors are underweighting it: of 264 AI vendors studied, 36 percent had no disclosure policy at all, and jailbreaking was the category most often declared out of scope. A product that excludes jailbreaks from its bounty program has excluded the attack its users will try first.",
+            "name": "Mitigating Jailbreaks",
+            "refs": [
+                {
+                    "title": "The AI IT Security Implementation & Strategy™",
+                    "volume": 6,
+                    "chapter": "Chapter 5: Security Operations Gains an Engine",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-ai-it-security-implementation-strategy/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HGBSB5ZR"
+                },
+                {
+                    "title": "Secure by Design in the Age of AI™",
+                    "volume": 7,
+                    "chapter": "Introduction",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-secure-by-design/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HJ6W4R8Q"
+                },
+                {
+                    "title": "Secure by Design in the Age of AI™",
+                    "volume": 7,
+                    "chapter": "Chapter 8: After Release, Part One",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-secure-by-design/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HJ6W4R8Q"
+                }
+            ],
+            "scope": "Defensive engineering against users bypassing model safety filters."
+        },
+        {
+            "body": "The output boundary is one of five boundaries every AI application has, alongside the model, retrieval, tool and state boundaries, and OWASP's improper output handling entry binds to it. The control is structural: Volume VIII sets a schema requirement for outputs that feed another system, so what the model produced is checked against a fixed form before anything acts on it. The boundary is also where sensitive information disclosure becomes visible, including through side channels in the shape and timing of the response. Validation is where a probabilistic component meets deterministic software, so it is one of the few places a hard rule can be enforced on what the model produced.",
+            "name": "Output Validation and Sanitization",
+            "note": "Sanitization of generated code before execution is treated under the tool boundary rather than as its own topic.",
+            "refs": [
+                {
+                    "title": "Application Security in the Age of AI™",
+                    "volume": 8,
+                    "chapter": "Putting It Into Practice",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-application-security/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HJSLWSS1"
+                },
+                {
+                    "title": "Application Security in the Age of AI™",
+                    "volume": 8,
+                    "chapter": "Framework Alignment",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-application-security/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HJSLWSS1"
+                },
+                {
+                    "title": "Application Security in the Age of AI™",
+                    "volume": 8,
+                    "chapter": "The Output Boundary",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-application-security/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HJSLWSS1"
+                }
+            ],
+            "scope": "Stripping malicious code or sensitive data from responses before they reach the user."
+        },
+        {
+            "body": "A classifier in front of a model is a probabilistic filter guarding a probabilistic component. It lowers the rate at which harmful content gets in and harmful output gets out, and both reductions are worth having, but it cannot bound either rate, and it becomes a target itself: crafted inputs that trap a guardrail model in extended reasoning have multiplied token use 13 to 63 times. A guardrail therefore needs its own consumption limits, should not be shared across risk tiers, and should be paired with deterministic enforcement outside the model for anything that must never happen. The guardrail reduces risk; the enforcement point is what bounds it.",
+            "name": "Semantic Guardrails",
+            "refs": [
+                {
+                    "title": "Application Security in the Age of AI™",
+                    "volume": 8,
+                    "chapter": "Two Architectures, Contrasted Honestly",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-application-security/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HJSLWSS1"
+                },
+                {
+                    "title": "Application Security in the Age of AI™",
+                    "volume": 8,
+                    "chapter": "Putting It Into Practice",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-application-security/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HJSLWSS1"
+                }
+            ],
+            "scope": "Secondary models that evaluate and block harmful or out-of-scope outputs."
+        },
+        {
+            "body": "Volume VIII treats availability and cost as a security class of their own, because the inherited toolchain does not. The attack surface runs from denial of wallet through recursion, loops and agents that spawn agents, to the serving layer, and even the guardrail can be attacked. The answer is a consumption envelope: ceilings enforced outside the model, per identity and per application, on tokens per request and per window, invocations, recursion depth, delegation breadth and time. When a ceiling is breached the application stops rather than degrading. The common failure is ceilings nobody chose, provider defaults, with cost watched monthly by a team that has no security context.",
+            "name": "Preventing Model Denial of Service",
+            "refs": [
+                {
+                    "title": "Application Security in the Age of AI™",
+                    "volume": 8,
+                    "chapter": "Availability and Cost as a Security Class, and the Ceilings That Bound Them",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-application-security/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HJSLWSS1"
+                },
+                {
+                    "title": "Application Security in the Age of AI™",
+                    "volume": 8,
+                    "chapter": "The Consumption Envelope",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-application-security/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HJSLWSS1"
+                },
+                {
+                    "title": "Application Security in the Age of AI™",
+                    "volume": 8,
+                    "chapter": "Putting It Into Practice",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-application-security/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HJSLWSS1"
+                }
+            ],
+            "scope": "Stopping attackers from exhausting compute resources."
+        },
+        {
+            "body": "Human review is a budget, and it should be spent on purpose. Volume VII replaces the sprint plan with a judgment budget: a weekly session that spends reviewer hours against the risk tier map, so the highest-tier features get human eyes and the lowest ship on automated checks. That second half is a documented decision not to look, and it must be accepted in writing by someone with authority, per tier, with an expiry; a program that operates without that acceptance has made the decision anyway and owns it entirely. The same honesty applies to users: a design that invites trust in an output without a way to verify it has moved the risk, not removed it.",
+            "name": "Overreliance and Hallucination Mitigations",
+            "note": "Interface design patterns against user overreliance are not treated in depth.",
+            "refs": [
+                {
+                    "title": "Secure by Design in the Age of AI™",
+                    "volume": 7,
+                    "chapter": "Chapter 16: After Agile",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-secure-by-design/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HJ6W4R8Q"
+                },
+                {
+                    "title": "Application Security in the Age of AI™",
+                    "volume": 8,
+                    "chapter": "The Judgment Budget Replaces the Sprint Plan",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-application-security/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HJSLWSS1"
+                }
+            ],
+            "scope": "Design and system constraints that force human verification."
+        },
+        {
+            "body": "Fine-tuning changes behavior the tuner did not target, and refusal behavior is the usual casualty: a model tuned on harmless task data can come back better at the task and more willing at the boundary, with nothing in the training metrics to show it. Research has shown safety alignment can be undone by fine-tuning on a small number of examples. So every tuned artifact re-earns the full test suite and its limits before it serves. The data side matters too: a model fine-tuned on customer or employee records can be probed to learn whether a given record was in its training set, and deleting a record from the dataset does not remove its effect from the models already tuned on it.",
+            "name": "Secure Fine-Tuning Practices",
+            "refs": [
+                {
+                    "title": "Secure by Design in the Age of AI™",
+                    "volume": 7,
+                    "chapter": "Chapter 14: The Component That Cannot Be Read",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-secure-by-design/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HJ6W4R8Q"
+                },
+                {
+                    "title": "The AI IT Security Implementation & Strategy™",
+                    "volume": 6,
+                    "chapter": "Chapter 11: Privacy Gains an Engine",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-ai-it-security-implementation-strategy/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HGBSB5ZR"
+                },
+                {
+                    "title": "The AI IT Security Implementation & Strategy™",
+                    "volume": 6,
+                    "chapter": "Chapter 10: Privacy Inherits the Audit",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-ai-it-security-implementation-strategy/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HGBSB5ZR"
+                }
+            ],
+            "scope": "Sanitized, access-controlled fine-tuning datasets."
+        },
+        {
+            "body": "Application security was built for software that executes: a request arrives, code runs, a response leaves, and everything of interest happens in code a developer wrote and a reviewer can read. Static analysis, composition analysis, dynamic testing and the penetration test all descend from that shape, and they all still apply to the code around an AI system. What they miss is behavior that lives in the model, the prompt and the retrieved content. Volume VII splits testing into two lanes: machine-verifiable controls checked on every change, which may block a release, and human-judged controls verified before release on the highest-risk features. Model-graded findings sit in an advisory band that gates nothing.",
+            "name": "SAST and DAST for Machine Learning",
+            "refs": [
+                {
+                    "title": "Application Security in the Age of AI™",
+                    "volume": 8,
+                    "chapter": "What the Controls Were Watching For",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-application-security/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HJSLWSS1"
+                },
+                {
+                    "title": "Application Security in the Age of AI™",
+                    "volume": 8,
+                    "chapter": "Eleven Controls, One Assumption",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-application-security/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HJSLWSS1"
+                },
+                {
+                    "title": "Secure by Design in the Age of AI™",
+                    "volume": 7,
+                    "chapter": "Chapter 6: Two Lanes",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-secure-by-design/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HJ6W4R8Q"
+                }
+            ],
+            "scope": "Static and dynamic application security testing of ML codebases."
+        },
+        {
+            "body": "Retrieval is where most indirect prompt injection arrives: an agent pursuing a legitimate goal pulls in a supplier document, a web page, an email or a ticket that contains instructions, and it cannot reliably tell content to reason about from instructions to follow. Retrieval poisoning also persists as long as the content stays indexed and affects every query that reaches it. It is the most accessible attack to an attacker and the most tractable for a defender, because the corpus can be listed and inspected: source provenance, write authorization on indexed corpora, and periodic integrity checks. Volume VIII adds a retrieval authorization standard that checks entitlement before the query, not after.",
+            "name": "Securing RAG Architectures",
+            "note": "SQL injection through retrieval layers is not treated separately.",
+            "refs": [
+                {
+                    "title": "The AI IT Security Implementation & Strategy™",
+                    "volume": 6,
+                    "chapter": "Chapter 2: Governance Gains an Engine",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-ai-it-security-implementation-strategy/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HGBSB5ZR"
+                },
+                {
+                    "title": "The AI IT Security Implementation & Strategy™",
+                    "volume": 6,
+                    "chapter": "Chapter 10: Privacy Inherits the Audit",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-ai-it-security-implementation-strategy/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HGBSB5ZR"
+                },
+                {
+                    "title": "Application Security in the Age of AI™",
+                    "volume": 8,
+                    "chapter": "The Artifacts Are the Answer",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-application-security/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HJSLWSS1"
+                }
+            ],
+            "scope": "Preventing injection and unauthorized document retrieval in retrieval systems."
+        },
+        {
+            "body": "The riskiest component in an AI dependency tree is often the model file itself: nearly 45 percent of popular models on the largest public hub still ship in a serialization format that executes code when loaded, and a study found nineteen of twenty-two loading paths across five frameworks missed by existing scanners. Volume VII's conditions for holding a model dependency: every one has a posture, identity and owner on the ledger; hosted and tuned weights live in a signed registry with a verifying load path, and nothing serializes into execution; configuration and system prompts are versioned; and a canary suite runs daily on every model dependency. Framework libraries follow the ordinary software bill of materials discipline.",
+            "name": "Vulnerability Management in ML Libraries",
+            "note": "Library-specific patching for PyTorch, TensorFlow and LangChain is not treated by name.",
+            "refs": [
+                {
+                    "title": "Secure by Design in the Age of AI™",
+                    "volume": 7,
+                    "chapter": "Chapter 4: See the Whole Surface",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-secure-by-design/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HJ6W4R8Q"
+                },
+                {
+                    "title": "Secure by Design in the Age of AI™",
+                    "volume": 7,
+                    "chapter": "Chapter 14: The Component That Cannot Be Read",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-secure-by-design/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HJ6W4R8Q"
+                },
+                {
+                    "title": "Secure by Design in the Age of AI™",
+                    "volume": 7,
+                    "chapter": "Chapter 7: The Ship Decision",
+                    "book_url": "https://srjconsultingservices.com/books/ai-risk-governance-security/the-secure-by-design/",
+                    "amazon_url": "https://www.amazon.com/dp/B0HJ6W4R8Q"
+                }
+            ],
+            "scope": "Patching flaws in open-source frameworks such as PyTorch, TensorFlow and LangChain."
+        }
+    ],
+    "built_at": "2026-09-22T04:08:21-05",
+    "hub_name": "AI Security and Risk",
+    "hub_path": "/ai-ecosystem/enterprise-applications-governance-and-tools/0ff57218/",
+    "page_uid": "72cf7bba",
+    "generated": "2026-09-22",
+    "topic_count": 15,
+    "other_domains": [
+        {
+            "href": "/ai-ecosystem/enterprise-applications-governance-and-tools/428caf62/",
+            "label": "Security Governance and Risk Management"
+        },
+        {
+            "href": "/ai-ecosystem/enterprise-applications-governance-and-tools/3aa447ef/",
+            "label": "Security Operations"
+        },
+        {
+            "href": "/ai-ecosystem/enterprise-applications-governance-and-tools/c42f2aba/",
+            "label": "Architecture and Engineering"
+        },
+        {
+            "href": "/ai-ecosystem/enterprise-applications-governance-and-tools/4a705735/",
+            "label": "Third-Party and Supply Chain Risk"
+        },
+        {
+            "href": "/ai-ecosystem/enterprise-applications-governance-and-tools/aa087822/",
+            "label": "Data Protection and Privacy"
+        }
+    ],
+    "refresh_every_days": 30
+}
