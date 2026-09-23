@@ -4,7 +4,7 @@
     "slug": "res-quant-nlq",
     "shape": "art-topic",
     "title": "Asking Data Questions in Plain Language",
-    "answer": "Asking data questions in plain language covers the practice of querying structured datasets, tables, and documents using natural language instead of formal query code. It sits within quantitative analysis and reproducible work because the goal is to let analysts, researchers, and domain experts frame questions in their own words and receive answers with the underlying data operations visible. The scope includes translating questions into SQL, dataframe operations, or retrieval steps, and checking that the result matches the intent of the question. It also covers follow-up questions, clarification, and the ability to trace how an answer was produced.",
+    "answer": "Asking data questions in plain language covers systems that let analysts, researchers, and domain experts query structured datasets without writing SQL or code. It spans natural language interfaces to databases, conversational analytics, and question answering over tables and spreadsheets. The goal is to lower the barrier between a person's question and a reproducible answer, while keeping the underlying data and query traceable. This work sits within quantitative analysis and reproducible research because the phrasing of a question shapes what is counted, filtered, or compared.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-09-23T14:36:42-05",
+    "built_at": "2026-09-23T15:57:06-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Researcher",
@@ -28,23 +28,23 @@
     "page_uid": "1ec1ea4a",
     "sections": [
         {
-            "body": "Asking data questions in plain language covers the practice of querying structured datasets, tables, and documents using natural language instead of formal query code. It sits within quantitative analysis and reproducible work because the goal is to let analysts, researchers, and domain experts frame questions in their own words and receive answers with the underlying data operations visible. The scope includes translating questions into SQL, dataframe operations, or retrieval steps, and checking that the result matches the intent of the question. It also covers follow-up questions, clarification, and the ability to trace how an answer was produced.",
+            "body": "Asking data questions in plain language covers systems that let analysts, researchers, and domain experts query structured datasets without writing SQL or code. It spans natural language interfaces to databases, conversational analytics, and question answering over tables and spreadsheets. The goal is to lower the barrier between a person's question and a reproducible answer, while keeping the underlying data and query traceable. This work sits within quantitative analysis and reproducible research because the phrasing of a question shapes what is counted, filtered, or compared.",
             "heading": "Scope"
         },
         {
-            "body": "The work runs on ordinary analytical infrastructure: relational databases, columnar stores, data warehouses, and notebooks that hold tabular data. A plain language layer typically sits on top of a query engine, a schema or data dictionary, and sometimes a vector index over table and column descriptions. Compute needs are modest compared with large generative model training; most of the cost is in model inference, query execution, and caching of common question patterns. The site's library of research papers and extracted claims can serve as a test corpus for evaluating whether a plain language answer matches documented findings.",
+            "body": "These systems typically run on top of existing data warehouses, relational databases, or tabular files, with a natural language layer that translates a question into a query plan. The translation layer may use a language model, a semantic parser, or a retrieval system that matches the question to known schema elements and prior queries. Compute is usually modest at query time, but model-based translation can require a GPU service or an API call before the database executes the generated query. The result is returned as a table or chart, often with the generated query shown for review.",
             "heading": "What it runs on"
         },
         {
-            "body": "The core method is to parse a natural language question into a structured representation, usually SQL or a dataframe expression, then execute it against the data and return the result with the generated query shown. Systems use a language model to propose candidate queries, a schema-aware prompt that includes table names, column names, and sample values, and a validation step that checks syntax and row counts. Reproducible work requires that the generated query, the data version, and the model version are all recorded, so another analyst can rerun the same question and get the same answer. When the question is ambiguous, the method includes asking for clarification rather than guessing.",
+            "body": "The work is done by mapping plain language to structured operations in stages: interpreting the question, resolving entities and column names, generating a candidate query, and validating it against the schema. Many systems use few-shot prompting or fine-tuned models to convert a question into SQL or a dataframe expression, then run the query and check for empty results or type errors. Reproducibility depends on recording the original question, the generated query, the data version, and any manual edits, so that another analyst can see exactly how an answer was produced.",
             "heading": "How the work is done"
         },
         {
-            "body": "Rights and risk center on data access, provenance, and silent errors. A plain language interface must enforce the same row-level and column-level permissions as the underlying database, so a user cannot phrase a question in a way that bypasses access controls. The main risk is a confident wrong answer: the model may generate valid SQL that answers a different question than the one asked, or it may join tables incorrectly. Governance therefore requires showing the generated query, the returned rows, and a confidence or verification signal, and keeping an audit log of questions, queries, and data snapshots. The site's practice of linking to original papers rather than a search tool reflects the same principle: the source of a claim must be inspectable.",
+            "body": "Rights and risk center on who can ask what, and whether the answer can be trusted. A plain language interface can expose sensitive fields or let a user join tables in ways that reveal more than their role permits, so access controls must be enforced at the query layer, not just in the interface. There is also a risk of silent misinterpretation: a question about revenue may map to a different column than the user intended, and the system should show the generated query or a confidence note. Provenance matters because a plain language answer is only reproducible if the question, query, and data snapshot are kept together.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The direction is toward tighter coupling between plain language questions and reproducible analysis pipelines, where a question can be turned into a reusable, versioned query or notebook cell. Future systems are likely to support multi-step questions across several tables and documents, with explicit uncertainty about which interpretation was chosen. There is also movement toward smaller, task-specific models that run inside a data warehouse or notebook, reducing the need to send sensitive schema and data to external services. Over time, plain language asking may become a standard front end for data catalogues and evidence synthesis, but the generated code and data lineage will remain the record of what was actually asked and answered.",
+            "body": "The direction is toward interfaces that handle ambiguity through clarification rather than guessing, and that support follow-up questions, comparisons, and what-if changes in the same conversation. Systems are likely to combine a language model's flexibility with a query engine's guarantees, so that the model proposes a query but the engine validates types, permissions, and row counts. As data catalogues and semantic layers improve, plain language questions will become more reliable for routine analysis, while complex or high-stakes work will still require a human to inspect the generated query.",
             "heading": "Where it is going"
         }
     ],

@@ -4,7 +4,7 @@
     "slug": "med-surgery-haptic",
     "shape": "art-topic",
     "title": "Haptic Feedback in Robotic Surgery",
-    "answer": "Haptic feedback in robotic surgery covers the sensing, transmission, and display of force, vibration, and texture information between surgical instruments and the surgeon's hands. It spans teleoperated systems where the surgeon works at a console, as well as handheld robotic tools and training simulators. The goal is to restore some of the tactile information lost when a mechanical interface replaces direct tissue contact, including grip force, tissue stiffness, suture tension, and contact with bone or vessels.",
+    "answer": "Haptic feedback in robotic surgery covers the sensing, transmission, and display of force, vibration, and tissue compliance information between a surgical robot's instruments and the surgeon at a console. It aims to restore the tactile cues that are lost when a surgeon operates through a telemanipulated system rather than holding instruments directly. The scope includes force sensors on instrument tips, actuators in hand controllers, and software that maps measured forces into safe, interpretable feedback. It also spans training simulators and intraoperative monitoring of tissue handling.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-09-23T14:36:42-05",
+    "built_at": "2026-09-23T15:57:06-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Physician",
@@ -28,23 +28,23 @@
     "page_uid": "d2a67599",
     "sections": [
         {
-            "body": "Haptic feedback in robotic surgery covers the sensing, transmission, and display of force, vibration, and texture information between surgical instruments and the surgeon's hands. It spans teleoperated systems where the surgeon works at a console, as well as handheld robotic tools and training simulators. The goal is to restore some of the tactile information lost when a mechanical interface replaces direct tissue contact, including grip force, tissue stiffness, suture tension, and contact with bone or vessels.",
+            "body": "Haptic feedback in robotic surgery covers the sensing, transmission, and display of force, vibration, and tissue compliance information between a surgical robot's instruments and the surgeon at a console. It aims to restore the tactile cues that are lost when a surgeon operates through a telemanipulated system rather than holding instruments directly. The scope includes force sensors on instrument tips, actuators in hand controllers, and software that maps measured forces into safe, interpretable feedback. It also spans training simulators and intraoperative monitoring of tissue handling.",
             "heading": "Scope"
         },
         {
-            "body": "The infrastructure includes force and torque sensors at the instrument tip or along the drive train, actuators that render forces back to the surgeon's hand controls, and low-latency control loops that connect them. In many clinical systems, haptic feedback is partial or absent, so research platforms often add external sensor arrays, dedicated haptic gloves, or instrumented trocars. The computing side relies on real-time signal processing and, increasingly, learned models that estimate tissue interaction forces from available robot data such as motor currents and endoscope video.",
+            "body": "The hardware runs on the robot's existing control architecture, with strain gauges, piezoelectric sensors, or optical force sensors mounted near the instrument wrist or shaft. Feedback is delivered through motors or voice-coil actuators in the surgeon's hand controllers, and sometimes through visual or auditory cues on the console display. The system requires low-latency communication between the patient-side cart and the surgeon console, typically over a dedicated real-time control loop. Power and signal conditioning for sensors are integrated into the sterile instrument or its drive housing.",
             "heading": "What it runs on"
         },
         {
-            "body": "The work is done by measuring interaction forces directly with strain gauges, piezoelectric sensors, or fiber optic sensors, or by estimating them indirectly from motor current, position error, and visual deformation of tissue. These signals are filtered, scaled, and mapped to haptic displays through impedance or admittance control schemes. Machine learning models are used to infer force and tissue properties from images or robot kinematics when direct sensing is not available, and to classify tissue types or detect events such as needle puncture or suture breakage.",
+            "body": "The work is done by sampling force and position data at high frequency, then filtering out noise from cable friction, inertia, and gravity before presenting a usable signal to the surgeon. Algorithms distinguish intended contact forces from the robot's own motion and from passive tissue resistance. The feedback is often scaled or bounded so that the surgeon feels a proportional but not overwhelming force, and some systems use event-based cues, such as a brief vibration when a suture is pulled to a set tension. Calibration is performed for each instrument type and for different tissue stiffness ranges.",
             "heading": "How the work is done"
         },
         {
-            "body": "Rights and risk questions center on patient safety, surgeon training, and liability when a haptic cue is missing, misleading, or delayed. A false sense of force could cause a surgeon to apply too much or too little pressure, and a system that filters out tremor or scales forces changes the surgeon's responsibility for the resulting tissue damage. Provenance matters for the sensor data and learned models used to generate haptic feedback, since a model trained on one patient population or instrument set may not transfer safely to another. Regulatory review generally treats haptic feedback as part of the surgical robot's safety and performance, not as a separate medical device, but product liability claims can still turn on whether the system gave adequate tactile information.",
+            "body": "Rights and risk and provenance center on patient safety, device validation, and liability when a robot misrepresents or omits tactile information. Regulatory clearance for haptic features requires evidence that the feedback does not introduce instability or unintended motion, and that failure modes are detectable. The provenance of force data matters for post-operative review and for training records, since a logged haptic trace can show how tissue was handled. Product liability questions may arise if a faulty sensor or feedback loop contributes to tissue damage, and hospitals need clear documentation of software versions and calibration history.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The field is moving toward higher-fidelity multi-axis force feedback, integration with preoperative imaging and intraoperative tissue property maps, and shared autonomy where the robot uses haptic cues to guide or constrain the surgeon near critical structures. Researchers are also exploring tactile displays that convey texture and slip, and using learned models to synthesize haptic feedback from vision alone when direct force sensors are impractical. As surgical robots become more autonomous for subtasks such as suturing or retraction, haptic feedback is likely to shift from a purely human interface to a channel for communicating robot intent and confidence.",
+            "body": "Where it is going is toward higher-fidelity multi-axis force feedback, integration with preoperative imaging to show expected tissue stiffness, and machine learning that adapts feedback to the surgeon's skill or the specific procedure step. Research is also exploring non-contact sensing, such as using optical imaging of tissue deformation to infer force without a sensor on the instrument. As surgical robots become more autonomous for subtasks like suturing or retraction, haptic feedback may shift from direct teleoperation to supervisory alerts, telling the surgeon when an automated action exceeds a safe force threshold. The goal is to preserve the surgeon's sense of touch while reducing fatigue and improving consistency.",
             "heading": "Where it is going"
         }
     ],
