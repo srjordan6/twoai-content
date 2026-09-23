@@ -4,7 +4,7 @@
     "slug": "med-imaging-detection",
     "shape": "art-topic",
     "title": "Pathology Detection and Scan Triage",
-    "answer": "Pathology detection and scan triage covers AI systems that examine medical images to flag suspected abnormalities and reorder radiology worklists by urgency. The work spans X-ray, CT, MRI and ultrasound, and includes findings such as lung nodules, intracranial hemorrhage, fractures and pneumothorax. These tools do not replace a radiologist's final read; they act as a second set of eyes and a prioritization layer. The goal is to reduce the time to diagnosis for urgent cases and to help manage high imaging volumes.",
+    "answer": "Pathology detection and scan triage covers automated flagging of suspicious findings in radiology images such as chest X-rays, CT scans, mammograms, and pathology slides, and the ordering of unread studies by urgency. It includes detection of fractures, hemorrhages, nodules, and malignant lesions, as well as worklist prioritization for radiologists. The aim is to reduce time to diagnosis for critical cases and to manage large backlogs without replacing human readers.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-09-23T07:02:58-05",
+    "built_at": "2026-09-23T09:59:18-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Physician",
@@ -28,23 +28,23 @@
     "page_uid": "4c645674",
     "sections": [
         {
-            "body": "Pathology detection and scan triage covers AI systems that examine medical images to flag suspected abnormalities and reorder radiology worklists by urgency. The work spans X-ray, CT, MRI and ultrasound, and includes findings such as lung nodules, intracranial hemorrhage, fractures and pneumothorax. These tools do not replace a radiologist's final read; they act as a second set of eyes and a prioritization layer. The goal is to reduce the time to diagnosis for urgent cases and to help manage high imaging volumes.",
+            "body": "Pathology detection and scan triage covers automated flagging of suspicious findings in radiology images such as chest X-rays, CT scans, mammograms, and pathology slides, and the ordering of unread studies by urgency. It includes detection of fractures, hemorrhages, nodules, and malignant lesions, as well as worklist prioritization for radiologists. The aim is to reduce time to diagnosis for critical cases and to manage large backlogs without replacing human readers.",
             "heading": "Scope"
         },
         {
-            "body": "These systems typically sit inside or alongside a hospital's picture archiving and communication system (PACS) and radiology information system (RIS). They receive DICOM studies, run inference on GPU-enabled servers either on premises or in a cloud environment, and return results through HL7 or FHIR messages to the worklist. Many deployments use a vendor-neutral archive or an orchestration layer to avoid disrupting existing workflows. Latency matters because triage results must arrive before the radiologist opens the next study.",
+            "body": "These systems typically run on hospital PACS and RIS networks, either as on-premises servers with GPU acceleration or as cloud-based inference services that receive DICOM images through secure APIs. They require integration with electronic health records for patient context and with reporting systems for results. Many deployments use standard medical imaging formats and HL7 or FHIR messaging to move studies and alerts.",
             "heading": "What it runs on"
         },
         {
-            "body": "Most current tools use convolutional neural networks trained on large, labeled datasets of normal and abnormal scans. Detection models localize suspicious regions with bounding boxes or segmentation masks, while triage models assign a priority score based on the likelihood and severity of a finding. Training data is typically drawn from retrospective cohorts and annotated by radiologists, with careful splitting to avoid leakage between patients. After deployment, outputs are often reviewed against radiologist reports to monitor drift and false positive rates.",
+            "body": "The work is done by convolutional neural networks and, increasingly, vision transformers trained on large annotated datasets of medical images. Models output heatmaps, bounding boxes, or classification scores, and triage tools use those scores to assign priority levels such as critical, urgent, or routine. Radiologists review flagged cases first, and the system may suppress normal studies or send them to a low-priority queue. Training relies on expert-labeled ground truth, often with multiple readers and adjudication.",
             "heading": "How the work is done"
         },
         {
-            "body": "These systems are generally regulated as medical devices and require evidence of safety and effectiveness before clinical use. Key risks include missed findings from false negatives, alert fatigue from false positives, and bias across patient populations or imaging equipment. The site tracks six active product liability and wrongful death lawsuits against AI companies, which underscores the legal exposure when triage or detection errors contribute to harm. Data provenance, patient consent for secondary use, and audit logs of model versions and decisions are central to compliance. Human oversight remains a requirement in most jurisdictions, with the radiologist retaining responsibility for the final interpretation.",
+            "body": "Rights and risk center on patient safety, liability for missed findings, and data provenance. If a model misses a lesion that a radiologist would have caught, questions arise about whether the vendor, the hospital, or the reviewing physician bears responsibility. Training data must be traceable to source institutions with appropriate consent, and models must be validated on local patient populations to avoid bias. Regulatory clearance, such as FDA or CE marking, is usually required before clinical use, and ongoing monitoring for drift is expected.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The field is moving toward foundation models that can handle multiple modalities and tasks from a single pretrained backbone, reducing the need for separate detectors per finding. Prospective clinical trials and real-world evidence are likely to replace retrospective validation as the standard for claims about triage benefit. Tighter integration with electronic health records may allow triage to weigh lab results and prior imaging, not just the current scan. Explainability and uncertainty estimates are expected to become more common so radiologists can judge when to trust a flag. Fully autonomous triage, where the AI reorders the worklist without human confirmation, remains a longer-term prospect.",
+            "body": "The field is moving toward multi-modal models that combine imaging with lab results and clinical notes, and toward autonomous triage for narrow, well-defined tasks. Worklist orchestration will likely become more dynamic, with models adjusting priority as new information arrives. There is also growing interest in foundation models for medical imaging that can be fine-tuned for many detection tasks, and in prospective studies that measure real-world impact on turnaround time and patient outcomes.",
             "heading": "Where it is going"
         }
     ],

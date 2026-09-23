@@ -4,7 +4,7 @@
     "slug": "law-ediscovery-tar",
     "shape": "art-topic",
     "title": "Predictive Coding and Technology-Assisted Review",
-    "answer": "Predictive coding and technology-assisted review cover the use of machine learning to rank, classify, and prioritize documents in litigation and regulatory investigations. The scope includes early case assessment, relevance and privilege review, issue coding, and quality control of human decisions. It is used where document populations are too large for linear manual review, and it is typically governed by a discovery protocol agreed between parties or ordered by a court. The page describes current practice rather than advising a reader on any specific matter.",
+    "answer": "Predictive coding and technology-assisted review, often called TAR, are methods for finding relevant documents in large collections during discovery, investigations, and regulatory responses. They use a human reviewer's judgments on a sample of documents to train a system that ranks or classifies the rest. The scope covers email, chat, contracts, and other unstructured text, often in matters with hundreds of thousands or millions of files. TAR is used to reduce manual review cost and time while aiming for defensible recall of responsive material.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-09-23T07:02:58-05",
+    "built_at": "2026-09-23T09:59:18-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Lawyer",
@@ -28,23 +28,23 @@
     "page_uid": "0646d38d",
     "sections": [
         {
-            "body": "Predictive coding and technology-assisted review cover the use of machine learning to rank, classify, and prioritize documents in litigation and regulatory investigations. The scope includes early case assessment, relevance and privilege review, issue coding, and quality control of human decisions. It is used where document populations are too large for linear manual review, and it is typically governed by a discovery protocol agreed between parties or ordered by a court. The page describes current practice rather than advising a reader on any specific matter.",
+            "body": "Predictive coding and technology-assisted review, often called TAR, are methods for finding relevant documents in large collections during discovery, investigations, and regulatory responses. They use a human reviewer's judgments on a sample of documents to train a system that ranks or classifies the rest. The scope covers email, chat, contracts, and other unstructured text, often in matters with hundreds of thousands or millions of files. TAR is used to reduce manual review cost and time while aiming for defensible recall of responsive material.",
             "heading": "Scope"
         },
         {
-            "body": "The work runs on standard e-discovery processing and review platforms that combine text extraction, search indexes, and a review database. Documents are typically converted to searchable text through optical character recognition and filtering, then loaded into a review workspace where coding decisions are recorded. The machine learning component operates inside or alongside that workspace, using the platform's existing search and metadata infrastructure rather than a separate training cluster. Most deployments are cloud-based or on-premises within the law firm or vendor environment, with no special hardware beyond ordinary server capacity.",
+            "body": "The work runs on standard e-discovery platforms that store processed text and metadata in searchable indexes. Training and ranking typically happen on cloud or on-premises servers with enough memory to hold document vectors or term weights for the collection. No specialized hardware is required for most matters, though very large corpora may use distributed processing. The system needs access to the same extracted text, metadata, and family relationships that reviewers see.",
             "heading": "What it runs on"
         },
         {
-            "body": "A review team codes a seed set of documents for relevance or another issue, and the system learns from those examples to score the remaining population. In continuous active learning, the model repeatedly selects the documents most likely to change its understanding, presents them for human coding, and retrains until the gain in new relevant material falls below an agreed threshold. Validation uses a statistically sampled control set that is coded independently and withheld from training, allowing the team to estimate recall, precision, and richness. The process is iterative and documented, with decisions recorded for later audit.",
+            "body": "A senior reviewer codes a seed set or iterative samples of documents as responsive or not responsive. The software learns from those labels and scores the remaining population, often using logistic regression, support vector machines, or similar text classifiers. Reviewers then examine high-scoring documents, and the process repeats until the rate of new responsive material falls below an agreed threshold. Quality is checked with control sets and statistical sampling rather than by reading every document.",
             "heading": "How the work is done"
         },
         {
-            "body": "The main risks are defensibility, inconsistent coding, and the possibility that a model misses a category of documents because the training examples were too narrow. Courts generally accept technology-assisted review where the parties agree on a protocol, the process is documented, and the results are tested against a control set. Privilege and confidentiality require that review decisions and model outputs remain within the protected discovery environment, and that any inadvertent production can be addressed through clawback arrangements. Provenance matters because every relevance call must be traceable to a human decision, a model prediction, or a quality-control step. This page describes practice and is not legal advice.",
+            "body": "Courts and parties generally accept TAR when the process is transparent, documented, and validated. Key risks include inconsistent training labels, hidden custodians or date ranges, and over-reliance on a single model without measuring recall. Parties often negotiate a protocol covering seed selection, confidence levels, and disclosure of non-responsive documents. The defensibility rests on showing a reasonable, repeatable method rather than a perfect result.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "Large language models are beginning to supplement traditional predictive coding by generating summaries, answering issue-specific questions, and making first-pass relevance calls on documents that a linear classifier would rank only by similarity. The next stage is likely to combine continuous active learning with generative review, where a model proposes a coding rationale and a human confirms or corrects it. Quality control is shifting from sampling entire populations to auditing model explanations and edge cases. As courts and parties gain more experience with these tools, protocols are likely to become more standardized, but the core requirement of a defensible, documented process will remain.",
+            "body": "TAR is moving toward continuous active learning with smaller initial samples and earlier quality control. Generative models are being tested for summarization, privilege review, and first-pass issue coding, but human validation remains central. The next few years are likely to bring more integration between TAR and large language models for concept-level review, with courts still focused on measurable recall and process transparency.",
             "heading": "Where it is going"
         }
     ],

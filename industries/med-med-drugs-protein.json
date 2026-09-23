@@ -4,7 +4,7 @@
     "slug": "med-drugs-protein",
     "shape": "art-topic",
     "title": "Protein Structure Prediction",
-    "answer": "Protein structure prediction estimates the three-dimensional shape of a protein from its amino acid sequence. In drug discovery and molecular simulation, these predicted structures help researchers identify binding pockets, understand mutations, and build models of targets that lack experimental structures. The field covers single protein chains, protein complexes, and sometimes multiple conformational states. It sits between sequence data and experimental methods like X-ray crystallography and cryo-electron microscopy.",
+    "answer": "Protein structure prediction estimates the three-dimensional coordinates of a protein from its amino acid sequence. In drug discovery and molecular simulation this capability supports target assessment, binding site identification, and the construction of structural models for proteins that lack experimental structures. The field sits between sequence bioinformatics and structural biology, and its outputs feed docking, molecular dynamics, and structure-based design workflows. Practitioners use predicted structures to prioritize targets, interpret mutations, and generate hypotheses about function and druggability.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-09-23T07:02:58-05",
+    "built_at": "2026-09-23T09:59:18-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Physician",
@@ -28,23 +28,23 @@
     "page_uid": "12f2109f",
     "sections": [
         {
-            "body": "Protein structure prediction estimates the three-dimensional shape of a protein from its amino acid sequence. In drug discovery and molecular simulation, these predicted structures help researchers identify binding pockets, understand mutations, and build models of targets that lack experimental structures. The field covers single protein chains, protein complexes, and sometimes multiple conformational states. It sits between sequence data and experimental methods like X-ray crystallography and cryo-electron microscopy.",
+            "body": "Protein structure prediction estimates the three-dimensional coordinates of a protein from its amino acid sequence. In drug discovery and molecular simulation this capability supports target assessment, binding site identification, and the construction of structural models for proteins that lack experimental structures. The field sits between sequence bioinformatics and structural biology, and its outputs feed docking, molecular dynamics, and structure-based design workflows. Practitioners use predicted structures to prioritize targets, interpret mutations, and generate hypotheses about function and druggability.",
             "heading": "Scope"
         },
         {
-            "body": "The work runs on large GPU clusters and high-memory compute nodes, often in cloud or institutional data centers. Models rely on precomputed sequence databases and multiple sequence alignments, which require substantial storage and fast retrieval. Inference for a single protein can take minutes to hours depending on length and hardware. Training from scratch is rare for most users; they typically run existing model weights or use hosted prediction services.",
+            "body": "Prediction models are typically run on GPU or TPU clusters, with inference possible on a single high-memory GPU for many proteins. The work depends on large curated sequence databases and precomputed multiple sequence alignments, which can be several gigabytes per target. Training requires substantial compute and is usually done by specialist groups, while most drug discovery teams consume pretrained model weights through local installations or cloud services. Storage and retrieval of structural outputs, confidence scores, and alignment data are part of the routine infrastructure.",
             "heading": "What it runs on"
         },
         {
-            "body": "Modern methods use deep neural networks trained on experimentally determined structures from the Protein Data Bank. They learn patterns of co-evolution from multiple sequence alignments and geometric constraints from known folds. Models such as AlphaFold and RoseTTAFold build a pairwise representation of residues, then iteratively refine a three-dimensional coordinate prediction. Confidence scores, like predicted local distance difference test values, help flag which regions are reliable.",
+            "body": "Modern methods use deep neural networks, often based on the transformer architecture, to learn relationships between residues from multiple sequence alignments and structural templates. The network iteratively refines a pairwise representation of residue distances and orientations, then produces a three-dimensional structure through a geometry module. Confidence estimates such as predicted local distance difference test and predicted aligned error scores help users judge which regions of a model are reliable. The approach is end-to-end differentiable and does not require physics-based simulation during inference, though physics-based refinement is sometimes applied afterward.",
             "heading": "How the work is done"
         },
         {
-            "body": "The main data source, the Protein Data Bank, has clear deposition and usage terms, and model weights may be open or restricted depending on the developer. Predictions carry uncertainty, and using them as if they were experimentally validated can mislead downstream work in drug discovery. Researchers are expected to check confidence scores and validate key findings with experimental methods. Product liability and regulatory questions around AI tools in medicine are tracked on this site, but protein structure prediction itself is a research tool, not a clinical device.",
+            "body": "Predicted structures carry provenance from the experimental structures and sequence databases used in training, and users should record model version, input sequences, and confidence scores for reproducibility. Open model weights and public databases have accelerated use, but licensing terms for commercial drug discovery vary and need review by legal counsel. Risks include overreliance on low-confidence regions, silent errors in domain packing, and the use of predicted structures as if they were experimentally determined. Regulatory submissions that rely on predicted structures generally require experimental validation and clear documentation of model limitations.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The field is moving toward predicting protein complexes, conformational changes, and interactions with small molecules and nucleic acids. Integration with molecular dynamics and generative models may allow sampling of biologically relevant states rather than a single static structure. Faster inference and better handling of disordered regions are active areas. Experimental validation will remain necessary for any structure used to support a drug candidate or biological claim.",
+            "body": "The field is moving toward prediction of protein complexes, conformational states, and the effects of mutations on stability and binding. Integration with generative models for protein design and with molecular dynamics for ensemble sampling is becoming more common. Faster inference and better handling of antibodies, membrane proteins, and intrinsically disordered regions are active areas of work. In drug discovery, the likely direction is tighter coupling between structure prediction, binding site analysis, and virtual screening, with predicted structures treated as testable hypotheses rather than final answers.",
             "heading": "Where it is going"
         }
     ],

@@ -4,7 +4,7 @@
     "slug": "law-research-rag",
     "shape": "art-topic",
     "title": "Retrieval-Grounded Legal Research",
-    "answer": "Retrieval-grounded legal research is a method that anchors every answer, summary, or draft to specific passages from primary and secondary legal sources, such as case law, statutes, regulations, and court filings. Instead of relying on a model's general knowledge, the system retrieves relevant text from a curated corpus and cites it in the response. For AI-related matters, this corpus includes the site's 29 AI case law precedents and 142 active AI lawsuits, along with treatises and practice guides. The goal is to reduce hallucination and give a lawyer a verifiable trail from claim to source.",
+    "answer": "Retrieval-grounded legal research is the practice of producing legal answers, memos, and briefs where every claim is tied to a retrieved primary or secondary source, such as a case, statute, regulation, or treatise. It covers state and federal law, court rules, agency guidance, and practice commentary. The method is used for issue spotting, case strategy, and due diligence, and it differs from open-ended chatbot output by requiring a citation for each proposition. The site tracks 142 active AI lawsuits and 29 AI case law precedents, which are among the sources a retrieval-grounded system can draw on.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-09-23T07:02:58-05",
+    "built_at": "2026-09-23T09:59:18-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Lawyer",
@@ -28,23 +28,23 @@
     "page_uid": "1bbfe89c",
     "sections": [
         {
-            "body": "Retrieval-grounded legal research is a method that anchors every answer, summary, or draft to specific passages from primary and secondary legal sources, such as case law, statutes, regulations, and court filings. Instead of relying on a model's general knowledge, the system retrieves relevant text from a curated corpus and cites it in the response. For AI-related matters, this corpus includes the site's 29 AI case law precedents and 142 active AI lawsuits, along with treatises and practice guides. The goal is to reduce hallucination and give a lawyer a verifiable trail from claim to source.",
+            "body": "Retrieval-grounded legal research is the practice of producing legal answers, memos, and briefs where every claim is tied to a retrieved primary or secondary source, such as a case, statute, regulation, or treatise. It covers state and federal law, court rules, agency guidance, and practice commentary. The method is used for issue spotting, case strategy, and due diligence, and it differs from open-ended chatbot output by requiring a citation for each proposition. The site tracks 142 active AI lawsuits and 29 AI case law precedents, which are among the sources a retrieval-grounded system can draw on.",
             "heading": "Scope"
         },
         {
-            "body": "The approach runs on a retrieval pipeline connected to a document store of legal texts, typically with embeddings or lexical indexes for search. A large language model then conditions its output on the retrieved passages, often through a prompt that instructs it to quote or cite only from those passages. The site's 732 AI tools and 674 glossary terms can serve as metadata or filtering layers, but the core infrastructure is the index, the retriever, and the generator. No special hardware is required beyond standard cloud inference for the model and vector database.",
+            "body": "It runs on indexed collections of legal text, including court opinions, statutes, regulations, and law review articles, stored in databases that support both keyword and semantic search. A retriever selects relevant passages, and a language model generates an answer from those passages rather than from memory alone. Commercial platforms such as Westlaw and LexisNexis provide proprietary headnotes and citators, while open sources like CourtListener and state legislature websites supply raw documents. The site's 210 compliance and regulation pages and 6825 state AI bills are examples of source corpora that can be loaded into such a system.",
             "heading": "What it runs on"
         },
         {
-            "body": "The work is done in three stages: indexing, retrieval, and grounded generation. First, legal documents are split into passages and stored with citations, jurisdiction, and date. At query time, the retriever finds the most relevant passages, usually a handful, and passes them to the model with the user's question. The model is then constrained to answer using only those passages, and any unsupported statement is either omitted or flagged. A human lawyer reviews the output against the cited sources before it enters a brief or memo.",
+            "body": "A lawyer or paralegal enters a research question, and the system first retrieves a set of candidate passages by lexical matching, vector similarity, or a combination of both. The language model then drafts an answer that quotes or paraphrases only the retrieved text, and each sentence is linked to its source. A citation checker verifies that the cited page or paragraph actually supports the statement, and any unsupported claim is removed or flagged for review. The attorney then reads the underlying authorities to confirm jurisdiction, currency, and contrary holdings before relying on the output.",
             "heading": "How the work is done"
         },
         {
-            "body": "Rights and risk center on citation accuracy, confidentiality, and the limits of machine retrieval. A retrieval-grounded system can still miss a controlling case or misread a passage, so the lawyer remains responsible for verifying every citation. The site's 210 compliance and regulation pages and 6823 state AI bills are frequent retrieval targets, and their rapid change means the index must be updated continuously. Client data entered into a query may be exposed to a third-party model, so firms need clear data handling agreements and should avoid putting privileged material into a public retrieval tool.",
+            "body": "The main risks are hallucinated citations, reliance on overturned or superseded law, and failure to surface adverse authority that a keyword search missed. Provenance is handled by requiring a pinpoint citation for every factual or legal assertion, and by logging which version of a document was retrieved. In the United States, court opinions and statutes are generally not copyrightable, but proprietary headnotes, annotations, and citator signals are, so a system must separate public domain text from licensed content. The site tracks 142 active AI lawsuits, 92 of them intellectual property, and 29 AI case law precedents, which shape how courts treat AI-generated legal work.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The method is moving toward tighter integration with court dockets, real-time legislative feeds, and firm-specific document collections. Future systems will likely retrieve not just text but also prior work product, deposition transcripts, and expert reports, all with persistent citation links. As the site's tracked AI case law grows beyond 29 precedents, retrieval-grounded research will become the default for AI-related litigation and regulatory analysis. The main open problem is evaluating when a retrieved passage is sufficient, so expect more human-in-the-loop review rather than full automation.",
+            "body": "Retrieval-grounded legal research is moving toward real-time ingestion of new filings, docket entries, and legislative changes, so that answers reflect the law as of the moment of query. Systems are beginning to compare multiple jurisdictions side by side and to flag conflicts between authorities automatically. The site's 6825 state AI bills indicate a fast-changing statutory landscape that retrieval systems will need to track daily. Future tools may integrate with e-discovery and contract review, and produce court-ready documents with an auditable chain from each sentence to its source.",
             "heading": "Where it is going"
         }
     ],

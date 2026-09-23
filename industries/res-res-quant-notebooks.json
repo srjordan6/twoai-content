@@ -4,7 +4,7 @@
     "slug": "res-quant-notebooks",
     "shape": "art-topic",
     "title": "Reproducible Notebooks and Pipelines",
-    "answer": "Reproducible notebooks and pipelines are the working documents and workflow definitions that let a quantitative analysis be rerun with the same code, data, environment, and results. In this field, a notebook is not just a script with output; it is an executable record that ties narrative, computation, and figures together. A pipeline is the sequence of data preparation, modelling, and reporting steps that can be triggered as a unit. The goal is to remove the gap between what an author saw and what a reader or reviewer can verify.",
+    "answer": "Reproducible notebooks and pipelines cover the practices and tooling that let a quantitative analysis be rerun by someone else, or by the original author later, with the same data, code, environment and results. The scope includes notebook documents that mix code, output and narrative, and the surrounding pipeline that moves data through cleaning, modelling and reporting. It sits inside reproducible work because a notebook alone is rarely enough, the full chain from raw input to final figure must be captured.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-09-23T07:02:58-05",
+    "built_at": "2026-09-23T09:59:18-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Researcher",
@@ -28,23 +28,23 @@
     "page_uid": "dd00d94d",
     "sections": [
         {
-            "body": "Reproducible notebooks and pipelines are the working documents and workflow definitions that let a quantitative analysis be rerun with the same code, data, environment, and results. In this field, a notebook is not just a script with output; it is an executable record that ties narrative, computation, and figures together. A pipeline is the sequence of data preparation, modelling, and reporting steps that can be triggered as a unit. The goal is to remove the gap between what an author saw and what a reader or reviewer can verify.",
+            "body": "Reproducible notebooks and pipelines cover the practices and tooling that let a quantitative analysis be rerun by someone else, or by the original author later, with the same data, code, environment and results. The scope includes notebook documents that mix code, output and narrative, and the surrounding pipeline that moves data through cleaning, modelling and reporting. It sits inside reproducible work because a notebook alone is rarely enough, the full chain from raw input to final figure must be captured.",
             "heading": "Scope"
         },
         {
-            "body": "The work runs on ordinary research workstations, shared compute clusters, and cloud instances, with the environment captured so that it can be recreated. Common building blocks include version control repositories, container images, and package or environment managers. Notebook servers execute code cells in a browser, while pipeline runners schedule steps and pass artifacts between them. Caching layers and artifact stores keep intermediate results so that only changed parts of a workflow need to be recomputed.",
+            "body": "The work runs on ordinary research workstations, shared compute clusters and cloud notebook services, with the key requirement being a locked software environment. Common infrastructure includes version control for code and notebooks, container images that pin library versions, and artifact stores for datasets and model outputs. A pipeline runner or workflow manager often sits behind the notebook so that long or scheduled steps do not depend on a human clicking through cells.",
             "heading": "What it runs on"
         },
         {
-            "body": "The core method is to treat an analysis as a sequence of small, inspectable steps rather than a single opaque script. Notebooks are written so that cells run top to bottom and produce the same output on a clean kernel. Pipelines are defined as directed graphs of tasks, with explicit inputs and outputs for each task. Environment pinning, random seeds, and checksums are used to make runs comparable. A finished notebook or pipeline is often executed from scratch in a clean environment as a test of its own reproducibility.",
+            "body": "The method is to treat the notebook as a readable record, not as the execution engine. Analysts write code in small, ordered cells, clear outputs, and keep parameters at the top rather than buried in later cells. The pipeline is then built as a sequence of scripts or tasks that can be run from end to end, with the notebook often generated from those tasks or used only for exploration and presentation. Checksums, data versioning and environment snapshots are recorded at each run.",
             "heading": "How the work is done"
         },
         {
-            "body": "Reproducibility carries rights and risk questions about data access, code licensing, and the provenance of every input and output. A notebook that cannot be rerun because a dependency changed or a dataset was removed creates a silent risk for later work that builds on it. Provenance records, including links to the original papers rather than a search aggregator, help reviewers trace claims back to their sources. The site's library of 135 research papers and 10555 extracted claims reflects this emphasis on traceable evidence.",
+            "body": "Rights and risk and provenance centre on who can see, change and rerun the work, and on whether the results can be trusted. A reproducible pipeline should record where every dataset and model came from, what licence applies, and which version of code produced each output. Risks include leaking credentials or private data inside notebook outputs, silent changes to shared data, and results that cannot be matched to a published claim. Review therefore looks at the full provenance trail, not just the final notebook.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The direction is toward notebooks and pipelines that are self-contained enough to be moved between machines and institutions without manual setup. More of the environment, including operating system packages and model weights, is being captured in declarative files and containers. Automatic dependency resolution and provenance tracking are becoming part of the workflow rather than an afterthought. The likely result is a tighter link between a published claim and the exact computation that produced it.",
+            "body": "The direction is toward notebooks that are less like fragile scripts and more like thin views over a robust, versioned pipeline. Expect tighter links between notebook interfaces and workflow systems, automatic capture of environment and data lineage, and better diff and review tools for notebook changes. The goal is that a published result can be regenerated with one command, or at least with a short, documented sequence, years after the original work.",
             "heading": "Where it is going"
         }
     ],
