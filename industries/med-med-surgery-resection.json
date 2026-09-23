@@ -4,9 +4,23 @@
     "slug": "med-surgery-resection",
     "shape": "art-topic",
     "title": "Resection Planning and Margins",
-    "answer": "Resection planning and margins concerns the preoperative and intraoperative determination of tissue to remove in cancer or other surgery, with the aim of achieving negative margins while preserving healthy function. AI assists by fusing imaging, segmenting tumor and critical structures, and proposing cut planes. In surgical robotics and navigation, this becomes a spatial plan registered to the patient. The goal is to reduce positive margin rates and avoid damage to adjacent anatomy.",
+    "answer": "Resection planning and margins covers the use of AI to define what tissue must be removed during cancer or other surgery and to confirm that the remaining tissue is free of disease. In surgical robotics and navigation, this means fusing preoperative scans with intraoperative position data to propose cut lines, bone cuts, or ablation zones. The work centers on balancing complete removal of a lesion against preservation of nerves, vessels, and functional tissue. A negative margin is the usual clinical target, but the acceptable distance varies by tumor type and location.",
+    "crumbs": [
+        {
+            "name": "Knowledge Based Professions and their Future",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/1e6de64f/"
+        },
+        {
+            "name": "The AI Physician",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/411168df/"
+        },
+        {
+            "name": "Surgical Robotics and Navigation",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/dc7a130b/"
+        }
+    ],
     "noindex": false,
-    "built_at": "2026-09-22T23:43:34-05",
+    "built_at": "2026-09-23T07:02:58-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Physician",
@@ -14,23 +28,23 @@
     "page_uid": "34e338e2",
     "sections": [
         {
-            "body": "Resection planning and margins concerns the preoperative and intraoperative determination of tissue to remove in cancer or other surgery, with the aim of achieving negative margins while preserving healthy function. AI assists by fusing imaging, segmenting tumor and critical structures, and proposing cut planes. In surgical robotics and navigation, this becomes a spatial plan registered to the patient. The goal is to reduce positive margin rates and avoid damage to adjacent anatomy.",
+            "body": "Resection planning and margins covers the use of AI to define what tissue must be removed during cancer or other surgery and to confirm that the remaining tissue is free of disease. In surgical robotics and navigation, this means fusing preoperative scans with intraoperative position data to propose cut lines, bone cuts, or ablation zones. The work centers on balancing complete removal of a lesion against preservation of nerves, vessels, and functional tissue. A negative margin is the usual clinical target, but the acceptable distance varies by tumor type and location.",
             "heading": "Scope"
         },
         {
-            "body": "It runs on surgical navigation workstations, robotic consoles, and hospital imaging archives. The work needs preoperative MRI, CT, or PET fused with intraoperative tracking data. Compute often includes GPU servers for segmentation and registration, plus real-time optical or electromagnetic tracking. Some systems run on dedicated hardware in the operating room, others on hospital PACS and planning software.",
+            "body": "These systems run on hospital imaging workstations, surgical navigation carts, and robotic platforms with GPU acceleration for model inference. They draw on preoperative CT, MRI, or PET volumes from PACS and align them with live optical or electromagnetic tracking in the operating room. Many deployments keep inference on local hardware to avoid network latency during surgery. Integration with the robotic arm controller and the navigation display is required for the plan to reach the surgeon in a usable form.",
             "heading": "What it runs on"
         },
         {
-            "body": "Work is done by segmenting tumor and organs at risk from volumetric imaging, then generating a resection volume with a safety margin. Registration aligns the plan to the patient using landmarks or surface matching. During surgery, navigation displays the planned margin relative to tracked instruments, and some robotic systems constrain or guide cutting. Machine learning models are trained on annotated resections and outcomes to predict margin status.",
+            "body": "The typical pipeline starts with segmentation of the tumor and critical structures using convolutional or transformer networks trained on annotated volumetric scans. Deformable registration then maps that segmentation to the patient's current position, and the system computes margin distances or proposes a resection surface that maximizes clearance while respecting anatomical constraints. Some approaches use statistical shape models or probabilistic atlases to handle missing or noisy imaging. The surgeon reviews the proposed plan and can adjust it before or during the procedure.",
             "heading": "How the work is done"
         },
         {
-            "body": "Rights and risk center on surgeon accountability, patient consent for AI-assisted planning, and liability when a planned margin is wrong. Product liability and wrongful death suits against AI companies exist, and this site tracks six active cases, though not all involve resection planning. Compliance pages cover software as a medical device, data privacy for imaging, and validation requirements. Provenance of training data and model versioning matter for audit and recall.",
+            "body": "Final resection decisions remain with the surgeon, and AI output is treated as decision support rather than an autonomous instruction. Regulatory clearance, postmarket surveillance, and training data provenance are central concerns because a missed margin can lead to recurrence or additional surgery. This atlas tracks 6 active product liability and wrongful death lawsuits against AI companies and 210 compliance and regulation pages, which reflects the legal exposure around margin errors. Data privacy and bias across patient populations also affect how these tools are validated and deployed.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "Where it is going is toward intraoperative margin assessment with optical imaging, fluorescence, or mass spectrometry fused to the plan. Real-time deformation correction will update the resection volume as tissue shifts. Predictive models may estimate functional impact of a given margin before cutting. The field is moving from static preoperative plans to closed-loop navigation that adapts during the procedure.",
+            "body": "The field is moving toward real-time intraoperative margin assessment using tissue analysis, fluorescence, or hyperspectral imaging fused with the navigation view. Augmented reality overlays may project the planned resection directly onto the surgical field, and robotic systems may enforce safety boundaries around critical structures. Personalized margin plans based on tumor biology and recurrence risk are an active research direction. Over time, these tools may close the loop by updating the plan as tissue is removed and new information appears.",
             "heading": "Where it is going"
         }
     ],
