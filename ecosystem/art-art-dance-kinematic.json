@@ -4,9 +4,9 @@
     "slug": "art-dance-kinematic",
     "shape": "art-topic",
     "title": "Kinematic Video and Generated Movement",
-    "answer": "Kinematic video and generated movement covers systems that read recorded human motion from video, estimate joint positions over time, and produce new movement sequences for dance, theatre, animation, or physical training. It sits between choreography and motion mapping, treating a dancer's body as a data source rather than only as a performer. The page includes pose estimation, motion transfer, and generative models that output movement notation, animation rigs, or video. It does not cover static pose recognition or full character animation pipelines outside human movement.",
+    "answer": "Kinematic video and generated movement covers systems that record, analyse, and synthesise human or animal motion for choreography, animation, and performance. It sits between motion capture, dance notation, and generative video, treating a body's changing joint positions as a sequence that can be learned and replayed. The field includes generating new dance phrases from text or music, transferring motion between different body types, and producing video where the movement, not just the background, is synthetic. Practitioners use it to prototype choreography, extend archival recordings, and build interactive installations.",
     "noindex": false,
-    "built_at": "2026-09-22T18:58:02-05",
+    "built_at": "2026-09-22T23:43:33-05",
     "category": "ecosystem-entities-market-and-operations",
     "expanded": true,
     "hub_name": "The Art of AI",
@@ -14,23 +14,23 @@
     "page_uid": "6810bb90",
     "sections": [
         {
-            "body": "Kinematic video and generated movement covers systems that read recorded human motion from video, estimate joint positions over time, and produce new movement sequences for dance, theatre, animation, or physical training. It sits between choreography and motion mapping, treating a dancer's body as a data source rather than only as a performer. The page includes pose estimation, motion transfer, and generative models that output movement notation, animation rigs, or video. It does not cover static pose recognition or full character animation pipelines outside human movement.",
+            "body": "Kinematic video and generated movement covers systems that record, analyse, and synthesise human or animal motion for choreography, animation, and performance. It sits between motion capture, dance notation, and generative video, treating a body's changing joint positions as a sequence that can be learned and replayed. The field includes generating new dance phrases from text or music, transferring motion between different body types, and producing video where the movement, not just the background, is synthetic. Practitioners use it to prototype choreography, extend archival recordings, and build interactive installations.",
             "heading": "Scope"
         },
         {
-            "body": "The work runs on standard computer vision stacks: a camera or video file feeds a pose estimation model that returns skeletal keypoints frame by frame. Generated movement models typically run on a single GPU for inference, though training may require larger compute. Output can be a sequence of joint angles, a motion capture file, or rendered video. Many practitioners use open source pose libraries and motion datasets, but this page does not yet track any specific live models or tools.",
+            "body": "The work runs on motion capture data, usually skeletal keypoint sequences recorded at high frame rates, alongside ordinary video for appearance. Training and inference typically require GPU clusters for video diffusion models, while real-time use may run on a single workstation with a pose estimation model and a lightweight generator. Storage and retrieval depend on motion libraries organised by joint hierarchy, timing, and style tags. Many pipelines separate the motion representation from the rendered body, so the same movement can drive different avatars or camera angles.",
             "heading": "What it runs on"
         },
         {
-            "body": "A typical workflow starts with extracting 2D or 3D joint positions from video using a pose estimator. Those keypoint sequences are then normalized, cleaned, and sometimes mapped onto a standard skeleton. A generative model, often a transformer or diffusion model trained on motion capture data, learns to continue, interpolate, or remix the movement. The result is reviewed by a choreographer or animator, who may adjust timing, weight, or style before it is used in performance.",
+            "body": "A common approach is to train a generative model on paired examples of motion and text, music, or still poses, then sample new sequences that match a prompt. Pose estimation first converts source video into keypoints, and a motion model learns the transitions between those keypoints over time. Some systems use latent diffusion on short motion clips, while others use autoregressive prediction of joint rotations. Choreographers often intervene by editing the generated keypoints, applying constraints such as balance or contact with the floor, and then rendering the result with a separate video model.",
             "heading": "How the work is done"
         },
         {
-            "body": "Rights questions are unsettled. A dancer recorded for training data may not have agreed to their movement being used to generate new work, and choreographic style can be copied without credit. Provenance is hard to trace because generated motion is a statistical blend, not a direct copy. Practitioners should document the source video, the model, and the human edits, and should get clear consent from performers before using their movement in a training set. This page describes practice and is not legal advice.",
+            "body": "Rights questions centre on who owns a generated movement phrase and whether training on a dancer's recorded performance requires consent beyond the original recording contract. Risks include replicating a performer's signature style without credit, using motion data from culturally specific dance forms without permission, and creating synthetic video that misattributes movement to a real person. Provenance practice is still forming, but many projects now record the source motion capture, the model version, and the human edits alongside any output. This is a description of current practice, not legal advice.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "Generated movement is moving from short, looping clips toward longer sequences that respond to music, text, or another dancer in real time. Better 3D pose estimation from ordinary cameras will lower the barrier for small companies and independent choreographers. The next step is likely hybrid workflows where a human improvises, the system proposes variations, and the choreographer selects and refines them, rather than fully automated dance generation.",
+            "body": "The field is moving toward real-time co-creation, where a dancer's live movement is extended or answered by a generative model with low enough latency for stage use. Better physical plausibility, such as foot contact and weight shift, is a near-term goal, as is finer control over style and emotional tone. Motion synthesis is also becoming more accessible through browser-based tools that do not require a motion capture studio. Over time, generated movement may become a standard part of rehearsal and previsualisation, with clearer norms around credit and consent.",
             "heading": "Where it is going"
         }
     ],
@@ -52,7 +52,7 @@
             "path": "/ai-ecosystem/ecosystem-entities-market-and-operations/618aca8c/"
         }
     ],
-    "generated": "2026-09-22",
+    "generated": "2026-09-23",
     "parent_name": "Choreography and Motion Mapping",
     "parent_path": "/ai-ecosystem/ecosystem-entities-market-and-operations/8dfb01a9/",
     "refresh_every_days": 7
