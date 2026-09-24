@@ -4,7 +4,7 @@
     "slug": "law-audit-dlp",
     "shape": "art-topic",
     "title": "Data Loss Prevention and Sanitisation",
-    "answer": "This page covers data loss prevention and sanitisation for artificial intelligence systems in enterprise settings. It addresses how sensitive information can enter training data, prompts, model outputs, logs, and retrieval sources, and how organisations can block or remove that information before it is stored, shared, or used to train a model. The focus is on audit readiness and safe enablement of AI tools, including generative models and retrieval augmented generation.",
+    "answer": "Data loss prevention and sanitisation in AI security audits covers the controls that stop sensitive or regulated information from entering model training sets, prompts, retrieval contexts, or generated outputs. It includes identifying personal data, trade secrets, source code, and privileged material before it is used in a machine learning pipeline. The work also covers removing or masking that data from logs, vector stores, and fine tuning corpora. In enterprise enablement, this scope extends to third party AI tools and internal copilots that employees may use with customer or employee records.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-09-23T18:58:19-05",
+    "built_at": "2026-09-23T22:59:08-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Lawyer",
@@ -28,23 +28,23 @@
     "page_uid": "252b852c",
     "sections": [
         {
-            "body": "This page covers data loss prevention and sanitisation for artificial intelligence systems in enterprise settings. It addresses how sensitive information can enter training data, prompts, model outputs, logs, and retrieval sources, and how organisations can block or remove that information before it is stored, shared, or used to train a model. The focus is on audit readiness and safe enablement of AI tools, including generative models and retrieval augmented generation.",
+            "body": "Data loss prevention and sanitisation in AI security audits covers the controls that stop sensitive or regulated information from entering model training sets, prompts, retrieval contexts, or generated outputs. It includes identifying personal data, trade secrets, source code, and privileged material before it is used in a machine learning pipeline. The work also covers removing or masking that data from logs, vector stores, and fine tuning corpora. In enterprise enablement, this scope extends to third party AI tools and internal copilots that employees may use with customer or employee records.",
             "heading": "Scope"
         },
         {
-            "body": "DLP controls for AI typically sit at the network edge, API gateway, model serving layer, and data pipeline. Sanitisation runs in preprocessing steps for training and fine-tuning data, in prompt filtering before a request reaches a model, and in output filtering before a response is returned to a user. Logging and monitoring systems also need DLP rules because prompts and outputs are often retained for audit or debugging.",
+            "body": "These controls run across the same stack as the AI systems they protect, from endpoint agents and browser extensions to API gateways and data pipelines. A typical deployment places inspection points at the prompt entry layer, at retrieval augmented generation connectors, and at model output channels. Sanitisation often runs as a preprocessing service that redacts or tokenises fields before they reach a model, and as a postprocessing filter that blocks or rewrites responses containing residual sensitive data. The infrastructure must handle both structured records and unstructured text without adding latency that breaks interactive use.",
             "heading": "What it runs on"
         },
         {
-            "body": "The work combines pattern matching for known identifiers such as credit card numbers or personal names, named entity recognition for less structured text, and context based classifiers that flag confidential business material. Sanitisation methods include redaction, tokenisation, pseudonymisation, and data minimisation, where only the fields needed for a task are sent to a model. Output filters then check generated text for residual sensitive content before it leaves the system.",
+            "body": "The work is done by combining pattern matching, named entity recognition, and policy based classification with manual review for high risk cases. Sanitisation techniques include pseudonymisation, where identifiers are replaced with reversible tokens, and redaction, where values are removed entirely. For training data, practitioners deduplicate records, strip metadata, and run canary or membership checks to detect leakage. Auditors then test the pipeline by submitting crafted prompts and measuring whether protected values appear in outputs, which is a practical way to validate the controls rather than relying on model documentation alone.",
             "heading": "How the work is done"
         },
         {
-            "body": "Rights and risk centre on confidentiality, data protection obligations, intellectual property leakage, and contractual limits on how third party models may use enterprise data. Provenance matters because a sanitised dataset or prompt log must show what was removed, when, and under which policy, so that auditors can verify compliance. Incident response for AI data loss follows the same breach notification duties as other systems, but the risk surface includes model memory and cached outputs.",
+            "body": "Rights and risk turn on data provenance, because a model cannot forget a value it has already memorised, and deletion requests often cannot reach inside trained weights. Organisations therefore document where each dataset came from, what consent or legal basis applied, and whether the data was sanitised before or after collection. Risk assessments weigh the likelihood of indirect leakage through paraphrased outputs against the cost of over redaction, which can degrade model usefulness. Provenance records also matter for audit defence, since showing that a value was never in the training set is often the only reliable proof that a model did not learn it.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "DLP and sanitisation are moving toward real time, context aware filtering that can follow a document through retrieval, generation, and agent tool use. Privacy preserving techniques such as differential privacy and on device redaction are becoming more practical for enterprise AI. Regulatory pressure and audit requirements will push organisations to keep machine readable provenance records for every sanitisation decision, and model unlearning may become a standard control for removing sensitive data after the fact.",
+            "body": "The field is moving toward continuous sanitisation that adapts to new data types and to models with longer context windows that can retain more of a conversation. Expect tighter coupling between data loss prevention and model routing, where a prompt containing sensitive material is sent only to an approved on premises model or blocked before any external call. Standards for proving sanitisation, such as differential privacy guarantees and formal redaction tests, are likely to become part of procurement checklists. As agentic systems act on behalf of users, the boundary will shift from blocking text to controlling which tools an agent may call with which data.",
             "heading": "Where it is going"
         }
     ],
@@ -66,7 +66,7 @@
             "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/9bb8cede/"
         }
     ],
-    "generated": "2026-09-23",
+    "generated": "2026-09-24",
     "parent_name": "AI Security Audits and Enterprise Enablement",
     "parent_path": "/ai-ecosystem/enterprise-applications-governance-and-tools/c505ed19/",
     "refresh_every_days": 30

@@ -4,7 +4,7 @@
     "slug": "res-quant-compute",
     "shape": "art-topic",
     "title": "Large-Scale Compute on Institutional Data",
-    "answer": "Large-scale compute on institutional data refers to running computationally intensive analyses over datasets held by institutions, such as administrative records, research cohorts, operational logs, or survey data. It includes batch processing, distributed training, simulation, and high-throughput statistical modeling where the data cannot be processed on a single workstation. The scope is not limited to machine learning; it covers any reproducible quantitative workflow that requires clusters, accelerators, or managed cloud capacity. Institutional data often carries access controls, data use agreements, and provenance requirements that shape how compute is provisioned.",
+    "answer": "Large-scale compute on institutional data covers the use of distributed and high performance computing to analyze datasets held by universities, hospitals, government agencies and corporations. The work spans quantitative modeling, simulation, statistical analysis and machine learning on data that is often too large or too sensitive to move to a single workstation. Reproducibility is a core requirement, so the scope includes versioning of code, data and compute environments. Institutional data may include administrative records, research measurements, clinical information and operational logs.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-09-23T18:58:19-05",
+    "built_at": "2026-09-23T22:59:08-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Researcher",
@@ -28,23 +28,23 @@
     "page_uid": "cc9bb16c",
     "sections": [
         {
-            "body": "Large-scale compute on institutional data refers to running computationally intensive analyses over datasets held by institutions, such as administrative records, research cohorts, operational logs, or survey data. It includes batch processing, distributed training, simulation, and high-throughput statistical modeling where the data cannot be processed on a single workstation. The scope is not limited to machine learning; it covers any reproducible quantitative workflow that requires clusters, accelerators, or managed cloud capacity. Institutional data often carries access controls, data use agreements, and provenance requirements that shape how compute is provisioned.",
+            "body": "Large-scale compute on institutional data covers the use of distributed and high performance computing to analyze datasets held by universities, hospitals, government agencies and corporations. The work spans quantitative modeling, simulation, statistical analysis and machine learning on data that is often too large or too sensitive to move to a single workstation. Reproducibility is a core requirement, so the scope includes versioning of code, data and compute environments. Institutional data may include administrative records, research measurements, clinical information and operational logs.",
             "heading": "Scope"
         },
         {
-            "body": "The work typically runs on institutional high-performance computing clusters, cloud virtual machines with attached accelerators, or hybrid setups that keep sensitive data on premises while bursting to external compute. Storage is usually object-based or parallel file systems, with data staged into fast local disks for training or simulation jobs. Job scheduling and container orchestration handle resource allocation, checkpointing, and reproducibility of the software environment. Network throughput between storage and compute is often the binding constraint, not raw processor speed.",
+            "body": "This work runs on institutional high performance computing clusters, cloud platforms and hybrid systems that combine on premises and rented capacity. Typical components include CPU and GPU nodes, parallel file systems, high speed interconnects, job schedulers such as Slurm, and container runtimes. Reproducible setups often add workflow managers, environment managers and artifact stores so that a run can be repeated with the same software stack. Storage is usually tiered, with fast scratch space for active jobs and slower object or tape storage for long term retention.",
             "heading": "What it runs on"
         },
         {
-            "body": "Practitioners package code and dependencies into containers or environment manifests so that a run can be recreated later. Data is versioned or snapshotted before a job, and preprocessing steps are recorded as part of the pipeline rather than done by hand. Large jobs are split across many workers using data parallelism or map-reduce patterns, with results written incrementally so a failure does not lose the whole run. Quantitative checks, such as unit tests on derived variables and sensitivity analyses on model outputs, are run alongside the main computation to catch silent errors.",
+            "body": "The work is done by first ingesting and cleaning institutional data, then recording its schema and provenance before analysis. Analysts write parallel or distributed jobs that split computation across many nodes, often using frameworks for batch processing, array jobs or message passing. Model training and statistical fitting are logged with hyperparameters, random seeds and data versions. Results are validated against held out data or prior findings, and the full pipeline is packaged in containers or workflow definitions so another researcher can rerun it.",
             "heading": "How the work is done"
         },
         {
-            "body": "Institutional data usually comes with contractual or regulatory limits on who may access it and for what purpose, so compute environments need role-based access, encrypted storage, and audit logs. The main risks are unauthorized disclosure, re-identification of individuals in supposedly de-identified data, and misuse of results outside the approved scope. Provenance is maintained by recording the exact dataset version, code commit, environment, and parameters for every result, so that an analysis can be traced back to its inputs. Review boards or data stewards often require a data management plan before large compute is granted.",
+            "body": "Rights and risk center on who may access institutional data and for what purpose, governed by data use agreements, institutional review boards and internal access controls. Sensitive records are typically de-identified or pseudonymized before compute jobs run, and audit logs track which user ran which job on which dataset. Provenance systems record the lineage of every derived table, model and figure back to the original source files. Risks include re-identification, unauthorized copying, and silent changes to data or code that break reproducibility.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The direction is toward compute that moves closer to the data rather than copying large datasets into a central cluster, through federated analysis and confidential computing that keeps data encrypted during processing. Reproducibility tooling is becoming more automatic, with systems that capture provenance without requiring researchers to manually log every step. Energy use and carbon accounting are starting to influence how institutions schedule large jobs. As institutional datasets grow, the practical limit will be governance and data stewardship rather than raw compute capacity.",
+            "body": "The field is moving toward federated and distributed analysis that keeps raw institutional data in place while sharing only model updates or summary statistics. Confidential computing and hardware based enclaves are being explored to let institutions run shared workloads on sensitive data with stronger isolation. Reproducibility is becoming more automated through provenance capture at the scheduler and filesystem level. Energy efficiency and carbon accounting are also becoming part of how large scale institutional compute is planned and reported.",
             "heading": "Where it is going"
         }
     ],
@@ -66,7 +66,7 @@
             "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/a343378e/"
         }
     ],
-    "generated": "2026-09-23",
+    "generated": "2026-09-24",
     "parent_name": "Quantitative Analysis and Reproducible Work",
     "parent_path": "/ai-ecosystem/enterprise-applications-governance-and-tools/13698bd4/",
     "refresh_every_days": 30
