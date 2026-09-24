@@ -4,7 +4,7 @@
     "slug": "med-surgery-tremor",
     "shape": "art-topic",
     "title": "Tremor Stabilisation in Microsurgery",
-    "answer": "Tremor stabilisation in microsurgery refers to technologies that reduce or cancel involuntary hand tremor during delicate procedures such as ophthalmology, neurosurgery, and vascular anastomosis. It covers both handheld instruments with active compensation and robotic platforms that filter tremor from surgeon input. The goal is to preserve the surgeon's direct control while removing high-frequency motion that can damage tissue. This sits within surgical robotics and navigation as a control and sensing problem rather than a diagnostic AI task.",
+    "answer": "Tremor stabilisation in microsurgery covers technologies that reduce or cancel physiological hand tremor during delicate procedures such as retinal, vascular, and neurosurgery. It includes handheld instruments with active compensation and robotic platforms that filter surgeon input. The aim is to improve precision at sub-millimetre scales where natural tremor can affect instrument placement. This sits within surgical robotics and navigation rather than autonomous surgery, since the surgeon remains in direct control.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-09-23T22:59:08-05",
+    "built_at": "2026-09-24T04:03:54-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Physician",
@@ -28,23 +28,23 @@
     "page_uid": "88cd7dc3",
     "sections": [
         {
-            "body": "Tremor stabilisation in microsurgery refers to technologies that reduce or cancel involuntary hand tremor during delicate procedures such as ophthalmology, neurosurgery, and vascular anastomosis. It covers both handheld instruments with active compensation and robotic platforms that filter tremor from surgeon input. The goal is to preserve the surgeon's direct control while removing high-frequency motion that can damage tissue. This sits within surgical robotics and navigation as a control and sensing problem rather than a diagnostic AI task.",
+            "body": "Tremor stabilisation in microsurgery covers technologies that reduce or cancel physiological hand tremor during delicate procedures such as retinal, vascular, and neurosurgery. It includes handheld instruments with active compensation and robotic platforms that filter surgeon input. The aim is to improve precision at sub-millimetre scales where natural tremor can affect instrument placement. This sits within surgical robotics and navigation rather than autonomous surgery, since the surgeon remains in direct control.",
             "heading": "Scope"
         },
         {
-            "body": "These systems typically run on embedded real-time controllers inside the surgical instrument or robotic arm, with sampling rates high enough to track tremor frequencies between roughly 6 and 14 Hz. Inertial measurement units, optical encoders, and sometimes fibre Bragg grating sensors provide motion feedback. Processing is local and deterministic, often on field-programmable gate arrays or dedicated microcontrollers, because latency above a few milliseconds would defeat the stabilisation. Some platforms connect to operating-room networks for logging, but the stabilisation loop itself does not depend on cloud or external AI services.",
+            "body": "These systems run on high-frequency motion sensors, typically accelerometers or optical trackers, paired with actuators that move the instrument tip in opposition to detected tremor. Processing is done on embedded controllers or nearby workstations with low-latency loops to keep compensation in phase. Some setups use a robotic arm with motors at the joints, while handheld devices use piezoelectric or electromagnetic actuators near the tip. Power and sterilisation constraints shape the hardware.",
             "heading": "What it runs on"
         },
         {
-            "body": "The work is done by separating voluntary motion from tremor using band-pass filters, adaptive notch filters, or learned models that estimate the tremor component in real time. The system then drives a piezoelectric or electromagnetic actuator to move the tool tip in the opposite direction, or it subtracts the tremor signal from the commanded motion of a robotic manipulator. Calibration to the individual surgeon's tremor spectrum is common, and some systems update their estimate continuously during the procedure. This is control engineering with a signal-processing layer, not a large language model or image classifier.",
+            "body": "The work is done by separating voluntary, low-frequency surgical motion from involuntary, higher-frequency tremor, usually with band-pass filtering or adaptive algorithms. The system then commands an actuator to cancel only the tremor component, leaving the surgeon's intended movement unchanged. Calibration to each user's tremor signature and real-time feedback are common. Machine learning may be used to learn tremor patterns, but many clinical systems rely on classical signal processing for predictability.",
             "heading": "How the work is done"
         },
         {
-            "body": "Rights and risk questions centre on product liability, because a stabilisation failure during microsurgery can cause direct patient harm. The site tracks active product liability and wrongful death lawsuits against AI companies, and surgical robotic systems fall under medical device regulation with requirements for clinical evidence, software validation, and adverse event reporting. Provenance matters for the training data used in any learned tremor model, including whose hand motion was recorded and whether the model generalises across surgeons, instruments, and operating positions. Consent, data protection, and clear documentation of the device's intended use are part of the compliance burden.",
+            "body": "Rights and risk and provenance centre on device regulation, liability, and data handling. These are medical devices, so they require clearance or approval from regulators, and any failure to cancel tremor or unintended motion could cause tissue damage. Product liability and wrongful death lawsuits against AI companies are tracked on this site, though tremor stabilisation is usually a control system rather than an autonomous decision-maker. Provenance of training data, if learning is used, and audit logs of device behaviour matter for incident review.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The direction is toward smaller, lighter handheld instruments that bring tremor cancellation to procedures where a full robotic platform is impractical. Research is also exploring shared control, where the system learns a surgeon's style and adjusts stabilisation strength by task phase, such as suturing versus tissue dissection. Regulatory frameworks are likely to require more explicit evidence that adaptive or learning components remain safe when the surgeon changes technique or when sensor data degrades. The site's tracking of 1000 medical AI models and 210 compliance pages reflects the growing overlap between surgical robotics and AI governance, even though tremor stabilisation itself is often a classical control problem.",
+            "body": "Where it is going is toward finer compensation, lighter handheld tools, and integration with augmented visual feedback. Research is exploring compensation for other motion sources such as breathing and heartbeat, and shared control where the system holds a target while the surgeon directs larger moves. Wider use in outpatient and microvascular procedures may follow as actuators shrink and latency drops. The surgeon is likely to remain the decision-maker, with stabilisation acting as a transparent assist.",
             "heading": "Where it is going"
         }
     ],
