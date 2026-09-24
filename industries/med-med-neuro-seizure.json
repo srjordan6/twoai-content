@@ -4,7 +4,7 @@
     "slug": "med-neuro-seizure",
     "shape": "art-topic",
     "title": "Seizure Prediction",
-    "answer": "Seizure prediction is the use of machine learning to forecast epileptic seizures before clinical onset, typically from continuous electroencephalography or wearable signals. It sits within neuroinformatics as a decision support problem rather than a diagnostic one, aiming to give patients and caregivers warning windows. The field covers focal and generalized epilepsies, with models trained on long term recordings from epilepsy monitoring units and ambulatory devices. Unlike seizure detection, which flags events as they happen, prediction tries to identify a preictal state minutes to hours ahead.",
+    "answer": "Seizure prediction is the use of machine learning to estimate the likelihood that a person with epilepsy will have a seizure within a short upcoming window, usually minutes to hours, based on physiological signals. It is distinct from seizure detection, which identifies a seizure as it happens. The work sits within neuroinformatics and clinical AI, drawing on electroencephalography, electrocardiography, accelerometry, and other wearable data. The goal is to give patients and caregivers enough lead time to move to safety, take a prescribed rescue medication, or adjust activity.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-09-24T04:03:54-05",
+    "built_at": "2026-09-24T06:59:56-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Physician",
@@ -28,23 +28,23 @@
     "page_uid": "6bd24bf5",
     "sections": [
         {
-            "body": "Seizure prediction is the use of machine learning to forecast epileptic seizures before clinical onset, typically from continuous electroencephalography or wearable signals. It sits within neuroinformatics as a decision support problem rather than a diagnostic one, aiming to give patients and caregivers warning windows. The field covers focal and generalized epilepsies, with models trained on long term recordings from epilepsy monitoring units and ambulatory devices. Unlike seizure detection, which flags events as they happen, prediction tries to identify a preictal state minutes to hours ahead.",
+            "body": "Seizure prediction is the use of machine learning to estimate the likelihood that a person with epilepsy will have a seizure within a short upcoming window, usually minutes to hours, based on physiological signals. It is distinct from seizure detection, which identifies a seizure as it happens. The work sits within neuroinformatics and clinical AI, drawing on electroencephalography, electrocardiography, accelerometry, and other wearable data. The goal is to give patients and caregivers enough lead time to move to safety, take a prescribed rescue medication, or adjust activity.",
             "heading": "Scope"
         },
         {
-            "body": "Most research models run on retrospective EEG datasets stored in formats such as EDF and processed on standard GPU workstations or cloud instances. Clinical prototypes often use low power wearable or implantable devices that stream reduced channel data to a phone or bedside unit. Training pipelines rely on Python libraries for signal processing and deep learning, with feature extraction sometimes done on device to limit data transfer. The site tracks 1000 medical AI models, and seizure prediction accounts for a small but active subset of that inventory.",
+            "body": "Most research and early clinical systems run on continuous or long term EEG recordings, often from implanted or scalp electrodes, combined with wearable sensors for heart rate, motion, and skin conductance. Computation may happen on a bedside unit, a smartphone, or a cloud service, with newer work moving toward on device inference to reduce latency and protect privacy. Training typically requires large, patient specific archives of interictal and preictal segments, which are expensive to collect and label.",
             "heading": "What it runs on"
         },
         {
-            "body": "The work typically begins by segmenting EEG into interictal, preictal, and ictal windows, then extracting features such as spectral power, entropy, and connectivity measures. Models range from logistic regression and support vector machines on handcrafted features to convolutional and recurrent neural networks that learn directly from raw or filtered signals. Patient specific models are common because seizure patterns vary widely between individuals, so training often uses a leave one patient out or personalized fine tuning approach. Validation is done with chronological splits to avoid leaking future data into training.",
+            "body": "The common approach is to turn raw signals into features such as spectral power, connectivity, heart rate variability, or entropy, then train a classifier or sequence model to separate preictal from interictal states. Patient specific models are standard because seizure patterns vary widely between people, and transfer learning or federated approaches are used to borrow strength across patients without pooling raw data. Performance is usually reported with sensitivity, false positive rate per day, and time in warning, and a useful predictor must beat a random or cyclical baseline.",
             "heading": "How the work is done"
         },
         {
-            "body": "Rights and risk center on false alarms, missed seizures, and the burden of continuous monitoring, as well as data privacy for long term brain recordings. Regulatory pathways treat these systems as medical devices, and any claim of clinical benefit requires prospective evidence rather than retrospective accuracy alone. The site tracks 6 active product liability and wrongful death lawsuits against AI companies, though none are specific to seizure prediction, and 210 compliance and regulation pages relevant to medical AI. Provenance of training data matters because models trained on short inpatient stays may not generalize to home environments.",
+            "body": "Seizure prediction models are medical devices in most jurisdictions and face regulatory review for safety and effectiveness before clinical use. False alarms can cause anxiety or alarm fatigue, while missed predictions can create a false sense of security, so risk communication and clear labeling of model uncertainty matter. Data provenance is a serious issue because EEG and wearable records are sensitive health data, and consent, deidentification, and secondary use rules apply. Product liability questions are live in medical AI, and this site tracks active lawsuits and compliance pages relevant to such tools.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The field is moving toward closed loop systems that couple prediction with intervention, such as responsive neurostimulation or fast acting drug delivery. Multimodal inputs, including heart rate, motion, and sleep stage, are being added to improve robustness outside the hospital. Prospective, blinded trials remain the main hurdle before routine clinical use, and regulatory frameworks for adaptive algorithms are still being worked out. Over time, seizure prediction may become one component of broader neurological forecasting tools rather than a standalone product.",
+            "body": "The field is moving from retrospective proof of concept toward prospective, long term home monitoring studies that measure real world false alarm burden and patient benefit. Closed loop systems that pair a seizure predictor with an implanted neurostimulator or drug delivery device are an active research direction, though they raise higher safety and regulatory stakes. More interpretable models and standardized benchmarks may help clinicians trust and compare systems, while patient reported outcomes are becoming part of evaluation rather than accuracy alone.",
             "heading": "Where it is going"
         }
     ],

@@ -4,7 +4,7 @@
     "slug": "med-governance-bias",
     "shape": "art-topic",
     "title": "Bias in Clinical Triage",
-    "answer": "Bias in clinical triage covers systematic differences in how automated systems rank urgency, assign acuity scores, or allocate scarce resources such as beds, imaging, or specialist review. It includes emergency department intake, telehealth symptom checkers, pre-hospital dispatch, and mass casualty or pandemic triage. The concern is not only statistical error but differential harm: a model may under-triage some groups for heart attack or sepsis while over-triaging others. The site's registry of 1000 medical AI models provides a broad view of where triage tools are deployed and where bias audits are needed.",
+    "answer": "Bias in clinical triage refers to systematic differences in how an AI system assigns urgency, acuity, or priority to patients based on characteristics such as race, sex, age, language, insurance status, or disability. The concern spans pre-hospital dispatch, emergency department waiting rooms, inpatient early warning scores, and telehealth symptom checkers. It includes bias introduced by training data, outcome labels, feature choices, and the way clinicians override or accept model recommendations. This page treats bias as a governance and safety problem, not only a statistical one.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-09-24T04:03:54-05",
+    "built_at": "2026-09-24T06:59:56-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Physician",
@@ -28,23 +28,23 @@
     "page_uid": "bcb8b21b",
     "sections": [
         {
-            "body": "Bias in clinical triage covers systematic differences in how automated systems rank urgency, assign acuity scores, or allocate scarce resources such as beds, imaging, or specialist review. It includes emergency department intake, telehealth symptom checkers, pre-hospital dispatch, and mass casualty or pandemic triage. The concern is not only statistical error but differential harm: a model may under-triage some groups for heart attack or sepsis while over-triaging others. The site's registry of 1000 medical AI models provides a broad view of where triage tools are deployed and where bias audits are needed.",
+            "body": "Bias in clinical triage refers to systematic differences in how an AI system assigns urgency, acuity, or priority to patients based on characteristics such as race, sex, age, language, insurance status, or disability. The concern spans pre-hospital dispatch, emergency department waiting rooms, inpatient early warning scores, and telehealth symptom checkers. It includes bias introduced by training data, outcome labels, feature choices, and the way clinicians override or accept model recommendations. This page treats bias as a governance and safety problem, not only a statistical one.",
             "heading": "Scope"
         },
         {
-            "body": "These systems typically run on electronic health record data, patient-entered symptoms, vital signs, laboratory results, and sometimes wearable or remote monitoring feeds. They are served through hospital EHR modules, FHIR-based APIs, call center software, or standalone triage applications, often with a human clinician in the loop. Bias can enter through missing values, inconsistent measurement, legacy billing codes that stand in for clinical facts, or interfaces that collect less detail from certain patient groups. The same model may perform differently across sites because of differences in population mix, equipment, or documentation practice.",
+            "body": "Triage models typically run inside hospital electronic health record workflows, on ambulance tablets, in patient-facing symptom checkers, and in call center decision support tools. They draw on structured fields such as vital signs, lab results, and chief complaints, as well as free-text nursing notes and demographic data. Some are cloud-hosted and updated centrally, while others are embedded in medical devices or run on local servers to meet latency and privacy requirements. The same model may be deployed across multiple sites with different patient populations, which can amplify bias if not monitored.",
             "heading": "What it runs on"
         },
         {
-            "body": "Bias work in triage usually begins with subgroup analysis: comparing false negative and false positive rates, calibration, and acuity assignment across age, sex, race, language, payer, and comorbidity groups. Teams also use counterfactual testing, where a patient's protected attribute is changed while clinical facts stay the same, to see whether the triage score shifts. Common technical responses include reweighting training data, adjusting decision thresholds by subgroup, or adding fairness constraints during model training. Because triage outcomes are time-sensitive, evaluation often focuses on near-miss events, delayed escalation, and resource denial rather than only overall accuracy.",
+            "body": "Teams audit triage models by comparing error rates across patient groups, especially false negatives for high-acuity conditions such as sepsis, stroke, or myocardial infarction. They examine calibration, meaning whether predicted risk matches observed outcomes within each group, and they test for disparate impact in who gets assigned a lower priority. Common corrections include reweighting training data, removing or adjusting proxy variables, and setting group-specific decision thresholds. Human review of near-miss cases and shadow deployments are used to catch bias that only appears in live use.",
             "heading": "How the work is done"
         },
         {
-            "body": "Clinical triage models may be regulated as medical devices, and in many jurisdictions they must meet requirements for validation, labeling, and postmarket monitoring. Bias is also a compliance issue under health privacy and nondiscrimination rules, and hospitals may need to document how a triage tool was selected, audited, and overridden. The site tracks six active product liability and wrongful death lawsuits against AI companies, which shows how biased or poorly validated triage can become a legal risk. Provenance records, including training data sources, exclusion criteria, and model version history, are part of audit trails for clinical safety teams. Patients generally have rights to know when automated triage is used and to have a human review the decision.",
+            "body": "Bias in triage sits under medical device regulation, data protection law, and hospital quality and safety obligations. The atlas records six active product liability and wrongful death lawsuits against AI companies, which shows how biased triage decisions can become legal and evidentiary records. Provenance matters: a model's training data, validation population, and update history should be documented so that bias can be traced to its source. Risk management includes bias monitoring plans, incident reporting, and clear rules for when clinicians may override a triage score.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The direction is toward continuous bias monitoring rather than one-time premarket checks, with live dashboards that compare triage decisions and outcomes across subgroups. Federated learning and multi-site registries may allow bias audits without pooling sensitive patient data. Regulators and standards bodies are working on triage-specific fairness benchmarks, including acceptable differences in under-triage rates for high-risk conditions. Explainable triage scores and routine human override review are likely to become standard, along with postmarket surveillance that flags drift when a model encounters new populations or care pathways.",
+            "body": "Triage AI is moving toward prospective validation in diverse health systems, continuous monitoring of subgroup performance, and standardized fairness metrics that regulators and purchasers can compare. Federated learning and privacy-preserving audits may allow bias checks across institutions without pooling sensitive patient data. Expect more emphasis on explainable triage scores, human oversight requirements, and post-market surveillance as part of device clearance. The field is shifting from one-time bias audits to ongoing governance that treats fairness as a maintenance task.",
             "heading": "Where it is going"
         }
     ],
