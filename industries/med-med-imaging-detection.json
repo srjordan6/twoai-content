@@ -4,7 +4,7 @@
     "slug": "med-imaging-detection",
     "shape": "art-topic",
     "title": "Pathology Detection and Scan Triage",
-    "answer": "Pathology detection and scan triage covers automated flagging of suspicious findings in radiology images such as chest X-rays, CT scans, mammograms, and pathology slides, and the ordering of unread studies by urgency. It includes detection of fractures, hemorrhages, nodules, and malignant lesions, as well as worklist prioritization for radiologists. The aim is to reduce time to diagnosis for critical cases and to manage large backlogs without replacing human readers.",
+    "answer": "Pathology detection and scan triage covers AI systems that examine radiology images such as X-rays, CT scans, MRIs and ultrasound studies to identify suspicious findings, and that reorder radiologist worklists so urgent cases are read first. The scope includes flagging fractures, bleeds, nodules, pneumothorax and other acute or incidental abnormalities, as well as separating normal studies from those needing closer review. It sits within diagnostic imaging rather than histopathology, and it is used to reduce turnaround time for critical findings and to manage high-volume screening programs.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-09-24T16:03:03-05",
+    "built_at": "2026-09-24T17:17:09-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Physician",
@@ -28,23 +28,23 @@
     "page_uid": "4c645674",
     "sections": [
         {
-            "body": "Pathology detection and scan triage covers automated flagging of suspicious findings in radiology images such as chest X-rays, CT scans, mammograms, and pathology slides, and the ordering of unread studies by urgency. It includes detection of fractures, hemorrhages, nodules, and malignant lesions, as well as worklist prioritization for radiologists. The aim is to reduce time to diagnosis for critical cases and to manage large backlogs without replacing human readers.",
+            "body": "Pathology detection and scan triage covers AI systems that examine radiology images such as X-rays, CT scans, MRIs and ultrasound studies to identify suspicious findings, and that reorder radiologist worklists so urgent cases are read first. The scope includes flagging fractures, bleeds, nodules, pneumothorax and other acute or incidental abnormalities, as well as separating normal studies from those needing closer review. It sits within diagnostic imaging rather than histopathology, and it is used to reduce turnaround time for critical findings and to manage high-volume screening programs.",
             "heading": "Scope"
         },
         {
-            "body": "These systems typically run on hospital PACS and RIS networks, either as on-premises servers with GPU acceleration or as cloud-based inference services that receive DICOM images through secure APIs. They require integration with electronic health records for patient context and with reporting systems for results. Many deployments use standard medical imaging formats and HL7 or FHIR messaging to move studies and alerts.",
+            "body": "These systems typically run on hospital or imaging center servers with GPU acceleration, or in cloud environments that receive DICOM studies from a picture archiving and communication system. They connect to radiology information systems and electronic health records through HL7, FHIR or DICOM worklist protocols so that triage scores appear in the existing reading queue. Some deployments run inference at the scanner or on an edge appliance to return a priority flag before the study is fully archived. Data storage and model versioning are usually managed by the vendor or by the provider's IT team, with audit logs for every inference.",
             "heading": "What it runs on"
         },
         {
-            "body": "The work is done by convolutional neural networks and, increasingly, vision transformers trained on large annotated datasets of medical images. Models output heatmaps, bounding boxes, or classification scores, and triage tools use those scores to assign priority levels such as critical, urgent, or routine. Radiologists review flagged cases first, and the system may suppress normal studies or send them to a low-priority queue. Training relies on expert-labeled ground truth, often with multiple readers and adjudication.",
+            "body": "The work is usually done with convolutional neural networks or vision transformers trained on large sets of labeled medical images, often with radiologist annotations for bounding boxes, segmentation masks or whole-study labels. Detection models localize candidate lesions, classification models assign a probability that a study is normal or abnormal, and triage models combine those outputs with clinical context such as the exam reason or patient history to produce a priority score. Thresholds are set so that high-scoring studies move to the top of the worklist or trigger an alert, while low-scoring studies may be deferred. Human radiologists remain in the loop, and many systems are tuned to favor sensitivity over specificity for critical findings.",
             "heading": "How the work is done"
         },
         {
-            "body": "Rights and risk center on patient safety, liability for missed findings, and data provenance. If a model misses a lesion that a radiologist would have caught, questions arise about whether the vendor, the hospital, or the reviewing physician bears responsibility. Training data must be traceable to source institutions with appropriate consent, and models must be validated on local patient populations to avoid bias. Regulatory clearance, such as FDA or CE marking, is usually required before clinical use, and ongoing monitoring for drift is expected.",
+            "body": "Rights and risk center on patient safety, data provenance and liability when a missed finding or a delayed read causes harm. The atlas tracks six active product liability and wrongful death lawsuits against AI companies, which shows how unresolved questions about manufacturer responsibility and clinician oversight are being tested. Training data provenance matters because a model may perform differently across scanners, demographics or disease prevalence, and regulators expect evidence of validation on local populations. Privacy rules require that images and reports used for training or inference are handled under appropriate data governance, and many hospitals keep a human review step for all triage decisions. Performance monitoring after deployment is usually required to catch drift or unexpected failures.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The field is moving toward multi-modal models that combine imaging with lab results and clinical notes, and toward autonomous triage for narrow, well-defined tasks. Worklist orchestration will likely become more dynamic, with models adjusting priority as new information arrives. There is also growing interest in foundation models for medical imaging that can be fine-tuned for many detection tasks, and in prospective studies that measure real-world impact on turnaround time and patient outcomes.",
+            "body": "The direction is toward larger foundation models that can handle multiple modalities and body regions, reducing the need for separate single-task detectors. Triage is likely to become more tightly integrated with electronic health records so that a scan is prioritized using lab results, prior imaging and clinical notes, not just pixels. Prospective trials and real-world monitoring are expected to replace some retrospective validation, and regulators are moving toward rules for adaptive algorithms that update over time. Explainability tools that show which regions drove a triage score are also maturing, which may help radiologists trust and contest automated flags.",
             "heading": "Where it is going"
         }
     ],
