@@ -4,7 +4,7 @@
     "slug": "res-data-federated",
     "shape": "art-topic",
     "title": "Federated Sharing of Sensitive Data",
-    "answer": "Federated sharing of sensitive data refers to systems that let institutions keep sensitive datasets within their own infrastructure while still allowing approved researchers to run analyses across them. It covers clinical records, administrative data, survey responses, and other protected research materials that cannot be copied into a central repository. The goal is to widen access to evidence without moving raw data or exposing identifying details. In research data and repositories, this sits between fully open archives and closed data safe havens.",
+    "answer": "Federated sharing of sensitive data covers methods for research institutions to jointly analyze or train models on restricted datasets without moving raw records to a central repository. Sensitive data in this context includes health records, financial details, personal identifiers, and other regulated or confidential research material. The scope includes technical protocols, data use agreements, and repository practices that allow cross-institutional collaboration while keeping each dataset under its home institution's control.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-09-23T15:57:06-05",
+    "built_at": "2026-09-23T18:58:19-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Researcher",
@@ -28,23 +28,23 @@
     "page_uid": "5111f1ca",
     "sections": [
         {
-            "body": "Federated sharing of sensitive data refers to systems that let institutions keep sensitive datasets within their own infrastructure while still allowing approved researchers to run analyses across them. It covers clinical records, administrative data, survey responses, and other protected research materials that cannot be copied into a central repository. The goal is to widen access to evidence without moving raw data or exposing identifying details. In research data and repositories, this sits between fully open archives and closed data safe havens.",
+            "body": "Federated sharing of sensitive data covers methods for research institutions to jointly analyze or train models on restricted datasets without moving raw records to a central repository. Sensitive data in this context includes health records, financial details, personal identifiers, and other regulated or confidential research material. The scope includes technical protocols, data use agreements, and repository practices that allow cross-institutional collaboration while keeping each dataset under its home institution's control.",
             "heading": "Scope"
         },
         {
-            "body": "The work runs on a network of nodes, one at each data holder, connected by a coordination service that sends queries and receives aggregate results. Each node typically includes a secure compute environment, local storage, and an API that enforces the data holder's access rules. The site's catalogue of 801 scientific models and 732 AI tools reflects the range of software components that can be deployed inside such nodes, though the federated layer itself is usually lightweight middleware rather than a single platform.",
+            "body": "The work runs on a network of local nodes at each data holder, connected to a coordination server that receives only model updates or aggregate statistics. Secure aggregation, encrypted channels, and trusted execution environments are common components, along with differential privacy mechanisms that add calibrated noise to shared outputs. Some deployments use federated learning frameworks and secure multi-party computation libraries, but the core requirement is that raw sensitive data never leaves the source infrastructure.",
             "heading": "What it runs on"
         },
         {
-            "body": "The dominant approach is to move the analysis to the data, not the data to the analyst. A researcher submits a query or model training job, the coordination layer distributes it to each node, and each node returns only summary statistics, gradients, or model updates. Techniques such as secure aggregation, differential privacy, and synthetic data generation are used to reduce the risk that any returned output reveals an individual record. The site's 10,555 extracted claims from research works document many of these methods as they appear in peer reviewed papers.",
+            "body": "Each participating site computes a local model update or summary statistic on its own data, then sends only that update to a central aggregator. The aggregator combines updates from all sites, often using secure aggregation so that individual contributions cannot be inspected, and returns a global model or result. Techniques such as homomorphic encryption, secure multi-party computation, and differential privacy protect the shared updates from revealing individual records. Data provenance is maintained through logs that record which dataset version contributed to each round of computation.",
             "heading": "How the work is done"
         },
         {
-            "body": "Rights and risk are managed through data use agreements, federated identity, and audit logs at each node. The data holder retains control over what queries are permitted, which variables are exposed, and when a result is too disclosive to release. Provenance is recorded at the query level, so a published finding can be traced back to the contributing nodes and the version of each dataset used. Because the site links to original papers rather than a search tool, readers can inspect the governance details reported in each study.",
+            "body": "Rights and risk are managed through data use agreements, institutional review board approvals, and consent frameworks that specify what each party may compute and share. Residual risks include inference attacks, model inversion, and re-identification from aggregate outputs, so repositories track provenance metadata and access logs for audit. Governance practice focuses on limiting the information content of shared updates and ensuring that each data holder retains authority over its own records, rather than transferring ownership or custody to a central party.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "Federated sharing is moving toward more routine use in multi-site clinical and social science research, with standard protocols for query languages and disclosure checks. The main open problems are computational cost, heterogeneity of local data schemas, and the difficulty of proving that a sequence of federated queries cannot be combined to re-identify individuals. As the site's library of 135 research papers grows, it is likely to track how these systems handle real-world sensitive data at scale and how regulators respond to federated evidence.",
+            "body": "Federated sharing is moving toward standardized protocols and interoperability across different repository software and research domains. Future work is likely to extend beyond model training to federated analytics, cohort discovery, and verifiable computation, with stronger guarantees from zero-knowledge proofs and formal privacy accounting. Repositories are also expected to integrate federated methods with trusted research environments and automated data use agreement enforcement, reducing manual overhead while preserving auditability.",
             "heading": "Where it is going"
         }
     ],

@@ -4,7 +4,7 @@
     "slug": "med-documentation-summary",
     "shape": "art-topic",
     "title": "Patient Record Summaries",
-    "answer": "Patient record summaries are automated condensations of clinical notes, labs, imaging reports, medications, and encounter history into a concise narrative for a clinician. They sit within clinical documentation and ambient intelligence, where systems read or listen to the record and produce a structured or prose summary. The goal is to reduce chart review time and surface relevant history, allergies, recent changes, and care gaps. Scope includes inpatient discharge summaries, outpatient pre-visit summaries, and handoff notes, but not diagnosis or treatment recommendations.",
+    "answer": "Patient record summaries condense clinical notes, lab results, medications, allergies, and care plans into concise overviews for clinicians. They sit within clinical documentation and ambient intelligence, where systems listen to patient encounters and draft notes. The goal is to reduce documentation burden and help a care team see the current state of a patient quickly. Summaries may be generated for a single visit, a hospital stay, or a longitudinal record across encounters.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-09-23T15:57:06-05",
+    "built_at": "2026-09-23T18:58:19-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Physician",
@@ -28,23 +28,23 @@
     "page_uid": "fe799bf3",
     "sections": [
         {
-            "body": "Patient record summaries are automated condensations of clinical notes, labs, imaging reports, medications, and encounter history into a concise narrative for a clinician. They sit within clinical documentation and ambient intelligence, where systems read or listen to the record and produce a structured or prose summary. The goal is to reduce chart review time and surface relevant history, allergies, recent changes, and care gaps. Scope includes inpatient discharge summaries, outpatient pre-visit summaries, and handoff notes, but not diagnosis or treatment recommendations.",
+            "body": "Patient record summaries condense clinical notes, lab results, medications, allergies, and care plans into concise overviews for clinicians. They sit within clinical documentation and ambient intelligence, where systems listen to patient encounters and draft notes. The goal is to reduce documentation burden and help a care team see the current state of a patient quickly. Summaries may be generated for a single visit, a hospital stay, or a longitudinal record across encounters.",
             "heading": "Scope"
         },
         {
-            "body": "These systems typically run on hospital or clinic electronic health record infrastructure, either on-premises or in a HIPAA-aligned cloud environment. They require access to structured data like problem lists and medications as well as unstructured free text from notes. Many use large language models served through secure APIs or locally deployed models, with retrieval pipelines that pull the relevant chart sections before summarization. Compute needs are modest compared to training, but low-latency inference and high availability matter because summaries are generated during or just before clinical encounters.",
+            "body": "These systems typically run inside or alongside an electronic health record, using secure hospital networks or regulated cloud services. Ambient capture may involve microphones in exam rooms or mobile devices, with audio streamed to speech recognition and language models. Outputs are written back into the chart as draft text, often with timestamps and source links. Compute may be on premises for privacy-sensitive sites or in HIPAA-aligned cloud environments.",
             "heading": "What it runs on"
         },
         {
-            "body": "The work is done by first extracting and normalizing relevant data from the record, then passing selected sections to a language model with a constrained prompt that asks for a summary in a fixed format. Some systems use a two-step process: a retrieval model finds the most relevant notes and results, and a generation model writes the summary. Clinicians often review and edit the output before it is signed or saved, and many implementations include a human-in-the-loop step for high-risk settings. Evaluation uses both automated measures like factual consistency and manual review by clinicians for omissions or wrong information.",
+            "body": "The work combines automatic speech recognition, medical named entity recognition, and large language models trained or fine-tuned on clinical text. A summarizer extracts problems, medications, allergies, procedures, and follow-up items, then arranges them in a standard clinical format. Some systems use retrieval over the patient's existing record to ground the summary in prior notes and lab values. Human review by a clinician is usually required before the summary is signed.",
             "heading": "How the work is done"
         },
         {
-            "body": "Patient record summaries are medical device or clinical decision support depending on jurisdiction, and they face rules on data privacy, accuracy, and liability. A wrong summary that omits an allergy or misstates a lab trend can cause harm, so governance focuses on version control, audit trails, and clinician sign-off. The site tracks active product liability and wrongful death lawsuits against AI companies, which is relevant because summary errors can become part of a legal record. Compliance pages cover documentation standards, and many health systems require that the source data be traceable from every sentence in the summary.",
+            "body": "Patient summaries carry risk of omission, hallucination, and incorrect attribution of symptoms or medications. Provenance matters: each line should trace back to a source note, lab result, or dictated phrase. Privacy rules such as HIPAA in the United States govern audio, transcripts, and stored summaries. Liability for a wrong summary may fall on the clinician who signs it, the health system, or the software vendor, and the site tracks active product liability and wrongful death lawsuits against AI companies.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "These tools are moving from simple extractive summaries to ambient systems that draft a note from a recorded visit and then produce a longitudinal summary across many encounters. Future work will likely include better handling of uncertainty, negation, and temporal reasoning, so a summary can say when a condition changed rather than just that it exists. There is also movement toward patient-facing summaries in plain language, though that raises separate readability and consent issues. The field will probably converge on standardized summary formats that payers and regulators accept, but clinician review is unlikely to disappear soon.",
+            "body": "Summaries are moving from after-visit drafts to real-time ambient notes that update during the encounter. Future systems may produce problem-oriented summaries that reconcile changes across specialties and care settings. Work is also going toward patient-facing plain-language summaries and automated coding or quality measure extraction from the same text. The main open questions are how to measure summary faithfulness and how to keep a human clinician accountable without adding review burden.",
             "heading": "Where it is going"
         }
     ],
