@@ -4,7 +4,7 @@
     "slug": "res-grants-scoring",
     "shape": "art-topic",
     "title": "Predicting Proposal Success",
-    "answer": "Predicting proposal success is the use of machine learning and statistical models to estimate the likelihood that a grant application will be funded. It draws on structured data such as applicant history, budget, topic area, and reviewer scores, as well as unstructured text from the proposal narrative. The goal is to help funding bodies triage submissions and help applicants understand where a draft stands relative to past funded work. This page covers models, datasets, and evaluation practices reported in research literature.",
+    "answer": "Predicting proposal success uses machine learning to estimate the likelihood that a grant application will be funded, based on proposal text, applicant history, funder priorities, and past review patterns. It covers pre-submission scoring, internal triage, and post-decision analysis for research offices, universities, and funding agencies. The field draws on natural language processing, bibliometrics, and administrative data to understand competitiveness and support resource allocation. It is distinct from peer review itself, serving as a screening or planning aid rather than a replacement for human judgment.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-09-24T06:59:56-05",
+    "built_at": "2026-09-24T10:19:06-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Researcher",
@@ -28,23 +28,23 @@
     "page_uid": "839a8222",
     "sections": [
         {
-            "body": "Predicting proposal success is the use of machine learning and statistical models to estimate the likelihood that a grant application will be funded. It draws on structured data such as applicant history, budget, topic area, and reviewer scores, as well as unstructured text from the proposal narrative. The goal is to help funding bodies triage submissions and help applicants understand where a draft stands relative to past funded work. This page covers models, datasets, and evaluation practices reported in research literature.",
+            "body": "Predicting proposal success uses machine learning to estimate the likelihood that a grant application will be funded, based on proposal text, applicant history, funder priorities, and past review patterns. It covers pre-submission scoring, internal triage, and post-decision analysis for research offices, universities, and funding agencies. The field draws on natural language processing, bibliometrics, and administrative data to understand competitiveness and support resource allocation. It is distinct from peer review itself, serving as a screening or planning aid rather than a replacement for human judgment.",
             "heading": "Scope"
         },
         {
-            "body": "Most published models are trained and evaluated on historical grant records held by a single funder or on public datasets such as NIH RePORTER or NSF award abstracts. The work typically runs on standard CPU or GPU servers, with text encoders and gradient-boosted trees being common. Because grant records are often small by deep learning standards, many studies use cross-validation on modest labeled proposal sets rather than large distributed training. Data storage and preprocessing are usually handled with Python libraries and relational databases.",
+            "body": "Models typically run on institutional servers or cloud compute, using structured application databases, historical award records, and text corpora of past proposals. Training requires cleaned, labeled outcomes, often with de-identified applicant and reviewer data. Some tools are embedded in grant management systems or research information systems. Compute needs are modest compared to large language model training, but inference may be frequent during submission cycles.",
             "heading": "What it runs on"
         },
         {
-            "body": "The work is done by converting a proposal into features, then training a classifier or ranking model against a binary outcome of funded or not funded. Text features may come from bag-of-words, TF-IDF, or pretrained language model embeddings, while structured features include applicant track record, requested amount, and review panel scores. Researchers often compare logistic regression, random forests, and transformer-based models, and they report precision, recall, and area under the ROC curve. A key challenge is label imbalance, since most proposals are not funded, so methods such as oversampling or cost-sensitive learning appear frequently.",
+            "body": "Common approaches include text classification of proposal abstracts and narratives, regression on applicant and institution features, and ranking models trained on past funding decisions. Feature engineering often captures topic novelty, readability, citation impact of prior work, and alignment with funder language. More recent work uses transformer-based language models to encode proposal text and reviewer comments. Evaluation uses historical holdout sets, with metrics such as precision at top ranks or area under the ROC curve.",
             "heading": "How the work is done"
         },
         {
-            "body": "Rights and risk center on fairness, privacy, and provenance. Grant proposals contain sensitive research ideas and personal information, so models should be trained only on records the funder is permitted to use, and outputs should not leak identifiable details. There is a risk that a predictive model encodes historical biases against certain institutions, regions, or topics, and that applicants are judged by a score they cannot see or contest. Provenance matters because a model trained on one funder's past decisions may not transfer to another funder or call, and any claim about success rates should cite the original study rather than a secondary search tool.",
+            "body": "Risks include bias against applicants from less resourced institutions, leakage of confidential proposal content, and overreliance on predictions that may reinforce past funding patterns. Data provenance matters because training labels come from human review panels whose decisions are noisy and context dependent. Rights to proposal text and reviewer comments usually remain with applicants and funders, so models must respect access controls and data use agreements. There is no single regulatory framework, but institutional review boards and funder data policies often apply.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The field is moving toward models that explain why a proposal is scored a certain way, not just give a probability. Researchers are testing whether large language models can give structured feedback on clarity, novelty, and fit to a call, and whether such feedback correlates with eventual funding. There is also interest in combining reviewer text with proposal text to learn what separates funded from unfunded work at the level of argument and evidence. Over time, the most useful systems may be assistive tools for drafting and internal triage, rather than automated accept or reject decisions.",
+            "body": "The field is moving toward explainable scores that show which proposal sections drive a prediction, and toward feedback tools that help applicants revise before submission. Integration with research information systems may allow continuous updating as applicant track records change. There is also interest in predicting not just binary success but funding amount, time to award, and long-term project outcomes. As funders publish more structured data, models may shift from proprietary silos to shared benchmarks.",
             "heading": "Where it is going"
         }
     ],

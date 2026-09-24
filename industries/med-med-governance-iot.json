@@ -4,7 +4,7 @@
     "slug": "med-governance-iot",
     "shape": "art-topic",
     "title": "Security of Connected Medical Devices",
-    "answer": "Security of connected medical devices covers the protection of networked clinical hardware such as infusion pumps, patient monitors, imaging systems, and implantable devices, along with their supporting software, data flows, and cloud or hospital interfaces. It includes device authentication, encryption of patient data in transit and at rest, patch management, and segmentation from hospital networks. The scope also extends to supply chain components, legacy operating systems, and remote service access used by vendors. This area sits within governance and compliance because device security failures can affect patient safety and regulatory standing.",
+    "answer": "Security of connected medical devices covers the protection of networked clinical hardware, from infusion pumps and patient monitors to imaging systems and implantable devices, against unauthorized access, data interception, and manipulation. It includes device identity, firmware integrity, network segmentation, and the clinical consequences of a compromised device. The scope extends across the device lifecycle, from design and procurement to deployment, patching, and decommissioning. It also intersects with patient safety because a security failure can alter therapy delivery or diagnostic data.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-09-24T06:59:56-05",
+    "built_at": "2026-09-24T10:19:06-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Physician",
@@ -28,23 +28,23 @@
     "page_uid": "984ae00f",
     "sections": [
         {
-            "body": "Security of connected medical devices covers the protection of networked clinical hardware such as infusion pumps, patient monitors, imaging systems, and implantable devices, along with their supporting software, data flows, and cloud or hospital interfaces. It includes device authentication, encryption of patient data in transit and at rest, patch management, and segmentation from hospital networks. The scope also extends to supply chain components, legacy operating systems, and remote service access used by vendors. This area sits within governance and compliance because device security failures can affect patient safety and regulatory standing.",
+            "body": "Security of connected medical devices covers the protection of networked clinical hardware, from infusion pumps and patient monitors to imaging systems and implantable devices, against unauthorized access, data interception, and manipulation. It includes device identity, firmware integrity, network segmentation, and the clinical consequences of a compromised device. The scope extends across the device lifecycle, from design and procurement to deployment, patching, and decommissioning. It also intersects with patient safety because a security failure can alter therapy delivery or diagnostic data.",
             "heading": "Scope"
         },
         {
-            "body": "These devices run on embedded controllers, real-time operating systems, and increasingly on general-purpose computing platforms with wireless radios such as Wi-Fi, Bluetooth Low Energy, and proprietary medical telemetry. Many connect through hospital gateways, edge servers, or vendor cloud services that aggregate telemetry and push software updates. Security infrastructure includes network access control, device identity certificates, and isolated virtual LANs for clinical equipment. Some newer devices include hardware roots of trust and secure boot, but many deployed systems still rely on older, unpatchable operating systems.",
+            "body": "These devices run on embedded operating systems, often real-time or stripped-down Linux or proprietary firmware, connected through hospital networks, wireless protocols such as Bluetooth Low Energy and Wi-Fi, and sometimes cloud-based vendor platforms. Many rely on gateways or medical device servers that aggregate data and manage updates. Legacy devices may run unsupported operating systems with no patch path, while newer devices include hardware roots of trust and secure boot. The infrastructure includes network access control, firewalls, and inventory systems that track device make, model, software version, and connectivity.",
             "heading": "What it runs on"
         },
         {
-            "body": "Security work is done through a mix of premarket threat modeling, static and dynamic analysis of firmware, and postmarket monitoring of device behavior and network traffic. Teams inventory connected devices, map their data flows, and assess vulnerabilities against frameworks such as CVSS and manufacturer disclosure programs. Penetration testing often focuses on wireless interfaces, update mechanisms, and the boundary between device and hospital information systems. Because clinical uptime is critical, patching is usually scheduled around care workflows and may require vendor coordination or compensating controls.",
+            "body": "Security work is done through threat modeling, software bill of materials review, vulnerability scanning that is safe for clinical devices, and coordinated disclosure with manufacturers. Teams map device communication flows, segment networks so a compromised infusion pump cannot reach electronic health records, and test patches in bench environments before clinical rollout. Penetration testing of medical devices often uses passive monitoring and protocol fuzzing rather than aggressive scanning to avoid disrupting patient care. Incident response for connected devices includes isolating a device at the network level while maintaining a manual clinical workaround.",
             "heading": "How the work is done"
         },
         {
-            "body": "Rights and risk here center on patient safety, data privacy, and accountability when a compromised device causes harm. Regulations such as FDA premarket and postmarket guidance, EU MDR, and health data protection rules require manufacturers to document security risk management and provide coordinated vulnerability disclosure. Hospitals must balance clinical availability against security updates, and contracts often define who is responsible for patching, monitoring, and incident response. Provenance matters for software bills of materials, so that a vulnerability in a third-party library can be traced across device models.",
+            "body": "Rights and risk here center on patient safety, data privacy, and manufacturer accountability. Regulations such as FDA premarket and postmarket guidance require manufacturers to provide a software bill of materials and a plan for coordinated vulnerability disclosure, while hospitals must maintain an inventory and risk management process. Provenance matters because a device's firmware, third-party libraries, and update channel determine whether a patch is authentic and whether a vulnerability is exploitable. Liability can fall on manufacturers, hospitals, or integrators when a known vulnerability leads to patient harm, and site tracking of active product liability and wrongful death lawsuits against AI companies reflects the broader pressure on connected clinical systems.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The direction is toward continuous monitoring, automated vulnerability detection, and security requirements built into procurement and device design rather than bolted on later. More devices will carry unique identities and support over-the-air updates, while regulators push for software bills of materials and postmarket transparency. Hospital networks are likely to adopt zero trust segmentation and real-time anomaly detection tuned to clinical traffic. As connected devices incorporate more AI-driven features, security will also need to cover model inputs, telemetry integrity, and the risk that manipulated data changes clinical decisions.",
+            "body": "The direction is toward continuous monitoring, automated vulnerability remediation, and tighter integration of device security with clinical risk management. Manufacturers are moving to secure-by-design practices, over-the-air updates with signed firmware, and machine-readable software bills of materials. Hospitals are adopting medical device security platforms that correlate device telemetry with threat intelligence and clinical workflow impact. Regulatory expectations are shifting from point-in-time premarket review to lifecycle accountability, with greater emphasis on real-world evidence of security effectiveness and faster coordinated disclosure timelines.",
             "heading": "Where it is going"
         }
     ],
