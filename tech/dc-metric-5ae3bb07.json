@@ -14,9 +14,9 @@
         "name": "Data Centers"
     },
     "reading": {
-        "body": "Network latency, packet loss, and bandwidth are measured continuously because distributed AI training wastes GPU-hours on a lossy fabric before any outage appears.\n\nThe metric belongs to uptime and redundancy, but its real cost is compute efficiency, not availability. A fabric can remain up while dropping enough packets to stall synchronized training runs, so the damage is silent and expensive. Sibling metrics track UPS battery health, generator runtime, and SLA uptime compliance. Those catch power and contractual failures, while this one catches network degradation that never triggers an outage alert.\n\nThe data does not specify thresholds, measurement points, or whether the fabric is internal or external transit, only that both are measured. It also does not say how much GPU time is lost at a given loss rate, so the metric signals a problem without quantifying the waste.",
+        "body": "For distributed AI training, network latency, packet loss, and bandwidth are measured as uptime metrics because a lossy fabric wastes GPU-hours before it causes an outage.\n\nThe metric sits in the uptime and redundancy category alongside UPS battery health and SLA compliance. That placement treats the internal fabric and external transit as reliability infrastructure, not just performance plumbing. In AI data centers, degraded network conditions can waste GPU-hours even when every server stays powered and nominally online.\n\nThe data does not specify acceptable thresholds for latency, loss, or utilization, nor does it quantify how many GPU-hours are lost to a given level of degradation. It also does not distinguish between internal fabric and external transit in the reported measurements, so the reader cannot tell which segment is the binding constraint.",
         "model": "ollama:deepseek-v4-pro",
-        "generated_on": "2026-09-19"
+        "generated_on": "2026-09-25"
     },
     "built_at": "2026-09-24T22:50:24-05",
     "page_uid": "5ae3bb07",
