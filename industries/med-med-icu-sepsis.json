@@ -4,7 +4,7 @@
     "slug": "med-icu-sepsis",
     "shape": "art-topic",
     "title": "Sepsis Prediction",
-    "answer": "Sepsis prediction covers software that estimates the probability a patient will develop sepsis, usually in an emergency department or intensive care unit, before a clinician confirms the condition. The goal is to flag rising risk early enough for staff to review the patient, order cultures or antibiotics, and start fluid resuscitation under existing protocols. These systems work on adult and sometimes pediatric inpatient populations, using routinely collected vital signs, laboratory results, medications, and nursing notes. They are decision support tools, not diagnostic devices, and their output is meant to sit alongside clinical judgment rather than replace it.",
+    "answer": "Sepsis prediction uses machine learning on electronic health record data to estimate a patient's risk of developing sepsis, often hours before clinical deterioration is obvious. The work sits in intensive care and acute hospital settings, where early recognition can change treatment timing. Models typically target adult inpatients, though pediatric and emergency department variants exist. The goal is to support clinicians, not to replace clinical judgment.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-09-24T18:55:54-05",
+    "built_at": "2026-09-24T23:27:05-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Physician",
@@ -28,23 +28,23 @@
     "page_uid": "2e017c53",
     "sections": [
         {
-            "body": "Sepsis prediction covers software that estimates the probability a patient will develop sepsis, usually in an emergency department or intensive care unit, before a clinician confirms the condition. The goal is to flag rising risk early enough for staff to review the patient, order cultures or antibiotics, and start fluid resuscitation under existing protocols. These systems work on adult and sometimes pediatric inpatient populations, using routinely collected vital signs, laboratory results, medications, and nursing notes. They are decision support tools, not diagnostic devices, and their output is meant to sit alongside clinical judgment rather than replace it.",
+            "body": "Sepsis prediction uses machine learning on electronic health record data to estimate a patient's risk of developing sepsis, often hours before clinical deterioration is obvious. The work sits in intensive care and acute hospital settings, where early recognition can change treatment timing. Models typically target adult inpatients, though pediatric and emergency department variants exist. The goal is to support clinicians, not to replace clinical judgment.",
             "heading": "Scope"
         },
         {
-            "body": "Most sepsis prediction models run inside a hospital's electronic health record environment or on a connected clinical data platform, reading live feeds from bedside monitors, laboratory information systems, and pharmacy orders. The compute footprint is modest by modern standards, often a server or cloud instance that scores each patient every few minutes or hours, but the harder infrastructure problem is reliable data plumbing. Missing vitals, delayed lab results, and inconsistent charting can degrade a model quickly, so deployment usually requires real-time data validation, alert routing to the right nurse or physician, and audit logs of every score and alert.",
+            "body": "These systems run on hospital electronic health record platforms, pulling structured data such as vital signs, laboratory results, medication orders, and sometimes free text notes. Data is streamed or batched through hospital integration engines, often using HL7 or FHIR interfaces, and predictions are returned to bedside dashboards or alert systems. Compute is usually on hospital servers or private cloud, with strict network isolation for patient data. Real time operation requires low latency and high availability.",
             "heading": "What it runs on"
         },
         {
-            "body": "The work is done by training a supervised model on historical inpatient episodes labeled as septic or not septic, using clinical criteria such as suspected infection plus organ dysfunction. Features are typically time series of heart rate, blood pressure, temperature, respiratory rate, white blood cell count, lactate, and sometimes free-text notes or medication timestamps. Common approaches include gradient boosted trees, logistic regression, and recurrent or transformer models that learn how a patient's trajectory changes over hours. The model outputs a risk score or probability, and a threshold is chosen to balance early detection against alarm fatigue, often with a silent mode for retrospective review before live alerting.",
+            "body": "Most deployed models are supervised classifiers trained on retrospective cohorts labeled by sepsis onset, using features like heart rate, blood pressure, temperature, white cell count, and lactate. Gradient boosted trees and recurrent neural networks are common, with clinical scores such as SOFA, qSOFA, and SIRS used as baselines. Because sepsis is rare and labels are noisy, teams use careful time windows, class weighting, and alert thresholds tuned to balance sensitivity against alarm fatigue. Validation on local data is standard before any live use.",
             "heading": "How the work is done"
         },
         {
-            "body": "Rights and risk center on patient safety, alert burden, and accountability when a prediction is wrong. A false negative may delay treatment, while a false positive can lead to unnecessary antibiotics, fluid overload, or alarm fatigue that makes staff ignore later alerts. Provenance matters because a model trained in one hospital's population may not transfer to another with different demographics, equipment, or sepsis definitions, so local validation and ongoing monitoring are standard practice. Liability questions remain unsettled, but hospitals generally treat these tools as clinical decision support, meaning the treating clinician retains responsibility for the final call, and any deployment should document model version, training data, performance metrics, and review procedures.",
+            "body": "Patient data used for training and inference is protected health information, so access, de-identification, and audit logging are required under health privacy rules. Models can perform differently across age, sex, race, and comorbidities, and biased training data can produce unequal false alarm rates. Clinicians remain responsible for decisions, and vendors or hospitals may face liability if a flawed alert contributes to harm. Regulatory status varies, with many tools treated as clinical decision support rather than regulated diagnostic devices, and provenance of training data and model versions must be documented.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The field is moving from retrospective accuracy studies toward prospective silent and live evaluations that measure whether alerts change clinician behavior and patient outcomes, not just area under the curve. Work is also shifting to multimodal models that combine structured vitals and labs with imaging, notes, and genomics, and to personalized baselines that account for a patient's chronic illness rather than population averages. Regulatory and quality frameworks are likely to require clearer evidence of net clinical benefit, including reduced mortality or length of stay, before sepsis prediction becomes a standard part of intensive care.",
+            "body": "The field is moving toward multimodal models that combine structured vitals, labs, notes, and waveforms from continuous monitoring. Federated learning may let hospitals improve models without sharing raw patient records. Prospective randomized trials are needed to show whether alerts actually change outcomes, not just predictive accuracy. Future systems may adjust thresholds to individual patient baselines and link predictions to suggested bundles of care, while keeping the clinician in the loop.",
             "heading": "Where it is going"
         }
     ],
@@ -66,8 +66,8 @@
             "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/bf71ff6d/"
         }
     ],
-    "generated": "2026-09-24",
+    "generated": "2026-09-25",
     "parent_name": "Predictive Patient Analytics and Intensive Care",
     "parent_path": "/ai-ecosystem/enterprise-applications-governance-and-tools/d4ca0e0f/",
-    "refresh_every_days": 30
+    "refresh_every_days": 90
 }

@@ -1,0 +1,93 @@
+{
+    "uid": "247e6dbd",
+    "name": "Agent Database Access and Permissions",
+    "slug": "sql-agent-access",
+    "shape": "art-topic",
+    "title": "Agent Database Access and Permissions",
+    "answer": "When an AI agent queries a database for a user, it should see only what that user may see. Row level security, scoped credentials, read only roles and audit logging are the controls that keep an agent from becoming a way around existing permissions. The scope of agent database access therefore covers the full path from the user's identity through the agent's tool call to the database session, including how the agent requests and receives credentials and how each query is attributed. It also includes the boundary between what the agent may do on its own and what requires explicit user confirmation, such as writes, schema changes or access to sensitive columns.",
+    "crumbs": [
+        {
+            "name": "AI and SQL",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/3d344eab/"
+        }
+    ],
+    "noindex": false,
+    "built_at": "2026-09-24T23:27:05-05",
+    "category": "enterprise-applications-governance-and-tools",
+    "expanded": true,
+    "hub_name": "AI and SQL",
+    "hub_path": "/ai-ecosystem/enterprise-applications-governance-and-tools/3d344eab/",
+    "page_uid": "247e6dbd",
+    "sections": [
+        {
+            "body": "When an AI agent queries a database for a user, it should see only what that user may see. Row level security, scoped credentials, read only roles and audit logging are the controls that keep an agent from becoming a way around existing permissions. The scope of agent database access therefore covers the full path from the user's identity through the agent's tool call to the database session, including how the agent requests and receives credentials and how each query is attributed. It also includes the boundary between what the agent may do on its own and what requires explicit user confirmation, such as writes, schema changes or access to sensitive columns.",
+            "heading": "Scope"
+        },
+        {
+            "body": "Agent database access usually runs through a model context protocol server or a similar bridge that holds a scoped connection to the database. Among the 2401 active Model Context Protocol servers this site tracks, 262 are for SQL databases and warehouses, which shows how many distinct database integrations are already in circulation. The bridge may use short lived credentials from a vault, a read only role, or a per user proxy that applies row level security before the query reaches the engine. Audit logging is handled by the database itself or by a gateway that records the user, the agent, the SQL text and the result row count. In many deployments the agent never holds a long lived database password; it receives a token that the bridge exchanges for a limited session.",
+            "heading": "What it runs on"
+        },
+        {
+            "body": "The work is done by attaching the end user's identity to every database session the agent opens, rather than letting the agent use a single service account. When the agent asks for data, the bridge sets the session user or applies a policy that matches the user's group, and the database's row level security filters rows before they are returned. Read only roles prevent the agent from issuing writes, updates or schema changes unless the user has those rights. Scoped credentials limit the agent to a particular schema, table set or time window, and audit logging records the original user, the agent's prompt, the SQL that ran and the rows returned. This keeps the agent's access aligned with the user's existing grants instead of creating a new, broader path.",
+            "heading": "How the work is done"
+        },
+        {
+            "body": "Rights and risk in agent database access turn on the fact that the agent is acting on behalf of a user but may also be influenced by instructions in the data it reads. A prompt injection in a retrieved row could try to make the agent run a different query or exfiltrate results, so the permission boundary must be enforced by the database, not by the agent's good behaviour. Provenance matters because an answer may combine rows from several queries, and the user needs to know which database, table and row each fact came from. Audit logs should tie each query to the user, the agent, the tool call and the exact SQL, so that a suspicious access can be traced. The main governance risk is that a permissive agent becomes a way around existing permissions, which is why read only roles, row level security and scoped credentials are treated as mandatory controls rather than optional hardening.",
+            "heading": "Rights, risk and provenance"
+        },
+        {
+            "body": "Agent database access is moving toward policy engines that evaluate each query against the user's live permissions, the data's sensitivity labels and the agent's stated purpose before the SQL is sent. Short lived, per query credentials are likely to replace long lived service accounts, and row level security policies will be generated from data catalogs rather than written by hand. Audit logging is becoming a first class output, with structured records that feed compliance systems and allow replay of exactly what an agent saw. The direction is also toward least privilege by default, where an agent must request and justify each additional table or column, and where the user can see and approve that request in plain language. Over time, the boundary between what an agent may read and what it may act on will be enforced by the database and the gateway together, not by the model.",
+            "heading": "Where it is going"
+        }
+    ],
+    "siblings": [
+        {
+            "name": "Text to SQL",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/1c4f6caa/"
+        },
+        {
+            "name": "Text to SQL Benchmarks",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/b32896c8/"
+        },
+        {
+            "name": "Vector Search Inside SQL Databases",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/bd660f27/"
+        },
+        {
+            "name": "SQL and AI Training Data Pipelines",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/49220ce5/"
+        },
+        {
+            "name": "Feature Stores",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/8be637e6/"
+        },
+        {
+            "name": "Warehouses and Lakehouses for AI",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/678f8878/"
+        },
+        {
+            "name": "Semantic Layers",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/552cb1a1/"
+        },
+        {
+            "name": "SQL Injection Through AI",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/ab2a7e43/"
+        },
+        {
+            "name": "MCP Database Servers",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/20be2010/"
+        },
+        {
+            "name": "AI Query Optimisation",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/5a695195/"
+        },
+        {
+            "name": "Data Quality for AI",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/bfd29330/"
+        }
+    ],
+    "generated": "2026-09-25",
+    "parent_name": "AI and SQL",
+    "parent_path": "/ai-ecosystem/enterprise-applications-governance-and-tools/3d344eab/",
+    "refresh_every_days": 90
+}

@@ -4,7 +4,7 @@
     "slug": "eco-altdata-satellite",
     "shape": "art-topic",
     "title": "Satellite Imagery",
-    "answer": "Satellite imagery as alternative data covers optical, radar, multispectral, and thermal images from Earth observation satellites, used to measure economic activity that is not visible in standard financial statements or government releases. Analysts track things like parking lot fullness, construction progress, crop health, shipping traffic, mining activity, and nighttime lights. The field sits within alternative data because the raw pixels become a time series of indicators for companies, regions, or supply chains. It is used by macroeconomists, commodity analysts, and equity researchers to estimate output, demand, or inventory before official data arrives.",
+    "answer": "Satellite imagery as alternative data refers to the use of overhead optical, radar, and multispectral images to measure economic activity that is not captured in standard financial statements or government releases. Practitioners track things like shipping traffic, construction progress, crop health, retail parking lot occupancy, and nighttime lights. The field sits within alternative data because the images are collected continuously and can be processed into time series that inform macroeconomic and company level analysis.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-09-24T18:55:54-05",
+    "built_at": "2026-09-24T23:27:05-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Economist",
@@ -28,23 +28,23 @@
     "page_uid": "76b14ef3",
     "sections": [
         {
-            "body": "Satellite imagery as alternative data covers optical, radar, multispectral, and thermal images from Earth observation satellites, used to measure economic activity that is not visible in standard financial statements or government releases. Analysts track things like parking lot fullness, construction progress, crop health, shipping traffic, mining activity, and nighttime lights. The field sits within alternative data because the raw pixels become a time series of indicators for companies, regions, or supply chains. It is used by macroeconomists, commodity analysts, and equity researchers to estimate output, demand, or inventory before official data arrives.",
+            "body": "Satellite imagery as alternative data refers to the use of overhead optical, radar, and multispectral images to measure economic activity that is not captured in standard financial statements or government releases. Practitioners track things like shipping traffic, construction progress, crop health, retail parking lot occupancy, and nighttime lights. The field sits within alternative data because the images are collected continuously and can be processed into time series that inform macroeconomic and company level analysis.",
             "heading": "Scope"
         },
         {
-            "body": "The work runs on cloud storage and compute because raw satellite scenes are large, often terabytes per day across multiple providers. Imagery is usually accessed through commercial APIs or data platforms that deliver georeferenced tiles, and processing pipelines use distributed compute for orthorectification, cloud masking, and band alignment. Storage is typically object based, with metadata catalogs to query by location, date, sensor, and cloud cover. Most teams do not operate satellites; they buy or license imagery and run their own or vendor hosted processing.",
+            "body": "The work runs on cloud compute and storage because raw satellite scenes are large and arrive frequently. Processing pipelines typically combine geospatial databases, object storage, and GPU instances for model inference. Many teams use Python libraries for raster and vector data handling, and they rely on commercial imagery APIs or direct downlinks from satellite operators.",
             "heading": "What it runs on"
         },
         {
-            "body": "Analysts convert pixels into structured features by geolocating assets of interest, such as a factory, port, or retail site, and then extracting signals over time. Common techniques include spectral indices like NDVI for vegetation, change detection between two dates, and object detection models that count cars, ships, or buildings. The output is usually a panel dataset with one row per site per date and columns for counts, area, or reflectance. These features are then tested against known economic outcomes, such as quarterly revenue or regional GDP, to build leading indicators.",
+            "body": "The core method is to convert pixels into structured indicators. Analysts georeference and orthorectify scenes, then apply convolutional neural networks or segmentation models to detect objects such as ships, buildings, vehicles, or fields. Detections are aggregated over a region and time window to produce counts, areas, or change metrics, which are then compared against economic variables like sales, output, or trade flows.",
             "heading": "How the work is done"
         },
         {
-            "body": "Rights and risk center on licensing, privacy, and national security. Commercial imagery licenses often restrict resale, derivative use, or sharing with third parties, so a data buyer must track permitted use across vendors. Privacy risk is lower than for individual level data, but high resolution imagery can still identify homes, vehicles, or small facilities, and some jurisdictions limit collection over certain areas. Provenance matters because cloud cover, sensor calibration, and reprocessing can change a historical series, so teams must record the source scene ID, processing version, and date of access. There is also risk of look ahead bias if an analyst uses an image that was not actually available to the market on the date being modeled.",
+            "body": "Rights and risk center on imagery licensing, resolution limits, and privacy. Commercial providers impose terms on redistribution and derived products, while some jurisdictions restrict high resolution imaging of sensitive sites. Analysts must also manage provenance so that a model's training data, scene dates, and cloud masks are documented, because a mislabeled or outdated image can quietly corrupt a downstream indicator. There is no single regulator for satellite derived alternative data, but securities and data protection rules still apply to how the signals are used and shared.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The field is moving toward higher revisit rates, lower cost small satellite constellations, and more automated feature extraction. Synthetic aperture radar and nighttime lights are becoming more common because they work through cloud and darkness, reducing gaps in daily series. Foundation models trained on remote sensing imagery are lowering the cost of mapping and object detection across large areas. The likely direction is from bespoke site level analysis toward continuous, global indicators that update with each new pass, with more attention to nowcasting and supply chain monitoring.",
+            "body": "The field is moving toward higher revisit rates, cheaper small satellite constellations, and more automated feature extraction. As foundation models for remote sensing mature, teams are likely to shift from building bespoke detectors to fine tuning general purpose geospatial models. The main open question is whether the edge from satellite data persists as the imagery becomes more widely available and the processing more standardized.",
             "heading": "Where it is going"
         }
     ],
@@ -66,8 +66,8 @@
             "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/90fd3828/"
         }
     ],
-    "generated": "2026-09-24",
+    "generated": "2026-09-25",
     "parent_name": "Alternative Data",
     "parent_path": "/ai-ecosystem/enterprise-applications-governance-and-tools/bb732840/",
-    "refresh_every_days": 30
+    "refresh_every_days": 90
 }

@@ -4,7 +4,7 @@
     "slug": "fin-governance-dlp",
     "shape": "art-topic",
     "title": "Keeping Financial Data Out of Public Models",
-    "answer": "Keeping financial data out of public models means preventing account numbers, transaction details, client portfolios, earnings figures, and other sensitive records from being absorbed into models whose weights, outputs, or training sets are publicly accessible. This includes open-weight language models, public APIs, shared benchmarks, and any model that can be queried by outside parties. The work covers the full lifecycle from data collection and labeling through training, fine-tuning, deployment, and ongoing inference. It also addresses indirect exposure such as a model memorizing a confidential figure and later repeating it in a public response.",
+    "answer": "Keeping financial data out of public models concerns the controls, policies, and technical measures that prevent proprietary or regulated financial information from being used in training or fine-tuning publicly accessible AI models. This includes customer account data, transaction records, internal pricing models, and material non-public information held by banks, asset managers, insurers, and corporate finance teams. The scope also covers indirect exposure through third-party vendors, shared cloud workspaces, and employee use of consumer AI tools. For the AI Accountant, this topic sits at the boundary of data governance, model risk, and regulatory compliance.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-09-24T18:55:54-05",
+    "built_at": "2026-09-24T23:27:05-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Accountant",
@@ -28,23 +28,23 @@
     "page_uid": "b5e2a4c3",
     "sections": [
         {
-            "body": "Keeping financial data out of public models means preventing account numbers, transaction details, client portfolios, earnings figures, and other sensitive records from being absorbed into models whose weights, outputs, or training sets are publicly accessible. This includes open-weight language models, public APIs, shared benchmarks, and any model that can be queried by outside parties. The work covers the full lifecycle from data collection and labeling through training, fine-tuning, deployment, and ongoing inference. It also addresses indirect exposure such as a model memorizing a confidential figure and later repeating it in a public response.",
+            "body": "Keeping financial data out of public models concerns the controls, policies, and technical measures that prevent proprietary or regulated financial information from being used in training or fine-tuning publicly accessible AI models. This includes customer account data, transaction records, internal pricing models, and material non-public information held by banks, asset managers, insurers, and corporate finance teams. The scope also covers indirect exposure through third-party vendors, shared cloud workspaces, and employee use of consumer AI tools. For the AI Accountant, this topic sits at the boundary of data governance, model risk, and regulatory compliance.",
             "heading": "Scope"
         },
         {
-            "body": "The controls run on data classification systems, access control lists, data loss prevention filters, and training pipeline checkpoints that block or redact tagged financial fields before they reach a model. Organizations also use private training environments, egress monitoring on public endpoints, and model registries that record which datasets were permitted for each version. Audit logs and provenance stores track where a dataset came from and whether it was cleared for public use. These systems sit between financial systems of record and any public-facing model artifact.",
+            "body": "The work runs on a mix of data loss prevention tools, egress filtering, model access controls, and audit logging systems. Organizations typically deploy these controls at the network perimeter, on managed endpoints, and inside cloud environments where financial data is stored or processed. Public model interfaces, including consumer chatbots and hosted API endpoints, are treated as untrusted destinations unless explicitly approved. The infrastructure also includes identity and access management systems that tie model usage to individual employee accounts and data classification tags.",
             "heading": "What it runs on"
         },
         {
-            "body": "The work is done by first inventorying financial data and tagging it by sensitivity, then applying exclusion rules so tagged records cannot enter public training corpora. Teams run pre-training and post-training scans for known sensitive patterns such as card numbers, tax identifiers, and client names. They also use canary records and membership inference tests to check whether a model has memorized private inputs. Before release, output filters and redaction layers catch attempted disclosures, and access reviews confirm that only approved data reached the public model.",
+            "body": "Practitioners begin by mapping where financial data lives and how it flows, then classify records by sensitivity and regulatory status. They block or redact high-risk fields before any prompt or upload can reach a public model, using pattern matching, named entity recognition, and policy-based filters. For approved use cases, they may use synthetic data, aggregated summaries, or locally hosted models so that raw financial values never leave the controlled environment. Ongoing work includes reviewing prompt logs, testing for accidental leakage, and updating rules when new data types or model features appear.",
             "heading": "How the work is done"
         },
         {
-            "body": "Rights and risk center on confidentiality obligations, data ownership, and regulatory duties under financial privacy and data protection rules. Provenance matters because a public model trained on unclear data can expose an organization to breach claims, regulatory penalties, and loss of client trust. Governance practice includes maintaining a chain of custody for training data, documenting exclusion decisions, and running incident response procedures when a leak is suspected. Contracts with model providers and data vendors often specify that financial data must not be used for public training without explicit approval.",
+            "body": "The main rights and risks concern confidentiality, regulatory exposure, and the loss of trade secrets or client trust. Financial data is often subject to legal duties such as bank secrecy, data protection law, and market abuse rules, so an accidental disclosure into a public model can create compliance findings or litigation risk. Provenance matters because once data enters a public model, it may be retained, used for further training, or surfaced in outputs to other users, and the original owner may have little ability to retract it. Governance therefore relies on clear ownership, documented approval paths, and evidence that controls were active at the time of any model interaction.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The field is moving toward stronger automated provenance tracking, confidential computing for training, and federated methods that keep raw financial data inside controlled environments. Regulators and auditors are likely to demand clearer evidence that public models were not trained on restricted financial records. Model unlearning and post-release deletion requests will become more common as organizations try to remove inadvertently learned data. Expect tighter integration between data governance platforms and model release pipelines so that a financial dataset flagged as private is blocked by default.",
+            "body": "The direction is toward tighter default blocking, more granular data classification, and greater use of private or on-premises model deployments for financial work. Regulators and auditors are beginning to ask firms to show how they prevent public model leakage, which will push controls from ad hoc blocks into formal model risk frameworks. At the same time, model providers are adding enterprise data controls and contractual terms that address training use, but firms still need to verify those terms against their own data obligations. Over time, the boundary between public and private models may become more automated, with real-time redaction and policy enforcement built into the tools themselves.",
             "heading": "Where it is going"
         }
     ],
@@ -66,8 +66,8 @@
             "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/5b86a294/"
         }
     ],
-    "generated": "2026-09-24",
+    "generated": "2026-09-25",
     "parent_name": "Governance, Risk and Financial Data Security",
     "parent_path": "/ai-ecosystem/enterprise-applications-governance-and-tools/12f55680/",
-    "refresh_every_days": 30
+    "refresh_every_days": 90
 }

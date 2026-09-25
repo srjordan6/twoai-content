@@ -1,0 +1,93 @@
+{
+    "uid": "ab2a7e43",
+    "name": "SQL Injection Through AI",
+    "slug": "sql-injection-ai",
+    "shape": "art-topic",
+    "title": "SQL Injection Through AI",
+    "answer": "SQL injection is the insertion of malicious query text into a database command. When an AI system generates SQL from user or document input, prompt injection can produce harmful queries. Generated SQL therefore needs the same controls as any untrusted input: least privilege, read only access where possible, and query review. The risk is not limited to direct user prompts; retrieved documents and tool outputs can also carry injected text.",
+    "crumbs": [
+        {
+            "name": "AI and SQL",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/3d344eab/"
+        }
+    ],
+    "noindex": false,
+    "built_at": "2026-09-24T23:27:05-05",
+    "category": "enterprise-applications-governance-and-tools",
+    "expanded": true,
+    "hub_name": "AI and SQL",
+    "hub_path": "/ai-ecosystem/enterprise-applications-governance-and-tools/3d344eab/",
+    "page_uid": "ab2a7e43",
+    "sections": [
+        {
+            "body": "SQL injection is the insertion of malicious query text into a database command. When an AI system generates SQL from user or document input, prompt injection can produce harmful queries. Generated SQL therefore needs the same controls as any untrusted input: least privilege, read only access where possible, and query review. The risk is not limited to direct user prompts; retrieved documents and tool outputs can also carry injected text.",
+            "heading": "Scope"
+        },
+        {
+            "body": "AI generated SQL typically runs through model serving layers and database connectors, often mediated by Model Context Protocol servers. The site tracks 2401 active Model Context Protocol servers, 262 of them for SQL databases and warehouses. These servers expose database schemas and execute queries on behalf of models, so they sit in the path where generated SQL reaches the database. The site's own pages are built from a PostgreSQL database, a common target for generated SQL.",
+            "heading": "What it runs on"
+        },
+        {
+            "body": "The main method is to treat model output as untrusted input. Developers use parameterized queries or prepared statements so that user text cannot alter SQL structure. Where dynamic SQL is unavoidable, they constrain generation with schema allowlists, reject statements outside a small set of read only patterns, and run static checks before execution. Query review and logging are used to catch injection attempts after the fact.",
+            "heading": "How the work is done"
+        },
+        {
+            "body": "Risk concentrates in the permissions granted to the database account used by the AI system. A generated query should run under a role with least privilege, often read only, and with row level security where supported. Provenance matters because a harmful query may be traced to a prompt, a retrieved document, or a model hallucination, so logs should record the input context and the generated SQL. Review and approval workflows add a human checkpoint for high risk operations.",
+            "heading": "Rights, risk and provenance"
+        },
+        {
+            "body": "The direction is toward tighter coupling between model context and database permissions. Expect more schema aware generation that only emits queries matching approved templates, and more database proxies that inspect generated SQL before execution. As Model Context Protocol servers for SQL databases grow, standard controls for prompt injection and query allowlists are likely to become part of those server defaults. The site's tracking of 262 SQL MCP servers suggests this surface is already substantial and expanding.",
+            "heading": "Where it is going"
+        }
+    ],
+    "siblings": [
+        {
+            "name": "Text to SQL",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/1c4f6caa/"
+        },
+        {
+            "name": "Text to SQL Benchmarks",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/b32896c8/"
+        },
+        {
+            "name": "Vector Search Inside SQL Databases",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/bd660f27/"
+        },
+        {
+            "name": "SQL and AI Training Data Pipelines",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/49220ce5/"
+        },
+        {
+            "name": "Feature Stores",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/8be637e6/"
+        },
+        {
+            "name": "Warehouses and Lakehouses for AI",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/678f8878/"
+        },
+        {
+            "name": "Semantic Layers",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/552cb1a1/"
+        },
+        {
+            "name": "Agent Database Access and Permissions",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/247e6dbd/"
+        },
+        {
+            "name": "MCP Database Servers",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/20be2010/"
+        },
+        {
+            "name": "AI Query Optimisation",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/5a695195/"
+        },
+        {
+            "name": "Data Quality for AI",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/bfd29330/"
+        }
+    ],
+    "generated": "2026-09-25",
+    "parent_name": "AI and SQL",
+    "parent_path": "/ai-ecosystem/enterprise-applications-governance-and-tools/3d344eab/",
+    "refresh_every_days": 90
+}

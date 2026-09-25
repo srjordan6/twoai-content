@@ -4,7 +4,7 @@
     "slug": "med-governance-local",
     "shape": "art-topic",
     "title": "Local Models for Patient Data",
-    "answer": "Local models for patient data are AI systems that process protected health information entirely within a healthcare organization's own infrastructure, rather than sending it to external cloud services. This includes models embedded in medical devices, on-premises servers, and edge devices used for diagnosis, triage, documentation, or monitoring. The scope covers governance, compliance, and medical device security questions that arise when a model touches identifiable patient records. It also includes the operational boundaries between local inference, remote updates, and vendor support.",
+    "answer": "Local models for patient data are AI systems that run inference and often training or fine-tuning within a healthcare organization's own infrastructure, rather than sending protected health information to external cloud services. The scope covers models used for clinical documentation, imaging analysis, risk prediction, and administrative coding where the data never leaves the institution's control. This approach is most relevant for hospitals, clinics, and research groups that must comply with data residency rules, HIPAA or GDPR, and internal security policies. It includes both general-purpose models adapted locally and purpose-built medical models deployed on premises.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-09-24T18:55:54-05",
+    "built_at": "2026-09-24T23:27:05-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Physician",
@@ -28,23 +28,23 @@
     "page_uid": "cea93c6d",
     "sections": [
         {
-            "body": "Local models for patient data are AI systems that process protected health information entirely within a healthcare organization's own infrastructure, rather than sending it to external cloud services. This includes models embedded in medical devices, on-premises servers, and edge devices used for diagnosis, triage, documentation, or monitoring. The scope covers governance, compliance, and medical device security questions that arise when a model touches identifiable patient records. It also includes the operational boundaries between local inference, remote updates, and vendor support.",
+            "body": "Local models for patient data are AI systems that run inference and often training or fine-tuning within a healthcare organization's own infrastructure, rather than sending protected health information to external cloud services. The scope covers models used for clinical documentation, imaging analysis, risk prediction, and administrative coding where the data never leaves the institution's control. This approach is most relevant for hospitals, clinics, and research groups that must comply with data residency rules, HIPAA or GDPR, and internal security policies. It includes both general-purpose models adapted locally and purpose-built medical models deployed on premises.",
             "heading": "Scope"
         },
         {
-            "body": "These models run on hospital-owned servers, dedicated GPU workstations, private cloud clusters, or embedded accelerators inside medical devices. They require local model registries, container runtimes, and inference engines that can operate without continuous internet access. Many deployments use air-gapped networks or strict egress controls so that patient data never leaves the clinical environment. Hardware must meet availability and latency requirements for real-time clinical use, and often includes redundant power and encrypted storage.",
+            "body": "These models run on servers, workstations, or edge devices owned or leased by the healthcare organization, often using GPU or specialized AI accelerator hardware in a private data center or a locked server room. The infrastructure includes local storage for model weights and patient data, a private network with access controls, and a serving layer such as a local API or an embedded runtime in a clinical application. Some deployments use air-gapped environments or virtual private clouds that are still operated by the organization rather than a third party. The key requirement is that compute, memory, and storage are sufficient for the model's size and latency needs without relying on external calls.",
             "heading": "What it runs on"
         },
         {
-            "body": "The work is done by downloading or training model weights inside the organization, then running inference locally on patient data. Clinical teams validate the model against local patient cohorts to check for performance drift and demographic fit before use. Data engineers maintain versioned model artifacts, feature pipelines, and audit logs that record every inference request and output. Fine-tuning on local data is common, but it must be done with de-identified or properly consented records and under change control.",
+            "body": "The work is done by first selecting or training a model inside the local environment, then running it against patient records, images, or free-text notes through a controlled pipeline. Data preprocessing, inference, and postprocessing all happen on local hardware, and any fine-tuning uses only de-identified or authorized local datasets. Teams typically validate the model on local patient populations to check for performance drift, and they log inputs and outputs for audit. The model may be a smaller open-weight model that can run on a single server, or a larger model sharded across several local GPUs.",
             "heading": "How the work is done"
         },
         {
-            "body": "Local deployment reduces third-party data exposure but does not remove obligations under HIPAA, GDPR, or medical device regulations such as the EU MDR and FDA guidance. Organizations must still document model provenance, training data lineage, and the basis for any clinical claim. Patient rights to access, correction, and deletion apply to locally stored inputs and outputs, and audit trails must show who ran which model on whose data. Security risks include insider access, unpatched local software, and model theft, while liability for incorrect outputs remains with the deploying institution or device manufacturer. The site's tracking of six active product liability and wrongful death lawsuits against AI companies shows that local hosting does not by itself resolve accountability.",
+            "body": "Rights and risk center on data sovereignty, access control, and the fact that the organization remains the custodian of all patient information. Local deployment reduces exposure to third-party data processing but does not remove the need for model validation, bias review, and incident response. Compliance teams document where the model sits, who can query it, what data it sees, and how outputs are used in care or operations. Product liability and medical device rules may still apply if the model influences diagnosis or treatment, and organizations keep an audit trail for every inference.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "Local models are moving toward smaller, more efficient architectures that can run on hospital-owned hardware and embedded medical devices without cloud round trips. Federated learning and confidential computing are likely to let organizations train or update models across sites while keeping raw patient data local. Regulators are expected to clarify how local deployment affects medical device classification, post-market surveillance, and software update obligations. The direction is toward auditable, on-premises AI that can meet both clinical performance and data residency requirements.",
+            "body": "Local models for patient data are moving toward smaller, more efficient architectures that can run on a single hospital server or even a bedside device, with periodic updates delivered as signed packages rather than live cloud calls. Federated approaches may let several institutions improve a shared model without moving patient data, while each site keeps its own local copy. The direction is toward stronger hardware security enclaves, standardized evaluation on local populations, and clearer regulatory guidance for on-premises medical AI. Over time, local deployment is likely to become a default option for any model that touches identifiable patient information.",
             "heading": "Where it is going"
         }
     ],
@@ -66,8 +66,8 @@
             "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/984ae00f/"
         }
     ],
-    "generated": "2026-09-24",
+    "generated": "2026-09-25",
     "parent_name": "Governance, Compliance and Medical Device Security",
     "parent_path": "/ai-ecosystem/enterprise-applications-governance-and-tools/6c80c2cd/",
-    "refresh_every_days": 30
+    "refresh_every_days": 90
 }

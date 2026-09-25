@@ -1,0 +1,93 @@
+{
+    "uid": "20be2010",
+    "name": "MCP Database Servers",
+    "slug": "sql-mcp-servers",
+    "shape": "art-topic",
+    "title": "MCP Database Servers",
+    "answer": "Model Context Protocol servers expose a database to an AI assistant as a set of tools, such as listing tables, describing a schema and running a query. This site's MCP directory tracks active servers, including many for PostgreSQL, MySQL, SQLite and cloud warehouses. Of the 2,401 active servers tracked here, 262 are for SQL databases and warehouses, which gives a rough sense of how common database access is among MCP integrations.",
+    "crumbs": [
+        {
+            "name": "AI and SQL",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/3d344eab/"
+        }
+    ],
+    "noindex": false,
+    "built_at": "2026-09-24T23:27:05-05",
+    "category": "enterprise-applications-governance-and-tools",
+    "expanded": true,
+    "hub_name": "AI and SQL",
+    "hub_path": "/ai-ecosystem/enterprise-applications-governance-and-tools/3d344eab/",
+    "page_uid": "20be2010",
+    "sections": [
+        {
+            "body": "Model Context Protocol servers expose a database to an AI assistant as a set of tools, such as listing tables, describing a schema and running a query. This site's MCP directory tracks active servers, including many for PostgreSQL, MySQL, SQLite and cloud warehouses. Of the 2,401 active servers tracked here, 262 are for SQL databases and warehouses, which gives a rough sense of how common database access is among MCP integrations.",
+            "heading": "Scope"
+        },
+        {
+            "body": "An MCP database server usually runs as a local process or a small sidecar next to the assistant or the database. It connects through a standard driver or client library for the target system, such as psycopg for PostgreSQL or a warehouse SDK. The server exposes its tools over a transport like standard input and output or HTTP with server-sent events. Credentials are typically held by the host application or environment, not by the model itself. The server may run on the same machine as the assistant, in a container, or as a managed service.",
+            "heading": "What it runs on"
+        },
+        {
+            "body": "The server defines a fixed set of tools, each with a name, a description and a JSON schema for its arguments. When the model decides to use a tool, the host sends a structured call to the server, which then runs the corresponding database operation. For queries, the server may enforce read-only execution, row limits or parameterized statements before returning a result set. The model then reads the returned rows or error message and uses them to form its next response. This keeps SQL generation in the model while leaving connection handling and execution to the server.",
+            "heading": "How the work is done"
+        },
+        {
+            "body": "The main risks are overbroad permissions, prompt injection that turns a benign request into a destructive query, and accidental exposure of schema or data. A server should run under a database role with the least privilege needed for the task, often a read-only role with no access to sensitive tables. Query logs and audit trails help trace what the model asked for and what the server executed. Provenance of a returned result matters because the model may present database output as fact without showing the query that produced it. Access controls, allowlists for tables and columns, and human approval for writes are common safeguards.",
+            "heading": "Rights, risk and provenance"
+        },
+        {
+            "body": "Database MCP servers are moving toward richer tool contracts that include query planning, cost estimates and semantic descriptions of tables and columns. More servers are likely to add built-in governance features such as row-level filtering, rate limits and approval workflows. As agents begin to chain multiple database calls, servers will need to support transactions and state across tool calls. The line between an MCP server and a semantic layer or data API is also blurring, with servers exposing curated metrics and saved queries rather than raw SQL. Over time, database access through MCP may become a standard part of agent platforms, with stronger defaults for safety and auditability.",
+            "heading": "Where it is going"
+        }
+    ],
+    "siblings": [
+        {
+            "name": "Text to SQL",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/1c4f6caa/"
+        },
+        {
+            "name": "Text to SQL Benchmarks",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/b32896c8/"
+        },
+        {
+            "name": "Vector Search Inside SQL Databases",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/bd660f27/"
+        },
+        {
+            "name": "SQL and AI Training Data Pipelines",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/49220ce5/"
+        },
+        {
+            "name": "Feature Stores",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/8be637e6/"
+        },
+        {
+            "name": "Warehouses and Lakehouses for AI",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/678f8878/"
+        },
+        {
+            "name": "Semantic Layers",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/552cb1a1/"
+        },
+        {
+            "name": "SQL Injection Through AI",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/ab2a7e43/"
+        },
+        {
+            "name": "Agent Database Access and Permissions",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/247e6dbd/"
+        },
+        {
+            "name": "AI Query Optimisation",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/5a695195/"
+        },
+        {
+            "name": "Data Quality for AI",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/bfd29330/"
+        }
+    ],
+    "generated": "2026-09-25",
+    "parent_name": "AI and SQL",
+    "parent_path": "/ai-ecosystem/enterprise-applications-governance-and-tools/3d344eab/",
+    "refresh_every_days": 90
+}

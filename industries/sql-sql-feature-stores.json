@@ -1,0 +1,93 @@
+{
+    "uid": "8be637e6",
+    "name": "Feature Stores",
+    "slug": "sql-feature-stores",
+    "shape": "art-topic",
+    "title": "Feature Stores",
+    "answer": "A feature store is a managed set of tables of model input values, computed once and served identically to training and to production, which prevents a model from being trained on one definition of a value and run on another. It sits between raw data systems and model training or inference, holding curated columns such as aggregates, embeddings, or transformed identifiers. The store records both current values and point-in-time correct values for historical examples, so a training set can be assembled without leaking future information. It also gives each feature a name, type, owner, and lineage, making the same definition reusable across many models.",
+    "crumbs": [
+        {
+            "name": "AI and SQL",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/3d344eab/"
+        }
+    ],
+    "noindex": false,
+    "built_at": "2026-09-24T23:27:05-05",
+    "category": "enterprise-applications-governance-and-tools",
+    "expanded": true,
+    "hub_name": "AI and SQL",
+    "hub_path": "/ai-ecosystem/enterprise-applications-governance-and-tools/3d344eab/",
+    "page_uid": "8be637e6",
+    "sections": [
+        {
+            "body": "A feature store is a managed set of tables of model input values, computed once and served identically to training and to production, which prevents a model from being trained on one definition of a value and run on another. It sits between raw data systems and model training or inference, holding curated columns such as aggregates, embeddings, or transformed identifiers. The store records both current values and point-in-time correct values for historical examples, so a training set can be assembled without leaking future information. It also gives each feature a name, type, owner, and lineage, making the same definition reusable across many models.",
+            "heading": "Scope"
+        },
+        {
+            "body": "A feature store usually has three storage layers. Historical feature values live in an offline store, often a columnar warehouse or lakehouse table, where they can be scanned for training jobs. Current values are copied to an online store, typically a low-latency key-value service, so a model endpoint can look up a feature vector in milliseconds. A separate metadata catalog, often a relational database, holds feature definitions, versions, and lineage. The compute that fills these stores is usually batch or streaming jobs that read from source tables and write transformed values back to the feature tables.",
+            "heading": "What it runs on"
+        },
+        {
+            "body": "A team defines a feature by writing a transformation from source data to a named column, then registers that definition in the store. The store runs the transformation on a schedule or as a stream and writes the result to both offline and online tables. To build a training set, a data scientist supplies an entity list with timestamps, and the store performs a point-in-time join that returns the feature values as they existed at each timestamp, not the latest values. At inference, the model service requests the same feature names for an entity and receives the current online values, so the serving path matches the training path.",
+            "heading": "How the work is done"
+        },
+        {
+            "body": "Because a feature store centralizes model inputs, it becomes a natural place to enforce access controls and audit who can read or change a feature. Each feature carries lineage from its source tables and transformation code, which helps trace an error in a model back to a bad upstream value. The store also tracks staleness and missingness, so a team can see when a feature has not refreshed and decide whether to block serving. For regulated or personal data, the store can apply masking, retention limits, and purpose restrictions at the feature level rather than in every model separately.",
+            "heading": "Rights, risk and provenance"
+        },
+        {
+            "body": "Feature stores are moving from standalone systems toward a standard layer inside model platforms, with tighter links to training pipelines and model registries. Real-time feature computation is becoming more common, so a store may compute a value on demand from a stream rather than only serving a precomputed value. The same point-in-time and lineage ideas are being applied to retrieval and embedding tables used by language models, where a feature may be a vector or a prompt fragment. As governance requirements grow, more of the access and quality controls are likely to be enforced automatically from the feature catalog.",
+            "heading": "Where it is going"
+        }
+    ],
+    "siblings": [
+        {
+            "name": "Text to SQL",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/1c4f6caa/"
+        },
+        {
+            "name": "Text to SQL Benchmarks",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/b32896c8/"
+        },
+        {
+            "name": "Vector Search Inside SQL Databases",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/bd660f27/"
+        },
+        {
+            "name": "SQL and AI Training Data Pipelines",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/49220ce5/"
+        },
+        {
+            "name": "Warehouses and Lakehouses for AI",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/678f8878/"
+        },
+        {
+            "name": "Semantic Layers",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/552cb1a1/"
+        },
+        {
+            "name": "SQL Injection Through AI",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/ab2a7e43/"
+        },
+        {
+            "name": "Agent Database Access and Permissions",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/247e6dbd/"
+        },
+        {
+            "name": "MCP Database Servers",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/20be2010/"
+        },
+        {
+            "name": "AI Query Optimisation",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/5a695195/"
+        },
+        {
+            "name": "Data Quality for AI",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/bfd29330/"
+        }
+    ],
+    "generated": "2026-09-25",
+    "parent_name": "AI and SQL",
+    "parent_path": "/ai-ecosystem/enterprise-applications-governance-and-tools/3d344eab/",
+    "refresh_every_days": 90
+}

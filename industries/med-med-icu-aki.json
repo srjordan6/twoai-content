@@ -4,7 +4,7 @@
     "slug": "med-icu-aki",
     "shape": "art-topic",
     "title": "Acute Kidney Injury Prediction",
-    "answer": "Acute kidney injury prediction in intensive care uses routinely collected patient data to estimate the risk of AKI during an admission, often before serum creatinine changes become obvious. It sits within predictive patient analytics and supports earlier review of fluid balance, nephrotoxic medications, and hemodynamic status. Models typically target stages of AKI or the need for renal replacement therapy. The scope includes adult and sometimes pediatric ICU populations, with outputs intended for clinical decision support rather than diagnosis.",
+    "answer": "Acute kidney injury prediction in intensive care uses routinely collected patient data to estimate the likelihood that a patient will develop AKI within a defined window, often 24 to 72 hours. The goal is to identify risk before serum creatinine rises or urine output falls enough to meet KDIGO staging criteria. This sits within predictive patient analytics as a form of continuous risk surveillance rather than a one-time diagnostic test. Clinicians use these predictions to adjust fluid management, avoid nephrotoxic drugs, and plan renal replacement therapy earlier. The models are intended to support, not replace, clinical judgment in the ICU.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-09-24T18:55:54-05",
+    "built_at": "2026-09-24T23:27:05-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Physician",
@@ -28,23 +28,23 @@
     "page_uid": "fb8ed6c1",
     "sections": [
         {
-            "body": "Acute kidney injury prediction in intensive care uses routinely collected patient data to estimate the risk of AKI during an admission, often before serum creatinine changes become obvious. It sits within predictive patient analytics and supports earlier review of fluid balance, nephrotoxic medications, and hemodynamic status. Models typically target stages of AKI or the need for renal replacement therapy. The scope includes adult and sometimes pediatric ICU populations, with outputs intended for clinical decision support rather than diagnosis.",
+            "body": "Acute kidney injury prediction in intensive care uses routinely collected patient data to estimate the likelihood that a patient will develop AKI within a defined window, often 24 to 72 hours. The goal is to identify risk before serum creatinine rises or urine output falls enough to meet KDIGO staging criteria. This sits within predictive patient analytics as a form of continuous risk surveillance rather than a one-time diagnostic test. Clinicians use these predictions to adjust fluid management, avoid nephrotoxic drugs, and plan renal replacement therapy earlier. The models are intended to support, not replace, clinical judgment in the ICU.",
             "heading": "Scope"
         },
         {
-            "body": "Models run on data already captured in electronic health records and ICU information systems, including vital signs, laboratory results, medication administration, fluid intake and output, demographics, and sometimes ventilator settings. Deployment usually requires near real time interfaces to these systems, often through FHIR or HL7 feeds, and compute that can score each patient at regular intervals. Some implementations run on hospital servers, while others use cloud environments under appropriate data use agreements.",
+            "body": "These models typically run on electronic health record data already flowing into the hospital's clinical data warehouse or real-time integration engine. Inputs include laboratory results, vital signs, medication administration records, fluid balance, and demographic data. Compute needs are modest for tabular and time-series models, so deployment is usually feasible on standard hospital servers or cloud infrastructure with appropriate data use agreements. The main infrastructure challenge is reliable, low-latency access to clean data from multiple source systems. Outputs are delivered through the EHR or a separate clinical decision support interface.",
             "heading": "What it runs on"
         },
         {
-            "body": "Most approaches are supervised learning models trained on retrospective cohorts, with labels defined by consensus criteria such as KDIGO creatinine or urine output changes. Features are extracted over rolling time windows, and models may be logistic regression, gradient boosted trees, or recurrent neural networks. The work includes handling irregular sampling, missing data, and competing outcomes like death or discharge. Validation typically reports discrimination and calibration at multiple prediction horizons.",
+            "body": "The work is done with supervised machine learning on longitudinal patient records. Features are built from time-stamped observations such as creatinine trends, urine output, blood pressure, and exposure to nephrotoxic agents. Common model families include gradient boosted decision trees and recurrent neural networks that handle irregular time series. The model produces a probability or risk score for AKI onset within a future window, and thresholds are set to balance sensitivity against alarm burden. Training requires labeled outcomes from retrospective cohorts, with careful handling of missing data and competing events like death or discharge.",
             "heading": "How the work is done"
         },
         {
-            "body": "These models are regulated as medical devices in many jurisdictions when used to inform care, and they carry risks of alert fatigue and hidden bias across age, sex, baseline kidney function, and care setting. Rights and risk questions include whether patients can know a model is scoring them, how errors are reviewed, and who is responsible when a missed prediction contributes to harm. Provenance requires clear documentation of training data, label definitions, performance across subgroups, and the version deployed. The site tracks active product liability and wrongful death lawsuits against AI companies, which is relevant to any clinical deployment.",
+            "body": "Rights and risk center on patient privacy, data provenance, and fairness across age, sex, race, and comorbidity groups. Models trained at one hospital may perform differently at another, so local validation and monitoring are standard practice. Alert fatigue and false reassurance are clinical risks that need governance through threshold review and clinician feedback. In the United States, such software may be regulated as a medical device, and hospitals must document the training data, intended use, and performance before deployment. The site tracks compliance and regulation pages and active product liability lawsuits that bear on this class of predictive tools.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "Work is moving toward earlier and more continuous prediction, including preoperative and emergency department use, and toward models that also suggest reversible contributors rather than only risk scores. There is growing interest in federated learning across hospitals to improve generalizability without centralizing patient data. Prospective trials and silent mode evaluations are the next step for many systems, along with clearer standards for monitoring drift and recalibration after deployment.",
+            "body": "The field is moving toward prospective validation in multiple centers and continuous monitoring of model drift. Researchers are testing multimodal inputs that combine structured EHR data with free-text notes and novel biomarkers. Federated learning may allow hospitals to improve models without sharing patient-level data. The longer-term direction is dynamic, patient-specific risk trajectories that update with each new lab result or vital sign, rather than static one-time scores. Adoption will depend on showing that predictions change care in ways that reduce AKI incidence or severity without increasing unnecessary interventions.",
             "heading": "Where it is going"
         }
     ],
@@ -66,8 +66,8 @@
             "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/bf71ff6d/"
         }
     ],
-    "generated": "2026-09-24",
+    "generated": "2026-09-25",
     "parent_name": "Predictive Patient Analytics and Intensive Care",
     "parent_path": "/ai-ecosystem/enterprise-applications-governance-and-tools/d4ca0e0f/",
-    "refresh_every_days": 30
+    "refresh_every_days": 90
 }

@@ -4,7 +4,7 @@
     "slug": "res-integrity-hallucination",
     "shape": "art-topic",
     "title": "Fabricated Citations and Fact Checking",
-    "answer": "Fabricated citations are references that look real but do not correspond to any published work, often produced when a language model generates a plausible but nonexistent paper title, author list, or DOI. Fact checking in this area covers verifying that every cited source exists, matches the claim it is attached to, and is represented accurately. The scope includes both accidental hallucination and deliberate citation padding, and it spans preprints, journal submissions, grant proposals, and policy documents. For the AI researcher, this is a core integrity problem because a single fake reference can undermine an otherwise sound argument.",
+    "answer": "Fabricated citations and fact checking concerns the detection and prevention of references that do not exist, misattribute sources, or misrepresent what a source says. It covers scholarly publishing, legal filings, journalism, and AI-generated text where language models can produce plausible but false bibliographic entries. The scope includes both manual editorial review and automated tools that compare a citation against databases, publisher pages, or the original paper. It also extends to verifying factual claims extracted from research, not just the presence of a DOI or title.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-09-24T18:55:54-05",
+    "built_at": "2026-09-24T23:27:05-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Researcher",
@@ -28,23 +28,23 @@
     "page_uid": "0b811eda",
     "sections": [
         {
-            "body": "Fabricated citations are references that look real but do not correspond to any published work, often produced when a language model generates a plausible but nonexistent paper title, author list, or DOI. Fact checking in this area covers verifying that every cited source exists, matches the claim it is attached to, and is represented accurately. The scope includes both accidental hallucination and deliberate citation padding, and it spans preprints, journal submissions, grant proposals, and policy documents. For the AI researcher, this is a core integrity problem because a single fake reference can undermine an otherwise sound argument.",
+            "body": "Fabricated citations and fact checking concerns the detection and prevention of references that do not exist, misattribute sources, or misrepresent what a source says. It covers scholarly publishing, legal filings, journalism, and AI-generated text where language models can produce plausible but false bibliographic entries. The scope includes both manual editorial review and automated tools that compare a citation against databases, publisher pages, or the original paper. It also extends to verifying factual claims extracted from research, not just the presence of a DOI or title.",
             "heading": "Scope"
         },
         {
-            "body": "Citation checking runs on standard bibliographic infrastructure: DOI registries, library catalogues, publisher metadata, and full-text indexes. A verification pipeline typically queries these sources through APIs or local mirrors, then compares the returned record against the reference string. Some systems also use language models to parse unstructured citations into fields such as author, title, year, and venue before lookup. The work does not require specialised hardware; it is mostly a matter of reliable access to authoritative metadata and clean parsing code.",
+            "body": "This work runs on bibliographic databases, full-text repositories, and metadata services that allow a citation to be resolved to a real record. Automated systems often use retrieval pipelines that query Crossref, PubMed, or institutional catalogues, then compare the returned metadata with the cited string. For fact checking claims, the infrastructure includes document stores of research papers and extracted claim sets, such as the 11,222 claims held in this site's library, which can be matched against source text. Compute is modest compared to training large models, since most checks are search and string or embedding comparison tasks.",
             "heading": "What it runs on"
         },
         {
-            "body": "The basic method is to extract each reference from a document, normalise it, and query a trusted database for a matching record. If no record is found, the citation is flagged for human review; if a record is found, the checker verifies that the title, authors, year, and page numbers agree. More advanced approaches use retrieval-augmented generation to search a corpus and compare the cited claim against the actual abstract or full text. Human reviewers then adjudicate borderline cases, because automated matching can miss near-miss fabrications or legitimate but poorly indexed sources.",
+            "body": "The work is done by breaking a citation into fields such as author, title, journal, volume, and year, then querying authoritative indexes for a matching record. When no record is found, the citation is flagged as likely fabricated; when a record exists, the next step is to check that the cited page or section actually supports the claim attributed to it. Fact checking extracted claims uses retrieval augmented verification, where a claim is encoded and compared against candidate passages from the original paper. Human reviewers then adjudicate borderline cases, because a real citation can still be used misleadingly.",
             "heading": "How the work is done"
         },
         {
-            "body": "The main risk is that fabricated citations enter the scholarly record and are then cited by others, creating a chain of false authority. Provenance matters because a reference is only as trustworthy as the record that confirms it, and a missing DOI or mismatched metadata is a warning sign rather than proof of fraud. Journals, funders, and institutions are beginning to require citation verification as part of submission and review, and some have added retraction notices for papers found to contain fake references. Rights concerns include the reputational harm to real authors whose names are attached to nonexistent papers, and the duty of researchers to correct the record when a fabrication is found.",
+            "body": "Rights and risk here center on provenance, accountability, and the harm caused by false authority. A fabricated citation can pollute the scholarly record, mislead courts or clinicians, and erode trust in AI-assisted writing. Institutions and publishers increasingly require authors to disclose AI use and to verify every reference against the original source, not a secondary summary. Provenance is maintained by linking claims and citations to the original paper, which is why this site does not link to the Consensus search tool but to the source document itself. There is also a risk of over-flagging, where an automated checker marks a real but poorly indexed citation as fake, so human review remains part of responsible practice.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "Automated citation checking is likely to become a standard step in manuscript preparation, much like spell checking or plagiarism screening. Future tools may embed verification directly into writing assistants, so a reference is checked as soon as it is typed. Shared registries of known fake or retracted citations could help publishers and reviewers spot repeat offenders. There is also movement toward requiring machine-readable citation metadata, such as persistent identifiers for every reference, which would make verification faster and more reliable.",
+            "body": "The field is moving toward verification at the moment of generation, where writing assistants check each citation before it appears in a draft. Shared registries of retracted or fabricated references may become more common, allowing publishers and courts to screen submissions quickly. Better models for claim entailment will reduce the gap between checking that a citation exists and checking that it supports the sentence it is attached to. Over time, fact checking may become a standard layer in research workflows rather than a separate cleanup step.",
             "heading": "Where it is going"
         }
     ],
@@ -66,8 +66,8 @@
             "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/03ae1e0f/"
         }
     ],
-    "generated": "2026-09-24",
+    "generated": "2026-09-25",
     "parent_name": "Governance, Ethics and Research Integrity",
     "parent_path": "/ai-ecosystem/enterprise-applications-governance-and-tools/2b7a03d9/",
-    "refresh_every_days": 30
+    "refresh_every_days": 90
 }

@@ -4,7 +4,7 @@
     "slug": "med-imaging-detection",
     "shape": "art-topic",
     "title": "Pathology Detection and Scan Triage",
-    "answer": "Pathology detection and scan triage covers AI systems that examine radiology images such as X-rays, CT scans, MRIs and ultrasound studies to identify suspicious findings, and that reorder radiologist worklists so urgent cases are read first. The scope includes flagging fractures, bleeds, nodules, pneumothorax and other acute or incidental abnormalities, as well as separating normal studies from those needing closer review. It sits within diagnostic imaging rather than histopathology, and it is used to reduce turnaround time for critical findings and to manage high-volume screening programs.",
+    "answer": "Pathology detection and scan triage systems examine medical images such as X-rays, CT scans, MRIs, and pathology slides to flag suspicious findings and order cases by urgency. The scope includes detecting fractures, bleeds, tumors, and other abnormalities, and separating normal studies from those needing immediate human review. These tools sit within diagnostic imaging and radiology as decision support, not replacement for a radiologist or pathologist. They are used in emergency departments, screening programs, and routine reporting queues.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-09-24T18:55:54-05",
+    "built_at": "2026-09-24T23:27:05-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Physician",
@@ -28,23 +28,23 @@
     "page_uid": "4c645674",
     "sections": [
         {
-            "body": "Pathology detection and scan triage covers AI systems that examine radiology images such as X-rays, CT scans, MRIs and ultrasound studies to identify suspicious findings, and that reorder radiologist worklists so urgent cases are read first. The scope includes flagging fractures, bleeds, nodules, pneumothorax and other acute or incidental abnormalities, as well as separating normal studies from those needing closer review. It sits within diagnostic imaging rather than histopathology, and it is used to reduce turnaround time for critical findings and to manage high-volume screening programs.",
+            "body": "Pathology detection and scan triage systems examine medical images such as X-rays, CT scans, MRIs, and pathology slides to flag suspicious findings and order cases by urgency. The scope includes detecting fractures, bleeds, tumors, and other abnormalities, and separating normal studies from those needing immediate human review. These tools sit within diagnostic imaging and radiology as decision support, not replacement for a radiologist or pathologist. They are used in emergency departments, screening programs, and routine reporting queues.",
             "heading": "Scope"
         },
         {
-            "body": "These systems typically run on hospital or imaging center servers with GPU acceleration, or in cloud environments that receive DICOM studies from a picture archiving and communication system. They connect to radiology information systems and electronic health records through HL7, FHIR or DICOM worklist protocols so that triage scores appear in the existing reading queue. Some deployments run inference at the scanner or on an edge appliance to return a priority flag before the study is fully archived. Data storage and model versioning are usually managed by the vendor or by the provider's IT team, with audit logs for every inference.",
+            "body": "These models typically run on hospital picture archiving and communication systems, radiology information systems, or cloud-based inference services. They require access to DICOM images and often use GPU servers for near real-time processing. Some deployments run on edge devices inside imaging machines for immediate triage. Integration depends on HL7 and FHIR messaging to move results into the electronic health record.",
             "heading": "What it runs on"
         },
         {
-            "body": "The work is usually done with convolutional neural networks or vision transformers trained on large sets of labeled medical images, often with radiologist annotations for bounding boxes, segmentation masks or whole-study labels. Detection models localize candidate lesions, classification models assign a probability that a study is normal or abnormal, and triage models combine those outputs with clinical context such as the exam reason or patient history to produce a priority score. Thresholds are set so that high-scoring studies move to the top of the worklist or trigger an alert, while low-scoring studies may be deferred. Human radiologists remain in the loop, and many systems are tuned to favor sensitivity over specificity for critical findings.",
+            "body": "The work is done by training convolutional neural networks or vision transformers on large labeled datasets of medical images. Radiologists or pathologists annotate the images to teach the model which pixels or regions indicate disease. At inference, the model produces a heatmap, bounding box, or risk score that a human reviews. Triage models often use a threshold on that risk score to reorder worklists, while detection models highlight areas for closer inspection.",
             "heading": "How the work is done"
         },
         {
-            "body": "Rights and risk center on patient safety, data provenance and liability when a missed finding or a delayed read causes harm. The atlas tracks six active product liability and wrongful death lawsuits against AI companies, which shows how unresolved questions about manufacturer responsibility and clinician oversight are being tested. Training data provenance matters because a model may perform differently across scanners, demographics or disease prevalence, and regulators expect evidence of validation on local populations. Privacy rules require that images and reports used for training or inference are handled under appropriate data governance, and many hospitals keep a human review step for all triage decisions. Performance monitoring after deployment is usually required to catch drift or unexpected failures.",
+            "body": "Rights and risk center on patient safety, data provenance, and liability. Training data must come from consented or de-identified sources, and the model's performance must be validated on local patient populations before use. If a triage tool misses a critical finding or delays a diagnosis, questions of product liability and clinical accountability arise. Active product liability and wrongful death lawsuits against AI companies illustrate the legal exposure in this area. Provenance records should document the training data, model version, and any human overrides for each case.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The direction is toward larger foundation models that can handle multiple modalities and body regions, reducing the need for separate single-task detectors. Triage is likely to become more tightly integrated with electronic health records so that a scan is prioritized using lab results, prior imaging and clinical notes, not just pixels. Prospective trials and real-world monitoring are expected to replace some retrospective validation, and regulators are moving toward rules for adaptive algorithms that update over time. Explainability tools that show which regions drove a triage score are also maturing, which may help radiologists trust and contest automated flags.",
+            "body": "These systems are moving toward multimodal models that combine imaging with lab results and clinical notes for more accurate triage. Regulatory pathways are tightening around continuous monitoring and real-world performance reporting. Future work will likely focus on reducing false negatives in rare diseases and on explainable outputs that radiologists can trust. The field is also shifting from single-disease detectors to generalist models that can flag many conditions in one pass.",
             "heading": "Where it is going"
         }
     ],
@@ -66,8 +66,8 @@
             "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/1d532d36/"
         }
     ],
-    "generated": "2026-09-24",
+    "generated": "2026-09-25",
     "parent_name": "Diagnostic Imaging and Radiology",
     "parent_path": "/ai-ecosystem/enterprise-applications-governance-and-tools/13673d6a/",
-    "refresh_every_days": 30
+    "refresh_every_days": 90
 }

@@ -4,7 +4,7 @@
     "slug": "art-music-stems",
     "shape": "art-topic",
     "title": "Stem Separation and Restoration",
-    "answer": "Stem separation and restoration covers isolating individual instrumental or vocal parts from a mixed recording and repairing degraded audio such as noise, clipping, dropouts, or missing spectral content. It is used in remixing, mastering, archival recovery, film and game audio, and music education. The field sits within music composition and audio engineering, where the goal is often to recover usable multitrack material from a finished stereo or mono master. Restoration also includes removing hum, clicks, and broadband noise while preserving the musical signal.",
+    "answer": "Stem separation and restoration covers splitting a mixed recording into isolated sources such as vocals, drums, bass, and other instruments, and repairing degraded audio by reducing noise, clicks, clipping, and reverberation. It is used in remixing, mastering, archival work, film and game audio, and music education. The field sits within music composition and audio engineering, where the goal is often to recover usable material from recordings that were never tracked separately or have deteriorated. Modern tools make this practical on ordinary computers, but the quality depends heavily on the source material and the model used.",
     "crumbs": [
         {
             "name": "The Art of AI",
@@ -16,7 +16,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-09-24T18:55:54-05",
+    "built_at": "2026-09-24T23:27:05-05",
     "category": "ecosystem-entities-market-and-operations",
     "expanded": true,
     "hub_name": "The Art of AI",
@@ -24,23 +24,23 @@
     "page_uid": "635a6363",
     "sections": [
         {
-            "body": "Stem separation and restoration covers isolating individual instrumental or vocal parts from a mixed recording and repairing degraded audio such as noise, clipping, dropouts, or missing spectral content. It is used in remixing, mastering, archival recovery, film and game audio, and music education. The field sits within music composition and audio engineering, where the goal is often to recover usable multitrack material from a finished stereo or mono master. Restoration also includes removing hum, clicks, and broadband noise while preserving the musical signal.",
+            "body": "Stem separation and restoration covers splitting a mixed recording into isolated sources such as vocals, drums, bass, and other instruments, and repairing degraded audio by reducing noise, clicks, clipping, and reverberation. It is used in remixing, mastering, archival work, film and game audio, and music education. The field sits within music composition and audio engineering, where the goal is often to recover usable material from recordings that were never tracked separately or have deteriorated. Modern tools make this practical on ordinary computers, but the quality depends heavily on the source material and the model used.",
             "heading": "Scope"
         },
         {
-            "body": "Modern stem separation typically runs on local workstations with a dedicated GPU, though some services run in the cloud. Restoration tasks can often run on a CPU for shorter files, but batch work and high-resolution audio benefit from GPU acceleration. Models are usually delivered as plugins, standalone applications, or Python libraries that process audio offline rather than in real time. Latency is less critical than fidelity, so engineers often run separation as a pre-processing step before a mix session.",
+            "body": "Stem separation models typically run on consumer GPUs or cloud instances, with many services offering CPU fallback for shorter clips. Training requires large paired datasets of isolated stems and full mixes, which are expensive to create and often drawn from commercially released multitracks. Inference for a three-minute song can take seconds to a few minutes depending on model size and hardware. Restoration models often run as real-time or offline plugins inside digital audio workstations, using smaller networks optimized for low latency.",
             "heading": "What it runs on"
         },
         {
-            "body": "The work is done with neural networks trained on large collections of mixed audio and their isolated stems. A common approach is to use a U-Net or a transformer that takes a spectrogram of the mix and outputs masks or magnitude estimates for each target source, such as vocals, drums, bass, and other. Restoration models learn to map corrupted audio to clean audio, often using paired examples of degraded and pristine recordings. The output is then converted back to a waveform with a phase reconstruction step, which can introduce subtle artifacts that an engineer must check.",
+            "body": "Most modern stem separation uses deep neural networks, often convolutional or transformer architectures, trained to estimate a mask or a direct waveform for each target source from a spectrogram or raw audio. Restoration typically combines learned models with classical signal processing, such as spectral subtraction for noise or phase reconstruction for clipped peaks. Engineers often iterate between automatic separation and manual cleanup, using the stems as a starting point rather than a finished product. Evaluation relies on objective metrics like signal-to-distortion ratio and subjective listening tests.",
             "heading": "How the work is done"
         },
         {
-            "body": "Rights and risk center on who may separate stems from a recording and what they may do with the results. Separating a copyrighted song can create derivative works, and using separated stems in a new production without permission may infringe the rights of the original performers, songwriters, or label. Restoration of archival material raises provenance questions, because a cleaned transfer may be mistaken for an original master if the processing chain is not documented. Some AI music services face active intellectual property lawsuits, and 18 of the 92 tracked suits involve AI music services, which shows that courts are still settling how training data and separated output are treated. This is not legal advice, but practitioners should keep clear records of source material and permissions.",
+            "body": "Separating stems from a copyrighted recording can raise questions about derivative works, licensing, and moral rights, especially when the output is republished or used in new compositions. Restoration of archival material may involve ownership of the physical carrier, the underlying performance, and any restoration decisions made by an engineer. The site tracks 92 active intellectual property lawsuits, 18 of which involve AI music services, reflecting ongoing disputes over training data and output ownership. Provenance is a practical concern: a separated stem may contain artifacts or bleed from other sources, and a restored master may no longer represent the original release. Engineers typically document the model, version, and manual edits so that downstream users can assess what was changed.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "Stem separation is moving toward real-time or near-real-time operation, which would let live sound engineers isolate and adjust sources during a performance. Restoration is likely to improve at reconstructing missing audio, such as filling gaps from tape damage or recovering lost harmonics, rather than only suppressing noise. Models are also becoming more controllable, with text or reference-based prompts that let an engineer specify which instrument to keep or what kind of clean signal to target. The practical limit remains the quality of the original recording, because no model can fully recover information that was never captured.",
+            "body": "Separation quality is improving for dense mixes and live recordings, with models becoming better at handling overlapping instruments and room acoustics. Restoration is moving toward more transparent repair of severe damage, including missing segments and heavily compressed audio, with less audible processing. On-device separation and restoration are becoming more common in consumer software and hardware, reducing the need for cloud uploads. The main open problems are preserving phase coherence, reducing artifacts on atypical sources, and establishing clearer norms for attribution and consent when stems are reused.",
             "heading": "Where it is going"
         }
     ],
@@ -62,8 +62,8 @@
             "path": "/ai-ecosystem/ecosystem-entities-market-and-operations/55b57da5/"
         }
     ],
-    "generated": "2026-09-24",
+    "generated": "2026-09-25",
     "parent_name": "Music Composition and Audio Engineering",
     "parent_path": "/ai-ecosystem/ecosystem-entities-market-and-operations/cf4ff486/",
-    "refresh_every_days": 7
+    "refresh_every_days": 90
 }

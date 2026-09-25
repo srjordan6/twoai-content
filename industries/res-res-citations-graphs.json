@@ -4,7 +4,7 @@
     "slug": "res-citations-graphs",
     "shape": "art-topic",
     "title": "Citation Graphs Over Time",
-    "answer": "Citation graphs over time are directed networks where nodes are papers and edges are citations, with each edge carrying a publication date or year. The scope covers bibliographic datasets, scholarly search indexes, and research discovery tools that track how ideas spread, merge, or fade across years. For a working researcher, this means seeing not just who cited whom, but when a line of work gained momentum, stalled, or was revived. The field sits within citation mapping and discovery, part of the broader AI researcher toolkit.",
+    "answer": "Citation graphs over time map how scholarly works reference one another and how those references accumulate, shift, or fade across years. The focus is on directed edges from a citing work to a cited work, each edge carrying a publication date or timestamp. This view supports discovery of foundational papers, rising clusters, and research fronts within a field. It is used by researchers and librarians to trace intellectual lineage rather than to rank individual authors.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-09-24T18:55:54-05",
+    "built_at": "2026-09-24T23:27:05-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Researcher",
@@ -28,23 +28,23 @@
     "page_uid": "07549d7b",
     "sections": [
         {
-            "body": "Citation graphs over time are directed networks where nodes are papers and edges are citations, with each edge carrying a publication date or year. The scope covers bibliographic datasets, scholarly search indexes, and research discovery tools that track how ideas spread, merge, or fade across years. For a working researcher, this means seeing not just who cited whom, but when a line of work gained momentum, stalled, or was revived. The field sits within citation mapping and discovery, part of the broader AI researcher toolkit.",
+            "body": "Citation graphs over time map how scholarly works reference one another and how those references accumulate, shift, or fade across years. The focus is on directed edges from a citing work to a cited work, each edge carrying a publication date or timestamp. This view supports discovery of foundational papers, rising clusters, and research fronts within a field. It is used by researchers and librarians to trace intellectual lineage rather than to rank individual authors.",
             "heading": "Scope"
         },
         {
-            "body": "These graphs usually run on graph databases or columnar stores that can handle very large numbers of edges and time-stamped queries. Common infrastructure includes open citation indexes, DOI registries, and local snapshots of paper metadata, often loaded into graph databases or distributed processing frameworks for traversal and aggregation. Because the site links to original papers rather than a search tool, the underlying data tends to come from publisher APIs, preprint servers, and open bibliographic records. Storage must preserve the original paper identifier so a node can always resolve to the source document.",
+            "body": "The work runs on bibliographic records and full-text reference lists stored in a graph database or a linked-data index. Each node is a paper, book, or dataset, and each edge is a citation with a year or date. Temporal queries are handled by indexing edges by time, often with incremental updates as new works are added. The site's own library of 135 research papers and 91 AI books can serve as a small seed corpus for such a graph, but the method scales to external open citation indexes.",
             "heading": "What it runs on"
         },
         {
-            "body": "The work is done by extracting citation pairs from reference lists and matching them to unique paper identifiers, then attaching the citing paper's publication date to each edge. Analysts then compute time series of citation counts, co-citation clusters, and forward or backward citation chains over yearly or monthly windows. A common technique is to build a cumulative graph and slice it at different dates to see how the structure changed. No machine learning is required for basic mapping, though clustering and link prediction are sometimes used.",
+            "body": "The work is done by parsing reference sections and metadata to extract cited works, then matching those works to unique identifiers such as DOIs or titles. A directed graph is built with nodes for works and edges for citations, each edge stamped with the citing work's publication date. Analysts then compute time series of citation counts, co-citation clusters, and paths of influence, often using network measures like betweenness or burst detection. The result is a temporal map that shows not just who cites whom, but when and in what sequence.",
             "heading": "How the work is done"
         },
         {
-            "body": "Rights and risk center on provenance, because a citation graph is only as good as its source records. Each edge must retain the original paper link, and the site's practice of linking to the original paper rather than a third party search tool supports that. Risks include duplicate records, retracted papers still being cited, and citation bias toward well known venues. Provenance requires keeping the DOI or other persistent identifier with every node and edge, and flagging retractions or corrections when they appear.",
+            "body": "Rights and risk center on provenance and completeness. Citation data comes from published reference lists, so the original paper remains the authoritative source, and the site links to that original paper rather than to any third-party search tool. Risks include missing citations, ambiguous author names, and retracted works that continue to be cited. A responsible graph keeps a record of extraction date and source for each edge, and flags retractions or corrections where known.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "Citation graphs over time are moving toward live updating views that show research fronts as they form, rather than static historical maps. Better author disambiguation and preprint citation tracking will make early signals more reliable. There is also growing interest in using these graphs to spot replication gaps or neglected areas where older work is rarely cited but still relevant. The likely direction is a tighter link between the graph and the underlying paper, so a researcher can move from a trend line to the exact claim or method in the original text.",
+            "body": "Citation graphs over time are moving toward live updating and predictive views of research influence. Future work may combine temporal citation edges with extracted claims, such as the 11,222 claims currently held in the site's library, to show how specific findings propagate or are contradicted. The direction is toward interactive timelines, field-level maps of emerging topics, and better handling of preprint and versioned works.",
             "heading": "Where it is going"
         }
     ],
@@ -66,8 +66,8 @@
             "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/14e515c8/"
         }
     ],
-    "generated": "2026-09-24",
+    "generated": "2026-09-25",
     "parent_name": "Citation Mapping and Discovery",
     "parent_path": "/ai-ecosystem/enterprise-applications-governance-and-tools/7e07ccb2/",
-    "refresh_every_days": 30
+    "refresh_every_days": 90
 }

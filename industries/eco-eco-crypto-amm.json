@@ -4,7 +4,7 @@
     "slug": "eco-crypto-amm",
     "shape": "art-topic",
     "title": "Routing Across Automated Market Makers",
-    "answer": "Routing across automated market makers is the practice of finding and executing a trade across one or more decentralised exchange pools rather than sending the entire order to a single venue. The goal is to reduce price impact, account for pool fees and gas costs, and capture better net prices for the trader. It covers single-chain and multi-hop paths, where a swap may pass through several token pairs, as well as splitting an order across pools with different liquidity depths and fee tiers. The field sits at the intersection of market microstructure, optimisation and smart contract execution.",
+    "answer": "Routing across automated market makers covers the process of finding and executing a trade through one or more on-chain liquidity pools to achieve the best available outcome. It includes splitting a single order across multiple pools, sequencing multi-hop trades through intermediate tokens, and comparing direct routes against aggregated paths. The scope also extends to gas cost awareness, slippage estimation, and protection against adverse execution such as sandwich attacks. Practitioners in this area work with decentralised exchanges, liquidity pools, and solver or aggregator systems that operate across blockchains.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-09-24T18:55:54-05",
+    "built_at": "2026-09-24T23:27:05-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Economist",
@@ -28,23 +28,23 @@
     "page_uid": "a5e9d65f",
     "sections": [
         {
-            "body": "Routing across automated market makers is the practice of finding and executing a trade across one or more decentralised exchange pools rather than sending the entire order to a single venue. The goal is to reduce price impact, account for pool fees and gas costs, and capture better net prices for the trader. It covers single-chain and multi-hop paths, where a swap may pass through several token pairs, as well as splitting an order across pools with different liquidity depths and fee tiers. The field sits at the intersection of market microstructure, optimisation and smart contract execution.",
+            "body": "Routing across automated market makers covers the process of finding and executing a trade through one or more on-chain liquidity pools to achieve the best available outcome. It includes splitting a single order across multiple pools, sequencing multi-hop trades through intermediate tokens, and comparing direct routes against aggregated paths. The scope also extends to gas cost awareness, slippage estimation, and protection against adverse execution such as sandwich attacks. Practitioners in this area work with decentralised exchanges, liquidity pools, and solver or aggregator systems that operate across blockchains.",
             "heading": "Scope"
         },
         {
-            "body": "Routing systems run on blockchain nodes and remote procedure call endpoints that provide current pool reserves, fee parameters and pending transaction state. Off-chain routing engines query these data sources, simulate candidate trades, and then submit one or more transactions to an aggregator contract or directly to the AMMs. The infrastructure includes gas price oracles, token allowance management, and mempool monitoring to detect competing transactions. On Ethereum and compatible networks, the router must also account for block space and transaction ordering.",
+            "body": "Routing systems run on a combination of off-chain computation and on-chain settlement. Off-chain components include indexers that track pool states, RPC nodes that read blockchain data, mempool monitors that observe pending transactions, and gas price oracles. On-chain components are the automated market maker smart contracts themselves, along with router contracts that execute multi-step swaps atomically. Some designs use intent-based infrastructure where users submit desired outcomes and a network of solvers competes to fill them, while others rely on centralised quote APIs that aggregate liquidity data before sending a transaction.",
             "heading": "What it runs on"
         },
         {
-            "body": "The work is done by modelling each AMM as a mathematical function that maps reserves to price, such as the constant product formula used by many pools. A router enumerates possible paths and split fractions, estimates the output amount and gas cost for each candidate, and selects the combination with the best expected net result. Some systems use linear programming or convex optimisation to allocate order size across pools, while others rely on heuristic search over a graph of token pairs. The calculation is repeated close to execution time because pool reserves change with every block.",
+            "body": "The work is done by modelling each pool as a node or edge in a graph and searching for paths that minimise total cost, including price impact, pool fees, and gas. Constant product and other pricing curves are used to compute how much a given trade size moves the price in each pool. Optimisation techniques include shortest path search, dynamic programming, and linear or convex optimisation for splitting orders across parallel routes. Some systems use machine learning to predict short-term gas prices, pool liquidity changes, or the likelihood of a transaction being front-run, and then adjust routing decisions accordingly.",
             "heading": "How the work is done"
         },
         {
-            "body": "Rights and risks in routing include exposure to sandwich attacks, front-running and other forms of maximal extractable value, where a third party can reorder transactions to profit at the trader's expense. Smart contract risk, failed transactions from stale quotes, and slippage beyond a set tolerance are operational concerns. Provenance of pool data matters because a router that reads manipulated or outdated reserves can produce poor routes. Governance of AMM parameters, such as fee switches or pool upgrades, also affects routing outcomes, and the area sits within broader regulatory uncertainty around decentralised finance.",
+            "body": "Rights and risks in routing centre on execution quality, transparency, and exposure to miner or validator extractable value. Users face risks from stale quotes, failed transactions, sandwich attacks, and smart contract vulnerabilities in router or pool code. Data provenance matters because routing decisions depend on pool states and mempool observations that can be manipulated or delayed by RPC providers and relayers. Slippage tolerances and transaction deadlines give users some control, but private order flow and exclusive liquidity arrangements can shift who captures value. Regulatory treatment of routing services remains unsettled in many jurisdictions, so operators track compliance obligations without relying on this text as legal guidance.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "Routing is moving toward intent-based execution, where a user states a desired outcome and competing solvers propose and fill the best route. Cross-chain routing and unified liquidity across layer 2 networks are active areas of development. Dynamic fee mechanisms and more granular pool data are likely to make routing more responsive to short-term volatility. Machine learning may be used to forecast gas prices, liquidity changes and adversarial behaviour, but the core routing problem remains constrained by on-chain state and execution cost.",
+            "body": "Routing is moving toward intent-based execution, where users express a desired outcome and specialised solvers compete to fill it across multiple venues, including off-chain liquidity. Cross-chain routing is becoming more common as bridges and messaging protocols allow a single trade to move value across different blockchains. Privacy-preserving order flow and encrypted mempools are being explored to reduce front-running and improve execution for large orders. Machine learning is likely to play a larger role in real-time route selection, gas forecasting, and risk scoring, while wallet and aggregator interfaces continue to absorb routing complexity so that end users see only a final price and confirmation.",
             "heading": "Where it is going"
         }
     ],
@@ -66,8 +66,8 @@
             "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/bcc69da3/"
         }
     ],
-    "generated": "2026-09-24",
+    "generated": "2026-09-25",
     "parent_name": "Crypto Markets and Decentralised Finance",
     "parent_path": "/ai-ecosystem/enterprise-applications-governance-and-tools/af04f5ab/",
-    "refresh_every_days": 30
+    "refresh_every_days": 90
 }

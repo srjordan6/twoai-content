@@ -1,0 +1,93 @@
+{
+    "uid": "bd660f27",
+    "name": "Vector Search Inside SQL Databases",
+    "slug": "sql-vector-search",
+    "shape": "art-topic",
+    "title": "Vector Search Inside SQL Databases",
+    "answer": "Vector search stores embeddings, lists of numbers that represent meaning, and finds the nearest ones to a query. Extensions such as pgvector let a relational database do this alongside normal tables, so retrieval can respect the same joins, filters and permissions as the rest of the data. This keeps the vector index inside the transactional system rather than in a separate vector store.",
+    "crumbs": [
+        {
+            "name": "AI and SQL",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/3d344eab/"
+        }
+    ],
+    "noindex": false,
+    "built_at": "2026-09-24T23:27:05-05",
+    "category": "enterprise-applications-governance-and-tools",
+    "expanded": true,
+    "hub_name": "AI and SQL",
+    "hub_path": "/ai-ecosystem/enterprise-applications-governance-and-tools/3d344eab/",
+    "page_uid": "bd660f27",
+    "sections": [
+        {
+            "body": "Vector search stores embeddings, lists of numbers that represent meaning, and finds the nearest ones to a query. Extensions such as pgvector let a relational database do this alongside normal tables, so retrieval can respect the same joins, filters and permissions as the rest of the data. This keeps the vector index inside the transactional system rather than in a separate vector store.",
+            "heading": "Scope"
+        },
+        {
+            "body": "Vector search inside SQL runs on the same database servers that hold relational tables, using an extension or built-in vector column type. The index is stored in the database's normal page and buffer structures, so no separate vector service is required. Approximate nearest neighbor indexes such as HNSW or IVFFlat trade a little recall for much faster search on large tables. The work is usually done on CPU, with optional GPU acceleration in some engines.",
+            "heading": "What it runs on"
+        },
+        {
+            "body": "An application first turns text, images or other content into an embedding with a model, then stores that vector in a SQL column. At query time the same model embeds the search text, and the database finds rows whose vectors are closest by a distance measure such as cosine or Euclidean distance. Because the vector column sits in a normal table, the nearest neighbor search can be combined with WHERE clauses, JOINs and row level security in one SQL statement. The result is a set of rows ranked by similarity rather than a separate list from an external index.",
+            "heading": "How the work is done"
+        },
+        {
+            "body": "Keeping vectors in the SQL database means existing access controls, row level security and audit logging can apply to embeddings and the rows they point to. This reduces the risk of a separate vector store drifting out of sync with permissions or provenance records. The main risks are that embeddings can encode sensitive details from source text, and that similarity search may surface content a user is allowed to see but did not expect. Provenance is easier to track because the vector and its source row share one transaction and one schema.",
+            "heading": "Rights, risk and provenance"
+        },
+        {
+            "body": "Vector search inside SQL is moving toward tighter integration with full text search and hybrid ranking, where a single query can combine keyword, semantic and structured filters. Database engines are adding better approximate index maintenance, incremental updates and cost based planner support for vector operations. As embeddings become a common column type, more applications will keep retrieval, permissions and transactional data in one system instead of copying rows to a separate vector database.",
+            "heading": "Where it is going"
+        }
+    ],
+    "siblings": [
+        {
+            "name": "Text to SQL",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/1c4f6caa/"
+        },
+        {
+            "name": "Text to SQL Benchmarks",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/b32896c8/"
+        },
+        {
+            "name": "SQL and AI Training Data Pipelines",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/49220ce5/"
+        },
+        {
+            "name": "Feature Stores",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/8be637e6/"
+        },
+        {
+            "name": "Warehouses and Lakehouses for AI",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/678f8878/"
+        },
+        {
+            "name": "Semantic Layers",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/552cb1a1/"
+        },
+        {
+            "name": "SQL Injection Through AI",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/ab2a7e43/"
+        },
+        {
+            "name": "Agent Database Access and Permissions",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/247e6dbd/"
+        },
+        {
+            "name": "MCP Database Servers",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/20be2010/"
+        },
+        {
+            "name": "AI Query Optimisation",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/5a695195/"
+        },
+        {
+            "name": "Data Quality for AI",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/bfd29330/"
+        }
+    ],
+    "generated": "2026-09-25",
+    "parent_name": "AI and SQL",
+    "parent_path": "/ai-ecosystem/enterprise-applications-governance-and-tools/3d344eab/",
+    "refresh_every_days": 90
+}

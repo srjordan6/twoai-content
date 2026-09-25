@@ -1,5 +1,5 @@
 {
-    "count": 674,
+    "count": 686,
     "terms": [
         {
             "uid": "4a4b22f9",
@@ -16324,6 +16324,114 @@
             "author_note": "Written by Claude on Stephen's request of 2026-09-21, from joint advisory AA26-251A and Anthropic's September 2026 threat report.",
             "authored_on": "2026-09-21",
             "authored_here": true
+        },
+        {
+            "uid": "0c35660a",
+            "slug": "sql",
+            "term": "SQL (Structured Query Language)",
+            "origin": "Developed at IBM in the 1970s for relational databases.",
+            "example": "SELECT count(*) FROM orders WHERE shipped_late = true counts last month's late shipments.",
+            "category": "Systems & Infrastructure",
+            "definition": "The standard language for asking questions of relational databases and changing the data in them. Most business data lives in SQL databases, so most AI answers about a company's own operations depend on a SQL query somewhere."
+        },
+        {
+            "uid": "ca91c748",
+            "slug": "sql-query",
+            "term": "Query (Database)",
+            "origin": "",
+            "example": "An assistant turns which customers renewed this quarter into a query against the subscriptions table.",
+            "category": "Systems & Infrastructure",
+            "definition": "A request to a database to return or change data, written in a query language such as SQL. When an AI system answers a question from company data, it is usually writing and running a query on the user's behalf."
+        },
+        {
+            "uid": "21048735",
+            "slug": "database-schema",
+            "term": "Schema (Database)",
+            "origin": "",
+            "example": "A column named amt_2 with no description forces a model to guess what it holds.",
+            "category": "Systems & Infrastructure",
+            "definition": "The structure of a database: its tables, their columns, the type of each column and how tables relate. Text to SQL systems read the schema to decide which tables and columns a question refers to, and unclear column names are a leading cause of wrong answers."
+        },
+        {
+            "uid": "e02c2226",
+            "slug": "sql-join",
+            "term": "Join (SQL)",
+            "origin": "",
+            "example": "Joining orders to customers on customer_id to show each order with the buyer's region.",
+            "category": "Systems & Infrastructure",
+            "definition": "A SQL operation that combines rows from two or more tables using a shared value, such as a customer number. Choosing the wrong join is one of the most common ways AI generated SQL returns a confident but wrong answer."
+        },
+        {
+            "uid": "f70f51a6",
+            "slug": "database-index",
+            "term": "Index (Database)",
+            "origin": "",
+            "example": "An index on order_date turns a query over last week's orders from seconds into milliseconds.",
+            "category": "Systems & Infrastructure",
+            "definition": "A structure a database keeps alongside a table so it can find matching rows without reading every row. Vector indexes do the same job for embeddings, making similarity search fast enough for AI assistants."
+        },
+        {
+            "uid": "70be76a5",
+            "slug": "text-to-sql",
+            "term": "Text to SQL",
+            "origin": "",
+            "example": "How many support tickets closed within a day last month becomes a query with a date filter and a count.",
+            "category": "Systems & Infrastructure",
+            "definition": "Using a language model to translate a question in plain English into a SQL query that answers it. It lets people query data without writing SQL, and its accuracy depends heavily on clear schemas and agreed business definitions."
+        },
+        {
+            "uid": "d21b652d",
+            "slug": "pgvector",
+            "term": "pgvector",
+            "origin": "An open source extension for PostgreSQL.",
+            "example": "A support assistant finds the five help articles closest in meaning to a customer's question with one SQL query.",
+            "category": "Systems & Infrastructure",
+            "definition": "An extension that adds vector storage and similarity search to the PostgreSQL database, so embeddings can be searched in the same database, with the same filters and permissions, as the rest of an application's data."
+        },
+        {
+            "uid": "888f98ad",
+            "slug": "data-warehouse",
+            "term": "Data Warehouse",
+            "origin": "",
+            "example": "Five years of sales, returns and marketing spend, queried together to forecast demand.",
+            "category": "Systems & Infrastructure",
+            "definition": "A database built for analysing large amounts of historical business data with SQL, rather than for running day to day transactions. It is where much of the history AI models are trained and evaluated on is kept."
+        },
+        {
+            "uid": "fa905445",
+            "slug": "lakehouse",
+            "term": "Lakehouse",
+            "origin": "",
+            "example": "Raw support call transcripts and structured ticket tables queried side by side.",
+            "category": "Systems & Infrastructure",
+            "definition": "A data platform that keeps raw files in low cost storage, like a data lake, while adding the tables, transactions and SQL access of a data warehouse. Lakehouses are widely used to hold both the training data and the outputs of AI systems."
+        },
+        {
+            "uid": "87f6e983",
+            "slug": "semantic-layer",
+            "term": "Semantic Layer",
+            "origin": "",
+            "example": "Active customer defined once as a purchase in the last 90 days, used by every report and every AI query.",
+            "category": "Systems & Infrastructure",
+            "definition": "A set of agreed business definitions, such as what counts as revenue or an active customer, placed on top of raw database tables. Text to SQL systems that use one give far more consistent answers than systems reading raw column names."
+        },
+        {
+            "uid": "912ff0c0",
+            "slug": "etl",
+            "term": "ETL (Extract, Transform, Load)",
+            "origin": "",
+            "example": "A nightly job pulls orders from the store database, removes test orders and loads them into the warehouse.",
+            "category": "Systems & Infrastructure",
+            "definition": "The process of copying data out of source systems, cleaning and reshaping it, and loading it where it will be analysed or used to train models. Errors in these jobs flow straight into whatever an AI system learns or answers."
+        },
+        {
+            "uid": "92184745",
+            "slug": "row-level-security",
+            "term": "Row Level Security",
+            "origin": "",
+            "example": "A regional manager's assistant can query sales, but only for that manager's region.",
+            "category": "Systems & Infrastructure",
+            "definition": "A database control that limits which rows each user can see or change, enforced by the database itself. It is a key safeguard when AI agents query data on a person's behalf, because the agent then sees only what that person may see."
         }
     ],
     "source": {
@@ -16331,7 +16439,7 @@
         "schema": "v2 (term, slug, category, definition, example, origin)",
         "generated": "2026-07-23"
     },
-    "built_at": "2026-09-24T22:08:32-05:00",
+    "built_at": "2026-09-24T23:29:30-05:00",
     "page_uid": "76dd9a8f",
     "readings": {
         "/ai-glossary/aime/": {

@@ -4,7 +4,7 @@
     "slug": "eco-altdata-cards",
     "shape": "art-topic",
     "title": "Card Transaction Data",
-    "answer": "Card transaction data refers to anonymized records of purchases made with credit, debit, and prepaid cards, aggregated by merchant, category, geography, and time. In alternative data work it is used to estimate consumer spending, foot traffic, revenue trends, and inflation signals before official statistics are released. The scope covers point-of-sale transactions, online card payments, and sometimes card-linked loyalty or cashback panels, but typically excludes the identities of individual cardholders.",
+    "answer": "Card transaction data refers to aggregated and anonymized records of purchases made with credit, debit, and prepaid cards, used by economists and analysts to track consumer spending, revenue trends, and regional economic activity. It sits within alternative data because it is generated as a byproduct of payments rather than from traditional surveys or financial statements. The data typically includes merchant category, transaction amount, date, and location, but not personally identifiable details in the forms used for economic research. Its main value is timeliness and granularity, often available daily or weekly, compared with monthly or quarterly official statistics.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-09-24T18:55:54-05",
+    "built_at": "2026-09-24T23:27:05-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Economist",
@@ -28,23 +28,23 @@
     "page_uid": "3d76a2a4",
     "sections": [
         {
-            "body": "Card transaction data refers to anonymized records of purchases made with credit, debit, and prepaid cards, aggregated by merchant, category, geography, and time. In alternative data work it is used to estimate consumer spending, foot traffic, revenue trends, and inflation signals before official statistics are released. The scope covers point-of-sale transactions, online card payments, and sometimes card-linked loyalty or cashback panels, but typically excludes the identities of individual cardholders.",
+            "body": "Card transaction data refers to aggregated and anonymized records of purchases made with credit, debit, and prepaid cards, used by economists and analysts to track consumer spending, revenue trends, and regional economic activity. It sits within alternative data because it is generated as a byproduct of payments rather than from traditional surveys or financial statements. The data typically includes merchant category, transaction amount, date, and location, but not personally identifiable details in the forms used for economic research. Its main value is timeliness and granularity, often available daily or weekly, compared with monthly or quarterly official statistics.",
             "heading": "Scope"
         },
         {
-            "body": "The data usually arrives as large daily or weekly feeds from payment networks, issuers, processors, or data aggregators, stored in columnar databases or cloud object storage. Processing pipelines run on distributed compute clusters, often with Spark or similar frameworks, to join merchant identifiers, normalize categories, and build time series. Because raw transaction volumes are high, infrastructure emphasizes incremental ingestion, partitioning by date and merchant, and strict access controls.",
+            "body": "The data is collected by payment networks, card issuers, and processors, then cleaned and aggregated by data vendors before it reaches analysts. It usually lives in cloud data warehouses or distributed file systems, where it is joined with merchant classification tables and geographic mappings. Processing pipelines handle missing values, refunds, duplicate authorizations, and merchant name normalization. Because raw transaction volumes are large, most work is done on sampled or aggregated panels rather than full population feeds.",
             "heading": "What it runs on"
         },
         {
-            "body": "Analysts clean the data by mapping merchant names to standardized entities, removing refunds and reversals, and adjusting for panel coverage or seasonality. Common methods include same-store sales indices, cohort-based spending tracks, and nowcasting models that combine card data with macroeconomic variables. Machine learning is used for merchant classification, anomaly detection, and imputation of missing values, but much of the work remains careful aggregation and index construction.",
+            "body": "Analysts typically build same-store sales indices, cohort-based spending panels, or merchant-level revenue proxies from the transaction counts and amounts. Common techniques include seasonal adjustment, index construction with fixed or chain weighting, and regression models that relate card spending to official retail sales or company revenue. Machine learning is used for merchant categorization, anomaly detection in spending patterns, and nowcasting economic indicators. The work is more about careful panel design and bias correction than about complex model architecture.",
             "heading": "How the work is done"
         },
         {
-            "body": "Card transaction data raises privacy and consent issues, so governance focuses on de-identification, aggregation thresholds, and contractual limits on re-identification. Data providers typically require that no individual cardholder be singled out and that small merchant counts be suppressed. Rights to use the data are set by agreements with issuers, networks, and consumers, and compliance with payment card industry rules and data protection law is a standing requirement.",
+            "body": "The main rights and risk issues are privacy, consent, and re-identification, since even aggregated card data can reveal sensitive behavior if cuts are too fine. Contracts with data vendors usually restrict use to specific research purposes and prohibit attempts to re-identify individuals. Compliance obligations may include data protection rules such as GDPR or CCPA, and internal review of merchant-level outputs before publication. Provenance matters because different panels have different demographic and geographic coverage, and a change in panel composition can look like a change in spending.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The direction is toward more granular, real-time feeds linked to geolocation and merchant attributes, with greater use of privacy-preserving techniques such as differential privacy and secure aggregation. As regulators and card networks tighten data sharing, the field is likely to shift from raw transaction panels toward modeled or synthetic spending signals. The economic value will depend on maintaining trust while improving timeliness and coverage.",
+            "body": "Card transaction data is moving toward more real-time feeds, finer merchant and product detail, and integration with other alternative data such as foot traffic, web traffic, and satellite imagery. Issuers and networks are exploring privacy-preserving techniques like differential privacy and secure aggregation to allow more granular sharing without exposing individuals. The likely direction is a shift from static monthly reports to live economic dashboards and company revenue nowcasts, with greater emphasis on model governance and auditability as the data feeds into trading and policy decisions.",
             "heading": "Where it is going"
         }
     ],
@@ -66,8 +66,8 @@
             "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/90fd3828/"
         }
     ],
-    "generated": "2026-09-24",
+    "generated": "2026-09-25",
     "parent_name": "Alternative Data",
     "parent_path": "/ai-ecosystem/enterprise-applications-governance-and-tools/bb732840/",
-    "refresh_every_days": 30
+    "refresh_every_days": 90
 }

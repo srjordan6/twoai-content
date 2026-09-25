@@ -4,7 +4,7 @@
     "slug": "med-genomics-prs",
     "shape": "art-topic",
     "title": "Polygenic Risk Scores",
-    "answer": "Polygenic risk scores estimate a person's likelihood of developing a particular disease by adding up the small effects of many common genetic variants. They are used in research and increasingly in clinical settings to stratify people into broad risk categories, not to diagnose disease. A score is usually reported as a percentile compared with a reference population, and it applies to conditions such as coronary artery disease, breast cancer, and type 2 diabetes. The score reflects inherited susceptibility only, so it does not capture environmental or lifestyle factors unless those are modeled separately.",
+    "answer": "Polygenic risk scores are statistical estimates of an individual's inherited susceptibility to a disease or trait, calculated by summing the small effects of many common genetic variants. In genomic medicine they are used to stratify patients by risk for conditions such as coronary artery disease, breast cancer, and type 2 diabetes, often alongside family history and other clinical factors. They are not deterministic diagnoses, and a high score does not mean a person will develop the condition. The scope covers common complex diseases where many loci contribute, rather than single-gene disorders.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-09-24T18:55:54-05",
+    "built_at": "2026-09-24T23:27:05-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Physician",
@@ -28,23 +28,23 @@
     "page_uid": "c69296d0",
     "sections": [
         {
-            "body": "Polygenic risk scores estimate a person's likelihood of developing a particular disease by adding up the small effects of many common genetic variants. They are used in research and increasingly in clinical settings to stratify people into broad risk categories, not to diagnose disease. A score is usually reported as a percentile compared with a reference population, and it applies to conditions such as coronary artery disease, breast cancer, and type 2 diabetes. The score reflects inherited susceptibility only, so it does not capture environmental or lifestyle factors unless those are modeled separately.",
+            "body": "Polygenic risk scores are statistical estimates of an individual's inherited susceptibility to a disease or trait, calculated by summing the small effects of many common genetic variants. In genomic medicine they are used to stratify patients by risk for conditions such as coronary artery disease, breast cancer, and type 2 diabetes, often alongside family history and other clinical factors. They are not deterministic diagnoses, and a high score does not mean a person will develop the condition. The scope covers common complex diseases where many loci contribute, rather than single-gene disorders.",
             "heading": "Scope"
         },
         {
-            "body": "Polygenic risk scores run on standard genomic data, typically from a genotyping array or whole genome sequencing, combined with summary statistics from large genome wide association studies. The computation itself is lightweight and can be performed on ordinary servers or cloud infrastructure, since it involves summing weighted allele counts across hundreds or thousands of sites. The main infrastructure burden is data storage and secure handling of individual level genetic information. Reference panels and imputation servers are often needed to fill in variants that were not directly measured.",
+            "body": "The scores are computed from genotype data, typically from genome-wide arrays or sequencing, and rely on large reference datasets and summary statistics from genome-wide association studies. Computation is modest compared with deep learning, often running on standard research servers or cloud instances, but the underlying data infrastructure includes biobanks, imputation panels, and curated variant annotation resources. Clinical deployment requires secure storage of genetic data and integration with electronic health records or laboratory information systems.",
             "heading": "What it runs on"
         },
         {
-            "body": "The work is done by first identifying genetic variants associated with a disease in a genome wide association study, then assigning each variant a weight based on its effect size. A person's score is calculated as the sum of the number of risk alleles they carry multiplied by those weights. Scores are usually standardized against a population distribution and then validated in independent cohorts to check how well they separate people who develop disease from those who do not. Model builders also apply quality control, ancestry adjustment, and shrinkage methods to reduce overfitting.",
+            "body": "The work begins with genome-wide association studies that estimate the effect size and significance of millions of single nucleotide polymorphisms. Variants are selected and weighted, often after clumping to remove correlated signals and thresholding by p-value, then summed into a single score. More recent methods use Bayesian or penalized regression approaches to model many variants jointly and improve prediction across populations. Scores are usually standardized against a reference population so a patient's result can be reported as a percentile or relative risk.",
             "heading": "How the work is done"
         },
         {
-            "body": "Rights and risk center on genetic privacy, informed consent, and the potential for misinterpretation of a probabilistic score as a definitive prediction. Most polygenic risk scores have been developed in European ancestry populations, so their accuracy can drop sharply when applied to people of other ancestries, which raises fairness concerns. Provenance matters because a score is only as good as the underlying study data, the variant weights, and the validation evidence. Regulatory frameworks are still evolving, and clinical use generally requires clear reporting of limitations, laboratory standards, and patient consent for genetic testing.",
+            "body": "The main rights and risk concerns are genetic privacy, potential discrimination by insurers or employers, and the fact that most scores perform worse in populations not well represented in the training data, particularly people of non-European ancestry. Clinical validity and utility are not established for all uses, and regulatory bodies treat many polygenic risk score products as laboratory-developed tests or research tools rather than approved diagnostics. Provenance matters because a score's performance depends on the exact variant list, weights, reference panel, and normalization used, and these details are often not transparent to clinicians. Product liability questions remain open when a score is used in reproductive or cancer screening decisions.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The field is moving toward multi ancestry scores that perform more consistently across populations and toward combining polygenic risk scores with other risk factors such as age, biomarkers, and family history. Researchers are also testing whether these scores can guide screening intervals, preventive care, or medication decisions through prospective clinical trials. As electronic health records incorporate genetic data, scores may become more routinely available, but their clinical utility still needs to be proven for most conditions. The next stage is likely to involve clearer standards for score reporting, validation, and integration into clinical decision support.",
+            "body": "The field is moving toward multi-ancestry and whole-genome based scores that reduce portability gaps and improve calibration across diverse groups. Researchers are testing whether adding polygenic risk scores to existing clinical risk models changes treatment decisions or outcomes in prospective trials. Integration with electronic health records and return-of-results programs is likely to expand, but clinical adoption will depend on clearer evidence of utility, standardized reporting, and regulatory clarity.",
             "heading": "Where it is going"
         }
     ],
@@ -66,8 +66,8 @@
             "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/8aa5033b/"
         }
     ],
-    "generated": "2026-09-24",
+    "generated": "2026-09-25",
     "parent_name": "Genomic Medicine and Precision Therapeutics",
     "parent_path": "/ai-ecosystem/enterprise-applications-governance-and-tools/39870b61/",
-    "refresh_every_days": 30
+    "refresh_every_days": 90
 }

@@ -4,7 +4,7 @@
     "slug": "law-research-adversarial",
     "shape": "art-topic",
     "title": "Adversarial Statutory Interpretation",
-    "answer": "This page covers the use of AI systems to produce and test competing interpretations of statutes in litigation and regulatory disputes. It includes techniques for identifying textual ambiguity, mapping legislative history, and generating plausible readings that favor one side or the other. The focus is on how lawyers and legal researchers can use language models and retrieval tools to build arguments about what a statute means, rather than on predicting how a court will rule.",
+    "answer": "Adversarial statutory interpretation is the practice of using computational tools to identify competing readings of a statute, test how courts might resolve ambiguity, and map the interpretive moves available to each side in litigation. It covers canons of construction, legislative history, agency guidance, and prior judicial gloss, treated as inputs to a structured contest between plausible meanings. The goal is not to find the single correct answer but to surface the strongest arguments for and against each reading before a judge or regulator. This work sits inside legal research and case strategy, where the same text can support different outcomes depending on jurisdiction, record, and audience.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-09-24T18:55:54-05",
+    "built_at": "2026-09-24T23:27:05-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Lawyer",
@@ -28,23 +28,23 @@
     "page_uid": "3d58d041",
     "sections": [
         {
-            "body": "This page covers the use of AI systems to produce and test competing interpretations of statutes in litigation and regulatory disputes. It includes techniques for identifying textual ambiguity, mapping legislative history, and generating plausible readings that favor one side or the other. The focus is on how lawyers and legal researchers can use language models and retrieval tools to build arguments about what a statute means, rather than on predicting how a court will rule.",
+            "body": "Adversarial statutory interpretation is the practice of using computational tools to identify competing readings of a statute, test how courts might resolve ambiguity, and map the interpretive moves available to each side in litigation. It covers canons of construction, legislative history, agency guidance, and prior judicial gloss, treated as inputs to a structured contest between plausible meanings. The goal is not to find the single correct answer but to surface the strongest arguments for and against each reading before a judge or regulator. This work sits inside legal research and case strategy, where the same text can support different outcomes depending on jurisdiction, record, and audience.",
             "heading": "Scope"
         },
         {
-            "body": "The work runs on general purpose large language models connected to legal document collections through retrieval augmented generation. Statutes, regulations, committee reports, and prior court decisions are indexed in vector databases so the model can pull relevant passages before drafting an interpretation. Some teams fine tune smaller models on annotated examples of statutory construction canons, but most use prompt based workflows with commercial or open weight models.",
+            "body": "The work runs on document retrieval systems, legal databases, and language models tuned for statutory text and case law. Practitioners typically combine full-text search over annotated codes and regulations with embeddings that cluster similar interpretive questions across circuits. Compute is modest by machine learning standards, often a single GPU or cloud API for inference, because the bottleneck is the quality of the source corpus and the prompt or query design. No specialized hardware is required beyond what a modern legal research platform already uses.",
             "heading": "What it runs on"
         },
         {
-            "body": "A lawyer typically starts by stating the statutory provision and the interpretive question. The system then retrieves related text and precedent, and produces several candidate readings, each with supporting and opposing citations. The lawyer reviews these outputs, edits them, and uses them to stress test the opposing side's likely arguments. The method is iterative: each round of generated text is checked against the actual statutory language and the jurisdiction's rules of construction.",
+            "body": "The method begins by isolating the operative phrase and its syntactic alternatives, then retrieving cases, legislative materials, and agency statements that bear on each candidate meaning. A model or search workflow is used to generate paraphrases, flag canons that cut for or against a reading, and compare how different courts have handled analogous language. Human lawyers then rank the outputs by adversarial strength, checking citations and discarding readings that no reasonable tribunal would adopt. The result is a matrix of interpretations with supporting and opposing authority, not a single predicted holding.",
             "heading": "How the work is done"
         },
         {
-            "body": "The main risks are fabricated case citations, leakage of confidential case strategy into third party models, and over reliance on a model's confident but wrong reading. Lawyers must verify every cited source and keep client specific material out of unapproved systems. Provenance matters: any generated interpretation should be traceable to the exact statutory text, legislative history, or precedent that supports it. The site's 210 compliance and regulation pages track the professional responsibility rules that apply to AI assisted legal research.",
+            "body": "Rights and risk center on citation accuracy, confidentiality, and the duty of candor to the tribunal. A generated interpretation can misattribute a holding or invent a legislative snippet, so every output must be verified against primary sources before it enters a brief or oral argument. Client confidences and work product protections apply to the prompts and the retrieved materials, and firms must ensure that third party tools do not retain or train on privileged text. Provenance matters because an argument built on an unverified paraphrase can expose counsel to sanctions or weaken the client's position.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The next few years will likely bring legal specific models that are better at following canons of construction and less prone to inventing authority. Tools will move from drafting single interpretations to running structured adversarial simulations, where one model argues for a reading and another attacks it. Integration with state bill tracking, including the 6,825 state AI bills currently monitored on this site, may let lawyers test how a proposed statute would be interpreted under different judicial philosophies.",
+            "body": "The practice is moving toward systems that can simulate a panel of judges or a regulator's likely questions and stress test a statutory reading before filing. As more state and federal bills are tracked and more case law is encoded, tools will get better at spotting interpretive splits early and at linking a pending matter to the exact language that divides courts. The likely near term change is not autonomous legal reasoning but tighter retrieval and verification loops, so that a lawyer can see the full adversarial map of a statute in minutes rather than days.",
             "heading": "Where it is going"
         }
     ],
@@ -66,8 +66,8 @@
             "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/244fa447/"
         }
     ],
-    "generated": "2026-09-24",
+    "generated": "2026-09-25",
     "parent_name": "Legal Research and Case Strategy",
     "parent_path": "/ai-ecosystem/enterprise-applications-governance-and-tools/18681873/",
-    "refresh_every_days": 30
+    "refresh_every_days": 90
 }

@@ -1,0 +1,93 @@
+{
+    "uid": "1c4f6caa",
+    "name": "Text to SQL",
+    "slug": "sql-text-to-sql",
+    "shape": "art-topic",
+    "title": "Text to SQL",
+    "answer": "Text to SQL is the task of translating a natural language question into a SQL query that runs against a real schema and returns the answer; it is how business users query data without an analyst in between. The input is a question such as 'which region had the most returns last quarter', and the output is a query that respects the actual table and column names, joins, filters and aggregations in the database. The work sits between conversational interfaces and structured data access, and it is judged by whether the generated query executes and returns the correct rows, not just by whether it looks plausible.",
+    "crumbs": [
+        {
+            "name": "AI and SQL",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/3d344eab/"
+        }
+    ],
+    "noindex": false,
+    "built_at": "2026-09-24T23:27:05-05",
+    "category": "enterprise-applications-governance-and-tools",
+    "expanded": true,
+    "hub_name": "AI and SQL",
+    "hub_path": "/ai-ecosystem/enterprise-applications-governance-and-tools/3d344eab/",
+    "page_uid": "1c4f6caa",
+    "sections": [
+        {
+            "body": "Text to SQL is the task of translating a natural language question into a SQL query that runs against a real schema and returns the answer; it is how business users query data without an analyst in between. The input is a question such as 'which region had the most returns last quarter', and the output is a query that respects the actual table and column names, joins, filters and aggregations in the database. The work sits between conversational interfaces and structured data access, and it is judged by whether the generated query executes and returns the correct rows, not just by whether it looks plausible.",
+            "heading": "Scope"
+        },
+        {
+            "body": "A text to SQL system runs against a live database or warehouse, usually through a connector that can read schema metadata and execute queries. The site's own tracking shows 262 active Model Context Protocol servers for SQL databases and warehouses, which is one common way to give a model a controlled handle to a database. The model itself may run in a cloud API or on local hardware, but the SQL it writes is executed by the database engine, not by the model.",
+            "heading": "What it runs on"
+        },
+        {
+            "body": "The typical method starts by turning the relevant part of the schema into text, often with table and column names, types, primary and foreign keys, and sample values. The model is then asked to produce a SQL query, sometimes with a few example question-query pairs in the prompt. Many systems add a retrieval step that selects only the tables and columns most likely to answer the question, because large schemas do not fit in a prompt. The generated query is then executed against a read-only or sandboxed copy of the database, and if it fails or returns an unexpected result, the error message can be fed back for a corrected attempt.",
+            "heading": "How the work is done"
+        },
+        {
+            "body": "The main risks are incorrect results, queries that touch more data than intended, and users asking questions that exceed their access rights. Because the generated SQL is executed by the database, existing row-level security, role permissions and audit logging still apply, and the model does not bypass them. Provenance matters because a wrong join or filter can produce a confident but false answer, so many teams log the question, the generated query and the returned rows for review. There is also a risk that schema names or sample data in prompts leak into model logs, so prompt and response handling needs the same data classification as the underlying tables.",
+            "heading": "Rights, risk and provenance"
+        },
+        {
+            "body": "Text to SQL is moving from single-shot generation toward multi-turn workflows where the system asks for clarification, proposes a query, shows the result and accepts follow-up corrections. Better schema linking and retrieval are reducing failures on wide tables and complex joins, and the growth of Model Context Protocol servers for SQL databases points to a more standard way for models to discover schemas and run queries under existing permissions. The likely outcome is not a replacement for analysts but a faster first pass for routine questions, with human review kept for high-stakes numbers.",
+            "heading": "Where it is going"
+        }
+    ],
+    "siblings": [
+        {
+            "name": "Text to SQL Benchmarks",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/b32896c8/"
+        },
+        {
+            "name": "Vector Search Inside SQL Databases",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/bd660f27/"
+        },
+        {
+            "name": "SQL and AI Training Data Pipelines",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/49220ce5/"
+        },
+        {
+            "name": "Feature Stores",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/8be637e6/"
+        },
+        {
+            "name": "Warehouses and Lakehouses for AI",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/678f8878/"
+        },
+        {
+            "name": "Semantic Layers",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/552cb1a1/"
+        },
+        {
+            "name": "SQL Injection Through AI",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/ab2a7e43/"
+        },
+        {
+            "name": "Agent Database Access and Permissions",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/247e6dbd/"
+        },
+        {
+            "name": "MCP Database Servers",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/20be2010/"
+        },
+        {
+            "name": "AI Query Optimisation",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/5a695195/"
+        },
+        {
+            "name": "Data Quality for AI",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/bfd29330/"
+        }
+    ],
+    "generated": "2026-09-25",
+    "parent_name": "AI and SQL",
+    "parent_path": "/ai-ecosystem/enterprise-applications-governance-and-tools/3d344eab/",
+    "refresh_every_days": 90
+}

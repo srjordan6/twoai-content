@@ -1,0 +1,93 @@
+{
+    "uid": "bfd29330",
+    "name": "Data Quality for AI",
+    "slug": "sql-data-quality",
+    "shape": "art-topic",
+    "title": "Data Quality for AI",
+    "answer": "Data quality covers the accuracy, completeness, consistency and timeliness of the rows an AI system reads; tests written in SQL, lineage records and data contracts are the usual controls, because a model cannot tell a wrong value from a right one. It also includes uniqueness, validity and referential integrity where those properties affect joins and aggregations. Quality is measured against the source system and the business rule, not against the model's output.",
+    "crumbs": [
+        {
+            "name": "AI and SQL",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/3d344eab/"
+        }
+    ],
+    "noindex": false,
+    "built_at": "2026-09-24T23:27:05-05",
+    "category": "enterprise-applications-governance-and-tools",
+    "expanded": true,
+    "hub_name": "AI and SQL",
+    "hub_path": "/ai-ecosystem/enterprise-applications-governance-and-tools/3d344eab/",
+    "page_uid": "bfd29330",
+    "sections": [
+        {
+            "body": "Data quality covers the accuracy, completeness, consistency and timeliness of the rows an AI system reads; tests written in SQL, lineage records and data contracts are the usual controls, because a model cannot tell a wrong value from a right one. It also includes uniqueness, validity and referential integrity where those properties affect joins and aggregations. Quality is measured against the source system and the business rule, not against the model's output.",
+            "heading": "Scope"
+        },
+        {
+            "body": "The checks run where the data lives, usually in the SQL database or warehouse that already stores the rows. Scheduled jobs execute SQL assertions after each load, and the pass or fail results are written to a metadata table that downstream tools can query. For AI systems that read through a Model Context Protocol server, the server can expose those quality results as a resource, so the model or an orchestration step can refuse to proceed on stale or failed checks. The compute is modest, but the storage and scheduling need to be reliable enough that a failed check is visible before training or inference.",
+            "heading": "What it runs on"
+        },
+        {
+            "body": "The work starts with profiling a table to find null rates, duplicates, out-of-range values and broken foreign keys. Analysts then encode expectations as SQL queries, for example a count of rows where a required column is null or a join that returns orphans. Lineage is recorded from source table to model input so that a change in one column can be traced to every downstream dataset. Data contracts fix the schema, types and allowed values at the point of handoff, and a contract violation blocks the pipeline before the AI system consumes the rows.",
+            "heading": "How the work is done"
+        },
+        {
+            "body": "Provenance for AI data quality means recording which system produced each row, when it was extracted, and which transformations were applied. That record is what lets a team answer whether a model was trained or prompted on data that was later found to be wrong. Access controls on the quality metadata matter as much as controls on the data itself, because a failed check can reveal sensitive business conditions. Risk is usually managed by treating a quality failure as a stop condition for automated pipelines, with a human owner named for each dataset and each contract.",
+            "heading": "Rights, risk and provenance"
+        },
+        {
+            "body": "Data quality for AI is moving from batch checks after load to checks that run close to inference time, so an agent can see freshness and completeness before it answers. More of the work is being expressed as data contracts that both the producer and the model gateway enforce. The growth of Model Context Protocol servers for SQL databases points toward quality results being queried by the model itself rather than only by a dashboard. Over time, the distinction between a data test and a model evaluation is likely to blur, with the same lineage graph covering both the rows and the prompts that read them.",
+            "heading": "Where it is going"
+        }
+    ],
+    "siblings": [
+        {
+            "name": "Text to SQL",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/1c4f6caa/"
+        },
+        {
+            "name": "Text to SQL Benchmarks",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/b32896c8/"
+        },
+        {
+            "name": "Vector Search Inside SQL Databases",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/bd660f27/"
+        },
+        {
+            "name": "SQL and AI Training Data Pipelines",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/49220ce5/"
+        },
+        {
+            "name": "Feature Stores",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/8be637e6/"
+        },
+        {
+            "name": "Warehouses and Lakehouses for AI",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/678f8878/"
+        },
+        {
+            "name": "Semantic Layers",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/552cb1a1/"
+        },
+        {
+            "name": "SQL Injection Through AI",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/ab2a7e43/"
+        },
+        {
+            "name": "Agent Database Access and Permissions",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/247e6dbd/"
+        },
+        {
+            "name": "MCP Database Servers",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/20be2010/"
+        },
+        {
+            "name": "AI Query Optimisation",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/5a695195/"
+        }
+    ],
+    "generated": "2026-09-25",
+    "parent_name": "AI and SQL",
+    "parent_path": "/ai-ecosystem/enterprise-applications-governance-and-tools/3d344eab/",
+    "refresh_every_days": 90
+}

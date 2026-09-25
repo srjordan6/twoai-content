@@ -4,7 +4,7 @@
     "slug": "law-ops-local",
     "shape": "art-topic",
     "title": "Local and Air-Gapped Model Deployment",
-    "answer": "Local and air-gapped model deployment means running AI models on hardware controlled by the law firm or legal department, with no connection to outside networks. This covers document review, summarization, contract clause extraction, e-discovery coding, and internal knowledge retrieval where confidentiality or client consent rules prohibit sending data to third-party cloud services. It also includes models used in litigation support, privilege review, and matter intake workflows. The scope is narrower than general enterprise AI because legal data often includes protected health information, trade secrets, and attorney work product.",
+    "answer": "Local and air-gapped model deployment covers running language models, document review classifiers, and other AI systems entirely within a law firm's or legal department's own infrastructure, with no connection to external cloud services. It is used where client confidentiality, legal privilege, court protective orders, or data residency rules prohibit sending matter data to third parties. The scope includes model selection, hardware provisioning, software installation, data handling, and ongoing maintenance inside the secure perimeter. It also covers offline updates and patch management that must be brought in through controlled transfer points.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-09-24T18:55:54-05",
+    "built_at": "2026-09-24T23:27:05-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Lawyer",
@@ -28,23 +28,23 @@
     "page_uid": "d22e2b49",
     "sections": [
         {
-            "body": "Local and air-gapped model deployment means running AI models on hardware controlled by the law firm or legal department, with no connection to outside networks. This covers document review, summarization, contract clause extraction, e-discovery coding, and internal knowledge retrieval where confidentiality or client consent rules prohibit sending data to third-party cloud services. It also includes models used in litigation support, privilege review, and matter intake workflows. The scope is narrower than general enterprise AI because legal data often includes protected health information, trade secrets, and attorney work product.",
+            "body": "Local and air-gapped model deployment covers running language models, document review classifiers, and other AI systems entirely within a law firm's or legal department's own infrastructure, with no connection to external cloud services. It is used where client confidentiality, legal privilege, court protective orders, or data residency rules prohibit sending matter data to third parties. The scope includes model selection, hardware provisioning, software installation, data handling, and ongoing maintenance inside the secure perimeter. It also covers offline updates and patch management that must be brought in through controlled transfer points.",
             "heading": "Scope"
         },
         {
-            "body": "It typically runs on on-premises servers with one or more GPUs, or on isolated virtual private cloud segments that have no internet egress. Air-gapped deployments add physical or logical network separation, so model weights, inference code, and data all stay inside the boundary. Storage and backup systems must also be inside the boundary, and updates are brought in through controlled media or one-way transfer points. Smaller deployments may run quantized models on a single workstation or a small cluster.",
+            "body": "The work runs on dedicated servers or workstations with graphics processing units, high memory, and fast local storage, often housed in the firm's data center or a colocation facility. Air-gapped environments have no network route to the internet, so all model weights, code, and updates arrive on physical media or through a one-way data diode. Virtualization and container platforms are common to isolate models from other firm systems. Backup and logging infrastructure must also reside inside the boundary.",
             "heading": "What it runs on"
         },
         {
-            "body": "Teams usually start with an open-weight model that is downloaded, scanned, and then moved into the isolated environment. The model is fine-tuned or adapted on internal legal documents, past work product, and matter metadata, often using retrieval augmented generation over a local document index. Prompts and outputs are logged locally for quality control, and lawyers or legal operations staff review model output before it is used in filings or advice. No data leaves the boundary during inference or training.",
+            "body": "Teams typically start by inventorying the legal tasks that need AI support, such as privilege review, contract clause extraction, or deposition summarization. They then select an open-weight model or build a smaller fine-tuned model, transfer it into the isolated environment, and validate its outputs against a held-out set of matter documents. Prompting, retrieval augmented generation, and fine-tuning are all done locally, with no telemetry or usage data leaving the network. Quality control is manual at first, with lawyers reviewing model outputs before they are used in work product.",
             "heading": "How the work is done"
         },
         {
-            "body": "The main rights questions are model license terms, because some open-weight licenses restrict commercial use or require attribution, and the provenance of training data can carry unresolved copyright claims. This site tracks 142 active AI lawsuits, 92 of them intellectual property, which is a reminder that using a model trained on disputed data does not remove underlying IP risk even when deployment is local. Air gapping reduces confidentiality and data breach risk but does not by itself solve accuracy, bias, or privilege waiver problems. Legal teams need an inventory of model version, training data lineage, fine-tuning data, and access logs to respond to discovery or regulatory requests.",
+            "body": "Rights and risk center on model licenses, data provenance, and the duty to protect client confidences. Open-weight licenses vary in their commercial use terms, and a firm must record which model version and training data were used for each matter. Because the system is offline, audit logs, access controls, and version history must be maintained locally to show what the model saw and produced. Risk assessments cover hardware failure, insider access, stale models, and the inability to receive automatic security patches.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "Local deployment is moving toward smaller, task-specific models that can run on modest hardware and be updated through controlled channels. More legal departments are pairing air-gapped models with local search indexes and matter management systems so that retrieval and generation happen in one closed loop. Expect stronger procurement language around model provenance, license audits, and on-premises support contracts. The direction is not a single giant model but a set of controlled, auditable models for distinct legal tasks, with clear boundaries between what may be sent to a cloud provider and what must stay inside.",
+            "body": "Local and air-gapped deployment is moving toward smaller, more efficient models that can run on a single secure workstation rather than a rack of servers. Legal teams are likely to see more packaged, offline-ready tools with built-in logging and e-discovery integrations. Hardware costs are falling while open-weight model quality improves, making isolated deployment practical for mid-size firms. The main open question is how courts and regulators will treat locally deployed models in discovery and privilege disputes, especially when a model's training data or fine-tuning set is itself subject to challenge.",
             "heading": "Where it is going"
         }
     ],
@@ -66,8 +66,8 @@
             "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/5abf4bd2/"
         }
     ],
-    "generated": "2026-09-24",
+    "generated": "2026-09-25",
     "parent_name": "Legal Operations, Infrastructure and Security",
     "parent_path": "/ai-ecosystem/enterprise-applications-governance-and-tools/2148d228/",
-    "refresh_every_days": 30
+    "refresh_every_days": 90
 }

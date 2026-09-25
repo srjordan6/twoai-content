@@ -1,0 +1,93 @@
+{
+    "uid": "49220ce5",
+    "name": "SQL and AI Training Data Pipelines",
+    "slug": "sql-training-pipelines",
+    "shape": "art-topic",
+    "title": "SQL and AI Training Data Pipelines",
+    "answer": "Training and fine tuning data inside an organisation is usually assembled by pipelines that extract rows from operational databases, clean and join them with SQL, and load them where training jobs can read them; mistakes in those queries become mistakes in the model. SQL is the common interface for selecting, filtering, aggregating, and labelling rows before they become training examples. The scope covers batch extraction, incremental change capture, feature store population, and the final materialisation of train, validation, and test splits. It also includes the reverse flow where model outputs are written back to SQL tables for evaluation or human review.",
+    "crumbs": [
+        {
+            "name": "AI and SQL",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/3d344eab/"
+        }
+    ],
+    "noindex": false,
+    "built_at": "2026-09-24T23:27:05-05",
+    "category": "enterprise-applications-governance-and-tools",
+    "expanded": true,
+    "hub_name": "AI and SQL",
+    "hub_path": "/ai-ecosystem/enterprise-applications-governance-and-tools/3d344eab/",
+    "page_uid": "49220ce5",
+    "sections": [
+        {
+            "body": "Training and fine tuning data inside an organisation is usually assembled by pipelines that extract rows from operational databases, clean and join them with SQL, and load them where training jobs can read them; mistakes in those queries become mistakes in the model. SQL is the common interface for selecting, filtering, aggregating, and labelling rows before they become training examples. The scope covers batch extraction, incremental change capture, feature store population, and the final materialisation of train, validation, and test splits. It also includes the reverse flow where model outputs are written back to SQL tables for evaluation or human review.",
+            "heading": "Scope"
+        },
+        {
+            "body": "A typical stack runs on the organisation's existing relational engines, such as PostgreSQL, MySQL, or cloud data warehouses, with orchestration handled by schedulers and workflow tools. Pipelines often use staging tables, materialized views, and change data capture to move rows without disrupting production databases. The same SQL engine may serve both the operational application and the training data export, so resource isolation and read replicas are common. A growing integration surface is the Model Context Protocol; of 2401 active servers tracked on this site, 262 expose SQL databases and warehouses to AI tools.",
+            "heading": "What it runs on"
+        },
+        {
+            "body": "The work is done by writing and reviewing SQL transformations that turn raw operational rows into clean, labelled examples. Common steps include joining fact and dimension tables, filtering out test or fraudulent records, aggregating events over time windows, and encoding categorical values. Teams often keep these transformations in version-controlled files and run them as idempotent jobs so a training set can be rebuilt from source at any commit. Because the same SQL may serve both training and inference, the feature logic must be kept consistent between offline and online paths.",
+            "heading": "How the work is done"
+        },
+        {
+            "body": "Rights and risk centre on who can read which rows and whether the training set preserves permissions, consent, and data minimisation. SQL pipelines can silently leak personal data through joins or insufficient WHERE clauses, and a biased sample in a query becomes a biased model downstream. Provenance is handled by recording source tables, query versions, row counts, and checksums for each training artifact. Review and approval gates are often placed on the SQL definitions rather than on the exported files, because the query is the real specification of what the model learns.",
+            "heading": "Rights, risk and provenance"
+        },
+        {
+            "body": "The direction is toward tighter coupling between SQL sources and AI tooling through protocols such as Model Context Protocol, with 262 SQL database and warehouse servers already tracked here. SQL is becoming the control plane for training data rather than just a query language, with more pipelines defined as code and validated by data contracts. Natural language interfaces are starting to generate SQL for dataset assembly, but human review of the resulting queries remains important. The line between operational databases and vector stores is blurring, as some engines now store embeddings alongside relational rows and allow similarity joins in SQL.",
+            "heading": "Where it is going"
+        }
+    ],
+    "siblings": [
+        {
+            "name": "Text to SQL",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/1c4f6caa/"
+        },
+        {
+            "name": "Text to SQL Benchmarks",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/b32896c8/"
+        },
+        {
+            "name": "Vector Search Inside SQL Databases",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/bd660f27/"
+        },
+        {
+            "name": "Feature Stores",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/8be637e6/"
+        },
+        {
+            "name": "Warehouses and Lakehouses for AI",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/678f8878/"
+        },
+        {
+            "name": "Semantic Layers",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/552cb1a1/"
+        },
+        {
+            "name": "SQL Injection Through AI",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/ab2a7e43/"
+        },
+        {
+            "name": "Agent Database Access and Permissions",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/247e6dbd/"
+        },
+        {
+            "name": "MCP Database Servers",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/20be2010/"
+        },
+        {
+            "name": "AI Query Optimisation",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/5a695195/"
+        },
+        {
+            "name": "Data Quality for AI",
+            "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/bfd29330/"
+        }
+    ],
+    "generated": "2026-09-25",
+    "parent_name": "AI and SQL",
+    "parent_path": "/ai-ecosystem/enterprise-applications-governance-and-tools/3d344eab/",
+    "refresh_every_days": 90
+}

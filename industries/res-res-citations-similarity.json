@@ -4,7 +4,7 @@
     "slug": "res-citations-similarity",
     "shape": "art-topic",
     "title": "Clustering Papers by Meaning",
-    "answer": "Clustering papers by meaning groups research works according to what they argue or investigate, not just shared keywords or citations. It is used to find thematic families, overlaps between fields, and gaps in a literature. The practice sits inside citation mapping and discovery, where a reader wants to move from one paper to a body of related work. A small working library, such as the 135 papers held on this site, is enough to make meaningful clusters when the papers are chosen around a question.",
+    "answer": "Clustering papers by meaning groups research documents according to what they argue, show, or investigate, rather than by surface features such as shared citations, author overlap, or keyword matches. It is used in citation mapping to reveal thematic clusters, emerging subfields, and overlooked connections across a corpus. The output is a set of clusters where each cluster contains papers that address a similar question, method, or finding, even if they do not cite one another. This supports literature review, research discovery, and gap analysis.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-09-24T18:55:54-05",
+    "built_at": "2026-09-24T23:27:05-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Researcher",
@@ -28,23 +28,23 @@
     "page_uid": "8eedbbdc",
     "sections": [
         {
-            "body": "Clustering papers by meaning groups research works according to what they argue or investigate, not just shared keywords or citations. It is used to find thematic families, overlaps between fields, and gaps in a literature. The practice sits inside citation mapping and discovery, where a reader wants to move from one paper to a body of related work. A small working library, such as the 135 papers held on this site, is enough to make meaningful clusters when the papers are chosen around a question.",
+            "body": "Clustering papers by meaning groups research documents according to what they argue, show, or investigate, rather than by surface features such as shared citations, author overlap, or keyword matches. It is used in citation mapping to reveal thematic clusters, emerging subfields, and overlooked connections across a corpus. The output is a set of clusters where each cluster contains papers that address a similar question, method, or finding, even if they do not cite one another. This supports literature review, research discovery, and gap analysis.",
             "heading": "Scope"
         },
         {
-            "body": "The work runs on text embeddings produced by transformer language models, which turn titles, abstracts, or full text into fixed-length vectors. These vectors are stored in a vector index that supports fast nearest-neighbour search. Clustering then runs on the similarity scores or on a reduced two-dimensional projection of the vectors. No specialised hardware is required for a few hundred papers; a standard CPU is sufficient for embedding and clustering at that scale.",
+            "body": "The work runs on a document store of full texts or abstracts, plus a vector index built from paper embeddings. A typical setup uses a transformer model to encode each paper into a dense vector, then stores those vectors in a local or cloud vector database. For a small library, such as the 135 papers held on this site, the whole pipeline can run on a single workstation with a CPU or a modest GPU. No external search tool is needed, and the site links to original papers rather than to a third-party search product.",
             "heading": "What it runs on"
         },
         {
-            "body": "A typical pipeline embeds each paper's abstract and title, computes pairwise cosine similarity, and applies a density-based or hierarchical clustering algorithm. Cluster labels are then derived from the most frequent terms, key phrases, or extracted claims in each group. When a library has structured claims, as this site does with 11,075 extracted claims, clustering can be run on claim-level embeddings to separate distinct findings within a single paper. The result is a map of meaning rather than a list of keywords.",
+            "body": "The core method is to embed each paper's title, abstract, and, where available, full text into a shared vector space using a pretrained language model. Similarity between papers is then computed with cosine distance or a related metric. Clustering is applied to the resulting similarity matrix, often with algorithms such as hierarchical agglomerative clustering, k-means on reduced dimensions, or community detection on a nearest-neighbor graph. The number of clusters is usually chosen by inspecting a dendrogram or by setting a similarity threshold, not by assuming a fixed count in advance.",
             "heading": "How the work is done"
         },
         {
-            "body": "Clustering by meaning can overstate similarity, hide minority views, or inherit bias from the embedding model's training data. Provenance matters because a cluster is a derived artefact, not a source; every member should link back to the original paper. This site follows that rule by never linking to the Consensus search tool and always linking to the original research work. Rights risk is lower when only abstracts and metadata are embedded; full-text clustering raises access and copyright considerations.",
+            "body": "Rights and risk center on how paper text is used for embeddings and how cluster labels are presented. If full text is processed, access must respect publisher terms, and the site's practice of linking to the original paper rather than to a search tool keeps provenance clear. A cluster label generated from embeddings can misstate a paper's argument, so human review of cluster membership and labels is part of responsible use. There is also a risk that clustering by meaning amplifies dominant framings and hides minority or critical work, so cluster boundaries should be treated as provisional.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "Clustering is moving toward interactive maps where a reader can zoom from a whole field to a single claim and back. Embeddings will increasingly include figures, equations, and citation context, not just words. Cluster explanations are likely to become more faithful, with short natural-language summaries tied to the underlying papers. The goal is discovery that keeps the reader anchored to primary sources while revealing structure across hundreds or thousands of works.",
+            "body": "The direction is toward finer-grained clustering that separates a paper's claims, methods, and evidence rather than treating the whole paper as one unit. As embedding models improve, clusters will become more stable across paraphrases and languages, and interactive maps will let a researcher move between cluster view and the original paper. The site's extracted claims, currently 11,222 across its library, point toward claim-level clustering as a next step, where individual findings are grouped even when they come from papers in different fields.",
             "heading": "Where it is going"
         }
     ],
@@ -66,8 +66,8 @@
             "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/14e515c8/"
         }
     ],
-    "generated": "2026-09-24",
+    "generated": "2026-09-25",
     "parent_name": "Citation Mapping and Discovery",
     "parent_path": "/ai-ecosystem/enterprise-applications-governance-and-tools/7e07ccb2/",
-    "refresh_every_days": 30
+    "refresh_every_days": 90
 }
