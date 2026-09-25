@@ -16,16 +16,15 @@
         "generated_on": "2026-09-03"
     },
     "abstract": "",
-    "built_at": "2026-09-24T18:32:21-05:00",
+    "built_at": "2026-09-24T22:08:32-05:00",
     "page_uid": "r0000045",
     "citations": 65,
-    "generated": "2026-09-24",
+    "generated": "2026-09-25",
     "paper_type": "Journal Article",
     "topic_name": "Reasoning",
     "topic_slug": "reasoning",
     "abstract_source": "consensus",
     "explain_beginner": "AI models that reason step by step before answering give better answers, but that thinking process can use an enormous number of words internally, which costs real money and time before a single final answer appears. This survey catalogs the different ways researchers are trying to cut that cost without losing the quality benefit. It groups the approaches into two families, ones that keep the visible step by step reasoning but make it shorter and less repetitive, and ones that hide the reasoning entirely inside the model's internal calculations so it never has to be written out as text at all. The paper argues this efficiency question is not a side issue, it is what determines whether advanced reasoning AI becomes cheap enough for everyday products or stays too expensive for anything but special, high value use cases only.",
     "explain_business": "The direct cost lesson here is that a reasoning model's expense is not fixed, it is a design choice that can be tuned along a real tradeoff between token cost, latency, and answer quality, and this survey maps the concrete techniques available for making that tradeoff deliberately rather than by default. For a company running reasoning models at production scale, routing mechanisms that only send genuinely hard queries into expensive extended reasoning, while answering easy ones cheaply, is presented as one of the most immediately practical levers, directly affecting inference cost per query at volume. The authors' own caution matters for governance too, techniques that hide reasoning inside internal hidden states save cost but reduce what a human reviewer can actually audit afterward, so a compliance sensitive deployment may need the more expensive, visible reasoning approach instead of the cheaper opaque one right now.",
-    "refresh_every_days": 30,
     "explain_practitioner": "Liu and colleagues systematize efficiency techniques for large reasoning models into two categories, explicit compact chain of thought methods, which preserve a human readable reasoning trace but reduce its token count through techniques like pruning redundant steps, and implicit latent methods, which encode the reasoning process inside the model's hidden states rather than generating it as visible output tokens at all, trading interpretability for speed. Beyond that core split, they catalog specific optimization techniques including model merging, architectural changes purpose built for efficient reasoning, and routing mechanisms that send easy queries to cheaper, non reasoning paths and only route hard queries into full extended reasoning. As a survey published in IEEE Transactions on Pattern Analysis and Machine Intelligence and tracked in an accompanying public GitHub repository, its contribution is comparative organization of a fast moving literature, and the authors flag that the interpretability efficiency tradeoff, and the safety implications of compressing or hiding reasoning traces, remain open problems rather than solved ones."
 }
