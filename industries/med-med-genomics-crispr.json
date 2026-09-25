@@ -4,7 +4,7 @@
     "slug": "med-genomics-crispr",
     "shape": "art-topic",
     "title": "Gene Editing Guide Design",
-    "answer": "Gene editing guide design is the computational task of choosing short RNA sequences that direct a CRISPR-associated nuclease to a target DNA site while minimizing off-target cleavage and maximizing on-target efficiency. It spans single guide RNA selection for Cas9, Cas12, base editors, and prime editors, and includes scoring candidate guides against reference genomes, transcriptomes, and patient-specific variants. The work sits inside genomic medicine because a poorly chosen guide can cause unintended edits, failed repair outcomes, or safety problems in therapeutic cells. It is not the same as designing the repair template or measuring the edit after delivery, though those steps depend on the guide.",
+    "answer": "Gene editing guide design is the process of selecting short RNA sequences that direct a CRISPR nuclease to a specific genomic location. The goal is to choose guides that cut efficiently at the intended target while avoiding similar sequences elsewhere in the genome. This work sits inside genomic medicine because a well chosen guide is a prerequisite for safe and effective therapeutic edits, and poor guide choice is a common source of experimental failure.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-09-24T17:17:09-05",
+    "built_at": "2026-09-24T18:55:54-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Physician",
@@ -28,23 +28,23 @@
     "page_uid": "c9b1bd80",
     "sections": [
         {
-            "body": "Gene editing guide design is the computational task of choosing short RNA sequences that direct a CRISPR-associated nuclease to a target DNA site while minimizing off-target cleavage and maximizing on-target efficiency. It spans single guide RNA selection for Cas9, Cas12, base editors, and prime editors, and includes scoring candidate guides against reference genomes, transcriptomes, and patient-specific variants. The work sits inside genomic medicine because a poorly chosen guide can cause unintended edits, failed repair outcomes, or safety problems in therapeutic cells. It is not the same as designing the repair template or measuring the edit after delivery, though those steps depend on the guide.",
+            "body": "Gene editing guide design is the process of selecting short RNA sequences that direct a CRISPR nuclease to a specific genomic location. The goal is to choose guides that cut efficiently at the intended target while avoiding similar sequences elsewhere in the genome. This work sits inside genomic medicine because a well chosen guide is a prerequisite for safe and effective therapeutic edits, and poor guide choice is a common source of experimental failure.",
             "heading": "Scope"
         },
         {
-            "body": "Guide design runs on standard bioinformatics infrastructure: reference genome builds, variant call files, and annotation databases for genes, regulatory elements, and known off-target sites. Most tools are deployed as command-line programs, web portals, or cloud pipelines that accept a target region or gene and return ranked guide sequences. Compute needs are modest compared with large language model training, often a single CPU or GPU per design job, but whole-genome off-target search can require indexed alignment or k-mer matching across billions of positions. The site's tracking of 732 AI tools and 803 scientific models reflects the broader ecosystem in which these design tools are catalogued, though the guide design tools themselves are usually specialized bioinformatics packages rather than general medical AI models.",
+            "body": "Guide design tools run on reference genome assemblies, patient derived sequence data, and large experimental datasets that record guide activity and off target cutting. The models are typically trained on data from pooled screens and then deployed through web portals or local pipelines that accept a gene or region of interest. Compute requirements are modest for a single query but grow when screening thousands of candidate guides across a whole genome.",
             "heading": "What it runs on"
         },
         {
-            "body": "The work is done by scoring candidate guides with a mix of empirical rules and learned models. Classical methods use position-specific nucleotide preferences, GC content, melting temperature, and mismatch counts against potential off-target sites. Modern approaches train gradient-boosted trees or convolutional neural networks on large libraries of measured on-target and off-target editing outcomes, then use those models to rank guides for a new target. Some pipelines also incorporate structural or epigenetic features, such as chromatin accessibility or DNA methylation, when those data are available for the cell type of interest. The output is typically a ranked list with scores for efficiency, specificity, and predicted repair outcome, not a single guaranteed best guide.",
+            "body": "The work is done by training machine learning models on features of the guide sequence, the target site, and the surrounding chromatin context. Models learn to predict on target efficiency from sequence composition, GC content, and position specific nucleotide preferences, while off target risk is estimated by searching the genome for near matches and scoring their mismatch patterns. Some approaches combine these predictions into a ranked list of candidate guides for a given target.",
             "heading": "How the work is done"
         },
         {
-            "body": "Rights and risk in guide design center on patient safety, data provenance, and liability for unintended edits. A guide that looks specific in a reference genome may still cut a rare variant in a patient, so clinical use requires re-scoring against the patient's own sequence and documenting the source and version of every genome build, annotation, and model. Product liability and wrongful death claims against AI companies, tracked on this site, are a reminder that design software can become part of a therapeutic workflow where an error has serious consequences. Compliance and regulation pages cover how guide design tools are validated, how off-target evidence is reported to regulators, and how informed consent describes the limits of computational prediction. No design tool removes the need for empirical testing in the actual edited cell type.",
+            "body": "Rights and risk and provenance center on the fact that an off target edit can create a harmful mutation, so guide design outputs are treated as safety relevant in therapeutic settings. The provenance of training data matters because models trained on cell lines may not transfer to primary patient cells, and regulatory review often asks how a guide was chosen and what evidence supports its specificity. Liability questions can arise if a designed guide causes an unintended edit, though the field is still developing clear standards for model validation and documentation.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "Where guide design is going is toward models that predict not just where a nuclease cuts but the full editing outcome, including indel patterns, base conversion, and unintended large deletions or chromosomal rearrangements. The field is also moving from reference-genome scoring to personal genome scoring, where a guide is re-ranked against a patient's variants before any therapeutic edit. As more editing outcomes are measured at scale, learned models are likely to improve on the current reliance on small, biased training sets. In the longer term, guide design may merge with repair template design and delivery vector choice into a single planning step for a genetic medicine.",
+            "body": "Where it is going is toward models that predict editing outcomes more precisely across cell types and delivery methods, including base editors and prime editors that do not create double strand breaks. Guide design is also being integrated with patient specific variant calling so that a guide can be checked against an individual's own genome rather than a reference. Over time, the practice is likely to become a standard part of preclinical safety packages for gene editing therapies.",
             "heading": "Where it is going"
         }
     ],

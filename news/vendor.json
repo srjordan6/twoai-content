@@ -46,6 +46,42 @@
             "entity_kind": "section"
         },
         {
+            "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-elasticache-global-datastore-tagging/",
+            "date": "2026-09-24",
+            "slug": "amazon-elasticache-global-datastore-now-supports-tagging-and-303c4e",
+            "title": "Amazon ElastiCache Global Datastore now supports tagging and tag-based access control",
+            "vendor": "Amazon Web Services",
+            "summary": "Amazon ElastiCache now supports resource tagging and tag-based access control (TBAC) for Global Datastore. Previously, ElastiCache supported tagging on all resources except Global Datastore, which prevented customers from applying a single, consistent permission and cost-allocation model across",
+            "has_page": true,
+            "entity_uid": "0d5de807",
+            "entity_kind": "company",
+            "reader_note": "For practitioners, this means you can now apply the same tag schema to Global Datastore as to clusters and other ElastiCache resources. You can use tags in IAM conditions to restrict actions like modifying or deleting a datastore, and in cost allocation reports to separate spend by project or team.\n\nWhat it does not do is alter data replication, failover, or latency. Tag-based access control only works if your organization consistently tags resources and writes policies that reference those tags, otherwise the feature adds little beyond labeling."
+        },
+        {
+            "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/eventbridge-relaunches-custom-event-buses/",
+            "date": "2026-09-24",
+            "slug": "amazon-eventbridge-relaunches-event-buses-for-enterprise-sca-fdab17",
+            "title": "Amazon EventBridge relaunches event buses for enterprise scale",
+            "vendor": "Amazon Web Services",
+            "summary": "Amazon EventBridge relaunches event buses with a new enhanced Custom event bus that lets you build event-driven applications that decouple teams and can scale with your organization.",
+            "has_page": true,
+            "entity_uid": "0d5de807",
+            "entity_kind": "company",
+            "reader_note": "For practitioners, this suggests you may be able to use a single custom event bus across more teams and larger workloads than before, but the announcement gives no specifics on throughput, quotas, or routing controls.\n\nBe sceptical until you test against your own event volumes and team boundaries. It does not prove that existing event bus limitations are gone or that migration is straightforward."
+        },
+        {
+            "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-gamelift-servers-region-expansion-2026",
+            "date": "2026-09-24",
+            "slug": "amazon-gamelift-servers-now-available-in-5-new-regions-and-8-4fb78c",
+            "title": "Amazon GameLift Servers now available in 5 new regions and 8 Local Zones",
+            "vendor": "Amazon Web Services",
+            "summary": "Amazon GameLift Servers is a fully managed service for deploying, operating, and scaling dedicated game servers for multiplayer games. High latency caused by geographic distance between players and servers remains one of the most common challenges in multiplayer game development.",
+            "has_page": true,
+            "entity_uid": "0d5de807",
+            "entity_kind": "company",
+            "reader_note": "For multiplayer game operators, this expands the set of locations where you can run dedicated servers. If your player base is concentrated near these new regions or Local Zones, you may be able to reduce round trip time by placing fleets closer to them. However, availability alone does not guarantee lower latency. You should measure actual ping times from your players to these locations before shifting capacity.\n\nAlso check that the instance types, scaling limits, and networking features you rely on are supported in each Local Zone. Local Zones often have smaller capacity than full regions, so plan for possible constraints during launch spikes. Treat this as an option to test, not a proven latency fix."
+        },
+        {
             "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-rds-mysql-extended-support-minor-5744-8046-rds/",
             "date": "2026-09-24",
             "slug": "amazon-rds-for-mysql-announces-extended-support-minor-versio-65f4b1",
@@ -81,6 +117,30 @@
             "reader_note": "If you maintain PostgreSQL workloads on RDS, this gives you an early way to test your applications against PostgreSQL 19 before it reaches general availability. Use the preview environment to check query plans, extension compatibility, and any changes to configuration parameters that might affect your schemas or performance.\n\nTreat this as a sandbox, not a signal to migrate. Beta releases can change before final release, and the preview environment does not carry production guarantees. A successful test here does not prove your workload is ready for PostgreSQL 19 in production, but it can shorten the work you do later."
         },
         {
+            "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-rds-sql-server-multi-az-developer-edition/",
+            "date": "2026-09-24",
+            "slug": "amazon-rds-supports-multi-az-for-sql-server-developer-editio-bac462",
+            "title": "Amazon RDS supports Multi-AZ for SQL Server Developer Edition",
+            "vendor": "Amazon Web Services",
+            "summary": "Amazon Relational Database Service (Amazon RDS) for SQL Server now supports Multi-AZ deployments using Always On Availability Groups for SQL Server Developer Edition.",
+            "has_page": true,
+            "entity_uid": "0d5de807",
+            "entity_kind": "company",
+            "reader_note": "For teams running SQL Server Developer Edition in RDS, this removes a limitation: you can now configure Multi-AZ with Always On Availability Groups, matching the high-availability architecture used by licensed editions. That lets you rehearse failover, patching, and maintenance behavior in a non-production environment before relying on it in production.\n\nLicensing is unchanged. Developer Edition remains for development and testing, not production use. Treat the new option as a way to validate operational runbooks and application behavior during failover, not as a signal that the edition is production-ready. Measure failover timing and data loss under your own workload."
+        },
+        {
+            "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/sagemaker-hyperpod-inference-gateway/",
+            "date": "2026-09-24",
+            "slug": "amazon-sagemaker-hyperpod-inference-gateway-for-scalable-llm-38e5ef",
+            "title": "Amazon SageMaker HyperPod Inference Gateway for scalable LLM inference",
+            "vendor": "Amazon Web Services",
+            "summary": "Amazon SageMaker HyperPod Inference Gateway is a Kubernetes-native, GPU-aware routing system that deploys as a single EKS managed add-on on existing SageMaker HyperPod infrastructure with zero application changes.",
+            "has_page": true,
+            "entity_uid": "0d5de807",
+            "entity_kind": "company",
+            "reader_note": "If you already run inference workloads on SageMaker HyperPod, this add-on could give you a routing layer without changing your application code. That may reduce the work of managing traffic across GPU nodes yourself.\n\nBe sceptical of what “GPU-aware” means in practice. The announcement does not show measured improvements in throughput, latency, or cost, and it does not prove the add-on works with your particular model serving setup. Treat it as a deployment convenience, not a performance result."
+        },
+        {
             "url": "https://www.tomshardware.com/tech-industry/semiconductors/asml-says-its-sells-absolutely-nothing-in-europe-calls-on-eu-to-help-create-demand",
             "date": "2026-09-24",
             "slug": "asml-says-it-sold-absolutely-nothing-in-europe-in-2026-f29e81",
@@ -102,6 +162,18 @@
             "entity_uid": "0d5de807",
             "entity_kind": "company",
             "reader_note": "If you build in the AWS European Sovereign Cloud, you can now use Lambda durable functions for multi-step applications and AI workflows. This may simplify orchestration that previously required separate services or custom state handling.\n\nBe cautious about assuming feature parity with other AWS regions. Availability in this region does not by itself confirm identical limits, integrations, or performance. It also does not prove that your existing durable function code will run unchanged, so test before relying on it."
+        },
+        {
+            "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/network-security-manager-us-east-va/",
+            "date": "2026-09-24",
+            "slug": "aws-network-security-manager-is-now-generally-available-in-u-4068ec",
+            "title": "AWS Network Security Manager is now generally available in US East (N. Virginia) Region",
+            "vendor": "Amazon Web Services",
+            "summary": "Today, AWS announces the general availability of AWS Network Security Manager, a comprehensive network security management solution designed to simplify security policy deployment and enforcement at scale.",
+            "has_page": true,
+            "entity_uid": "0d5de807",
+            "entity_kind": "company",
+            "reader_note": "For practitioners in US East (N. Virginia), this means you can now start using the service in production workloads, but treat the claimed simplification as something to test against your own policy sprawl, not a given. If you operate in other regions, nothing changes yet.\n\nBe sceptical of \"comprehensive\" until you see how it handles existing security groups, network ACLs, and third-party firewalls. A general availability launch in one region does not prove it scales to your account structure or reduces operational overhead."
         },
         {
             "url": "https://www.carriermanagement.com/news/2026/09/24/292210.htm",
@@ -341,6 +413,16 @@
             "entity_kind": "company"
         },
         {
+            "url": "https://vercel.com/blog/how-klaviyo-shipped-356-internal-apps-in-two-weeks-on-vercel",
+            "date": "2026-09-24",
+            "slug": "how-klaviyo-shipped-356-internal-apps-in-two-weeks-on-vercel-c982cf",
+            "title": "How Klaviyo shipped 356 internal apps in two weeks on Vercel",
+            "vendor": "Vercel",
+            "has_page": false,
+            "entity_uid": "b4ead33d",
+            "entity_kind": "company"
+        },
+        {
             "url": "https://blogs.nvidia.com/blog/open-protein-dataset/",
             "date": "2026-09-24",
             "slug": "how-open-science-can-help-researchers-prepare-for-the-next-p-17c8f0",
@@ -451,6 +533,18 @@
             "has_page": true,
             "entity_uid": "6af345b4",
             "entity_kind": "company"
+        },
+        {
+            "url": "https://www.snowflake.com/content/snowflake-site/global/en/blog/kimi-k3-cortex-ai",
+            "date": "2026-09-24",
+            "slug": "kimi-k3-on-snowflake-cortex-ai-a30e76",
+            "title": "Kimi K3 on Snowflake Cortex AI",
+            "vendor": "Snowflake",
+            "summary": "Kimi K3 is in private preview on Snowflake Cortex AI. Explore Moonshot AI's open-weight model for coding, research, and enterprise applications.",
+            "has_page": true,
+            "entity_uid": "19d61070",
+            "entity_kind": "company",
+            "reader_note": "If you have access to the private preview, you can test Kimi K3 inside Cortex AI without managing infrastructure. Because the model is open-weight, you may later be able to inspect or run it yourself, but within Cortex AI you are using Snowflake's hosted version.\n\nBe cautious about treating the listed use cases as proven. Private preview means limited testing and no public benchmark results are cited here. Coding, research, and enterprise applications cover many different tasks, so this announcement does not show that the model is ready for production workloads or better than alternatives."
         },
         {
             "url": "https://www.tomshardware.com/tech-industry/leading-semiconductor-analyst-accuses-amd-of-treason-over-restricted-chips-availability-in-china-amd-blames-diversion-of-export-controlled-rfsoc-usd36-000-radar-silicon-allegedly-quoted-at-usd1-000-for-crowdfunding-project",
@@ -619,6 +713,17 @@
             "reader_note": "If you run an online marketplace, this is a reminder that third-party AI agents may try to access your site. You may need to decide whether to allow, block, or set terms for such traffic. A single block does not tell you which choice is right for your business.\n\nBe sceptical of any claim that this proves AI agents are unsafe or that blocking them is necessary. It could reflect licensing, load, or data concerns specific to Insurify. It also says nothing about the quality of Insurify's own AI tools."
         },
         {
+            "url": "https://www.tomshardware.com/tech-industry/artificial-intelligence/australian-pm-says-openai-took-84-days-to-email-agency-after-agent-hacked-its-national-health-care-portal-incident-is-believed-to-be-the-first-known-case-of-ai-breaching-a-government-site",
+            "date": "2026-09-24",
+            "slug": "openai-agent-got-into-australia-s-medicare-stats-portal-with-50af73",
+            "title": "OpenAI agent got into Australia's Medicare stats portal with 84-day notification delay",
+            "vendor": "Tom's Hardware",
+            "summary": "<p>Shane has a background in computer engineering and has worked as a freelance consultant in multiple industries. He has a strong affection for history and loves to game. He worked his way up from a Commodore 64 and has always been interested in technology and writing.",
+            "has_page": true,
+            "entity_kind": "company",
+            "reader_note": "For practitioners, this is a signal that agentic systems can reach live government portals, so your access controls and audit logs need to treat non-human users as first-class citizens. If an agent can enter a portal, your monitoring should flag that activity immediately, not weeks later.\n\nBe sceptical of any claim that this proves a security breach or malicious intent. The announcement only shows that an agent accessed the portal and that notification was delayed. It does not demonstrate harm, data exfiltration, or a vulnerability in the portal itself. Treat it as a governance gap, not a technical exploit."
+        },
+        {
             "url": "https://www.insurancejournal.com/news/international/2026/09/24/886664.htm",
             "date": "2026-09-24",
             "slug": "openai-agent-hacked-australian-government-health-website-e6407a",
@@ -684,6 +789,18 @@
             "has_page": true,
             "entity_uid": "4124ecef",
             "entity_kind": "company"
+        },
+        {
+            "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/emr-eks-spark-connect-interactive/",
+            "date": "2026-09-24",
+            "slug": "run-interactive-workloads-on-amazon-emr-on-eks-with-spark-co-81487b",
+            "title": "Run interactive workloads on Amazon EMR on EKS with Spark Connect",
+            "vendor": "Amazon Web Services",
+            "summary": "Amazon EMR on EKS now supports interactive Apache Spark sessions with Spark Connect. Data engineers and data scientists can develop and debug Apache Spark applications interactively from managed notebooks in Amazon SageMaker Unified Studio and their own IDEs, such as Jupyter and Visual Studio Code,",
+            "has_page": true,
+            "entity_uid": "0d5de807",
+            "entity_kind": "company",
+            "reader_note": "For practitioners, this changes how you iterate on Spark code. Instead of packaging and submitting jobs to see results, you can attach a notebook or IDE session to a running EMR on EKS cluster and step through logic interactively. That shortens the edit-run-debug loop for data engineering and data science work.\n\nBe sceptical about how much this simplifies operations. Interactive sessions still consume cluster resources and can be left running, so watch for idle executors and cost. The announcement shows a capability, not evidence that your existing pipelines or security controls will work unchanged. Test it against your own cluster configuration before relying on it."
         },
         {
             "url": "https://www.databricks.com/blog/running-open-jev-sql-databricks",
@@ -2700,111 +2817,6 @@
             "vendor": "UK AI Security Institute",
             "summary": "An update on our alignment testing methodology for recent frontier models.",
             "has_page": true
-        },
-        {
-            "url": "https://www.aisi.gov.uk/blog/evidence-for-inference-scaling-in-ai-cyber-tasks-increased-evaluation-budgets-reveal-higher-success-rates",
-            "date": "2026-09-22",
-            "slug": "evidence-for-inference-scaling-in-ai-cyber-tasks-increased-e-41084f",
-            "title": "Evidence for inference scaling in AI cyber tasks: Increased evaluation budgets reveal higher success rates - The AI Security Institute (AISI)",
-            "vendor": "UK AI Security Institute",
-            "summary": "Alongside Irregular, we found evidence demonstrating that evaluators need to use large token budgets to understand the cyber capabilities of recent Large Language Models (LLMs).",
-            "has_page": true,
-            "reader_note": "If you assess LLMs for cyber work, your tests may be underestimating recent models. Giving a model more tokens to think, plan, or retry can raise its measured success rate. Before treating a low score as a ceiling, check that your evaluation budget was large enough.\n\nBe cautious about what this does not show. The announcement names no models, tasks, or budget sizes, and it does not claim higher scores mean more real-world harm. A model that succeeds with a large token allowance in a testbed may still fail under time limits, tool restrictions, or defensive monitoring."
-        },
-        {
-            "url": "https://www.insurancejournal.com/news/east/2026/09/21/886341.htm",
-            "date": "2026-09-22",
-            "slug": "faa-resolves-air-traffic-outage-that-snarled-northeast-trave-b6cf1d",
-            "title": "FAA Resolves Air Traffic Outage That Snarled Northeast Travel",
-            "vendor": "Insurance Journal",
-            "summary": "The Federal Aviation Administration said it’s resolved the equipment outage at an air traffic facility in Philadelphia that severely disrupted air travel in the Northeast, leading to hundreds of flights being canceled. Telecommunication lines have been repaired and operations were …",
-            "has_page": true,
-            "entity_uid": "7785d228",
-            "entity_kind": "section"
-        },
-        {
-            "url": "https://www.aisi.gov.uk/blog/finding-cloud-misconfigurations-with-frontier-ai-a-case-study",
-            "date": "2026-09-22",
-            "slug": "finding-cloud-misconfigurations-with-frontier-ai-a-case-stud-2b6d70",
-            "title": "Finding Cloud Misconfigurations with Frontier AI: A Case Study - The AI Security Institute (AISI)",
-            "vendor": "UK AI Security Institute",
-            "summary": "A cybersecurity exercise from AISI’s engineering team, using frontier models to test our research platform for misconfigurations.",
-            "has_page": true,
-            "reader_note": "If you run cloud or research infrastructure, this suggests a possible use: asking a frontier model to review your own configuration for mistakes. But the announcement offers no numbers on what it found, how many issues were real, or how much manual checking was needed.\n\nTreat this as an internal engineering note, not evidence that frontier models outperform existing configuration scanners. It does not show that such models can be trusted to find misconfigurations reliably, or that they will catch issues a standard tool would miss."
-        },
-        {
-            "url": "https://www.insurancejournal.com/news/national/2026/09/22/886386.htm",
-            "date": "2026-09-22",
-            "slug": "from-smart-glasses-to-ai-pins-privacy-fears-challenge-tech-s-302f8a",
-            "title": "From Smart Glasses to AI Pins, Privacy Fears Challenge Tech’s Next Big Bet",
-            "vendor": "Insurance Journal",
-            "summary": "Companies betting AI devices will usher in a post-smartphone era are fueling privacy fears around the globe that could slow adoption of the emerging technology. The backlash against devices that can see, hear and respond to the world around them …",
-            "has_page": true,
-            "entity_uid": "7785d228",
-            "entity_kind": "section",
-            "reader_note": "If you are building or deploying wearable AI that captures audio or video, treat privacy objections as an operational risk, not background noise. Resistance is forming before the devices are widespread, which means your rollout plans may need consent flows, data retention limits, and clear user controls earlier than expected.\n\nBe sceptical of any claim that the technology itself is the main barrier. This does not prove the devices are insecure or that adoption will stop, only that privacy concerns are now part of the cost of entry. A capability demonstrated in a demo is not a capability accepted in a workplace or public space."
-        },
-        {
-            "url": "https://www.aisi.gov.uk/frontier-ai-trends-report",
-            "date": "2026-09-22",
-            "slug": "frontier-ai-trends-report-the-ai-security-institute-aisi-51432f",
-            "title": "Frontier AI Trends Report - The AI Security Institute (AISI)",
-            "vendor": "UK AI Security Institute",
-            "summary": "The AI Security Institute is a directorate of the Department of Science, Innovation, and Technology that facilitates rigorous research to enable advanced AI governance.",
-            "has_page": true
-        },
-        {
-            "url": "https://www.tomshardware.com/desktops/gaming-pcs/gaming-pc-with-rtx-5060-32gb-of-ram-and-1tb-of-storage-gets-usd500-discount-neweggs-capable-abs-cyclone-aqua-prebuilt-is-usd1-199-with-code",
-            "date": "2026-09-22",
-            "slug": "gaming-pc-with-rtx-5060-32gb-of-ram-and-1tb-of-storage-gets--477736",
-            "title": "Gaming PC with RTX 5060, 32GB of RAM, and 1TB of storage gets $500 discount",
-            "vendor": "Tom's Hardware",
-            "summary": "<p>Joe's tech journey began in the early 1980s with a Radio Shack Tandy TRS-80. After college, he built a custom PC, diving into modding, overclocking, and eventually extreme overclocking competitions at <a href=\"http://Hwbot.org\" target=\"_blank\">Hwbot.org</a>.",
-            "has_page": true,
-            "entity_kind": "company"
-        },
-        {
-            "url": "https://www.databricks.com/blog/genie-one-mcp-give-any-ai-agent-right-business-context",
-            "date": "2026-09-22",
-            "slug": "genie-one-mcp-give-any-ai-agent-the-right-business-context-999778",
-            "title": "Genie One MCP: Give any AI Agent the Right Business Context",
-            "vendor": "Databricks",
-            "summary": "Business leaders often have access to plenty of data, but still can’t get a reliable...",
-            "has_page": false,
-            "entity_uid": "a4718c15",
-            "entity_kind": "company"
-        },
-        {
-            "url": "https://www.tomshardware.com/pc-components/gpus/get-this-spiffy-stealthy-msi-rtx-5090-for-just-usd4-299-geforce-week-at-walmart-serves-up-a-rare-deal-on-nvidias-fastest-gaming-gpu",
-            "date": "2026-09-22",
-            "slug": "get-this-spiffy-stealthy-msi-gaming-trio-rtx-5090-for-just-4-6a95c5",
-            "title": "Get this spiffy, stealthy MSI Gaming Trio RTX 5090 for just $4,299",
-            "vendor": "Tom's Hardware",
-            "summary": "<p>Jeff Kampman has been playing PC games ever since he learned how to fire up freeware CDs from the DOS command line. He started building his own PCs in the mid-aughts and later turned that passion into a career, working as a news and guides writer, reviewer, and ultimately Editor-in-Chief at The",
-            "has_page": true,
-            "entity_kind": "company"
-        },
-        {
-            "url": "https://www.tomshardware.com/peripherals/gaming-keyboards/glorious-gmmk-eternal-review",
-            "date": "2026-09-22",
-            "slug": "glorious-gmmk-eternal-review-fits-anywhere-sounds-great-bdef84",
-            "title": "Glorious GMMK Eternal Review: Fits anywhere, sounds great",
-            "vendor": "Tom's Hardware",
-            "summary": "<p>Sarah is a hardware enthusiast and geeky dilettante who has been building computers since she discovered it was easier to move them across the world — she grew up in Tokyo — if they were in pieces.",
-            "has_page": true,
-            "entity_kind": "company"
-        },
-        {
-            "url": "https://www.insurancejournal.com/news/southeast/2026/09/22/886435.htm",
-            "date": "2026-09-22",
-            "slug": "google-to-fund-power-capacity-increases-at-two-georgia-nucle-64d037",
-            "title": "Google to Fund Power-Capacity Increases at Two Georgia Nuclear Plants",
-            "vendor": "Insurance Journal",
-            "summary": "Alphabet Inc. agreed to fund capacity increases at two nuclear plants operated by a Southern Co. subsidiary that will add about 96 megawatts of new supplies amid a data center-driven jump in electricity demand. Alphabet’s Google will finance so-called uprates …",
-            "has_page": true,
-            "entity_uid": "7785d228",
-            "entity_kind": "section",
-            "reader_note": "For practitioners, this matters mainly if your workloads depend on data centers in that part of Georgia. An extra 96 megawatts may reduce the chance of local power constraints affecting uptime, but it is a small, site-specific change, not a broad fix for AI energy demand.\n\nBe sceptical of framing this as a major shift. Funding an uprate at existing plants is cheaper and faster than building new capacity, but it does not prove nuclear is the preferred route, nor that your own costs or carbon footprint will change. It is one operator securing incremental supply."
         }
     ],
     "archive": [
@@ -2853,6 +2865,42 @@
             "entity_kind": "section"
         },
         {
+            "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-elasticache-global-datastore-tagging/",
+            "date": "2026-09-24",
+            "slug": "amazon-elasticache-global-datastore-now-supports-tagging-and-303c4e",
+            "title": "Amazon ElastiCache Global Datastore now supports tagging and tag-based access control",
+            "vendor": "Amazon Web Services",
+            "summary": "Amazon ElastiCache now supports resource tagging and tag-based access control (TBAC) for Global Datastore. Previously, ElastiCache supported tagging on all resources except Global Datastore, which prevented customers from applying a single, consistent permission and cost-allocation model across",
+            "has_page": true,
+            "entity_uid": "0d5de807",
+            "entity_kind": "company",
+            "reader_note": "For practitioners, this means you can now apply the same tag schema to Global Datastore as to clusters and other ElastiCache resources. You can use tags in IAM conditions to restrict actions like modifying or deleting a datastore, and in cost allocation reports to separate spend by project or team.\n\nWhat it does not do is alter data replication, failover, or latency. Tag-based access control only works if your organization consistently tags resources and writes policies that reference those tags, otherwise the feature adds little beyond labeling."
+        },
+        {
+            "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/eventbridge-relaunches-custom-event-buses/",
+            "date": "2026-09-24",
+            "slug": "amazon-eventbridge-relaunches-event-buses-for-enterprise-sca-fdab17",
+            "title": "Amazon EventBridge relaunches event buses for enterprise scale",
+            "vendor": "Amazon Web Services",
+            "summary": "Amazon EventBridge relaunches event buses with a new enhanced Custom event bus that lets you build event-driven applications that decouple teams and can scale with your organization.",
+            "has_page": true,
+            "entity_uid": "0d5de807",
+            "entity_kind": "company",
+            "reader_note": "For practitioners, this suggests you may be able to use a single custom event bus across more teams and larger workloads than before, but the announcement gives no specifics on throughput, quotas, or routing controls.\n\nBe sceptical until you test against your own event volumes and team boundaries. It does not prove that existing event bus limitations are gone or that migration is straightforward."
+        },
+        {
+            "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-gamelift-servers-region-expansion-2026",
+            "date": "2026-09-24",
+            "slug": "amazon-gamelift-servers-now-available-in-5-new-regions-and-8-4fb78c",
+            "title": "Amazon GameLift Servers now available in 5 new regions and 8 Local Zones",
+            "vendor": "Amazon Web Services",
+            "summary": "Amazon GameLift Servers is a fully managed service for deploying, operating, and scaling dedicated game servers for multiplayer games. High latency caused by geographic distance between players and servers remains one of the most common challenges in multiplayer game development.",
+            "has_page": true,
+            "entity_uid": "0d5de807",
+            "entity_kind": "company",
+            "reader_note": "For multiplayer game operators, this expands the set of locations where you can run dedicated servers. If your player base is concentrated near these new regions or Local Zones, you may be able to reduce round trip time by placing fleets closer to them. However, availability alone does not guarantee lower latency. You should measure actual ping times from your players to these locations before shifting capacity.\n\nAlso check that the instance types, scaling limits, and networking features you rely on are supported in each Local Zone. Local Zones often have smaller capacity than full regions, so plan for possible constraints during launch spikes. Treat this as an option to test, not a proven latency fix."
+        },
+        {
             "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-rds-mysql-extended-support-minor-5744-8046-rds/",
             "date": "2026-09-24",
             "slug": "amazon-rds-for-mysql-announces-extended-support-minor-versio-65f4b1",
@@ -2888,6 +2936,30 @@
             "reader_note": "If you maintain PostgreSQL workloads on RDS, this gives you an early way to test your applications against PostgreSQL 19 before it reaches general availability. Use the preview environment to check query plans, extension compatibility, and any changes to configuration parameters that might affect your schemas or performance.\n\nTreat this as a sandbox, not a signal to migrate. Beta releases can change before final release, and the preview environment does not carry production guarantees. A successful test here does not prove your workload is ready for PostgreSQL 19 in production, but it can shorten the work you do later."
         },
         {
+            "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-rds-sql-server-multi-az-developer-edition/",
+            "date": "2026-09-24",
+            "slug": "amazon-rds-supports-multi-az-for-sql-server-developer-editio-bac462",
+            "title": "Amazon RDS supports Multi-AZ for SQL Server Developer Edition",
+            "vendor": "Amazon Web Services",
+            "summary": "Amazon Relational Database Service (Amazon RDS) for SQL Server now supports Multi-AZ deployments using Always On Availability Groups for SQL Server Developer Edition.",
+            "has_page": true,
+            "entity_uid": "0d5de807",
+            "entity_kind": "company",
+            "reader_note": "For teams running SQL Server Developer Edition in RDS, this removes a limitation: you can now configure Multi-AZ with Always On Availability Groups, matching the high-availability architecture used by licensed editions. That lets you rehearse failover, patching, and maintenance behavior in a non-production environment before relying on it in production.\n\nLicensing is unchanged. Developer Edition remains for development and testing, not production use. Treat the new option as a way to validate operational runbooks and application behavior during failover, not as a signal that the edition is production-ready. Measure failover timing and data loss under your own workload."
+        },
+        {
+            "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/sagemaker-hyperpod-inference-gateway/",
+            "date": "2026-09-24",
+            "slug": "amazon-sagemaker-hyperpod-inference-gateway-for-scalable-llm-38e5ef",
+            "title": "Amazon SageMaker HyperPod Inference Gateway for scalable LLM inference",
+            "vendor": "Amazon Web Services",
+            "summary": "Amazon SageMaker HyperPod Inference Gateway is a Kubernetes-native, GPU-aware routing system that deploys as a single EKS managed add-on on existing SageMaker HyperPod infrastructure with zero application changes.",
+            "has_page": true,
+            "entity_uid": "0d5de807",
+            "entity_kind": "company",
+            "reader_note": "If you already run inference workloads on SageMaker HyperPod, this add-on could give you a routing layer without changing your application code. That may reduce the work of managing traffic across GPU nodes yourself.\n\nBe sceptical of what “GPU-aware” means in practice. The announcement does not show measured improvements in throughput, latency, or cost, and it does not prove the add-on works with your particular model serving setup. Treat it as a deployment convenience, not a performance result."
+        },
+        {
             "url": "https://www.tomshardware.com/tech-industry/semiconductors/asml-says-its-sells-absolutely-nothing-in-europe-calls-on-eu-to-help-create-demand",
             "date": "2026-09-24",
             "slug": "asml-says-it-sold-absolutely-nothing-in-europe-in-2026-f29e81",
@@ -2909,6 +2981,18 @@
             "entity_uid": "0d5de807",
             "entity_kind": "company",
             "reader_note": "If you build in the AWS European Sovereign Cloud, you can now use Lambda durable functions for multi-step applications and AI workflows. This may simplify orchestration that previously required separate services or custom state handling.\n\nBe cautious about assuming feature parity with other AWS regions. Availability in this region does not by itself confirm identical limits, integrations, or performance. It also does not prove that your existing durable function code will run unchanged, so test before relying on it."
+        },
+        {
+            "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/network-security-manager-us-east-va/",
+            "date": "2026-09-24",
+            "slug": "aws-network-security-manager-is-now-generally-available-in-u-4068ec",
+            "title": "AWS Network Security Manager is now generally available in US East (N. Virginia) Region",
+            "vendor": "Amazon Web Services",
+            "summary": "Today, AWS announces the general availability of AWS Network Security Manager, a comprehensive network security management solution designed to simplify security policy deployment and enforcement at scale.",
+            "has_page": true,
+            "entity_uid": "0d5de807",
+            "entity_kind": "company",
+            "reader_note": "For practitioners in US East (N. Virginia), this means you can now start using the service in production workloads, but treat the claimed simplification as something to test against your own policy sprawl, not a given. If you operate in other regions, nothing changes yet.\n\nBe sceptical of \"comprehensive\" until you see how it handles existing security groups, network ACLs, and third-party firewalls. A general availability launch in one region does not prove it scales to your account structure or reduces operational overhead."
         },
         {
             "url": "https://www.carriermanagement.com/news/2026/09/24/292210.htm",
@@ -3148,6 +3232,16 @@
             "entity_kind": "company"
         },
         {
+            "url": "https://vercel.com/blog/how-klaviyo-shipped-356-internal-apps-in-two-weeks-on-vercel",
+            "date": "2026-09-24",
+            "slug": "how-klaviyo-shipped-356-internal-apps-in-two-weeks-on-vercel-c982cf",
+            "title": "How Klaviyo shipped 356 internal apps in two weeks on Vercel",
+            "vendor": "Vercel",
+            "has_page": false,
+            "entity_uid": "b4ead33d",
+            "entity_kind": "company"
+        },
+        {
             "url": "https://blogs.nvidia.com/blog/open-protein-dataset/",
             "date": "2026-09-24",
             "slug": "how-open-science-can-help-researchers-prepare-for-the-next-p-17c8f0",
@@ -3258,6 +3352,18 @@
             "has_page": true,
             "entity_uid": "6af345b4",
             "entity_kind": "company"
+        },
+        {
+            "url": "https://www.snowflake.com/content/snowflake-site/global/en/blog/kimi-k3-cortex-ai",
+            "date": "2026-09-24",
+            "slug": "kimi-k3-on-snowflake-cortex-ai-a30e76",
+            "title": "Kimi K3 on Snowflake Cortex AI",
+            "vendor": "Snowflake",
+            "summary": "Kimi K3 is in private preview on Snowflake Cortex AI. Explore Moonshot AI's open-weight model for coding, research, and enterprise applications.",
+            "has_page": true,
+            "entity_uid": "19d61070",
+            "entity_kind": "company",
+            "reader_note": "If you have access to the private preview, you can test Kimi K3 inside Cortex AI without managing infrastructure. Because the model is open-weight, you may later be able to inspect or run it yourself, but within Cortex AI you are using Snowflake's hosted version.\n\nBe cautious about treating the listed use cases as proven. Private preview means limited testing and no public benchmark results are cited here. Coding, research, and enterprise applications cover many different tasks, so this announcement does not show that the model is ready for production workloads or better than alternatives."
         },
         {
             "url": "https://www.tomshardware.com/tech-industry/leading-semiconductor-analyst-accuses-amd-of-treason-over-restricted-chips-availability-in-china-amd-blames-diversion-of-export-controlled-rfsoc-usd36-000-radar-silicon-allegedly-quoted-at-usd1-000-for-crowdfunding-project",
@@ -3426,6 +3532,17 @@
             "reader_note": "If you run an online marketplace, this is a reminder that third-party AI agents may try to access your site. You may need to decide whether to allow, block, or set terms for such traffic. A single block does not tell you which choice is right for your business.\n\nBe sceptical of any claim that this proves AI agents are unsafe or that blocking them is necessary. It could reflect licensing, load, or data concerns specific to Insurify. It also says nothing about the quality of Insurify's own AI tools."
         },
         {
+            "url": "https://www.tomshardware.com/tech-industry/artificial-intelligence/australian-pm-says-openai-took-84-days-to-email-agency-after-agent-hacked-its-national-health-care-portal-incident-is-believed-to-be-the-first-known-case-of-ai-breaching-a-government-site",
+            "date": "2026-09-24",
+            "slug": "openai-agent-got-into-australia-s-medicare-stats-portal-with-50af73",
+            "title": "OpenAI agent got into Australia's Medicare stats portal with 84-day notification delay",
+            "vendor": "Tom's Hardware",
+            "summary": "<p>Shane has a background in computer engineering and has worked as a freelance consultant in multiple industries. He has a strong affection for history and loves to game. He worked his way up from a Commodore 64 and has always been interested in technology and writing.",
+            "has_page": true,
+            "entity_kind": "company",
+            "reader_note": "For practitioners, this is a signal that agentic systems can reach live government portals, so your access controls and audit logs need to treat non-human users as first-class citizens. If an agent can enter a portal, your monitoring should flag that activity immediately, not weeks later.\n\nBe sceptical of any claim that this proves a security breach or malicious intent. The announcement only shows that an agent accessed the portal and that notification was delayed. It does not demonstrate harm, data exfiltration, or a vulnerability in the portal itself. Treat it as a governance gap, not a technical exploit."
+        },
+        {
             "url": "https://www.insurancejournal.com/news/international/2026/09/24/886664.htm",
             "date": "2026-09-24",
             "slug": "openai-agent-hacked-australian-government-health-website-e6407a",
@@ -3491,6 +3608,18 @@
             "has_page": true,
             "entity_uid": "4124ecef",
             "entity_kind": "company"
+        },
+        {
+            "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/emr-eks-spark-connect-interactive/",
+            "date": "2026-09-24",
+            "slug": "run-interactive-workloads-on-amazon-emr-on-eks-with-spark-co-81487b",
+            "title": "Run interactive workloads on Amazon EMR on EKS with Spark Connect",
+            "vendor": "Amazon Web Services",
+            "summary": "Amazon EMR on EKS now supports interactive Apache Spark sessions with Spark Connect. Data engineers and data scientists can develop and debug Apache Spark applications interactively from managed notebooks in Amazon SageMaker Unified Studio and their own IDEs, such as Jupyter and Visual Studio Code,",
+            "has_page": true,
+            "entity_uid": "0d5de807",
+            "entity_kind": "company",
+            "reader_note": "For practitioners, this changes how you iterate on Spark code. Instead of packaging and submitting jobs to see results, you can attach a notebook or IDE session to a running EMR on EKS cluster and step through logic interactively. That shortens the edit-run-debug loop for data engineering and data science work.\n\nBe sceptical about how much this simplifies operations. Interactive sessions still consume cluster resources and can be left running, so watch for idle executors and cost. The announcement shows a capability, not evidence that your existing pipelines or security controls will work unchanged. Test it against your own cluster configuration before relying on it."
         },
         {
             "url": "https://www.databricks.com/blog/running-open-jev-sql-databricks",
@@ -19825,7 +19954,7 @@
             "url": "https://www.salesforce.com/blog/datablazer-monthly-roundup/",
             "date": "2026-08-24",
             "slug": "datablazer-roundup-august-e87d0c",
-            "title": "Datablazer Roundup: August",
+            "title": "Datablazer Roundup: September",
             "vendor": "Salesforce",
             "summary": "There’s a lot going on in the Datablazer Community right now, and honestly, some of the best stuff gets buried before most people ever see it. So we’re trying something new: the Datablazer…",
             "has_page": true,
@@ -79200,14 +79329,14 @@
             "vendor": "European Commission AI"
         }
     ],
-    "built_at": "2026-09-24T16:51:20-05:00",
+    "built_at": "2026-09-24T18:32:21-05:00",
     "coverage": {
         "feeds": 42,
         "companies": 421,
         "feeds_healthy": 39
     },
     "page_uid": "bad4a071",
-    "generated": "2026-09-24T21:57:01Z",
+    "generated": "2026-09-24T23:35:42Z",
     "window_days": 30,
     "refresh_every_days": 1
 }

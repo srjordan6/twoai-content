@@ -4,7 +4,7 @@
     "slug": "res-integrity-hallucination",
     "shape": "art-topic",
     "title": "Fabricated Citations and Fact Checking",
-    "answer": "Fabricated citations are references in AI papers that point to nonexistent works, or to real works with wrong authors, titles, or venues. Fact checking in this context means verifying that each citation resolves to a real publication and that extracted claims are supported by the cited source. The problem spans preprint servers, peer reviewed journals, and model generated text, and it undermines the reliability of literature reviews and meta analyses. Within this site's library of 135 research papers and 10,767 extracted claims, citation integrity is treated as a core part of research quality rather than a clerical afterthought.",
+    "answer": "Fabricated citations are references that look real but do not correspond to any published work, often produced when a language model generates a plausible but nonexistent paper title, author list, or DOI. Fact checking in this area covers verifying that every cited source exists, matches the claim it is attached to, and is represented accurately. The scope includes both accidental hallucination and deliberate citation padding, and it spans preprints, journal submissions, grant proposals, and policy documents. For the AI researcher, this is a core integrity problem because a single fake reference can undermine an otherwise sound argument.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-09-24T17:17:09-05",
+    "built_at": "2026-09-24T18:55:54-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Researcher",
@@ -28,23 +28,23 @@
     "page_uid": "0b811eda",
     "sections": [
         {
-            "body": "Fabricated citations are references in AI papers that point to nonexistent works, or to real works with wrong authors, titles, or venues. Fact checking in this context means verifying that each citation resolves to a real publication and that extracted claims are supported by the cited source. The problem spans preprint servers, peer reviewed journals, and model generated text, and it undermines the reliability of literature reviews and meta analyses. Within this site's library of 135 research papers and 10,767 extracted claims, citation integrity is treated as a core part of research quality rather than a clerical afterthought.",
+            "body": "Fabricated citations are references that look real but do not correspond to any published work, often produced when a language model generates a plausible but nonexistent paper title, author list, or DOI. Fact checking in this area covers verifying that every cited source exists, matches the claim it is attached to, and is represented accurately. The scope includes both accidental hallucination and deliberate citation padding, and it spans preprints, journal submissions, grant proposals, and policy documents. For the AI researcher, this is a core integrity problem because a single fake reference can undermine an otherwise sound argument.",
             "heading": "Scope"
         },
         {
-            "body": "Fact checking runs on bibliographic databases, persistent identifiers such as DOIs, full text repositories, and reference parsers that break citations into structured fields. The site's practice of linking directly to the original paper, never to the Consensus search tool, means the infrastructure must resolve each reference to a stable source rather than a search result. Language models can assist in matching citation strings to records, but the underlying data layer is the authoritative check. Access to original papers, including paywalled or archived versions, is a practical constraint.",
+            "body": "Citation checking runs on standard bibliographic infrastructure: DOI registries, library catalogues, publisher metadata, and full-text indexes. A verification pipeline typically queries these sources through APIs or local mirrors, then compares the returned record against the reference string. Some systems also use language models to parse unstructured citations into fields such as author, title, year, and venue before lookup. The work does not require specialised hardware; it is mostly a matter of reliable access to authoritative metadata and clean parsing code.",
             "heading": "What it runs on"
         },
         {
-            "body": "The work begins by extracting reference strings and claims from a paper, then normalizing author names, titles, years, and venues. Each citation is checked against a bibliographic record to confirm that the work exists and that the metadata matches. For claims, the relevant passage in the cited paper is located and compared with the claim as stated. Discrepancies are flagged for human review, since automated matching can miss subtle misattributions or context dependent meaning. The site's 10,767 extracted claims provide a structured set for testing these verification steps.",
+            "body": "The basic method is to extract each reference from a document, normalise it, and query a trusted database for a matching record. If no record is found, the citation is flagged for human review; if a record is found, the checker verifies that the title, authors, year, and page numbers agree. More advanced approaches use retrieval-augmented generation to search a corpus and compare the cited claim against the actual abstract or full text. Human reviewers then adjudicate borderline cases, because automated matching can miss near-miss fabrications or legitimate but poorly indexed sources.",
             "heading": "How the work is done"
         },
         {
-            "body": "Risks include the spread of false findings, wasted effort by researchers who chase nonexistent sources, and damage to the credibility of authors and venues. Provenance requires that every claim trace back to the original paper, which is why this site links to the original paper and never to the Consensus search tool. Journals and preprint servers increasingly ask authors to provide DOIs or persistent identifiers, and some run automated checks before acceptance. Responsibility sits with authors, reviewers, and platform maintainers, but no single actor can catch every fabricated citation.",
+            "body": "The main risk is that fabricated citations enter the scholarly record and are then cited by others, creating a chain of false authority. Provenance matters because a reference is only as trustworthy as the record that confirms it, and a missing DOI or mismatched metadata is a warning sign rather than proof of fraud. Journals, funders, and institutions are beginning to require citation verification as part of submission and review, and some have added retraction notices for papers found to contain fake references. Rights concerns include the reputational harm to real authors whose names are attached to nonexistent papers, and the duty of researchers to correct the record when a fabrication is found.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "Automated citation checking is likely to become a standard step in manuscript submission and preprint screening, with tools flagging suspicious references before peer review. Shared registries of retracted or fabricated citations could help researchers avoid citing known bad sources. As language models generate more reference lists, provenance standards will need to distinguish human verified citations from model suggested ones. Human review will remain necessary for claims that require interpretation, even as the volume of checks grows.",
+            "body": "Automated citation checking is likely to become a standard step in manuscript preparation, much like spell checking or plagiarism screening. Future tools may embed verification directly into writing assistants, so a reference is checked as soon as it is typed. Shared registries of known fake or retracted citations could help publishers and reviewers spot repeat offenders. There is also movement toward requiring machine-readable citation metadata, such as persistent identifiers for every reference, which would make verification faster and more reliable.",
             "heading": "Where it is going"
         }
     ],

@@ -32,7 +32,7 @@
             "meet": [
                 {
                     "uid": "56f96b2b",
-                    "fact": "Today the median model tracked here costs $0.41 per million input tokens and $1.76 per million output tokens, across 452 models from 62 providers.",
+                    "fact": "Today the median model tracked here costs $0.41 per million input tokens and $1.76 per million output tokens, across 454 models from 62 providers.",
                     "href": "/ai-ecosystem/technology-and-core-infrastructure/56f96b2b/",
                     "name": "API Pricing"
                 }
@@ -111,7 +111,7 @@
             "meet": [
                 {
                     "uid": "56f96b2b",
-                    "fact": "The largest context window among the 452 API models tracked here is 2,000,000 tokens.",
+                    "fact": "The largest context window among the 454 API models tracked here is 2,000,000 tokens.",
                     "href": "/ai-ecosystem/technology-and-core-infrastructure/56f96b2b/",
                     "name": "API Pricing"
                 }
@@ -212,7 +212,7 @@
             "meet": [
                 {
                     "uid": "",
-                    "fact": "2,399 servers from the official Model Context Protocol registry, the standard way agents are given tools.",
+                    "fact": "2,400 servers from the official Model Context Protocol registry, the standard way agents are given tools.",
                     "href": "/mcp/",
                     "name": "MCP Server tracker"
                 },
@@ -286,7 +286,7 @@
             },
             {
                 "step": "Context window",
-                "text": "The model has to hold all 27,700 tokens at once. 435 of the 452 API models tracked here can, and 17 cannot, so for those the contract would have to be split."
+                "text": "The model has to hold all 27,700 tokens at once. 437 of the 454 API models tracked here can, and 17 cannot, so for those the contract would have to be split."
             },
             {
                 "step": "Inference and cost",
@@ -306,11 +306,11 @@
         "assumption_source": "https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them"
     },
     "reading": {
-        "body": "A 40-page contract costs about 1.3 cents to summarize at median API prices, and 435 of 452 tracked models can hold it in one context window.\n\nThe token math makes the single-document case cheap: reading 26,700 input tokens costs $0.0109 and writing a 1,000-token summary costs $0.0018. Price is rarely the barrier at this size, and only 17 of the 452 tracked models cannot fit the 27,700 tokens at once.\n\nThe constraint shifts with scale. A library of contracts will not fit in any context window, so retrieval embeds each contract once and hands the model only the passages that match the question. The largest tracked context window is 2,000,000 tokens, but that does not change the library problem.\n\nThe remaining risk is not cost or capacity but correctness. A summary can state a clause the contract does not contain, so for anything with legal weight the summary is a map to the pages to read, not a substitute for them. The data does not measure how often this happens or compare model accuracy.",
+        "body": "Summarizing a 40-page contract costs about 1.3 cents at median API prices, so price is not the barrier; context limits and hallucination are.\n\nA 40-page contract is roughly 26,700 input tokens plus 1,000 output tokens. At $0.41 per million input and $1.76 per million output, the read costs $0.0109 and the summary $0.0018. 437 of 454 tracked API models can hold the full 27,700 tokens at once; 17 cannot and would require splitting the document.\n\nFor a library of contracts, the whole set will not fit in any context window. Retrieval embeds each contract once and passes only matching passages to the model, which is the pattern that scales. The remaining risk is not cost or capacity but accuracy: a summary can state a clause the contract does not contain, so for legal work it is a map to the pages to read, not a substitute.\n\nThis data covers one contract size and median prices across 454 models. It does not measure output quality, provider reliability, or the compute and power behind inference, and it does not establish that any summary is legally sufficient.",
         "model": "ollama:deepseek-v4-pro",
         "generated_on": "2026-09-24"
     },
-    "built_at": "2026-09-24T16:56:48-05",
+    "built_at": "2026-09-24T18:35:11-05",
     "category": "research-knowledge-and-learning",
     "page_uid": "d2390ba3",
     "verified": "2026-09-24",
