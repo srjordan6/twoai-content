@@ -4,7 +4,7 @@
     "slug": "law-research-rag",
     "shape": "art-topic",
     "title": "Retrieval-Grounded Legal Research",
-    "answer": "Retrieval-grounded legal research covers the use of AI systems that answer legal questions by first retrieving relevant passages from primary and secondary sources, then generating a response tied to those passages. The scope includes case law, statutes, regulations, court rules, agency guidance, and practitioner commentary across multiple jurisdictions. It is distinct from open-ended legal chatbots because every proposition in the answer is supposed to trace back to a citable document. The site's tracking of 210 compliance and regulation pages and 6,895 state AI bills shows the breadth of source material such a system must index to stay useful.",
+    "answer": "Retrieval-grounded legal research is the practice of answering legal questions by first pulling relevant passages from a defined set of sources and then generating a response that cites those passages. The sources can include case law, statutes, regulations, court rules, secondary treatises, and a firm's internal memos. The method is meant to reduce unsupported claims by making every assertion traceable to a document a reader can inspect. It supports tasks such as finding controlling authority, checking how a rule has been applied, comparing jurisdictions, and drafting research summaries. The site's atlas tracks 29 AI case law precedents, a small and fast-changing corpus that illustrates why grounding matters when the law is new.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-09-26T09:35:09-05",
+    "built_at": "2026-09-26T12:32:43-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Lawyer",
@@ -28,23 +28,23 @@
     "page_uid": "1bbfe89c",
     "sections": [
         {
-            "body": "Retrieval-grounded legal research covers the use of AI systems that answer legal questions by first retrieving relevant passages from primary and secondary sources, then generating a response tied to those passages. The scope includes case law, statutes, regulations, court rules, agency guidance, and practitioner commentary across multiple jurisdictions. It is distinct from open-ended legal chatbots because every proposition in the answer is supposed to trace back to a citable document. The site's tracking of 210 compliance and regulation pages and 6,895 state AI bills shows the breadth of source material such a system must index to stay useful.",
+            "body": "Retrieval-grounded legal research is the practice of answering legal questions by first pulling relevant passages from a defined set of sources and then generating a response that cites those passages. The sources can include case law, statutes, regulations, court rules, secondary treatises, and a firm's internal memos. The method is meant to reduce unsupported claims by making every assertion traceable to a document a reader can inspect. It supports tasks such as finding controlling authority, checking how a rule has been applied, comparing jurisdictions, and drafting research summaries. The site's atlas tracks 29 AI case law precedents, a small and fast-changing corpus that illustrates why grounding matters when the law is new.",
             "heading": "Scope"
         },
         {
-            "body": "The system runs on a document store of legal texts, an index that supports both keyword and semantic search, and a retrieval layer that returns the most relevant passages for a query. Many implementations use embeddings, which are numerical representations of text meaning, to find passages that are conceptually similar even when they do not share exact words. A separate reranking step orders the retrieved passages before they are passed to a language model. The language model is then constrained to answer only from the supplied passages, and the interface displays the source citations next to each sentence.",
+            "body": "The system runs on a document store that holds the source texts and their metadata, plus one or more indexes for retrieval. A common setup pairs a keyword index, such as a search engine, with a vector index built from embeddings of passages. Access controls, versioning, and citation metadata are part of the infrastructure because legal sources change and because some materials are confidential or privileged. The generator model may run in a private cloud or on premises, depending on the sensitivity of the corpus. The infrastructure must also support logging and audit, so that a later reviewer can see what was searched and what was returned.",
             "heading": "What it runs on"
         },
         {
-            "body": "A lawyer enters a research question, and the system breaks it into searchable components such as jurisdiction, legal issue, and fact pattern. The retrieval step pulls candidate passages from the indexed sources, often combining exact phrase matching with semantic similarity to avoid missing key authority. The generation step drafts an answer that quotes or paraphrases the retrieved text and attaches a citation to each claim. A human reviewer then checks that the cited passage actually supports the proposition, that no contrary binding authority was omitted, and that the law is still good law in the relevant jurisdiction.",
+            "body": "The work begins with a question that is turned into one or more search queries, often with filters for jurisdiction, court, date, or document type. The retriever returns candidate passages from the indexes, and a re-ranking step sorts them by likely relevance to the question. The generator then composes an answer that quotes or cites the selected passages, and a human reviewer checks each citation against the original source. Teams often build a gold set of questions and known answers to measure whether retrieval finds the right authority and whether the generated answer stays faithful to it. Chunking, metadata, and hybrid search are tuned over time because legal language is precise and a missed passage can change the answer.",
             "heading": "How the work is done"
         },
         {
-            "body": "The main risks are outdated or superseded law, missing negative authority, and leakage of confidential client facts if a query is sent to a third-party model. Provenance is handled by requiring every sentence to carry a source, a date, and a jurisdiction, and by logging which documents were retrieved for each answer. The site tracks 142 active AI lawsuits, 92 of them intellectual property, and 29 AI case law precedents, which reflects the legal exposure around training data, outputs, and the use of copyrighted legal texts. The 210 compliance and regulation pages and 6,895 state AI bills indicate a patchwork of rules that a retrieval system must reflect without giving legal advice.",
+            "body": "Rights and risk in this area turn on licensing, confidentiality, privilege, and the accuracy of citations. A retrieval system must respect the terms of the databases it indexes, and it must keep privileged or client-confidential material out of unauthorized stores. Provenance matters because a reader needs to know which version of a statute or regulation was retrieved and when. Outputs are not legal advice, and a qualified lawyer remains responsible for verifying the law and for the strategy that follows. Firms also need audit trails to show what was searched, what was retrieved, and what was relied on.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "Retrieval-grounded legal research is moving toward real-time docket and legislative monitoring, where a system alerts a lawyer when a new decision or bill affects an existing matter. Agentic workflows will likely combine retrieval with document review and memo drafting, with each step verified against the underlying record. Jurisdiction-specific retrieval will improve as systems learn to weight binding versus persuasive authority automatically. The volume of state AI bills tracked on the site, 6,895, suggests that automated legislative tracking will become a standard part of case strategy rather than a separate research task.",
+            "body": "The direction of travel is toward tighter grounding, better citation checks, and more integration with the tools lawyers already use. Expect more agentic workflows that can plan a research task, retrieve from multiple sources, and assemble a memo with links to authority. Evaluation standards and court rules on AI use are likely to shape what firms will accept in a filing or an internal memo. The site tracks 6940 state AI bills, a sign that regulatory research will keep expanding and that retrieval systems will need to cover many jurisdictions. Provenance and audit trails will become a normal part of the record, not an afterthought.",
             "heading": "Where it is going"
         }
     ],

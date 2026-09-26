@@ -4,7 +4,7 @@
     "slug": "med-imaging-detection",
     "shape": "art-topic",
     "title": "Pathology Detection and Scan Triage",
-    "answer": "Pathology detection and scan triage systems examine medical images such as X-rays, CT scans, MRIs, and pathology slides to flag suspicious findings and order cases by urgency. The scope includes detecting fractures, bleeds, tumors, and other abnormalities, and separating normal studies from those needing immediate human review. These tools sit within diagnostic imaging and radiology as decision support, not replacement for a radiologist or pathologist. They are used in emergency departments, screening programs, and routine reporting queues.",
+    "answer": "Pathology detection and scan triage covers software that examines medical images for signs of disease or injury and software that orders the resulting worklist. Detection tasks include lung nodules on chest CT, fractures on plain radiographs, intracranial hemorrhage on head CT, and breast lesions on mammography. Triage tasks flag urgent studies, such as a suspected large vessel occlusion or a tension pneumothorax, and move them to the top of a radiologist's queue. The scope also includes the quality checks and worklist rules that decide which studies the model sees and how its output is presented. This site tracks 1000 medical AI models, and a meaningful share of them sit in this area.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-09-26T09:35:09-05",
+    "built_at": "2026-09-26T12:32:43-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Physician",
@@ -28,23 +28,23 @@
     "page_uid": "4c645674",
     "sections": [
         {
-            "body": "Pathology detection and scan triage systems examine medical images such as X-rays, CT scans, MRIs, and pathology slides to flag suspicious findings and order cases by urgency. The scope includes detecting fractures, bleeds, tumors, and other abnormalities, and separating normal studies from those needing immediate human review. These tools sit within diagnostic imaging and radiology as decision support, not replacement for a radiologist or pathologist. They are used in emergency departments, screening programs, and routine reporting queues.",
+            "body": "Pathology detection and scan triage covers software that examines medical images for signs of disease or injury and software that orders the resulting worklist. Detection tasks include lung nodules on chest CT, fractures on plain radiographs, intracranial hemorrhage on head CT, and breast lesions on mammography. Triage tasks flag urgent studies, such as a suspected large vessel occlusion or a tension pneumothorax, and move them to the top of a radiologist's queue. The scope also includes the quality checks and worklist rules that decide which studies the model sees and how its output is presented. This site tracks 1000 medical AI models, and a meaningful share of them sit in this area.",
             "heading": "Scope"
         },
         {
-            "body": "These models typically run on hospital picture archiving and communication systems, radiology information systems, or cloud-based inference services. They require access to DICOM images and often use GPU servers for near real-time processing. Some deployments run on edge devices inside imaging machines for immediate triage. Integration depends on HL7 and FHIR messaging to move results into the electronic health record.",
+            "body": "These systems run on a mix of on-premises GPU servers, private cloud, and edge devices inside the imaging department. They connect to the picture archiving and communication system, or PACS, and to the radiology information system through standards such as DICOM and HL7. Inference usually happens close to the scanner or on a dedicated server so that a study can be processed in seconds to minutes. Storage and network capacity matter because a single CT or MRI series can contain hundreds of images. Some vendors offer a container or virtual appliance that the hospital installs behind its firewall, while others provide a cloud service with a local cache.",
             "heading": "What it runs on"
         },
         {
-            "body": "The work is done by training convolutional neural networks or vision transformers on large labeled datasets of medical images. Radiologists or pathologists annotate the images to teach the model which pixels or regions indicate disease. At inference, the model produces a heatmap, bounding box, or risk score that a human reviews. Triage models often use a threshold on that risk score to reorder worklists, while detection models highlight areas for closer inspection.",
+            "body": "The work starts with a curated dataset of images and labels, often annotated by subspecialty radiologists who mark lesions or assign a triage category. Developers train deep learning models, commonly convolutional neural networks or vision transformers, to produce a detection score, a segmentation mask, or a priority level. Validation uses held-out retrospective data and, increasingly, prospective silent trials where the model runs alongside clinical care without changing it. Reported metrics include sensitivity, specificity, area under the receiver operating characteristic curve, positive predictive value, and time to report for flagged cases. In deployment, the model receives a DICOM series, applies preprocessing, runs inference, and writes a result back to the worklist or a viewer, where a radiologist remains responsible for the final read.",
             "heading": "How the work is done"
         },
         {
-            "body": "Rights and risk center on patient safety, data provenance, and liability. Training data must come from consented or de-identified sources, and the model's performance must be validated on local patient populations before use. If a triage tool misses a critical finding or delays a diagnosis, questions of product liability and clinical accountability arise. Active product liability and wrongful death lawsuits against AI companies illustrate the legal exposure in this area. Provenance records should document the training data, model version, and any human overrides for each case.",
+            "body": "Rights and risk begin with the provenance of training data, including consent, de-identification, and the terms under which images were collected. Regulatory clearance, such as FDA authorization or CE marking, defines the intended use and the claims a vendor may make. Liability questions are active: this site tracks 6 active product liability and wrongful death lawsuits against AI companies, and those cases shape how vendors write contracts and how hospitals assess coverage. Clinical risks include false negatives that delay care, false positives that cause unnecessary follow-up, automation bias, and alert fatigue when too many studies are flagged. Provenance also covers model versioning, audit logs, and the ability to reproduce a result months after a study was read.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "These systems are moving toward multimodal models that combine imaging with lab results and clinical notes for more accurate triage. Regulatory pathways are tightening around continuous monitoring and real-world performance reporting. Future work will likely focus on reducing false negatives in rare diseases and on explainable outputs that radiologists can trust. The field is also shifting from single-disease detectors to generalist models that can flag many conditions in one pass.",
+            "body": "The field is moving toward foundation models that can handle multiple modalities and tasks with less task-specific training. Triage is expanding from single-condition alerts to multi-condition worklist optimization that accounts for scanner capacity, subspecialty schedules, and patient flow. Prospective randomized studies and post-market surveillance are becoming more common as payers and regulators ask for evidence of clinical benefit. Integration is shifting from a separate AI viewer to embedded results inside the primary reading environment. The site tracks 215 compliance and regulation pages, a sign of how much of the work now sits in documentation, monitoring, and change control.",
             "heading": "Where it is going"
         }
     ],

@@ -4,7 +4,7 @@
     "slug": "med-surgery-resection",
     "shape": "art-topic",
     "title": "Resection Planning and Margins",
-    "answer": "Resection planning and margins covers the use of AI to define the tissue to be removed and the healthy border around it before and during surgery. This includes segmenting tumors and critical structures from preoperative CT, MRI, or PET scans, computing the planned resection volume, and updating that plan as the patient's anatomy shifts. The work spans neurosurgery, orthopedic oncology, liver and lung resection, and other fields where a negative margin is a primary goal.",
+    "answer": "Resection planning and margins covers the preoperative and intraoperative work of deciding how much tissue to remove around a tumor or lesion and how to confirm that the removed specimen has an adequate margin. It includes image review, tumor segmentation, definition of target volumes, avoidance of critical structures, and the communication of margin goals to the surgical team. In robotic and navigation assisted surgery, the scope also includes tracking instruments, overlaying planned boundaries on the live field, and linking the resected specimen back to the planned margin. The work sits inside surgical robotics and navigation, part of the broader AI physician field.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-09-26T09:35:09-05",
+    "built_at": "2026-09-26T12:32:43-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Physician",
@@ -28,23 +28,23 @@
     "page_uid": "34e338e2",
     "sections": [
         {
-            "body": "Resection planning and margins covers the use of AI to define the tissue to be removed and the healthy border around it before and during surgery. This includes segmenting tumors and critical structures from preoperative CT, MRI, or PET scans, computing the planned resection volume, and updating that plan as the patient's anatomy shifts. The work spans neurosurgery, orthopedic oncology, liver and lung resection, and other fields where a negative margin is a primary goal.",
+            "body": "Resection planning and margins covers the preoperative and intraoperative work of deciding how much tissue to remove around a tumor or lesion and how to confirm that the removed specimen has an adequate margin. It includes image review, tumor segmentation, definition of target volumes, avoidance of critical structures, and the communication of margin goals to the surgical team. In robotic and navigation assisted surgery, the scope also includes tracking instruments, overlaying planned boundaries on the live field, and linking the resected specimen back to the planned margin. The work sits inside surgical robotics and navigation, part of the broader AI physician field.",
             "heading": "Scope"
         },
         {
-            "body": "These systems typically run on hospital imaging archives and surgical navigation workstations, often linked to robotic arms or instrument trackers. Preoperative planning may use GPU-equipped servers for segmentation and registration, while intraoperative use relies on lower-latency local compute near the operating room. Inputs include preoperative volumetric scans, intraoperative ultrasound or cone-beam CT, and optical or electromagnetic tracking data.",
+            "body": "The work runs on preoperative imaging from CT, MRI, ultrasound, and sometimes PET, stored in DICOM format and managed through PACS. Planning stations use segmentation and 3D reconstruction software, often with GPU acceleration, to turn those images into patient specific anatomy and target volumes. In the operating room, the same plan is loaded onto a navigation system or robotic console, where optical or electromagnetic tracking follows instruments and patient position. Displays, head mounted devices, and robot arms then present the plan in relation to the live surgical field, with compute either on premises or in a controlled cloud environment.",
             "heading": "What it runs on"
         },
         {
-            "body": "The core method is image segmentation, where a model labels tumor, organ, and at-risk structures, followed by deformable registration to align the preoperative plan with the patient on the table. Margin distance is then computed as a three-dimensional safety buffer around the tumor boundary, and the plan is displayed as a colored overlay on navigation screens. Some systems also analyze frozen section or ex vivo specimen images to estimate whether the cut surface is clear of tumor.",
+            "body": "The method starts with image acquisition and segmentation, where a model or a human expert outlines the tumor, organs at risk, and relevant vessels or nerves. Registration aligns those preoperative images to the patient and to the tracking system, and a virtual resection shows what would remain if the planned boundary were followed. During surgery, navigation updates the overlay as tissue moves, and the surgeon may send tissue for frozen section or other intraoperative pathology to check the margin. AI can assist with segmentation, margin classification, or uncertainty estimates, but the plan and the final decision remain with the clinical team.",
             "heading": "How the work is done"
         },
         {
-            "body": "Patient imaging data used for planning is subject to health privacy rules, and the training data behind a model must be documented for provenance and population fit. A wrong margin can lead to recurrence or avoidable loss of function, so surgeons remain responsible for final resection decisions and must be able to override any AI suggestion. Regulatory clearance usually requires evidence that the tool does not increase positive margin rates or harm, and product liability questions remain active in this area.",
+            "body": "Rights and risk in this area turn on patient consent, data provenance, device regulation, and clear lines of responsibility when a margin is missed or healthy tissue is removed. Training images and surgical videos carry privacy and licensing constraints, so provenance, de identification, and permitted use are documented. The site tracks 6 active product liability and wrongful death lawsuits against AI companies, which shows that clinical AI tools can face serious legal exposure. Audit trails, version control, validation records, and human oversight are part of the governance package, and the operating surgeon remains accountable for the resection.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The direction is toward real-time margin assessment during the cut, using optical imaging, mass spectrometry, or rapid tissue analysis to tell the surgeon whether more tissue must be removed. Augmented reality overlays are likely to merge the planned margin with the live surgical field, and robotic systems may take on constrained sub-tasks such as holding a plane or pausing at a margin boundary. Personalized margins based on tumor genomics and recurrence risk are also being explored.",
+            "body": "The horizon points toward tighter integration of imaging, pathology, and robotics, with real time margin assessment using fluorescence, Raman spectroscopy, or advanced microscopy feeding back into the navigation display. AI models are likely to move from preoperative segmentation toward intraoperative decision support, including predictions of close or positive margins and alerts for critical structures. Digital twins and patient specific simulation may let teams rehearse a resection before entering the operating room, while federated learning could allow multi site training without moving patient data. Regulatory pathways and reimbursement will shape how quickly these tools reach routine practice, and the field will need consistent ways to measure margin accuracy and clinical benefit.",
             "heading": "Where it is going"
         }
     ],

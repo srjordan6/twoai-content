@@ -4,7 +4,7 @@
     "slug": "fin-crypto-recon",
     "shape": "art-topic",
     "title": "Blockchain to Ledger Reconciliation",
-    "answer": "Blockchain to ledger reconciliation is the process of matching on-chain transaction records with internal accounting ledgers for digital assets. It covers wallet balances, transaction hashes, fees, token transfers, smart contract events, and fiat valuations. The scope includes detecting missing, duplicate, or mispriced entries across exchanges, custodians, and self-hosted wallets. It also spans periodic close, audit support, and tax basis tracking.",
+    "answer": "Blockchain to ledger reconciliation is the practice of matching activity recorded on a blockchain to the entries in a company's accounting ledger. It covers wallets, exchange accounts, custody accounts, staking rewards, and smart contract interactions that produce a tax or financial reporting event. The work starts with raw transaction data and ends with journal entries that tie to trial balances and financial statements. It also includes the reconciliation of on-chain balances to book balances at a point in time, often at month end or period close.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-09-26T09:35:09-05",
+    "built_at": "2026-09-26T12:32:43-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Accountant",
@@ -28,23 +28,23 @@
     "page_uid": "2c372d2c",
     "sections": [
         {
-            "body": "Blockchain to ledger reconciliation is the process of matching on-chain transaction records with internal accounting ledgers for digital assets. It covers wallet balances, transaction hashes, fees, token transfers, smart contract events, and fiat valuations. The scope includes detecting missing, duplicate, or mispriced entries across exchanges, custodians, and self-hosted wallets. It also spans periodic close, audit support, and tax basis tracking.",
+            "body": "Blockchain to ledger reconciliation is the practice of matching activity recorded on a blockchain to the entries in a company's accounting ledger. It covers wallets, exchange accounts, custody accounts, staking rewards, and smart contract interactions that produce a tax or financial reporting event. The work starts with raw transaction data and ends with journal entries that tie to trial balances and financial statements. It also includes the reconciliation of on-chain balances to book balances at a point in time, often at month end or period close.",
             "heading": "Scope"
         },
         {
-            "body": "The work typically runs on a data pipeline that pulls from blockchain nodes or indexers, exchange APIs, and the general ledger or ERP. It uses a normalized data store for addresses, transaction metadata, and accounting entries. Compute is usually cloud-based, with scheduled batch jobs or event-driven triggers. Some setups use an orchestration layer to sequence extraction, transformation, and matching.",
+            "body": "The work runs on a combination of blockchain nodes or indexers, exchange and custody APIs, and accounting or ERP systems. Node providers and block explorers supply raw transaction and log data, while exchange APIs supply trade, deposit, withdrawal, and fee records. A reconciliation engine or spreadsheet model then normalizes that data into a common schema before it reaches the general ledger. Wallet addresses, transaction hashes, and internal account identifiers act as the join keys across these systems.",
             "heading": "What it runs on"
         },
         {
-            "body": "Reconciliation starts by extracting native blockchain transactions and internal ledger postings into a common schema. Matching rules then pair entries by transaction hash, wallet address, asset, amount, and timestamp, with tolerance for timing differences and fee handling. Unmatched items are flagged for review, and adjustments are posted only after approval. Automated exception reports group breaks by type, such as missing deposit, duplicate withdrawal, or valuation difference.",
+            "body": "Practitioners extract on-chain events, classify them by economic substance, and map each event to a chart of accounts. Classification rules handle transfers between owned wallets, trades, staking income, airdrops, gas fees, and DeFi interactions such as lending or liquidity provision. The reconciliation then compares the resulting book balance to the on-chain balance and investigates breaks, timing differences, and unrecorded transactions. Automation helps with volume, but human review remains for ambiguous events, unusual contracts, and period-end adjustments.",
             "heading": "How the work is done"
         },
         {
-            "body": "The main risks are incomplete data, incorrect valuation, and unauthorized access to private keys or exchange credentials. Access to reconciliation tools is usually role-based, with separation between those who post journal entries and those who approve adjustments. Provenance requires retaining source transaction IDs, block heights, and API call logs so every reconciled line can be traced back to an on-chain record. Audit trails should show who changed a match rule or manually cleared an exception.",
+            "body": "Rights and risk in this work turn on data provenance, custody, and auditability. The source of every on-chain record should be traceable to a node, an indexer, or a signed API response, and the reconciliation should preserve that link. Risks include misclassified transactions, missing cost basis, duplicate entries, and exposure to counterparty or smart contract failure. Provenance also matters for tax and audit, where a company may need to show how a ledger figure was derived from blockchain data. Controls such as address whitelisting, segregation of duties, and independent review support the reconciliation process.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "Reconciliation is moving toward continuous, near real-time matching rather than month-end batch runs. More firms are adopting standardized data models for digital assets so that wallets, exchanges, and ledgers can be compared without custom mapping each time. Machine learning is being used to suggest likely matches for unmatched items and to learn recurring exception patterns, but human review remains the final control. Expect closer integration with proof-of-reserves and regulatory reporting as digital asset accounting matures.",
+            "body": "The direction of travel is toward continuous reconciliation rather than monthly batch work. More accounting platforms are adding direct blockchain data feeds, and more chains are producing standardized event logs. Zero-knowledge proofs and attestations may eventually let a company prove a ledger balance without revealing every transaction. Regulators are also paying closer attention to digital asset reporting, which pushes reconciliation closer to the audit trail. The result is a shift from manual spreadsheet matching to automated, auditable pipelines.",
             "heading": "Where it is going"
         }
     ],
