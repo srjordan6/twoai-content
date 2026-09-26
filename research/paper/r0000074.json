@@ -16,15 +16,16 @@
         "generated_on": "2026-09-02"
     },
     "abstract": "",
-    "built_at": "2026-09-24T22:08:32-05:00",
+    "built_at": "2026-09-25T22:15:05-05:00",
     "page_uid": "r0000074",
     "citations": 61,
-    "generated": "2026-09-25",
+    "generated": "2026-09-26",
     "paper_type": "Journal Article",
     "topic_name": "Security and Privacy",
     "topic_slug": "security",
     "abstract_source": "consensus",
     "explain_beginner": "When one AI model is used to judge which of several AI generated answers is best, can someone trick that judge into always picking their answer, even if it is worse. That is the practical question behind this paper. The researchers targeted a setup called LLM as a judge, where a language model scores or ranks candidate responses instead of a person doing it. They found that an attacker can hide a short crafted piece of text inside their own response, computed automatically rather than guessed by hand, and that hidden text reliably manipulates the judge into ranking that response first regardless of its actual quality. The attack worked across three different jobs the judge model was doing, ranking search results, scoring responses used to train other models, and picking which tool an AI agent should use. What the paper does not settle is how to stop this. The defenses the team tried did not hold up, so a working fix for LLM judges was still an open problem when this was published.",
     "explain_business": "Any product that automates evaluation with an LLM judge, content moderation ranking, model training pipelines that use AI feedback instead of human raters, search result reranking, or agent systems that let an AI pick among tool outputs, inherits this risk today. An attacker who can influence even one candidate response, for example a vendor competing to have their content selected, can bias the judge deterministically rather than by chance. Because the tested defenses, answer checking and perplexity filters, did not stop the attack, teams should not treat an LLM judge as a trusted arbiter for high stakes selection without a human check somewhere in the loop, especially anywhere the judged content comes from an external or adversarial party. This applies now, not as a future risk, since the paper demonstrates the attack against realistic pipeline designs already in production use, and the practical fix available today is added scrutiny or a non LLM tie breaker rather than any patch to the judge model itself.",
+    "refresh_every_days": 30,
     "explain_practitioner": "The authors call the attack JudgeDeceiver and frame it as an optimization problem, using a gradient based search to find an adversarial sequence that, once appended to a candidate response, causes an LLM-as-a-Judge model to rank that response highest across a wide range of input queries. They evaluate it in three application settings, LLM based search ranking, reinforcement learning from AI feedback, and tool or model selection, and report that it beats both hand written prompt injection attacks and standard jailbreak prompts used as baselines. They also test three defenses that were the standard candidates at the time, known answer detection, perplexity based filtering, and windowed perplexity filtering, and find all three insufficient to catch the injected sequences. The limitation the authors themselves highlight is exactly this gap, no tested defense reliably stops the attack, which they present as evidence that LLM-as-a-Judge systems need new defense strategies rather than incremental fixes to existing filters."
 }
