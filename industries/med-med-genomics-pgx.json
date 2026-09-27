@@ -4,7 +4,7 @@
     "slug": "med-genomics-pgx",
     "shape": "art-topic",
     "title": "Pharmacogenomics",
-    "answer": "Pharmacogenomics studies how genetic variation affects drug response, including efficacy, dosing, and adverse reactions. In the context of artificial intelligence, it covers models that predict phenotype from genotype, annotate variants, and support prescribing decisions. The field sits within genomic medicine and precision therapeutics, bridging clinical pharmacology and molecular diagnostics. It includes germline and somatic variation relevant to drug metabolism, transport, and target pathways. Professionals use these systems to interpret test results and flag actionable gene-drug pairs.",
+    "answer": "Pharmacogenomics is the study of how inherited and acquired genetic variation changes a person's response to medicines, from the speed at which a drug is metabolized to the risk of an adverse reaction. It sits inside genomic medicine and precision therapeutics, and it draws on clinical pharmacology, laboratory medicine, and informatics. The work covers single-gene tests, such as those for CYP2D6 or TPMT, as well as multigene panels that a clinician might order before starting a treatment. In this atlas it belongs with the AI physician because many of the models tracked here are built to predict a phenotype from a genotype or to flag a drug-gene interaction at the point of care.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-09-27T06:31:17-05",
+    "built_at": "2026-09-27T09:29:46-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Physician",
@@ -28,23 +28,23 @@
     "page_uid": "77320b7e",
     "sections": [
         {
-            "body": "Pharmacogenomics studies how genetic variation affects drug response, including efficacy, dosing, and adverse reactions. In the context of artificial intelligence, it covers models that predict phenotype from genotype, annotate variants, and support prescribing decisions. The field sits within genomic medicine and precision therapeutics, bridging clinical pharmacology and molecular diagnostics. It includes germline and somatic variation relevant to drug metabolism, transport, and target pathways. Professionals use these systems to interpret test results and flag actionable gene-drug pairs.",
+            "body": "Pharmacogenomics is the study of how inherited and acquired genetic variation changes a person's response to medicines, from the speed at which a drug is metabolized to the risk of an adverse reaction. It sits inside genomic medicine and precision therapeutics, and it draws on clinical pharmacology, laboratory medicine, and informatics. The work covers single-gene tests, such as those for CYP2D6 or TPMT, as well as multigene panels that a clinician might order before starting a treatment. In this atlas it belongs with the AI physician because many of the models tracked here are built to predict a phenotype from a genotype or to flag a drug-gene interaction at the point of care.",
             "heading": "Scope"
         },
         {
-            "body": "Models typically run on standard clinical computing infrastructure, including electronic health record systems, laboratory information systems, and cloud or on-premises servers. Inputs are structured genetic test results, often in VCF or star-allele notation, plus patient demographics and medication lists. Many implementations rely on curated knowledge bases such as PharmGKB and CPIC guidelines rather than large neural networks. Compute requirements are modest compared to imaging or language models, so deployment can be local to a hospital or reference laboratory.",
+            "body": "The physical and computational base includes genotyping arrays, short-read and long-read sequencers, and the laboratory information systems that move a sample from accessioning to a signed report. Reference resources such as PharmGKB and the CPIC guidelines are consulted at the bench and embedded in clinical decision support. On the AI side, the site tracks 1000 medical AI models and 797 scientific models, and a small share of those are trained on pharmacogenomic variant data or on electronic health records linked to medication outcomes. Compute for training and inference typically runs on GPU clusters, either on premises or in a cloud environment, with the resulting models served through an API or a rules engine inside the electronic health record.",
             "heading": "What it runs on"
         },
         {
-            "body": "The core work is rule-based or machine learning classification that maps genotypes to predicted metabolizer status, such as poor, intermediate, normal, or ultrarapid. Curators and clinical pharmacologists translate published evidence into decision rules for specific gene-drug pairs. Some newer models use supervised learning on biobank or electronic health record data to discover or refine associations. Validation typically compares predicted phenotype or dose recommendation against measured drug levels, clinical outcomes, or expert consensus.",
+            "body": "The work begins with a specimen, usually blood or saliva, and a decision about which genes or variants to interrogate. Laboratory staff extract DNA, run the assay, and call variants against a reference genome, then a clinical scientist or genetic counselor assigns a diplotype and translates it into a predicted phenotype, such as poor, intermediate, normal, or rapid metabolizer. AI enters at several points: machine learning models can prioritize variants of uncertain significance, natural language processing can mine the literature for new drug-gene pairs, and graph models can represent interactions among genes, drugs, and pathways. The final step is a clinical decision support message that a prescriber sees alongside the order, but the interpretation and the prescribing decision remain with the clinician.",
             "heading": "How the work is done"
         },
         {
-            "body": "Pharmacogenomic models carry risk of incorrect phenotype assignment, missed interactions, and over-reliance on incomplete variant panels. Data provenance matters because allele definitions and evidence grades change over time, and a model trained on one population may not transfer to another. Regulatory oversight varies by jurisdiction, with some tests cleared as in vitro diagnostics and others offered as laboratory-developed tests. Patient consent, genetic data privacy, and return of incidental findings are central governance concerns. The site tracks 210 compliance and regulation pages relevant to this area, reflecting active rulemaking and guidance.",
+            "body": "Rights and risk in pharmacogenomics turn on consent, data privacy, and the provenance of the reference data used to make a call. A laboratory report may be governed by CLIA and CAP accreditation in the United States, and by GDPR or other privacy regimes elsewhere, while the patient's genetic data carries implications for relatives who never consented to testing. The site tracks 218 compliance and regulation pages and 6 active product liability and wrongful death lawsuits against AI companies, which shows that the legal exposure around algorithmic decision support is real and still being defined. Provenance matters because a model trained on one ancestral population may perform poorly on another, and because guideline versions change, so a report must state which evidence base it used.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The field is moving from single-gene rules toward polygenic scores and combined clinical-genetic models that predict drug response across multiple medications. Integration with electronic health records and clinical decision support is likely to become more automated, with preemptive genotyping rather than reactive single-gene testing. Research is also exploring how large language models can summarize pharmacogenomic evidence for clinicians, though clinical use remains cautious. Over time, models may incorporate rare variants, structural variation, and drug-drug-gene interactions to improve dosing in diverse populations.",
+            "body": "The field is moving from reactive, single-gene tests toward preemptive genotyping, where a panel is ordered once and stored for later prescribing decisions. AI is likely to be used to scale interpretation, to combine pharmacogenomic variants with polygenic scores and clinical variables, and to monitor real-world outcomes after a drug is prescribed. Regulators and professional societies are working on how to validate and update these models, and the lawsuits mentioned above may shape what evidence a developer must show. For a working professional, the practical shift is that pharmacogenomic results will appear more often inside the electronic health record, not as a separate consult, and the challenge will be keeping the underlying knowledge current.",
             "heading": "Where it is going"
         }
     ],

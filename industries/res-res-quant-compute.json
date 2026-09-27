@@ -4,7 +4,7 @@
     "slug": "res-quant-compute",
     "shape": "art-topic",
     "title": "Large-Scale Compute on Institutional Data",
-    "answer": "Large-scale compute on institutional data covers the use of distributed and high performance computing to analyze datasets held by universities, hospitals, government agencies and corporations. The work spans quantitative modeling, simulation, statistical analysis and machine learning on data that is often too large or too sensitive to move to a single workstation. Reproducibility is a core requirement, so the scope includes versioning of code, data and compute environments. Institutional data may include administrative records, research measurements, clinical information and operational logs.",
+    "answer": "Large-scale compute on institutional data covers the use of shared high-performance and cloud computing resources to analyze datasets that an organization controls, such as clinical records, financial transactions, sensor logs, or administrative archives. It sits in quantitative analysis and reproducible work because the same analysis must often be rerun, audited, or extended by other researchers. The scope includes data staging, access control, job scheduling, pipeline design, and the documentation that lets a result be traced back to a specific dataset and code version. It also includes the practical limits that institutional policies place on where data may reside and who may touch it.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-09-27T06:31:17-05",
+    "built_at": "2026-09-27T09:29:46-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Researcher",
@@ -28,23 +28,23 @@
     "page_uid": "cc9bb16c",
     "sections": [
         {
-            "body": "Large-scale compute on institutional data covers the use of distributed and high performance computing to analyze datasets held by universities, hospitals, government agencies and corporations. The work spans quantitative modeling, simulation, statistical analysis and machine learning on data that is often too large or too sensitive to move to a single workstation. Reproducibility is a core requirement, so the scope includes versioning of code, data and compute environments. Institutional data may include administrative records, research measurements, clinical information and operational logs.",
+            "body": "Large-scale compute on institutional data covers the use of shared high-performance and cloud computing resources to analyze datasets that an organization controls, such as clinical records, financial transactions, sensor logs, or administrative archives. It sits in quantitative analysis and reproducible work because the same analysis must often be rerun, audited, or extended by other researchers. The scope includes data staging, access control, job scheduling, pipeline design, and the documentation that lets a result be traced back to a specific dataset and code version. It also includes the practical limits that institutional policies place on where data may reside and who may touch it.",
             "heading": "Scope"
         },
         {
-            "body": "This work runs on institutional high performance computing clusters, cloud platforms and hybrid systems that combine on premises and rented capacity. Typical components include CPU and GPU nodes, parallel file systems, high speed interconnects, job schedulers such as Slurm, and container runtimes. Reproducible setups often add workflow managers, environment managers and artifact stores so that a run can be repeated with the same software stack. Storage is usually tiered, with fast scratch space for active jobs and slower object or tape storage for long term retention.",
+            "body": "The work typically runs on institutional HPC clusters with CPU and GPU nodes, on cloud compute with attached object storage, or on hybrid setups that keep sensitive data inside a controlled enclave. Schedulers such as Slurm or Kubernetes manage jobs, while containers and environment files pin software versions so a run can be repeated. Storage tiers matter, because large datasets may sit on parallel file systems for active analysis and on slower archival systems for retention. Network capacity and data transfer rules often shape the design as much as raw processor count.",
             "heading": "What it runs on"
         },
         {
-            "body": "The work is done by first ingesting and cleaning institutional data, then recording its schema and provenance before analysis. Analysts write parallel or distributed jobs that split computation across many nodes, often using frameworks for batch processing, array jobs or message passing. Model training and statistical fitting are logged with hyperparameters, random seeds and data versions. Results are validated against held out data or prior findings, and the full pipeline is packaged in containers or workflow definitions so another researcher can rerun it.",
+            "body": "A common pattern is to move a curated extract into a project workspace, run a pipeline of preprocessing, modeling, and validation steps, then write outputs and logs to a versioned results directory. Reproducibility depends on recording the exact data snapshot, code commit, container image, random seeds, and resource request for each run. Teams often separate exploratory notebooks from production batch jobs, because notebooks are convenient for inspection but weaker for long, unattended runs. Validation may include holdout tests, cross-validation, and checks that the same pipeline produces the same metrics when rerun on the same inputs.",
             "heading": "How the work is done"
         },
         {
-            "body": "Rights and risk center on who may access institutional data and for what purpose, governed by data use agreements, institutional review boards and internal access controls. Sensitive records are typically de-identified or pseudonymized before compute jobs run, and audit logs track which user ran which job on which dataset. Provenance systems record the lineage of every derived table, model and figure back to the original source files. Risks include re-identification, unauthorized copying, and silent changes to data or code that break reproducibility.",
+            "body": "Institutional data usually arrives with a data use agreement, an ethics review, or an internal policy that defines permitted purposes, retention, and sharing. Provenance records should link every output to the source dataset, the transformation steps, and the people or systems that authorized access. Risks include re-identification, accidental leakage through logs or model artifacts, and license terms that forbid moving data to external compute. Common practice keeps raw data in place where possible, grants least privilege, and documents any transfer or derived dataset.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The field is moving toward federated and distributed analysis that keeps raw institutional data in place while sharing only model updates or summary statistics. Confidential computing and hardware based enclaves are being explored to let institutions run shared workloads on sensitive data with stronger isolation. Reproducibility is becoming more automated through provenance capture at the scheduler and filesystem level. Energy efficiency and carbon accounting are also becoming part of how large scale institutional compute is planned and reported.",
+            "body": "The direction is toward federated and privacy-preserving analysis, where computation moves to the data or runs inside secure enclaves rather than copying sensitive records to a central cluster. Confidential computing, differential privacy, and synthetic data are being tested as ways to widen access without exposing raw records. At the same time, model sizes and dataset volumes keep pushing institutions toward shared GPU pools, tiered storage, and automated provenance capture. Reproducibility is becoming a core requirement, with pipelines expected to emit enough metadata for an independent team to rerun the analysis under the same controls.",
             "heading": "Where it is going"
         }
     ],

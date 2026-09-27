@@ -4,7 +4,7 @@
     "slug": "fin-crypto-contracts",
     "shape": "art-topic",
     "title": "Auditing Smart Contracts",
-    "answer": "Auditing smart contracts is the practice of reviewing the code, state transitions, and economic logic of programs that execute on a blockchain. The work focuses on whether a contract correctly handles asset custody, transfers, access control, and edge cases such as reentrancy or arithmetic errors. In digital asset accounting, this review supports the reliability of balances, transaction records, and automated financial obligations recorded on chain. An audit typically covers both the source code and the deployed bytecode, along with the parameters and upgrade paths that affect future behavior.",
+    "answer": "Auditing smart contracts in digital asset accounting covers the code and controls that produce balances, transfers, fees, and obligations recorded on a blockchain. It also covers the accounting assertions that depend on that code, such as existence, completeness, valuation, rights and obligations, and presentation. The scope includes the contract logic, the permissions around it, and the offchain systems that feed it or read from it. It does not cover the legal ownership of a token or the fair value of a digital asset by itself, those are separate questions.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-09-27T06:31:17-05",
+    "built_at": "2026-09-27T09:29:46-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Accountant",
@@ -28,23 +28,23 @@
     "page_uid": "b515c66b",
     "sections": [
         {
-            "body": "Auditing smart contracts is the practice of reviewing the code, state transitions, and economic logic of programs that execute on a blockchain. The work focuses on whether a contract correctly handles asset custody, transfers, access control, and edge cases such as reentrancy or arithmetic errors. In digital asset accounting, this review supports the reliability of balances, transaction records, and automated financial obligations recorded on chain. An audit typically covers both the source code and the deployed bytecode, along with the parameters and upgrade paths that affect future behavior.",
+            "body": "Auditing smart contracts in digital asset accounting covers the code and controls that produce balances, transfers, fees, and obligations recorded on a blockchain. It also covers the accounting assertions that depend on that code, such as existence, completeness, valuation, rights and obligations, and presentation. The scope includes the contract logic, the permissions around it, and the offchain systems that feed it or read from it. It does not cover the legal ownership of a token or the fair value of a digital asset by itself, those are separate questions.",
             "heading": "Scope"
         },
         {
-            "body": "The work runs on local development environments that fork a blockchain's state, on public test networks, and against live mainnet data where read only access is needed. Auditors use static analysis tools, symbolic execution engines, fuzz testing frameworks, and formal verification assistants to exercise contract paths. Node access and block explorers provide the transaction history and storage layout needed to compare intended behavior with actual state changes. Some reviews also run in containerized environments that reproduce compiler versions and dependency builds.",
+            "body": "The work runs on blockchain nodes and archive nodes that can replay state, on testnets that mirror mainnet behavior, and on block explorers and indexers that expose transactions and event logs. Auditors also use version control, reproducible build tools, and CI pipelines to compile source code and compare it with deployed bytecode. Static analyzers, fuzzers, symbolic execution engines, and formal verification tools run alongside manual review, and AI tools may help triage patterns or summarize findings. The infrastructure must preserve evidence, so logs, hashes, and build artifacts are stored in a way that can be checked later.",
             "heading": "What it runs on"
         },
         {
-            "body": "An audit usually begins with a specification review to establish what the contract is supposed to do, followed by line by line manual inspection of the code. Automated tools then scan for known vulnerability patterns, while fuzzing and symbolic execution generate unusual inputs and explore state space. Auditors test invariants such as total supply conservation, collateral ratios, and access control boundaries, and they simulate attacks like reentrancy, front running, and oracle manipulation. The final step compares the audited source code to the bytecode deployed at a specific address and documents any differences or unresolved findings.",
+            "body": "The work starts with scoping, gathering the contracts, the deployment records, and the accounting questions the code is meant to answer. Auditors read the source code, compare it to the deployed bytecode, and trace the paths that move value, mint tokens, change permissions, or call external contracts. They then test those paths with unit tests, fuzzing, symbolic execution, and formal proofs where the risk justifies it, and they simulate economic scenarios such as oracle failure, liquidation, or a run on withdrawals. Findings are written up with severity, evidence, and a reproduction path, then the team fixes the code and the auditor retests the fix. The final report states what was reviewed, what was found, what was fixed, and what remains open.",
             "heading": "How the work is done"
         },
         {
-            "body": "Audit reports are point in time opinions, not guarantees, and they typically state the exact commit hash, deployment address, and scope of files reviewed. Users and protocol teams rely on these reports to allocate risk, but liability for losses often remains with the deploying team and users rather than the auditor. Provenance matters because a contract may be upgradeable or controlled by a multisig, so the audited code can change after the report is issued. Best practice includes publishing the audit scope, linking the report to the deployed bytecode, and maintaining a bug bounty or incident response process for later discoveries.",
+            "body": "Rights and risk in smart contract auditing turn on who owns the code, who has the right to review it, and who is allowed to change it. Audit reports are often confidential, but they may be shared with investors, regulators, or counterparties, and engagement letters typically define scope, liability, and permitted use. Provenance matters because the deployed bytecode must match the audited source, and the compiler, dependencies, and build settings must be recorded. For digital asset accounting, the audit trail supports internal controls, segregation of duties, change management, and the evidence behind financial statement assertions. This is a description of practice, not legal advice, and it does not tell a reader how to treat a particular token or transaction.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The field is moving toward continuous monitoring of deployed contracts rather than one time pre launch reviews. Formal verification and AI assisted code review are becoming more common for high value protocols, especially where accounting invariants must hold across many interacting contracts. Standardized audit checklists and machine readable findings are likely to support automated re-audits when dependencies or governance parameters change. Cross chain bridges and modular upgrade patterns will push auditors to track provenance and risk across multiple networks and execution environments.",
+            "body": "Smart contract auditing is moving toward continuous monitoring, where onchain alerts and automated checks run after deployment rather than only before it. AI assisted review is likely to handle more pattern detection, code summarization, and anomaly triage, while human auditors keep responsibility for judgment and sign off. Formal verification and reproducible builds are becoming more common for high value contracts, and accounting teams are asking for audit evidence that maps directly to ledger entries and disclosures. The limits remain, because code can be correct and the economic design can still fail, and because offchain data, governance, and key management sit outside the contract. The direction is better tooling, clearer standards, and tighter links between code audit, financial audit, and compliance review.",
             "heading": "Where it is going"
         }
     ],
