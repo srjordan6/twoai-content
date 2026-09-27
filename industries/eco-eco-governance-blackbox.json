@@ -4,7 +4,7 @@
     "slug": "eco-governance-blackbox",
     "shape": "art-topic",
     "title": "Explaining Models to Regulators and Clients",
-    "answer": "Explaining models to regulators and clients covers the practice of translating how a model works, what data it uses, and what its outputs mean into language that a non-specialist can act on. The scope includes both formal regulatory examinations and ongoing client reporting, as well as internal reviews where fiduciary duty requires clear communication about model risk. It also covers the boundary between what a model can and cannot be said to do, so that explanations do not overstate certainty or hide known limitations.",
+    "answer": "Explaining models to regulators and clients covers the documents, conversations and evidence that show how an AI system reaches its outputs and where its limits lie. It includes model cards, validation reports, data lineage summaries, performance metrics, known failure modes and plain language descriptions of assumptions. The work sits inside governance and fiduciary risk because a firm must be able to justify decisions made with or about AI to supervisors, auditors, customers and boards. It is not only a technical exercise, it is a translation exercise between data science, legal, compliance and business teams.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-09-27T01:34:20-05",
+    "built_at": "2026-09-27T03:33:14-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Economist",
@@ -28,23 +28,23 @@
     "page_uid": "f0e368f2",
     "sections": [
         {
-            "body": "Explaining models to regulators and clients covers the practice of translating how a model works, what data it uses, and what its outputs mean into language that a non-specialist can act on. The scope includes both formal regulatory examinations and ongoing client reporting, as well as internal reviews where fiduciary duty requires clear communication about model risk. It also covers the boundary between what a model can and cannot be said to do, so that explanations do not overstate certainty or hide known limitations.",
+            "body": "Explaining models to regulators and clients covers the documents, conversations and evidence that show how an AI system reaches its outputs and where its limits lie. It includes model cards, validation reports, data lineage summaries, performance metrics, known failure modes and plain language descriptions of assumptions. The work sits inside governance and fiduciary risk because a firm must be able to justify decisions made with or about AI to supervisors, auditors, customers and boards. It is not only a technical exercise, it is a translation exercise between data science, legal, compliance and business teams.",
             "heading": "Scope"
         },
         {
-            "body": "This work runs on documentation systems that record model versions, training data lineage, feature definitions, and approval history. Explanation tooling often includes sensitivity analysis libraries, feature importance calculators, and decision trace logs that can reproduce why a particular output was produced. Reporting pipelines assemble these records into model cards, validation summaries, and plain-language narratives for different audiences. The infrastructure must support auditability, so every explanation can be traced back to the exact model artifact and data snapshot that generated it.",
+            "body": "The work runs on a model inventory or registry that records every model in use, its owner, its version and its purpose. Documentation lives in version controlled repositories, often alongside code, with links to data lineage tools, feature stores and monitoring dashboards. Explanation methods such as SHAP or LIME may run on separate compute, and their outputs are stored with the model version they describe. Access controls, audit logs and retention policies are part of the infrastructure because regulators and clients may ask who saw what and when.",
             "heading": "What it runs on"
         },
         {
-            "body": "Practitioners typically separate global explanations, which describe how a model behaves across many cases, from local explanations, which describe why one specific decision was made. They use counterfactual testing to show what would have to change in an input for the output to change, and sensitivity analysis to show which features matter most. The work also involves writing model cards and fairness summaries that state intended use, known failure modes, and performance across relevant subgroups. Explanations are reviewed by model risk or compliance staff before they are shared, to catch technical jargon or unsupported claims.",
+            "body": "A typical process starts with an inventory and a risk tiering, so that high impact models receive deeper explanation than low impact ones. Teams then produce documentation that states the model's purpose, training data, validation results, limitations and the business decision it supports. They test explanations for stability, check that they match known behavior, and have legal and compliance review the language before it goes to a regulator or client. The final step is often a dry run or a question and answer session, because an explanation that cannot survive follow up questions is not finished.",
             "heading": "How the work is done"
         },
         {
-            "body": "Rights and risk in this area turn on provenance: an explanation is only as strong as the record of where the model, data, and assumptions came from. Regulators and clients generally expect to see the version history, training window, and validation results behind any model they are asked to rely on. Risks include exposing proprietary model logic, creating a misleading impression of accuracy, or failing to disclose a material limitation that later causes harm. Fiduciary risk arises when an explanation is incomplete or selective in a way that a reasonable client or examiner would find material. Governance therefore requires that explanations be approved, versioned, and retained alongside the model artifacts they describe.",
+            "body": "Rights and risk turn on provenance, confidentiality and accuracy. A firm must know whether it has the right to use the training data, whether client data appears in outputs, and whether disclosure would reveal trade secrets or personal information. The site tracks 148 active AI lawsuits, which shows that unclear model claims can become disputes over liability, discrimination or contract terms. Provenance records, consent agreements, bias testing and clear statements of uncertainty are common controls, and regulators increasingly expect them to be produced on request.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The direction is toward explanations that are as auditable and standardized as financial statements, with clear links to model version, data lineage, and approval chain. Regulators are likely to ask for more granular provenance and real-time access to decision traces, while clients may expect plain-language summaries updated with each model release. There is also movement toward using simpler or inherently interpretable models for high-stakes decisions where the cost of a poor explanation is high. As model inventories grow, explanation workflows will need to scale without losing the human review that catches unsupported claims.",
+            "body": "Expect more standardized disclosure formats, more automated documentation pipelines and more demand for continuous evidence rather than one time reports. Regulators are moving toward examining AI systems in the same way they examine financial models, with periodic validation and clear ownership. Clients are asking for plain language explanations of how automated decisions affect them, and for a route to challenge those decisions. The direction is toward traceable, versioned explanations that can be updated as models change, not static documents written once.",
             "heading": "Where it is going"
         }
     ],

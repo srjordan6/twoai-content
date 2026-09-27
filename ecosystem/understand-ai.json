@@ -212,7 +212,7 @@
             "meet": [
                 {
                     "uid": "",
-                    "fact": "2,427 servers from the official Model Context Protocol registry, the standard way agents are given tools.",
+                    "fact": "2,428 servers from the official Model Context Protocol registry, the standard way agents are given tools.",
                     "href": "/mcp/",
                     "name": "MCP Server tracker"
                 },
@@ -306,11 +306,11 @@
         "assumption_source": "https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them"
     },
     "reading": {
-        "body": "For a single 40-page contract, neither price nor capability is the barrier: 434 of 452 API models can hold it at once, and reading plus summarising costs about 1.2 cents.\n\nThe pattern is that one unit, the token, sets everything downstream. A 40 page contract is roughly 20,000 words, about 26,700 tokens in and 1,000 out, so the model must hold 27,700 at once. At median prices of $0.40 per million input tokens and $1.80 per million output tokens, that is $0.0107 for the read and $0.0018 for the summary. Context limits, cost and speed are all denominated in the same unit, which is why the largest context window among the 452 tracked models, 2,000,000 tokens, makes the 18 models that cannot hold this contract a small minority.\n\nScale changes the answer without changing the arithmetic. One contract fits in a context window, a library of contracts does not, and retrieval, which embeds each contract once and hands the model only the passages that match the question, is the pattern that survives that shift. The binding constraint moves from the model to the system built around it.\n\nWhat the data does not cover is accuracy. The prices are medians across 452 models from 62 providers, not the cheapest available, and nothing here measures whether a summary is correct. A summary can state a clause the contract does not contain, so for anything with legal weight it is a map to the pages to read rather than a substitute for them. The read and the write are priced. The verification is not.",
+        "body": "A 40-page contract fits inside 434 of the 452 API models in the dataset and costs about 1.2 cents to read and summarize, so the barrier is accuracy, not price or context.\n\nThe token is the unit that sets everything else. A 40-page contract is roughly 20,000 words, about 26,700 tokens in and about 1,000 out, and 434 of 452 API models can hold all 27,700 at once. The 18 that cannot would have to split the document. At median prices of $0.40 per million input tokens and $1.80 per million output tokens, the read costs about $0.0107 and the summary about $0.0018. The largest context window among the 452 models is 2,000,000 tokens, far beyond what a single contract requires. At document scale, both capacity and price are settled questions.\n\nThe problem changes shape at library scale. A whole collection of contracts will not fit in any window, so retrieval embeds each document once and hands the model only the passages that match the question. That is the default enterprise pattern because it grounds answers and keeps knowledge updatable without retraining. Inference is where the recurring money sits, not training: 110 companies run inference and bill per token, and 12 open source engines run models on your own hardware. The cost of a deployment is therefore the cost of tokens served, repeatedly, rather than the cost of one training run.\n\nWhat the data does not measure is whether the output is right. It states plainly that a summary can assert a clause the contract does not contain, and that for anything with legal weight the summary is a map to the pages to read rather than a substitute for them. It gives no rate at which that happens, and the evaluation datasets are listed as a resource, not as results. The $0.40 and $1.80 figures are medians across 452 models from 62 providers, so they describe a middle, not what any particular deployment pays. Nothing here covers power, energy, or hardware, so the 1.2 cents cannot be converted into what it costs the grid.",
         "model": "ollama:deepseek-v4.1-flash",
         "generated_on": "2026-09-27"
     },
-    "built_at": "2026-09-27T01:01:25-05",
+    "built_at": "2026-09-27T03:20:39-05",
     "category": "research-knowledge-and-learning",
     "page_uid": "d2390ba3",
     "verified": "2026-09-27",
