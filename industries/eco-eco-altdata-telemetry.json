@@ -4,7 +4,7 @@
     "slug": "eco-altdata-telemetry",
     "shape": "art-topic",
     "title": "Sensor and Shipping Data",
-    "answer": "Sensor and shipping data as alternative data covers physical-world signals from vessel transponders, port sensors, weather stations and cargo telemetry, used to estimate trade flows, commodity supply, congestion and industrial activity. It sits within alternative data because it is not standard financial reporting but can inform economic analysis ahead of official statistics. The topic includes data from maritime, rail, trucking and warehousing sensors where they bear on the movement of goods.",
+    "answer": "Sensor and shipping data is a category of alternative data built from physical measurements and logistics records. It includes vessel positions from AIS, port calls, container movements, rail and truck telemetry, warehouse scans, weather sensors, and industrial IoT readings. Analysts use it to estimate trade flows, inventory levels, freight activity, and supply chain stress before official statistics appear. It overlaps with satellite imagery, customs records, and bill of lading data, but its defining feature is that the signal comes from machines or transport operations rather than from company disclosures. For The AI Economist, it is one input into a broader picture of economic activity and AI-related markets.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-09-27T03:33:14-05",
+    "built_at": "2026-09-27T06:31:17-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Economist",
@@ -28,23 +28,23 @@
     "page_uid": "97158f26",
     "sections": [
         {
-            "body": "Sensor and shipping data as alternative data covers physical-world signals from vessel transponders, port sensors, weather stations and cargo telemetry, used to estimate trade flows, commodity supply, congestion and industrial activity. It sits within alternative data because it is not standard financial reporting but can inform economic analysis ahead of official statistics. The topic includes data from maritime, rail, trucking and warehousing sensors where they bear on the movement of goods.",
+            "body": "Sensor and shipping data is a category of alternative data built from physical measurements and logistics records. It includes vessel positions from AIS, port calls, container movements, rail and truck telemetry, warehouse scans, weather sensors, and industrial IoT readings. Analysts use it to estimate trade flows, inventory levels, freight activity, and supply chain stress before official statistics appear. It overlaps with satellite imagery, customs records, and bill of lading data, but its defining feature is that the signal comes from machines or transport operations rather than from company disclosures. For The AI Economist, it is one input into a broader picture of economic activity and AI-related markets.",
             "heading": "Scope"
         },
         {
-            "body": "The data runs on Automatic Identification System transponders carried by ships, satellite and terrestrial receivers, port and canal cameras, and internet-connected sensors on containers and vessels. Ingest pipelines normalize timestamps, positions and identifiers, then store the records in cloud object storage and stream processing systems. Geospatial databases support route queries, zone entry and exit detection, and distance calculations. Many providers also maintain vessel registries and historical archives that link a ship's identity to its owner, flag and cargo history.",
+            "body": "The data runs on networks of sensors, transponders, and telemetry systems. AIS transponders on ships, GPS receivers on trucks, RFID and barcode scanners in warehouses, port community systems, and satellite constellations feed raw events into collection pipelines. Those pipelines depend on message brokers, time-series databases, cloud storage, and geospatial indexes to handle high volume and location data. Downstream, analysts query the data through APIs, dashboards, or data warehouses, often joining it with reference tables for vessels, ports, and companies.",
             "heading": "What it runs on"
         },
         {
-            "body": "Analysts clean AIS pings by removing duplicates and implausible positions, then match vessel identifiers to ownership, charter and cargo manifest records. They build features such as port call counts, dwell times, deadweight tonnage, route deviations and average speed, and aggregate them by port, region or commodity. Statistical models and machine learning are used to nowcast trade volumes, freight rates or inventory levels from these features. Sensor fusion with weather data and satellite imagery can fill gaps when AIS coverage is sparse.",
+            "body": "Work begins with ingestion and cleaning, because sensor feeds arrive with gaps, duplicates, and clock errors. Teams normalize vessel and port identifiers, map coordinates to known locations, and build voyage or shipment episodes from raw pings. They then compute features such as port congestion, transit time, draft change, or container dwell time, and compare those features against benchmarks or historical patterns. Statistical models and machine learning can fill gaps, detect anomalies, or forecast activity, but the core task is careful entity resolution and validation against independent sources. Results are usually delivered as time series, indices, or exception alerts rather than as raw pings.",
             "heading": "How the work is done"
         },
         {
-            "body": "Data is usually purchased or licensed from commercial providers, with contract terms that restrict redistribution and may limit use in trading or research. Risks include AIS spoofing, receiver gaps, re-identification of individual vessels or cargo owners, and conflicts with sanctions or privacy rules when tracking specific ships. Provenance should record the sensor source, timestamp, and any interpolation or imputation applied to the raw signal. Analysts also need to document the version of the vessel registry and the matching logic used.",
+            "body": "Rights and risk depend on where the data comes from and what contracts allow. AIS is broadcast publicly, but some feeds are aggregated by commercial providers with terms that restrict redistribution, and vessel owners may object to tracking that reveals commercial activity. Shipping records can include personal data about crews or counterparties, so privacy and data protection rules may apply, and customs or bill of lading data may be subject to confidentiality. Provenance matters because AIS can be spoofed, disabled, or delayed, and port data can be revised, so common practice includes documenting sources, retaining raw evidence, and flagging uncertainty. Governance also covers access controls, retention limits, and audit trails for any model or index built on the data.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "More satellite constellations and lower-cost internet-connected sensors are increasing coverage and revisit rates, while machine learning is being used to infer cargo types and detect dark fleet activity such as transponder shutdowns. Integration with port digital twins and customs data may improve short-term trade estimates and reduce reliance on monthly official statistics. The field is moving toward real-time, vessel-level economic indicators that can be updated daily or hourly.",
+            "body": "The field is moving toward denser sensor coverage, with more satellites, cheaper trackers, and broader port digitalization. That increases the resolution of trade and logistics signals but also raises the volume of noise and the cost of cleaning. Expect more fusion of shipping data with satellite imagery, weather, and customs records to cross-check physical flows. Regulation and commercial licensing will shape what can be shared, and provenance standards will matter as more models rely on these feeds. For analysts, the practical direction is toward faster nowcasts of supply chains and economic activity, with clearer documentation of where each number came from.",
             "heading": "Where it is going"
         }
     ],

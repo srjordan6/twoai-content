@@ -4,7 +4,7 @@
     "slug": "art-rights-provenance",
     "shape": "art-topic",
     "title": "Training Data and Opt-Outs",
-    "answer": "Training data and opt-outs concern the datasets used to teach generative image, video, and audio models, and the mechanisms by which artists and rights holders can ask for their work to be excluded. It covers how data is collected, filtered, and documented, and what an opt-out actually means in practice. The page sits within rights and provenance because the choice of training inputs shapes both legal exposure and the stylistic outputs of a model. It also addresses the difference between opting out of future training and removing work already learned by a model.",
+    "answer": "Training data and opt-outs covers the sources used to teach generative image, video, and audio models, and the ways creators can ask that their work be excluded. It includes scraped web images, licensed archives, commissioned shoots, public domain collections, synthetic outputs, and the metadata that records where each item came from. It also covers the practical meaning of an opt-out, whether that is a platform setting, a robots.txt signal, a contract clause, or a removal request after training has already happened. The site tracks 1000 live image generation models, and each one may rest on a different mix of these sources, so the scope is both technical and contractual.",
     "crumbs": [
         {
             "name": "The Art of AI",
@@ -16,7 +16,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-09-27T03:33:14-05",
+    "built_at": "2026-09-27T06:31:17-05",
     "category": "ecosystem-entities-market-and-operations",
     "expanded": true,
     "hub_name": "The Art of AI",
@@ -24,23 +24,23 @@
     "page_uid": "5d71a55f",
     "sections": [
         {
-            "body": "Training data and opt-outs concern the datasets used to teach generative image, video, and audio models, and the mechanisms by which artists and rights holders can ask for their work to be excluded. It covers how data is collected, filtered, and documented, and what an opt-out actually means in practice. The page sits within rights and provenance because the choice of training inputs shapes both legal exposure and the stylistic outputs of a model. It also addresses the difference between opting out of future training and removing work already learned by a model.",
+            "body": "Training data and opt-outs covers the sources used to teach generative image, video, and audio models, and the ways creators can ask that their work be excluded. It includes scraped web images, licensed archives, commissioned shoots, public domain collections, synthetic outputs, and the metadata that records where each item came from. It also covers the practical meaning of an opt-out, whether that is a platform setting, a robots.txt signal, a contract clause, or a removal request after training has already happened. The site tracks 1000 live image generation models, and each one may rest on a different mix of these sources, so the scope is both technical and contractual.",
             "heading": "Scope"
         },
         {
-            "body": "Training data for art models is typically assembled from large web crawls, image hosting sites, stock libraries, and public datasets. Opt-out infrastructure includes per-site robots.txt directives, centralized do-not-train registries, and platform-specific forms that let creators flag their work. These signals must then be matched against the data pipeline before training begins, which requires stable identifiers and periodic re-crawls. In practice, the infrastructure is fragmented, and a single opt-out rarely propagates across all datasets or model trainers.",
+            "body": "The work runs on large storage and compute clusters that hold and process image, video, and audio datasets, often in object stores with indexed metadata. Training pipelines read from these stores, apply filters and captions, and feed batches to GPUs or other accelerators. Opt-out systems run alongside as registries, crawler rules, hashing services, and rights databases that must be checked before or during data collection. Provenance tools such as C2PA manifests and dataset cards may also sit in this layer, linking a model or output back to source records.",
             "heading": "What it runs on"
         },
         {
-            "body": "The work of building training sets is often done by automated scraping, deduplication, and pairing images or clips with text descriptions. Opt-out processing is a filtering step: a crawler checks a URL or content hash against an exclusion list and drops matching items. Some teams also use provenance metadata, such as copyright notices or watermarks, to detect and remove opted-out material. The method is imperfect because models may still learn from near-duplicates, cropped versions, or descriptions that mention the work without including the image itself.",
+            "body": "In practice, teams assemble a dataset by crawling or licensing content, then clean, deduplicate, caption, and filter it before training. Opt-outs are handled through several channels, including crawler exclusion files, platform preference flags, direct artist requests, and contractual restrictions negotiated with rights holders. Because removal after training is difficult, some teams keep source-level records so they can retrain or filter later if a claim arises. Others use similarity search or membership tests to find whether a specific work influenced a model, though these methods are imperfect and often contested.",
             "heading": "How the work is done"
         },
         {
-            "body": "Rights and risk turn on whether training on copyrighted work without permission is fair use, and whether an opt-out creates a binding obligation. In the 92 active intellectual property lawsuits this atlas tracks, courts are testing whether scraping, memorization, and output similarity cross legal lines. Opt-out systems are often voluntary, so a creator who opts out has no guarantee that every trainer will honor the request. Contracts, terms of service, and emerging transparency rules are beginning to turn some opt-outs into enforceable conditions rather than polite signals.",
+            "body": "The governance question is who bears the risk when training data is collected without clear consent, and how provenance is documented from source to model to output. Opt-out mechanisms vary widely, and an artist who blocks one crawler may still find their work in a dataset obtained from another source. The site counts 92 active intellectual property lawsuits, 18 of which involve AI music services, which shows how quickly these disputes move from policy debate into court. Common measures include dataset documentation, license review, and a process for handling takedown or exclusion requests, and this page describes practice rather than giving legal advice.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "Opt-outs are moving from ad hoc lists toward machine-readable standards that can be checked automatically during data collection. The likely direction is a combination of persistent content credentials, registry-based exclusion, and technical unlearning methods that try to reduce the influence of removed work after training. As more jurisdictions require training data disclosure, opt-out records may become part of a model's provenance file. The unresolved question is whether retroactive opt-outs can ever fully undo what a model has already absorbed.",
+            "body": "The direction of travel is toward more granular opt-outs, better provenance records, and clearer separation between licensed, public domain, and scraped material. Standards for content credentials and dataset transparency are likely to become more common, though adoption will be uneven across image, video, and audio models. Expect more tools that let creators register exclusion preferences once and have them checked by multiple data collectors, and more pressure to make retraining and removal feasible. The legal picture will keep shifting as courts and regulators respond to the active intellectual property lawsuits tracked on this site, and both technical standards and case law remain moving targets.",
             "heading": "Where it is going"
         }
     ],

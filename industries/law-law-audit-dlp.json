@@ -4,7 +4,7 @@
     "slug": "law-audit-dlp",
     "shape": "art-topic",
     "title": "Data Loss Prevention and Sanitisation",
-    "answer": "Data loss prevention and sanitisation in AI security audits covers the controls that stop sensitive or regulated information from entering model training sets, prompts, retrieval contexts, or generated outputs. It includes identifying personal data, trade secrets, source code, and privileged material before it is used in a machine learning pipeline. The work also covers removing or masking that data from logs, vector stores, and fine tuning corpora. In enterprise enablement, this scope extends to third party AI tools and internal copilots that employees may use with customer or employee records.",
+    "answer": "Data loss prevention and sanitisation in AI security audits covers the controls and processes that keep sensitive data from leaving an organisation through AI tools, prompts, training pipelines, or agent actions. It includes classification of data, monitoring of egress points, and redaction or removal of personal, confidential, regulated, or proprietary content before it reaches a model or vendor. It also covers sanitisation of data used for fine tuning, retrieval, evaluation, and logging, so that residual copies do not become a second leak path. In enterprise enablement, the scope joins policy, procurement, engineering, and user behaviour into one auditable program.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-09-27T03:33:14-05",
+    "built_at": "2026-09-27T06:31:17-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Lawyer",
@@ -28,23 +28,23 @@
     "page_uid": "252b852c",
     "sections": [
         {
-            "body": "Data loss prevention and sanitisation in AI security audits covers the controls that stop sensitive or regulated information from entering model training sets, prompts, retrieval contexts, or generated outputs. It includes identifying personal data, trade secrets, source code, and privileged material before it is used in a machine learning pipeline. The work also covers removing or masking that data from logs, vector stores, and fine tuning corpora. In enterprise enablement, this scope extends to third party AI tools and internal copilots that employees may use with customer or employee records.",
+            "body": "Data loss prevention and sanitisation in AI security audits covers the controls and processes that keep sensitive data from leaving an organisation through AI tools, prompts, training pipelines, or agent actions. It includes classification of data, monitoring of egress points, and redaction or removal of personal, confidential, regulated, or proprietary content before it reaches a model or vendor. It also covers sanitisation of data used for fine tuning, retrieval, evaluation, and logging, so that residual copies do not become a second leak path. In enterprise enablement, the scope joins policy, procurement, engineering, and user behaviour into one auditable program.",
             "heading": "Scope"
         },
         {
-            "body": "These controls run across the same stack as the AI systems they protect, from endpoint agents and browser extensions to API gateways and data pipelines. A typical deployment places inspection points at the prompt entry layer, at retrieval augmented generation connectors, and at model output channels. Sanitisation often runs as a preprocessing service that redacts or tokenises fields before they reach a model, and as a postprocessing filter that blocks or rewrites responses containing residual sensitive data. The infrastructure must handle both structured records and unstructured text without adding latency that breaks interactive use.",
+            "body": "DLP and sanitisation run on a mix of network and endpoint controls, cloud access security brokers, secure web gateways, API gateways, identity and access management, and data classification platforms. For AI specifically, they sit in front of model APIs, internal model serving layers, vector databases, prompt gateways, and agent tool connectors. Sanitisation services may run as preprocessing jobs, inline filters, or post processing steps that scan outputs for secrets, personal data, or regulated content. Logging and case management systems record alerts, redactions, and exceptions for audit.",
             "heading": "What it runs on"
         },
         {
-            "body": "The work is done by combining pattern matching, named entity recognition, and policy based classification with manual review for high risk cases. Sanitisation techniques include pseudonymisation, where identifiers are replaced with reversible tokens, and redaction, where values are removed entirely. For training data, practitioners deduplicate records, strip metadata, and run canary or membership checks to detect leakage. Auditors then test the pipeline by submitting crafted prompts and measuring whether protected values appear in outputs, which is a practical way to validate the controls rather than relying on model documentation alone.",
+            "body": "Teams map data flows from source systems to AI tools, classify assets, and define rules for what may be sent, stored, or reused. They deploy pattern matching, machine learning classifiers, checksums for secrets, and context rules to detect personal data, credentials, source code, and confidential business information. Sanitisation methods include redaction, masking, tokenisation, pseudonymisation, aggregation, synthetic data generation, and removal of metadata before training or retrieval. Auditors then test the controls with sample prompts, egress attempts, and review of logs to confirm that policies work and exceptions are justified.",
             "heading": "How the work is done"
         },
         {
-            "body": "Rights and risk turn on data provenance, because a model cannot forget a value it has already memorised, and deletion requests often cannot reach inside trained weights. Organisations therefore document where each dataset came from, what consent or legal basis applied, and whether the data was sanitised before or after collection. Risk assessments weigh the likelihood of indirect leakage through paraphrased outputs against the cost of over redaction, which can degrade model usefulness. Provenance records also matter for audit defence, since showing that a value was never in the training set is often the only reliable proof that a model did not learn it.",
+            "body": "DLP and sanitisation touch privacy rights, contractual confidentiality, trade secrets, intellectual property, data protection obligations, and sector rules. Provenance matters because organisations need to show where training, retrieval, and prompt data came from, what rights attach, and what sanitisation was applied. The site tracks 148 active AI lawsuits, 92 of them intellectual property, which shows how often data and IP disputes surround AI systems. Audit records typically include lawful basis, notices, vendor terms, retention limits, cross border transfers, and incident response. No single control is treated as complete, because risk shifts with new tools, new data sources, and new model behaviour.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The field is moving toward continuous sanitisation that adapts to new data types and to models with longer context windows that can retain more of a conversation. Expect tighter coupling between data loss prevention and model routing, where a prompt containing sensitive material is sent only to an approved on premises model or blocked before any external call. Standards for proving sanitisation, such as differential privacy guarantees and formal redaction tests, are likely to become part of procurement checklists. As agentic systems act on behalf of users, the boundary will shift from blocking text to controlling which tools an agent may call with which data.",
+            "body": "DLP and sanitisation are moving from static rules toward context aware controls that understand prompts, model outputs, and agent behaviour. The direction is toward more inline policy enforcement at the prompt and tool call layer, more automated redaction of retrieval content, and more provenance metadata attached to datasets and model artefacts. Regulation and litigation will keep pressure on enterprises to prove that sensitive data was not used or retained improperly, and the site's 215 compliance and regulation pages reflect that growing body of material. Vendors and open source projects will likely converge on common formats for data classification, consent, and sanitisation logs.",
             "heading": "Where it is going"
         }
     ],
