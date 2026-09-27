@@ -4,7 +4,7 @@
     "slug": "eco-quant-factors",
     "shape": "art-topic",
     "title": "Non-Linear Factor Models",
-    "answer": "Non-linear factor models describe asset returns as a function of predictors where the relationship can include interactions, thresholds, and regime-dependent effects that linear factor models miss. In quantitative trading they are used to build return forecasts, decompose risk, and construct portfolios across equities, futures, and currencies. The scope covers both cross-sectional models that rank assets at a point in time and time-series models that capture changing exposures. These models sit between traditional linear factor work and fully unstructured deep learning, and they are evaluated against linear benchmarks for marginal predictive value.",
+    "answer": "Non-linear factor models are a family of quantitative methods that relate asset returns or risks to factors through relationships that are not straight lines. They allow a factor to matter more at some levels than others, to interact with other factors, or to change with market regime. In quantitative trading they are used for return forecasting, risk decomposition, portfolio construction, and alpha research. They are not a single technique, but a broad class that includes tree ensembles, kernel methods, neural networks, and spline or threshold models. The scope covers both cross-sectional stock selection and time-series prediction across asset classes.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-09-26T22:24:59-05",
+    "built_at": "2026-09-27T01:34:20-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Economist",
@@ -28,23 +28,23 @@
     "page_uid": "4d8ed2c3",
     "sections": [
         {
-            "body": "Non-linear factor models describe asset returns as a function of predictors where the relationship can include interactions, thresholds, and regime-dependent effects that linear factor models miss. In quantitative trading they are used to build return forecasts, decompose risk, and construct portfolios across equities, futures, and currencies. The scope covers both cross-sectional models that rank assets at a point in time and time-series models that capture changing exposures. These models sit between traditional linear factor work and fully unstructured deep learning, and they are evaluated against linear benchmarks for marginal predictive value.",
+            "body": "Non-linear factor models are a family of quantitative methods that relate asset returns or risks to factors through relationships that are not straight lines. They allow a factor to matter more at some levels than others, to interact with other factors, or to change with market regime. In quantitative trading they are used for return forecasting, risk decomposition, portfolio construction, and alpha research. They are not a single technique, but a broad class that includes tree ensembles, kernel methods, neural networks, and spline or threshold models. The scope covers both cross-sectional stock selection and time-series prediction across asset classes.",
             "heading": "Scope"
         },
         {
-            "body": "The work runs on historical market data, point-in-time fundamentals, and often alternative data such as news sentiment or order flow, all stored in time-aligned databases. Model training typically uses distributed compute with GPU or CPU clusters, while live signal generation may require low-latency inference close to execution. Backtesting engines replay data with realistic transaction costs, corporate actions, and survivorship bias controls. Feature stores and experiment tracking systems keep inputs and model versions reproducible.",
+            "body": "The work runs on a data and compute stack that can handle large panel datasets and repeated model training. Market data, fundamental data, and alternative data are cleaned and aligned into feature stores, often with point-in-time controls to avoid lookahead. Training may use CPUs for tree ensembles and GPUs for neural networks, with cloud or on-prem clusters for parallel hyperparameter searches. Backtesting engines, risk systems, and portfolio optimizers sit downstream, and common Python libraries such as scikit-learn, XGBoost, LightGBM, and PyTorch are widely used. Production deployment requires low-latency scoring for some strategies and batch scoring for others.",
             "heading": "What it runs on"
         },
         {
-            "body": "Practitioners estimate non-linear factor models with methods such as gradient boosted trees, random forests, kernel ridge regression, splines, or shallow neural networks. Features are built from lagged returns, valuation ratios, momentum, volatility, and macro variables, often with interaction terms or embeddings for categorical data. Training uses walk-forward validation, regularization, and ensemble averaging to reduce overfitting. Model outputs are typically converted to scores or expected returns and then passed to a portfolio optimizer with constraints.",
+            "body": "Practitioners start by defining factors from market, fundamental, or alternative data, then let a non-linear model learn interactions and state dependence. Time-series cross-validation and walk-forward testing are standard, because random splits leak future information. Regularization, early stopping, and ensembling help control overfitting, while transaction cost and capacity analysis test whether a signal survives trading. Interpretability tools such as SHAP values and partial dependence plots are used to check that the model is not relying on spurious patterns. The output is typically a forecast or risk estimate that feeds into a portfolio construction step, not a direct trading instruction.",
             "heading": "How the work is done"
         },
         {
-            "body": "Model risk management requires independent validation, documentation of data provenance, and monitoring for performance decay or regime shifts. Overfitting is a central concern, so backtests are stress-tested with multiple scenarios and out-of-sample periods. Interpretability tools such as Shapley values or partial dependence plots are used to explain factor contributions to risk committees. Data licensing, code versioning, and audit trails support reproducibility and compliance with market conduct rules.",
+            "body": "Rights and provenance matter because non-linear models often consume licensed market data, alternative data, and sometimes personal or sensitive information. Teams need clear data contracts, usage rights, and audit trails that record which data version and feature set produced a given model. Model risk management covers documentation, validation, monitoring, and change control, with attention to overfitting, regime shifts, and hidden exposures. Explainability is a practical concern for investment committees and regulators, even when the underlying model is complex. The site's 215 compliance and regulation pages reflect how much of this work sits under supervision, from data privacy to market conduct.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The field is moving toward hybrid models that combine linear factor structure with non-linear residuals, preserving interpretability while capturing complex effects. Time-series transformers and graph neural networks are being explored for cross-asset and lead-lag relationships. Causal inference methods are gaining attention to separate predictive signals from spurious correlations. Regulatory and internal governance pressure is pushing for more explainable and continuously monitored non-linear models.",
+            "body": "The field is moving toward models that combine non-linear flexibility with economic structure and causal reasoning. Deep learning, graph neural networks, and transformer architectures are being tested for factor discovery and regime detection, though simpler tree ensembles often remain competitive. More work is going into interpretable machine learning, so that complex models can be explained to risk committees and investors. Real-time data and automated feature pipelines are shortening the cycle from research to production. Regulatory scrutiny and data rights are likely to shape which non-linear techniques are practical at scale.",
             "heading": "Where it is going"
         }
     ],
