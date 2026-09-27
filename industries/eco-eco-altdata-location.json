@@ -4,7 +4,7 @@
     "slug": "eco-altdata-location",
     "shape": "art-topic",
     "title": "Mobile Location Data",
-    "answer": "Mobile location data refers to aggregated or individual-level geospatial records collected from smartphones and other connected devices, used as an alternative dataset for economic analysis, retail footfall, mobility, and real estate. It sits within alternative data because it is not drawn from standard financial statements or market feeds. The data typically includes latitude, longitude, timestamp, device identifier, and sometimes inferred activity. In AI economics, it is used to model consumer behavior, supply chain movement, and regional economic activity.",
+    "answer": "Mobile location data covers the movement and presence signals emitted by smartphones and other connected devices, including GPS fixes, cell tower triangulation, Wi-Fi and Bluetooth proximity, and app-level location permissions. In alternative data, it is used to measure foot traffic, dwell time, trade areas, catchment overlap, and visit frequency for stores, venues, and events. The data usually arrives as a panel of devices, with each device represented by a persistent or rotating identifier and each observation tied to a timestamp and a geographic coordinate or place. Analysts combine it with points of interest, census geography, and transaction or card data to build commercial and economic indicators. It is not a census of all people, and coverage depends on the apps, operating systems, and opt-in rates that feed the panel.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-09-27T15:29:59-05",
+    "built_at": "2026-09-27T18:32:27-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Economist",
@@ -28,23 +28,23 @@
     "page_uid": "54592a6f",
     "sections": [
         {
-            "body": "Mobile location data refers to aggregated or individual-level geospatial records collected from smartphones and other connected devices, used as an alternative dataset for economic analysis, retail footfall, mobility, and real estate. It sits within alternative data because it is not drawn from standard financial statements or market feeds. The data typically includes latitude, longitude, timestamp, device identifier, and sometimes inferred activity. In AI economics, it is used to model consumer behavior, supply chain movement, and regional economic activity.",
+            "body": "Mobile location data covers the movement and presence signals emitted by smartphones and other connected devices, including GPS fixes, cell tower triangulation, Wi-Fi and Bluetooth proximity, and app-level location permissions. In alternative data, it is used to measure foot traffic, dwell time, trade areas, catchment overlap, and visit frequency for stores, venues, and events. The data usually arrives as a panel of devices, with each device represented by a persistent or rotating identifier and each observation tied to a timestamp and a geographic coordinate or place. Analysts combine it with points of interest, census geography, and transaction or card data to build commercial and economic indicators. It is not a census of all people, and coverage depends on the apps, operating systems, and opt-in rates that feed the panel.",
             "heading": "Scope"
         },
         {
-            "body": "The data is collected through software development kits in mobile apps, carrier network events, or location-based services, then processed on cloud data warehouses and stream processors. Raw pings are noisy, so pipelines deduplicate, cluster, and map coordinates to points of interest. Storage is usually columnar or geospatial, with access through APIs or batch exports. Compute needs are moderate but scale with billions of daily events.",
+            "body": "The raw material runs on the mobile device itself, where the operating system grants or denies location access to apps, and on the network side, where carriers see cell tower connections and Wi-Fi access points. Collection typically happens through software development kits embedded in consumer apps, through advertising bidstreams that carry location signals, or through carrier and panel agreements. The data then moves into cloud storage and processing pipelines, often with a data clean room or a secure enclave for matching against client data. Identifiers such as mobile advertising IDs, hashed email addresses, or device graphs are used to link observations over time and across sources. Downstream systems include geospatial databases, point-of-interest reference files, and business intelligence tools that query aggregated counts rather than raw pings.",
             "heading": "What it runs on"
         },
         {
-            "body": "Work is done by cleaning raw location pings, then aggregating them into visits, dwell times, and origin-destination flows. Analysts join these aggregates to business locations, census tracts, or store polygons. Machine learning models, often gradient boosting or clustering, are used to infer home and work locations, segment users, and forecast foot traffic. The output is a time series or panel dataset that feeds economic models.",
+            "body": "The work starts with panel construction and consent management, then moves to cleaning: removing impossible speeds, duplicate pings, and devices that appear in two places at once. Analysts geofence places of interest, match coordinates to polygons, and infer home and work locations from repeated nighttime and daytime clusters. Visit attribution assigns a device to a venue when it dwells inside a boundary for a minimum period, and weighting adjusts for panel skew by age, income, or geography. Machine learning is used for clustering, anomaly detection, and place categorization, while validation compares the resulting traffic estimates against ground truth from sensors, receipts, or published reports. The output is usually an index, a market share estimate, or a time series, not a list of identifiable individuals.",
             "heading": "How the work is done"
         },
         {
-            "body": "Rights and risk center on consent, anonymization, and re-identification. Location data is highly sensitive because a few pings can reveal home, work, health, and religious sites. Regulations such as GDPR and state privacy laws require opt-in consent and data minimization, and many data providers use hashed identifiers or differential privacy. Provenance matters because data may be resold through brokers, and buyers must verify the original consent and collection method. Risk includes regulatory enforcement, class actions, and reputational harm if data is linked back to individuals.",
+            "body": "Rights and risk center on consent, notice, and the legal basis for processing location data, which is treated as sensitive under several privacy regimes. Provenance matters because a buyer needs to know whether the data came from a clear opt-in, a carrier agreement, or a bidstream where consent may be thin. Re-identification risk is real even after pseudonymization, especially when location traces are combined with public records or other data sets. Sensitive locations such as health clinics, places of worship, and protest sites have drawn regulatory and litigation attention, and app store policies have tightened around background location. Contracts, audit rights, retention limits, and deletion obligations are part of the diligence, and the site's compliance and regulation pages track the shifting rules.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The field is moving toward more privacy-preserving techniques such as on-device processing, federated analytics, and synthetic location data. There is also a shift from raw pings to pre-aggregated metrics, reducing the need to handle personal data. As mobile operating systems tighten location permissions, the supply of granular data is shrinking, pushing providers toward modeled or panel-based estimates. In AI economics, location data is likely to be combined with satellite imagery, card transactions, and mobility data for richer nowcasting.",
+            "body": "The direction of travel is toward less raw location and more on-device processing, aggregation, and privacy-enhancing techniques such as differential privacy and federated learning. Operating system changes and identifier deprecation have already forced vendors to rely more on panel consent and first-party relationships. Buyers are asking for synthetic data, clean room outputs, and auditable provenance rather than device-level pings. New signals from connected cars, wearables, and satellite imagery may complement or replace some mobile panel coverage. Standardization of measurement and disclosure is likely to continue as regulators and data providers negotiate what counts as de-identified.",
             "heading": "Where it is going"
         }
     ],

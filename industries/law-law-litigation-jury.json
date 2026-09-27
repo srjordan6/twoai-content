@@ -4,7 +4,7 @@
     "slug": "law-litigation-jury",
     "shape": "art-topic",
     "title": "Jury Selection and Public Data",
-    "answer": "Jury selection and public data covers the use of publicly available records to inform decisions about which potential jurors to strike, keep, or question further. This includes voter registration files, property records, campaign contributions, social media posts, court records, and news coverage. The work sits within litigation prediction and judicial analytics because it tries to estimate how a juror may lean based on observable public signals. It does not replace voir dire, but it gives trial teams a structured view of the pool before questioning begins.",
+    "answer": "Jury selection and public data covers the use of open records, such as voter files, property rolls, court dockets, and campaign finance filings, to build profiles of people in a jury pool. It sits inside litigation prediction and judicial analytics, where the goal is to understand how jurors might react to evidence, parties, or legal arguments. The work also touches on social media and other publicly posted material, though access and use vary by court and jurisdiction. This topic is about the data sources and the inferences drawn from them, not about the legal strategy of any single case.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-09-27T15:29:59-05",
+    "built_at": "2026-09-27T18:32:27-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Lawyer",
@@ -28,23 +28,23 @@
     "page_uid": "79290bc8",
     "sections": [
         {
-            "body": "Jury selection and public data covers the use of publicly available records to inform decisions about which potential jurors to strike, keep, or question further. This includes voter registration files, property records, campaign contributions, social media posts, court records, and news coverage. The work sits within litigation prediction and judicial analytics because it tries to estimate how a juror may lean based on observable public signals. It does not replace voir dire, but it gives trial teams a structured view of the pool before questioning begins.",
+            "body": "Jury selection and public data covers the use of open records, such as voter files, property rolls, court dockets, and campaign finance filings, to build profiles of people in a jury pool. It sits inside litigation prediction and judicial analytics, where the goal is to understand how jurors might react to evidence, parties, or legal arguments. The work also touches on social media and other publicly posted material, though access and use vary by court and jurisdiction. This topic is about the data sources and the inferences drawn from them, not about the legal strategy of any single case.",
             "heading": "Scope"
         },
         {
-            "body": "The work runs on standard cloud infrastructure with databases that store and index large collections of public records. Data pipelines pull from government portals, commercial aggregators, and social media APIs where terms of service allow. Entity resolution systems match names, addresses, and other identifiers to link records to specific individuals in the jury pool. Access is usually restricted to the legal team, with logging and encryption to protect case strategy and personal data.",
+            "body": "The infrastructure is mostly ordinary data engineering: cloud storage, relational databases, and scripts that pull records from county, state, and federal sources. Matching software links names, addresses, and dates of birth across datasets, because public records rarely share a common identifier. Analysts often use spreadsheets, statistical packages, and graph tools to map relationships among jurors, addresses, and social ties. Some commercial jury research platforms bundle these steps, but the underlying stack is still databases, matching logic, and reporting.",
             "heading": "What it runs on"
         },
         {
-            "body": "Analysts first collect public data for each person on the jury list, then clean and normalize it into a single profile. Natural language processing extracts topics, sentiment, and affiliations from posts, comments, and public statements. Statistical models compare these profiles to outcomes in similar past cases or to known attitudinal markers, producing a risk or affinity score for each juror. The scores are used to prioritize follow up questions during voir dire, not to make automatic strikes.",
+            "body": "The work begins with assembling a jury pool list, then enriching it with public records and, where permitted, social media posts. Entity resolution and deduplication reduce false matches, and analysts score or rank jurors on attributes such as age, occupation, neighborhood, and prior litigation history. In practice, these scores are combined with what is learned during voir dire, and the result is a set of profiles used to inform peremptory challenges and cause challenges. The method is probabilistic and often noisy, so common practice includes documenting sources, testing for bias, and keeping a human in the loop.",
             "heading": "How the work is done"
         },
         {
-            "body": "The main risks are privacy, accuracy, and fairness. Public records can be outdated, mismatched, or taken out of context, and social media posts may not reflect a person's actual views. Many jurisdictions restrict how lawyers may investigate jurors or what data they may use, and some bar contact with jurors or their networks. Provenance matters because a model's output is only as good as the source data, and hidden bias in that data can lead to discriminatory strikes. Teams typically document where each data point came from and how it was used, and courts may ask for that record.",
+            "body": "Rights and risks center on privacy, accuracy, and fair jury selection. Public data can be stale or wrong, and using it to strike jurors may raise concerns under rules against discriminatory challenges. Provenance matters: a record from a county clerk is different from a scraped social media post, and both carry different reliability and legal weight. The site tracks 6947 state AI bills, and some of those proposals address automated profiling and data use in the justice system, which makes this area a live compliance question.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "Public data will keep growing, and models will get better at linking records across sources and detecting stale or false information. Courts and legislatures are likely to add rules about what public data can be used in jury selection and how it must be disclosed. The field may move toward real time monitoring of public posts during trial, though that raises new ethical questions. Human review will remain central because jury decisions are too high stakes to leave to an automated score alone.",
+            "body": "The direction of travel is toward more automated collection and matching, with AI tools increasingly used to summarize public records and flag potential biases. At the same time, courts and legislatures are paying closer attention to juror privacy and the limits of algorithmic influence in the courtroom. Expect continued tension between efficient jury research and the constitutional and ethical rules that protect the jury system.",
             "heading": "Where it is going"
         }
     ],

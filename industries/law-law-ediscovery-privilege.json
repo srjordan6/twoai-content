@@ -4,7 +4,7 @@
     "slug": "law-ediscovery-privilege",
     "shape": "art-topic",
     "title": "Automated Privilege Logging",
-    "answer": "Automated privilege logging covers the identification and description of documents withheld from production in e-discovery on grounds such as attorney-client privilege or work product protection. It generates log entries that typically include document metadata, privilege type, author, recipient, date, and the basis for withholding. The practice reduces the manual effort of reviewing large document sets and helps keep privilege logs consistent across a case.",
+    "answer": "Automated privilege logging covers the identification, categorization, and description of documents withheld from production because of attorney-client privilege or work product protection. It sits inside e-discovery review, where a privilege log is a required or expected deliverable in litigation and investigations. The scope includes pulling metadata such as author, recipient, date, and document type, plus a short description of the basis for withholding. It also includes quality control, redaction tracking, and updates when a privilege claim is challenged or clawed back. It does not decide privilege law, which remains with counsel.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-09-27T15:29:59-05",
+    "built_at": "2026-09-27T18:32:27-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Lawyer",
@@ -28,23 +28,23 @@
     "page_uid": "29e4cda8",
     "sections": [
         {
-            "body": "Automated privilege logging covers the identification and description of documents withheld from production in e-discovery on grounds such as attorney-client privilege or work product protection. It generates log entries that typically include document metadata, privilege type, author, recipient, date, and the basis for withholding. The practice reduces the manual effort of reviewing large document sets and helps keep privilege logs consistent across a case.",
+            "body": "Automated privilege logging covers the identification, categorization, and description of documents withheld from production because of attorney-client privilege or work product protection. It sits inside e-discovery review, where a privilege log is a required or expected deliverable in litigation and investigations. The scope includes pulling metadata such as author, recipient, date, and document type, plus a short description of the basis for withholding. It also includes quality control, redaction tracking, and updates when a privilege claim is challenged or clawed back. It does not decide privilege law, which remains with counsel.",
             "heading": "Scope"
         },
         {
-            "body": "The work runs inside e-discovery platforms or document review databases, often on cloud or on-premises servers that hold indexed document collections and extracted text. It relies on OCR output, document metadata, and search indexes, and it may call language models through APIs within the review workflow. The system usually sits alongside human review queues so that automated suggestions can be checked before final log production.",
+            "body": "These systems run on e-discovery review platforms, document databases, and cloud compute, often alongside the same repositories that hold the collected corpus. They may use optical character recognition for scanned files, natural language processing models for classification, and search indexes for retrieval. Some deployments run inside a firm or provider's private cloud, while others use vendor-hosted environments with access controls and audit logs. Integration points include load files, review databases, and export formats for privilege logs. Storage and processing must handle large volumes, multiple custodians, and varied file types.",
             "heading": "What it runs on"
         },
         {
-            "body": "Machine learning classifiers are trained on prior privilege determinations, and they combine with keyword rules, pattern matching, and entity recognition for names, roles, and law firm domains. Generative models may draft the narrative description of why a document is privileged, while rule-based checks handle common privilege types and metadata fields. Human reviewers validate the output, especially for borderline documents, complex privilege claims, or nonstandard formats.",
+            "body": "The work starts with a seed set of documents already marked privileged by reviewers, which trains or prompts a model to score the remaining population. The system then extracts fields, groups related communications into threads or families, and drafts log entries from templates. Reviewers check the machine output, correct misclassifications, and approve final entries. Active learning loops feed those corrections back to improve ranking, so attention goes to borderline documents. Some workflows use keyword and metadata rules first, then machine learning for the harder calls.",
             "heading": "How the work is done"
         },
         {
-            "body": "Privilege determinations carry legal risk because an error can waive privilege or expose confidential material, so automated logs must be defensible and auditable. Provenance matters: the log should show which model version, inputs, and human review steps produced each entry. Courts and opposing counsel may scrutinize automated privilege logs, so consistency, documentation, and a clear human sign-off process are central to managing risk.",
+            "body": "Rights and risk center on waiver, inadvertence, and the accuracy of the log itself. A missed privileged document can lead to production and a clawback fight, while an overbroad log can expose client confidences or draw court scrutiny. Provenance matters: teams need to show which model, version, prompt, and training data produced a classification, and keep an audit trail of human decisions. Data protection rules may limit where documents and model outputs can be stored or transferred. Professional responsibility still rests with the lawyers who sign the log, not with the tool.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The field is moving toward greater use of large language models to draft privilege descriptions and handle multilingual, handwritten, or poorly scanned documents. Integration with review platforms and quality control dashboards is likely to deepen, giving attorneys better visibility into model confidence and error patterns. Systems may learn from attorney corrections over time, but human review and final sign-off are expected to remain a core part of the workflow.",
+            "body": "The direction is toward tighter integration with review platforms, better thread and family handling, and more explainable classifications that courts and opponents can inspect. Expect more use of large language models for drafting descriptions, with human review kept in the loop for privilege calls. Standards for model validation and log format may emerge from case law and local rules, though the area is still developing. Smaller matters may gain access as costs fall, while large matters push for scale and speed. The core tension between recall and precision will remain the practical measure of any automated approach.",
             "heading": "Where it is going"
         }
     ],
