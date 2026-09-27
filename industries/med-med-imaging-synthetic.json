@@ -4,7 +4,7 @@
     "slug": "med-imaging-synthetic",
     "shape": "art-topic",
     "title": "Synthetic Imaging from Existing Scans",
-    "answer": "Synthetic imaging from existing scans refers to AI systems that create new medical images derived from one or more prior scans, such as generating a contrast-enhanced CT from a non-contrast study, synthesizing an MRI sequence from another sequence, or producing a pseudo-CT from MRI for radiotherapy planning. The field sits within diagnostic imaging and radiology, where the goal is often to reduce repeat scanning, lower radiation or contrast exposure, or fill gaps in incomplete exams. It includes both cross-modality synthesis and within-modality image translation, and the outputs are intended for human radiologists or downstream algorithms. The scope covers research prototypes, regulated software, and internal hospital tools, but not the generation of images from text alone without an existing scan.",
+    "answer": "Synthetic imaging from existing scans is the generation of new medical images that were not acquired directly from a patient, produced by models trained on archives of prior scans. It covers modality translation, such as creating a CT-like image from an MRI, contrast enhancement, lesion insertion, denoising, and dataset augmentation for training other models. The work sits in diagnostic imaging and radiology, part of The AI Physician, and it overlaps with image reconstruction and computer-aided detection but is distinct in that the output is a new image rather than a measurement or a label. The site's index of 1000 medical AI models includes generative imaging among its categories, though the field is still small relative to segmentation and detection.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-09-26T15:32:19-05",
+    "built_at": "2026-09-26T22:24:59-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Physician",
@@ -28,23 +28,23 @@
     "page_uid": "c2e8947e",
     "sections": [
         {
-            "body": "Synthetic imaging from existing scans refers to AI systems that create new medical images derived from one or more prior scans, such as generating a contrast-enhanced CT from a non-contrast study, synthesizing an MRI sequence from another sequence, or producing a pseudo-CT from MRI for radiotherapy planning. The field sits within diagnostic imaging and radiology, where the goal is often to reduce repeat scanning, lower radiation or contrast exposure, or fill gaps in incomplete exams. It includes both cross-modality synthesis and within-modality image translation, and the outputs are intended for human radiologists or downstream algorithms. The scope covers research prototypes, regulated software, and internal hospital tools, but not the generation of images from text alone without an existing scan.",
+            "body": "Synthetic imaging from existing scans is the generation of new medical images that were not acquired directly from a patient, produced by models trained on archives of prior scans. It covers modality translation, such as creating a CT-like image from an MRI, contrast enhancement, lesion insertion, denoising, and dataset augmentation for training other models. The work sits in diagnostic imaging and radiology, part of The AI Physician, and it overlaps with image reconstruction and computer-aided detection but is distinct in that the output is a new image rather than a measurement or a label. The site's index of 1000 medical AI models includes generative imaging among its categories, though the field is still small relative to segmentation and detection.",
             "heading": "Scope"
         },
         {
-            "body": "These systems typically run on hospital picture archiving and communication systems (PACS) or dedicated AI servers with graphics processing units, often deployed on-premises to keep patient data inside the clinical network. The input is a DICOM series from an existing scan, and the output is a new DICOM series that can be stored and viewed alongside the original. Compute requirements vary with model size, but many current synthesis models are convolutional networks or diffusion models that need a modern GPU for inference within a few minutes. Integration usually requires a DICOM router or an orchestration layer that sends studies to the model and returns results to the PACS.",
+            "body": "Synthetic imaging pipelines run on GPU compute, either on premises or in the cloud, because training generative models on 3D volumes is memory and compute intensive. Data is drawn from PACS and DICOM archives, usually after de-identification, and may include segmentation masks, radiotherapy structures, or radiology reports as conditioning inputs. Common frameworks are PyTorch and TensorFlow, with MONAI providing medical imaging specific building blocks for loading, transforming, and augmenting scans. Inference for a single case can run on a workstation GPU, but training and large-scale evaluation typically require multi-GPU nodes and fast storage. The infrastructure must also handle DICOM metadata, pixel spacing, and orientation so that synthetic outputs remain geometrically consistent with the source.",
             "heading": "What it runs on"
         },
         {
-            "body": "The work is done by training deep learning models on paired or unpaired sets of real scans, where the model learns a mapping from a source image domain to a target image domain. Common architectures include U-Nets, generative adversarial networks, and more recently diffusion models, with training objectives that balance anatomical fidelity against realistic texture. For paired data, the model minimizes voxel-wise error between the synthesized image and the real target scan; for unpaired data, cycle-consistency or adversarial losses are used. After training, the model takes a new existing scan as input and produces a synthetic image in seconds to minutes, which a radiologist then reviews for diagnostic quality.",
+            "body": "The work begins with curating a representative set of existing scans, often with radiologist input on which findings and anatomies matter. Preprocessing steps include resampling to a common resolution, intensity normalization, cropping to the region of interest, and harmonizing differences between scanners and protocols. Generative models such as GANs, VAEs, and diffusion models are then trained to learn the distribution of the source data, either with paired examples for modality translation or with unpaired data using cycle-consistency or adversarial objectives. Evaluation combines image quality metrics like FID, SSIM, and PSNR with radiologist review for clinical realism and diagnostic fidelity. The most important test is downstream: whether a model trained on synthetic images performs as well on real, held-out scans as one trained on real data alone.",
             "heading": "How the work is done"
         },
         {
-            "body": "Synthetic images raise specific questions about whether they should be labeled as derived or synthetic in the patient record, because a radiologist may mistake a generated contrast-enhanced image for a real acquisition. Regulatory pathways generally treat these as medical devices, and the site's tracking of 210 compliance and regulation pages reflects the need to document validation against real scans and clinical endpoints. Product liability exposure exists if a synthetic image misses a lesion that a real scan would have shown, and the site's count of six active product liability and wrongful death lawsuits against AI companies shows that such failures can reach litigation. Hospitals typically require a local validation study and a clear display label before clinical use.",
+            "body": "Synthetic images are not from a real patient, but they are derived from real patient scans, so privacy, consent, and data use agreements still apply to the source data. Provenance must be recorded for every synthetic output, including the source scan identifiers, the model version, the training data, and the generation parameters, so that any downstream use can be audited. Regulatory frameworks for AI in medical devices, such as those from the FDA, treat synthetic data as a training and development tool, not as a substitute for clinical validation on real patients. Liability is a live question: if a synthetic image contributes to a missed diagnosis, responsibility may fall on the developer, the provider, or both, and the site tracks six active product liability and wrongful death lawsuits against AI companies as evidence that these disputes reach court. Bias is another risk, because synthetic data can underrepresent rare findings or overrepresent common ones, which can skew a model's performance.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The direction is toward routine use of synthetic imaging to replace low-yield repeat scans, reduce gadolinium or iodinated contrast doses, and speed up radiotherapy planning where a synthetic CT is generated from MRI. As models improve, synthetic images may be accepted as primary evidence for certain findings, but radiologists will likely still compare them with the source scan. The site's tracking of 1000 medical AI models and 732 AI tools suggests that synthesis features are being folded into broader imaging platforms rather than sold only as standalone products. Over time, regulatory guidance and payer coverage will determine whether synthetic imaging becomes a standard part of radiology workflows.",
+            "body": "The field is moving toward larger foundation models for medical imaging that can generate, edit, and interpret scans across modalities with less task-specific training. Multimodal models that combine images with reports and clinical text are likely to make synthetic generation more controllable and more clinically relevant. Federated learning and privacy-preserving training may allow synthetic data to be generated across institutions without moving raw patient scans. Regulatory guidance is still evolving, and the site's 215 compliance and regulation pages reflect the growing rulebook around medical AI. The near-term promise is better handling of rare diseases, pediatric imaging, and low-resource settings, but the same techniques also raise the bar for validation and monitoring.",
             "heading": "Where it is going"
         }
     ],
@@ -66,7 +66,7 @@
             "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/1d532d36/"
         }
     ],
-    "generated": "2026-09-26",
+    "generated": "2026-09-27",
     "parent_name": "Diagnostic Imaging and Radiology",
     "parent_path": "/ai-ecosystem/enterprise-applications-governance-and-tools/13673d6a/",
     "refresh_every_days": 30

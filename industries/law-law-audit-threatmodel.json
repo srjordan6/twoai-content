@@ -4,7 +4,7 @@
     "slug": "law-audit-threatmodel",
     "shape": "art-topic",
     "title": "Threat Modelling for Legal AI",
-    "answer": "Threat modelling for legal AI examines how a system that drafts, reviews, or researches legal content can fail in ways that harm clients, privilege, or case outcomes. It covers confidentiality breaches, prompt injection that alters legal reasoning, hallucinated citations, data leakage across matters, and misuse by internal or external actors. The scope also includes supply chain risks from third party models and retrieval data, as well as compliance failures that expose a firm to regulatory action. Because legal work product is often privileged, the model treats privilege preservation as a first class asset rather than a generic data type.",
+    "answer": "Threat modelling for legal AI is the structured practice of identifying what can go wrong when AI systems are used in legal work, from client intake and legal research to contract review, e-discovery, and drafting. It covers threats to confidentiality, attorney-client privilege, work product, data integrity, and the reliability of legal outputs, not just classic software vulnerabilities. The scope includes the AI model, the prompts and retrieval data, the surrounding application, the people who use it, and the legal workflows it touches. Because legal AI often handles sensitive matter data, threat modelling must consider both deliberate attacks and accidental failures such as hallucinated citations or overbroad data exposure.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-09-26T15:32:19-05",
+    "built_at": "2026-09-26T22:24:59-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Lawyer",
@@ -28,23 +28,23 @@
     "page_uid": "5e014172",
     "sections": [
         {
-            "body": "Threat modelling for legal AI examines how a system that drafts, reviews, or researches legal content can fail in ways that harm clients, privilege, or case outcomes. It covers confidentiality breaches, prompt injection that alters legal reasoning, hallucinated citations, data leakage across matters, and misuse by internal or external actors. The scope also includes supply chain risks from third party models and retrieval data, as well as compliance failures that expose a firm to regulatory action. Because legal work product is often privileged, the model treats privilege preservation as a first class asset rather than a generic data type.",
+            "body": "Threat modelling for legal AI is the structured practice of identifying what can go wrong when AI systems are used in legal work, from client intake and legal research to contract review, e-discovery, and drafting. It covers threats to confidentiality, attorney-client privilege, work product, data integrity, and the reliability of legal outputs, not just classic software vulnerabilities. The scope includes the AI model, the prompts and retrieval data, the surrounding application, the people who use it, and the legal workflows it touches. Because legal AI often handles sensitive matter data, threat modelling must consider both deliberate attacks and accidental failures such as hallucinated citations or overbroad data exposure.",
             "heading": "Scope"
         },
         {
-            "body": "Legal AI typically runs on large language models accessed through APIs or self hosted instances, connected to document stores, vector databases, and firm knowledge management systems. Threat modelling maps the flow of client matter data from intake and embedding through retrieval, generation, and output logging. It also covers the orchestration layer, including plugins for court dockets, e-discovery tools, and contract repositories, because each connection is a potential path for prompt injection or data exfiltration. On premises deployments add physical and network controls, while cloud deployments shift some responsibility to the provider's shared responsibility model.",
+            "body": "Legal AI systems typically run on a stack of foundation models, sometimes hosted by an external provider and sometimes deployed in a private cloud or on premises. Around the model sit retrieval stores, vector databases, document management systems, matter management platforms, and identity and access controls. Threat modelling must map data flows across these components, including API calls, prompt logs, embeddings, fine tuning data, and any human review queues. The infrastructure may also include third party tools for OCR, translation, or e-discovery, each of which adds its own supply chain and access path.",
             "heading": "What it runs on"
         },
         {
-            "body": "Practitioners start by defining the legal workflow and its assets, such as client confidences, matter metadata, model weights, and audit logs. They then enumerate threats using frameworks like STRIDE, attack trees, or MITRE ATLAS, and score each threat by likelihood and impact on legal duties. Red teaming exercises simulate a paralegal or opposing party attempting to extract other clients' data, induce a false legal conclusion, or poison the retrieval index. The output is a living threat register that ties each risk to a control, such as access boundaries, output verification, or rate limiting.",
+            "body": "Teams usually start with a data flow diagram and a set of trust boundaries, then apply a framework such as STRIDE or MITRE ATLAS to enumerate threats. For legal AI, that means asking how an attacker could manipulate a prompt, poison a retrieval corpus, extract confidential text through model outputs, or cause a model to cite a non-existent case. The method also includes abuse cases, such as a user trying to bypass privilege filters or a vendor using client data for training without permission. Findings are ranked by likelihood and impact, then tied to controls like input validation, output filtering, access logging, and human review.",
             "heading": "How the work is done"
         },
         {
-            "body": "Rights and risk in legal AI centre on client confidentiality, attorney-client privilege, data provenance, and professional responsibility. Threat modelling documents where training and retrieval data came from, who can access matter specific outputs, and how model behaviour is logged for later review. The site's tracking of 142 active AI lawsuits, 92 of them intellectual property, shows that courts are now testing liability for model outputs and training data, so a threat model records evidence of due care. Compliance pages and state AI bills tracked on the site also shape which threats a firm treats as mandatory rather than optional.",
+            "body": "Threat modelling for legal AI must account for professional responsibility rules, data protection law, and contractual duties of confidentiality. Provenance matters because legal teams need to know which model version, training data, and retrieval sources produced an output, and whether the output can be audited later. The site tracks 215 compliance and regulation pages and 6,946 state AI bills, which reflect the fast moving patchwork of rules that can affect how legal AI is deployed. Risk registers typically record who owns each threat, what evidence shows a control works, and how incidents are reported to clients or regulators.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "Legal AI is moving toward agentic systems that can file documents, negotiate terms, and manage discovery with less human review, which expands the attack surface from single prompts to multi step autonomous actions. Threat modelling will need to cover goal hijacking, cross matter contamination in shared memory, and manipulation of court or regulatory interfaces. As courts issue more AI case law precedents, the threat model will increasingly be used to demonstrate that a firm anticipated and mitigated known failure modes. Continuous threat modelling, updated with each model or plugin change, is likely to become a standard part of legal technology procurement and audit.",
+            "body": "Threat modelling for legal AI is moving from one-off reviews toward continuous monitoring, because models, prompts, and retrieval sources change frequently. Expect more attention to agentic systems that can browse, draft, and file documents, which expands the attack surface beyond a single chat interface. Regulatory and case law developments, including the 147 active AI lawsuits and 92 intellectual property matters tracked by this site, will keep pressure on provenance and disclosure practices. The field is also likely to see more shared threat libraries and standardised control mappings so that legal teams can compare notes without starting from scratch.",
             "heading": "Where it is going"
         }
     ],
@@ -66,7 +66,7 @@
             "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/9bb8cede/"
         }
     ],
-    "generated": "2026-09-26",
+    "generated": "2026-09-27",
     "parent_name": "AI Security Audits and Enterprise Enablement",
     "parent_path": "/ai-ecosystem/enterprise-applications-governance-and-tools/c505ed19/",
     "refresh_every_days": 30

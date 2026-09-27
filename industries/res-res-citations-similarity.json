@@ -4,7 +4,7 @@
     "slug": "res-citations-similarity",
     "shape": "art-topic",
     "title": "Clustering Papers by Meaning",
-    "answer": "Clustering papers by meaning groups research documents according to what they argue, show, or investigate, rather than by surface features such as shared citations, author overlap, or keyword matches. It is used in citation mapping to reveal thematic clusters, emerging subfields, and overlooked connections across a corpus. The output is a set of clusters where each cluster contains papers that address a similar question, method, or finding, even if they do not cite one another. This supports literature review, research discovery, and gap analysis.",
+    "answer": "Clustering papers by meaning groups research papers according to semantic similarity rather than citation links or exact keyword matches. It sits within citation mapping and discovery, where the goal is to surface related work that uses different terminology or crosses subfields. In this site's library, the method can be applied to the 135 research papers currently held, and it can also organize the 11,795 claims extracted from research works as a more granular layer. The output is a set of thematic clusters that help a researcher see neighborhoods of work, not a replacement for reading the original papers. Clusters are descriptive, so they show proximity in meaning and do not by themselves prove influence, quality, or agreement.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-09-26T15:32:19-05",
+    "built_at": "2026-09-26T22:24:59-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Researcher",
@@ -28,23 +28,23 @@
     "page_uid": "8eedbbdc",
     "sections": [
         {
-            "body": "Clustering papers by meaning groups research documents according to what they argue, show, or investigate, rather than by surface features such as shared citations, author overlap, or keyword matches. It is used in citation mapping to reveal thematic clusters, emerging subfields, and overlooked connections across a corpus. The output is a set of clusters where each cluster contains papers that address a similar question, method, or finding, even if they do not cite one another. This supports literature review, research discovery, and gap analysis.",
+            "body": "Clustering papers by meaning groups research papers according to semantic similarity rather than citation links or exact keyword matches. It sits within citation mapping and discovery, where the goal is to surface related work that uses different terminology or crosses subfields. In this site's library, the method can be applied to the 135 research papers currently held, and it can also organize the 11,795 claims extracted from research works as a more granular layer. The output is a set of thematic clusters that help a researcher see neighborhoods of work, not a replacement for reading the original papers. Clusters are descriptive, so they show proximity in meaning and do not by themselves prove influence, quality, or agreement.",
             "heading": "Scope"
         },
         {
-            "body": "The work runs on a document store of full texts or abstracts, plus a vector index built from paper embeddings. A typical setup uses a transformer model to encode each paper into a dense vector, then stores those vectors in a local or cloud vector database. For a small library, such as the 135 papers held on this site, the whole pipeline can run on a single workstation with a CPU or a modest GPU. No external search tool is needed, and the site links to original papers rather than to a third-party search product.",
+            "body": "The work runs on text representations built from titles, abstracts, full texts, and extracted claims. Embedding models turn each passage into a vector, and a vector index stores those vectors for fast similarity search. Dimensionality reduction methods such as UMAP and density-based clustering methods such as HDBSCAN are common, though k-means and hierarchical clustering also appear. The pipeline needs storage for source documents and metadata, compute for embedding and clustering, and a way to track model versions and parameters. A modest library of 135 papers can run on a single machine, while larger corpora benefit from batch processing and approximate nearest neighbor indexes.",
             "heading": "What it runs on"
         },
         {
-            "body": "The core method is to embed each paper's title, abstract, and, where available, full text into a shared vector space using a pretrained language model. Similarity between papers is then computed with cosine distance or a related metric. Clustering is applied to the resulting similarity matrix, often with algorithms such as hierarchical agglomerative clustering, k-means on reduced dimensions, or community detection on a nearest-neighbor graph. The number of clusters is usually chosen by inspecting a dendrogram or by setting a similarity threshold, not by assuming a fixed count in advance.",
+            "body": "A typical workflow starts by collecting paper texts and metadata, cleaning the text, and splitting long documents into passages. Each passage is embedded, then the vectors are reduced in dimension and grouped with a clustering algorithm. Clusters are labeled by inspecting representative papers, frequent terms, and citation links, and the labels are reviewed by a human. The citation graph can validate clusters, for example by checking whether papers in the same cluster cite one another more often than chance, while intrinsic measures such as silhouette scores check separation. The method is iterative, because changing the embedding model, the text fields, or the number of clusters changes the result.",
             "heading": "How the work is done"
         },
         {
-            "body": "Rights and risk center on how paper text is used for embeddings and how cluster labels are presented. If full text is processed, access must respect publisher terms, and the site's practice of linking to the original paper rather than to a search tool keeps provenance clear. A cluster label generated from embeddings can misstate a paper's argument, so human review of cluster membership and labels is part of responsible use. There is also a risk that clustering by meaning amplifies dominant framings and hides minority or critical work, so cluster boundaries should be treated as provisional.",
+            "body": "Rights and risk depend on what text is used and how it was obtained. Abstracts and metadata may be covered by publisher terms, while full texts may require a license or an open access agreement, so provenance records typically note the source, the retrieval date, and the license. Embedding models and clustering parameters also need versioning, because a cluster label is only reproducible if the pipeline is documented. Clusters can hide outliers, amplify biases in the source literature, or imply relationships that the papers do not support, so human review and clear uncertainty notes matter. This site links to the original paper and never links to the Consensus search tool, which keeps attribution with the source and avoids presenting a derived cluster as a search result.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The direction is toward finer-grained clustering that separates a paper's claims, methods, and evidence rather than treating the whole paper as one unit. As embedding models improve, clusters will become more stable across paraphrases and languages, and interactive maps will let a researcher move between cluster view and the original paper. The site's extracted claims, currently 11,222 across its library, point toward claim-level clustering as a next step, where individual findings are grouped even when they come from papers in different fields.",
+            "body": "The direction is toward richer representations that combine text, citations, figures, and code, so clusters reflect more of what a paper contains. Dynamic clustering can update as new papers arrive, rather than rebuilding a static map each time. Interactive visualizations let a researcher move between a cluster view and the citation graph, which supports discovery without losing the original context. Evaluation is likely to focus on whether clusters help real tasks such as literature review, hypothesis generation, and finding cross disciplinary work. As the library grows beyond 135 papers, scalability and provenance tracking will remain central concerns.",
             "heading": "Where it is going"
         }
     ],
@@ -66,7 +66,7 @@
             "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/14e515c8/"
         }
     ],
-    "generated": "2026-09-26",
+    "generated": "2026-09-27",
     "parent_name": "Citation Mapping and Discovery",
     "parent_path": "/ai-ecosystem/enterprise-applications-governance-and-tools/7e07ccb2/",
     "refresh_every_days": 30
