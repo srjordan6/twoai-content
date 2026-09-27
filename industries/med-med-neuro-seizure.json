@@ -4,7 +4,7 @@
     "slug": "med-neuro-seizure",
     "shape": "art-topic",
     "title": "Seizure Prediction",
-    "answer": "Seizure prediction is the use of machine learning to estimate the likelihood that a person with epilepsy will have a seizure within a short upcoming window, usually minutes to hours, based on physiological signals. It is distinct from seizure detection, which identifies a seizure as it happens. The work sits within neuroinformatics and clinical AI, drawing on electroencephalography, electrocardiography, accelerometry, and other wearable data. The goal is to give patients and caregivers enough lead time to move to safety, take a prescribed rescue medication, or adjust activity.",
+    "answer": "Seizure prediction is the attempt to forecast an epileptic seizure before it happens, using brain signals and other physiological data. It sits within neuroinformatics and the brain, where it draws on electroencephalography, intracranial recordings, and wearable sensors. Unlike seizure detection, which identifies a seizure already in progress, prediction aims to give a warning window of minutes to hours. The field is part of The AI Physician, a broader effort to bring machine learning into clinical care. Among the 1000 medical AI models tracked on this site, a subset addresses seizure prediction, though most remain research prototypes rather than approved clinical tools.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-09-27T09:29:46-05",
+    "built_at": "2026-09-27T15:29:59-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Physician",
@@ -28,23 +28,23 @@
     "page_uid": "6bd24bf5",
     "sections": [
         {
-            "body": "Seizure prediction is the use of machine learning to estimate the likelihood that a person with epilepsy will have a seizure within a short upcoming window, usually minutes to hours, based on physiological signals. It is distinct from seizure detection, which identifies a seizure as it happens. The work sits within neuroinformatics and clinical AI, drawing on electroencephalography, electrocardiography, accelerometry, and other wearable data. The goal is to give patients and caregivers enough lead time to move to safety, take a prescribed rescue medication, or adjust activity.",
+            "body": "Seizure prediction is the attempt to forecast an epileptic seizure before it happens, using brain signals and other physiological data. It sits within neuroinformatics and the brain, where it draws on electroencephalography, intracranial recordings, and wearable sensors. Unlike seizure detection, which identifies a seizure already in progress, prediction aims to give a warning window of minutes to hours. The field is part of The AI Physician, a broader effort to bring machine learning into clinical care. Among the 1000 medical AI models tracked on this site, a subset addresses seizure prediction, though most remain research prototypes rather than approved clinical tools.",
             "heading": "Scope"
         },
         {
-            "body": "Most research and early clinical systems run on continuous or long term EEG recordings, often from implanted or scalp electrodes, combined with wearable sensors for heart rate, motion, and skin conductance. Computation may happen on a bedside unit, a smartphone, or a cloud service, with newer work moving toward on device inference to reduce latency and protect privacy. Training typically requires large, patient specific archives of interictal and preictal segments, which are expensive to collect and label.",
+            "body": "Seizure prediction systems run on a mix of patient-worn sensors, bedside monitors, and implanted devices. The core input is usually continuous electroencephalography, sometimes supplemented by heart rate, accelerometry, or electrodermal activity. Signal processing and feature extraction often happen on a local edge device to keep latency low, while model training and updates may use hospital servers or cloud infrastructure. Some systems are designed for closed-loop use, where a prediction triggers a warning or a neurostimulation response. Power, bandwidth, and comfort constraints shape what can be worn or implanted.",
             "heading": "What it runs on"
         },
         {
-            "body": "The common approach is to turn raw signals into features such as spectral power, connectivity, heart rate variability, or entropy, then train a classifier or sequence model to separate preictal from interictal states. Patient specific models are standard because seizure patterns vary widely between people, and transfer learning or federated approaches are used to borrow strength across patients without pooling raw data. Performance is usually reported with sensitivity, false positive rate per day, and time in warning, and a useful predictor must beat a random or cyclical baseline.",
+            "body": "The work begins with long recordings of brain activity, often from patients undergoing presurgical evaluation or wearing ambulatory EEG. Engineers and clinicians label seizure onset times, then split the data into preictal, ictal, and interictal periods. Models are trained to distinguish the preictal state from normal background activity, using architectures such as convolutional or recurrent neural networks. Because seizures are rare events, the data are highly imbalanced, and performance is judged by sensitivity, false alarm rate, and time in warning. Validation usually starts retrospectively and then moves to prospective, patient-specific testing.",
             "heading": "How the work is done"
         },
         {
-            "body": "Seizure prediction models are medical devices in most jurisdictions and face regulatory review for safety and effectiveness before clinical use. False alarms can cause anxiety or alarm fatigue, while missed predictions can create a false sense of security, so risk communication and clear labeling of model uncertainty matter. Data provenance is a serious issue because EEG and wearable records are sensitive health data, and consent, deidentification, and secondary use rules apply. Product liability questions are live in medical AI, and this site tracks active lawsuits and compliance pages relevant to such tools.",
+            "body": "Seizure prediction touches sensitive neurological data, so consent, de-identification, and data governance are central. Provenance matters because a model's warning depends on the quality and origin of the EEG it was trained on, and version control is needed for clinical accountability. Regulatory pathways are still emerging, as most seizure prediction systems are not cleared for independent clinical use. Across medical AI generally, this site tracks 6 active product liability and wrongful death lawsuits, which shows the legal exposure when automated systems fail. The site also tracks 219 compliance and regulation pages, reflecting the growing body of rules that surround patient data and clinical software.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The field is moving from retrospective proof of concept toward prospective, long term home monitoring studies that measure real world false alarm burden and patient benefit. Closed loop systems that pair a seizure predictor with an implanted neurostimulator or drug delivery device are an active research direction, though they raise higher safety and regulatory stakes. More interpretable models and standardized benchmarks may help clinicians trust and compare systems, while patient reported outcomes are becoming part of evaluation rather than accuracy alone.",
+            "body": "The field is moving toward closed-loop systems that combine prediction with responsive neurostimulation or drug delivery. Researchers are working on models that generalize across patients, rather than requiring a new model for each person. Wearable and smartphone-linked sensors may make long-term monitoring more practical outside the hospital. Regulatory science is developing ways to evaluate prediction accuracy and safety before widespread adoption. The long-term goal is a reliable warning that gives patients time to act, though prediction is not yet standard care.",
             "heading": "Where it is going"
         }
     ],

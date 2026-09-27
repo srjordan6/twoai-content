@@ -4,7 +4,7 @@
     "slug": "eco-credit-yieldcurve",
     "shape": "art-topic",
     "title": "Modelling the Yield Curve",
-    "answer": "Yield curve modelling in fixed income and credit risk concerns the term structure of interest rates across maturities, from overnight to long dated government and credit instruments. It supports pricing, risk measurement, hedging, and scenario analysis for bonds, swaps, and structured products. The work includes fitting curves to observed market quotes, interpolating missing tenors, and separating expectations, term premia, and credit spreads. Practitioners use these models to mark positions, calculate value at risk, and assess funding costs.",
+    "answer": "Modelling the yield curve covers the estimation and forecasting of the term structure of interest rates, including spot rates, forward rates, and discount factors, for sovereign, swap, and corporate issuers. In fixed income and credit risk, it supports pricing, relative value analysis, hedging, and the measurement of credit spreads across tenors. The work spans both government curves, which anchor the risk-free term structure, and credit curves, which add issuer-specific or sector-specific spreads. It also includes scenario generation and stress testing, where the shape of the curve under different economic conditions is a central input. The scope is not limited to a single curve but to a family of curves that must be consistent with market quotes and with each other.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-09-27T09:29:45-05",
+    "built_at": "2026-09-27T15:29:59-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Economist",
@@ -28,23 +28,23 @@
     "page_uid": "17c5ef88",
     "sections": [
         {
-            "body": "Yield curve modelling in fixed income and credit risk concerns the term structure of interest rates across maturities, from overnight to long dated government and credit instruments. It supports pricing, risk measurement, hedging, and scenario analysis for bonds, swaps, and structured products. The work includes fitting curves to observed market quotes, interpolating missing tenors, and separating expectations, term premia, and credit spreads. Practitioners use these models to mark positions, calculate value at risk, and assess funding costs.",
+            "body": "Modelling the yield curve covers the estimation and forecasting of the term structure of interest rates, including spot rates, forward rates, and discount factors, for sovereign, swap, and corporate issuers. In fixed income and credit risk, it supports pricing, relative value analysis, hedging, and the measurement of credit spreads across tenors. The work spans both government curves, which anchor the risk-free term structure, and credit curves, which add issuer-specific or sector-specific spreads. It also includes scenario generation and stress testing, where the shape of the curve under different economic conditions is a central input. The scope is not limited to a single curve but to a family of curves that must be consistent with market quotes and with each other.",
             "heading": "Scope"
         },
         {
-            "body": "The models run on standard financial data infrastructure, including market data feeds for government bond, swap, and futures prices, and on compute ranging from desktop workstations to cloud clusters for large simulations. Data is stored in time series databases and data lakes, with versioned model code and parameter sets. Latency requirements vary from end of day for valuation to intraday for trading desks, but most curve fitting is batch rather than real time.",
+            "body": "The work runs on market data feeds, reference data, and historical time series, typically stored in relational databases or time-series databases and accessed through SQL or Python. Numerical libraries such as NumPy and pandas handle curve construction, interpolation, and calibration, while pricing libraries such as QuantLib provide standard instruments and day-count conventions. For machine learning approaches, scikit-learn, PyTorch, or TensorFlow are used on CPUs or GPUs, often in cloud environments. Production systems may run batch calibration overnight and intraday updates for trading desks, with version control and reproducible environments. Data quality checks, missing quote handling, and latency requirements shape the infrastructure as much as the modelling code itself.",
             "heading": "What it runs on"
         },
         {
-            "body": "The work is done by choosing a parametric form, such as Nelson Siegel, Svensson, or spline based curves, and calibrating its parameters to observed prices or yields by minimising pricing errors. Machine learning enters through regularised regression, Gaussian process priors, or neural networks that learn nonlinear mappings from macro and market variables to curve factors. The fitted curve is then used to discount cash flows, compute forward rates, and generate risk scenarios. Validation compares out of sample fit, stability of parameters, and consistency with no arbitrage constraints.",
+            "body": "Practitioners start by cleaning and aligning market quotes, then fit a curve using parametric forms such as Nelson-Siegel or Svensson, or spline-based methods that match observed prices closely. Machine learning enters through neural networks, Gaussian processes, or gradient boosting to forecast curve movements, detect regime changes, or fill gaps in sparse data. A common hybrid approach uses a classical term structure model as a baseline and lets a model learn the residuals or the dynamics of the factors. Calibration and backtesting are essential, with rolling windows, out-of-sample tests, and metrics such as root mean squared error in rate or price terms. The method must respect no-arbitrage conditions and produce curves that are smooth enough for risk sensitivities yet flexible enough to capture market dislocations.",
             "heading": "How the work is done"
         },
         {
-            "body": "Rights and risk and provenance centre on model documentation, data lineage, and independent validation, because a misspecified curve can misstate valuations and capital. Model owners must record the data sources, calibration windows, and parameter choices, and risk committees review the model before production use. Provenance matters for audit and regulatory review, especially where curves feed regulatory capital or accounting disclosures. No single model is authoritative, and firms maintain fallback curves and challenge processes.",
+            "body": "Rights and risk and provenance matter because yield curve models feed pricing, risk limits, and regulatory capital calculations. Data must be licensed and traceable, with clear provenance for every quote and every adjustment, and model documentation must record assumptions, limitations, and validation results. Model risk management frameworks require independent review, ongoing monitoring, and change control, especially when machine learning introduces opacity or overfitting. The governance goal is to ensure that a curve used for a trade or a report can be explained, reproduced, and defended. Provenance also covers the training data for any AI component, including how it was collected, transformed, and tested for bias.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "Where it is going is toward more automated and data driven curve construction, with machine learning used to blend liquid and illiquid quotes, incorporate macro news, and update curves more frequently. The field is also moving toward multi curve frameworks that separately model risk free and credit or collateral curves, and toward real time scenario generation for stress testing. As more instruments and alternative data become available, the emphasis shifts from fitting a single curve to maintaining a family of curves with explicit uncertainty bands.",
+            "body": "The field is moving toward hybrid models that combine classical term structure theory with machine learning for forecasting and scenario generation. More granular credit curves, real-time estimation from high-frequency data, and the integration of alternative data sources are likely to grow. Explainability and model risk management will shape adoption as much as predictive accuracy, because desks need to trust and justify the curves they use. Open-source libraries and cloud platforms will continue to lower the barrier to entry, while regulatory expectations will raise the bar for documentation and validation. The long-term direction is not a single AI model replacing the yield curve but a set of tools that make curve modelling faster, more adaptive, and more transparent.",
             "heading": "Where it is going"
         }
     ],
