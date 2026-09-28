@@ -6,7 +6,7 @@
             "q": "What should I learn first about AI?"
         },
         {
-            "a": "Today the median API model tracked on this site costs $0.40 per million input tokens and $1.82 per million output tokens. Summarising a 40 page contract comes to about 1.3 cents at those prices.",
+            "a": "Today the median API model tracked on this site costs $0.42 per million input tokens and $1.88 per million output tokens. Summarising a 40 page contract comes to about 1.3 cents at those prices.",
             "q": "How much does it cost to use an AI model?"
         },
         {
@@ -32,7 +32,7 @@
             "meet": [
                 {
                     "uid": "56f96b2b",
-                    "fact": "Today the median model tracked here costs $0.40 per million input tokens and $1.82 per million output tokens, across 452 models from 62 providers.",
+                    "fact": "Today the median model tracked here costs $0.42 per million input tokens and $1.88 per million output tokens, across 452 models from 62 providers.",
                     "href": "/ai-ecosystem/technology-and-core-infrastructure/56f96b2b/",
                     "name": "API Pricing"
                 }
@@ -212,7 +212,7 @@
             "meet": [
                 {
                     "uid": "",
-                    "fact": "2,438 servers from the official Model Context Protocol registry, the standard way agents are given tools.",
+                    "fact": "2,439 servers from the official Model Context Protocol registry, the standard way agents are given tools.",
                     "href": "/mcp/",
                     "name": "MCP Server tracker"
                 },
@@ -290,7 +290,7 @@
             },
             {
                 "step": "Inference and cost",
-                "text": "At today's median prices, $0.40 per million in and $1.82 per million out, the read costs about $0.0107 and the summary about $0.0018, together about 1.3 cents. Price, not capability, is rarely the barrier at this size."
+                "text": "At today's median prices, $0.42 per million in and $1.88 per million out, the read costs about $0.0112 and the summary about $0.0019, together about 1.3 cents. Price, not capability, is rarely the barrier at this size."
             },
             {
                 "step": "Retrieval instead",
@@ -306,14 +306,14 @@
         "assumption_source": "https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them"
     },
     "reading": {
-        "body": "A 40-page contract fits inside 434 of the 452 API models tracked here and costs about 1.3 cents to read and summarize, so neither context nor price is the barrier at this size.\n\nThe arithmetic is small at every step. Twenty thousand words is about 26,700 tokens in and 1,000 out, and the model must hold all 27,700 at once. At the median price across 452 models from 62 providers, $0.40 per million input tokens and $1.88 per million output tokens, the read is $0.0107 and the summary $0.0019. The 18 models that cannot hold the contract would have to have it split. The largest context window tracked is 2,000,000 tokens, so one contract is a small fraction of what the biggest models can hold.\n\nThe difficulty therefore moves off cost and window size and onto retrieval and correctness. For a library of contracts rather than one, the whole library will not fit, so retrieval embeds each contract once and hands the model only the passages that match the question. The failure mode is a summary that states a clause the contract does not contain. For anything with legal weight, the summary is a map to the pages to read, not a substitute for them.\n\nWhat the numbers do not cover matters as much. The 1.3 cents is a price calculation at median rates, not a measured bill, and it excludes the embedding and storage that retrieval requires, latency, and any human review. The count of 434 models measures window size, not whether a model reads a contract well. Nothing here measures the compute or power behind those tokens, and nothing here measures how often a summary is right.",
+        "body": "A 40-page contract fits whole inside 434 of the 452 tracked API models, and reading it plus writing a one-page summary costs about 1.3 cents.\n\nThat is the arithmetic of the example. Twenty thousand words becomes roughly 26,700 tokens in and 1,000 out, for 27,700 tokens held at once. Eighteen of the 452 models cannot hold that much, and for those the contract has to be split. At median prices of $0.43 per million input tokens and $1.88 per million output tokens, the read is about $0.0115 and the summary about $0.0019. At the scale of one document, neither capability nor price is the barrier.\n\nThe barrier moves when the unit changes from one contract to a library. A whole library will not fit, which is why retrieval exists: embed every contract once, hand the model only the passages that match the question. The largest context window among the 452 tracked models is 2,000,000 tokens, which is generous and still finite. The other limit is not size but truth. A summary can state a clause the contract does not contain, and it arrives in the same fluent voice as the clauses that are real. For anything with legal weight, the summary is a map to the pages to read, not a substitute for them.\n\nWhat the data does not cover matters as much as what it does. It counts 452 models from 62 providers, 110 companies that serve inference per token, and 12 engines that run models on your own hardware, but it says nothing about accuracy rates, latency, or how any of these models perform on a contract. It contains no energy or power figures at all, so it cannot speak to what this work costs the grid. The counts describe what is offered, not what is used.",
         "model": "ollama:deepseek-v4.1-flash",
-        "generated_on": "2026-09-27"
+        "generated_on": "2026-09-28"
     },
-    "built_at": "2026-09-27T21:54:32-05",
+    "built_at": "2026-09-28T03:20:04-05",
     "category": "research-knowledge-and-learning",
     "page_uid": "d2390ba3",
-    "verified": "2026-09-27",
-    "generated": "2026-09-27",
+    "verified": "2026-09-28",
+    "generated": "2026-09-28",
     "refresh_every_days": 7
 }
