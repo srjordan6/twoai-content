@@ -4,7 +4,7 @@
     "slug": "eco-altdata-cards",
     "shape": "art-topic",
     "title": "Card Transaction Data",
-    "answer": "Card transaction data covers records generated when a consumer pays with a credit or debit card, whether at a physical terminal or online. The records usually include a date and time, an amount, a merchant description, a category code, and a masked or tokenized card identifier, though the exact fields depend on the source. In alternative data, this information is aggregated into panels and used to estimate consumer spending, company revenue, sector demand, and macroeconomic trends. It is distinct from official statistics and company filings because it arrives sooner and at a finer level of detail, but it covers only card based activity and not cash or other payment methods.",
+    "answer": "Card transaction data covers aggregated and anonymized records of consumer purchases made with credit and debit cards, including point of sale, online, and mobile payments. It typically captures merchant category, transaction amount, date and time, and a geographic area, but not the identity of the cardholder. Analysts use it to track spending trends across sectors, to nowcast retail sales, and to estimate company revenues before earnings reports. The data is a form of alternative data because it is not part of traditional financial statements or government statistics.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-09-28T09:34:24-05",
+    "built_at": "2026-09-28T12:37:04-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Economist",
@@ -28,23 +28,23 @@
     "page_uid": "3d76a2a4",
     "sections": [
         {
-            "body": "Card transaction data covers records generated when a consumer pays with a credit or debit card, whether at a physical terminal or online. The records usually include a date and time, an amount, a merchant description, a category code, and a masked or tokenized card identifier, though the exact fields depend on the source. In alternative data, this information is aggregated into panels and used to estimate consumer spending, company revenue, sector demand, and macroeconomic trends. It is distinct from official statistics and company filings because it arrives sooner and at a finer level of detail, but it covers only card based activity and not cash or other payment methods.",
+            "body": "Card transaction data covers aggregated and anonymized records of consumer purchases made with credit and debit cards, including point of sale, online, and mobile payments. It typically captures merchant category, transaction amount, date and time, and a geographic area, but not the identity of the cardholder. Analysts use it to track spending trends across sectors, to nowcast retail sales, and to estimate company revenues before earnings reports. The data is a form of alternative data because it is not part of traditional financial statements or government statistics.",
             "heading": "Scope"
         },
         {
-            "body": "Card transaction data runs on pipelines that ingest feeds from card networks, issuers, payment processors, and data aggregators. These feeds land in cloud object stores or data lakes, then move into columnar warehouses and distributed compute frameworks for cleaning and aggregation. Teams use SQL, Python, and scheduled jobs to produce daily or weekly panels, and they expose the results through APIs, dashboards, or secure file transfers. Because the data is sensitive, the infrastructure typically includes tokenization, encryption, access controls, and audit logging. Some providers also use secure enclaves or clean rooms so that analysts can query the data without seeing raw card numbers.",
+            "body": "The data runs on pipelines that ingest raw transaction feeds from card networks, issuers, and aggregators, then store them in cloud data warehouses. Processing often uses distributed computing frameworks and SQL for aggregation, with APIs delivering panel summaries to subscribers. Vendors maintain panels of millions of cards, and they apply sampling and weighting to make the panel representative of the broader population. Security controls include encryption, access management, and audit logs to protect the underlying records.",
             "heading": "What it runs on"
         },
         {
-            "body": "The work starts with ingestion, deduplication, and normalization of merchant names, dates, amounts, and category codes. Analysts then map merchants to public tickers, private companies, sectors, or custom baskets, and they build panels that represent a consistent sample over time. Machine learning is often used for entity resolution, anomaly detection, and nowcasting, while statistical adjustments address sample bias, seasonality, and inflation. Validation matters, so teams compare their estimates against company reports, government statistics, and other independent sources. Backtesting and out of sample testing help show whether a signal has predictive value before it is used in research.",
+            "body": "The work begins with cleaning and normalizing transaction records, removing returns, reversals, and duplicate entries. Analysts then build a panel by selecting a consistent set of cards and weighting them to match known demographic or geographic totals. They compute metrics such as year over year growth, market share, and average ticket size, often using machine learning to detect anomalies or to separate signal from noise. Backtesting against historical earnings or economic releases helps validate the signal before it is used in a model.",
             "heading": "How the work is done"
         },
         {
-            "body": "Rights and risk around card transaction data begin with provenance, because the data may come from networks, issuers, processors, or aggregators under different contracts. Providers usually require data use agreements that limit redistribution, define permitted purposes, and set retention and deletion rules. Privacy risk includes reidentification, especially when transaction records are granular, so aggregation, anonymization, and differential privacy are common controls. Firms also watch for material nonpublic information, market abuse, and conflicts of interest when the same data is used for research and trading. Compliance teams typically review licensing, consent, cross border transfers, and audit trails before the data enters production.",
+            "body": "Provenance matters because card transaction data originates from financial institutions and is licensed through contracts that restrict use, redistribution, and retention. Privacy laws such as GDPR and CCPA impose requirements for anonymization and purpose limitation, and vendors must ensure that no individual can be re-identified. Risks include panel bias, where the sample does not represent the whole market, and legal exposure if the data is considered material non-public information. Compliance teams review data sources, contracts, and usage logs to manage these risks.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The field is moving toward more granular, more frequent, and more real time data, including open banking feeds and alternative payment methods. Privacy enhancing technologies such as federated learning, synthetic data, and secure multiparty computation are likely to shape how providers share signals without exposing raw records. AI models will continue to improve nowcasting, merchant classification, and demand forecasting, but regulatory scrutiny and vendor consolidation may limit how much raw data reaches end users. Expect greater emphasis on transparency, documented provenance, and standardized benchmarks for validating card data products. The result will be a market where quality, compliance, and explainability matter as much as coverage.",
+            "body": "The field is moving toward more real time feeds and finer geographic and merchant level granularity, driven by competition among data vendors. Open banking rules in some regions may open new sources of transaction data, while regulators continue to examine how alternative data is used in investment decisions. Expect greater integration with AI models that combine card data with other signals such as web traffic or satellite imagery. The main challenge will be balancing timeliness and coverage against privacy and contractual limits.",
             "heading": "Where it is going"
         }
     ],

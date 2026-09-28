@@ -4,7 +4,7 @@
     "slug": "fin-p2p-invoice",
     "shape": "art-topic",
     "title": "Invoice Capture and Coding",
-    "answer": "Invoice capture and coding covers the intake of supplier invoices from any channel, including paper, PDF, email, and electronic data interchange, and the extraction of header and line-level data such as vendor, date, amount, tax, and purchase order references. It also covers the assignment of accounting codes, including general ledger accounts, cost centers, projects, and tax codes, so that the invoice can be posted and paid. The scope includes validation against purchase orders and vendor master records, exception handling for missing or mismatched data, and the audit trail that links each coded invoice back to its source document. In practice, this work sits inside accounts payable and feeds directly into the general ledger and payment run.",
+    "answer": "Invoice capture and coding covers the intake of supplier invoices from email, scan, or electronic feed and the conversion of those documents into structured records. It includes reading header fields such as vendor name, invoice number, date, and total, and line items such as description, quantity, unit price, and tax. The coding part assigns each line or the whole invoice to general ledger accounts, cost centers, projects, or other dimensions used by the accounting system. It also covers matching to purchase orders and receipts, flagging duplicates, and routing exceptions for review. This work sits inside accounts payable and feeds directly into the general ledger and payment run.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-09-28T09:34:24-05",
+    "built_at": "2026-09-28T12:37:04-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Accountant",
@@ -28,23 +28,23 @@
     "page_uid": "69c3f977",
     "sections": [
         {
-            "body": "Invoice capture and coding covers the intake of supplier invoices from any channel, including paper, PDF, email, and electronic data interchange, and the extraction of header and line-level data such as vendor, date, amount, tax, and purchase order references. It also covers the assignment of accounting codes, including general ledger accounts, cost centers, projects, and tax codes, so that the invoice can be posted and paid. The scope includes validation against purchase orders and vendor master records, exception handling for missing or mismatched data, and the audit trail that links each coded invoice back to its source document. In practice, this work sits inside accounts payable and feeds directly into the general ledger and payment run.",
+            "body": "Invoice capture and coding covers the intake of supplier invoices from email, scan, or electronic feed and the conversion of those documents into structured records. It includes reading header fields such as vendor name, invoice number, date, and total, and line items such as description, quantity, unit price, and tax. The coding part assigns each line or the whole invoice to general ledger accounts, cost centers, projects, or other dimensions used by the accounting system. It also covers matching to purchase orders and receipts, flagging duplicates, and routing exceptions for review. This work sits inside accounts payable and feeds directly into the general ledger and payment run.",
             "heading": "Scope"
         },
         {
-            "body": "The technical stack for invoice capture and coding typically combines optical character recognition, document classification, and extraction models that run in the cloud or on premises. These components connect to enterprise resource planning systems, accounting platforms, and workflow engines through APIs, and they often rely on a queue or document store to manage volume. For legacy systems without modern interfaces, robotic process automation may be used to enter data into screens. The infrastructure must handle a mix of structured electronic invoices and unstructured scanned documents, and it must scale to peak volumes at month end.",
+            "body": "The work runs on a stack that starts with document ingestion from email inboxes, shared folders, scanners, or supplier portals. Optical character recognition and layout analysis turn page images into text and positional data, and machine learning models then classify the document and extract fields. These services are often cloud based, with connectors into ERP and accounting systems such as SAP, Oracle, NetSuite, or QuickBooks for posting and matching. Some deployments keep processing on premises for data residency or control reasons, while others use a hybrid model. The output is a structured record that the payables system can validate, code, and route.",
             "heading": "What it runs on"
         },
         {
-            "body": "The work begins with ingestion and preprocessing, where documents are cleaned, rotated, and split into pages, followed by optical character recognition and layout analysis to locate fields. Extraction models then pull key values and line items, and a matching step compares them to purchase orders, goods receipts, and vendor master data. Coding suggestions are generated from historical patterns, rules, or learned models, and each suggestion carries a confidence score. Low-confidence items are routed to a human reviewer, whose corrections are fed back to improve the models, while high-confidence items can post automatically.",
+            "body": "The method usually begins with classification, separating invoices from statements, credit notes, and other documents. Extraction then pulls the fields, often using a mix of template rules for known layouts and learned models for unseen ones. Coding can be rule based, for example mapping a vendor to a default expense account, or learned from historical coding decisions and purchase order data. Validation checks totals, tax calculations, and vendor master data, and any low confidence result goes to a human reviewer. Straight through processing rates depend on document quality, vendor consistency, and how well the coding rules cover the spend.",
             "heading": "How the work is done"
         },
         {
-            "body": "Invoice data often contains bank account details, tax identifiers, and personal information, so access controls, encryption, and retention policies are part of the governance picture. Audit requirements demand a clear provenance trail, including the original document, the model version, the confidence score, and the identity of any human approver. Segregation of duties must be maintained so that the person who codes an invoice is not the same person who approves payment. Errors such as duplicate payments or mis-coded expenses are a persistent risk, and controls must be designed to detect and correct them. The rights to the extracted data and the models that process it are typically governed by contracts with software vendors and by internal data policies.",
+            "body": "Rights and risk in invoice capture and coding centre on financial control, data protection, and auditability. The extracted data and the coding decisions must be traceable, so systems keep an audit trail of who or what changed a field and when. Provenance matters for models as well, including which training data was used and which model version produced a result. Risks include mis-coded expenses, duplicate payments, missed early payment discounts, and fraud through altered bank details or fake invoices. Compliance obligations can include retention rules, access controls, and financial reporting standards, and vendor contracts should set out data processing terms.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The direction of travel is toward fewer manual touches, with straight-through processing for clean invoices and more intelligent handling of exceptions. Electronic invoicing mandates in many jurisdictions are pushing capture closer to the point of issuance, and real-time coding is becoming more common. Large language models are being applied to unstructured invoices and to the explanation of coding decisions, though human review remains important for high-value or unusual items. Over time, capture and coding are likely to merge with payment execution and continuous audit, so that the accounts payable function operates as a single automated pipeline.",
+            "body": "The direction of travel is toward fewer manual touches and more continuous coding as invoices arrive. Large language models are being applied to messy, unstructured invoices that older extraction methods handled poorly, and coding is increasingly suggested in real time rather than in a batch. Integration with payment rails and e-invoicing networks is deepening, which brings capture and coding closer to the moment of transaction. Controls are shifting from periodic review to embedded checks that run on every invoice. The likely result is a smaller exception queue and a greater share of invoices posted without human intervention.",
             "heading": "Where it is going"
         }
     ],
