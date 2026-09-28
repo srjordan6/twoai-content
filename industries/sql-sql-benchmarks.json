@@ -4,7 +4,7 @@
     "slug": "sql-benchmarks",
     "shape": "art-topic",
     "title": "Text to SQL Benchmarks",
-    "answer": "Public benchmarks such as Spider and BIRD score text to SQL systems by running the generated query and comparing its result with a known correct answer. They measure execution accuracy and, in some cases, exact set match on held out questions across multiple database schemas. Enterprise schemas are larger and less tidy than the benchmarks, so real accuracy is usually lower. The scope also includes multilingual questions and complex SQL features such as nested queries and window functions.",
+    "answer": "Public benchmarks such as Spider and BIRD score text to SQL systems by running the generated query and comparing its result with a known correct answer. These benchmarks usually measure execution accuracy, and sometimes exact match, across a set of questions and databases. They give a common yardstick for comparing models and pipelines. Enterprise schemas are larger and less tidy than the benchmarks, so real accuracy is usually lower.",
     "crumbs": [
         {
             "name": "AI and SQL",
@@ -12,7 +12,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-09-28T12:37:04-05",
+    "built_at": "2026-09-28T15:34:05-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "AI and SQL",
@@ -20,23 +20,23 @@
     "page_uid": "b32896c8",
     "sections": [
         {
-            "body": "Public benchmarks such as Spider and BIRD score text to SQL systems by running the generated query and comparing its result with a known correct answer. They measure execution accuracy and, in some cases, exact set match on held out questions across multiple database schemas. Enterprise schemas are larger and less tidy than the benchmarks, so real accuracy is usually lower. The scope also includes multilingual questions and complex SQL features such as nested queries and window functions.",
+            "body": "Public benchmarks such as Spider and BIRD score text to SQL systems by running the generated query and comparing its result with a known correct answer. These benchmarks usually measure execution accuracy, and sometimes exact match, across a set of questions and databases. They give a common yardstick for comparing models and pipelines. Enterprise schemas are larger and less tidy than the benchmarks, so real accuracy is usually lower.",
             "heading": "Scope"
         },
         {
-            "body": "Benchmark evaluation typically runs on local or containerized database instances, often SQLite for small schemas and PostgreSQL for larger ones. The harness parses the generated SQL, executes it against the reference database, and compares the returned rows with the expected result. Leaderboard runs may use isolated compute to prevent interference between submissions.",
+            "body": "Text to SQL benchmarks run on curated datasets that pair natural language questions with schemas and reference SQL. The harness executes generated SQL against a database instance, often SQLite for Spider and a mix of engines including PostgreSQL for BIRD. Evaluation can run on a single machine or in a container, with the database loaded from a dump or a script. The site itself is built from a PostgreSQL database, which is one of the engines these benchmarks commonly target.",
             "heading": "What it runs on"
         },
         {
-            "body": "Datasets are split into training, development, and test sets, with each question paired to a reference SQL query. Systems receive the natural language question and the database schema, then generate a query through schema linking, few shot prompting, or fine tuning. Scoring uses execution accuracy, exact set match, and sometimes a valid efficiency score that rewards shorter runtimes for correct results.",
+            "body": "The work starts with collecting questions and writing correct SQL for each one, then splitting the data into train, development, and test sets. Annotators check that the reference SQL runs and returns the expected result. During evaluation, a system generates SQL for each test question, the harness runs that SQL, and the result is compared with the reference result. Metrics such as execution accuracy and exact match are computed, and error analysis often looks at schema linking and join mistakes.",
             "heading": "How the work is done"
         },
         {
-            "body": "Benchmark datasets carry academic or open licenses, and their schemas and questions have specific provenance that users should check before commercial use. A known risk is test set contamination, where models trained on benchmark questions or queries report inflated scores. Some datasets include synthetic or anonymized data to reduce privacy exposure, but real enterprise data is rarely shared in public benchmarks.",
+            "body": "Provenance matters because benchmark databases come from different sources, with different licenses and privacy expectations. Some datasets are public and permissively licensed, while others may include sensitive or proprietary schemas that cannot be redistributed. A risk is benchmark contamination, where test questions or schemas leak into training data and inflate scores. Another risk is overfitting to benchmark quirks, which can make a system look better than it is on a real enterprise schema.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "Future benchmarks are moving toward larger, messier enterprise style schemas and private evaluation sets that resist contamination. Multi turn questions, ambiguous requests, and agentic workflows that plan and revise SQL are becoming part of the evaluation. Metrics are also expanding to include cost, latency, and whether the system asks for clarification instead of guessing.",
+            "body": "The field is moving toward benchmarks that reflect enterprise conditions, with larger schemas, messy column names, and multi-turn questions. Newer evaluations look beyond execution accuracy to include efficiency, robustness to schema changes, and safety checks on generated SQL. There is growing interest in dynamic benchmarks that change over time to resist contamination. The site tracks 263 Model Context Protocol servers for SQL databases and warehouses, a sign that SQL access is becoming a common building block. This tooling may shape how text to SQL systems are tested and deployed.",
             "heading": "Where it is going"
         }
     ],

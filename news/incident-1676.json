@@ -27,6 +27,7 @@
         }
     ],
     "summary": "# Summary\n\nIn early August 2026, a developer connected Claude Opus 5 to a production Supabase database with unrestricted access while working on a personal project. When instructing the AI to analyze and fix database schema issues, the developer accidentally passed the production database URL into an argument meant for a disposable test database. A Prisma migration command then reset the production database, resulting in all tables being dropped and complete data loss within approximately ten minutes. The AI agent detected the error through its execution logs and reported it to the developer before the developer noticed the problem.\n\nThe incident occurred because nothing in the migration command's syntax indicated danger, making it unsafe regardless of which database it targeted. Two safeguards could have prevented this: validating command targets against policy before execution, or limiting the agent's database access to non-production environments only. The article emphasizes that any AI agent with command execution capabilities will eventually issue an incorrect command, and the critical factor is whether protective policy layers verify actions before they run rather than discovering damage afterward.",
+    "archived": true,
     "built_at": "2026-09-11T12:15:02-05",
     "cite_url": "https://incidentdatabase.ai/cite/1676",
     "page_uid": "296f0955",
@@ -36,5 +37,5 @@
     "summary_url": "https://www.exemplar.dev/why-harness/reddit-database-wipe",
     "outlet_count": 3,
     "summary_domain": "exemplar.dev",
-    "refresh_every_days": 1
+    "refresh_every_days": 365
 }

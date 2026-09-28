@@ -4,7 +4,7 @@
     "slug": "sql-training-pipelines",
     "shape": "art-topic",
     "title": "SQL and AI Training Data Pipelines",
-    "answer": "Training and fine tuning data inside an organisation is usually assembled by pipelines that extract rows from operational databases, clean and join them with SQL, and load them where training jobs can read them; mistakes in those queries become mistakes in the model. SQL is the common interface for selecting, filtering, aggregating, and labelling rows before they become training examples. The scope covers batch extraction, incremental change capture, feature store population, and the final materialisation of train, validation, and test splits. It also includes the reverse flow where model outputs are written back to SQL tables for evaluation or human review.",
+    "answer": "Training and fine tuning data inside an organisation is usually assembled by pipelines that extract rows from operational databases, clean and join them with SQL, and load them where training jobs can read them, and mistakes in those queries become mistakes in the model. This scope covers feature tables, labels, text corpora, and evaluation sets that start life in relational systems. It also covers the return path, where model outputs and human feedback are written back into SQL tables for review and retraining. The focus is the data supply chain, not the model architecture itself.",
     "crumbs": [
         {
             "name": "AI and SQL",
@@ -12,7 +12,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-09-28T12:37:04-05",
+    "built_at": "2026-09-28T15:34:05-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "AI and SQL",
@@ -20,23 +20,23 @@
     "page_uid": "49220ce5",
     "sections": [
         {
-            "body": "Training and fine tuning data inside an organisation is usually assembled by pipelines that extract rows from operational databases, clean and join them with SQL, and load them where training jobs can read them; mistakes in those queries become mistakes in the model. SQL is the common interface for selecting, filtering, aggregating, and labelling rows before they become training examples. The scope covers batch extraction, incremental change capture, feature store population, and the final materialisation of train, validation, and test splits. It also includes the reverse flow where model outputs are written back to SQL tables for evaluation or human review.",
+            "body": "Training and fine tuning data inside an organisation is usually assembled by pipelines that extract rows from operational databases, clean and join them with SQL, and load them where training jobs can read them, and mistakes in those queries become mistakes in the model. This scope covers feature tables, labels, text corpora, and evaluation sets that start life in relational systems. It also covers the return path, where model outputs and human feedback are written back into SQL tables for review and retraining. The focus is the data supply chain, not the model architecture itself.",
             "heading": "Scope"
         },
         {
-            "body": "A typical stack runs on the organisation's existing relational engines, such as PostgreSQL, MySQL, or cloud data warehouses, with orchestration handled by schedulers and workflow tools. Pipelines often use staging tables, materialized views, and change data capture to move rows without disrupting production databases. The same SQL engine may serve both the operational application and the training data export, so resource isolation and read replicas are common. A growing integration surface is the Model Context Protocol; of 2401 active servers tracked on this site, 262 expose SQL databases and warehouses to AI tools.",
+            "body": "The pipeline runs on a mix of operational databases, analytical warehouses, object storage, and compute for training jobs. SQL engines such as PostgreSQL, MySQL, Snowflake, and BigQuery are common sources and staging layers, while orchestration tools like Airflow, dbt, and Spark move and transform data. This site itself is built from a PostgreSQL database, which shows how often the same relational systems serving applications become the first stop for training data. Access may be direct, through scheduled jobs, or through connectors that expose SQL to AI agents, and the site tracks 263 MCP servers for SQL databases and warehouses as one example of that connector layer.",
             "heading": "What it runs on"
         },
         {
-            "body": "The work is done by writing and reviewing SQL transformations that turn raw operational rows into clean, labelled examples. Common steps include joining fact and dimension tables, filtering out test or fraudulent records, aggregating events over time windows, and encoding categorical values. Teams often keep these transformations in version-controlled files and run them as idempotent jobs so a training set can be rebuilt from source at any commit. Because the same SQL may serve both training and inference, the feature logic must be kept consistent between offline and online paths.",
+            "body": "The work starts with SQL queries that select, filter, join, aggregate, and deduplicate source rows into a training set. Teams often materialise the result as a table or a file format such as Parquet, then split it into training, validation, and test sets. Labels may come from human annotation tables, business rules, or model outputs, and those labels are joined back to features with SQL. Because the query defines the training set, the SQL script and the source snapshot are part of the model's provenance. Version control, data tests, and row counts help catch silent changes before a training job reads the data.",
             "heading": "How the work is done"
         },
         {
-            "body": "Rights and risk centre on who can read which rows and whether the training set preserves permissions, consent, and data minimisation. SQL pipelines can silently leak personal data through joins or insufficient WHERE clauses, and a biased sample in a query becomes a biased model downstream. Provenance is handled by recording source tables, query versions, row counts, and checksums for each training artifact. Review and approval gates are often placed on the SQL definitions rather than on the exported files, because the query is the real specification of what the model learns.",
+            "body": "Rights and risk in these pipelines turn on where the rows came from, what consent or licence covers them, and who can query them. SQL grants, row level security, masking, and retention rules are common controls at the database layer. Provenance is usually recorded by versioning the SQL, snapshotting source tables, and logging which query produced which training set. Risks include sensitive data leaking into a model, biased joins that skew labels, and stale or duplicated rows that quietly change behaviour. Organisations often add data catalogs, lineage graphs, and approval steps so that a training set can be traced back to its sources.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The direction is toward tighter coupling between SQL sources and AI tooling through protocols such as Model Context Protocol, with 262 SQL database and warehouse servers already tracked here. SQL is becoming the control plane for training data rather than just a query language, with more pipelines defined as code and validated by data contracts. Natural language interfaces are starting to generate SQL for dataset assembly, but human review of the resulting queries remains important. The line between operational databases and vector stores is blurring, as some engines now store embeddings alongside relational rows and allow similarity joins in SQL.",
+            "body": "The direction is toward more automation and more metadata. AI assistants are already drafting SQL for pipeline authors, with human review, and connectors that expose SQL to AI agents make that access easier. Pipelines are likely to become more declarative, with data contracts and tests expressed alongside the queries. Expect tighter links between SQL engines and training frameworks, so that a model can be retrained from a governed query rather than a hand copied export. Governance will keep moving left into the query layer, where access, lineage, and quality checks can be enforced before data reaches a training job.",
             "heading": "Where it is going"
         }
     ],
