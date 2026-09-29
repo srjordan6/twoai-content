@@ -2,7 +2,7 @@
     "shape": "incident",
     "title": "China's Z.ai disables AI coding assistant features after security issue",
     "reading": {
-        "body": "This is a data egress failure in a developer tool. A coding assistant that runs against local repositories is positioned inside the perimeter of a user's machine, and a feature that uploads those repositories to a cloud service moves source code across that boundary. The failure was not a wrong answer or a bad suggestion. It was the tool's own telemetry path carrying files the user had not agreed to send.\n\nThe specific mechanism reported is a Codebase Indexing feature that was on by default. Default settings are where consent is decided in practice, because most users never open the configuration. Catching this before deployment would have required treating outbound code transfer as a decision the user makes rather than one the product makes, and monitoring what the tool actually sends during testing rather than what its documentation says it sends.\n\nWhat is not established is intent, and whether any code data was retained or used. One company withdrew a claim about six workspaces with sensitive data, so that claim is not a finding. Z.ai's statement that independent reviews found no code data remained is the company's account, not a verified result.",
+        "body": "This is a data handling failure in a developer tool, not a model error. The upload happened at the client, on the developer's own machine, through a feature that shipped enabled by default. Nothing in the reporting describes a model asserting anything false or a system used outside its intended conditions. The failure is that the default configuration of a locally installed assistant sent local repositories to a remote cloud service, and the user was not asked.\n\nCatching this would have required a consent step before any repository left the machine, or a default of off for the indexing feature with an explicit opt in. It would also have required review of what the shipped defaults actually did, and monitoring of outbound traffic from the tool. The behaviour was reported by developers rather than surfaced by the vendor, which places the detection outside the deployment.\n\nWhat is not established is intent. The retracted claim about six workspaces containing sensitive data is not a finding, and Z.ai's statement that independent reviews found no code data retained is the company's own account rather than an outside determination.",
         "model": "claude-haiku-4-5",
         "generated_on": "2026-09-29"
     },
@@ -14,8 +14,8 @@
             "published": "2026-09-27"
         }
     ],
-    "summary": "Developers said Z.ai's ZCode AI coding assistant sent local code repositories to Alibaba Cloud without permission. Z.ai said a Codebase Indexing feature that was on by default caused the activity. The company apologized, fixed the vulnerability, and later turned off the upload route. One company withdrew a separate claim that six workspaces with sensitive data had been uploaded. Z.ai said independent reviews found that no code data remained.",
-    "built_at": "2026-09-29T09:14:39-05",
+    "summary": "Developers reported that Z.ai's ZCode AI coding assistant uploaded local code repositories to Alibaba Cloud without consent. Z.ai said a default-enabled Codebase Indexing feature caused the behavior. It apologized, patched the vulnerability, and later disabled the upload path. One company retracted a separate claim that six workspaces containing sensitive data had been uploaded. Z.ai said independent reviews found no code data retained.",
+    "built_at": "2026-09-29T12:09:13-05",
     "cite_url": "https://incidentdatabase.ai/cite/1714",
     "page_uid": "742291ce",
     "title_en": "China's Z.ai disables AI coding assistant features after security issue",
