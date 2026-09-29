@@ -4,7 +4,7 @@
     "slug": "res-data-graph",
     "shape": "art-topic",
     "title": "Institutional Knowledge Graphs",
-    "answer": "Institutional knowledge graphs are structured representations of an organization's people, projects, publications, datasets, instruments, and administrative units, with typed relationships between them. In research data and repositories, they connect papers to authors, funders, facilities, methods, and vocabularies so that a query can traverse from a study to its underlying data or from a dataset to every paper that cites it. They differ from a simple catalogue because they preserve context, such as provenance, version history, and the roles that entities play. On this site, a graph could connect 135 research papers to 12,413 extracted claims.",
+    "answer": "Institutional knowledge graphs represent the entities an organization cares about, such as people, projects, publications, datasets, instruments, and administrative units, and the relationships among them. They are built to answer questions that span silos, for example which datasets support a given publication or which researchers collaborate on a grant. In a research data and repositories context, the graph often includes vocabularies, licenses, and provenance records so that a resource can be traced from creation to reuse. A repository with 135 research papers and 12,993 extracted claims, like this site, illustrates how quickly a graph can grow once claims and citations become primary nodes. The scope is not the whole web but the institution's own holdings and the external identifiers that anchor them.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-09-29T06:36:44-05",
+    "built_at": "2026-09-29T09:38:09-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Researcher",
@@ -28,23 +28,23 @@
     "page_uid": "90403778",
     "sections": [
         {
-            "body": "Institutional knowledge graphs are structured representations of an organization's people, projects, publications, datasets, instruments, and administrative units, with typed relationships between them. In research data and repositories, they connect papers to authors, funders, facilities, methods, and vocabularies so that a query can traverse from a study to its underlying data or from a dataset to every paper that cites it. They differ from a simple catalogue because they preserve context, such as provenance, version history, and the roles that entities play. On this site, a graph could connect 135 research papers to 12,413 extracted claims.",
+            "body": "Institutional knowledge graphs represent the entities an organization cares about, such as people, projects, publications, datasets, instruments, and administrative units, and the relationships among them. They are built to answer questions that span silos, for example which datasets support a given publication or which researchers collaborate on a grant. In a research data and repositories context, the graph often includes vocabularies, licenses, and provenance records so that a resource can be traced from creation to reuse. A repository with 135 research papers and 12,993 extracted claims, like this site, illustrates how quickly a graph can grow once claims and citations become primary nodes. The scope is not the whole web but the institution's own holdings and the external identifiers that anchor them.",
             "heading": "Scope"
         },
         {
-            "body": "Institutional knowledge graphs run on graph databases or triple stores that support RDF and SPARQL, or on property graphs queried with languages such as Cypher. They often sit behind APIs and are populated from source systems like repositories, CRIS platforms, data catalogues, and identity directories. Persistent identifiers such as DOI, ORCID, and ROR are used to anchor entities and reduce duplication. A graph may be materialized in a store or virtualized over existing databases, depending on scale and update frequency.",
+            "body": "The graph runs on a storage layer that supports either RDF triples or property graphs, with query languages such as SPARQL or Cypher. It depends on persistent identifiers like DOIs, ORCID iDs, and ROR IDs to keep entities stable across systems. Common components include an ontology or schema, an ingestion pipeline, a triple store or graph database, and APIs that let repository platforms and discovery interfaces read the graph. Many institutions also keep a search index alongside the graph because graph queries alone are not ideal for search over free text. The infrastructure is usually integrated with existing repository software, identity management, and data catalogues rather than replacing them.",
             "heading": "What it runs on"
         },
         {
-            "body": "The work begins with ontology and vocabulary design, defining classes and relationships for the institution's entities and mapping them to shared standards. Data is extracted from repositories, publication databases, grant systems, and spreadsheets, then cleaned, deduplicated, and linked using identifiers and record linkage techniques. Curators and domain experts review mappings and resolve conflicts, while automated pipelines keep the graph current as new papers, datasets, and projects appear. Validation queries and provenance records are maintained so that each edge can be traced back to its source.",
+            "body": "Work begins with identifying authoritative sources, such as a research information system, a repository, a grant management system, and a vocabulary service. Teams then map those sources to a shared ontology, extract entities and relationships, and resolve duplicates so that the same person or dataset is not represented twice. Extraction can be manual, rules based, or assisted by machine learning, but every asserted relationship should carry a provenance link back to its source record. A graph with 12,993 claims from 135 papers, as on this site, shows why automated extraction needs review and why provenance at the claim level matters. The graph is then loaded, queried, and refined in cycles as new publications, datasets, and corrections arrive.",
             "heading": "How the work is done"
         },
         {
-            "body": "Institutional knowledge graphs raise questions about data protection, confidentiality, and the rights of people named in the graph. Provenance must record where each assertion came from, who asserted it, and under what license it can be reused. Access controls may be needed for internal administrative data, while public research metadata can often be shared openly. Risk includes stale or incorrect links, unintended inference from combined data, and the exposure of sensitive relationships.",
+            "body": "Rights and risk management for an institutional knowledge graph starts with knowing the license and access conditions of every source. Some nodes and edges may be public, some restricted to the institution, and some subject to privacy rules, so the graph needs access control at the query level, not just at the interface. Provenance is recorded as part of the graph so that a user can see who asserted a relationship, when, and from which source. Risks include identifying individuals from combined data, stale or incorrect links, and relying too much on a graph that mixes authoritative and experimental sources. Institutions typically define stewardship roles, change logs, and review processes to keep the graph trustworthy.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The field is moving toward federated graphs that connect institutional nodes to national and international research infrastructures without centralizing all data. Automated extraction from papers and datasets, including claim and method extraction, is making graphs richer but also increasing the need for human review. Standards for provenance and entity resolution continue to mature, and graph embeddings and language models are being explored for query and discovery. The aim over time is a durable layer that supports reproducibility, reporting, and reuse across institutions.",
+            "body": "The direction is toward federation, where institutional graphs answer queries across multiple organizations without centralizing all data. FAIR principles and persistent identifiers are pushing graphs to be more interoperable, and repository systems are beginning to expose graph endpoints as a standard feature. Machine learning is being used to suggest new links and to extract entities from text, but human review remains part of the workflow for assertions with high impact. Expect more integration between knowledge graphs and the tools researchers already use, such as discovery portals, data catalogues, and reporting dashboards. The aim over time is a graph that is useful for everyday tasks, not a separate destination that only specialists visit.",
             "heading": "Where it is going"
         }
     ],

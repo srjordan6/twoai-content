@@ -4,7 +4,7 @@
     "slug": "eco-agents-comps",
     "shape": "art-topic",
     "title": "Keeping Comparable Company Sets Current",
-    "answer": "Keeping comparable company sets current is the work of maintaining a peer group used for valuation, benchmarking, and relative performance analysis as companies change. In finance agent workflows, this means an agent watches for events that alter comparability, such as mergers, acquisitions, spin-offs, delistings, sector reclassifications, and shifts in business mix. The scope covers defining the peer criteria, monitoring the universe, and deciding when a set needs revision. The site's 432 company pages are one example of a structured universe an agent could track.",
+    "answer": "Keeping comparable company sets current means maintaining a peer group used for valuation, relative performance, and sector benchmarking as the underlying companies change. In finance, a comparable set is only useful if it reflects the current business mix, size, and listing status of each member. The work covers adding new listings, removing acquired or delisted companies, and reclassifying firms when their revenue mix shifts. It also covers documenting why each change was made so that historical analysis remains reproducible.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-09-29T06:36:43-05",
+    "built_at": "2026-09-29T09:38:09-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Economist",
@@ -28,23 +28,23 @@
     "page_uid": "3d1e9eb0",
     "sections": [
         {
-            "body": "Keeping comparable company sets current is the work of maintaining a peer group used for valuation, benchmarking, and relative performance analysis as companies change. In finance agent workflows, this means an agent watches for events that alter comparability, such as mergers, acquisitions, spin-offs, delistings, sector reclassifications, and shifts in business mix. The scope covers defining the peer criteria, monitoring the universe, and deciding when a set needs revision. The site's 432 company pages are one example of a structured universe an agent could track.",
+            "body": "Keeping comparable company sets current means maintaining a peer group used for valuation, relative performance, and sector benchmarking as the underlying companies change. In finance, a comparable set is only useful if it reflects the current business mix, size, and listing status of each member. The work covers adding new listings, removing acquired or delisted companies, and reclassifying firms when their revenue mix shifts. It also covers documenting why each change was made so that historical analysis remains reproducible.",
             "heading": "Scope"
         },
         {
-            "body": "The workflow runs on scheduled data pipelines that pull daily prices, corporate actions, and filings into a store that agents can query. The site's 117 listed AI-related instruments with daily prices illustrate the kind of price feed that keeps a comp set fresh. Agents typically run on a job orchestrator, use a relational or vector database for reference data, and call language models to read unstructured text. Human analysts review proposed changes through a dashboard or ticketing system.",
+            "body": "The work runs on a combination of market data feeds, regulatory filings, and a maintained company master. This site tracks 117 listed AI-related instruments with daily prices and 355 merger and acquisition filings, which are the kinds of inputs an agent workflow would monitor. Agents need scheduled access to those sources, a place to store the current peer set, and a version history. A typical setup uses a database for the set, a queue for incoming events, and a dashboard for human review.",
             "heading": "What it runs on"
         },
         {
-            "body": "The method starts with a written peer definition, then an agent ingests new filings, news, and financial statements to detect events that break comparability. The site's 354 merger and acquisition filings are a primary signal for comparability breaks. The agent scores each event for materiality, proposes additions or removals, and records the reason and source for every change. A human approves or rejects the proposal, and the approved set is versioned with an effective date. Backtests compare the updated set against the prior one to check that the change improves the analysis.",
+            "body": "The method starts with a rule set that defines what makes a company comparable, such as sector, size, revenue model, and geography. Agents then watch for events that break those rules, including acquisitions, index changes, and new filings. When an event arrives, the agent proposes an update, such as removing a target or adding an acquirer, and attaches the source document. A human analyst reviews the proposal, and the change is committed with a timestamp and a reason code. Periodic full reviews catch slow drift that event triggers miss.",
             "heading": "How the work is done"
         },
         {
-            "body": "Governance covers data rights, audit trails, and the provenance of every input that drives a change. Each proposed update carries its source, timestamp, and the rule or model that produced it, so an analyst can trace why a company entered or left the set. Risk includes stale data, misread filings, and unintended bias in peer selection, all of which can distort valuations. The site's 219 compliance and regulation pages reflect the kind of oversight material that may constrain how agents handle sensitive data.",
+            "body": "Provenance means every change to the peer set should point back to a filing, a price record, or a documented analyst decision. Rights matter because market data and filings carry license terms that limit redistribution and automated use. Risk includes stale sets that mislead valuation, survivorship bias when failed companies are dropped without a trace, and look-ahead bias when a set is updated with information not available at the time. An audit trail that records who changed what and when is the main control. The site's 148 active AI lawsuits show why legal status can itself be a reason to reclassify a peer.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The direction is toward continuous, event-driven comp sets that update within minutes of a filing rather than on a quarterly cycle. Agents will likely coordinate with valuation models and portfolio systems, proposing changes that a human signs off on. As the number of listed AI-related instruments grows, the manual effort to keep peer groups current will push more firms to adopt agent workflows. The direction points to tighter integration with audit and compliance tooling, and more emphasis on explainable change logs.",
+            "body": "Agent workflows for peer sets are moving from nightly batch updates to event-driven updates that react within minutes of a filing. Language models are being used to read filings and extract the facts that trigger a reclassification, though human review remains the norm for material changes. Expect tighter integration between the peer set, the valuation model, and the compliance record so that a change in one propagates with a full audit trail. The growth of AI-related litigation and regulation will likely make legal status a standard field in peer definitions. The goal is a set that is current, sourced, and explainable.",
             "heading": "Where it is going"
         }
     ],
