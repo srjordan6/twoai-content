@@ -212,7 +212,7 @@
             "meet": [
                 {
                     "uid": "",
-                    "fact": "2,457 servers from the official Model Context Protocol registry, the standard way agents are given tools.",
+                    "fact": "2,458 servers from the official Model Context Protocol registry, the standard way agents are given tools.",
                     "href": "/mcp/",
                     "name": "MCP Server tracker"
                 },
@@ -306,11 +306,11 @@
         "assumption_source": "https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them"
     },
     "reading": {
-        "body": "A 40 page contract is not a capability problem: 437 of the 454 API models tracked here hold it whole, and reading it plus writing a one page summary costs about 1.3 cents.\n\nThe arithmetic runs through one unit. About 20,000 words becomes roughly 26,700 tokens in and 1,000 tokens out, so 27,700 tokens have to sit in the context window at once. Seventeen of the 454 tracked models cannot hold that, and for those the contract must be split. The largest window among the tracked models is 2,000,000 tokens, far beyond what a single contract needs. At median prices of $0.40 per million input tokens and $1.90 per million output tokens, the read is about $0.0107 and the summary about $0.0019. Price is not the barrier at this size.\n\nThe constraint moves elsewhere as soon as the job changes from one contract to a library. A whole library will not fit any window, so retrieval embeds each contract once and hands the model only the passages that match the question. The failure mode is then not capacity or cost but truth: a summary can state a clause the contract does not contain. For anything with legal weight, the summary is a map to the pages to read, not a substitute for them.\n\nWhat this does not cover matters as much as what it does. The token counts come from a rule of thumb of about 0.75 words per token for English, not from measurement. The prices are medians across 454 models from 63 providers, so any single model may sit well above or below them. Nothing here describes accuracy, latency, or the compute and power behind a per-token price, so the 1.3 cents is a billing figure and not an energy one. The retrieval step is described without numbers: no library size, no index cost, no retrieval bill.",
+        "body": "A 40 page contract is about 27,700 tokens, which 437 of the 454 tracked API models can hold at once, and which costs about 1.3 cents to read and summarize at median prices.\n\nThe pattern is that at the scale of a single document, neither price nor context is the binding constraint. The read costs about $0.0107 and the summary about $0.0019, and only 17 of 454 models would have to split the contract. The largest context window tracked is 2,000,000 tokens, far beyond what a contract requires.\n\nWhat binds is correctness. A summary can state a clause the contract does not contain, and the fluency of the output is what makes that dangerous. For anything with legal weight the summary is a map to the pages to read, not a substitute for them. For a library of contracts rather than one, retrieval embeds each document once and hands the model only the passages that match the question, which moves the constraint from window size to the quality of the match.\n\nThat quality is not measured in the data. It counts components, 454 API models from 63 providers, 111 model serving providers, 12 inference engines, 2,458 MCP servers, but carries no accuracy rates, no latency, and no figures for the compute or power behind any of it. Cost appears only as dollars per token, never as the electricity or hardware that produced the tokens.",
         "model": "ollama:deepseek-v4.1-flash",
         "generated_on": "2026-09-29"
     },
-    "built_at": "2026-09-29T03:27:06-05",
+    "built_at": "2026-09-29T06:26:36-05",
     "category": "research-knowledge-and-learning",
     "page_uid": "d2390ba3",
     "verified": "2026-09-29",

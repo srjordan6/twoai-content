@@ -4,7 +4,7 @@
     "slug": "fin-treasury-recon",
     "shape": "art-topic",
     "title": "Bank Reconciliation",
-    "answer": "Bank reconciliation is the process of matching transactions recorded in a company's cash ledger against the bank statement for each bank account, then explaining any difference. It covers deposits, withdrawals, fees, interest, chargebacks, returned payments, and timing items such as outstanding checks or deposits in transit. In treasury and liquidity work, the scope extends to multiple accounts, currencies, and payment rails, and to the daily cash position that depends on those balances. The output is a reconciled set of balances with clear support for every open item, not just a zero difference.",
+    "answer": "Bank reconciliation is the process of comparing a company's internal cash records with bank statements to confirm that payments, receipts, fees, and interest are recorded correctly and that the ending balances agree. In treasury and liquidity work it covers operating accounts, payroll accounts, merchant settlement accounts, and sometimes loan or investment accounts, across multiple banks and currencies. It also includes investigating timing differences such as outstanding checks and deposits in transit, plus errors, duplicate entries, and unauthorized transactions. The scope often extends to intraday and month-end close, audit support, and cash positioning.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-09-29T03:39:02-05",
+    "built_at": "2026-09-29T06:36:43-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Accountant",
@@ -28,23 +28,23 @@
     "page_uid": "37af4cd8",
     "sections": [
         {
-            "body": "Bank reconciliation is the process of matching transactions recorded in a company's cash ledger against the bank statement for each bank account, then explaining any difference. It covers deposits, withdrawals, fees, interest, chargebacks, returned payments, and timing items such as outstanding checks or deposits in transit. In treasury and liquidity work, the scope extends to multiple accounts, currencies, and payment rails, and to the daily cash position that depends on those balances. The output is a reconciled set of balances with clear support for every open item, not just a zero difference.",
+            "body": "Bank reconciliation is the process of comparing a company's internal cash records with bank statements to confirm that payments, receipts, fees, and interest are recorded correctly and that the ending balances agree. In treasury and liquidity work it covers operating accounts, payroll accounts, merchant settlement accounts, and sometimes loan or investment accounts, across multiple banks and currencies. It also includes investigating timing differences such as outstanding checks and deposits in transit, plus errors, duplicate entries, and unauthorized transactions. The scope often extends to intraday and month-end close, audit support, and cash positioning.",
             "heading": "Scope"
         },
         {
-            "body": "The work runs on the accounting or ERP system of record, bank connectivity through host-to-host links, APIs, or statement files such as BAI2, MT940, and CSV exports. A reconciliation engine or module ingests both sides, normalizes dates, amounts, references, and counterparties, and stores the matched and unmatched items in a controlled database. Where remittance data arrives as email or PDF, optical character recognition and document parsing feed the same pipeline. Access is usually role based, with separate permissions for importing bank data, proposing matches, and approving adjustments.",
+            "body": "Bank reconciliation runs on bank statements and transaction feeds delivered through bank portals, host-to-host connections, APIs, and standard file formats such as BAI2, MT940, CAMT, and OFX. On the company side it runs on ERP and treasury management systems, often with a general ledger, cash management module, and reconciliation subledger. Many teams still use spreadsheets for exceptions and manual matching, while larger operations use dedicated reconciliation tools or modules inside ERP suites. AI-assisted reconciliation may also run on rules engines, document parsing services, and cloud data platforms that ingest remittance advice and payment files.",
             "heading": "What it runs on"
         },
         {
-            "body": "The method starts with data ingestion and normalization, then applies deterministic rules for exact matches on amount, date, and reference. Fuzzy matching and machine learning models handle partial references, split deposits, and one-to-many matches, while anomaly detection flags unusual amounts, duplicate payments, or unexpected fees. Exceptions are routed to a preparer who codes them to the general ledger, and a reviewer approves the reconciliation and the adjusting entries. The audit trail records the source data, the match logic, the model version where one is used, and the human decision.",
+            "body": "The work starts with importing bank data and internal cash transactions, then normalizing dates, amounts, references, and counterparties. Rules and matching algorithms pair items by exact keys such as check number or transaction ID, then fuzzy matching and machine learning score likely matches when references are missing or inconsistent. Exceptions go to a queue where an accountant investigates, adjusts the ledger, or contacts the bank, and the reconciliation is signed off with supporting evidence. AI can also classify transactions, extract remittance details from emails or PDFs, and flag unusual patterns for review.",
             "heading": "How the work is done"
         },
         {
-            "body": "Rights and risk and provenance turn on who can see bank data, who can change a match, and what evidence supports each reconciled balance. Controls include segregation of duties between preparer and approver, restricted access to bank credentials, encryption of statement data, and retention rules for reconciliation evidence. Model risk management applies when machine learning proposes matches or classifies exceptions, so teams document training data, performance thresholds, and fallback to manual review. Provenance means every balance can be traced back to a bank statement line and a ledger entry, with a clear record of any override.",
+            "body": "Governance covers who can view bank data, who can approve adjustments, and how reconciliation evidence is retained for audit and regulatory review. Provenance matters because each match should trace back to a bank statement line, a ledger entry, and the rule or model that proposed it, with version history and timestamps. Risks include false matches that hide missing cash, over-reliance on automation without sampling, unauthorized access to bank accounts, and privacy issues when payment data is used to train models. Controls typically include segregation of duties, dual approval for journal entries, audit trails, model monitoring, and periodic review of reconciliation exceptions.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The direction is toward continuous reconciliation, where bank feeds and payment APIs update cash positions throughout the day rather than at month end. More accounts and instant payment rails increase the volume of exceptions, which pushes teams toward automated exception handling and real-time monitoring. Agentic workflows may assemble evidence, propose journal entries, and route approvals, but human sign-off remains the control point for material adjustments. The practical goal is a faster close with fewer unexplained items and a stronger audit trail, not the removal of the accountant from the process.",
+            "body": "Bank reconciliation is moving toward continuous, real-time matching as instant payments, open banking APIs, and ISO 20022 messaging become more common. AI models are likely to take on more exception handling, anomaly detection, and cash forecasting, while accountants focus on oversight and complex breaks. Adoption will depend on data quality, bank connectivity, and the ability to explain automated decisions to auditors and regulators. Smaller firms may see the biggest change through embedded reconciliation in accounting platforms, while large treasuries push for straight-through processing across many banks.",
             "heading": "Where it is going"
         }
     ],
