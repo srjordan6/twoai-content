@@ -4,7 +4,7 @@
     "slug": "res-quant-design",
     "shape": "art-topic",
     "title": "Testing a Study Design Before Data Collection",
-    "answer": "Testing a study design before data collection means checking whether a planned quantitative study can answer its research question before resources are spent gathering real data. It covers sample size and power calculations, simulation of the proposed analysis under plausible effect sizes, and pilot runs with synthetic or existing data. The goal is to catch weak designs, measurement problems, and analysis mismatches early. This practice sits within reproducible quantitative work because a design that is tested in advance is easier to document and rerun later.",
+    "answer": "Testing a study design before data collection means checking whether a planned quantitative study can answer its question with the data it expects to gather. It covers the estimand, the sampling frame, the measurement instruments, the analysis code, and the decision rules that will be used once real data arrive. The work often includes a dry run on mock or simulated data, a small pilot, or a formal simulation study of operating characteristics such as bias, coverage, and power. The aim is to expose ambiguity and failure modes early, while changes are still cheap and before any primary data are collected. This is a core part of reproducible work because it fixes the link between the design, the analysis, and the claims that can be made.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-09-29T12:35:29-05",
+    "built_at": "2026-09-29T15:41:38-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Researcher",
@@ -28,23 +28,23 @@
     "page_uid": "a343378e",
     "sections": [
         {
-            "body": "Testing a study design before data collection means checking whether a planned quantitative study can answer its research question before resources are spent gathering real data. It covers sample size and power calculations, simulation of the proposed analysis under plausible effect sizes, and pilot runs with synthetic or existing data. The goal is to catch weak designs, measurement problems, and analysis mismatches early. This practice sits within reproducible quantitative work because a design that is tested in advance is easier to document and rerun later.",
+            "body": "Testing a study design before data collection means checking whether a planned quantitative study can answer its question with the data it expects to gather. It covers the estimand, the sampling frame, the measurement instruments, the analysis code, and the decision rules that will be used once real data arrive. The work often includes a dry run on mock or simulated data, a small pilot, or a formal simulation study of operating characteristics such as bias, coverage, and power. The aim is to expose ambiguity and failure modes early, while changes are still cheap and before any primary data are collected. This is a core part of reproducible work because it fixes the link between the design, the analysis, and the claims that can be made.",
             "heading": "Scope"
         },
         {
-            "body": "The work usually runs on a standard statistical computing environment such as R or Python with packages for simulation and power analysis. A laptop or a small cloud instance is often enough, since the datasets are synthetic or small pilot extracts rather than full production data. Version control and a scripted pipeline let the same design test be rerun when assumptions change. No specialised hardware is required for most design testing.",
+            "body": "The work runs on the same computing environment that will later handle the real analysis, so that code, package versions, and random seeds are controlled. Common foundations include version control for code and documents, container images or environment files for dependencies, and workflow tools that record each step from data generation to model fitting. Simulated or mock datasets are produced by scripts, not by hand, and they are stored alongside the analysis code. For pilot work, secure storage and access controls are set up before any human data are touched. Logs and intermediate outputs are kept so that a reviewer can rerun the entire dry run from a clean checkout.",
             "heading": "What it runs on"
         },
         {
-            "body": "The core method is to write a small simulation that generates data from a model of the expected effect, then run the planned analysis on many simulated datasets and record how often the result is detected or estimated well. Power analysis sets the sample size needed for a given effect and acceptable error rates. Pilot testing with a few real or synthetic cases checks that measures load, code runs, and the analysis plan produces interpretable output. Pre-registration of the tested design then locks the plan before real data collection begins.",
+            "body": "A typical sequence starts by writing the analysis plan in enough detail that another analyst could execute it, including the target quantity, the model, the missing data handling, and the stopping rules. The team then generates synthetic data under a range of plausible assumptions, runs the planned analysis, and records how often the method recovers the truth or produces misleading answers. Sensitivity checks vary the assumptions one at a time, such as effect size, correlation structure, measurement error, and missingness, to see where the design breaks down. A small pilot with real but limited data can test recruitment, measurement, and data flow, though it is usually kept separate from the primary analysis. Code review and automated tests are used to catch errors in the pipeline before the main data collection begins.",
             "heading": "How the work is done"
         },
         {
-            "body": "Rights and risk here are mostly about transparency and misuse of preliminary results. A design test uses assumptions that may be wrong, so its outputs are planning aids, not findings about the real world. Researchers should document the simulation code, the assumed effect sizes, and the decision rules so others can audit the design. There is a risk of p-hacking or design shopping if many variations are tried and only the one that looks best is reported, so the tested plan should be fixed before data collection. Provenance of any pilot data must be clear, especially if existing data are reused.",
+            "body": "Rights and risk come into focus when pilot or mock data involve human subjects, because consent, privacy, and data protection rules still apply even if the data are not used for the final estimate. Provenance matters: every dataset, script, and decision rule needs a traceable source, and any change to the design after seeing results must be documented. Preregistration or a dated analysis plan helps separate confirmatory tests from exploratory ones and reduces the risk of undisclosed flexibility. Licensing and authorship agreements for code and synthetic data are settled early, especially when multiple institutions are involved. The governance goal is to make the study auditable, not to guarantee a particular result.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "Design testing is moving toward more automated simulation and synthetic data generation, so a researcher can stress-test a plan against many plausible data-generating processes at once. Closer links with pre-registration platforms and reproducible workflow tools are making the tested design a standard part of the research record. As quantitative work grows more complex, testing the design before data collection is likely to become a routine step rather than an optional check.",
+            "body": "The direction of travel is toward more automated and more standardized pre-data testing, with simulation pipelines that can be rerun as assumptions change. Reproducibility checks, such as independent reruns of the analysis on simulated data, are becoming a normal part of review in quantitative fields. AI-assisted tools may help generate synthetic data, suggest sensitivity scenarios, or flag inconsistencies between a plan and its code, but the judgment about what counts as a valid design remains with the research team. As the site's library grows, comparisons across papers may make it easier to see which design checks are common and which are missing. The likely result is that testing a study design before data collection becomes less of a special step and more of a routine part of the research workflow.",
             "heading": "Where it is going"
         }
     ],
