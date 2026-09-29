@@ -4,7 +4,7 @@
     "slug": "fin-governance-local",
     "shape": "art-topic",
     "title": "Local and Air-Gapped Deployment",
-    "answer": "Local and air-gapped deployment means running AI models and supporting systems entirely on an organization's own hardware and network, with no connection to external cloud services or the public internet. This approach is used in financial data security, governance, and risk work where data cannot leave a controlled environment because of regulation, contract, or sensitivity. The scope covers model serving, data storage, access controls, logging, and update procedures that must all operate without external calls. It also includes deciding which workloads can be isolated and which require external data or model updates.",
+    "answer": "Local and air-gapped deployment covers running AI models, data pipelines, and supporting services on hardware the organization controls, either inside its own network or on a physically isolated network with no route to the public internet. In accounting and financial data security, the appeal is control over where sensitive records, ledgers, and client data reside, and over which software can reach them. The scope includes inference, fine-tuning, retrieval over internal documents, logging, backup, and the update process, not just the model itself. It also includes the boundary between local systems and any external service, because a single outbound call can change the risk profile. The site tracks 732 AI tools, and deployment mode is one practical filter when comparing them.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-09-29T15:41:38-05",
+    "built_at": "2026-09-29T18:48:15-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Accountant",
@@ -28,23 +28,23 @@
     "page_uid": "5b86a294",
     "sections": [
         {
-            "body": "Local and air-gapped deployment means running AI models and supporting systems entirely on an organization's own hardware and network, with no connection to external cloud services or the public internet. This approach is used in financial data security, governance, and risk work where data cannot leave a controlled environment because of regulation, contract, or sensitivity. The scope covers model serving, data storage, access controls, logging, and update procedures that must all operate without external calls. It also includes deciding which workloads can be isolated and which require external data or model updates.",
+            "body": "Local and air-gapped deployment covers running AI models, data pipelines, and supporting services on hardware the organization controls, either inside its own network or on a physically isolated network with no route to the public internet. In accounting and financial data security, the appeal is control over where sensitive records, ledgers, and client data reside, and over which software can reach them. The scope includes inference, fine-tuning, retrieval over internal documents, logging, backup, and the update process, not just the model itself. It also includes the boundary between local systems and any external service, because a single outbound call can change the risk profile. The site tracks 732 AI tools, and deployment mode is one practical filter when comparing them.",
             "heading": "Scope"
         },
         {
-            "body": "The infrastructure runs on on-premises servers, private cloud, or dedicated hardware inside the organization's perimeter. Air-gapped systems often use separate physical networks, manual data transfer through controlled media, and internal container or virtual machine platforms. The setup must provide enough compute for model inference and occasional fine-tuning, plus storage for model weights, vector indexes, and audit logs. Network monitoring and physical access controls are part of the infrastructure because the boundary is the main security control.",
+            "body": "Local deployment typically runs on on-premises servers, private cloud tenancies, or dedicated appliances with GPUs or CPUs sized to the model and workload. Air-gapped systems run on the same kinds of hardware but sit on an isolated network, often with separate power, cooling, and physical access controls. Storage must hold model weights, vector indexes, source documents, and audit logs, with capacity for snapshots and retention. Network design matters, because even an isolated environment needs controlled paths for administration, backup, and patch transfer. Some organizations use removable media or a data diode for one-way transfers, while others maintain a staging network that is never connected to production.",
             "heading": "What it runs on"
         },
         {
-            "body": "Models are packaged and transferred into the isolated environment through a review process, then loaded onto local serving software. Data preparation, prompt or query handling, and output review happen inside the boundary, usually with role-based access and versioned model artifacts. Updates require a deliberate transfer window, with hashes and signatures checked before installation. Testing and validation are done on a mirror environment before production changes.",
+            "body": "Work begins with a deployment plan that maps data flows, model dependencies, and the exact points where external connectivity would otherwise occur. Teams then package models, libraries, and configuration into reproducible artifacts, test them in a staging environment, and move them across the boundary through a controlled process. Inference and retrieval run locally, with prompts, outputs, and access events written to logs that can be reviewed. Updates and patches follow a defined cadence, because an air-gapped system cannot pull changes on demand. Evaluation and monitoring are also local, using held-out internal data and checks for drift, leakage, and unauthorized access.",
             "heading": "How the work is done"
         },
         {
-            "body": "The main rights concern is that model licenses must permit local deployment, and any restrictions on use, copying, or modification must be checked before transfer. Risk centers on stale threat intelligence, missed security patches, and the difficulty of detecting data exfiltration when the system is intentionally disconnected. Provenance requires a chain of custody for every model file, dataset, and configuration change, recorded in internal logs because no external audit trail exists. Governance also covers who may approve transfers, who may access outputs, and how long logs and model versions are retained.",
+            "body": "Governance covers data classification, access control, retention, and the provenance of models and training data, because an isolated system still creates records that may be subject to audit, discovery, or regulatory review. The main risks are stale software, unpatched vulnerabilities, shadow copies of sensitive data, and weak separation between development and production. Provenance records typically show where model weights came from, what data was used for fine-tuning, and who approved each transfer into the environment. The site's 219 compliance and regulation pages reflect how often isolation, residency, and recordkeeping requirements appear in oversight material. Legal and regulatory duties vary by jurisdiction and by the nature of the data, so the practical work is to document controls and evidence rather than assume isolation alone settles the question.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "Local and air-gapped deployment is moving toward smaller, more efficient models that can run on modest hardware, and toward standardized packaging formats that make transfer and verification easier. Organizations are also exploring confidential computing and hardware-based attestation to strengthen isolation without sacrificing updates. The trend is toward periodic, controlled synchronization rather than permanent disconnection, balancing security with the need for current models and compliance data.",
+            "body": "The direction is toward smaller and more efficient models that can run on modest local hardware, plus better tooling for packaging, signing, and moving artifacts across isolated boundaries. Vendors and open source projects are adding offline installation paths, local model registries, and audit-friendly logging, though support varies widely. As regulation and litigation around AI data handling continue, more finance teams are likely to treat deployment mode as a first-class control rather than an infrastructure detail. Air-gapped deployment will remain a niche for the most sensitive workloads, while local deployment becomes more common as hardware improves. The practical test is whether an organization can update, monitor, and evidence the system without opening a path to the outside.",
             "heading": "Where it is going"
         }
     ],

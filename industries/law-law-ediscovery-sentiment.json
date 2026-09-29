@@ -4,7 +4,7 @@
     "slug": "law-ediscovery-sentiment",
     "shape": "art-topic",
     "title": "Intent and Sentiment in Corporate Communications",
-    "answer": "This topic covers the use of language analysis to infer what a communicator intended and how they felt in corporate records such as email, chat, memos, board minutes, and earnings call transcripts. In e-discovery and large-scale document analysis, intent and sentiment are used to prioritize documents for review, identify communications that show knowledge, motive, or state of mind, and support early case assessment. The scope is usually limited to text that has already been collected and processed for a matter, not live monitoring of employee communications. Outputs are treated as investigative leads rather than proof of a person's actual mental state.",
+    "answer": "Intent and sentiment in corporate communications is the practice of using computational methods to infer the tone and purpose behind business messages. Sentiment covers affect and polarity, such as positive, negative, or neutral language, while intent covers the communicative goal, such as informing, requesting, concealing, or escalating. In e-discovery and large-scale document analysis, these signals help teams prioritize review, surface hot documents, and reconstruct narratives across email, chat, memos, and board materials. The work does not read minds, it produces probabilistic indicators that must be weighed alongside context and human judgment.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-09-29T15:41:38-05",
+    "built_at": "2026-09-29T18:48:15-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Lawyer",
@@ -28,23 +28,23 @@
     "page_uid": "54e6104d",
     "sections": [
         {
-            "body": "This topic covers the use of language analysis to infer what a communicator intended and how they felt in corporate records such as email, chat, memos, board minutes, and earnings call transcripts. In e-discovery and large-scale document analysis, intent and sentiment are used to prioritize documents for review, identify communications that show knowledge, motive, or state of mind, and support early case assessment. The scope is usually limited to text that has already been collected and processed for a matter, not live monitoring of employee communications. Outputs are treated as investigative leads rather than proof of a person's actual mental state.",
+            "body": "Intent and sentiment in corporate communications is the practice of using computational methods to infer the tone and purpose behind business messages. Sentiment covers affect and polarity, such as positive, negative, or neutral language, while intent covers the communicative goal, such as informing, requesting, concealing, or escalating. In e-discovery and large-scale document analysis, these signals help teams prioritize review, surface hot documents, and reconstruct narratives across email, chat, memos, and board materials. The work does not read minds, it produces probabilistic indicators that must be weighed alongside context and human judgment.",
             "heading": "Scope"
         },
         {
-            "body": "The work runs on the same document processing and review infrastructure used for other e-discovery tasks. Collected mail stores, chat exports, and document repositories are normalized, text is extracted, and the resulting records are indexed for search and model inference. Language models may run on cloud or on-premises compute, with GPU acceleration common for transformer-based classifiers. Results are written back into the review database as metadata fields, such as sentiment score or intent label, alongside custodian, date, and thread information.",
+            "body": "These systems run on the same document repositories that e-discovery already uses, including email archives, collaboration platforms, chat logs, shared drives, and document management systems. Ingestion pipelines extract text, metadata, threading, and participant roles, then normalize and deduplicate the material before analysis. Compute is typically cloud or on-premises, with GPUs for transformer models, search indexes for retrieval, and storage for model artifacts and audit logs. Access controls, encryption, and detailed logging are part of the infrastructure because the underlying communications are often sensitive.",
             "heading": "What it runs on"
         },
         {
-            "body": "Analysts first extract text and reconstruct conversation threads so that a message is read in context rather than in isolation. Sentiment models assign a score or label such as positive, negative, or neutral, while intent models classify a message into categories like request, warning, denial, or commitment. These models are often fine-tuned on legal or corporate language and validated against a sample of documents coded by human reviewers. The output is a probability or label that reviewers use to sort, sample, or search, not a final determination of meaning.",
+            "body": "Analysts and engineers combine lexicon-based sentiment scoring, supervised classifiers, and transformer or large language models that read whole passages rather than isolated words. Intent is often framed as a classification problem with multiple labels, so a single message can be tagged as both a request and a warning. Context matters, so models use conversation threads, speaker roles, timestamps, and reply chains to reduce errors. Human reviewers then sample the output, measure precision and recall, and correct systematic mistakes before the results are used in a matter. Confidence scores and explanations are recorded so that a reviewer can see why a message was flagged.",
             "heading": "How the work is done"
         },
         {
-            "body": "Because intent and sentiment inferences can affect privilege calls, production decisions, and witness examinations, the provenance of the model and its training data should be recorded. Review teams typically set confidence thresholds and require human review of any document where the model output will be relied on. Data protection and confidentiality rules apply to the underlying communications, and model outputs may themselves be discoverable or subject to challenge. Defensibility depends on documenting the model version, the validation sample, and the role of human judgment in the final decision.",
+            "body": "Rights and risk turn on privacy, privilege, and data protection, because corporate communications can include personal data, legal advice, and trade secrets. Teams must preserve attorney-client privilege and work product, handle cross-border transfers, and respect employee monitoring rules that vary by jurisdiction. Provenance is essential, so the record should capture the model version, training data sources, prompts, parameters, and the chain of custody for every document analyzed. Misclassification, bias, and over-reliance on automated scores are real risks, and the output should be treated as an investigative lead, not as a final finding of fact or intent.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The field is moving toward models that read longer threads and mixed media, including voice transcripts and meeting recordings, to capture intent that a single email cannot show. Explainability tools are likely to become standard so that a reviewer can see which phrases drove a sentiment or intent label. Tighter integration with review workflows may allow models to propose privilege or issue tags from inferred intent, with human confirmation. Standards for validating these inferences in litigation are still forming, and courts are likely to see more challenges to model-assisted state-of-mind evidence.",
+            "body": "The field is moving toward real-time analysis of chat and meeting transcripts, multimodal signals such as voice and video, and models that track intent across long conversations rather than single messages. Better context handling, retrieval-augmented generation, and explainability will make the outputs more defensible in litigation and investigations. At the same time, courts and regulators are still defining limits, and the site tracks 29 AI case law precedents that will shape how much weight machine inferences about intent can carry. Expect more integration with e-discovery platforms, more pressure to validate models against human review, and more attention to adversarial attempts to game sentiment or intent classifiers.",
             "heading": "Where it is going"
         }
     ],
