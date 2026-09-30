@@ -4,7 +4,7 @@
     "slug": "med-imaging-radiomics",
     "shape": "art-topic",
     "title": "Radiomics",
-    "answer": "Radiomics is the high-throughput extraction of quantitative features from standard medical images such as CT, MRI, and PET scans. It turns regions of interest into mineable data that describe shape, texture, intensity, and spatial relationships within a tumor or organ. These features are intended to reveal patterns that are not visible to the naked eye and to support diagnosis, prognosis, or treatment response assessment. Radiomics sits between routine image interpretation and machine learning, feeding structured image data into statistical and predictive models.",
+    "answer": "Radiomics is the extraction of quantitative features from medical images, such as CT, MRI, and PET scans, to build models that support diagnosis, prognosis, and treatment response assessment. It sits within diagnostic imaging and radiology, and it turns images into numerical data that can be analyzed alongside clinical and genomic information. The features describe shape, intensity, and texture, and they are often grouped into first-order, shape, and texture families. Radiomics is distinct from deep learning that learns features directly from pixels, though the two approaches increasingly overlap in practice. It applies across oncology, neurology, and other specialties where imaging is central to care.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-09-29T18:48:15-05",
+    "built_at": "2026-09-30T15:37:34-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Physician",
@@ -28,23 +28,23 @@
     "page_uid": "1d532d36",
     "sections": [
         {
-            "body": "Radiomics is the high-throughput extraction of quantitative features from standard medical images such as CT, MRI, and PET scans. It turns regions of interest into mineable data that describe shape, texture, intensity, and spatial relationships within a tumor or organ. These features are intended to reveal patterns that are not visible to the naked eye and to support diagnosis, prognosis, or treatment response assessment. Radiomics sits between routine image interpretation and machine learning, feeding structured image data into statistical and predictive models.",
+            "body": "Radiomics is the extraction of quantitative features from medical images, such as CT, MRI, and PET scans, to build models that support diagnosis, prognosis, and treatment response assessment. It sits within diagnostic imaging and radiology, and it turns images into numerical data that can be analyzed alongside clinical and genomic information. The features describe shape, intensity, and texture, and they are often grouped into first-order, shape, and texture families. Radiomics is distinct from deep learning that learns features directly from pixels, though the two approaches increasingly overlap in practice. It applies across oncology, neurology, and other specialties where imaging is central to care.",
             "heading": "Scope"
         },
         {
-            "body": "Radiomics workflows run on existing imaging archives and picture archiving and communication systems, with additional software for segmentation and feature computation. The work typically requires access to DICOM images, consistent acquisition protocols, and computing resources for batch processing of large cohorts. Feature extraction can be performed with open source libraries or commercial research platforms, but the underlying infrastructure is usually a hospital or research imaging database rather than a dedicated hardware device. Data storage and version control matter because feature sets must be linked back to the original scans and clinical records.",
+            "body": "Radiomics runs on standard imaging data from CT, MRI, and PET scanners, usually retrieved from a PACS in DICOM format. The work is done on workstations or compute clusters, and it relies on software libraries such as PyRadiomics for feature extraction. Segmentation of the region of interest is a key input, and it can be manual, semi-automated, or fully automated. The Image Biomarker Standardisation Initiative, or IBSI, provides a reference for consistent feature definitions across tools. De-identification and secure storage are part of the infrastructure because images and derived features are sensitive data.",
             "heading": "What it runs on"
         },
         {
-            "body": "The work is done in a sequence of image acquisition, region of interest segmentation, feature extraction, feature selection, and model building. A radiologist or trained annotator first outlines the tumor or organ, then software computes hundreds or thousands of numerical features from that region. These features are filtered for stability and redundancy before being used to train a classifier or regression model against a clinical endpoint. The method depends heavily on reproducible segmentation and on testing whether features remain stable across different scanners, reconstruction settings, and observers.",
+            "body": "The workflow begins with image acquisition and segmentation of the target region, followed by feature extraction using a standardized library. Feature selection then reduces hundreds or thousands of candidate features to a smaller set that is stable and relevant. A machine learning model, such as a random forest or support vector machine, is trained on those features, often with cross-validation and external validation. Reproducibility depends on documenting acquisition parameters, segmentation method, and software version, and on following reporting guidelines like the Radiomics Quality Score. The result is a pipeline that can be audited, not a single opaque model.",
             "heading": "How the work is done"
         },
         {
-            "body": "Rights and risk in radiomics center on data provenance, patient privacy, and the reproducibility of published feature sets. Models can inherit bias from imaging protocols, patient populations, or annotation practices, and a feature that works in one hospital may fail in another because of scanner or reconstruction differences. Regulatory oversight is still maturing, and radiomic models used for clinical decisions may require validation as medical devices or decision support tools. Clear documentation of image sources, preprocessing steps, and segmentation rules is necessary for any claim of clinical utility.",
+            "body": "Radiomics uses medical images and derived data, so privacy rules such as HIPAA and GDPR apply, and secondary use typically requires de-identification and sometimes consent. Provenance matters because a model's output depends on the scanner, acquisition protocol, segmentation, and feature extraction version, all of which should be recorded. Regulatory status varies, with some radiomics tools cleared as medical devices and many remaining research use only. Risk includes overfitting, poor generalization across sites, and bias from unrepresentative training data, and the site tracks 6 active product liability and wrongful death lawsuits against AI companies as a reminder that liability is live. Intellectual property can be complex when algorithms are proprietary or built on open-source components.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "Radiomics is moving toward tighter integration with deep learning, where neural networks learn features directly from images and may be combined with handcrafted radiomic features. The field is also shifting from single-institution retrospective studies to prospective, multicenter validation and harmonization of imaging data. Future work is likely to focus on linking radiomic signatures with genomics, pathology, and longitudinal outcomes, and on making feature extraction robust enough for routine clinical reporting rather than research-only use.",
+            "body": "Radiomics is moving toward tighter integration with deep learning, often called deep radiomics, and toward multimodal models that combine imaging with genomics and clinical data. Standardization efforts like IBSI and prospective clinical trials are pushing the field from retrospective research toward clinical decision support. Regulatory frameworks are maturing, and the site tracks 219 compliance and regulation pages, which reflects the growing attention to validation and post-market surveillance. Challenges remain in generalization across scanners and populations, and in making the outputs explainable to radiologists. The likely path is not replacement of the radiologist but augmentation of reading workflows with quantitative evidence.",
             "heading": "Where it is going"
         }
     ],
@@ -66,7 +66,7 @@
             "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/8dd1a1f4/"
         }
     ],
-    "generated": "2026-09-29",
+    "generated": "2026-09-30",
     "parent_name": "Diagnostic Imaging and Radiology",
     "parent_path": "/ai-ecosystem/enterprise-applications-governance-and-tools/13673d6a/",
     "refresh_every_days": 30

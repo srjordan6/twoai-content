@@ -4,7 +4,7 @@
     "slug": "res-grants-scoring",
     "shape": "art-topic",
     "title": "Predicting Proposal Success",
-    "answer": "Predicting proposal success uses machine learning to estimate the likelihood that a grant application will be funded, based on proposal text, applicant history, funder priorities, and past review patterns. It covers pre-submission scoring, internal triage, and post-decision analysis for research offices, universities, and funding agencies. The field draws on natural language processing, bibliometrics, and administrative data to understand competitiveness and support resource allocation. It is distinct from peer review itself, serving as a screening or planning aid rather than a replacement for human judgment.",
+    "answer": "Predicting proposal success is the use of data and models to estimate whether a grant application will be funded, often before or during review. It sits in grant proposals and funding, where program officers, research development staff, and principal investigators want to triage effort and understand reviewer priorities. The topic overlaps with bibliometrics, peer review studies, and science of science research. The World of AI library holds 135 research papers and 13109 claims extracted from research works, which can support a structured review of what is known.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-09-29T18:48:15-05",
+    "built_at": "2026-09-30T15:37:34-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Researcher",
@@ -28,23 +28,23 @@
     "page_uid": "839a8222",
     "sections": [
         {
-            "body": "Predicting proposal success uses machine learning to estimate the likelihood that a grant application will be funded, based on proposal text, applicant history, funder priorities, and past review patterns. It covers pre-submission scoring, internal triage, and post-decision analysis for research offices, universities, and funding agencies. The field draws on natural language processing, bibliometrics, and administrative data to understand competitiveness and support resource allocation. It is distinct from peer review itself, serving as a screening or planning aid rather than a replacement for human judgment.",
+            "body": "Predicting proposal success is the use of data and models to estimate whether a grant application will be funded, often before or during review. It sits in grant proposals and funding, where program officers, research development staff, and principal investigators want to triage effort and understand reviewer priorities. The topic overlaps with bibliometrics, peer review studies, and science of science research. The World of AI library holds 135 research papers and 13109 claims extracted from research works, which can support a structured review of what is known.",
             "heading": "Scope"
         },
         {
-            "body": "Models typically run on institutional servers or cloud compute, using structured application databases, historical award records, and text corpora of past proposals. Training requires cleaned, labeled outcomes, often with de-identified applicant and reviewer data. Some tools are embedded in grant management systems or research information systems. Compute needs are modest compared to large language model training, but inference may be frequent during submission cycles.",
+            "body": "The work runs on historical grant records, award abstracts, reviewer comments, and administrative data, joined with publication and citation histories where available. Most pipelines use Python or R for tabular modeling and natural language processing, with SQL databases for storage and querying. Training large language models may need GPUs, but simpler logistic regression and gradient boosted trees run on ordinary CPUs. Data access is often the limiting factor, because funders and institutions control proposal text and review scores.",
             "heading": "What it runs on"
         },
         {
-            "body": "Common approaches include text classification of proposal abstracts and narratives, regression on applicant and institution features, and ranking models trained on past funding decisions. Feature engineering often captures topic novelty, readability, citation impact of prior work, and alignment with funder language. More recent work uses transformer-based language models to encode proposal text and reviewer comments. Evaluation uses historical holdout sets, with metrics such as precision at top ranks or area under the ROC curve.",
+            "body": "A common approach defines a binary or ordinal outcome, such as funded or not funded, reviewer score, or funding percentile. Features are drawn from the proposal text, the applicant's publication and funding history, the institution, the team, the budget, and the fit to the funder's stated priorities. Models range from logistic regression and gradient boosted trees to transformer based text classifiers, and they are validated on later grant cycles to avoid leaking future information. Evaluation looks at discrimination, calibration, and whether the model identifies proposals that reviewers would also rank highly. Because peer review is noisy and funding decisions depend on panel dynamics and budgets, predictions are best treated as uncertain signals rather than verdicts.",
             "heading": "How the work is done"
         },
         {
-            "body": "Risks include bias against applicants from less resourced institutions, leakage of confidential proposal content, and overreliance on predictions that may reinforce past funding patterns. Data provenance matters because training labels come from human review panels whose decisions are noisy and context dependent. Rights to proposal text and reviewer comments usually remain with applicants and funders, so models must respect access controls and data use agreements. There is no single regulatory framework, but institutional review boards and funder data policies often apply.",
+            "body": "Proposal text, reviewer comments, and administrative records are often confidential, so use requires clear rights, consent, or a legal basis, and provenance must be documented from source to model. Risks include reproducing historical funding disparities by institution, career stage, discipline, or demographic group, and creating feedback loops that favor proposals similar to past winners. Models can also be gamed if applicants learn what features score well, which may penalize unconventional ideas. Good practice includes data minimization, access controls, versioned datasets, model cards, and human review before any funding decision. This page describes practice and is not legal advice.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The field is moving toward explainable scores that show which proposal sections drive a prediction, and toward feedback tools that help applicants revise before submission. Integration with research information systems may allow continuous updating as applicant track records change. There is also interest in predicting not just binary success but funding amount, time to award, and long-term project outcomes. As funders publish more structured data, models may shift from proprietary silos to shared benchmarks.",
+            "body": "Future work is likely to combine text models with structured data from funder systems, so predictions update as a proposal moves through review. Retrieval and summarization tools may help program staff find relevant expertise and check fit, while portfolio level models could estimate the effect of funding decisions across a field. Progress will depend on access to linked, longitudinal data and on shared benchmarks that respect confidentiality. The topic will remain contested because peer review is a social process, and a model that predicts current outcomes may not predict what a funder should support.",
             "heading": "Where it is going"
         }
     ],
@@ -66,7 +66,7 @@
             "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/87aaa744/"
         }
     ],
-    "generated": "2026-09-29",
+    "generated": "2026-09-30",
     "parent_name": "Grant Proposals and Funding",
     "parent_path": "/ai-ecosystem/enterprise-applications-governance-and-tools/2633003b/",
     "refresh_every_days": 30
