@@ -15,6 +15,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "An agent is an AI system that takes a goal, breaks it into steps, and carries those steps out using tools, instead of answering one question and stopping. For a company with five to fifty staff, this matters when a job has several steps that can be done with software, such as searching, reading, and putting together a briefing from one request. It does not matter when you only need a single answer, and it tends to save time on multi-step work by deciding what to do next, though you still have to give it the goal.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "An agent is an identity that acts, so treat it as an access-control problem first: its own credentials, scoped permissions, an allowlist of tools, and full logging of every action it takes, exactly as you would a new employee with unknown judgment.",
                     "audience": "ciso"
                 },
@@ -66,6 +70,10 @@
                 {
                     "body": "A poorly designed handoff between AI systems creates the same bad experience as being transferred between departments who did not talk to each other. Ask how state and context are preserved across any multi-agent workflow you deploy.",
                     "audience": "executive"
+                },
+                {
+                    "body": "Agent handoff is when one AI helper passes a task to another AI helper and shares the conversation and details so far. For a small company, this matters when a customer question moves from a general helper to a specialist, such as billing, because the customer should not have to repeat their story. It does not matter much for simple tasks that one helper can finish alone, and done well it can save the time staff spend asking for the same information again, while done badly it can cost that time.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Each handoff is a point where permissions and context cross a boundary, and should be logged and scoped the same way a privilege escalation would be, since a poorly bounded handoff can let a low-privilege agent inherit access it should not have.",
@@ -121,6 +129,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "For a small business, agent memory means the AI helper keeps a record of things like your reporting format so you do not have to explain them again each time. It matters when your team uses the same helper often and wants it to recall preferences or past work, and it matters less for one-off questions or tasks. It can save the time spent repeating instructions, but it can cost time to set up and check what is kept, and short-term and long-term memory have different privacy concerns.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Split retention policy deliberately: short-term working memory can be ephemeral and cleared aggressively, but anything promoted to long-term storage needs its own access control, deletion path and audit trail, since it is now a standing data store, not a chat transcript.",
                     "audience": "developer"
                 },
@@ -172,6 +184,10 @@
                 {
                     "body": "The management layer that turns individual AI capabilities into a working system end to end. A vendor who has a good model but no orchestration story is selling you a part, not a product.",
                     "audience": "executive"
+                },
+                {
+                    "body": "For a small company, agent orchestration means using a manager layer to decide which AI helper does which part of a job, in what order, and what to do if a step fails. It matters when a task has several steps, like research, drafting, and review, because it can keep those steps moving without you passing work between them by hand. It does not matter much for a single simple request that one helper can handle alone, and it tends to save time on multi-step work by handling the sequencing and retries.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "This is where most production complexity lives, not in any single model call: retry logic, timeout handling, and deciding which component owns a given failure mode are the actual engineering work of shipping an agentic system.",
@@ -227,6 +243,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "Agent washing is when a seller calls a simple fixed workflow an autonomous agent to sound current. For a small business, it matters when you need software that can handle changing conditions, because a scripted workflow will not adapt and you may spend time fixing or redoing work. It does not matter when your process is always the same and you only need the same steps done in order, where it can save time by doing those steps for you.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "The practical test: give it a scenario outside its expected script and see whether it adapts or breaks. A true agent replans; a washed one fails or produces nonsense because there was never any decision-making underneath the label.",
                     "audience": "developer"
                 },
@@ -280,6 +300,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "For a small business, agentic AI means software that can plan steps and act on its own toward a goal, like asking for quotes, comparing them, and drafting a purchase order. It matters when you have a repeated workflow with clear steps and tools the AI can use, and it does not matter much for one-off tasks or work that needs your judgment at every step. It can save time by handling the back-and-forth steps, but it may also cost time to check its work and set rules for what it is allowed to do.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "An authenticated identity that acts, which makes it an access-control problem before it is an AI problem. Give it its own machine identity rather than a human's credentials, scope permissions to the task, allowlist tools, log every action for reconstruction, and assume any content it reads may attempt to redirect it.",
                     "audience": "ciso"
                 },
@@ -327,6 +351,10 @@
                 {
                     "body": "A set of AI steps done in a fixed order every time, like a recipe, as opposed to an agent that can decide to change the order if something unexpected happens.",
                     "audience": "child"
+                },
+                {
+                    "body": "An AI workflow is a set, repeatable process where AI performs defined steps in a fixed order, with human checkpoints, such as invoice intake, extraction, validation, and posting. For decisions, money, and risk, this means you choose the path and the review points in advance, so costs and savings depend on the steps you automate and the checks you keep. Accountability stays with the people who own the process and the checkpoints, not with the AI, because the workflow does not choose its own path at run time.",
+                    "audience": "executive"
                 },
                 {
                     "body": "If your process is the same steps every time, a fixed AI workflow is usually the safer and cheaper choice over a more flexible \"agent,\" since it is more predictable and easier to check that it is working correctly.",
@@ -1116,6 +1144,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "Adversarial testing means having someone deliberately try to break your AI system, for example by testing a customer-facing chatbot with tricky inputs before you launch it. It matters when the AI talks to customers or handles their information, because it helps you find weak spots before customers or outsiders do. It does not matter as much for internal tools with low risk, and it costs some staff time before launch but can save time later by avoiding fixes after problems reach customers.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Goes beyond functional QA specifically: the tester behaves like an adversary, probing injection paths and boundary conditions, not confirming the happy path works. Budget for this as a distinct activity from feature testing, since the two have genuinely different goals and skill sets.",
                     "audience": "ciso"
                 },
@@ -1167,6 +1199,10 @@
                 {
                     "body": "Ask for the written boundary document, not just an assurance that an agent \"is scoped appropriately,\" for any deployed agent that matters; an unwritten boundary is not a real control, whatever the intention behind it.",
                     "audience": "executive"
+                },
+                {
+                    "body": "An agent boundary is the written limit on what an AI agent may read, change, and start. For a small company, this matters when the agent can reach customer details, money, or outside messages, because you need a clear record of what it can do and who checks it. It does not matter much for an agent that only drafts text you review, and writing the boundary down takes a little time but can save time when you review or change the agent.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Writing boundaries down is the control: an undocumented boundary cannot be audited, and in a boundary matrix the empty cells are findings, not omissions. Treat any agent without an explicit, current boundary document as unreviewed, regardless of how well it seems to be behaving in practice.",
@@ -1222,6 +1258,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "An AI System Plan is a written record of what an AI system is meant to do, how it is controlled, and how it is watched, in a format set by NIST SP 800-18r2. For a company with five to fifty staff, it matters when you use an AI system and need to show people who assess it how it works and how it is protected, such as a RAG system with its data sources, access controls, and monitoring. If you do not use such a system or do not need to document it for assessors, it may not matter to you, and it tends to cost time to write and keep up to date while saving time by giving assessors one place to look.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Extends the long-standing system security plan discipline to AI, giving assessors one consolidated place to see what the system does and how it is protected; maintain this as a living document, updated as the system and its controls change, not a one-time artifact.",
                     "audience": "ciso"
                 },
@@ -1273,6 +1313,10 @@
                 {
                     "body": "A concrete way to ask your security team a specific, answerable question: what are our highest-scored open AI vulnerabilities, and what is the remediation timeline for each, rather than a vague assurance that \"we are working on AI security.\"",
                     "audience": "executive"
+                },
+                {
+                    "body": "AIVSS is an OWASP scoring method for rating how severe AI-specific vulnerabilities are, similar to a severity score for ordinary software flaws. For a small company, it matters when you have AI features and several findings, because it helps you rank them and decide which to fix first, such as a prompt-injection exposure against a model-exfiltration risk. It matters less if you have no AI systems or only one obvious issue, and it tends to save time by turning a pile of findings into a sequenced remediation roadmap.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Scores are what turn a pile of findings into a sequenced remediation roadmap; adopt a consistent scoring methodology like this one rather than triaging AI vulnerabilities by gut feeling, since a defensible, documented prioritization is what stands up under later scrutiny after an incident.",
@@ -1328,6 +1372,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "For a small company, this term is about two ways an AI tool can be treated as high-risk under the EU AI Act. Annex I covers AI built into products that already have their own rules, while Annex III covers stand-alone uses such as hiring or credit, and the annex that applies decides which duties you must meet and by when. It matters when your AI falls into one of those annexes, because you then have to prepare for the full high-risk duties, and it does not matter when your AI is outside both, so the main time cost is checking which case you are in and the main time saving is avoiding work you do not need to do.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "The classification pathway determines which specific technical and documentation controls, risk management, logging, human oversight, apply to a given system, which means security control implementation planning should follow, not precede, this legal classification determination.",
                     "audience": "ciso"
                 },
@@ -1381,6 +1429,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "For a small business, attack surface means every place where someone could try to get into or influence your systems. AI adds new places like the chatbot prompt box, the store it pulls information from, and the actions it takes through other tools, so if you use AI that connects to your data or acts for you, these points matter and need to be watched. If you only use AI in a simple standalone way with no links to your systems, it matters less, and keeping a simple inventory of these points takes some time to set up but can save time later by showing where to look when something goes wrong.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "AI expands it in kind, not just degree: inference endpoints, prompt channels, retrieval sources, and tool calls are all new entry points the pre-AI threat model never listed. Rebuild your threat model explicitly for these new categories rather than assuming your existing web application security review already covers them.",
                     "audience": "ciso"
                 },
@@ -1432,6 +1484,10 @@
                 {
                     "body": "Confirm agent actions are captured in the same audit trail as human employee actions, not in a separate, less rigorous log or not logged at all; an agent acting outside a proper audit record leaves you unable to investigate or explain what happened if a problem arises.",
                     "audience": "executive"
+                },
+                {
+                    "body": "An audit trail is a record that is hard to change without notice, showing who did what, when, and under what authority. In a small business, it matters when an AI agent or a person takes a significant action, such as approving a refund, because the record lets you check who allowed it and when. It may not matter for routine low-risk tasks, and keeping it can take some staff time to set up and review, though it can save time when you need to answer a question or look into a mistake.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Agent actions belong in it exactly as human actions do; an agent that acts outside the logged record is an agent that cannot be investigated. Ensure every agent action is logged with the same rigor as a human user action, since an unlogged agent action is functionally unauditable when something goes wrong.",
@@ -3758,6 +3814,14 @@
                     "audience": "child"
                 },
                 {
+                    "body": "For an executive, an activation function is a technical choice inside an AI model that lets it learn relationships more complex than straight lines. Without it, adding more layers would not give the model any new capability. For money, risk, and accountability, the definition gives no direct link.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a small business, an activation function is an internal technical choice in an AI model. It matters when the model needs to represent relationships more complex than straight lines, because without it extra layers add no new capability. It does not matter when straight lines are enough, and the definition does not say what it costs or saves in time.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Choice of activation function (ReLU, GELU, SiLU) affects training stability and gradient flow more than most people expect; a hard-to-debug training instability is worth checking against activation choice before assuming it is a data or learning-rate problem.",
                     "audience": "developer"
                 },
@@ -3811,6 +3875,14 @@
                     "audience": "child"
                 },
                 {
+                    "body": "The attention mechanism is the part of an AI model that decides which pieces of the input matter most for each piece of output. For decisions, it affects how well a model handles long or complex information and how much processing that work requires, which is where cost comes from. Risk comes from the model focusing on the wrong input, and accountability stays with the people who choose to use the model and act on its output.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "In practice, the attention mechanism is the part of an AI model that decides which parts of the input to focus on when producing each output. It matters when you use AI tools on long text or tasks where the model must track relevant details across that text, because longer context costs more processing. It matters less for short, simple tasks, and its main cost is extra processing time when context is long, while it does not add a separate time cost for short inputs.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Three projections per token (Q, K, V), a scaled dot product between Q and all K, a softmax, then a weighted sum of V. The practical consequence is memory, not maths: during generation you cache K and V for every past token, and that cache grows with context length and batch size until it, not compute, is what limits how many requests a GPU can serve.",
                     "audience": "developer"
                 },
@@ -3862,6 +3934,14 @@
                 {
                     "body": "An AI that squeezes information down small and then tries to rebuild it back to how it started. Whatever survives the squeezing is the important stuff; whatever gets lost was not that important.",
                     "audience": "child"
+                },
+                {
+                    "body": "An autoencoder is a neural network that learns by compressing unlabeled data into a smaller encoding and then reconstructing it, so what remains is the structure the data actually contains. In business terms, it is useful when you need dimensionality reduction or image denoising pipelines, because it can shrink or clean data without labels. Accountability should sit with the owner of the data pipeline or model that uses it, and the main risk is treating the compressed version as a full substitute for the original data.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a small business, an autoencoder is a software method that learns to squeeze unlabeled data down and then rebuild it, which keeps the structure the data actually contains. It matters when you have a task like dimensionality reduction or image denoising, and it does not matter when you do not have unlabeled data that needs compressing or cleaning. It tends to save time in data preparation by doing that work, but it does not decide what the data means for your business.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Useful for anomaly detection and dimensionality reduction beyond generative pipelines; a data point the autoencoder reconstructs poorly is, by construction, one that does not fit the patterns it learned, which is a cheap and effective anomaly signal.",
@@ -6162,6 +6242,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "An AIME score is a result on a hard math exam that is used to compare how well AI models handle problems with several steps. For a company with five to fifty staff, it matters only if you are choosing an AI tool for work that needs careful reasoning, and it does not tell you how the tool will perform on simple everyday tasks. The score itself does not save or cost you time, so treat it as a headline claim about reasoning, not a direct measure of time saved or spent.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "A rising AIME score is real progress on structured problem-solving, but headlines that read it as \"AI beats top students at math\" skip that these are timed, well-specified competition problems, not the open-ended reasoning most work requires.",
                     "audience": "journalist"
                 },
@@ -6215,6 +6299,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "ARC-AGI is a test made of new picture puzzles that an AI has not seen before, so it cannot pass just by remembering old answers. For a small business, it matters when you are choosing an AI tool for problems that are new or unusual, and it does not matter for routine work that the tool already knows how to do. It is not a daily tool, so it does not directly cost or save time in normal tasks, but reviewing it takes time and can help you avoid a tool that only repeats old answers.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Worth checking before quoting: a model's ARC-AGI score and its score on knowledge-heavy tests like MMLU can diverge sharply, and conflating the two produces a misleading capability claim either way.",
                     "audience": "journalist"
                 },
@@ -6266,6 +6354,10 @@
                 {
                     "body": "A single number for \"how good is this classifier overall,\" useful for comparing models before anyone decides how aggressive the system should be. It does not tell you the right threshold for your business; that decision comes after.",
                     "audience": "executive"
+                },
+                {
+                    "body": "AUC-ROC is a score that shows how well a model separates two groups, such as fraud from normal activity, before you choose the line for when it should raise an alert. For a company with five to fifty staff, it matters when you compare two fraud models and have not yet decided the alert line, because it lets you judge them without picking that line. It does not matter once you have set the alert line and only care about the alerts you will see, and it can save time in that comparison but does not tell you where to set the line.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "A high AUC-ROC does not mean a system performs well at the threshold actually deployed. Ask what threshold was chosen and what the precision and recall look like there, since a strong overall score can hide a bad choice of cutoff.",
@@ -8975,6 +9067,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "An algorithm is a set of step-by-step rules a computer follows to solve a problem or do a calculation. For a small business, it is the method inside software that sorts, predicts, or automates a task, and in machine learning it is the recipe that learns from your data while the model is what that recipe produces. It matters when you use or adjust a tool that learns from your data, and it matters less when you just use a finished tool as is; it can save time on repeated steps, but choosing or setting up the right algorithm can take time.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Choice of learning algorithm shapes what the resulting model can express and how much data it needs, independent of the specific dataset; picking one is an architectural decision worth documenting alongside hyperparameters.",
                     "audience": "developer"
                 },
@@ -9026,6 +9122,10 @@
                 {
                     "body": "Valuable specifically because it catches novel threats that no one has labeled before, unlike systems trained on known attack patterns; the tradeoff is a higher false-positive rate that needs a real review process behind it.",
                     "audience": "executive"
+                },
+                {
+                    "body": "Anomaly detection means finding activity in your systems that is very different from what normally happens, such as a login pattern no employee has ever produced. For a small business it matters when unusual activity could signal fraud or a break-in, and it matters less for everyday tasks where odd events are harmless. It can save time because you do not need examples of every kind of attack, only a good picture of normal.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Quality depends heavily on how well \"normal\" is modeled for your specific data distribution; a model trained on one system's normal traffic will flag legitimate but unfamiliar patterns on another, so retrain or recalibrate per deployment rather than reusing a generic model.",
@@ -9081,6 +9181,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "For a company with five to fifty staff, artificial general intelligence means a possible future AI that could handle any thinking task as well as or better than a person. It matters when you see it in lab mission statements, investment theses, or safety and policy debates, because those can shape the wider conversation about future AI. It does not change your daily work today, since it is hypothetical and has no agreed test, so it tends to cost or save no time in practice.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "As an engineering term it is nearly useless, since there is no benchmark that constitutes proof of arrival; focus technical roadmaps on specific, measurable capabilities rather than progress toward an undefined destination.",
                     "audience": "developer"
                 },
@@ -9132,6 +9236,10 @@
                 {
                     "body": "\"We use AI\" is rarely a useful statement on its own, since the term spans everything from a simple recommendation algorithm to a frontier language model; ask what specific capability, within this broad field, is actually being used.",
                     "audience": "executive"
+                },
+                {
+                    "body": "AI is the broad name for computer systems that do tasks that normally need human intelligence, such as understanding language, recognizing patterns, and making decisions. For a company with five to fifty staff, it matters when you use tools that rely on those abilities. It does not matter when your tools only follow fixed steps, and the definition does not say what it costs or saves in time.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Prefer the specific subfield term, machine learning, NLP, computer vision, over the umbrella \"AI\" whenever precision matters, since the broad term obscures which techniques, failure modes, and evaluation methods actually apply.",
@@ -9187,6 +9295,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "Artificial superintelligence is a possible future AI that would be much smarter than people in every area, such as creativity, judgment, and dealing with others. For a small company, it is not a tool you can buy or use today, so it does not change your daily work, costs, or time saved. It matters only in long-term safety discussions, not in normal business decisions.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Not a term with engineering relevance to current systems; if it appears in a technical conversation about your actual work, it is usually a sign the discussion has drifted from the concrete system in front of you.",
                     "audience": "developer"
                 },
@@ -9238,6 +9350,10 @@
                 {
                     "body": "Accuracy in the demo and accuracy in your actual environment can differ substantially; background noise, accents, and cross-talk in real meetings all degrade performance from the clean-condition numbers vendors typically advertise.",
                     "audience": "executive"
+                },
+                {
+                    "body": "Automatic speech recognition turns spoken audio into text, so a meeting tool can make a searchable transcript in real time. For a company with five to fifty staff, it matters when you need a written record of spoken meetings or a voice interface, and it does not matter when your work does not involve spoken audio that needs to become text. It tends to save the time staff would spend typing up what was said.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Test against your actual audio conditions, not clean benchmark data; accent coverage, background noise, and overlapping speech are the common failure modes that a vendor's headline word-error-rate number will not reveal.",
@@ -13537,6 +13653,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "Activation steering means changing an AI model's internal signals while it is running to make it behave differently, without training it again. For a small business, this matters if you use AI and need to adjust how often it refuses requests or follows a certain behavior, and it does not matter if you only use standard AI tools as they come. It tends to save the time that retraining would take, but the definition does not say how much time or money it costs.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Not yet a mature, reliably verifiable safety control; if a vendor claims to use this technique to prevent specific harmful behaviors, ask for actual evidence of its effectiveness and limitations rather than accepting the mechanism's existence as sufficient assurance.",
                     "audience": "ciso"
                 },
@@ -13592,6 +13712,10 @@
                 {
                     "body": "A well-documented, real vulnerability class for any AI system processing images or sensor input in a security-relevant context; ask specifically whether adversarial robustness has been tested for any such system before deploying it in a context where a manipulated input could cause real harm.",
                     "audience": "executive"
+                },
+                {
+                    "body": "For a small business, this means a tool that reads images can be fooled by a small change, so it may give a wrong answer even when it sounds sure. It matters when that wrong answer affects safety, money, or a decision someone relies on, and it matters less when a person checks the result anyway. The term itself does not save time, and dealing with a wrong answer can take time to notice and fix.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "A well-established, testable vulnerability category; include adversarial robustness testing specifically in any security assessment of an AI system processing images or other perceptual input, particularly one used in a security or safety-critical decision context.",
@@ -13651,6 +13775,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "An AI Bill of Materials is a list of the parts inside an AI system you use, such as the model, any add-ons, and where the data came from. It matters when you need to check or show those sources, like for an audit, and it does not matter for daily use if you never need that record. Keeping it in one document can save time compared with finding those details in different places.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Maintain this documentation for internally built AI systems and require it from vendors for procured ones; it is the foundational artifact for assessing inherited supply-chain risk, and its absence means genuine risk assessment of an AI system's components is not actually possible.",
                     "audience": "ciso"
                 },
@@ -13706,6 +13834,10 @@
                 {
                     "body": "It works when it has decision rights and a docket; without both it is a newsletter. Confirm your organization's AI ethics board has genuine authority to block or modify a project, and an actual regular schedule of real cases to review, rather than existing as a symbolic body with no real influence on decisions.",
                     "audience": "executive"
+                },
+                {
+                    "body": "An AI ethics board is a group of people from different parts of a company who review high-risk AI uses and special cases. For a small business, it matters when you are about to approve, put conditions on, or reject a high-risk AI deployment, and it does not matter when the AI use is not high-risk. It tends to cost time in meetings and reviews, and it can save time by giving clear answers on what is allowed, but only if the group can make decisions and has a list of items to review.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Verify the board's decisions are actually binding and tracked, not merely advisory suggestions that project teams can quietly ignore; a board without enforced follow-through on its decisions provides governance theater rather than genuine risk mitigation.",
@@ -13765,6 +13897,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "For a company with five to fifty staff, AI governance means writing down which AI tools people may use, who owns each tool, and how often someone reviews it. It matters when AI touches customers, money, or private data, or when several staff use the same tool, and it matters less for a simple trial on a low-risk task with no customer or private data. It tends to cost some time to set up and keep records, and it can save time by making clear who decides and what is allowed.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "A cross-functional discipline spanning security, legal, and business functions; ensure your organization's AI governance program has clear ownership and real operational cadence, not just a written policy sitting unused after its initial creation.",
                     "audience": "ciso"
                 },
@@ -13820,6 +13956,10 @@
                 {
                     "body": "The absolute first control most audits require; if your organization does not have a genuinely complete inventory covering shadow AI and embedded AI features, not just officially procured tools, you cannot actually govern or defend your AI use, whatever other controls you have in place.",
                     "audience": "executive"
+                },
+                {
+                    "body": "An AI inventory is a central list of every AI system your company uses, with the owner, the purpose, how risky it is, and its status. For a company with five to fifty staff, it matters when you face an audit or need to know what AI is running, including tools staff use on their own, features inside vendor products, and AI agents you have deployed. It may not matter if you use no AI or only a few known tools, and it tends to take staff time to set up and keep current, though it can save time by giving one place to check instead of asking around.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Build inventory discovery processes covering all four layers explicitly, sanctioned, shadow, embedded, and agentic AI, since relying only on procurement records to build this inventory will systematically miss a large and growing share of actual AI usage across the organization.",
@@ -13879,6 +14019,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "An AI Safety Level is a tiered risk label for AI models, where higher levels turn on stronger safeguards as the model's abilities grow. For a small business, this matters mainly if you use AI tools from the labs that build the most advanced models, because it tells you when extra safety measures are meant to apply. It does not by itself set a price or a time saving for your company, so treat it as a safety signal rather than a direct cost or time measure.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Understand this as a specific frontier-lab scaling policy mechanism, not a universal industry standard; if evaluating a frontier model vendor, ask specifically what tiered safety framework, if any, they actually follow and what safeguards trigger at each tier.",
                     "audience": "ciso"
                 },
@@ -13934,6 +14078,10 @@
                 {
                     "body": "A real legal exposure regardless of your organization's actual intent; require documented bias testing specifically for any AI system used in hiring, lending, housing, or similarly consequential decisions before deployment, since discovering this problem after deployment is far more costly than testing for it beforehand.",
                     "audience": "executive"
+                },
+                {
+                    "body": "Algorithmic bias means a tool gives unfair results to some groups because of the data it learned from or a stand-in detail. For a small business, it matters when you use software to screen job applicants, decide loans, or choose tenants, because unfair results can create legal trouble even if you did not mean it. It does not matter for tasks that do not involve those decisions, and it tends to cost time when you have to check results or correct unfair outcomes, while it may save time only when the tool is fair enough that you do not need that extra review.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Bias testing should be a standard, documented part of the security and risk review process for any AI system used in a consequential decision affecting individuals, treated with the same rigor as any other significant risk category rather than as a separate, optional consideration.",
@@ -13993,6 +14141,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "Alignment is the work of making an AI system act in line with human values, intent, and safety rules. For a company with five to fifty staff, it matters when the AI affects customers or money, such as answering questions or making decisions, and it matters less when you only use AI for rough drafts or ideas. It can save time by reducing the need to check and fix bad answers, but it can cost time when you have to set rules or review the system.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Understand vendor alignment claims specifically, since the term covers a genuinely broad spectrum from concrete, testable refusal training to speculative, unresolved theoretical research; a general claim of being \"aligned\" without specifying which aspect is being claimed provides limited actionable assurance.",
                     "audience": "ciso"
                 },
@@ -14048,6 +14200,10 @@
                 {
                     "body": "Determine explicitly whether any AI-assisted decision process in your organization qualifies as solely automated under applicable law, since this classification triggers specific legal obligations, including the right to human review, that a genuinely human-in-the-loop process would not.",
                     "audience": "executive"
+                },
+                {
+                    "body": "Automated decision-making means a decision is made by a system without a person really taking part. For a small company, it matters when a decision like a credit decision is made only by a system and has a significant effect on someone, because the law may give that person a right to ask for human review. It does not matter when a person is meaningfully involved, and it can save time by not needing a person for each decision, but it can cost time when you have to provide that human review.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Document the actual level and quality of human involvement in any AI-assisted decision process precisely, since the legal classification of whether a decision counts as solely automated depends on genuine, meaningful human involvement, not merely a nominal human sign-off step that does not actually exercise real judgment.",
@@ -17173,6 +17329,14 @@
                     "audience": "child"
                 },
                 {
+                    "body": "For an executive, this term means the 2017 paper that introduced the transformer architecture and is treated as the founding document of the current AI era. It can help you follow architecture discussions, but it does not by itself set budgets, measure risk, or assign accountability. Those choices stay with your organization.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, this term is background: it is the paper that introduced the transformer architecture and became shorthand for the founding document of the current AI era. It matters when you are reading or discussing how AI systems are built, and it does not matter for everyday choices about serving customers or running the business. It tends to cost or save no time by itself, because it is a reference point, not a product or service.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "A safe, accurate shorthand for \"the paper that started the current AI wave,\" and a reliable citation if you need to explain to readers where transformer-based models actually came from.",
                     "audience": "journalist"
                 },
@@ -18794,6 +18958,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "A2A is a shared way for software agents from different companies to talk to each other, so one company's agent can hand a task to another company's agent. For a small business, this matters when your agent needs to work with a supplier's or partner's agent, such as checking delivery windows, and it does not matter when your agents only work inside your own company or with your own tools. It can save time on the back-and-forth of that exchange, but the definition does not say what it costs.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Cross-company agent delegation introduces a genuinely new trust boundary: your agent is now potentially accepting instructions or handing off tasks to an agent you do not control, which needs its own risk review distinct from internal multi-agent systems.",
                     "audience": "ciso"
                 },
@@ -18845,6 +19013,10 @@
                 {
                     "body": "Better answer quality on complex questions comes at a real cost in response time and compute; make sure this is deployed selectively for genuinely complex queries rather than universally, or you will be paying the latency and cost premium on simple questions that did not need it.",
                     "audience": "executive"
+                },
+                {
+                    "body": "Agentic RAG means an AI helper does not just look something up once. It decides what to search, searches again if needed, and stops when it has enough, like running a few searches before writing an answer. For a small company, this matters when a question needs careful digging through your information, and it does not matter for simple questions that one lookup can answer. It tends to cost more waiting time for each answer, but it can save time by reducing the need for you to keep refining the search yourself.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "It replaces single-pass lookup with iterative research, trading latency for answer quality; reserve this for queries genuinely complex enough to need multiple search rounds, since the added latency and cost are not worth paying for simple lookups a single retrieval pass handles fine.",
@@ -18951,6 +19123,10 @@
                 {
                     "body": "A meaningfully different governance object than a simple AI feature; an agent takes actions with real consequences across multiple steps, which means the review and oversight process appropriate for a chatbot feature is usually not sufficient for an agent.",
                     "audience": "executive"
+                },
+                {
+                    "body": "For a small business, an AI agent is software that can watch something like a shared mailbox, work out what each request is, and take a series of steps on its own toward a goal. It matters when you have routine, repeatable requests that take up staff time, such as sorting and filing the simple ones, and it does not matter when the work needs human judgment, relationships, or one-off decisions. It can save time on routine handling, but it can also cost time to set up, check, and correct, and you need to decide what it can access and keep a record of what it did.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Requires the same identity, access-control, and audit rigor you would apply to a new system integration or employee, since it acts with real permissions and can take consequential actions; do not treat agent deployment as a lighter-weight decision than a traditional system integration.",
@@ -21593,6 +21769,14 @@
                 {
                     "body": "A small add-on piece attached to a big AI that lets it learn one new specific skill, without changing anything about the huge original AI underneath, kind of like snapping a special attachment onto a tool instead of building a whole new tool.",
                     "audience": "child"
+                },
+                {
+                    "body": "An adapter is a small trainable module inserted into a frozen model so it can learn a new task while the base weights stay untouched. For decisions and money, this means you can specialize one shared base model with many adapters instead of changing the base model itself. The main risk is that the adapter changes behavior while the base model stays the same, so accountability should sit with whoever chooses and checks the adapter and owns the base model it attaches to.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a small company, an adapter is a small trainable module that lets a frozen model learn a new task without changing the base weights. It matters when you need a specific task and can share one base model across many adapters, and it does not matter when the base model already does the job or you have no new task to learn. In time, it can save the work of changing or rebuilding the base model, though you still need time to train and swap the adapter.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Store and swap adapters per task rather than maintaining separate full model copies; this dramatically reduces storage and deployment complexity when you need many task-specific variants of the same base model.",
@@ -24368,6 +24552,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "For a small company, autonomy levels are a simple scale for how much an AI agent can decide and do without a person, from only responding, to acting inside limits you set, to setting its own steps. It matters when the agent faces customers, because you can cap it at supervised autonomy and keep a person checking, and it may not matter for a tool that only responds. Setting and checking those limits takes some time, but it can save time by letting the agent handle routine work without asking you each time.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "A useful control framework: map every deployed agent to its permitted level, and treat any request to raise that level as a change requiring its own review, the same way you would treat a privilege escalation request from a person.",
                     "audience": "ciso"
                 },
@@ -24419,6 +24607,10 @@
                 {
                     "body": "A real and demonstrated risk category for any agent that reads content it did not directly ask for, email, web pages, uploaded documents; ask specifically what permissions such an agent holds and what happens if it is manipulated into acting maliciously.",
                     "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, agent hijacking means an AI tool that can read email, documents, or webpages and then act, such as sending messages or making purchases, could be tricked by hidden instructions in that content into doing something your staff did not intend. It matters when you let an AI agent take actions with your accounts or data, and it matters less when AI only drafts text that a person checks and sends. The defenses in the definition, limiting what the agent can access, keeping untrusted content separate, and having a person confirm important actions, can add a little staff time, but they can save the larger time and trouble of undoing an unauthorized action.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Prompt injection weaponized against systems that can act, converting a text-manipulation trick into unauthorized purchases, data exfiltration, or code execution. Defend architecturally: least-privilege tool access, isolating untrusted content, and human confirmation for consequential actions, not through prompt-level filtering alone.",
@@ -24672,6 +24864,10 @@
                 {
                     "body": "AI ROI equals total benefit minus total cost, divided by total cost. The discipline is in the denominator: a complete cost figure includes every real expense the investment generated, review time, rework, management overhead, not just the subscription fee, which is what makes the resulting number defensible under financial scrutiny.",
                     "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, this formula means adding up all the real costs of an AI tool, including the time your team spends reviewing its work and fixing mistakes, then comparing that total with the benefit you get. It matters when you are deciding whether to keep paying for the tool or expand it, and it does not matter much for a short test that costs little and takes little staff time. Tracking those costs takes some time, and the formula can save time by helping you drop tools that are not worth the effort.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "A vendor or portfolio company's claimed AI ROI is only as trustworthy as its cost denominator; ask specifically whether review burden, rework, and management overhead were included, since a subscription-fee-only cost figure systematically overstates the return.",
@@ -26428,6 +26624,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "An attestation is a signed and dated statement by a named person that a check or rule was followed or that something is true. For a small business, it matters when an auditor or regulator asks for proof that something like your AI model list is complete and current, because a signature is evidence. It does not matter when no one asks for that proof, and it tends to cost a little time to review and sign, while it can save time later by avoiding arguments about whether the work was done.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Build attestation into your standard control-verification workflow for any consequential AI governance requirement; a control that was performed but never formally attested provides no defensible evidence trail if its performance is later questioned.",
                     "audience": "ciso"
                 },
@@ -26811,6 +27011,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "For a company with five to fifty staff, an AI Officer is the named person who is accountable for AI risk and who explains that risk to owners, legal help, and technical staff. It matters when AI could affect customers, staff, money, or legal duties, because that person signs off on the risk level of each new AI use. It matters less if AI is only a minor tool with no real risk, and the role can cost review time for each new AI use, though it can save time by giving one person the job of answering AI risk questions.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Clarify explicitly how this role's authority intersects with security, legal, and technical decision-making, since without a statutory definition, ambiguity about actual authority is a common and genuine governance failure mode for this specific position.",
                     "audience": "ciso"
                 },
@@ -26866,6 +27070,10 @@
                 {
                     "body": "The role exists because governance fails at the administrative layer far more often than at the decision layer; ensure this role or function actually exists and has real time allocated to it, since a governance policy with no one doing the ongoing administrative maintenance work tends to decay into an outdated document nobody trusts.",
                     "audience": "executive"
+                },
+                {
+                    "body": "In practice, this is the person who keeps your list of AI tools current, collects the paperwork for each tool, and schedules the reviews. It matters when you have several AI tools or rules to follow, because stale records can lead to decisions based on wrong information, and it may not matter if you use one simple tool with no reviews or documentation to track. It costs ongoing time for upkeep, and it can save time when reviews come around because the records are already current.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "A distinct operational role from the AI Officer's strategic accountability; without someone specifically doing this administrative maintenance work, an AI inventory and governance program tends to go stale within months, regardless of how well the initial policy was designed.",
@@ -27593,6 +27801,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "An AI Passport is a record for each AI system you use, covering its purpose, owner, data, risk level, and review status, and it may expire so the owner must check it again. For a company with five to fifty staff, it matters when you have AI systems that need clear ownership and a review date, and it does not matter much if you have no AI systems or no need to track them. It tends to cost time to create and update the record, and the expiry can save time by making the next review a clear scheduled task.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Adopt the expiry concept specifically, regardless of what a given vendor calls the overall artifact, since forcing periodic re-validation of a system's risk profile and controls is a genuinely useful practice independent of the particular branded terminology a vendor is using.",
                     "audience": "ciso"
                 },
@@ -27803,6 +28015,20 @@
             "uid": "0679d167",
             "slug": "agent-marketplace",
             "term": "Agent Marketplace",
+            "lenses": [
+                {
+                    "body": "An agent marketplace is like an app store for helper programs. People put their helper programs there so other people can find them and use them, sometimes for pay. If you use one, you are trusting a helper someone else made.",
+                    "audience": "child"
+                },
+                {
+                    "body": "An agent marketplace is a venue where agents, tools, or agent capabilities are published, discovered, and consumed by other parties, sometimes with payment and contractual terms. For decisions, money, risk, and accountability, this means the operator inherits the behaviour of code it did not write, under terms it may not have read, so the operator owns that third party risk. The assessment categories for this class of supplier are still forming, so the operator must decide how to assess it.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, an agent marketplace is a place to find ready-made agents or tools. It matters when the agent can reach your data or when you must stand behind its behaviour, because you inherit code you did not write under terms you may not have read, and it does not matter as much when the agent has no access to your data and you do not rely on its output. It can save time in discovery, but it can cost time to check what data it may reach and what terms apply.",
+                    "audience": "small-business"
+                }
+            ],
             "example": "An organisation adopting a third-party scheduling agent from a vendor catalogue without a supplier assessment covering what data it may reach.",
             "related": [
                 {
@@ -27837,6 +28063,20 @@
             "uid": "6a340b62",
             "slug": "agent-swarm",
             "term": "Agent Swarm",
+            "lenses": [
+                {
+                    "body": "An agent swarm is like a big group of kids all looking for a lost toy in a park. No one is the boss, but if many kids point to the same bush, you go check there. That is how it works: many simple helpers work on the same problem, and the answer comes from what they find together.",
+                    "audience": "child"
+                },
+                {
+                    "body": "An agent swarm means many simple, mostly interchangeable software agents work the same problem at once with little central control, and the useful result comes from their interaction rather than from one agent's plan. For decisions, money, risk and accountability, it can speed up finding things like a defect in a codebase, but it does not give you a single plan to budget against, and because no leader assigns roles and no single log explains the decision, it is harder to govern and to say who is accountable. You should treat it as a higher-risk pattern when you need a clear decision trail, and use it only where you can accept an emergent result and review the outcome after the fact.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, an agent swarm is a way to have many simple software helpers work on the same task at once, such as searching computer code for a defect, with the answer emerging when several flag the same files. It matters when the task is easy to split, you can check the result afterward, and you do not need a clear chain of command or a single explanation of how the answer was reached, and it does not matter when you need one accountable owner, a clear audit trail, or a planned set of roles. On time, it may save time by letting many helpers search in parallel, but it can cost time because someone still has to review the emergent result and there is no single log to rely on.",
+                    "audience": "small-business"
+                }
+            ],
             "example": "Dozens of agents independently searching a codebase for a defect, with attention converging on the files several of them flag.",
             "related": [
                 {
@@ -28364,6 +28604,20 @@
             "uid": "250ca038",
             "slug": "ai-integration-patterns",
             "term": "AI Integration Patterns",
+            "lenses": [
+                {
+                    "body": "AI integration patterns are the different ways a computer program asks an AI for help. Think of it like getting help from friends: you can ask one friend directly, use a helper who organizes many friends, or give your friends special tools to use. The pattern you pick changes who decides what happens next.",
+                    "audience": "child"
+                },
+                {
+                    "body": "AI integration patterns are the standard ways a business application connects to AI models, such as direct calls to a provider, a framework that coordinates models and tools, callable tools, a shared tool standard, or internal serving. The choice affects money, risk, and accountability because it sets where application logic ends and model decisions begin, and therefore what must be audited and who is accountable for model driven actions. A simple feature may need only a direct call, while coordinating several models, tools, and retrieval steps may justify a coordinating framework.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, AI integration patterns are the practical ways your software connects to AI models, from a direct call for one feature to a framework that coordinates several models, tools, and retrieval steps. It matters when you need to combine multiple steps or keep a clear audit trail, and it matters less when a single purpose feature can call a model directly. A direct pattern tends to save setup time for simple work, while a heavier pattern can save time when coordination is needed but can cost time if used too early.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "",
             "example": "Choosing direct REST calls for a single-purpose feature, and an orchestration framework only once several models, tools, and retrieval steps must be coordinated.",
             "related": [
@@ -28624,6 +28878,20 @@
             "uid": "97be790e",
             "slug": "answer-relevance",
             "term": "Answer Relevance",
+            "lenses": [
+                {
+                    "body": "Answer relevance means whether an answer really answers the question you asked. It is not about whether the answer is true. Imagine asking a friend what time the movie starts and they tell you the whole story of the movie, that is not relevant even if it is true.",
+                    "audience": "child"
+                },
+                {
+                    "body": "Answer relevance is whether a response actually addresses the question asked, separate from whether it is accurate. For decisions, money and risk, a true but off point answer can waste time, hide the needed information and lead to a poor choice if it is used as if it answered the question. Accountability sits with the person who accepts or acts on the answer, because they must check that it answers the question before relying on it.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, answer relevance means checking that an answer actually answers the question you asked, not just that it sounds correct. It matters when you need a specific fact to act, such as a deadline or a rule, and it matters less when you are only looking for general background. It tends to save time by keeping you from reading or acting on a true but off point answer, and it can cost time if you have to ask again or search for the missing point.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "One of the core Ragas metrics; TruLens carries an equivalent feedback function.",
             "example": "Asking for a filing deadline and receiving an accurate but rambling summary of the whole statute: high faithfulness, low answer relevance.",
             "related": [
@@ -30487,6 +30755,20 @@
             "uid": "5e83a418",
             "slug": "aggregate-limit",
             "term": "Aggregate Limit",
+            "lenses": [
+                {
+                    "body": "An aggregate limit is the most an insurance company will pay in total for all the problems it agreed to cover during a set time, even if many separate problems happen. Think of it like a snack jar for the whole week: once the jar is empty, no more snacks come out, no matter how many times you ask.",
+                    "audience": "child"
+                },
+                {
+                    "body": "The aggregate limit is the total cap an insurance policy will pay for all covered claims in the policy period, no matter how many separate incidents occur. It matters for decisions about how much total risk to keep, because once the aggregate is used up, further covered claims in that period are not paid, even if they are separate events. Accountability sits with whoever chose the policy limits and accepted the risk above that cap.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, an aggregate limit is the most the policy will pay in total for all covered claims in the policy period, no matter how many separate incidents happen. It matters when several claims could arise in the same period, because the total payout can hit the cap even if each event is separate, and it matters less when the business is unlikely to have more than one covered claim in that period. It does not directly cost or save time on each claim, but someone may need to track total claims against the cap.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "Standard industry term",
             "example": "A data centre operator with a $5 million aggregate limit on its environmental policy would not be paid more than $5 million in total for all groundwater damage claims in that year, even if several farms sue separately.",
             "related": [
@@ -30715,6 +30997,20 @@
             "uid": "b85b727d",
             "slug": "actual-cash-value",
             "term": "Actual Cash Value",
+            "lenses": [
+                {
+                    "body": "Actual Cash Value is what an insurance company pays when something is damaged or destroyed. It is the cost to buy a new one minus some money because the old one was used, so it is like getting the value of your old bike, not enough to buy a brand new bike.",
+                    "audience": "child"
+                },
+                {
+                    "body": "Actual Cash Value is the amount an insurer pays for a damaged or destroyed item, calculated as the cost to replace it new minus a deduction for wear and tear or age. It reflects what the item was worth in used condition right before the loss, not what a brand new one would cost, so decisions about money and risk must account for a payout that may be less than replacement. Accountability for that gap rests with whoever chooses the insurance terms, because the insurer pays only the defined actual cash value.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, Actual Cash Value means an insurance payout for a damaged or destroyed item is based on its used worth, not the cost of a new one. It matters when an old or worn item is lost and the payout is less than a new replacement, and it matters less when the item is new because there is little wear and tear or age to deduct. It tends to save time by making the payout rule clear, but it can cost time if the business has to find extra money to cover the difference.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "Standard industry term",
             "example": "If a data centre's AI training server is destroyed by a power surge, the insurer would pay its actual cash value, which is less than a new server because the old one had already been running for three years.",
             "related": [
@@ -30867,6 +31163,20 @@
             "uid": "9dd2eab4",
             "slug": "aggregation-insurance",
             "term": "Aggregation (Insurance)",
+            "lenses": [
+                {
+                    "body": "Imagine you have one box of bandages for all your scrapes. If you get many scrapes at once, they all have to share that one box instead of each scrape getting its own box. That is what aggregation means in insurance: many losses can be counted as one, so they share one amount of help.",
+                    "audience": "child"
+                },
+                {
+                    "body": "Aggregation means several separate losses or risks are counted together as one event or one claim, so they share a single coverage limit instead of each getting its own. For decisions, this affects how much money the insurer pays out and how much risk the policy owner keeps, because one limit may cover all related damage. Accountability sits with the policy owner, because the aggregation clause decides what is treated as one occurrence and what the single limit covers.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, aggregation matters when several losses or risks from one event, such as a power failure, are counted together as one claim and share one coverage limit. It does not matter when losses are separate and each gets its own limit. In practice it can save time by handling related damage as one occurrence instead of many separate claims, but it can cost time if all repairs must fit under one limit.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "Standard industry term",
             "example": "If one power failure damages multiple data centre buildings, an aggregation clause might treat all the damage as one occurrence, leaving the owner with only one limit for all repairs.",
             "related": [
@@ -32083,6 +32393,20 @@
             "uid": "ce6b466c",
             "slug": "algorithmic-underwriting",
             "term": "Algorithmic Underwriting",
+            "lenses": [
+                {
+                    "body": "Algorithmic underwriting is when a computer helps an insurance company decide how risky someone is and what their insurance should cost. It is like a coach using a stopwatch to pick runners for a race instead of only going by a hunch. The computer can look at how you drive and whether you have asked the insurance company to pay for something before.",
+                    "audience": "child"
+                },
+                {
+                    "body": "Algorithmic underwriting means using computer programs, often with artificial intelligence, to assess a customer's risk and set policy price and terms automatically, rather than relying only on human judgment. For decisions and money, it can speed up approvals and make pricing more consistent, but it also means the insurer must manage the risk in the program's judgment. Accountability for the price and terms still sits with the insurance company, because it is the company offering the policy.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, algorithmic underwriting matters when the business buys insurance, such as car insurance, because a computer may review data like driving information and claim history to set the price and terms quickly. It does not change the day to day work of most small firms unless they are shopping for or renewing a policy. It tends to save time by giving faster answers on routine applications.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "The term became common in the 2010s as insurers started using machine learning and large datasets to make underwriting faster and more consistent.",
             "example": "An insurer uses algorithmic underwriting to quickly approve a car insurance application based on the driver's telematics data and claim history.",
             "related": [
@@ -32577,6 +32901,20 @@
             "uid": "5409f097",
             "slug": "ai-incident-database-aiid",
             "term": "AI Incident Database (AIID)",
+            "lenses": [
+                {
+                    "body": "It is a free list, open to everyone, of real times a computer program that makes choices caused harm to people. Think of it like a class log where kids write down when a classroom robot did something wrong, and each entry says which person saw it first. A researcher used it to find a case where a talking computer gave bad medical advice, and the entry pointed to the news story about it.",
+                    "audience": "child"
+                },
+                {
+                    "body": "The AI Incident Database is a free public catalog of reported real world harms caused by AI systems that are already in use, and each record links to the publisher that reported the event. For decisions, money and risk, it is a place to check whether a deployed system has a reported harm before you rely on it, rather than a source of cost estimates or risk scores. The database itself does not assign accountability, it records reports and links to the original publisher.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, the AI Incident Database is a free public list of reported real world harms from AI systems already in use, with each entry linking to the original publisher. It matters when you are about to use or keep using an AI tool and want to check whether similar deployed systems have a reported harm, and it does not matter when you are not using such a tool. It can save time by pointing you to a documented case and its source, like the chatbot that gave harmful medical advice, instead of searching for reports yourself.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "The AI Incident Database was created by the Responsible AI Collaborative to track real world harms from AI systems.",
             "example": "A researcher checked the AI Incident Database to find a documented case where a deployed chatbot gave harmful medical advice, and the record linked to the news article that first reported it.",
             "related": [
@@ -32881,6 +33219,20 @@
             "uid": "9ac6272e",
             "slug": "algorithmic-discrimination",
             "term": "Algorithmic Discrimination",
+            "lenses": [
+                {
+                    "body": "Algorithmic discrimination is when a computer rule treats some people unfairly. It can happen even if nobody meant to be unfair. Think of a game that keeps picking the same kids for the good team and leaves others out, not because it is mean, but because of how it was set up.",
+                    "audience": "child"
+                },
+                {
+                    "body": "Algorithmic discrimination means an AI or automated decision system gives people unfair treatment, often because of protected traits like race, gender, or age, even when no one intended it. It can affect decisions and money, for example a loan approval algorithm that denies credit to applicants from certain neighborhoods. The people who choose and run the system are accountable for checking it and fixing unfair results.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, algorithmic discrimination means an automated tool you use for decisions, such as approving credit, may treat some people unfairly, often based on traits like race, gender, or age. It matters when you rely on that tool for decisions about people or money, and it matters less when the tool only sorts routine information with no effect on people. The time cost is in checking the system and correcting unfair results, and unfair results can create extra work instead of saving time.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "The term entered legal and policy discussions as AI systems became more common in decisions about jobs, housing, and credit.",
             "example": "A loan approval algorithm that consistently denies credit to applicants from certain neighborhoods could be a case of algorithmic discrimination.",
             "related": [
@@ -33071,6 +33423,20 @@
             "uid": "43b2d910",
             "slug": "ai-auditor",
             "term": "AI Auditor",
+            "lenses": [
+                {
+                    "body": "An AI auditor is like a referee for computer programs that learn and make choices. They check if the program follows the rules and treats people fairly, such as a hiring tool that should not treat people unfairly. In California, these referees must sign up with the state and be good at the job and honest.",
+                    "audience": "child"
+                },
+                {
+                    "body": "An AI auditor is an independent person or company that checks whether an AI system follows state laws and safety rules. In California, auditors must register with a state agency and meet standards for independence, technical skill, and transparency. For decisions, money, risk, and accountability, this means you may need to pay for an outside check before releasing systems like hiring tools, and the auditor is the outside party accountable for that check.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, an AI auditor is an outside person or company you bring in to check whether an AI system follows state laws and safety rules. It matters when you use AI for things like hiring and need to meet California requirements, and it may not matter if you do not use AI in ways covered by those rules. In time, it adds a step before release, and it can save time by finding legal problems before you release the system.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "The term entered legal use with California's 2026 AI auditing laws, the first state rules of their kind.",
             "example": "Before releasing its new hiring tool, a tech firm hires an AI auditor to confirm the system does not discriminate and meets California's legal requirements.",
             "related": [
@@ -33694,6 +34060,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "ADLC is a way to build, launch, run and oversee an AI agent that works on its own toward a goal. For a small company, it matters when you use an agent for something like customer service, because you first set its goals and permissions, give it its own identity and a safe test space, test it before release, roll it out in stages, and keep checking it after launch. It does not matter if you are not using an autonomous AI agent, and the time cost is in that planning, testing and monitoring, while the time saved comes from the agent handling the work it was built for.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "What ships in the ADLC is more than code: prompts, tool permissions, memory policy, model versions and evaluation suites, each versioned and each able to carry a flaw. Build with a distinct identity per agent, a sandbox, least privilege per tool and a gateway in front of MCP servers. Gate releases on an abuse-case suite, prompt injection, tool misuse, memory poisoning, runaway loops, and rerun it after any change to a prompt, tool, retrieval source or model.",
                     "audience": "developer"
                 },
@@ -34262,7 +34632,7 @@
         "schema": "v2 (term, slug, category, definition, example, origin)",
         "generated": "2026-07-23"
     },
-    "built_at": "2026-10-01T00:58:57-05:00",
+    "built_at": "2026-10-01T03:23:56-05:00",
     "page_uid": "76dd9a8f",
     "readings": {
         "/ai-glossary/aime/": {
@@ -37342,6 +37712,5 @@
             "name": "SRJ Consulting & Services Frameworks",
             "slug": "srj-consulting-and-services-frameworks"
         }
-    ],
-    "refresh_every_days": 90
+    ]
 }
