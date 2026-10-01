@@ -414,6 +414,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "For a small company, an autonomy level is how much an AI agent may do before someone on your team must check or approve its work. It matters when the agent can send something outside the team, like an email, because you can let it draft freely but require approval before sending. It matters less for internal drafts that a person reviews anyway, and a lower level tends to cost staff time in approvals while a higher level tends to save that time by letting routine work finish without waiting.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Autonomy level should map directly to a documented risk tier per action type, and any change to that level, especially raising it, should go through the same change-control process as a permissions escalation for a human user.",
                     "audience": "ciso"
                 },
@@ -465,6 +469,10 @@
                 {
                     "body": "Genuinely useful for research and procurement tasks, and also a new category of system access, one that operates like a person with a browser, that most security reviews built for APIs and applications have no slot for yet.",
                     "audience": "executive"
+                },
+                {
+                    "body": "For a small business, a browser agent can handle repeated web tasks like checking supplier prices across many vendor portals, filling forms, clicking through pages, and pulling out data. It matters when your staff spend time on that kind of online research or procurement, and it does not matter when your work does not involve those repeated browser tasks. Because it acts like a person using a browser, a security review may have no clear slot for it, so you may need to treat it as a new kind of access.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "A browser agent inherits whatever session and credentials it is given, and can be redirected by content on a page it visits; scope its permissions narrowly, log every action, and never give it a logged-in session with standing access it does not need for the task.",
@@ -520,6 +528,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "For a small company, a coding agent can read your code, make edits, run tests, and open a proposed change for a person to review. It matters when you have a clear, small fix like a failing test and no developer free, because it can cut the time spent writing that change. It does not remove the need for someone to check the work, so it may not be worth it for complex changes, and the main cost is the review time it adds.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "The review burden shifts rather than disappears: someone still has to read and understand machine-generated diffs before merging, and a coding agent that \"passes its own tests\" is not the same guarantee as a human reviewer catching a subtle logic error.",
                     "audience": "developer"
                 },
@@ -571,6 +583,10 @@
                 {
                     "body": "Extends automation to systems that were never designed for it, which is powerful and also means your existing security review process, built around APIs and known integrations, likely has no framework yet for what this agent can actually touch.",
                     "audience": "executive"
+                },
+                {
+                    "body": "Computer use means an AI agent can work a program by reading the screen and sending clicks and keystrokes, just like a person at a keyboard. For a small business, this matters when you rely on older desktop software that has no API, for example processing claims in a legacy application, because the agent can do that repetitive screen work. It does not matter when your software already has an API, and it can save time on repetitive screen work but may cost time to check because software with no API often has the fewest guardrails.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Treat a computer-use session with the same rigor as handing a contractor a logged-in laptop: scope what it can access, monitor the session, and assume anything on screen, including content the agent did not expect, could influence its next action.",
@@ -1543,6 +1559,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "Blast radius is how much harm a hacked account or AI helper can do before something stops it. For a small business, it matters when that account or helper can write, meaning it can order, cancel, or pay, because write access changes your systems, and it matters less when it can only read, because read access leaks data. The time cost is in undoing those changes, so limiting write permissions can save time.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Read access leaks data; write access changes systems, which is why write permissions are what make a blast radius large. Minimize write permissions specifically and aggressively for any agent or identity, since read-only compromise is contained and recoverable in a way write-access compromise often is not.",
                     "audience": "ciso"
                 },
@@ -1594,6 +1614,10 @@
                 {
                     "body": "A necessary but not sufficient signal when evaluating a vendor's AI product for the EU market; it confirms a compliance process was completed, not that the underlying system is actually secure, which requires its own separate verification.",
                     "audience": "executive"
+                },
+                {
+                    "body": "For a small company, CE marking is a declaration by the maker that a product meets EU rules and can be sold across the single market. It matters if you make a product for the EU market, because you need that declaration to sell it there, and it does not matter for that purpose if you only sell outside the EU. It takes time to prepare the conformity process, and it does not replace a security assessment, so you may still need to spend time on your own security checks.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "A regulatory market-access marker, not a security control; a CE-marked AI product still requires your own independent security assessment before deployment, since the marking speaks to regulatory process completion rather than to demonstrated resistance to attack.",
@@ -1649,6 +1673,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "A compensating control is a stand-in safety measure you put in place when the proper fix cannot be done right away. It matters when a known risk could hurt your business now and the real fix has to wait, for example blocking a known attack pattern while a software patch waits for a maintenance window. It does not replace the real fix, so you still have to track it and install the proper control later, which can save time now but adds work later.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Every compensating control carries an implicit promise to install the real one; track compensating controls explicitly with a target date for replacement, since without active tracking they have a strong tendency to quietly become permanent, undocumented risk acceptance instead of temporary bridges.",
                     "audience": "ciso"
                 },
@@ -1700,6 +1728,10 @@
                 {
                     "body": "Budget for meaningfully longer timelines if your system requires third-party conformity assessment rather than self-assessment; notified-body capacity constraints mean this route can take considerably longer than internal teams typically plan for.",
                     "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, conformity assessment means showing that an AI product meets the rules before it goes to market. It matters most when your product is classified as high risk, because then a third party such as a notified body must assess it instead of you signing a self declaration, which changes cost, timeline and who signs. If your product is not covered by those rules or can be self assessed, it may not involve a third party, and doing the assessment yourself can reduce cost and time.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Understand which specific technical controls and documentation your system needs to have in place before assessment begins, since starting the conformity assessment process without the underlying technical control implementation already complete typically results in a failed or substantially delayed assessment.",
@@ -3997,6 +4029,14 @@
                     "audience": "child"
                 },
                 {
+                    "body": "An autoregressive model builds its answer one piece at a time, with each new piece based on everything it has already produced. For decisions, this means an early wrong turn can carry through the rest of the answer, so the output should be checked before it affects money, risk, or customers. Accountability stays with the people who approve or act on the output, not with the model.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "In practice, an autoregressive model writes or answers one piece at a time, each piece based on what came before, so it matters when you use it for customer replies, proposals, or other text where an early wrong detail can carry through the whole draft. It matters less for simple, low-stakes tasks where a rough draft is enough. It can save time on first drafts but can cost time in review if the early part goes wrong.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "This is the reason retry-with-different-sampling strategies work as an error-recovery technique; since generation is sequential and conditioned on prior tokens, a fresh sample from the start can avoid a compounding error that a mid-generation correction cannot easily fix.",
                     "audience": "developer"
                 },
@@ -4048,6 +4088,14 @@
                 {
                     "body": "An AI trained so that a picture of a dog and the word \"dog\" end up sitting close together in its internal understanding, even though one is an image and one is text, which lets it match pictures to descriptions.",
                     "audience": "child"
+                },
+                {
+                    "body": "CLIP is a model that puts pictures and their text descriptions in the same shared space, so a picture and a matching description sit near each other. For decisions, this means you can ask for images by typing words, or sort images into groups, without training a model for that exact task. The money and risk sit with whoever owns that image search or sorting decision, because poor alignment between pictures and words can give wrong results.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, CLIP means you can find product photos by typing a text query, even if no one trained a model for your specific products. It matters when you need to search or group images and do not want to build a custom training task, and it does not matter much if you already have simple labels that work. It tends to save the time that would go into task-specific training, and it does not add a separate training step for each new search or grouping task.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Widely used as a component rather than an end product; CLIP embeddings power image search, content moderation, and the text-conditioning step in many image generation pipelines, so understanding its embedding space is useful even if you never train a CLIP model yourself.",
@@ -6413,6 +6461,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "A benchmark is a standard test that compares AI models on a set of tasks. For a small company, it matters when you are choosing an AI tool and the test looks like the work you need done, but it does not tell you whether the tool will fit your actual needs. Checking benchmarks can save time when you compare options, but if you trust the score alone you may spend time later on a poor fit, because vendors can tune their models to do well on the test.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Before quoting a score, establish who ran it, on what date, with what scaffolding, and whether the developer submitted its own result. Vendor-reported figures and independent evaluations of the same benchmark often differ, and a jump usually reflects a change in method or harness as often as a change in capability.",
                     "audience": "journalist"
                 },
@@ -6460,6 +6512,14 @@
                 {
                     "body": "A way to check if a computer's translation matches a human's translation, by counting how many of the same word-groups they both used. It is not perfect, since two good translations can use totally different words.",
                     "audience": "child"
+                },
+                {
+                    "body": "BLEU is a score that compares machine translation output with reference translations by counting matching word sequences. It is cheap and standardized, but it can reward matching wording rather than meaning, so it is a rough check rather than a true measure of quality. For decisions, treat it as a low-cost screening signal, not proof of quality, and keep accountability with the person who owns the translation use case.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "BLEU is a way to score machine translation by seeing how much of its wording matches reference translations. For a company with five to fifty staff, it matters when you need a quick, cheap check of translation output, and it does not tell you whether the meaning is right for your business. It can save time in early testing, but it may not save review time because a person still needs to check meaning.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Still useful as a fast regression check during development because it is deterministic and free, but do not treat it as a quality gate on its own; pair it with a smaller human-reviewed sample before shipping a translation feature.",
@@ -6519,6 +6579,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "Capability elicitation means putting real effort into skilled requests to find out the most an AI tool can do before you decide it cannot do something. For a small business, this matters when you treat an AI tool's refusal or limits as a safety check, because a tool that says no to a plain request might still help with a cleverly worded one. It matters less for ordinary day to day tasks, and it can cost time to test prompts carefully, but it can save time by stopping you from trusting a limit that is not real.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Relevant to any pre-deployment capability claim used to justify a lower risk tier: a claim of inability is only as strong as the elicitation effort behind it, and testing under default settings alone is not sufficient evidence.",
                     "audience": "regulator"
                 },
@@ -6570,6 +6634,10 @@
                 {
                     "body": "Two systems can share the same accuracy score while making very different kinds of mistakes. Ask to see this breakdown before approving a system whose error types have different costs, like flagging a good customer as fraud versus missing real fraud.",
                     "audience": "executive"
+                },
+                {
+                    "body": "A confusion matrix is a table that shows how an automated decision tool makes mistakes, not just how often it is wrong. For a small company, it matters when one kind of mistake costs more than another, because the table can show if errors pile up in that costly direction. It does not matter much when all mistakes are equally cheap or when you only need a rough sense of accuracy, and it tends to save time by pointing to where to focus checks or fixes.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Always look past the headline accuracy number at the off-diagonal cells: which specific classes get confused with which, since that pattern usually points directly at the fix, whether it is more training data or a threshold change.",
@@ -9413,6 +9481,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "For a small company, the Bitter Lesson means that a general tool which uses lots of computing power tends to beat a tool built with special rules for one narrow job. It matters when your work changes or your data grows, because the general tool can keep getting better without you adjusting it by hand, and it does not matter much when a simple fixed rule already does the job well. In time terms, it can save the time you would spend crafting and maintaining special rules, though you may spend some time at the start to set up and feed the general tool.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Worth weighing before investing heavily in hand-crafted features or domain-specific architecture tweaks; historically, that engineering effort has often been outcompeted within a few years by a larger, more general model trained on more data.",
                     "audience": "developer"
                 },
@@ -9464,6 +9536,10 @@
                 {
                     "body": "A mature, well-understood technology with a long production track record, distinct from the newer generative AI wave; vendors sometimes blur the two in marketing, so it is worth asking specifically which type of vision capability is being sold.",
                     "audience": "executive"
+                },
+                {
+                    "body": "Computer vision lets a computer look at images or video and pick out things like objects, text, or movement. For a company with five to fifty staff, it matters when someone has to check pictures or footage over and over, such as finding flaws on a production line or reading documents, and it does not matter if you have no regular visual checking task. It tends to save the time spent on that checking, but setting it up can take some time.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Benchmark against your actual deployment conditions, lighting, camera angle, image quality, since published accuracy figures typically come from curated datasets that do not reflect the noise of a real physical environment.",
@@ -11264,6 +11340,10 @@
                     "audience": "child"
                 },
                 {
+                    "body": "Beam search is a way for an AI system to keep several possible outputs open and compare them before settling on one, instead of locking in each step immediately. It can improve quality in tasks like translation, where the best overall result may not come from the best first choice, but it uses more computing effort, which can affect cost and speed. The team that selects and operates the system remains accountable for that trade-off and for whether the final output is fit for business use.",
+                    "audience": "executive"
+                },
+                {
                     "body": "Not something you need to configure directly in most tools you use, but worth knowing that different AI tools use different strategies for choosing words, which is part of why the same prompt can produce noticeably different writing styles across tools.",
                     "audience": "small-business"
                 },
@@ -11317,6 +11397,10 @@
                     "audience": "child"
                 },
                 {
+                    "body": "Chain-of-Thought prompting asks a model to show its intermediate reasoning steps before giving a final answer. For decisions, this means reviewers can inspect the reasoning when a multi-step answer is wrong, which can improve accuracy and make risk easier to review. Accountability stays with the person or team who reviews and acts on the output, not with the model.",
+                    "audience": "executive"
+                },
+                {
                     "body": "If an AI tool gives you a wrong answer to something complicated, try asking it to explain its reasoning step by step next time; this often catches the mistake and produces a more accurate answer, and it lets you see where the logic actually went wrong.",
                     "audience": "small-business"
                 },
@@ -11368,6 +11452,10 @@
                 {
                     "body": "When an AI shows exactly which document or source its answer came from, so you can go check it yourself instead of just having to trust the AI's word for it.",
                     "audience": "child"
+                },
+                {
+                    "body": "Citation or attribution means tying each claim an AI system makes back to the source document that supports it. For decisions, money and risk, a cited answer can be checked by your team or an auditor, while an uncited answer must be taken on trust. Accountability stays with the people who approve the output, so you need to know who checks the citations and who owns the final decision.",
+                    "audience": "executive"
                 },
                 {
                     "body": "Prefer AI tools that show you their sources over ones that just give you an answer with no citation; being able to check the source yourself is the difference between trusting the AI blindly and actually verifying what it told you.",
@@ -14263,6 +14351,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "For a small business, catastrophic forgetting means an AI tool can lose skills it already had after you train it further on new information. It matters when you depend on that tool for an old task and then add new material, because it may stop doing the old task well and you may need to test it and mix old and new examples to keep both. It does not matter much if you use a ready-made tool without further training or if you only need it for one task, and the time cost is mainly checking and fixing work it used to do correctly.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Re-test previously validated capabilities and safety properties after any fine-tuning or update to a deployed model, not just the newly targeted capability; this failure mode means a previously passing safety or quality test could silently regress without dedicated re-testing.",
                     "audience": "ciso"
                 },
@@ -14318,6 +14410,10 @@
                 {
                     "body": "A real, worthwhile tradeoff for many use cases, capability and support in exchange for the ability to independently verify what the system actually does internally; understand this tradeoff explicitly rather than assuming a closed system is either strictly better or strictly worse than an open alternative.",
                     "audience": "executive"
+                },
+                {
+                    "body": "For a small company, closed source AI means you rent access to a model through a vendor's API instead of owning or inspecting it. It matters when you need to see how the model works or control it, and it may not matter when you only need the model's capability and vendor support. It can save time because you use the vendor's model rather than making your own, but it can cost time when you need to check or change the model, because you must work through the vendor.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Vendor claims about a closed-source system's internal safety properties cannot be independently technically verified the way they could for an open-weight model; factor this into your risk assessment and rely more heavily on external audits, contractual guarantees, and observed behavior testing.",
@@ -14377,6 +14473,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "For a small company, confabulation means an AI tool can write something that reads smoothly and confidently but is invented. It matters when you use that output in work you send out or rely on, because a false citation or detail can mislead. It does not matter when you treat the output as a rough draft and verify facts yourself, which costs a little checking time but can save you from fixing a mistake later.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "The more technically precise term, increasingly preferred by researchers over the more commonly used \"hallucination\"; both refer to the same phenomenon, so either term is understandable to readers, but this one is worth knowing as the more accurate technical vocabulary.",
                     "audience": "journalist"
                 },
@@ -14432,6 +14532,10 @@
                 {
                     "body": "A specific, named technical safety layer, worth asking any frontier AI vendor whether they employ something equivalent as part of a genuine defense-in-depth approach, rather than relying on model alignment training alone as the sole safety mechanism.",
                     "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, this means an AI tool can have an extra check that follows written rules to block harmful content before it goes in or after it comes out. It matters when your team or customers use AI in ways that could bring harmful content into your business, and it matters less if you do not use AI or only use it for simple, low-risk tasks. It can save time by screening harmful content automatically, and it can cost time because the written rules behind it must be created.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "A specific, testable additional safety layer worth verifying exists and functions correctly if evaluating a vendor's overall safety architecture; ask for evidence of its actual effectiveness at catching harmful content that the base model's own alignment training missed.",
@@ -17386,6 +17490,14 @@
                     "audience": "child"
                 },
                 {
+                    "body": "Benchmark contamination is when test data leaks into training data, so a model scores higher without actually getting better. For decisions, that means a suspicious benchmark jump is not proof of better performance, so money and risk choices based on it can be misled. Accountability sits with whoever uses that score to approve the model or tool, and serious evaluation should assume contamination until it is ruled out.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a small company, benchmark contamination means a tool may look better on a test than it really is because the test questions were in its training data. It matters when you are choosing a tool based on benchmark scores, because those scores may be inflated, and it does not matter much if you are judging the tool on your own work and results. The cost is time spent checking claims or retesting, and the saving is avoiding time lost on a tool chosen for the wrong reason.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Before reporting a big benchmark jump as a capability leap, it is worth asking whether contamination was checked for; an inflated score from leaked test data looks identical to genuine progress until someone investigates.",
                     "audience": "journalist"
                 },
@@ -17433,6 +17545,14 @@
                 {
                     "body": "When a team makes their AI really good at passing tests, without actually making it more useful for real tasks, the same way \"teaching to the test\" does not make a student smarter overall.",
                     "audience": "child"
+                },
+                {
+                    "body": "Benchmaxxing means tuning a model to score well on benchmarks instead of making it genuinely useful. For decisions, a high leaderboard score can mislead buying or investment choices, so money may go to a model that does not improve work. The risk sits with whoever chose the model and is accountable for results, because the score can rise while the product does not.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, benchmaxxing matters when you pick a tool based on a leaderboard score and expect real work to get easier. It does not matter much if you already test the tool on your own tasks and ignore the rankings. The cost is time spent chasing or trusting a score that does not improve the product, and the saving is time not spent on a tool that only looks better on paper.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "A leaderboard-topping score is not proof of real-world usefulness if the model was specifically tuned toward that benchmark; ask what independent, non-benchmark evidence supports a capability claim before repeating it.",
@@ -17484,6 +17604,14 @@
                     "audience": "child"
                 },
                 {
+                    "body": "Centaur Chess is the early proof that a human plus machine team can beat both grandmasters and the machine alone, from freestyle chess events in the 2000s. For decisions, it means the choice is not people or AI, it is how to pair them, and the money and risk sit in that pairing because neither side alone got the best result. The term does not make the machine accountable, it describes a team, so the human side remains the part that owns the result.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "In practice, Centaur Chess means a small company can pair its staff with an AI tool on a task where the team beats staff alone or the tool alone. It matters when the task is hard enough that neither your people nor the tool gets the best result by itself, and it does not matter when the task is simple or the tool already works well alone. The definition does not give a specific time or money saving, so the time effect is not fixed by the term itself.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "A useful, historically accurate reference point when writing about human-AI collaboration claims in any field, since it is the original, well-documented case the framing borrows from.",
                     "audience": "journalist"
                 },
@@ -17533,6 +17661,14 @@
                     "audience": "child"
                 },
                 {
+                    "body": "A ChatGPT moment is the point when a technology suddenly becomes widely known to the public, not just to specialists. For decisions, money, and risk, it means the market's attention has shifted, so leaders must judge whether that attention reflects real business value or only marketing, since every emerging field now markets itself as awaiting its own. The accountable people are the executives who decide whether to invest before or after that moment, and they should not treat public awareness as proof of readiness.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, a ChatGPT moment is when a technology becomes so widely talked about that customers, staff, or suppliers start asking about it. It matters when that public awareness changes what your customers expect or when competitors use the term to sell, and it does not matter when the technology is still only a forecast with no practical use for your work. The definition does not say what it costs or saves in time, so treat any claimed time savings as unproven until the tool does a task you already do.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Worth using precisely: it describes sudden, mass public awareness, not gradual adoption. A technology claiming to be \"having its ChatGPT moment\" is making a specific and checkable claim about attention, not capability.",
                     "audience": "journalist"
                 },
@@ -17580,6 +17716,14 @@
                 {
                     "body": "A somewhat mean nickname for robots or AI, borrowed from a movie, that became popular online in 2025 among people who are annoyed or angry about AI.",
                     "audience": "child"
+                },
+                {
+                    "body": "Clanker is derisive slang for a robot or AI system, used in comment sections to dismiss an AI feature as clanker work. For decisions, money and risk, it is a signal of anti-AI sentiment that can affect how an AI feature is received, not a technical or cost measure. The accountable person is whoever owns the AI feature and its public response, because the term is about perception and tone, from playful to genuinely hostile.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "Clanker is derisive slang for a robot or AI system, so if you use an AI tool, a customer or commenter might dismiss it as clanker work. It matters when public comments or customer trust affect your business, and it does not matter when the tool is behind the scenes and no one reacts to it. In practice, it tends to cost time only when you or your staff respond to hostile comments, and it does not save time on its own.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Worth noting for readers that this term's tone varies widely by context; treating every use as equally hostile, or equally playful, misrepresents the range of sentiment it actually carries online.",
@@ -21832,6 +21976,14 @@
                     "audience": "child"
                 },
                 {
+                    "body": "Backpropagation is the training method that calculates how much each internal setting contributed to an error and then adjusts those settings so the system learns. For decisions, it means the method will reduce error against the goal it is given, so the people who choose the data and the goal carry the risk if those are wrong. Accountability stays with those people and with whoever decides how the model is used, not with the algorithm itself.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "Backpropagation is the part of AI training that works out which internal settings caused a mistake and adjusts them so the model improves. For a company with five to fifty staff, it matters when you train or retrain a model on your own data, because that is when the method is doing the learning. It does not matter for day-to-day use of a ready-made tool that does not learn from your data, and it can save time by adjusting settings automatically instead of a person tuning each one by hand.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "You rarely implement this by hand today, since automatic differentiation in frameworks like PyTorch handles it, but understanding the underlying mechanism is essential for debugging training instabilities like vanishing or exploding gradients.",
                     "audience": "developer"
                 },
@@ -21883,6 +22035,14 @@
                 {
                     "body": "An AI right after its first big round of learning, before anyone taught it to follow instructions or behave like a helpful assistant. It just tries to continue text in a plausible way, rather than actually answering your question directly.",
                     "audience": "child"
+                },
+                {
+                    "body": "A base model is a pre-trained model before instruction tuning or alignment. It completes text rather than following directions, so it is capable but unshaped. For decisions, money, risk and accountability, treat it as raw material: you still need tuning or alignment before it reliably follows instructions, and whoever chooses to use it without that step owns the risk.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, a base model is not ready to follow your instructions. It just continues text, so it matters if you try to use it directly for tasks like drafting or summarizing, and it does not matter if you use a tool that has already been tuned or aligned. Using it directly can cost time because you have to shape it or check its output, while a tuned or aligned tool can save that time.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Rarely the right choice for a conversational or instruction-following application; use an instruction-tuned or chat-tuned model instead unless you have a specific research or continuation-completion use case that genuinely needs raw base-model behavior.",
@@ -21938,6 +22098,14 @@
                     "audience": "child"
                 },
                 {
+                    "body": "Batch size is the number of examples an AI model processes before it updates what it has learned. Choosing it affects how steady training is and how much memory the hardware needs, so it can influence hardware cost and project risk. The technical team owns the setting, while leadership should make sure the trade-off between stability and memory is understood and budgeted.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, batch size is mostly a technical setting inside model training, not a daily business choice. It matters if you train or fine-tune a model yourself, because larger batches need more memory and can make training steadier, while smaller batches fit limited hardware. It usually does not matter when you just use an existing AI product, and the example of gradient accumulation can simulate a large batch on limited memory, which may cost setup time but can save time by letting training run on the hardware you already have.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Batch size interacts with learning rate in ways that are not always intuitive; increasing batch size often requires a corresponding learning rate adjustment to maintain training stability, so do not tune one without considering the other.",
                     "audience": "developer"
                 },
@@ -21989,6 +22157,14 @@
                 {
                     "body": "Extra adjustable numbers inside an AI, alongside the main connection strengths, that let each part shift its response up or down a bit, giving the network more flexibility to match tricky patterns that would not fit otherwise.",
                     "audience": "child"
+                },
+                {
+                    "body": "Biases are adjustable values inside network nodes that shift activation functions, letting the network fit patterns that do not pass through zero. They are the forgotten sibling of weights in the parameter count, so they are part of what training adjusts. For decisions, money and risk, they are part of the model's size and behavior, and the definition does not name a separate owner, so accountability sits with whoever owns the model.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "Biases are adjustable values inside network nodes that shift activation functions, letting the network fit patterns that do not pass through zero. For a small company, they matter when you build or adjust a model that needs to fit patterns that do not pass through zero, and they do not matter when you only use a finished model and never change its training. They are part of the parameter count, so they can add to the work of training, but the definition does not give a specific time cost or saving.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Biases are typically included automatically in standard neural network layer implementations and rarely need manual attention, but understanding their role is useful when debugging why a network cannot fit a pattern that does not pass through the origin.",
@@ -22044,6 +22220,14 @@
                     "audience": "child"
                 },
                 {
+                    "body": "Catastrophic interference means a model can lose skills it already had when it is tuned on new data. For decisions, this matters when you plan to update a model, because you may need to mix old data into the new training to protect prior ability, which can affect cost and risk. The person accountable is whoever owns the model training and its results.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, this matters if you tune an AI model on new data and still rely on what it could do before. It does not matter much if you do not tune a model on new data. When it matters, mixing old data into the new training can take time to prepare and check, and it can save time by avoiding lost prior ability.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "When fine-tuning a model on new task-specific data, deliberately mix in a sample of the original training distribution or general-purpose data to reduce the risk of degrading the model's prior general capabilities.",
                     "audience": "developer"
                 },
@@ -22095,6 +22279,14 @@
                 {
                     "body": "A saved copy of an AI's progress at a specific point during its training, like a save file in a video game, so you can go back to that point if something goes wrong later or study what the AI was capable of at that exact stage.",
                     "audience": "child"
+                },
+                {
+                    "body": "A checkpoint is a saved snapshot of a model's weights at a point in training. For decisions, it is a rollback point if a training run goes bad, so it can limit wasted spend and reduce the risk of losing a good run. Accountability sits with whoever owns the training run and decides when to restore from a checkpoint or continue.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "A checkpoint is a saved snapshot of a model's weights at a point in training. For a company with five to fifty staff, it matters when you train or adjust a model and a run goes bad, because you can restore the last good checkpoint instead of starting over, which tends to save time. It does not matter if you only use ready-made AI tools and never train or adjust a model.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Checkpoint regularly during any long-running training job and verify checkpoints are actually restorable before relying on them; a training run failing near the end with no usable recent checkpoint is an expensive and entirely avoidable mistake.",
@@ -22150,6 +22342,14 @@
                     "audience": "child"
                 },
                 {
+                    "body": "Chinchilla Scaling is a finding about how to spend AI training computing power. It says many large models were trained on too little data for their size, so a smaller model with more data can be a better use of the same computing power. For decisions, this moves budget from model size toward data, and the accountable owner is whoever sets the training plan and budget, because a poorly balanced plan can waste money.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, Chinchilla Scaling is mainly relevant when you make or pay for decisions about training AI models. It matters then because the balance of model size and data affects how training money is spent, and it does not matter much if you are only using AI tools that someone else trained. In practice it tends to save time by avoiding training that is too large for its data, though it can add time if more data must be gathered before training.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "If planning a custom training run, use compute-optimal scaling guidance, roughly balancing parameter count against token count, rather than simply maximizing model size within a fixed compute budget, which the Chinchilla finding showed was systematically suboptimal.",
                     "audience": "developer"
                 },
@@ -22201,6 +22401,14 @@
                 {
                     "body": "A small, carefully chosen set of starting examples used to kick off a training stage before bigger, more automatic methods take over, similar to a tiny starter batch of yeast used to begin a much larger baking process.",
                     "audience": "child"
+                },
+                {
+                    "body": "Cold start data is a small, curated seed dataset used to start a training stage before larger scale methods take over. For decisions, money and risk, it matters because this seed can have a disproportionate influence on how the model behaves early on. Accountability belongs with the team that owns the training stage, since they choose and approve the seed data.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, cold start data is a small set of examples used to begin a training stage before larger methods take over. It matters when you are training or tuning a model and need the early stage to be stable, and it does not matter when you are not running a training stage. It tends to cost time in selecting and checking the seed examples, and it can save time by reducing problems when the larger training stage starts.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Invest disproportionate quality control effort into cold start data relative to its size; because it seeds a larger downstream training process, errors or biases introduced here can compound and be amplified through the subsequent larger-scale stage.",
@@ -22256,6 +22464,14 @@
                     "audience": "child"
                 },
                 {
+                    "body": "Compute is the processing power needed to train and run AI models, measured in accelerator-hours and FLOPs. It is one of the three inputs of scaling and is purchased with capital rather than collected or hired, so it is a budget and capacity decision. A training budget can be expressed as GPU-months on a named cluster, and whoever controls that capital purchase is accountable for the cost and risk.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, compute is the processing power you pay for to train or run models, measured in accelerator-hours or GPU-months on a named cluster. It matters when you train or run models yourself, and it does not matter when you do not need that processing. In time terms, it is a purchased input measured in accelerator time, so it costs money and accelerator time rather than saving them by itself.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Compute cost and availability are real constraints worth planning around explicitly for any significant training project; cloud accelerator pricing and availability fluctuate, and securing sufficient compute ahead of a planned training run is a genuine logistics problem, not just a budget line.",
                     "audience": "developer"
                 },
@@ -22307,6 +22523,14 @@
                 {
                     "body": "A way of training an AI to check its own answers against a written list of rules and principles, and fix its own answers to better match those rules, instead of needing a person to manually label every single example of good and bad behavior.",
                     "audience": "child"
+                },
+                {
+                    "body": "Constitutional AI is a training method where the model critiques and revises its own outputs against written principles. For decisions, money, risk and accountability, this means the rules for acceptable behavior are a document you can inspect, not an unwritten feeling, and it reduces reliance on people labeling harmful outputs. That can lower the human labeling effort, which is a cost and oversight factor, and the written principles make it clearer who set the values and who is accountable for them.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a small business, this means an AI tool trained this way follows written rules that you could ask to see, instead of values that are only implied. It matters when you need to explain or check why the tool refused or changed an answer, and it matters less when you only use the tool for low-risk tasks. It can save time by reducing the need for people to sort harmful examples by hand during training, though the training itself still has to be done.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Worth considering when scaling alignment training beyond what human labeling capacity can support; the explicit written-principles approach reduces dependence on large volumes of human preference labels while keeping the underlying values auditable.",
@@ -25751,6 +25975,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "For a small company with five to fifty staff, this duty applies to the board if you have one, and it means the board must set up and watch a reporting system for risks that are critical to the business, which can include AI. It matters when AI is critical to the business and the board consciously fails to oversee it, because that can bring personal liability, and it does not matter if AI is not critical or if there is no board. In practice it tends to cost time in board meetings and in writing minutes that show recurring AI risk reporting.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Ensure the information flowing up to board-level AI oversight is genuinely substantive and documented, since this legal doctrine specifically concerns whether a real reporting system exists and is being used, not whether the board simply received occasional informal briefings.",
                     "audience": "ciso"
                 },
@@ -26897,6 +27125,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "For a small company, the Colorado AI Act is not a current rule to follow because it was repealed before it ever took effect. If a vendor questionnaire still asks about Colorado AI Act compliance, that request is based on an old law, so it should not drive new work on its own. What still matters in Colorado is the Colorado Privacy Act's profiling opt-out, so check that if you handle Colorado personal data and profiling, and the time you save is from not treating the repealed AI Act as a live duty while the time you may spend is on that privacy opt-out if it applies to you.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "The Colorado Privacy Act's profiling opt-out survived the repeal untouched and is what actually binds there today; ensure your compliance documentation reflects this correct, current binding requirement rather than the repealed AI Act, since citing the wrong law as your compliance basis creates a real documentation accuracy problem.",
                     "audience": "ciso"
                 },
@@ -27400,6 +27632,10 @@
                 {
                     "body": "A real, well-documented risk that a human review requirement does not automatically solve; ask specifically what your organization does to counteract this tendency, more confident AI output tends to get less scrutiny, not more, which is exactly backwards from what a genuine safety check requires.",
                     "audience": "executive"
+                },
+                {
+                    "body": "Automation bias is the habit of trusting an automated answer more than you would trust a coworker, so a person who is supposed to check the work just approves it. For a company with five to fifty staff, this matters when the output affects customers, money, safety, or a decision that rules say a person must oversee, because no one may catch a wrong answer before it causes trouble. It does not matter much for low-stakes drafts or ideas that are easy to check, and while it can save time by speeding up approvals, that saving is lost if a bad approval later takes more time to fix.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Design human oversight controls with this specific, documented bias explicitly in mind; a review step that does not actively counteract the tendency toward over-trust in confident-sounding AI output is likely to degrade into rubber-stamping over time, regardless of the original intent behind the control.",
@@ -29159,6 +29395,20 @@
             "uid": "39ba3f13",
             "slug": "colocation",
             "term": "Colocation",
+            "lenses": [
+                {
+                    "body": "Colocation is when a company rents a spot in a big building for its own computers instead of making its own building. It is like parking your own bike in a shared bike garage, where the garage owner provides the space, power, and cooling. Other companies keep their computers in the same building too.",
+                    "audience": "child"
+                },
+                {
+                    "body": "Colocation means renting space, power, cooling, and network connections in a third party's data center for your own servers, rather than building and running a private data center. The decision affects money because you avoid building your own data center but pay ongoing rent, and it affects risk because the provider runs the facility while you still own and manage your hardware. Accountability is split: the provider is responsible for the building and shared services, and your team remains accountable for its own equipment and what runs on it.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, colocation means renting space, power, cooling, and network connections in someone else's data center for your own servers instead of building a private data center. It matters when you have your own servers and need a managed facility, and it matters less when you do not have your own servers to house. It can save the time and cost of building your own data center, but it adds ongoing rent and you still manage your own equipment.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "Standard industry term that became common with the growth of internet exchange points in the 1990s.",
             "example": "A growing online retailer might use colocation to keep its servers in a professionally managed facility near major internet hubs, avoiding the cost of constructing its own data center.",
             "related": [
@@ -29539,6 +29789,20 @@
             "uid": "a865526b",
             "slug": "chiller",
             "term": "Chiller",
+            "lenses": [
+                {
+                    "body": "A chiller is a big machine that makes water cold. The cold water travels around a building full of computers to take heat away, like a cold drink cooling your hand on a hot day. If it stops working in very hot weather, the computers can get too hot and shut down.",
+                    "audience": "child"
+                },
+                {
+                    "body": "A chiller is a large machine that cools water or another liquid, and that liquid is then circulated through a data centre to remove heat from servers and other equipment. It is part of the cooling system that keeps computers from overheating, so a chiller failure during a heat wave can cause a data centre to lose cooling and servers to shut down. For decisions, money, risk and accountability, this means the chiller is part of the equipment that must be planned for and maintained, and the people responsible for the data centre's cooling system are accountable for keeping it working.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, a chiller is usually not something you own or run unless you have your own data centre or server room. It matters when your business depends on servers in a data centre that uses one, because a chiller failure during a heat wave can cause those servers to shut down. It does not matter much if you do not run servers that need this kind of cooling, and it tends to cost time only when cooling problems interrupt the servers you rely on.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "Standard industry term",
             "example": "If a chiller breaks down during a heat wave, the data centre may lose cooling and servers could shut down.",
             "related": [
@@ -29957,6 +30221,20 @@
             "uid": "13f1abcc",
             "slug": "behind-the-meter",
             "term": "Behind-the-Meter",
+            "lenses": [
+                {
+                    "body": "Behind the meter means a building makes its own electricity right there and uses it right away, instead of getting it from the big public power lines. It is like growing tomatoes in your own yard and eating them without taking them to the store first. The electricity goes straight from the machine that makes it to the building, so it never goes through the power meter.",
+                    "audience": "child"
+                },
+                {
+                    "body": "Behind the meter means a site generates its own electricity on site or nearby and uses it directly, so the power does not pass through the public utility grid or the customer's utility meter. For decisions, this can change how a company secures power, what it pays for that power, and what risks it carries if the site depends on its own supply rather than the grid. The operator that builds or runs the behind the meter supply is accountable for that supply.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, behind the meter means the business makes electricity on site or nearby and uses it directly, so that power never goes through the public utility meter. It matters when the business needs power without waiting for a grid connection, and it does not matter much if the business can get its power from the grid as usual. In the example, it saved the time of waiting years for a grid connection.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "The phrase comes from utility metering, where anything on the customer's side of the electricity meter is behind the meter.",
             "example": "A data center operator built a gas plant behind the meter so its servers could run without waiting years for a grid connection.",
             "related": [
@@ -30337,6 +30615,20 @@
             "uid": "e5d6e7d0",
             "slug": "battery-energy-storage-system-bess",
             "term": "Battery Energy Storage System (BESS)",
+            "lenses": [
+                {
+                    "body": "A Battery Energy Storage System is a big set of batteries that holds electricity for later, like a lunchbox that saves your snack for when you are hungry. A place with many computers can use it to keep power ready or to save power from the sun for the evening.",
+                    "audience": "child"
+                },
+                {
+                    "body": "A Battery Energy Storage System is a large battery setup that stores electricity for later use, often at data centers for backup power or to hold renewable energy such as solar or wind. For decisions, it affects how you plan for power reliability, when you use stored energy, and how you manage the money and risk tied to that power. The data center operator is the one who decides to add it and is accountable for that choice.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, a Battery Energy Storage System means a large battery setup that stores electricity for later, often at a data center. It matters to you if your work depends on a data center that uses one for backup power or to store solar or wind energy, and it does not matter much if your own power needs are small and simple. The definition does not say what it tends to cost or save in time.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "Standard industry term",
             "example": "The data center operator added a BESS to store solar power for evening use.",
             "related": [
@@ -30527,6 +30819,20 @@
             "uid": "1bfc68fb",
             "slug": "business-interruption-bi",
             "term": "Business Interruption (BI)",
+            "lenses": [
+                {
+                    "body": "Business interruption is like getting help to pay for your lemonade stand when a storm stops you from selling. It is a kind of insurance that pays a company for money it loses and extra costs when something covered, such as a fire or broken equipment, stops its normal work. In computer buildings, it can help when cooling breaks and customers cannot use their computers.",
+                    "audience": "child"
+                },
+                {
+                    "body": "Business interruption insurance pays a company for lost income and extra costs when a covered event stops normal operations. In AI and data centre settings, it covers downtime from property damage, cooling or technology failures, and supply chain disruptions that halt computing services. For decisions, it affects money and risk by replacing lost income and covering extra costs after a covered event, and accountability sits with whoever owns the insurance and the recovery plan.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, business interruption insurance pays for lost income and extra costs when a covered event, such as a fire or equipment failure, stops normal operations. It matters when your team depends on computing services that could go down from cooling or technology failures or supply chain disruptions, and it matters less when a short outage would not stop your work or cause lost income. The definition does not give a cost or time saving, but it can cover revenue lost while repairs are made.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "Standard industry term",
             "example": "A data centre operator whose cooling system fails and takes customer workloads offline files a business interruption claim for the revenue lost while repairs are made.",
             "related": [
@@ -30679,6 +30985,20 @@
             "uid": "97b424cd",
             "slug": "cedent",
             "term": "Cedent",
+            "lenses": [
+                {
+                    "body": "A cedent is an insurance company that gives part of its risk to another insurance company. Think of it like sharing a big chore with a helper so you do not have to do it all alone. In AI insurance, the cedent might be an insurer covering AI related losses that wants to lower its own risk.",
+                    "audience": "child"
+                },
+                {
+                    "body": "A cedent is the original insurer that buys reinsurance and passes part of its risk to a reinsurer. For decisions and money, this means the cedent keeps some exposure but reduces how much loss it could face, while the reinsurer takes on the transferred portion. The cedent remains the original insurer that bought the reinsurance, so it is accountable for that choice and for its own coverage.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, cedent is not a role your business plays unless your business is an insurance company that buys reinsurance. It matters to you only if you buy insurance from an insurer that is a cedent, because that insurer has passed some of its risk to a reinsurer. It does not change your day to day work, and it tends to cost or save you no time directly, since the reinsurance arrangement is between insurers.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "The term comes from the reinsurance industry and derives from the Latin word cedere, meaning to yield or give up.",
             "example": "The AI insurer acted as cedent when it transferred a portion of its liability for autonomous vehicle accidents to a global reinsurer.",
             "related": [
@@ -31087,6 +31407,20 @@
             "uid": "adbc91f4",
             "slug": "captive-insurer",
             "term": "Captive Insurer",
+            "lenses": [
+                {
+                    "body": "A captive insurer is like a lemonade stand that a big store owns, so the store pays its own stand for accidents instead of paying another company. If a robot in a warehouse bumps into something, the store's own little insurance stand can pay for the fix. The big store owns and controls it, so the money stays inside.",
+                    "audience": "child"
+                },
+                {
+                    "body": "A captive insurer is an insurance business owned by the parent company that covers the parent's own losses, so premiums and claims stay inside the group instead of going to an outside insurer. For decisions, that means the parent chooses what risks to fund, holds the money set aside for claims, and carries the risk if losses are larger than expected. Accountability sits with the parent's leadership because they own and control the captive, so they answer for its payouts and its finances.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, a captive insurer means creating your own small insurance company to cover your own losses instead of buying insurance from outside firms. It matters when you want to own and control that insurer and keep the premiums and claims inside, and it does not matter when you prefer to buy insurance from outside firms. It can save time by paying claims directly through your own insurer, but it costs time to run the captive and manage its money.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "The term comes from the idea that the insurer is captive to, or owned by, the company it insures, and has been used since the mid 1900s.",
             "example": "A robotics company might set up a captive insurer to pay for damages if its AI system causes an accident in a warehouse.",
             "related": [
@@ -31519,6 +31853,20 @@
             "uid": "6c0bc222",
             "slug": "claims-made-vs-occurrence",
             "term": "Claims-Made vs Occurrence",
+            "lenses": [
+                {
+                    "body": "Claims-made and occurrence are two ways an insurance rule decides when it helps. Imagine a school year rule: one rule helps only if you tell the school before the school year ends, even if the problem happened earlier. The other rule helps if the problem happened during the school year, even if you tell the school later.",
+                    "audience": "child"
+                },
+                {
+                    "body": "Claims-made means the policy responds only if the claim is reported while the policy is active, no matter when the problem happened. Occurrence means the policy responds if the problem happened while the policy was active, even if the claim comes later. For decisions, money, risk and accountability, this timing rule changes whether a late claim is covered, so the accountable owner must track reporting deadlines and consider an extended reporting period when a claims-made policy ends.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, claims-made means you are covered only if the claim is reported while the policy is active, no matter when the problem happened. Occurrence means you are covered if the problem happened while the policy was active, even if the claim comes later. It matters when a lawsuit may come after the policy ends, and it does not matter much when all claims are reported during the active policy period; it tends to cost time to track report dates and to decide whether to buy an extended reporting period.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "Standard industry term in insurance, used for decades to describe policy trigger types.",
             "example": "A company with a claims made AI policy is protected when a customer sues during the policy year, but if the lawsuit comes after the policy ends, there is no coverage unless they bought an extended reporting period.",
             "related": [
@@ -31785,6 +32133,20 @@
             "uid": "176cf1e5",
             "slug": "catastrophe-bond",
             "term": "Catastrophe Bond",
+            "lenses": [
+                {
+                    "body": "A catastrophe bond is like a rainy day jar for a company. People put money in and get a little extra back, but if something very bad happens, like a big computer system stopping for many days, they might lose some or all of that money, and the company gets help to pay for the damage.",
+                    "audience": "child"
+                },
+                {
+                    "body": "A catastrophe bond is an insurance linked investment that pays out when a rare and severe event happens, such as a multi day cloud outage. Investors earn regular interest but can lose some or all of their money if that event occurs, which helps the company cover big losses. The decision is whether to buy that protection, how much risk to transfer, and who is accountable for choosing it.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, a catastrophe bond matters if a rare severe event, like a multi day cloud outage, could cause a loss too big to handle alone. It does not matter for everyday outages or small problems, and it is not a time saving tool for daily work. It does not replace normal insurance or quick fixes, and it does not save time in daily work.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "Standard industry term, originally used for natural disasters like hurricanes, now applied to technology risks such as cloud outages.",
             "example": "An AI company might buy a catastrophe bond to protect itself financially if a major cloud provider goes down for several days and disrupts its services.",
             "related": [
@@ -32165,6 +32527,20 @@
             "uid": "bb785db2",
             "slug": "builders-risk",
             "term": "Builders Risk",
+            "lenses": [
+                {
+                    "body": "Builders risk is like a safety net for a building while it is being built. It protects the partly built structure and the materials on site if they get damaged. It stops when the building is mostly finished and the owner takes over, and then the finished building needs a different kind of protection.",
+                    "audience": "child"
+                },
+                {
+                    "body": "Builders risk is insurance for a building project while it is under construction, covering damage to the structure and materials on site. It ends when the project is largely finished and the owner takes over, so a separate property policy must take over at that point. For decisions and money, treat it as a construction phase cost and risk cover, and make sure someone is accountable for arranging the next policy at handover.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, builders risk matters if you have a building project, because it covers damage to the partly built structure and materials on site during construction. It does not matter once the project is largely finished and the owner takes over, because then a separate property policy is needed. In practice it tends to take time to arrange before construction and then ends at handover, so it is a temporary project cost rather than a permanent one.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "Standard industry term",
             "example": "A data centre developer buys builders risk to cover the half built server halls and stored equipment, but once the campus is handed over, that policy ends and the operational insurance takes over.",
             "related": [
@@ -32279,6 +32655,20 @@
             "uid": "6b0dc1eb",
             "slug": "carve-back",
             "term": "Carve-Back",
+            "lenses": [
+                {
+                    "body": "Imagine a rule says you cannot bring any toys to school, but a later note says you can still bring your lunchbox. A carve back is like that note in an insurance rule: it says one kind of problem is covered again after a big rule said it was not. So if the rule says computer problems are not covered, a carve back can still cover harm from a chatbot that gives dangerous medical advice.",
+                    "audience": "child"
+                },
+                {
+                    "body": "A carve back is a policy clause that puts a specific risk back into coverage after a broad exclusion took it out. For AI decisions, it tells you which AI related losses are actually insured, so you can judge the money at risk and who is accountable for managing that risk. It does not remove the exclusion for everything else, so you must check the exact wording before relying on it.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, a carve back means a broad AI exclusion in an insurance policy may not be the final word, because one specific AI risk can be added back. It matters when an AI related loss would otherwise be excluded, such as harm from a chatbot giving dangerous medical advice, and it matters less when the company has no such AI related loss. Checking for a carve back can save time later by showing what is covered before a claim, though it may take time to read the policy wording.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "Standard industry term from insurance contract drafting.",
             "example": "The policy excluded all software failures, but a carve back restored coverage for harm caused by a chatbot giving dangerous medical advice.",
             "related": [
@@ -32559,6 +32949,20 @@
             "uid": "f87ed6cf",
             "slug": "avid-ai-vulnerability-database",
             "term": "AVID (AI Vulnerability Database)",
+            "lenses": [
+                {
+                    "body": "AVID is like a warning list for computer programs that can learn. It is public, so people can check it for known problems and fix them before they cause harm. For example, engineers looked at the list before sending out a new version of a car that drives itself.",
+                    "audience": "child"
+                },
+                {
+                    "body": "AVID is a public database of known weaknesses and ways AI systems can fail. For decisions, it gives your team a place to check before releasing or updating an AI system, which can reduce risk and help avoid harm. The definition does not mention a price, so the main cost is staff time to search and review, and your organization remains accountable for fixing what it finds.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, AVID is a public list of known AI weaknesses you can check if you build or use AI systems. It matters when you are about to release or update an AI system, as in the example of engineers checking it before a car that drives itself update, and it does not matter much if your company does not build or use AI systems. The definition does not give a cost, so the main time cost is searching and reviewing entries, and it can save time by pointing to known problems before they cause harm.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "AVID was launched in 2021 as an open source effort to give AI systems a shared vulnerability list like the CVE database for traditional software.",
             "example": "Before releasing an update for a car that drives itself, engineers searched AVID for known weaknesses that could affect crash data handling.",
             "related": [
@@ -32711,6 +33115,20 @@
             "uid": "636043dd",
             "slug": "biometric-spoofing",
             "term": "Biometric Spoofing",
+            "lenses": [
+                {
+                    "body": "Biometric spoofing is when someone makes a fake voice or video that sounds or looks like a real person. It can make it seem like that person said or did something they did not. It is like someone wearing a mask and pretending to be you.",
+                    "audience": "child"
+                },
+                {
+                    "body": "Biometric spoofing means attackers create fake voice or video to impersonate a person, often to cause fraud or reputational harm. For decisions, it means a voice or video alone may not be enough proof. For money and risk, it can lead to a fraudulent payment or damage to trust, and accountability sits with whoever owns the approval process and the security controls around it.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, biometric spoofing matters when someone can fake a voice or video to get money or cause harm. It matters most for payment approvals and any process that trusts a familiar voice or face. It does not matter for every routine task, but when it does, it can cost time to add a second check and can save time by stopping a fraudulent payment before it goes out.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "The term comes from the security practice of spoofing, meaning to fake an identity signal, and became common as generative AI made realistic fake voices and faces easy to produce.",
             "example": "A fraudster used biometric spoofing to produce a fake voice recording of a company executive approving a large wire transfer.",
             "related": [
@@ -32749,6 +33167,20 @@
             "uid": "9ff03c27",
             "slug": "compute-hijacking",
             "term": "Compute Hijacking",
+            "lenses": [
+                {
+                    "body": "Imagine someone secretly using your game console or computer while you are not looking, so their game runs on your machine and you pay for the electricity. In AI, this can happen when someone steals a secret key and uses it to run their own AI work on someone else's paid computers. The person who owns the computers gets the bill, and the thief gets the results.",
+                    "audience": "child"
+                },
+                {
+                    "body": "Compute hijacking is when an attacker secretly uses your cloud servers or AI training resources to run their own work, often after stealing an API key. For decisions, it means your cloud and AI bills can rise without a matching business result, and the risk sits with the account that pays the bill. The organization that owns the account is accountable for the bill and for the access it grants.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, compute hijacking means someone can use your paid cloud or AI account to run their own work, often after getting an access key. It matters when you pay for cloud servers or AI model access and have keys that can be stolen, because the bill can grow while the work is not yours, and it does not matter much if you do not use paid cloud or AI compute or have no keys to protect. The cost is mostly the unexpected usage bill and the time spent finding and stopping it, while keeping keys private and watching usage can save that time.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "Standard industry term from cloud security, closely related to cryptojacking.",
             "example": "A company noticed a sudden spike in cloud GPU usage and later found that a stolen API key had been used to train an attacker's own language model on their account.",
             "related": [
@@ -33067,6 +33499,20 @@
             "uid": "f09a20a6",
             "slug": "companion-chatbot",
             "term": "Companion Chatbot",
+            "lenses": [
+                {
+                    "body": "A companion chatbot is a computer program that talks with you like a friend would, often to keep you company or cheer you up. It is not a real person, even if it sounds like one. The rules say it must tell you at the start that you are talking to a machine, and it must have extra safety rules for children.",
+                    "audience": "child"
+                },
+                {
+                    "body": "A companion chatbot is software that talks with users like a human friend, often for company or emotional support. Under the law described here, it must clearly say it is not a real person at the start of each conversation and must include extra safeguards for children. For decisions, money and risk, this means you need to know if you use or allow one, because the required notice and child safeguards are part of the rules, and accountability sits with whoever is responsible for meeting those rules.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, a companion chatbot matters if the company uses one with people, because the law described here requires it to say it is a machine and to add extra safeguards for children. It does not matter if the company does not use a companion chatbot at all. The definition does not give a time saving or cost, so the practical time cost is making sure the required notice and child safeguards are in place.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "The term entered common use in the 2020s as conversational artificial intelligence became widely available.",
             "example": "A companion chatbot must announce at the start of each conversation that the user is chatting with a machine, not a human.",
             "related": [
@@ -33309,6 +33755,20 @@
             "uid": "076cc9ca",
             "slug": "consequential-decision",
             "term": "Consequential Decision",
+            "lenses": [
+                {
+                    "body": "A consequential decision is a choice made by a computer program that can really change a person's life. It can decide if someone gets a job, a loan, medical care, or fair treatment from the government or courts. It is like a referee's call in a game that decides whether you get to keep playing.",
+                    "audience": "child"
+                },
+                {
+                    "body": "A consequential decision is an AI system's choice that has a major effect on a person's life, such as whether they get a job, a loan, medical care, or fair treatment from the government or courts. For decisions and money, this means the choice can change a person's access to work, credit, health care, or legal fairness, so the business carries the risk of getting it wrong. The business that uses the AI system is the one that must answer for the decision.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, a consequential decision is when an AI system makes a choice that has a major effect on a person's life, such as a hiring or loan decision. It matters when the business uses AI for decisions about people, because the effect is serious and the business may need to check or explain the choice. It does not matter when AI only helps with routine tasks that do not have a major effect on a person's life, and the time cost or saving depends on how much checking the business does.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "The term comes from recent AI laws and bills that focus on high stakes automated decisions.",
             "example": "A bank uses an AI system to make a consequential decision about whether to approve a customer's mortgage application.",
             "related": [
@@ -33523,6 +33983,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "A chatbot is a program that replies to what a customer types or says, in text or speech. For a company with five to fifty staff, it matters when simple questions come up often and staff time is taken up answering them, and it does not matter when questions are rare or always need a person. It can save time on those simple replies and hand the conversation to a person when it cannot, but the definition does not say how much time it costs or saves.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Under the hood a chatbot is a loop: the conversation so far is sent to a model as a list of messages, the model returns the next reply, and the app appends it. Everything the bot remembers has to fit in the context window, so long chats are trimmed or summarised. Tools and retrieval are added to ground its answers in real data.",
                     "audience": "developer"
                 },
@@ -33664,6 +34128,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "ChatGPT is OpenAI's chatbot that can write, answer questions, search the web, read files and generate images. For a small company, it matters when you want a quick first draft or a starting point, such as turning meeting notes into a first draft of a project plan, and it matters less when you need a final answer that you must stand behind. In time terms, it can save time on getting started, but you still need to decide what to do with the draft.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "ChatGPT is OpenAI's consumer app; developers reach the same models through the OpenAI API, billed per token. The app adds tools such as web search, file reading and code execution on top of the model, which is why the app and a bare API call can answer the same question differently.",
                     "audience": "developer"
                 },
@@ -33793,6 +34261,10 @@
                 {
                     "body": "Claude is one of the main enterprise options alongside OpenAI and Google models, offered directly and through cloud providers. Choosing between them is less about benchmarks than about data terms, where the model runs, and which vendor fits the company's existing cloud.",
                     "audience": "executive"
+                },
+                {
+                    "body": "Claude is an AI assistant that can read and write text, analyze documents and help with coding. For a small business, it matters when you have a long document, such as a contract, and want to find which parts cover ending the agreement, or when you need a first draft of routine writing. It does not matter for tasks outside writing, analysis and coding, and it tends to save time on reading and first drafts, though you still need to review the output and the cost depends on how you access it.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Claude models are available through Anthropic's API and through major cloud platforms, billed per token. Developers use them for coding, agents and long document work, and Anthropic publishes a coding tool, Claude Code, built on the same models.",
@@ -34632,7 +35104,7 @@
         "schema": "v2 (term, slug, category, definition, example, origin)",
         "generated": "2026-07-23"
     },
-    "built_at": "2026-10-01T03:23:56-05:00",
+    "built_at": "2026-10-01T06:22:55-05:00",
     "page_uid": "76dd9a8f",
     "readings": {
         "/ai-glossary/aime/": {
@@ -37712,5 +38184,6 @@
             "name": "SRJ Consulting & Services Frameworks",
             "slug": "srj-consulting-and-services-frameworks"
         }
-    ]
+    ],
+    "refresh_every_days": 90
 }

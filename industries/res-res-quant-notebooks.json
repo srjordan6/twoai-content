@@ -4,7 +4,7 @@
     "slug": "res-quant-notebooks",
     "shape": "art-topic",
     "title": "Reproducible Notebooks and Pipelines",
-    "answer": "Reproducible notebooks and pipelines cover the practices and tools that let a quantitative analysis be rerun, checked, and extended by someone else. They span exploratory notebooks, batch scripts, workflow managers, environment definitions, and data versioning. The aim is not just to repeat a number but to preserve the chain from raw data to reported result. This work sits inside quantitative analysis and reproducible work, and it matters wherever results inform decisions or further research.",
+    "answer": "Reproducible notebooks and pipelines cover the practices and tools that let a quantitative analysis be re-run and produce the same result. The scope includes interactive notebooks such as Jupyter, R Markdown, and Quarto, which mix code, text, and output for exploration. It also includes automated pipelines such as Snakemake, Nextflow, DVC, and MLflow, which chain steps into versioned workflows. The topic spans the code, the data, the environment, and the parameters that together determine the output. The goal is to make a result checkable by someone else, on a different machine, at a later time.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-10-01T01:42:12-05",
+    "built_at": "2026-10-01T06:53:39-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Researcher",
@@ -28,23 +28,23 @@
     "page_uid": "dd00d94d",
     "sections": [
         {
-            "body": "Reproducible notebooks and pipelines cover the practices and tools that let a quantitative analysis be rerun, checked, and extended by someone else. They span exploratory notebooks, batch scripts, workflow managers, environment definitions, and data versioning. The aim is not just to repeat a number but to preserve the chain from raw data to reported result. This work sits inside quantitative analysis and reproducible work, and it matters wherever results inform decisions or further research.",
+            "body": "Reproducible notebooks and pipelines cover the practices and tools that let a quantitative analysis be re-run and produce the same result. The scope includes interactive notebooks such as Jupyter, R Markdown, and Quarto, which mix code, text, and output for exploration. It also includes automated pipelines such as Snakemake, Nextflow, DVC, and MLflow, which chain steps into versioned workflows. The topic spans the code, the data, the environment, and the parameters that together determine the output. The goal is to make a result checkable by someone else, on a different machine, at a later time.",
             "heading": "Scope"
         },
         {
-            "body": "Notebooks usually run on a local machine, a shared server, or a cloud environment, with a kernel such as Python or R. Pipelines run on schedulers, clusters, or container platforms, often using Docker images and Conda or virtual environments to pin dependencies. Data may live in files, databases, or object stores, and workflow engines like Snakemake, Nextflow, or Make coordinate steps. Version control with Git tracks code and configuration, while data versioning tools track large inputs.",
+            "body": "Reproducible notebooks and pipelines run on a mix of local machines, shared servers, high performance clusters, and cloud virtual machines. The environment is usually captured with Python or R, package managers such as Conda, pip, or renv, and container images built with Docker or Apptainer. Execution can happen in JupyterHub or Binder for interactive sessions, or through Papermill and nbconvert to run notebooks as batch jobs. Workflow engines such as Snakemake and Nextflow schedule steps across cores and nodes, while DVC and MLflow track data versions and experiment runs. The same pipeline may need to run on a laptop for development and on a cluster for the full analysis.",
             "heading": "What it runs on"
         },
         {
-            "body": "An analyst writes code in small, testable steps, records parameters and random seeds, and separates raw data from derived outputs. Notebooks are used for exploration and communication, while pipelines are used for repeatable execution at scale. Each step declares its inputs and outputs, so the workflow can be rerun from a clean state. Logs, checksums, and environment files are saved alongside results to make failures visible and comparisons fair.",
+            "body": "The work is done by separating the exploratory notebook from the automated run and by making every step repeatable. A typical method captures the environment in a lockfile or container image, versions code and data with Git and DVC, and parameterizes notebooks with Papermill. The notebook is then converted to a script or a pipeline step with nbconvert, Snakemake, or Nextflow, and the run is recorded with MLflow or DVC. Tests and continuous integration check that the pipeline still produces the expected output when code or data changes. The aim is to remove hidden state and manual steps so that a clean checkout can reproduce the result.",
             "heading": "How the work is done"
         },
         {
-            "body": "Reproducible work depends on clear provenance, meaning who created the data, what code version ran, and what transformations were applied. Licensing and data use terms govern whether inputs can be shared or rerun, and privacy rules may restrict what can be stored in a notebook or repository. Secrets and credentials should not be committed to version control, and outputs should be traceable to a specific commit and environment. When results are published, the original paper or dataset should be cited rather than a secondary summary.",
+            "body": "Rights and risk in this area start with licensing of code, data, and model weights, and with attribution for each source. Provenance means every result can be traced to a specific version of code, data, and environment, often through a DOI from Zenodo or a commit hash. Risks include hidden state in notebooks, leaked credentials in outputs, and pipelines that depend on private data or unpinned packages. This site extracts 13608 claims from research works, and each claim needs a traceable source. The site's own practice is to link to the original paper rather than a search tool, and that same principle applies to notebooks and pipelines.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The direction is toward more automated capture of provenance, tighter integration between notebooks and workflow engines, and standards for packaging environments and data. Expect more use of container registries, signed artifacts, and machine readable metadata that describe a run without manual notes. Journals and reviewers increasingly ask for executable artifacts, which pushes teams to treat reproducibility as part of the analysis rather than an afterthought. The open question is how to keep the tools simple enough for everyday work while still capturing enough detail to trust the result.",
+            "body": "Reproducible notebooks and pipelines are moving toward tighter integration with container registries, workflow engines, and provenance standards such as RO-Crate and W3C PROV. Interactive notebooks are becoming more reproducible through Binder, JupyterLab, and environment lockfiles, while production work shifts to pipelines that run on schedulers. Experiment tracking with MLflow and DVC is merging with model registries and deployment systems. Automated reproducibility checks, where a service re-runs a pipeline and compares outputs, are becoming more common. The practical test of a claim will remain whether someone else can re-run the notebook or pipeline from a clean checkout.",
             "heading": "Where it is going"
         }
     ],

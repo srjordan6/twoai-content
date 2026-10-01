@@ -4,7 +4,7 @@
     "slug": "law-research-rag",
     "shape": "art-topic",
     "title": "Retrieval-Grounded Legal Research",
-    "answer": "Retrieval-grounded legal research is the practice of using AI systems that answer legal questions by first fetching relevant primary and secondary sources, then generating a response tied to those sources. It covers case law search, statutory and regulatory research, and drafting support where citations must be traceable. The aim is to reduce fabricated citations and to keep the lawyer in control of the analysis. It sits within legal research and case strategy, not as a replacement for professional judgment.",
+    "answer": "Retrieval-grounded legal research is the practice of answering a legal question by first pulling relevant authorities and documents from a defined corpus, then using a language model to summarize or draft from those sources with citations attached. It covers case law, statutes, regulations, court rules, secondary sources, internal memos, contracts, and factual records, and it supports tasks such as issue spotting, case strategy, motion drafting, and due diligence. For questions about AI law, a corpus might include the site's 29 AI case law precedents alongside broader materials. The aim is not to replace legal judgment but to make the source base explicit and checkable.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-10-01T01:42:12-05",
+    "built_at": "2026-10-01T06:53:39-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Lawyer",
@@ -28,23 +28,23 @@
     "page_uid": "1bbfe89c",
     "sections": [
         {
-            "body": "Retrieval-grounded legal research is the practice of using AI systems that answer legal questions by first fetching relevant primary and secondary sources, then generating a response tied to those sources. It covers case law search, statutory and regulatory research, and drafting support where citations must be traceable. The aim is to reduce fabricated citations and to keep the lawyer in control of the analysis. It sits within legal research and case strategy, not as a replacement for professional judgment.",
+            "body": "Retrieval-grounded legal research is the practice of answering a legal question by first pulling relevant authorities and documents from a defined corpus, then using a language model to summarize or draft from those sources with citations attached. It covers case law, statutes, regulations, court rules, secondary sources, internal memos, contracts, and factual records, and it supports tasks such as issue spotting, case strategy, motion drafting, and due diligence. For questions about AI law, a corpus might include the site's 29 AI case law precedents alongside broader materials. The aim is not to replace legal judgment but to make the source base explicit and checkable.",
             "heading": "Scope"
         },
         {
-            "body": "These systems run on a combination of a document store or search index holding legal texts, an embedding model that turns passages into vectors, and a retrieval layer that finds candidate passages for a query. Many implementations use a vector database alongside a traditional keyword index, often called hybrid search. The generation model then reads the retrieved passages and produces an answer with citations. Some tools connect directly to commercial legal databases through APIs, while others index a firm's own document collection.",
+            "body": "The system runs on a document pipeline that ingests sources, extracts text, splits it into passages, and stores those passages in a searchable index. That index may combine keyword search with vector embeddings, so a query can match both exact citations and paraphrased concepts. A language model then receives the retrieved passages as context, either through a hosted API or a locally hosted model, depending on confidentiality needs. Access controls, audit logs, and connections to citators or docket feeds are common supporting parts.",
             "heading": "What it runs on"
         },
         {
-            "body": "The work begins by breaking source documents into chunks, embedding them, and storing them for fast similarity search. A user query is embedded and matched against the index, then a reranking step selects the most relevant passages. The language model is prompted to answer only from those passages and to cite them, and a verification step checks that each citation exists and supports the claim. Practitioners review the output, check the cited authorities, and refine the query or the source set as needed.",
+            "body": "The work usually starts with a research question and a set of filters, such as jurisdiction, date range, court, or practice area. The system retrieves candidate passages, reranks them for relevance, and passes the top results to the model with instructions to answer only from those sources. A lawyer or researcher then checks each citation against the original document, looks for contrary authority, and revises the draft. The loop repeats as the question sharpens, and the final product records which sources were used and which were rejected.",
             "heading": "How the work is done"
         },
         {
-            "body": "Rights and risk questions include copyright and licensing of the underlying legal texts, confidentiality of client documents fed into the system, and privilege concerns when third-party models are used. Provenance matters because an answer is only as good as the retrieved source, and a citation that looks correct may still be misread or outdated. The site tracks 148 active AI lawsuits, 92 of them intellectual property, which shows how active these disputes are. Firms also need to manage accuracy, bias in retrieval, and the risk of unauthorized practice of law if outputs are not reviewed by a licensed attorney.",
+            "body": "Rights and risk center on confidentiality, privilege, licensing, and accuracy. Sending client material to a third-party model can raise waiver and data retention concerns, so firms often restrict what leaves their environment and keep audit trails of prompts, retrieved sources, and model versions. Legal publishers have their own terms for text and metadata, and court rules increasingly require disclosure when AI assists a filing. Provenance means being able to show where each statement came from, when it was retrieved, and who reviewed it, which is also how teams catch hallucinated citations before they reach a court.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The direction is toward tighter integration with authoritative databases, better citation verification, and audit trails that record which sources were retrieved and how they were used. Regulation of AI in legal services is moving, with 219 compliance and regulation pages and 6978 state AI bills tracked on this site, so expectations for transparency and accountability are likely to grow. Retrieval methods are also improving, with graph-based retrieval and multi-step reasoning that can follow citations across cases. The likely outcome is that retrieval grounding becomes a standard expectation for any AI tool used in legal research, rather than a special feature.",
+            "body": "The direction is toward tighter integration between retrieval, citation validation, and drafting tools, so that a research memo can be traced back to each source passage. Domain-specific embeddings and hybrid search are likely to improve recall for legal language, while agentic workflows may handle multi-step research across dockets, statutes, and internal files. Evaluation is maturing, with benchmarks that test citation accuracy and refusal to answer when sources are thin. Court rules and professional guidance are also becoming more specific about disclosure and verification.",
             "heading": "Where it is going"
         }
     ],
