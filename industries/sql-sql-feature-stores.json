@@ -4,7 +4,7 @@
     "slug": "sql-feature-stores",
     "shape": "art-topic",
     "title": "Feature Stores",
-    "answer": "A feature store is a managed set of tables of model input values, computed once and served identically to training and to production, which prevents a model from being trained on one definition of a value and run on another. It sits between raw data sources and the model, giving data scientists and engineers a shared catalog of features. The scope covers offline storage for training and online storage for low latency serving, plus the transformation logic that keeps both in sync. It also covers metadata, versioning, and lineage for each feature.",
+    "answer": "A feature store is a managed set of tables of model input values, computed once and served identically to training and to production, which prevents a model from being trained on one definition of a value and run on another. It sits between raw source systems and the models that consume them, and it usually has two faces: an offline store holding full history for training and backfills, and an online store holding the latest values for low latency scoring. The scope covers the definition, computation, storage, versioning and serving of those values, plus the registry that records what each feature means and who owns it. It is not a model registry and not a general purpose data warehouse, though it borrows heavily from both.",
     "crumbs": [
         {
             "name": "AI and SQL",
@@ -12,7 +12,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-10-01T13:01:15-05",
+    "built_at": "2026-10-01T15:55:14-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "AI and SQL",
@@ -20,23 +20,23 @@
     "page_uid": "8be637e6",
     "sections": [
         {
-            "body": "A feature store is a managed set of tables of model input values, computed once and served identically to training and to production, which prevents a model from being trained on one definition of a value and run on another. It sits between raw data sources and the model, giving data scientists and engineers a shared catalog of features. The scope covers offline storage for training and online storage for low latency serving, plus the transformation logic that keeps both in sync. It also covers metadata, versioning, and lineage for each feature.",
+            "body": "A feature store is a managed set of tables of model input values, computed once and served identically to training and to production, which prevents a model from being trained on one definition of a value and run on another. It sits between raw source systems and the models that consume them, and it usually has two faces: an offline store holding full history for training and backfills, and an online store holding the latest values for low latency scoring. The scope covers the definition, computation, storage, versioning and serving of those values, plus the registry that records what each feature means and who owns it. It is not a model registry and not a general purpose data warehouse, though it borrows heavily from both.",
             "heading": "Scope"
         },
         {
-            "body": "Feature stores typically run on a combination of a data warehouse or lakehouse for offline storage and a low latency database or key value store for online serving. Common backends include PostgreSQL, Redis, Cassandra, and cloud warehouse services. The site tracks 263 active Model Context Protocol servers for SQL databases and warehouses, which reflects how often feature stores are wired into SQL based data platforms. Every page on this site is itself built from a PostgreSQL database, a reminder that relational stores remain a practical foundation for metadata and offline tables.",
+            "body": "Most feature stores are built on infrastructure a data team already runs: a columnar warehouse or lakehouse such as Snowflake, BigQuery or Databricks for the offline side, and a key value store such as Redis, Cassandra or DynamoDB for the online side. Batch computation runs on Spark, dbt or plain SQL against the warehouse, while streaming features arrive through Kafka or a similar log and are written to both stores. The tooling around SQL warehouses is broad, and this site's directory alone lists 263 MCP servers for SQL databases and warehouses, which is one sign of how much model facing work now terminates in a SQL engine. A small team can start with a single PostgreSQL schema and a cache, which is roughly the shape of the database behind every page on this site.",
             "heading": "What it runs on"
         },
         {
-            "body": "The work starts with defining features as transformations over source tables, often in SQL or a dataframe API. A pipeline computes those transformations on a schedule or in streaming, writes the results to the offline store, and materializes the same values to the online store. Point in time correctness is enforced so that training rows only see feature values that were available at the time of the label. Teams then register features, document them, and reuse them across models. Monitoring checks for drift and skew between offline and online values.",
+            "body": "The work starts by expressing a feature as a transformation, usually SQL or Python, over event or snapshot tables that carry a timestamp. That transformation is backfilled across history so training sets can be rebuilt, and joins to labels are done point in time so a row only sees values that existed before the outcome it predicts. The same definition is then materialised into the online store on a schedule or a stream, so training and serving read from one source of truth. Teams add freshness checks, backfill tests and drift comparisons between offline and online values, because a silent mismatch between the two is the failure this whole category exists to catch. Reuse is the other half of the method: a feature defined once should be discoverable and callable by other teams rather than rebuilt per model.",
             "heading": "How the work is done"
         },
         {
-            "body": "Governance covers who can define, change, and read a feature, with access controls tied to the same identity systems used elsewhere. Provenance records which source tables, transformations, and code versions produced each feature value. Versioning lets a team roll back a feature definition without breaking models that depend on the old one. Audit trails show when a feature was updated and which training runs or production services consumed it. Because features can encode sensitive data, teams apply the same privacy and retention rules as the underlying tables.",
+            "body": "Feature definitions are shared assets, so ownership, naming and documentation matter as much as the code, and a registry entry should record the source table, the transformation, the refresh cadence and the responsible team. Provenance is the hard part: when a model misbehaves, someone has to trace a served value back through the pipeline to the raw record and the version of the logic that produced it. Personal data in features raises the usual obligations around access control, retention and deletion, and a feature derived from a user record is still that user's data even after aggregation. Leakage is a governance risk as well as a technical one, since a feature computed with hindsight can inflate offline metrics and hide the problem until deployment. Cost and duplication sit alongside these, because two teams computing the same value two ways is both a bill and an inconsistency.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "Feature stores are moving toward tighter integration with the SQL and warehouse layer, so that definitions live close to the data and are governed by existing database permissions. Streaming and real time features are becoming more common as models need fresher inputs. The line between a feature store and a semantic layer or metrics layer is blurring, with shared catalogs and lineage. Expect more automation for backfills, skew detection, and cost control. Some teams are also exploring feature stores as a way to share reusable inputs across many models rather than rebuilding them per project.",
+            "body": "The direction of travel is toward fewer separate systems: warehouses, semantic layers, metric stores and feature stores are converging on the same idea of a governed, versioned definition served to many consumers. Streaming and real time features keep moving from specialist projects into the default, driven by ranking, fraud and personalisation workloads that cannot wait for a nightly batch. Embeddings and other model generated vectors are increasingly treated as features, which pulls vector indexes into the same conversation about freshness and lineage. Agents and tool protocols are a newer consumer, with feature and metric endpoints exposed as callable tools rather than only as library calls. The open question is not whether the tables exist but whether the definitions inside them stay trustworthy as the number of consumers grows.",
             "heading": "Where it is going"
         }
     ],

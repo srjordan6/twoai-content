@@ -4,7 +4,7 @@
     "slug": "res-citations-graphs",
     "shape": "art-topic",
     "title": "Citation Graphs Over Time",
-    "answer": "A citation graph over time treats each scholarly work as a node and each reference as a directed edge, then keeps dated snapshots of that structure so change becomes visible. Its scope covers the growth of a literature, the rise and fall of hub papers, the movement of ideas between subfields, and the lag between publication and uptake. It sits inside citation mapping and discovery, where the practical questions are which work to read next and how a line of research assembled itself. A static graph answers who cites whom, while the time dimension answers when, how fast, and in what order.",
+    "answer": "Citation graphs over time are maps of scholarly works where nodes are papers and directed edges are citations, with a time axis attached to each node and edge. They show how ideas spread, how fields cluster, and how the importance of a paper changes as later work cites it. The scope includes static snapshots and dynamic sequences, from a single paper's citation tree to whole-field networks. It also covers derived measures such as citation counts, co-citation, bibliographic coupling, and temporal bursts. A small library such as this site's 288 research papers can be drawn as one such graph, though most studies use much larger corpora.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-10-01T13:01:15-05",
+    "built_at": "2026-10-01T15:55:14-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Researcher",
@@ -28,23 +28,23 @@
     "page_uid": "07549d7b",
     "sections": [
         {
-            "body": "A citation graph over time treats each scholarly work as a node and each reference as a directed edge, then keeps dated snapshots of that structure so change becomes visible. Its scope covers the growth of a literature, the rise and fall of hub papers, the movement of ideas between subfields, and the lag between publication and uptake. It sits inside citation mapping and discovery, where the practical questions are which work to read next and how a line of research assembled itself. A static graph answers who cites whom, while the time dimension answers when, how fast, and in what order.",
+            "body": "Citation graphs over time are maps of scholarly works where nodes are papers and directed edges are citations, with a time axis attached to each node and edge. They show how ideas spread, how fields cluster, and how the importance of a paper changes as later work cites it. The scope includes static snapshots and dynamic sequences, from a single paper's citation tree to whole-field networks. It also covers derived measures such as citation counts, co-citation, bibliographic coupling, and temporal bursts. A small library such as this site's 288 research papers can be drawn as one such graph, though most studies use much larger corpora.",
             "heading": "Scope"
         },
         {
-            "body": "The raw material is bibliographic metadata: titles, authors, venues, years, and reference lists, usually drawn from sources such as Crossref, OpenAlex, Semantic Scholar, or licensed indexes like Scopus and Web of Science. Persistent identifiers, chiefly the DOI, hold records together across sources, and author identifiers such as ORCID help separate people with similar names. Storage is typically a graph database or a relational schema with a time column, plus periodic snapshots so a past state can be rebuilt rather than overwritten. A library the size of this site's, 135 research papers, yields a graph small enough to rebuild at each snapshot rather than update incrementally, and its edges point to the original paper rather than to a search tool.",
+            "body": "Citation graphs over time run on bibliographic databases and persistent identifiers. Sources include publisher metadata, DOI records, preprint servers, and open citation indexes. Storage needs graph databases or columnar tables that can hold nodes, edges, timestamps, and version history. Compute can range from a laptop for a few thousand papers to distributed systems for hundreds of millions of records. The site's own library is small enough for a single machine, but the same pipeline scales.",
             "heading": "What it runs on"
         },
         {
-            "body": "Work starts with reference extraction and entity resolution, matching cited strings to canonical records and merging duplicate author and venue names. Snapshots are then taken at fixed intervals, monthly or yearly, and metrics are computed per snapshot: in-degree, PageRank, co-citation counts, bibliographic coupling, and community structure. Comparing consecutive snapshots exposes bursts of attention, emerging clusters, and papers that quietly lose relevance. Visualization usually pairs a layout that keeps nodes stable across time with a timeline control, so a reader can watch a cluster form. This site's 13608 extracted claims are one example of content that can be attached to nodes alongside citation edges.",
+            "body": "The work starts with resolving each paper to a stable identifier and extracting its reference list. Then edges are created from citing paper to cited paper, with a timestamp from the publication date or the citation date if available. Analysts clean duplicates, merge author and venue names, and handle missing or ambiguous references. They then compute temporal metrics such as citation lag, burst detection, and network growth curves. Visual layouts often use force-directed or timeline-based views to show clusters and change over time.",
             "heading": "How the work is done"
         },
         {
-            "body": "Rights depend on the source: OpenAlex and Crossref metadata are openly licensed, while Scopus and Web of Science are subscription products whose terms restrict redistribution and bulk reuse. Provenance practice means recording which source supplied each record, the retrieval date, and the snapshot version, so any number can be traced back to a specific state of the graph. The main risks are disambiguation errors that credit the wrong author, coverage bias toward English-language and well-indexed venues, and the habit of reading citation counts as a measure of quality rather than of attention. Citation gaming, coercive citation, and continued citation of retracted work all distort the picture, and a time series makes some of these patterns easier to spot rather than harder. This site's convention of linking to the original paper, and never to the Consensus search tool, keeps the trail from a graph edge back to the source document.",
+            "body": "Provenance matters because a citation graph is only as reliable as its source metadata. Rights issues arise from licensing of bibliographic records, full text, and any derived data that is redistributed. Risks include coverage bias, citation cartels, self-citation loops, and the mistaken treatment of citation counts as a direct measure of quality. A responsible practice records the data source, the extraction date, and the matching rules so that results can be audited. On this site, links go to the original paper rather than to a search tool, which keeps the chain of provenance visible.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The direction of travel is toward dynamic graph models that learn from the sequence of snapshots rather than treating each one separately, which supports forecasting future citations and detecting emerging topics earlier. Full-text and claim-level graphs extend the edges beyond references to statements, methods, and datasets, giving a finer view of how findings travel. Open citation infrastructure continues to widen coverage, though gaps remain for the Global South and for non-English literature. For a working researcher the likely change is less about prediction scores and more about provenance-aware tools that show how a claim moved through the literature, with each step traceable to a dated source.",
+            "body": "Citation graphs over time are moving toward richer, more frequent updates and toward linking papers with datasets, models, and software. Temporal graph learning and dynamic network embeddings are being used to predict emerging topics and to trace the spread of methods. Open citation data and better identifier coverage are reducing gaps, though coverage remains uneven across languages and regions. The next step is likely to be interactive maps that let a reader move through time and see how a claim, method, or dataset travels. For a site that holds research papers, the same graph could connect papers to the artifacts they introduce.",
             "heading": "Where it is going"
         }
     ],
