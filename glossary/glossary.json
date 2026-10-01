@@ -642,6 +642,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "Function calling is when an AI model asks another software tool to do something, such as checking a weather service and then updating a calendar to reschedule a site visit, instead of only writing text. For a small business, this matters when you want the AI to take action in real systems, because that action can have consequences, and it matters less when you only need help drafting or answering questions. It can save time on routine steps across tools, but setting it up and checking the results also takes time, and a person still needs to be accountable for what the AI does.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Every function the model can call is an attack surface; apply least privilege the same way you would to any service account, and assume prompt injection can attempt to trigger an unintended tool call through content the model processes.",
                     "audience": "ciso"
                 },
@@ -2241,6 +2245,10 @@
                 {
                     "body": "Confirm this assessment has actually been completed, not just assumed to be unnecessary, before launching any AI feature that processes personal data at meaningful scale; many organizations discover the requirement applied to them only after a regulator asks for the document.",
                     "audience": "executive"
+                },
+                {
+                    "body": "A DPIA is a written privacy risk check you do before using personal data in a new high-risk way. For a small business, it matters when you start an AI system that screens customer communications or otherwise processes personal data in new ways at scale, because a privacy regulator may ask for it first, and it does not matter for every small change or routine use that is not high-risk. It tends to cost time to write and review before you start, and it can save time later because it is the first document a regulator often requests.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Build a trigger-check process into your AI deployment pipeline specifically asking whether a given project processes personal data in a way that requires this assessment, since many AI use cases trigger the requirement in ways that are not immediately obvious without deliberate review.",
@@ -4553,6 +4561,14 @@
                     "audience": "child"
                 },
                 {
+                    "body": "An encoder is the part of an AI system that turns input into a compact representation the rest of the system can use. For decisions, it matters when the goal is understanding, sorting, searching, or matching rather than generating new text. The team accountable for the AI system should decide where an encoder-only model is used and how its outputs affect business actions.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "An encoder is the part of an AI system that turns text or other input into a form software can compare, sort, or search. For a company with five to fifty staff, it matters when you need to find similar documents, group messages, or match records, and it does not matter when you need the system to write new content. It tends to save time on repeated search and matching tasks, but it does not generate anything on its own.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "For pure classification or embedding tasks, an encoder-only model is usually cheaper and faster than using a full generative LLM; do not reach for a decoder-based chat model when an encoder-only model does the actual job better and at lower cost.",
                     "audience": "developer"
                 },
@@ -4604,6 +4620,14 @@
                 {
                     "body": "A two-part AI design: one part reads and understands the input, and a separate part writes the output, working together to turn one kind of thing, like a sentence in one language, into another, like the same sentence in a different language.",
                     "audience": "child"
+                },
+                {
+                    "body": "Encoder-decoder is an AI design that first reads and organizes an input and then produces an output, which fits tasks that turn one sequence into another. For decisions, it matters when choosing an approach for translation or summarization, because that design was built for those jobs, though decoder-only models now handle most tasks. The term itself does not set cost or risk, and accountability stays with the person who chooses the design and approves its output.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "Encoder-decoder is an AI design that reads one piece of text and writes another, such as translating or summarizing. It matters if your business needs that kind of transformation, for example turning a long document into a short summary or one language into another. It does not matter for most other AI tasks because other designs now handle them, and it tends to save time on translation or summarization by producing a first draft that still needs review.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Still a reasonable architecture choice for well-defined sequence-to-sequence tasks with a fixed input and output structure, like machine translation, where the explicit separation can offer training efficiency advantages over a general decoder-only approach.",
@@ -4659,6 +4683,14 @@
                     "audience": "child"
                 },
                 {
+                    "body": "A feed-forward network is the part of an AI model where much of its stored factual knowledge sits. For decisions, that means a wrong or outdated fact can be built into the model itself, so fixing it may require changing the model rather than adjusting a prompt or a rule. For money and risk, the definition points to the model itself as the place where facts are stored, so any correction touches the model, and the people who choose and run the model are accountable for whether its stored facts are fit for use.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, a feed-forward network is a technical part of an AI model, not something you set up directly. It matters when the AI gives a wrong fact that comes from its stored associations, because correcting that may mean changing the model rather than editing a prompt, and it does not matter for everyday use if the model's facts are correct or if you only use it for tasks that do not depend on stored facts. It can save time by answering from stored facts without a lookup, and it can cost time when those facts need to be corrected in the model.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "This is where mixture-of-experts routing typically replaces the standard dense FFN, since the FFN is usually the largest parameter count in a transformer block, making it the natural target for sparse capacity scaling.",
                     "audience": "developer"
                 },
@@ -4712,6 +4744,14 @@
                     "audience": "child"
                 },
                 {
+                    "body": "Flash Attention is a way to run the attention step in an AI model that uses less GPU memory traffic while doing the same mathematics. For decisions, it matters when long context windows are part of your product or service, because it makes serving them more affordable in memory cost. The risk is mainly an implementation choice in your AI serving stack, so the accountable owner is the team that runs that stack.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, Flash Attention is mostly a behind-the-scenes choice made by whoever provides the AI you use. It matters if you pay for AI that handles long documents or long conversations, because it can lower the memory cost of serving that model, and it does not matter much for short prompts or simple tools. It tends to save memory cost rather than your staff's time, so it does not directly save time for your team.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "A near-free performance win worth enabling by default in any modern transformer training or inference stack; it produces mathematically identical results to standard attention while substantially reducing memory bandwidth requirements and often runtime as well.",
                     "audience": "developer"
                 },
@@ -4763,6 +4803,14 @@
                 {
                     "body": "Two AIs competing against each other: one tries to make fake pictures good enough to fool the other, and the other tries to catch the fakes. As they compete, both get better, and the fake pictures get more and more realistic.",
                     "audience": "child"
+                },
+                {
+                    "body": "A Generative Adversarial Network is an AI architecture where two networks compete, one making synthetic data and one judging real from fake, so each improves against the other. For decisions, it matters when you consider using synthetic images or data, because the method produced the first convincingly realistic synthetic faces and early deepfakes. Money and risk depend on the use case, and the term does not assign accountability; that depends on who chooses to deploy it and use its outputs.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, a Generative Adversarial Network is a way to create or improve images, for example style transfer or super-resolution. It matters when you need synthetic or enhanced images and can manage the risk of realistic fakes, and it does not matter for work that does not involve those images. It tends to cost time to set up and check the results, and any time saved on image work depends on the task, with no specific amounts given here.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Mostly superseded by diffusion models for new image-generation projects due to training stability advantages, though GANs retain a speed advantage for real-time or latency-sensitive generation, since they produce output in a single forward pass rather than many denoising steps.",
@@ -6777,6 +6825,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "An Elo rating is a way to rank AI chat models by comparing them two at a time and seeing which one people prefer, like a leaderboard for head-to-head matches. For a small company, it matters when you want a quick shortlist of models that people tend to like, and it does not matter when you need to know how a model performs on your own specific work. Checking such a leaderboard can save time compared with testing every model yourself, but you may still need to try a few models on your own tasks.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "An Elo leaderboard position is a preference ranking from a specific pool of voters and prompts, not an objective capability score; who voted and on what prompts shapes the result as much as the models do.",
                     "audience": "journalist"
                 },
@@ -6828,6 +6880,10 @@
                 {
                     "body": "A balanced summary score, useful when false alarms and missed cases cost you roughly the same amount. If one type of error is far more expensive than the other in your business, ask for precision and recall separately rather than the blended F1.",
                     "audience": "executive"
+                },
+                {
+                    "body": "F1 score is one number that balances two kinds of mistakes: false alarms and misses. For a small company, it matters when you use a system to pull out information and both kinds of mistakes cause trouble, for example missing a detail or flagging something that is not there. It does not matter much when only one kind of mistake is a real problem, and it tends to save time by giving you one figure to compare instead of two separate numbers.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "The harmonic mean punishes imbalance more than a simple average would, so a model with high precision and low recall (or vice versa) will not hide behind a decent-looking average the way it might with arithmetic mean.",
@@ -9793,6 +9849,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "A digital twin is a live computer model of something you own or run, like a machine or a process, that uses real data to show how it is working. For a small business, it matters when you are about to make a costly change to a production line or key equipment and want to test it on the computer first, so you do not have to stop work or risk damage. It does not matter for simple daily choices or one-off jobs, and it can take time to set up and keep fed with data, though it can save time by finding problems before you touch the real thing.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Fidelity to the real system is the whole value proposition; a digital twin that drifts from the actual physical asset's current state produces simulations that are confidently wrong, so keep the data feed current and validate against reality regularly.",
                     "audience": "developer"
                 },
@@ -9844,6 +9904,10 @@
                 {
                     "body": "Most of your organization's existing, revenue-relevant AI is probably discriminative, classification, scoring, prediction, even if recent AI conversations have focused almost entirely on generative tools; do not let the newer category crowd out attention to the older, still-valuable one.",
                     "audience": "executive"
+                },
+                {
+                    "body": "Discriminative AI is the kind of AI that sorts or labels things you already have, like deciding if an email is spam or if a customer message is positive or negative. For a small business, it matters when you need to make many small decisions quickly, such as filtering messages or checking feedback, and it does not matter when you want AI to write new text or create new content. It tends to save time on repeated sorting and labeling work, though the definition does not give specific costs or savings.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Simpler to evaluate than generative systems, since correctness is usually well-defined; standard classification metrics, precision, recall, F1, apply cleanly, which is one reason discriminative models remain the default choice for well-specified decision tasks.",
@@ -9899,6 +9963,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "Embodied AI means AI that works through a physical body, using sensors and moving parts, so mistakes can cause real damage. For a company with five to fifty staff, it matters if you are considering robots that pick or handle objects in cluttered, changing places, like a warehouse, because the gap between digital and physical performance is still a stubborn frontier and may not work reliably. It does not matter if your AI use is only on screens for text, numbers, or images, and it may save time on repeated physical picking but cost time in setup, watching, and fixing errors.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Physical mistakes are not undoable the way a bad text output is; safety margins, fallback behaviors, and human override capability need to be designed in from the start, not added after a capability demo succeeds in controlled conditions.",
                     "audience": "developer"
                 },
@@ -9950,6 +10018,10 @@
                 {
                     "body": "A reason to treat capability forecasts with humility in both directions: a new model scale can unlock unexpected new abilities, and it can also fail to deliver an expected one, since the relationship between scale and specific capability is not fully predictable in advance.",
                     "audience": "executive"
+                },
+                {
+                    "body": "An emergent capability is a skill that only appears once an AI model gets large enough, and smaller versions did not have it. For a small business, this matters when you count on an AI tool for a task like multi-step arithmetic, because a larger model may suddenly do it well while a smaller one cannot. It matters less if your AI use is simple and already works, and the main time effect is that you may save time when the skill appears but spend time testing because you cannot predict when that will happen.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Do not assume a capability absent at one model scale will remain absent at the next; conversely, do not assume scale alone reliably delivers a specific needed capability. Test the actual model you plan to deploy rather than extrapolating from a smaller version.",
@@ -10005,6 +10077,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "An expert system is early AI that turns a human expert's rules into if-then logic for one narrow area. For a small business, it matters when a repeated decision follows clear fixed rules, as in the MYCIN example of recommending antibiotics from clinical rules, because it can give the same answer without a specialist each time. It does not fit messy or changing situations, and because hand-written rules do not scale, it can save time on narrow checks but cost time to write and update the rules.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Rule-based logic is not obsolete, it remains the right choice for narrow, well-understood domains where explainability matters more than handling edge cases; the lesson from expert systems is about scaling to messy, broad domains, not about rules being universally inferior.",
                     "audience": "developer"
                 },
@@ -10056,6 +10132,10 @@
                 {
                     "body": "Worth investigating specifically for use cases involving sensitive or regulated data that cannot legally or practically be centralized; it is a real technical option, not just a compliance talking point, though it does add real engineering complexity to weigh against the benefit.",
                     "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, federated learning means a shared model can learn from information on your team's devices without moving the raw information to one central server. It matters when you want the benefit of learning from private customer or staff data but you must follow rules about keeping that data where it is, and it does not matter much when your data already sits in one place and you have no such rules. It tends to cost extra time to set up and maintain because the engineering is more complex, and it can save time by reducing the work of collecting and transferring raw data.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "The engineering overhead is real: coordinating training across decentralized, unreliable devices with intermittent connectivity is materially harder than centralized training, so weigh that cost honestly against the privacy or residency benefit before committing to this approach.",
@@ -10111,6 +10191,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "For a small company, a foundation model is usually something you use through a product or service built on top of it, not something you train yourself. It matters when you need a capability that would be costly to build from scratch, because one large training run is shared and then adapted cheaply to many tasks. It does not matter much when your existing software already does the job, and the time it tends to save is the time you would otherwise spend building and training a model yourself.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Fine-tuning or prompting a foundation model is almost always cheaper and faster than training from scratch; reserve from-scratch training for cases where the foundation model's pretraining data or architecture genuinely does not fit your domain.",
                     "audience": "developer"
                 },
@@ -10162,6 +10246,10 @@
                 {
                     "body": "Being labeled a frontier model now carries specific regulatory obligations in some jurisdictions, evaluation and reporting requirements, so a vendor's frontier-model status is a compliance fact worth understanding, not just a marketing claim about capability.",
                     "audience": "executive"
+                },
+                {
+                    "body": "A frontier model is one of the most capable AI systems available now, usually the largest and newest. For a company with five to fifty staff, this matters when you choose an AI tool or service that uses one of these models, because the maker may have to run safety checks and report on it before release. It does not matter much if you use older or simpler AI tools, and the main time effect is a possible wait for a new model to pass its pre-deployment safety evaluation, not a direct cost or saving stated in the definition.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Frontier-model access often comes with usage restrictions or evaluation requirements attached by the provider or regulator; check the terms of use and any reporting obligations before building critical infrastructure on a frontier-designated model.",
@@ -11888,6 +11976,10 @@
                     "audience": "child"
                 },
                 {
+                    "body": "Few-shot prompting means giving an AI system a few examples of the output you want, so it learns the format, tone, and how to handle edge cases from those examples rather than from a written description. For decisions, this can make results more consistent and reduce the need for long instructions, but the main cost is the time to choose and check the examples. The main risk is that the examples, not the instructions, shape the result, so the person or team who approves the examples and the final output stays accountable.",
+                    "audience": "executive"
+                },
+                {
                     "body": "If an AI tool is not giving you output in the format you want, try showing it one or two examples of exactly what a good output looks like before asking for the real thing; this usually works much better than just describing what you want in words.",
                     "audience": "small-business"
                 },
@@ -11939,6 +12031,10 @@
                 {
                     "body": "A setting that discourages an AI from repeating the same words over and over, turned up higher the more times a word has already been used, to keep its writing from getting stuck in a loop.",
                     "audience": "child"
+                },
+                {
+                    "body": "Frequency penalty is a setting that makes an AI model less likely to repeat words or phrases it has already used, with the effect growing each time they appear. For decisions, it is a control to use when repeated output creates loops or stuck phrases, and the risk is that those loops and stuck phrases can make the output harder to use. It is not a spending decision by itself, and the person accountable for the AI output, such as the team lead or product owner, should decide whether to raise it and check the result.",
+                    "audience": "executive"
                 },
                 {
                     "body": "Not something you usually need to adjust directly in consumer AI tools, but if you are working with a more technical AI platform and notice repetitive, looping text, this is the setting that specifically addresses that problem.",
@@ -15256,6 +15352,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "Disparate impact means a rule or tool that looks fair can still produce unequal results for groups the law protects, even when no one meant to treat them differently. For a small business, this matters when you use software or policies to make decisions about people, such as hiring or lending, because the law can hold you responsible for the outcome, not just your intent. It does not matter for everyday choices that do not affect people's rights or opportunities, and checking for it takes some staff time but can save time by catching a problem before it grows.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Document fairness testing methodology and results as a formal legal risk-mitigation artifact, not merely a technical quality check, for any AI system used in a legally consequential decision category, since this documentation is what actually matters if liability is later examined.",
                     "audience": "ciso"
                 },
@@ -15311,6 +15411,10 @@
                 {
                     "body": "Build your compliance roadmap around the current, correct, tiered deadline structure rather than the law's originally announced dates, since the 2026 amendment meaningfully changed the actual timeline for different obligation categories, and outdated compliance planning based on the original schedule is a real, avoidable risk.",
                     "audience": "executive"
+                },
+                {
+                    "body": "The EU AI Act is a European law that groups AI systems by risk, from prohibited to minimal, and adds duties as the risk goes up. For a company with five to fifty staff, it matters when you use or provide AI in the EU in a way that falls into the prohibited or high-risk tiers, or when you must meet transparency duties, and it matters less for low-risk tools. In practice it tends to cost time in mapping your systems against the risk tiers and amended deadlines, and it can save time by showing which duties apply and which do not.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Structure your technical control implementation roadmap around the current, amended deadline schedule specifically, prioritizing Article 50 transparency requirements, which retained the earlier deadline, ahead of the now-deferred high-risk obligations.",
@@ -15370,6 +15474,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "Explainable AI means the AI can show why it made a decision, for example which details mattered most in an automated credit decision. For a company with five to fifty staff, this matters when you must justify an automated decision to the person it affects, such as a customer or an employee, and it does not matter much for everyday tasks where no one needs a reason. It can take time to review the explanation, and it can save time when you need to answer a question or correct a decision without guessing.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Test explainability outputs specifically for whether they would actually be comprehensible and useful to the affected individual, not just technically present as a feature in the system, since a technically correct but genuinely incomprehensible explanation does not satisfy the underlying purpose of this requirement.",
                     "audience": "ciso"
                 },
@@ -15425,6 +15533,10 @@
                 {
                     "body": "Understand and be prepared to explain which specific fairness definition your organization actually chose and why, since the underlying mathematics genuinely does not allow satisfying all reasonable fairness definitions simultaneously, which means this is a real policy choice your organization is accountable for, not a neutral technical default.",
                     "audience": "executive"
+                },
+                {
+                    "body": "A fairness metric is a test of whether a system that scores or sorts people gives similar results across groups. For a small company, it matters when you use such a system for decisions like screening, because you have to pick one metric and write down why, since not all fairness metrics can be met at the same time. It does not matter for routine work that does not score people, and the main cost is the staff time to choose and document the metric, which can save time later by making the choice clear.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Document the specific fairness metric selected and the reasoning behind that choice as a formal governance artifact, since a regulator or auditor examining fairness claims will want to understand not just that fairness was tested, but which specific, genuinely contestable definition of fairness was actually applied.",
@@ -18151,6 +18263,14 @@
                     "audience": "child"
                 },
                 {
+                    "body": "A doomer is someone who believes advanced AI poses an existential threat to human civilization. For decisions, money, risk and accountability, the term describes a viewpoint in a debate, not a specific cost or owner, and the example shows risk researchers who advocate deceleration being labeled doomers in debate. Because it can be worn as a badge or thrown as an insult depending on the room, treat it as a label for a position and check who is accountable for the actual risk decisions.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "In a company with five to fifty staff, a doomer is someone who believes advanced AI poses an existential threat to human civilization, which is a broad risk and culture debate rather than a routine business task. It matters to you when staff, customers or partners are using the label in arguments about AI risk, and it does not matter for ordinary choices unless that debate changes them. The term itself tends to cost or save no time, though the conversation around it can take time.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "A loaded term worth using carefully; it can flatten a wide range of actual positions on AI risk, from moderate caution to existential-risk conviction, into a single dismissive label, which can misrepresent a source's actual view.",
                     "audience": "journalist"
                 },
@@ -18198,6 +18318,14 @@
                 {
                     "body": "A group of people who believe AI should be developed as fast as possible, without much slowing down for safety rules, positioned directly against the people who want to go carefully.",
                     "audience": "child"
+                },
+                {
+                    "body": "e/acc is a movement that argues for rapid technological progress and unrestricted AI development, and it defines itself against safety-first framing. For a business leader, it is a public stance in the policy debate about AI speed and risk, not a specific rule for spending or accountability. When founders add e/acc to their profiles, they are declaring that stance.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, e/acc is mostly a cultural and policy label, not a day to day business method. It matters when the owner or staff use it to take a public position on AI rules, and it does not matter much if the company simply uses AI without making that stance. The definition does not describe a direct cost or time saving for a small company.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Worth distinguishing the online movement's origins from the substantive policy positions some of its adherents now hold in serious venues; treating it purely as internet meme culture undersells its current policy influence.",
@@ -18249,6 +18377,14 @@
                     "audience": "child"
                 },
                 {
+                    "body": "The em dash tell is the belief that heavy punctuation, especially em dashes, signals AI authorship. It is unreliable but widely cited, so it should not drive spending, review, or accusation decisions on its own. The risk is wrongly accusing real writers, and accountability belongs to whoever applies that rule or makes the call.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, the em dash tell means someone may treat punctuation habits as a sign that a document was written by AI. It matters when that guess leads to a false accusation, such as a human essay flagged as AI, and it does not matter when no one is judging authorship by punctuation. It tends to cost time in reviews and disputes, and it does not save time because the signal is unreliable.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Do not cite punctuation patterns as evidence of AI authorship in reporting; it is a widely believed but unreliable heuristic, and repeating it as fact lends false credibility to a weak signal.",
                     "audience": "journalist"
                 },
@@ -18298,6 +18434,14 @@
                     "audience": "child"
                 },
                 {
+                    "body": "Enshittification is when a platform shifts from serving its users to extracting value from them. In AI, it shows up as feature bloat, where assistants are bolted on to raise metrics rather than help, and the product degrades for users. For decisions, this means judging whether added AI features serve customers or mainly extract from them, and deciding who is accountable for that tradeoff in money and risk.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a small business with five to fifty staff, enshittification means a tool you depend on can add mandatory AI features that crowd the interface and make the tool worse for your staff. It matters when that tool is central to daily work and the changes cost time, and it matters less when the tool is optional or easy to replace. The time effect is usually a cost, as people work around the clutter, and the definition does not promise any time savings.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "A useful and increasingly precise frame for covering AI feature bloat: ask whether a new AI feature was built to solve a user problem or to move an internal metric, since the two are often confused in press releases.",
                     "audience": "journalist"
                 },
@@ -18345,6 +18489,14 @@
                 {
                     "body": "A word for the idea of an AI suddenly getting much, much smarter, super fast, faster than people could even react to or stop it. It is a scary scenario that people who study AI safety argue a lot about.",
                     "audience": "child"
+                },
+                {
+                    "body": "Foom is slang for a rapid recursive intelligence explosion, meaning an AI improving itself faster than humans can respond. For decisions, money and risk, it points to a scenario where change outpaces normal planning cycles, so choices about investment and exposure could become hard to make in time. The term does not settle who is accountable, but it is debated in safety circles as the central fast-takeoff scenario.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "Foom is slang for a rapid recursive intelligence explosion, meaning an AI improving itself faster than humans can respond. For a company with five to fifty staff, it matters only if that debated fast-takeoff scenario affects your market or tools, and it does not matter for ordinary day to day use of AI. The term itself does not give a cost or time saving, so treat it as a risk topic to watch, not a budget line.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "A specific technical scenario, not a general synonym for \"AI getting dangerous\"; conflating it with broader AI risk concerns misrepresents a debate that is actually about the speed and controllability of capability growth.",
@@ -19828,6 +19980,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "Edge AI means the AI runs on the device itself, like a phone or camera, instead of in the cloud. For a small business, it matters when you need a fast answer, want to keep data private, or have no internet, such as a camera checking products on a line without sending data away. It does not matter if your cloud tools already work well and your internet is reliable, and it can save time by avoiding the trip to the cloud but may cost time if the device cannot handle a large model.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Explicitly weigh the capability tradeoff of a smaller on-device model against the latency, privacy, and connectivity benefits before defaulting to a cloud API; for many bounded, well-defined tasks the tradeoff genuinely favors edge deployment.",
                     "audience": "developer"
                 },
@@ -19934,6 +20090,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "An evaluation harness is an automated test suite that scores AI outputs against your expectations and runs every time you change an instruction or update the model. For a company with five to fifty staff, it matters when AI is used in regular work, because it can catch problems with accuracy, format, or tone before the outputs are used. It does not matter much if AI is only used occasionally and its output is checked by hand, and it can save time by replacing some manual checking, though setting it up and maintaining it takes time.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "The CI/CD of AI quality: without evals, every prompt edit and model update is a blind deploy. Build and maintain a real evaluation suite for any production AI feature; shipping prompt or model changes without automated evaluation against known test cases is the AI-era equivalent of deploying code with no tests.",
                     "audience": "developer"
                 },
@@ -19987,6 +20147,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "For a small company, a feature store is one shared place where the input data your models use is kept and served the same way when you train a model and when it runs. It matters when you use more than one model or when several people work with the same data, because it stops one model from learning from one version of a data piece while another model uses a different version. It does not matter much if you have one simple model and one person handling the data, and it can save time by avoiding repeated work and fixing mismatches, though it takes time to set up and keep the shared place working.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "It solves the classic ML failure of training on one definition of a feature and serving another; training-serving skew, where a feature is computed slightly differently between training and production, is a notoriously hard-to-debug source of production model underperformance that this architecture specifically addresses.",
                     "audience": "developer"
                 },
@@ -20038,6 +20202,10 @@
                 {
                     "body": "Training compute measured in FLOPs has become a regulatory trigger: thresholds in AI rules are written in these units; know where your organization's AI development or usage sits relative to any applicable regulatory compute thresholds, since crossing one can trigger new compliance obligations.",
                     "audience": "executive"
+                },
+                {
+                    "body": "FLOPs is a way to count how much computing work an AI training run does. For a small company, it matters only if you train your own AI models and need to check whether reporting rules apply, because those rules use FLOPs thresholds. It does not matter if you just use AI tools built by others, and it tends to cost time only when you need to check or report, not save time by itself.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Track and report training compute in FLOPs for any significant training run, both for internal capacity planning and because this figure is increasingly required for regulatory compliance documentation under emerging AI governance frameworks.",
@@ -23014,6 +23182,14 @@
                     "audience": "child"
                 },
                 {
+                    "body": "Distillation means training a smaller, cheaper model to match the answers of a larger, more capable model. For decisions, it can bring frontier ability to production price points, but it creates risk if the teacher model belongs to someone else and is under an intellectual property dispute. Accountability stays with the business that chooses to use or train the student model, so leaders should know who owns the teacher model and the rights.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a small company, distillation means using a smaller, cheaper model that has been trained to imitate a larger one, so it matters when the larger model is too costly for production. It does not matter much if the company's needs are simple or it already has a model that fits its budget. It can save time by letting the compact model handle production answers, but it can cost time if the teacher model belongs to someone else and the rights are disputed.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "A practical, well-established technique for deploying capable models at lower cost and latency than the original teacher model; verify the licensing terms of your teacher model explicitly before distilling from it, since this is an area of active legal uncertainty.",
                     "audience": "developer"
                 },
@@ -23080,6 +23256,14 @@
                     "audience": "child"
                 },
                 {
+                    "body": "Double descent means test error can rise and then fall again as a model grows or trains longer, past the point where it fits its training data very closely. For decisions, money and risk, this means a larger or longer-trained model is not automatically worse, so choices should follow measured test error rather than size alone. The people who choose, test and approve the model are accountable for watching that rise and fall.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, double descent means a model can perform worse and then better as it grows or trains longer, so a small team should not stop at the first sign that it fits its training data too closely. It matters when you are choosing or training a model and can track test error over time, and it does not matter much for simple, fixed tools you do not change. In practice it can save time by avoiding an early stop that misses later gains, or cost time if you keep training without checking test error.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Do not assume test performance will monotonically worsen as model complexity increases past the point of fitting training data perfectly; the empirical reality is more nuanced than classical intuition suggests, which is directly relevant to decisions about model scaling.",
                     "audience": "developer"
                 },
@@ -23131,6 +23315,14 @@
                 {
                     "body": "A simpler, more efficient way to teach an AI to prefer certain kinds of answers over others, using people's preference rankings directly, without needing to build and train a whole separate scoring system in between as older methods required.",
                     "audience": "child"
+                },
+                {
+                    "body": "DPO is a way to tune an AI model to follow human preferences without training a separate reward model. For decisions, it can make alignment tuning less complex and more accessible, which affects budget, staffing and how much specialized help you need. The risk and accountability still rest with whoever chooses the preference data and approves the tuned model, because those choices shape the model's behavior.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "DPO is a method for tuning an AI model to match preferences without building a separate reward model. For a company with five to fifty staff, it matters if you are customizing an open-weights model and want alignment work that is simpler than RLHF. It does not matter if you only use ready-made AI tools, and it can save time by skipping the separate reward-model step, though you still need preference data and tuning effort.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "A significantly simpler alternative to full RLHF pipelines when you need preference-based tuning; the reduced engineering complexity, no separate reward model or RL training loop, makes it a practical default choice for most teams doing preference alignment work today.",
@@ -23186,6 +23378,14 @@
                     "audience": "child"
                 },
                 {
+                    "body": "Dropout is a training technique that randomly disables neurons so a model cannot rely on any single pathway, which improves generalization. For decisions, it is a choice made during model training, not a separate business process. For money and risk, its value is in improving generalization, so it matters when poor generalization would be costly, and accountability stays with the people who choose and oversee the training.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "Dropout is a training setting that randomly disables neurons so a model cannot rely on any single pathway, which improves generalization. It matters when you train a small model on a small dataset, because dropout layers can steady that model. It does not matter when you use a model that someone else already trained, and any time it costs or saves is in the training work, not in daily operations.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Do not assume dropout settings that worked well for older architectures will transfer directly to large transformer training; modern large-scale LLM training often uses minimal or no dropout, relying instead on data scale itself as the primary regularizer.",
                     "audience": "developer"
                 },
@@ -23239,6 +23439,14 @@
                     "audience": "child"
                 },
                 {
+                    "body": "An epoch is one full pass of the training data through the model. For decisions, it means choosing how many passes to run and when to stop, because too many invite memorization and the example shows a fine tuning stopped at three epochs. It does not directly set a price, but it affects training time, and whoever sets and stops the training run is accountable for that choice.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "An epoch is one full pass of the training data through the model. For a company with five to fifty staff, it matters when you fine tune on small data, because you may run several epochs and too many invite memorization. It does not matter when you are not training a model, and the time cost is the training time for each pass, while stopping at the right number can save time by avoiding extra passes.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Monitor for overfitting signals, like a growing gap between training and validation performance, as epoch count increases during fine-tuning; unlike large-scale pretraining, which rarely completes even one full epoch, smaller fine-tuning datasets are genuinely at risk of over-repetition.",
                     "audience": "developer"
                 },
@@ -23290,6 +23498,14 @@
                 {
                     "body": "A model that already knows a lot about the world gets extra lessons on one specific thing, like a good general cook being taught your grandmother's recipes. It does not learn to cook from scratch again; it just learns your way of doing it.",
                     "audience": "child"
+                },
+                {
+                    "body": "Fine-tuning means taking a pretrained model and continuing its training on a smaller dataset for a specific task. It is the middle option on cost and effort, above prompting and below training from scratch, so it affects budget and risk decisions. Governance duties come with it because the tuned model inherits and can amplify data problems, so the people accountable for the data and the model's use must own that risk.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, fine-tuning means adapting a pretrained model to your own tasks with a smaller dataset. It matters when prompting is not enough and training from scratch is too much, for example adapting a general model to clinical language. It does not matter when prompting already works or when you cannot take on the governance duties, and it tends to cost more time than prompting but less than training from scratch.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Usually parameter-efficient in practice: adapters such as LoRA train a small number of added weights and leave the base frozen, which cuts memory and lets you swap behaviours per deployment. Reach for it when you need a consistent format, tone or domain vocabulary. If the need is fresh facts, retrieval is the cheaper and more correct answer.",
@@ -27129,6 +27345,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "For a small company with five to fifty staff, EN 18286 matters if you provide high-risk AI systems and need to meet the EU AI Act's Article 17 quality management system requirements. It does not matter if you do not provide high-risk AI systems or are otherwise outside that scope. It can save time by mapping directly onto Article 17 and by including extra tables that link it back to ISO 9001 and ISO/IEC 42001, but the official EU publication step that would let following it count as meeting part of the law is still pending.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Begin technical alignment with this standard now, since it was specifically structured around the AI system itself rather than a general organizational template, making it a more directly applicable technical reference than adapting ISO 9001 or ISO/IEC 42001 alone.",
                     "audience": "ciso"
                 },
@@ -27404,6 +27624,10 @@
                 {
                     "body": "Do not assume EU AI Act deadline extensions provide any relief here; this is a separate, already fully enforced legal obligation that has applied for years and continues to apply regardless of the AI Act's own, more recently deferred timeline for other obligations.",
                     "audience": "executive"
+                },
+                {
+                    "body": "GDPR Article 22 means that if your small business uses software to make a significant decision about someone, such as refusing them credit, that person can ask for a human to step in and explain the decision. It matters when the decision is based solely on automated processing and has a legal or similarly significant effect, and it does not apply to automated steps that do not have that kind of effect. It can cost staff time to review the decision and give an explanation, and it is already enforced now even though some related AI Act duties are delayed.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Ensure compliance with this specific, already fully enforced requirement is tracked independently from AI Act compliance planning, since the two are separate legal obligations with genuinely different, non-overlapping timelines, and treating them as one combined compliance project risks missing this older, currently binding requirement.",
@@ -28322,6 +28546,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "For a company with five to fifty staff, a Fundamental Rights Impact Assessment is a written check you must complete before switching on certain high-risk AI systems if you are a public body, provide public services, or use AI for credit scoring or life and health insurance pricing. In practice it means documenting who could be affected, how, and what steps you will take to reduce harm and oversee the system, as in a bank recording affected groups and mitigation before using an AI credit model. It matters when your small business falls into those groups, and it does not apply if you do not, though it is separate from the AI provider's conformity assessment and from a GDPR data protection impact assessment, and it takes staff time to prepare without replacing those other checks.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Track this as a distinct compliance artifact from both the GDPR DPIA and the provider's conformity assessment documentation, since conflating the three, a common and understandable mistake given their genuine overlap in subject matter, leaves a real, specific compliance gap unaddressed.",
                     "audience": "ciso"
                 },
@@ -28977,6 +29205,20 @@
             "uid": "8f6e0edd",
             "slug": "dspy",
             "term": "DSPy",
+            "lenses": [
+                {
+                    "body": "DSPy is a way to let a computer helper find the best words to ask for something, instead of a person writing those words by hand. You tell it what goes in and what should come out, show it examples of good answers, and it tries different wordings to find the one that works best. It is like a teacher trying different ways to ask a question until the class gives the best answers.",
+                    "audience": "child"
+                },
+                {
+                    "body": "DSPy is a developer tool that treats writing instructions for an AI model as a tuning problem rather than a writing task. A team declares what goes in and what should come out, supplies a scoring method and example data, and the tool finds the instructions and examples that score best. It can save developer time when models change because the work is recompiled instead of rewritten, the main cost is the staff time to set up the scoring method and examples, and the team that sets those is accountable for what the system optimizes.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, DSPy matters only if you build or tune AI prompts and have labelled examples and a way to score results. It helps when you need to change models or compile a classification pipeline, because you recompile instead of hand editing prompts. It does not matter if you do not tune prompts yourself, and it tends to save the time spent manually editing prompts, though it still takes staff time to supply examples and scoring.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "Grew out of the Demonstrate-Search-Predict work at Stanford NLP (research beginning 2022); the DSPy paper was published in October 2023. Name is a backronym for Declarative Self-improving Python.",
             "example": "Compiling a classification pipeline against fifty labelled examples so the optimizer finds the instructions and demonstrations that score highest, instead of hand-editing a prompt.",
             "related": [
@@ -29201,6 +29443,20 @@
             "uid": "42436b35",
             "slug": "distributed-tracing",
             "term": "Distributed Tracing",
+            "lenses": [
+                {
+                    "body": "Distributed tracing is like following a note as it gets passed around a big group of helpers, so you can see every hand it went through and how long each helper took. If the note comes back with a silly answer, the trail shows you which helper made a mistake. It is not just knowing the game ended, it is seeing how it was played.",
+                    "audience": "child"
+                },
+                {
+                    "body": "Distributed tracing means following one request across every service and step it touches and putting that into a single timeline. For decisions, it shows whether a wrong answer came from a bad document, a failed tool, or a slow step, so you can direct fixes and hold the right team accountable. It matters when you need to manage risk and cost in AI applications with many steps, because logs only tell you a run finished while a trace tells you what it did.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, distributed tracing means you can follow one request across every service and step it touches and see a single timeline. It matters when an AI answer is wrong or slow and you need to know which document, tool, or step caused it, and it does not matter much when you have one simple service or rarely use AI steps. It tends to cost some setup and ongoing time to collect and read traces, and it can save time by pointing to the exact step to fix instead of guessing.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "",
             "example": "Opening one trace to find that an agent called the search tool three times, got empty results twice, and answered from its own assumption.",
             "related": [
@@ -29321,6 +29577,20 @@
             "uid": "48dd0df5",
             "slug": "faithfulness",
             "term": "Faithfulness (Groundedness)",
+            "lenses": [
+                {
+                    "body": "Imagine a robot reads a book and then answers questions. Faithfulness means every part of its answer can be found in the book, like checking a book report against the book. If it says four things and only three are in the book, it is not fully faithful.",
+                    "audience": "child"
+                },
+                {
+                    "body": "Faithfulness, also called groundedness, measures whether every claim in an answer is supported by the retrieved context. It is scored by breaking the answer into claims and checking each against the source, usually as a fraction from 0 to 1, so it is a direct measure of hallucination in a RAG system. It is reference-free, so no human-written correct answer is needed and it can run on live traffic, which saves that cost; a low score is a risk signal for decisions that depend on the answer, and the owner of the system is accountable for acting on it.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, faithfulness tells you whether an AI answer is backed by the documents it was given. It matters when staff or customers rely on those answers for decisions, and it does not matter much for low-stakes drafts or brainstorming. It needs no human-written correct answer, so it can run on real use and save the time of writing a correct answer by hand for each check.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "Popularised as a named metric by the Ragas framework (Es et al., 2024); TruLens calls the equivalent measure groundedness.",
             "example": "An answer making four claims where three trace to the retrieved documents and one does not scores 0.75.",
             "related": [
@@ -29630,6 +29900,10 @@
                 {
                     "body": "EFLOPS is the unit national compute claims are denominated in, which makes it a competitive and procurement metric rather than a technical footnote. Two figures quoted in the same unit can differ by ten times in real work depending on precision and on whether the number is peak or sustained, so ask which was measured before treating any capacity comparison, including a competitor or a country, as decision grade.",
                     "audience": "executive"
+                },
+                {
+                    "body": "EFLOPS is a unit for measuring how fast very large computing systems run, such as supercomputers and national compute fleets. For a company with five to fifty staff, it matters only if the company depends on AI capacity that is quoted in EFLOPS, and it does not matter for the company's own everyday computing. It does not tend to cost or save time in daily work, because it describes the scale of supercomputers and national fleets, not the tasks a small business does.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Treat any EFLOPS figure as unusable until you know the precision behind it. FP64, FP16, BF16 and INT8 differ by roughly an order of magnitude in achievable throughput on the same silicon, so a fleet quoted at 2,000 EFLOPS of AI compute is not doing anything like 2,000 EFLOPS of scientific computing. Also separate peak theoretical throughput from sustained throughput on a real benchmark; vendor and government headline numbers are usually the former.",
@@ -30267,6 +30541,20 @@
             "uid": "03bfa053",
             "slug": "direct-to-chip-cooling",
             "term": "Direct-to-Chip Cooling",
+            "lenses": [
+                {
+                    "body": "It is like putting a cold pack right on a hot spot instead of just blowing air at it. Here, the cold pack is a liquid that flows through pipes to the parts that do the work inside each computer rack. Because the liquid is very close to electric parts, it cools better than air but can leak and damage those parts.",
+                    "audience": "child"
+                },
+                {
+                    "body": "Direct-to-chip cooling means running liquid coolant straight to the processors inside each server rack. For decisions, it removes heat more efficiently than air cooling but creates a leak risk because the fluid sits very close to powered electrical parts. The definition does not give cost figures, so money impact depends on the specific setup, and accountability sits with whoever is responsible for the data centre or server operation.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, direct-to-chip cooling is a way to cool data centre computers by running liquid coolant to the processors inside each server rack. It matters if the company runs or uses data centre computers where this cooling is used, because a leak could damage nearby electrical parts. It does not matter if the company does not run data centre computers, and the definition does not give time costs or savings.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "The term became common as data centre chips grew hotter and air cooling could not keep up.",
             "example": "A data centre using direct to chip cooling runs coolant lines right up to each server's processors, so a leak could damage nearby electrical parts.",
             "related": [
@@ -30471,6 +30759,20 @@
             "uid": "afd296b4",
             "slug": "free-cooling",
             "term": "Free Cooling",
+            "lenses": [
+                {
+                    "body": "Free cooling is like opening a window to let cold air cool a room instead of turning on the air conditioner. A data centre is a building full of computers, and when it is cold outside, it can use that cold air to help keep the computers from getting too hot. It works best where there are cold seasons.",
+                    "audience": "child"
+                },
+                {
+                    "body": "Free cooling means using cold outside air or water to cool a data centre instead of relying only on powered cooling machines. For decisions, it can lower the need to run mechanical cooling when outside conditions are cold, which affects operating cost and energy use. The accountable owner still has to decide whether the local climate makes it reliable, because it works best in places with cold seasons.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, free cooling matters only if it runs its own data centre or server room in a place with cold seasons. It means using cold outside air or water to do most of the cooling instead of running mechanical cooling machines. It can reduce how long those machines run and the power they use, and it does not matter much if the company has no such cooling to manage.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "Standard industry term",
             "example": "A data centre in Michigan uses free cooling to take advantage of the cold winter air and reduce how much its mechanical cooling system has to run.",
             "related": [
@@ -30509,6 +30811,20 @@
             "uid": "048311e1",
             "slug": "fuel-cell",
             "term": "Fuel Cell",
+            "lenses": [
+                {
+                    "body": "A fuel cell is a machine that makes electricity by combining a fuel with oxygen, without burning it. You can think of it like a battery that keeps making power as long as you keep giving it fuel. Some places use them in the same place for power while they wait for new power lines.",
+                    "audience": "child"
+                },
+                {
+                    "body": "A fuel cell makes electricity on site by combining a fuel, usually natural gas, with oxygen in a chemical reaction, without burning it. In data centres, it can be a temporary bridge source while new transmission lines are not ready. For an executive, that means deciding whether to use on site power as a temporary bridge source, what money and risk are involved, and who is accountable for that choice.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, a fuel cell usually matters only if your business runs a data centre or needs on site power while waiting for new transmission lines. It does not matter for most other small businesses. When it is used, it can save time by providing power sooner, but it takes time to install and needs fuel.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "Fuel cells were invented in the 19th century, but their use as on site power for data centres is a recent development driven by grid constraints.",
             "example": "AEP Ohio proposed a 228 cell, six acre fuel cell installation to power the Scioto Darby data centre campus until new transmission capacity was ready.",
             "related": [
@@ -31329,6 +31645,20 @@
             "uid": "f42c194e",
             "slug": "endorsement",
             "term": "Endorsement",
+            "lenses": [
+                {
+                    "body": "An endorsement is a written note that changes an insurance rule. Think of it like a teacher adding a note to the classroom rules, so the note can add a rule, take away a rule, or make a rule smaller. For example, after a place with many computers had a loss, the insurance company added a note that said it would not pay for damage from leaks in the equipment that keeps computers cool.",
+                    "audience": "child"
+                },
+                {
+                    "body": "An endorsement is a written change to an existing insurance policy that adds, removes, or limits coverage. For decisions, it changes what the policy will pay for and what risk the company keeps, so the person who accepts it is accountable for that gap. For example, a carrier can add an endorsement that excludes generative AI risks or sets a lower limit for liquid cooling failures.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, an endorsement is a written change to an existing policy that adds, removes, or limits coverage. It matters when the change touches something the business uses, such as generative AI risks or liquid cooling failures, and it may not matter if the business does not face those risks. It can take time to read and understand, and it can save time later by making clear what the policy pays for before a claim.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "Standard industry term",
             "example": "After a data centre loss, the carrier added an endorsement that excluded damage from liquid cooling leaks.",
             "related": [
@@ -31561,6 +31891,20 @@
             "uid": "66a32ff6",
             "slug": "equipment-breakdown",
             "term": "Equipment Breakdown",
+            "lenses": [
+                {
+                    "body": "Equipment breakdown is a special repair promise for machines that suddenly break from the inside, such as getting too hot or having an electrical problem. It is kept separate from the insurance for ordinary property damage, like having a separate box for toy repairs instead of the box for house repairs. If a cooling water line leaks onto electric parts, the insurance company may pay from the equipment breakdown box, not the regular property box.",
+                    "audience": "child"
+                },
+                {
+                    "body": "Equipment breakdown is a separate insurance claim category for sudden physical damage to machines or systems from internal causes such as overheating, electrical failure, or loss of cooling. For decisions, money, and risk, this means a loss like a failed liquid cooling line that reaches high voltage parts may be paid under equipment breakdown rather than ordinary property coverage, so the accountable coverage is the equipment breakdown policy rather than the property policy. Leaders should confirm which coverage applies before an incident, because the definition separates this risk from standard property damage.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a small company, equipment breakdown means sudden physical damage to a machine or system from an internal cause such as overheating, electrical failure, or loss of cooling, and it is claimed separately from ordinary property damage. It matters when the damage starts inside the equipment, as with a liquid cooling line failure that sends water to high voltage parts, because the insurer may pay under equipment breakdown instead of property coverage. It does not apply to ordinary property damage from other causes, and the definition does not state what it costs or saves in time.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "Standard industry term",
             "example": "When a liquid cooling line fails and water reaches high voltage parts, the insurer may pay the loss under equipment breakdown instead of property coverage.",
             "related": [
@@ -31599,6 +31943,20 @@
             "uid": "01300678",
             "slug": "errors-and-omissions-e-and-o",
             "term": "Errors and Omissions (E&O)",
+            "lenses": [
+                {
+                    "body": "Errors and omissions insurance, often called E&O, pays when a business makes a mistake in its work or gives something that does not work as promised, and a customer loses money. In AI, it can help if a computer helper gives wrong advice that costs someone money. It is like a safety net for when a business accidentally causes a customer to lose money.",
+                    "audience": "child"
+                },
+                {
+                    "body": "E&O insurance covers claims when professional work or a product fails to work as promised and a client loses money, including wrong AI model outputs or faulty technology services. For decisions, it means the money risk of those claims can be covered by insurance, while the business remains accountable for the mistake.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, E&O matters when its professional work or product could make a mistake that costs a client money, such as wrong AI model outputs or faulty technology services. It does not matter when the business does not make that kind of mistake in professional work or does not deliver a product that fails to work as promised. The definition does not state what it costs or saves in time, so the time effect is not part of this explanation.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "Standard industry term from professional liability insurance, used for decades before being applied to AI and technology services.",
             "example": "If an AI model gives incorrect financial advice that costs a customer money, errors and omissions insurance can cover the resulting claim.",
             "related": [
@@ -31855,6 +32213,20 @@
             "uid": "fc1e6a41",
             "slug": "extra-expense",
             "term": "Extra Expense",
+            "lenses": [
+                {
+                    "body": "Extra expense is insurance that pays for the extra costs a business has to keep running or get back to normal quickly after a problem the insurance is meant to cover. Imagine your bike tire goes flat, and you pay for a taxi to get home and still get your bike fixed. That taxi money is like extra expense, because it is the extra cost to keep going.",
+                    "audience": "child"
+                },
+                {
+                    "body": "Extra expense coverage pays the added costs to keep operations running or recover quickly after a covered problem, such as renting equipment or hiring emergency help. For decisions, money and risk, it means the business can use insurance to pay for those extra costs instead of paying for all of them directly. Leadership is accountable for deciding to buy the coverage and for managing the recovery, while the insurer pays the covered extra costs.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, extra expense coverage pays the added costs to keep running or get back to normal quickly after a covered problem, such as renting equipment or hiring emergency help. It matters when a covered problem disrupts normal work and the business must pay more to keep going, and it does not matter when there is no covered problem or no extra cost to keep going. It tends to save time by covering emergency help and rentals, which are the kinds of extra costs that help a business keep running or get back to normal quickly.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "Standard industry term in property and business interruption insurance.",
             "example": "If a data centre loses its water supply, extra expense coverage pays for trucking in water and renting portable cooling units.",
             "related": [
@@ -32173,6 +32545,20 @@
             "uid": "3dc3353a",
             "slug": "directors-and-officers-d-and-o",
             "term": "Directors and Officers (D&O)",
+            "lenses": [
+                {
+                    "body": "Directors and Officers insurance is like a safety net for the grown-ups who run a company. If someone says those bosses did a bad job and takes them to court, this insurance helps pay for their lawyer and the money they might have to pay.",
+                    "audience": "child"
+                },
+                {
+                    "body": "D&O insurance pays legal costs and settlements when a company's top managers are personally sued for how they ran the business, for example for failing to oversee risk controls or disaster planning. For decisions, money and risk, it means the policy can cover defence costs and settlements if shareholders sue the board, such as over an algorithm that caused trading losses. The managers remain accountable for running the business, while the insurer pays the covered legal costs and settlements.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, D&O insurance pays legal costs and settlements when the people who run the business are personally sued for how they ran it, for example for failing to oversee risk controls or disaster planning. It matters when owners, directors or officers face that kind of personal lawsuit, such as shareholders suing the board over an algorithm that caused trading losses, and it does not matter for everyday business problems that do not lead to that kind of lawsuit. It tends to save time by paying legal costs and settlements, so leaders spend less time handling those covered payments.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "Standard industry term",
             "example": "If shareholders sue the board for not overseeing an algorithm that caused trading losses, the D&O policy covers the defence.",
             "related": [
@@ -32377,6 +32763,20 @@
             "uid": "198d76e7",
             "slug": "environmental-impairment-liability-eil",
             "term": "Environmental Impairment Liability (EIL)",
+            "lenses": [
+                {
+                    "body": "This is a kind of insurance that pays if a business slowly lets something harmful get into land, water, or air. Think of it like a special repair fund for a slow leak that a normal home insurance plan would not cover. It is for harm that happens bit by bit over time, not all at once.",
+                    "audience": "child"
+                },
+                {
+                    "body": "Environmental Impairment Liability is insurance for gradual pollution damage to land, water, or air caused by a business's releases over time. For decisions, money, and risk, it means checking whether slow contamination is possible and deciding whether to buy cover, because standard property policies do not cover that harm. Accountability stays with the people who make those choices and own the risk.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, Environmental Impairment Liability is insurance for slow pollution damage to land, water, or air caused by the business's releases over time. It matters if the business has systems or substances that could seep or leak and harm the environment later, and it does not matter much if there is no such gradual pollution risk. It tends to cost time upfront to review and buy cover, and it can save time later by handling a pollution claim that standard property policies do not cover.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "Standard industry term",
             "example": "A data centre operator buys an EIL policy after learning that refrigerant leaks from its cooling system could contaminate groundwater years later.",
             "related": [
@@ -32785,6 +33185,20 @@
             "uid": "5efe3472",
             "slug": "ensuing-loss",
             "term": "Ensuing Loss",
+            "lenses": [
+                {
+                    "body": "An ensuing loss is the later damage that happens because something else went wrong. The first problem might not be paid for by insurance, like slow rust, but the later damage can be paid for if it is a separate sudden event, like a fire or electrical failure. Think of a small leak in a roof that is not paid for, then a storm suddenly tears the roof open and rain ruins your toys, and that later damage may be paid for.",
+                    "audience": "child"
+                },
+                {
+                    "body": "An ensuing loss is damage that happens after and because of an excluded problem, such as gradual wear or corrosion, but it is covered when it is a separate sudden event like a fire or electrical failure. For decisions, money and risk, this means an excluded root cause can still lead to covered damage, so the financial exposure depends on whether the later event is treated as separate. The accountable people are those who manage the policy and the claim, because they must show the later damage is a distinct sudden event.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, an ensuing loss matters when an excluded problem, like gradual corrosion, leads to a separate sudden event, such as a fire or electrical failure, because that later damage can be covered. It does not matter when the damage is only the excluded problem itself, like the gradual corrosion, because that part is not covered. In time, it can save the effort of paying for and recovering from the later damage, but it can cost time to document that the later event was separate and sudden.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "Standard insurance term long used in property policies, now applied to AI and data centre risks.",
             "example": "The policy excludes gradual corrosion of a fitting, but the ensuing loss from the high pressure fluid spray and the electrical destruction of the server rack is covered.",
             "related": [
@@ -32989,6 +33403,20 @@
             "uid": "77953d55",
             "slug": "duty-to-defend",
             "term": "Duty to Defend",
+            "lenses": [
+                {
+                    "body": "Duty to defend is a promise from an insurance company to pay for a lawyer if someone says you did something wrong and takes you to court over something the insurance covers. It is like a friend paying for your helper in a playground argument right away, even if you say you did nothing wrong. The insurance company pays for the lawyer as soon as someone complains, before anyone decides who is right.",
+                    "audience": "child"
+                },
+                {
+                    "body": "Duty to defend means the insurer pays for legal defense against a covered lawsuit as soon as a claim is made, without requiring the insured to admit fault or liability. For decisions, it shifts the cost and immediate risk of defending a claim to the insurer, even if the claim is false. The insurer is accountable for paying the defense costs it promised to cover, and the insured still has to deal with the claim itself.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "Duty to defend means the insurer pays for a lawyer against a covered lawsuit as soon as a claim is made, even if the business denies wrongdoing. It matters when a covered claim is made, because the insurer pays for the defense from the start. It does not matter when there is no claim or the claim is not covered. In practice, it can save the time and cost of paying for a lawyer up front, though the business still has to respond to the claim.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "Standard industry term",
             "example": "When a customer sued an AI startup for a faulty model output, the insurer paid the startup's lawyer fees under the duty to defend, even though the startup denied any wrongdoing.",
             "related": [
@@ -34013,6 +34441,20 @@
             "uid": "7b8f4b16",
             "slug": "frontier-developer",
             "term": "Frontier Developer",
+            "lenses": [
+                {
+                    "body": "A frontier developer is a company that makes the most powerful AI brains. Think of it like the biggest car makers building the fastest cars, so they have extra rules to keep people safe. They also have to write down how they handle risks and protect workers who speak up.",
+                    "audience": "child"
+                },
+                {
+                    "body": "A frontier developer is a company that builds the most advanced AI models. For decisions, money, risk and accountability, this means the company carries special legal duties for safety, transparency and whistleblower protection. Leaders must decide how to meet those duties, fund the work, manage the risk and answer for failures.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, this term usually does not apply. It matters only if your business builds the most advanced AI models, because then you must meet special legal duties for safety, transparency and whistleblower protection. If it applies, expect to spend staff time on tasks like publishing a safety framework, and if it does not apply, it should not take your time.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "Standard industry term that became common in AI policy discussions around 2023.",
             "example": "A frontier developer must publish a safety framework on its website explaining how it manages risks from its most powerful AI systems.",
             "related": [
@@ -34373,6 +34815,20 @@
             "uid": "096a971f",
             "slug": "duty-of-care",
             "term": "Duty of Care",
+            "lenses": [
+                {
+                    "body": "A duty of care means you must do your best to stop something bad that you can see coming. It is like a lifeguard watching the pool and stepping in before a swimmer gets hurt. For AI, the people who make it must think about how it might hurt people and then make it safer.",
+                    "audience": "child"
+                },
+                {
+                    "body": "A duty of care is a legal responsibility to take reasonable steps to prevent harm your company could foresee. For decisions, money and risk, it means you must think about how your AI might hurt people, pay for reasonable steps to reduce that risk, and accept the legal risk if you do not. The person or company with the duty is accountable for taking those steps.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a small company, a duty of care means checking how your AI could hurt people and taking reasonable steps to reduce that risk. It matters when harm is foreseeable, and it does not matter when no such harm is foreseeable. The main cost is the time spent on that review and any changes, and the main saving is not having to deal with harm you could have prevented.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "Standard legal term from tort law, now applied to digital platforms and AI.",
             "example": "A social media company has a duty of care to adjust its algorithm so it does not push harmful content to vulnerable users.",
             "related": [
@@ -34636,6 +35092,10 @@
                 {
                     "body": "For a company on Google Workspace, Gemini is the AI that arrives inside tools staff already use, which lowers adoption friction and raises the importance of data settings. The governance question is the same as for any assistant: what it may read, and who is accountable for what it writes.",
                     "audience": "executive"
+                },
+                {
+                    "body": "Gemini is Google's family of AI models and the assistant built on them, and it can read and produce text, images, audio and code. For a small business, it matters when staff already use Google tools such as Gmail, because it can summarise a long email thread and save the time they would spend reading it. It does not matter if your team does not use those tools or does not have tasks like summarising or creating content, and the definition does not say what it costs.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Gemini is both an assistant and a model family available through Google AI Studio and Vertex AI. The models are multimodal and several offer very long context windows, which suits whole document and video inputs. Pricing is per token and varies by model tier.",
@@ -35512,6 +35972,20 @@
             "uid": "912ff0c0",
             "slug": "etl",
             "term": "ETL (Extract, Transform, Load)",
+            "lenses": [
+                {
+                    "body": "ETL is like moving your toys from a messy box to a tidy shelf. First you take them out, then you throw away broken ones and put them in the right spots, then you put them where you can play with them. If you put a broken toy on the shelf, later you might try to play with it and it will not work.",
+                    "audience": "child"
+                },
+                {
+                    "body": "ETL is the work of copying data out of source systems, cleaning and reshaping it, and loading it where it will be analysed or used to train models. It matters for decisions, money, and risk because errors in these jobs flow straight into whatever an AI system learns or answers, and accountability depends on who owns those jobs and the results they feed. The example is a nightly job that pulls orders from the store database, removes test orders, and loads them into the warehouse.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, ETL is the work of copying data from source systems, cleaning and reshaping it, and loading it where it will be analysed or used to train models. It matters when you need data from more than one place to be cleaned and loaded for analysis or AI, because errors in these jobs flow straight into what the system learns or answers. It matters less when you only use one source system directly and do not need that data cleaned or reshaped, and it tends to cost time to set up and run while saving time by doing the copying and cleaning as a repeated job.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "",
             "example": "A nightly job pulls orders from the store database, removes test orders and loads them into the warehouse.",
             "related": [
@@ -35584,7 +36058,7 @@
         "schema": "v2 (term, slug, category, definition, example, origin)",
         "generated": "2026-07-23"
     },
-    "built_at": "2026-10-01T09:23:43-05:00",
+    "built_at": "2026-10-01T12:24:57-05:00",
     "page_uid": "76dd9a8f",
     "readings": {
         "/ai-glossary/aime/": {
