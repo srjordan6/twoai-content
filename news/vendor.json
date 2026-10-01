@@ -13,6 +13,17 @@
             "entity_kind": "company"
         },
         {
+            "url": "https://www.salesforce.com/blog/coding-agents-product-design/",
+            "date": "2026-10-01",
+            "slug": "agents-can-mimic-good-design-ours-know-why-it-works-c3cad4",
+            "title": "Agents Can Mimic Good Design. Ours Know Why It Works",
+            "vendor": "Salesforce",
+            "summary": "We give coding agents the knowledge to make sound decisions and turn ideas into accessible, production-ready experiences.",
+            "has_page": true,
+            "entity_uid": "4124ecef",
+            "entity_kind": "company"
+        },
+        {
             "url": "https://www.tomshardware.com/tech-industry/cyber-security/ai-agents-inadvertently-leak-13-000-internal-screenshots-from-organizations-list-of-companies-includes-fortune-500-and-a-frontier-ai-lab",
             "date": "2026-10-01",
             "slug": "ai-agents-inadvertently-leak-13-000-internal-screenshots-fro-d78362",
@@ -90,6 +101,18 @@
             "entity_kind": "company"
         },
         {
+            "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/amazon-dynamodb-introduces-filtered-export/",
+            "date": "2026-10-01",
+            "slug": "amazon-dynamodb-introduces-filtered-export-to-amazon-s3-e005a6",
+            "title": "Amazon DynamoDB introduces filtered export to Amazon S3",
+            "vendor": "Amazon Web Services",
+            "summary": "Amazon DynamoDB now supports filtered export for tables. Export to Amazon S3 allows you to export your table data for analytics, data sharing, and other offline uses, as either a full export or an incremental export over a time window.",
+            "has_page": true,
+            "entity_uid": "0d5de807",
+            "entity_kind": "company",
+            "reader_note": "If you export DynamoDB tables today, the change is small but real: you can now limit what leaves the table rather than taking all of it. That may mean less data to move and store, though no figures are given, so treat any saving as unproven until you measure it on your own tables.\n\nBe sceptical of what is left unsaid. The description does not say what the filter applies to, how it behaves with incremental exports, or what limits apply. A feature announced is not a feature you can rely on in production."
+        },
+        {
             "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/guardduty-org-enablement-policies/",
             "date": "2026-10-01",
             "slug": "amazon-guardduty-now-supports-centralized-management-using-a-877b06",
@@ -100,6 +123,18 @@
             "entity_uid": "0d5de807",
             "entity_kind": "company",
             "reader_note": "Central enablement changes the mechanics, not the outcome. If your organization already struggles to keep GuardDuty switched on in new accounts and Regions, a declarative policy removes some of that manual toil. Check which accounts and Regions the policy actually reaches, and how it interacts with settings already in place.\n\nBe sceptical of the word \"every\". A policy that enables threat detection does not prove that findings are reviewed, routed to the right people, or acted on. It also says nothing about detection quality in your environment. Treat this as a coverage control, not a security outcome."
+        },
+        {
+            "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/redshift-cross-Region-queries-for-data-lake",
+            "date": "2026-10-01",
+            "slug": "amazon-redshift-now-supports-cross-region-queries-for-your-d-6fe134",
+            "title": "Amazon Redshift now supports cross-Region queries for your data lake",
+            "vendor": "Amazon Web Services",
+            "summary": "Amazon Redshift now supports querying Amazon S3 data lake tables located in a different AWS Region. With enhanced VPC routing, data lake query traffic between Amazon S3 and Amazon Redshift stays within your own VPC.",
+            "has_page": true,
+            "entity_uid": "0d5de807",
+            "entity_kind": "company",
+            "reader_note": "If your data lake and your Redshift cluster live in different Regions, this removes a copying step. You can query the tables where they are. That may simplify some pipelines, though it does not tell you whether the result will be fast enough or cheap enough for regular use.\n\nBe sceptical about what is not said: latency and transfer costs. The announcement shows the capability exists, not that it performs well in production. Treat it as a reason to run your own tests, not as a reason to redesign your architecture."
         },
         {
             "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/s3-object-lock-variable-retention-event-holds-aws-govcloud/",
@@ -150,6 +185,18 @@
             "reader_note": "What changes for you is where the data lives. DNS query and firewall activity from these services now surfaces in CloudWatch, so you can reuse the dashboards, alarms and log tooling you already run rather than building a separate pipeline for DNS.\n\nBe sceptical of the framing. Analytics and insights are labels, not specifications. The announcement does not say what is captured, at what granularity, how long it is kept, or what it costs to query. Nor does it show that DNS Firewall detects or blocks anything it did not before. Treat it as a plumbing change until you test it on your own traffic."
         },
         {
+            "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/aws-budgets/",
+            "date": "2026-10-01",
+            "slug": "aws-budgets-now-supports-email-verification-for-notification-67ed03",
+            "title": "AWS Budgets now supports email verification for notification subscribers",
+            "vendor": "Amazon Web Services",
+            "summary": "AWS Budgets lets you set custom cost and usage thresholds and alerts you by email when your spending crosses the threshold. AWS Budgets now verifies new email subscribers before sending them budget alerts.",
+            "has_page": true,
+            "entity_uid": "0d5de807",
+            "entity_kind": "company",
+            "reader_note": "Adding a subscriber to a budget alert now takes one extra step: that person must confirm the address before alerts reach them. That matters if you route alerts to a shared inbox or a group address, because an unconfirmed recipient receives nothing. Check that your recipients have confirmed, particularly after staff changes.\n\nVerification confirms an address is reachable. It does not confirm anyone reads it, and it changes nothing about how thresholds are evaluated or when an alert fires. A verified alert is still only as useful as the threshold you set."
+        },
+        {
             "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/aws-glue-iceberg-v3-optimization/",
             "date": "2026-10-01",
             "slug": "aws-glue-data-catalog-now-supports-table-optimization-statis-33eb7d",
@@ -160,6 +207,53 @@
             "entity_uid": "0d5de807",
             "entity_kind": "company",
             "reader_note": "If your Iceberg V3 tables sit in the Glue Data Catalog, this may reduce manual upkeep and change how you discover tables in Amazon S3. Check whether your tables and workflows qualify before assuming a change.\n\nBe sceptical of the word optimize. The announcement does not show how much faster queries become, what the statistics cover, or what the crawlers cost. It also does not prove these features work for every Iceberg V3 setup. Treat it as a capability to test, not a deployed improvement."
+        },
+        {
+            "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/aws-iam-identity-center-extends-multi-region-support-to-more-aws-regions",
+            "date": "2026-10-01",
+            "slug": "aws-iam-identity-center-extends-multi-region-support-to-more-098b0c",
+            "title": "AWS IAM Identity Center extends multi-Region support to more AWS Regions",
+            "vendor": "Amazon Web Services",
+            "summary": "IAM Identity Center helps you connect your workforce identities to AWS once and streamline access management to AWS accounts and applications. You can now replicate IAM Identity Center to opt-in AWS Regions, and between Regions within the AWS GovCloud (US) and AWS China Regions.",
+            "has_page": true,
+            "entity_uid": "0d5de807",
+            "entity_kind": "company",
+            "reader_note": "For practitioners managing access across AWS Regions, the practical change is that identity configuration may no longer need to be rebuilt or maintained separately in each supported Region. Check the specific Regions you use, how replication behaves during failover, and whether your data residency or compliance rules allow it.\n\nBe sceptical of the assumption that broader replication equals simpler governance. It does not prove automatic migration for existing setups, nor that every Region or partition is covered. Treat the vendor's framing as a claim to test in your own account structure."
+        },
+        {
+            "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/aws-security-hub-remediation-plans/",
+            "date": "2026-10-01",
+            "slug": "aws-security-hub-introduces-remediation-plans-to-prioritize--7ee9a3",
+            "title": "AWS Security Hub introduces remediation plans to prioritize and fix security exposures",
+            "vendor": "Amazon Web Services",
+            "summary": "AWS Security Hub now offers remediation plans that group related exposure findings sharing a root cause. Instead of addressing each exposure individually, you can now fix a single underlying resource, such as a misconfigured setting or overly permissive policy, and resolve or reduce the severity of",
+            "has_page": true,
+            "entity_uid": "0d5de807",
+            "entity_kind": "company",
+            "reader_note": "The practical change is in your queue, not in your controls. You may spend less time closing near-duplicate items and more time checking whether a single fix really covers every affected resource. Test the grouping against incidents you already understand.\n\nBe sceptical of the root-cause label and any severity drop. A resolved finding is not proof that the exposure is gone, that every affected resource was covered, or that your controls now hold. Treat the plan as a starting point for verification, not a clean bill of health."
+        },
+        {
+            "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/transfer-family-custom-cloudwatch-log-groups/",
+            "date": "2026-10-01",
+            "slug": "aws-transfer-family-now-supports-custom-cloudwatch-log-group-40bdb4",
+            "title": "AWS Transfer Family now supports custom CloudWatch log groups for managed workflows",
+            "vendor": "Amazon Web Services",
+            "summary": "AWS Transfer Family now lets you choose a custom log group in Amazon CloudWatch Logs for managed workflow execution logs. You can organize workflow logs to monitor individual workflows separately or bring logs from related workflows together.",
+            "has_page": true,
+            "entity_uid": "0d5de807",
+            "entity_kind": "company"
+        },
+        {
+            "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/aws-well-architected-agent/",
+            "date": "2026-10-01",
+            "slug": "aws-well-architected-agent-is-now-available-in-preview-8c10af",
+            "title": "AWS Well-Architected Agent is now available in preview",
+            "vendor": "Amazon Web Services",
+            "summary": "AWS announces the preview of AWS Well-Architected Agent, a AI-powered service that is the next-gen evolution of AWS Trusted Advisor and the AWS Well-Architected Tool.",
+            "has_page": true,
+            "entity_uid": "0d5de807",
+            "entity_kind": "company",
+            "reader_note": "Treat this as an early look, not a replacement for the tools you already run. A preview means the service can change or disappear, and the announcement says little about what it checks, how it reports, or what it costs. Your existing Trusted Advisor checks and Well-Architected reviews still stand.\n\nBe sceptical of the framing. Calling something AI-powered says nothing about whether its recommendations are correct or useful for your workload. Try it on a non-critical account, compare its findings against what your team already knows, and judge it on that."
         },
         {
             "url": "https://www.insurancejournal.com/news/national/2026/10/01/887453.htm",
@@ -469,6 +563,17 @@
             "entity_kind": "company"
         },
         {
+            "url": "https://news.xbox.com/en-us/2026/10/01/ikea-xbox-gaming-collection-yxstaby/",
+            "date": "2026-10-01",
+            "slug": "ikea-and-xbox-collab-on-a-new-collection-made-for-home-gamin-0da4fd",
+            "title": "IKEA and XBOX collab on a new collection made for home gaming",
+            "vendor": "Microsoft",
+            "summary": "The post IKEA and XBOX collab on a new collection made for home gaming appeared first on Source .",
+            "has_page": false,
+            "entity_uid": "5a78804e",
+            "entity_kind": "company"
+        },
+        {
             "url": "https://www.insurancejournal.com/news/midwest/2026/10/01/887480.htm",
             "date": "2026-10-01",
             "slug": "illinois-governor-creates-cabinet-to-explore-ai-regulation-4926c6",
@@ -668,6 +773,17 @@
             "entity_kind": "company"
         },
         {
+            "url": "https://microsoft.ai/news/our-first-streaming-transcription-model/",
+            "date": "2026-10-01",
+            "slug": "new-microsoft-ai-models-bring-faster-transcription-and-multi-9cd311",
+            "title": "New Microsoft AI models bring faster transcription and multilingual voices",
+            "vendor": "Microsoft",
+            "summary": "The post New Microsoft AI models bring faster transcription and multilingual voices appeared first on Source .",
+            "has_page": false,
+            "entity_uid": "5a78804e",
+            "entity_kind": "company"
+        },
+        {
             "url": "https://www.artemis.bm/news/nuveen-completes-schroders-acquisition-plan-to-organise-private-markets-by-asset-class/?utm_source=rss&utm_medium=rss&utm_campaign=nuveen-completes-schroders-acquisition-plan-to-organise-private-markets-by-asset-class",
             "date": "2026-10-01",
             "slug": "nuveen-completes-schroders-acquisition-plan-to-organise-priv-baa610",
@@ -754,6 +870,17 @@
             "entity_kind": "section"
         },
         {
+            "url": "https://blogs.microsoft.com/on-the-issues/2026/10/01/preparing-governments-for-an-era-of-interconnected-cyber-risk/",
+            "date": "2026-10-01",
+            "slug": "preparing-governments-for-an-era-of-interconnected-cyber-ris-92bcc8",
+            "title": "Preparing governments for an era of interconnected cyber risk",
+            "vendor": "Microsoft",
+            "summary": "The post Preparing governments for an era of interconnected cyber risk appeared first on Source .",
+            "has_page": false,
+            "entity_uid": "5a78804e",
+            "entity_kind": "company"
+        },
+        {
             "url": "https://blogs.nvidia.com/blog/productive-durable-fungible-ai-factories/",
             "date": "2026-10-01",
             "slug": "productive-durable-fungible-how-nvidia-ai-factories-maximize-052ead",
@@ -773,6 +900,17 @@
             "vendor": "Tom's Hardware",
             "summary": "<p>Mark's enthusiasm for computers dampened at an early age by the rubber-keyed Sinclair Spectrum 48K and feelings of Commodore 64 envy. However, in the mid-80s, hope in a digital future was rekindled by the purchase of an Atari 520 STe.",
             "has_page": true,
+            "entity_kind": "company"
+        },
+        {
+            "url": "https://www.databricks.com/blog/read-restrictions-and-catalog-labels-unifying-governance-across-engines-and-catalogs",
+            "date": "2026-10-01",
+            "slug": "read-restrictions-and-catalog-labels-unifying-governance-acr-4b1101",
+            "title": "Read Restrictions and Catalog Labels: Unifying governance across engines and catalogs",
+            "vendor": "Databricks",
+            "summary": "In our previous posts, we showed how open table formats, open APIs and unified governance...",
+            "has_page": false,
+            "entity_uid": "a4718c15",
             "entity_kind": "company"
         },
         {
@@ -931,6 +1069,29 @@
             "entity_kind": "company"
         },
         {
+            "url": "https://www.atlassian.com/blog/ai-at-work/ai-sdlc-transformation-playbook",
+            "date": "2026-10-01",
+            "slug": "the-ai-sdlc-transformation-playbook-d868b2",
+            "title": "The AI SDLC transformation playbook",
+            "vendor": "Atlassian",
+            "summary": "Teams across the industry are sprinting to reinvent their software development processes with agentic AI. Yet, navigating the fast-changing landscape of tools and opinions can be daunting for even the most AI-forward organizations.",
+            "has_page": true,
+            "entity_uid": "40000e9d",
+            "entity_kind": "company"
+        },
+        {
+            "url": "https://openai.com/index/the-den-family-social",
+            "date": "2026-10-01",
+            "slug": "the-den-frees-up-10-15-hours-a-week-to-grow-with-chatgpt-wor-b35ef3",
+            "title": "The Den frees up 10-15 hours a week to grow with ChatGPT Work",
+            "vendor": "OpenAI",
+            "summary": "As it opens a new location, the social club prepares grant applications in 2 hours instead of 3 days and liquor-license materials in 3 hours instead of 4 days.",
+            "has_page": true,
+            "entity_uid": "d9ea9793",
+            "entity_kind": "company",
+            "reader_note": "If your work involves assembling grant applications, licensing paperwork or similar documents from templates and evidence, this is the kind of task worth testing on your own material. The useful signal is the task type: structured, repetitive, and reviewed by someone else before it counts.\n\nBe sceptical of the framing. One organisation's account, reported by the vendor, tells you nothing about accuracy, rework, or whether the saved hours were real. It does not prove the output was accepted first time. Run a small trial, check the results yourself, and keep the review step."
+        },
+        {
             "url": "https://openai.com/index/the-eternal-complement",
             "date": "2026-10-01",
             "slug": "the-eternal-complement-2210ff",
@@ -1029,6 +1190,17 @@
             "has_page": true,
             "entity_uid": "7785d228",
             "entity_kind": "section"
+        },
+        {
+            "url": "https://www.atlassian.com/blog/ai-at-work/why-the-real-ai-advantage-is-organizational-system-design",
+            "date": "2026-10-01",
+            "slug": "why-the-real-ai-advantage-is-organizational-system-design-e578ad",
+            "title": "Why the real AI advantage is organizational system design",
+            "vendor": "Atlassian",
+            "summary": "Today, the industry celebrates developers for shipping code at unprecedented speed. They are doing this while code-completion tools generate syntax faster than anyone can read and review.",
+            "has_page": true,
+            "entity_uid": "40000e9d",
+            "entity_kind": "company"
         },
         {
             "url": "https://www.insurancejournal.com/news/midwest/2026/10/01/887487.htm",
@@ -1204,6 +1376,18 @@
             "reader_note": "If your workloads have to stay in the UK, this removes one obstacle: prompts and responses for these two models can now be processed in the London Region rather than being routed elsewhere. That is worth checking against your own data residency and procurement requirements, and worth confirming in your own account rather than assuming from the headline.\n\nIt does not prove that either model meets your accuracy, latency, or cost needs, and it says nothing about how your specific use case will perform. Treat regional availability as a prerequisite, not evidence."
         },
         {
+            "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/kinesis-video-streams-vpc-privatelink/",
+            "date": "2026-09-30",
+            "slug": "amazon-kinesis-video-streams-now-supports-vpc-endpoints-with-92b9af",
+            "title": "Amazon Kinesis Video Streams now supports VPC endpoints with AWS PrivateLink",
+            "vendor": "Amazon Web Services",
+            "summary": "Amazon Kinesis Video Streams now supports interface VPC endpoints powered by AWS PrivateLink , providing private connectivity from your Amazon Virtual Private Cloud (Amazon VPC).",
+            "has_page": true,
+            "entity_uid": "0d5de807",
+            "entity_kind": "company",
+            "reader_note": "If your video streams currently leave your network to reach the service, this lets you keep that traffic on private addresses instead. That can simplify conversations with security and compliance reviewers. Check the details before assuming it solves a problem: you still configure endpoint policies, DNS, and access controls yourself, and private connectivity says nothing about how the service stores, retains, or processes your footage.\n\nTreat this as a capability, not a deployment. It does not tell you what it costs, how it performs under your load, or whether it fits your setup. Test it in a non-production account first."
+        },
+        {
             "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-managed-grafana-now-supports-creating-grafana-13-2-workspaces",
             "date": "2026-09-30",
             "slug": "amazon-managed-grafana-now-supports-creating-grafana-13-2-wo-7a50fc",
@@ -1318,6 +1502,17 @@
             "entity_kind": "company"
         },
         {
+            "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/system-managed-iceberg-materialized-views",
+            "date": "2026-09-30",
+            "slug": "apache-iceberg-materialized-views-now-support-system-managed-e3dd0a",
+            "title": "Apache Iceberg materialized views now support system-managed write protection",
+            "vendor": "Amazon Web Services",
+            "summary": "Today, AWS announces system-managed materialized views for Apache Iceberg. Materialized views let you precompute an expensive query once and reuse the result across engines.",
+            "has_page": true,
+            "entity_uid": "0d5de807",
+            "entity_kind": "company"
+        },
+        {
             "url": "https://www.insurancejournal.com/news/national/2026/09/30/887260.htm",
             "date": "2026-09-30",
             "slug": "appeals-court-upholds-thomson-reuters-landmark-win-in-ai-tra-58d3c8",
@@ -1363,6 +1558,18 @@
             "entity_uid": "0d5de807",
             "entity_kind": "company",
             "reader_note": "This is housekeeping, not a new capability. Bulk updates reduce the manual work of keeping many skills current, and version checks tell you what is installed. Neither tells you whether a skill behaves correctly, so treat the version number as a label rather than a guarantee.\n\nBe sceptical of convenience that changes many things at once. If one command can update every skill, one mistake can too. Check what a skill does before you let it move, and keep a way to roll back. Nothing here proves the skills themselves are reliable, safe, or suited to your work."
+        },
+        {
+            "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/aws-continuum-penetration/",
+            "date": "2026-09-30",
+            "slug": "aws-continuum-for-penetration-testing-now-available-in-6-add-782f8d",
+            "title": "AWS Continuum for Penetration Testing now available in 6 additional Regions",
+            "vendor": "Amazon Web Services",
+            "summary": "AWS Continuum for Penetration Testing now available in 6 additional Regions AWS Continuum for Penetration Testing (AWS Security Agent) is a managed security service that enables AWS customers to conduct penetration testing against their web applications and APIs.",
+            "has_page": true,
+            "entity_uid": "0d5de807",
+            "entity_kind": "company",
+            "reader_note": "If your workloads sit in one of the newly covered Regions, this may remove a practical obstacle: testing can run closer to the systems it targets, which can matter for data residency and for keeping test traffic local. Check the Region list against where your applications actually run.\n\nBe sceptical of the scope. The description covers web applications and APIs, not your wider estate, and regional availability says nothing about how well the testing works. It does not prove the service finds real issues, or that its findings would satisfy an auditor."
         },
         {
             "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/iam-identity-center-apis-arns/",
@@ -2568,209 +2775,6 @@
             "has_page": true,
             "entity_uid": "7785d228",
             "entity_kind": "section"
-        },
-        {
-            "url": "https://blog.cloudflare.com/ai-era-framework/",
-            "date": "2026-09-29",
-            "slug": "adaptive-application-security-for-the-ai-era-how-cloudflare--fc0ee0",
-            "title": "Adaptive application security for the AI era: how Cloudflare connects code, traffic, and intelligence to stop attacks",
-            "vendor": "Cloudflare",
-            "summary": "Cloudflare introduces an adaptive security framework connecting risk discovery, agent governance, runtime protection, and AI-powered response in a continuous learning loop.",
-            "has_page": true,
-            "entity_uid": "e2cbf937",
-            "entity_kind": "company",
-            "reader_note": "Nothing here changes what runs in your environment today. The areas it names are worth mapping against the controls you already have, so you can see which gaps are real and which are already covered.\n\nTreat the framework as a description of intent, not evidence. Ask which parts are generally available, which are roadmap, and what telemetry they need from your systems. A continuous learning loop is a claim about design. It does not show that detection improved, and it does not prove anything about attacks you have already seen."
-        },
-        {
-            "url": "https://www.salesforce.com/blog/agentic-ai-and-the-future-of-work-salesforce-practitioners/",
-            "date": "2026-09-29",
-            "slug": "agentic-ai-and-the-future-of-work-what-it-means-for-salesfor-dca983",
-            "title": "Agentic AI and the Future of Work: What It Means for Salesforce Practitioners",
-            "vendor": "Salesforce",
-            "summary": "Technology is changing fast. Follow the work to see where your role goes next.",
-            "has_page": false,
-            "entity_uid": "4124ecef",
-            "entity_kind": "company"
-        },
-        {
-            "url": "https://news.skhynix.com/en/ai-infrastructure-insight-ep3/",
-            "date": "2026-09-29",
-            "slug": "ai-infrastructure-insight-why-power-and-cooling-have-become--ccabc5",
-            "title": "[AI infrastructure insight] Why power and cooling have become the next challenge for AI data centers",
-            "vendor": "SK hynix",
-            "summary": "AI is no longer defined by a single model or AI processor. For AI to operate effectively in real-world services and industrial applications, it takes faster compute, wider memory bandwidth, higher-performance networks, more efficient storage, and more stable power and",
-            "has_page": true,
-            "entity_kind": "company",
-            "reader_note": "For your own planning, treat this as a prompt rather than a proof. Check where power and cooling constrain the systems you already run, and ask vendors for specifics before you commit.\n\nThe announcement itself does not show a deployed product, a measured result, or a customer outcome. It is a vendor's framing of a problem, not an independent finding. Be sceptical of any broad claim that does not come with testable details. What it does not prove is that the challenge is solved, or that any particular approach is ready for your environment."
-        },
-        {
-            "url": "https://news.sap.com/2026/09/new-york-climate-week-ai-sustainability/",
-            "date": "2026-09-29",
-            "slug": "ai-s-future-runs-through-sustainability-b53375",
-            "title": "AI’s Future Runs Through Sustainability",
-            "vendor": "SAP",
-            "summary": "Energy costs, physical risk, and AI's appetite for resources put sustainability at the center of business at New York Climate Week 2026.",
-            "has_page": true,
-            "entity_uid": "26b894e4",
-            "entity_kind": "company"
-        },
-        {
-            "url": "https://www.aisi.gov.uk/research/aisi-frontier-ai-trends-report-2025",
-            "date": "2026-09-29",
-            "slug": "aisi-frontier-ai-trends-report-2025-aisi-gov-uk-006a77",
-            "title": "AISI Frontier AI Trends Report (2025) - aisi.gov.uk",
-            "vendor": "UK AI Security Institute",
-            "retired": true,
-            "summary": "Our first public, evidence‑based assessment of how the world’s most advanced AI systems are evolving, bringing together results from two years of AISI's frontier model testing.",
-            "has_page": true
-        },
-        {
-            "url": "https://www.insurancejournal.com/news/national/2026/09/29/887179.htm",
-            "date": "2026-09-29",
-            "slug": "am-best-us-home-insurers-in-2025-book-first-underwriting-pro-0b4e62",
-            "title": "AM Best: US Home Insurers in 2025 Book First Underwriting Profit in Seven Years",
-            "vendor": "Insurance Journal",
-            "summary": "U.S. homeowners multiperil insurers reversed a $1.3 billion underwriting loss in 2024 to post an underwriting profit of $16.5 billion in 2025 – the line’s first underwriting gain since 2019, said AM Best. In fact, seven of eight years from …",
-            "has_page": true,
-            "entity_uid": "7785d228",
-            "entity_kind": "section"
-        },
-        {
-            "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-aurora-postgresql-18-6-17-11-16-15-15-19-14-24/",
-            "date": "2026-09-29",
-            "slug": "amazon-aurora-now-supports-postgresql-18-6-17-11-16-15-15-19-5aaec8",
-            "title": "Amazon Aurora now supports PostgreSQL 18.6, 17.11, 16.15, 15.19, 14.24",
-            "vendor": "Amazon Web Services",
-            "summary": "Amazon Aurora PostgreSQL-Compatible Edition now supports PostgreSQL versions 18.6, 17.11, 16.15, 15.19, and 14.24, which include bug fixes from the PostgreSQL community and Aurora-specific enhancements.",
-            "has_page": true,
-            "entity_uid": "0d5de807",
-            "entity_kind": "company"
-        },
-        {
-            "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/claude-region-expansion-in-sk/",
-            "date": "2026-09-29",
-            "slug": "amazon-bedrock-expands-claude-model-availability-to-india-so-d7c5bc",
-            "title": "Amazon Bedrock expands Claude model availability to India, South Korea, and Singapore",
-            "vendor": "Amazon Web Services",
-            "summary": "We're excited to announce the availability of Anthropic's Claude Opus 5, Claude Sonnet 5 , and Claude Haiku 4.5 on Amazon Bedrock in India, Claude Opus 5 and Claude Sonnet 5 in South Korea, as well as Claude Sonnet 5 in Singapore.",
-            "has_page": true,
-            "entity_uid": "0d5de807",
-            "entity_kind": "company",
-            "reader_note": "Check the list against where your workloads actually run. The three models are not offered everywhere: India gets all three, South Korea two, Singapore one. If your team assumed a single model across the region, that assumption now needs revisiting.\n\nAvailability is not the same as data residency. The announcement says nothing about where inference happens or how your data is handled, so treat it as a starting point for questions to your account team, not as proof of compliance. It also does not tell you how these models perform on your tasks."
-        },
-        {
-            "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/bedrock-managed-agents-preview/",
-            "date": "2026-09-29",
-            "slug": "amazon-bedrock-managed-agents-powered-by-openai-is-now-avail-737317",
-            "title": "Amazon Bedrock Managed Agents, powered by OpenAI, is now available in preview",
-            "vendor": "Amazon Web Services",
-            "summary": "Developed jointly by AWS and OpenAI, Bedrock Managed Agents (BMA) is built on a customized version of OpenAI's Agents API engineered to be AWS-native and integrated with AWS resources.",
-            "has_page": true,
-            "entity_uid": "0d5de807",
-            "entity_kind": "company",
-            "reader_note": "Treat the preview label as the practical detail. Anything you build now sits on interfaces and limits that can change before general availability, so treat early work as evaluation rather than foundation. Check how the service handles your existing identity, network, and logging controls before assuming the integration does what the label suggests.\n\nThe announcement shows a capability, not a deployment. It does not tell you how agents behave under your own workloads, what happens when a task fails halfway, or whether the audit trail meets your obligations. Test those yourself, on your data, and keep a fallback path."
-        },
-        {
-            "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/cloudwatch-logs-estimate-bytes-scanned/",
-            "date": "2026-09-29",
-            "slug": "amazon-cloudwatch-logs-insights-now-lets-you-estimate-bytes--0aeccb",
-            "title": "Amazon CloudWatch Logs Insights now lets you estimate bytes scanned before running a query",
-            "vendor": "Amazon Web Services",
-            "summary": "Amazon CloudWatch Logs Insights now lets you estimate the volume of log data, in bytes, that a query would scan over your selected log groups and time range - without running the query. This helps you adjust your log group selection, time range, and filters before running the query.",
-            "has_page": true,
-            "entity_uid": "0d5de807",
-            "entity_kind": "company",
-            "reader_note": "For day to day work, this gives you a chance to check the scope of a search before you commit to it. If the estimate looks larger than expected, you can narrow the log groups, shorten the time range, or add filters first.\n\nTreat the figure as a planning aid, not a guarantee. It does not prove what a query will return or how long it will take. The announcement is a vendor description, not an independent test, and the estimate reflects the selection you provide."
-        },
-        {
-            "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/cloudwatch-logs-auto-indexes-fields/",
-            "date": "2026-09-29",
-            "slug": "amazon-cloudwatch-logs-now-automatically-indexes-frequently--40f433",
-            "title": "Amazon CloudWatch Logs now automatically indexes frequently queried fields",
-            "vendor": "Amazon Web Services",
-            "summary": "Amazon CloudWatch Logs now automatically indexes the fields you query frequently, speeding up CloudWatch Logs Insights queries without requiring any manual setup.",
-            "has_page": true,
-            "entity_uid": "0d5de807",
-            "entity_kind": "company",
-            "reader_note": "Your log queries may get faster, but only for fields you already search often. The announcement does not explain how it picks those fields or whether there are limits.\n\nBe sceptical of the speedup until you test it on your own logs. Indexing based on past queries may not help new investigations. It does not prove that costs will fall or that every query benefits."
-        },
-        {
-            "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-connect-manage-data-tables/",
-            "date": "2026-09-29",
-            "slug": "amazon-connect-customer-now-lets-business-users-manage-more--24ebe2",
-            "title": "Amazon Connect Customer now lets business users manage more reference data to adjust contact center configurations in real time",
-            "vendor": "Amazon Web Services",
-            "summary": "Amazon Connect Customer now lets administrators store more of the reference data that drives their contact center configurations.",
-            "has_page": true,
-            "entity_uid": "0d5de807",
-            "entity_kind": "company"
-        },
-        {
-            "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-elasticache-serverless-public-endpoints/",
-            "date": "2026-09-29",
-            "slug": "amazon-elasticache-serverless-for-valkey-now-supports-public-2c821d",
-            "title": "Amazon ElastiCache Serverless for Valkey now supports public endpoints",
-            "vendor": "Amazon Web Services",
-            "summary": "Amazon ElastiCache Serverless for Valkey now supports public endpoints, letting you connect to your cache directly from a laptop, a serverless function, or any application running outside AWS, without setting up a VPN, a bastion host, or an SSH tunnel.",
-            "has_page": true,
-            "entity_uid": "0d5de807",
-            "entity_kind": "company"
-        },
-        {
-            "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-rds-postgresql-extended-support/",
-            "date": "2026-09-29",
-            "slug": "amazon-rds-for-postgresql-announces-extended-support-minor-v-77705a",
-            "title": "Amazon RDS for PostgreSQL announces Extended Support minor versions 13.23-rds.20260514, 12.22-rds.20260514 and 11.22-rds.20260514",
-            "vendor": "Amazon Web Services",
-            "summary": "Amazon Relational Database Service (RDS) for PostgreSQL announces Amazon RDS Extended Support minor versions 13.23-rds.20260514, 12.22-rds.20260514, and 11.22-rds.20260514.",
-            "has_page": true,
-            "entity_uid": "0d5de807",
-            "entity_kind": "company"
-        },
-        {
-            "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-rds-full-snapshot-size-available/",
-            "date": "2026-09-29",
-            "slug": "amazon-rds-now-adds-full-snapshot-size-information-to-the-co-908625",
-            "title": "Amazon RDS now adds full snapshot size information to the Console and API",
-            "vendor": "Amazon Web Services",
-            "summary": "Amazon RDS now displays the full snapshot size for RDS Snapshots. With this enhancement, customers can now retrieve full snapshot sizes programmatically through the DescribeDBSnapshots API using the new field, ‘FullSnapshotSizeInBytes’.",
-            "has_page": true,
-            "entity_uid": "0d5de807",
-            "entity_kind": "company"
-        },
-        {
-            "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/route-53-dns-firewall-panw-dns-security-generally-available",
-            "date": "2026-09-29",
-            "slug": "amazon-route-53-resolver-dns-firewall-support-for-palo-alto--ade89f",
-            "title": "Amazon Route 53 Resolver DNS Firewall support for Palo Alto Networks Advanced DNS Security is now Generally Available (GA)",
-            "vendor": "Amazon Web Services",
-            "summary": "​​Amazon Route 53 Resolver DNS Firewall support for Palo Alto Networks (PANW) Advanced DNS Security is now generally available across 32 AWS Regions, allowing security teams to detect and block malicious DNS traffic directly from their VPCs using PANW Advanced DNS Security rules without",
-            "has_page": true,
-            "entity_uid": "0d5de807",
-            "entity_kind": "company",
-            "reader_note": "If you already run both, this lets you enforce your existing rules on DNS traffic from your VPCs. Check that your regions are covered and that your team can act on what it flags.\n\nGeneral availability means the feature is offered, not that it works well in your environment. It does not prove detection accuracy, false positive rates, or that it replaces other controls. Test it on your own traffic before you depend on it."
-        },
-        {
-            "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-workspaces-applications-unified-graphics-images/",
-            "date": "2026-09-29",
-            "slug": "amazon-workspaces-applications-introduces-unified-graphics-i-c5d871",
-            "title": "Amazon WorkSpaces Applications introduces unified graphics images",
-            "vendor": "Amazon Web Services",
-            "summary": "Today, Amazon WorkSpaces Applications announces unified graphics images, a single image type that works across all supported graphics instance families, including G4dn, G5, G6, and G7. Previously, each graphics generation required its own dedicated image.",
-            "has_page": true,
-            "entity_uid": "0d5de807",
-            "entity_kind": "company",
-            "reader_note": "If you maintain separate images for each graphics generation, this removes some of that duplication. Fewer images to patch, and less rebuild work when you move workloads between instance families. The practical gain is operational, not a change in what the instances themselves can do.\n\nBe sceptical of \"works across all\" until you have tested it. Graphics drivers, GPU-dependent libraries and licensing checks can behave differently on different hardware, and a single image type does not prove equivalent performance or that your existing images can be retired. Treat it as a consolidation to validate, not a guarantee."
-        },
-        {
-            "url": "https://www.tomshardware.com/pc-components/cpus/amd-drops-an-epyc-usd15-000-256-core-bomb-epyc-9006-zen-6-venice-cpus-get-full-spec-and-pricing-treatment-from-usd700-up-to-usd14-904",
-            "date": "2026-09-29",
-            "slug": "amd-drops-an-epyc-15-000-256-core-beast-d21e20",
-            "title": "AMD drops an EPYC $15,000, 256-core beast",
-            "vendor": "Tom's Hardware",
-            "summary": "<p>Zhiye's passion for computer hardware ignited in his pre-teen years, thanks to a learning moment in which a power connection mishap set his Pentium P54CS system on fire and inadvertently short-circuited his entire home.",
-            "has_page": true,
-            "entity_kind": "company"
         }
     ],
     "archive": [
@@ -2783,6 +2787,17 @@
             "summary": "From verifying AI-written code to securing npm dependencies, these are the sessions I’m building my Universe agenda around. The post 10 technical talks I’m excited about at GitHub Universe 2026 appeared first on The GitHub Blog .",
             "has_page": true,
             "entity_uid": "72955879",
+            "entity_kind": "company"
+        },
+        {
+            "url": "https://www.salesforce.com/blog/coding-agents-product-design/",
+            "date": "2026-10-01",
+            "slug": "agents-can-mimic-good-design-ours-know-why-it-works-c3cad4",
+            "title": "Agents Can Mimic Good Design. Ours Know Why It Works",
+            "vendor": "Salesforce",
+            "summary": "We give coding agents the knowledge to make sound decisions and turn ideas into accessible, production-ready experiences.",
+            "has_page": true,
+            "entity_uid": "4124ecef",
             "entity_kind": "company"
         },
         {
@@ -2863,6 +2878,18 @@
             "entity_kind": "company"
         },
         {
+            "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/amazon-dynamodb-introduces-filtered-export/",
+            "date": "2026-10-01",
+            "slug": "amazon-dynamodb-introduces-filtered-export-to-amazon-s3-e005a6",
+            "title": "Amazon DynamoDB introduces filtered export to Amazon S3",
+            "vendor": "Amazon Web Services",
+            "summary": "Amazon DynamoDB now supports filtered export for tables. Export to Amazon S3 allows you to export your table data for analytics, data sharing, and other offline uses, as either a full export or an incremental export over a time window.",
+            "has_page": true,
+            "entity_uid": "0d5de807",
+            "entity_kind": "company",
+            "reader_note": "If you export DynamoDB tables today, the change is small but real: you can now limit what leaves the table rather than taking all of it. That may mean less data to move and store, though no figures are given, so treat any saving as unproven until you measure it on your own tables.\n\nBe sceptical of what is left unsaid. The description does not say what the filter applies to, how it behaves with incremental exports, or what limits apply. A feature announced is not a feature you can rely on in production."
+        },
+        {
             "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/guardduty-org-enablement-policies/",
             "date": "2026-10-01",
             "slug": "amazon-guardduty-now-supports-centralized-management-using-a-877b06",
@@ -2873,6 +2900,18 @@
             "entity_uid": "0d5de807",
             "entity_kind": "company",
             "reader_note": "Central enablement changes the mechanics, not the outcome. If your organization already struggles to keep GuardDuty switched on in new accounts and Regions, a declarative policy removes some of that manual toil. Check which accounts and Regions the policy actually reaches, and how it interacts with settings already in place.\n\nBe sceptical of the word \"every\". A policy that enables threat detection does not prove that findings are reviewed, routed to the right people, or acted on. It also says nothing about detection quality in your environment. Treat this as a coverage control, not a security outcome."
+        },
+        {
+            "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/redshift-cross-Region-queries-for-data-lake",
+            "date": "2026-10-01",
+            "slug": "amazon-redshift-now-supports-cross-region-queries-for-your-d-6fe134",
+            "title": "Amazon Redshift now supports cross-Region queries for your data lake",
+            "vendor": "Amazon Web Services",
+            "summary": "Amazon Redshift now supports querying Amazon S3 data lake tables located in a different AWS Region. With enhanced VPC routing, data lake query traffic between Amazon S3 and Amazon Redshift stays within your own VPC.",
+            "has_page": true,
+            "entity_uid": "0d5de807",
+            "entity_kind": "company",
+            "reader_note": "If your data lake and your Redshift cluster live in different Regions, this removes a copying step. You can query the tables where they are. That may simplify some pipelines, though it does not tell you whether the result will be fast enough or cheap enough for regular use.\n\nBe sceptical about what is not said: latency and transfer costs. The announcement shows the capability exists, not that it performs well in production. Treat it as a reason to run your own tests, not as a reason to redesign your architecture."
         },
         {
             "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/s3-object-lock-variable-retention-event-holds-aws-govcloud/",
@@ -2923,6 +2962,18 @@
             "reader_note": "What changes for you is where the data lives. DNS query and firewall activity from these services now surfaces in CloudWatch, so you can reuse the dashboards, alarms and log tooling you already run rather than building a separate pipeline for DNS.\n\nBe sceptical of the framing. Analytics and insights are labels, not specifications. The announcement does not say what is captured, at what granularity, how long it is kept, or what it costs to query. Nor does it show that DNS Firewall detects or blocks anything it did not before. Treat it as a plumbing change until you test it on your own traffic."
         },
         {
+            "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/aws-budgets/",
+            "date": "2026-10-01",
+            "slug": "aws-budgets-now-supports-email-verification-for-notification-67ed03",
+            "title": "AWS Budgets now supports email verification for notification subscribers",
+            "vendor": "Amazon Web Services",
+            "summary": "AWS Budgets lets you set custom cost and usage thresholds and alerts you by email when your spending crosses the threshold. AWS Budgets now verifies new email subscribers before sending them budget alerts.",
+            "has_page": true,
+            "entity_uid": "0d5de807",
+            "entity_kind": "company",
+            "reader_note": "Adding a subscriber to a budget alert now takes one extra step: that person must confirm the address before alerts reach them. That matters if you route alerts to a shared inbox or a group address, because an unconfirmed recipient receives nothing. Check that your recipients have confirmed, particularly after staff changes.\n\nVerification confirms an address is reachable. It does not confirm anyone reads it, and it changes nothing about how thresholds are evaluated or when an alert fires. A verified alert is still only as useful as the threshold you set."
+        },
+        {
             "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/aws-glue-iceberg-v3-optimization/",
             "date": "2026-10-01",
             "slug": "aws-glue-data-catalog-now-supports-table-optimization-statis-33eb7d",
@@ -2933,6 +2984,53 @@
             "entity_uid": "0d5de807",
             "entity_kind": "company",
             "reader_note": "If your Iceberg V3 tables sit in the Glue Data Catalog, this may reduce manual upkeep and change how you discover tables in Amazon S3. Check whether your tables and workflows qualify before assuming a change.\n\nBe sceptical of the word optimize. The announcement does not show how much faster queries become, what the statistics cover, or what the crawlers cost. It also does not prove these features work for every Iceberg V3 setup. Treat it as a capability to test, not a deployed improvement."
+        },
+        {
+            "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/aws-iam-identity-center-extends-multi-region-support-to-more-aws-regions",
+            "date": "2026-10-01",
+            "slug": "aws-iam-identity-center-extends-multi-region-support-to-more-098b0c",
+            "title": "AWS IAM Identity Center extends multi-Region support to more AWS Regions",
+            "vendor": "Amazon Web Services",
+            "summary": "IAM Identity Center helps you connect your workforce identities to AWS once and streamline access management to AWS accounts and applications. You can now replicate IAM Identity Center to opt-in AWS Regions, and between Regions within the AWS GovCloud (US) and AWS China Regions.",
+            "has_page": true,
+            "entity_uid": "0d5de807",
+            "entity_kind": "company",
+            "reader_note": "For practitioners managing access across AWS Regions, the practical change is that identity configuration may no longer need to be rebuilt or maintained separately in each supported Region. Check the specific Regions you use, how replication behaves during failover, and whether your data residency or compliance rules allow it.\n\nBe sceptical of the assumption that broader replication equals simpler governance. It does not prove automatic migration for existing setups, nor that every Region or partition is covered. Treat the vendor's framing as a claim to test in your own account structure."
+        },
+        {
+            "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/aws-security-hub-remediation-plans/",
+            "date": "2026-10-01",
+            "slug": "aws-security-hub-introduces-remediation-plans-to-prioritize--7ee9a3",
+            "title": "AWS Security Hub introduces remediation plans to prioritize and fix security exposures",
+            "vendor": "Amazon Web Services",
+            "summary": "AWS Security Hub now offers remediation plans that group related exposure findings sharing a root cause. Instead of addressing each exposure individually, you can now fix a single underlying resource, such as a misconfigured setting or overly permissive policy, and resolve or reduce the severity of",
+            "has_page": true,
+            "entity_uid": "0d5de807",
+            "entity_kind": "company",
+            "reader_note": "The practical change is in your queue, not in your controls. You may spend less time closing near-duplicate items and more time checking whether a single fix really covers every affected resource. Test the grouping against incidents you already understand.\n\nBe sceptical of the root-cause label and any severity drop. A resolved finding is not proof that the exposure is gone, that every affected resource was covered, or that your controls now hold. Treat the plan as a starting point for verification, not a clean bill of health."
+        },
+        {
+            "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/transfer-family-custom-cloudwatch-log-groups/",
+            "date": "2026-10-01",
+            "slug": "aws-transfer-family-now-supports-custom-cloudwatch-log-group-40bdb4",
+            "title": "AWS Transfer Family now supports custom CloudWatch log groups for managed workflows",
+            "vendor": "Amazon Web Services",
+            "summary": "AWS Transfer Family now lets you choose a custom log group in Amazon CloudWatch Logs for managed workflow execution logs. You can organize workflow logs to monitor individual workflows separately or bring logs from related workflows together.",
+            "has_page": true,
+            "entity_uid": "0d5de807",
+            "entity_kind": "company"
+        },
+        {
+            "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/aws-well-architected-agent/",
+            "date": "2026-10-01",
+            "slug": "aws-well-architected-agent-is-now-available-in-preview-8c10af",
+            "title": "AWS Well-Architected Agent is now available in preview",
+            "vendor": "Amazon Web Services",
+            "summary": "AWS announces the preview of AWS Well-Architected Agent, a AI-powered service that is the next-gen evolution of AWS Trusted Advisor and the AWS Well-Architected Tool.",
+            "has_page": true,
+            "entity_uid": "0d5de807",
+            "entity_kind": "company",
+            "reader_note": "Treat this as an early look, not a replacement for the tools you already run. A preview means the service can change or disappear, and the announcement says little about what it checks, how it reports, or what it costs. Your existing Trusted Advisor checks and Well-Architected reviews still stand.\n\nBe sceptical of the framing. Calling something AI-powered says nothing about whether its recommendations are correct or useful for your workload. Try it on a non-critical account, compare its findings against what your team already knows, and judge it on that."
         },
         {
             "url": "https://www.insurancejournal.com/news/national/2026/10/01/887453.htm",
@@ -3242,6 +3340,17 @@
             "entity_kind": "company"
         },
         {
+            "url": "https://news.xbox.com/en-us/2026/10/01/ikea-xbox-gaming-collection-yxstaby/",
+            "date": "2026-10-01",
+            "slug": "ikea-and-xbox-collab-on-a-new-collection-made-for-home-gamin-0da4fd",
+            "title": "IKEA and XBOX collab on a new collection made for home gaming",
+            "vendor": "Microsoft",
+            "summary": "The post IKEA and XBOX collab on a new collection made for home gaming appeared first on Source .",
+            "has_page": false,
+            "entity_uid": "5a78804e",
+            "entity_kind": "company"
+        },
+        {
             "url": "https://www.insurancejournal.com/news/midwest/2026/10/01/887480.htm",
             "date": "2026-10-01",
             "slug": "illinois-governor-creates-cabinet-to-explore-ai-regulation-4926c6",
@@ -3441,6 +3550,17 @@
             "entity_kind": "company"
         },
         {
+            "url": "https://microsoft.ai/news/our-first-streaming-transcription-model/",
+            "date": "2026-10-01",
+            "slug": "new-microsoft-ai-models-bring-faster-transcription-and-multi-9cd311",
+            "title": "New Microsoft AI models bring faster transcription and multilingual voices",
+            "vendor": "Microsoft",
+            "summary": "The post New Microsoft AI models bring faster transcription and multilingual voices appeared first on Source .",
+            "has_page": false,
+            "entity_uid": "5a78804e",
+            "entity_kind": "company"
+        },
+        {
             "url": "https://www.artemis.bm/news/nuveen-completes-schroders-acquisition-plan-to-organise-private-markets-by-asset-class/?utm_source=rss&utm_medium=rss&utm_campaign=nuveen-completes-schroders-acquisition-plan-to-organise-private-markets-by-asset-class",
             "date": "2026-10-01",
             "slug": "nuveen-completes-schroders-acquisition-plan-to-organise-priv-baa610",
@@ -3527,6 +3647,17 @@
             "entity_kind": "section"
         },
         {
+            "url": "https://blogs.microsoft.com/on-the-issues/2026/10/01/preparing-governments-for-an-era-of-interconnected-cyber-risk/",
+            "date": "2026-10-01",
+            "slug": "preparing-governments-for-an-era-of-interconnected-cyber-ris-92bcc8",
+            "title": "Preparing governments for an era of interconnected cyber risk",
+            "vendor": "Microsoft",
+            "summary": "The post Preparing governments for an era of interconnected cyber risk appeared first on Source .",
+            "has_page": false,
+            "entity_uid": "5a78804e",
+            "entity_kind": "company"
+        },
+        {
             "url": "https://blogs.nvidia.com/blog/productive-durable-fungible-ai-factories/",
             "date": "2026-10-01",
             "slug": "productive-durable-fungible-how-nvidia-ai-factories-maximize-052ead",
@@ -3546,6 +3677,17 @@
             "vendor": "Tom's Hardware",
             "summary": "<p>Mark's enthusiasm for computers dampened at an early age by the rubber-keyed Sinclair Spectrum 48K and feelings of Commodore 64 envy. However, in the mid-80s, hope in a digital future was rekindled by the purchase of an Atari 520 STe.",
             "has_page": true,
+            "entity_kind": "company"
+        },
+        {
+            "url": "https://www.databricks.com/blog/read-restrictions-and-catalog-labels-unifying-governance-across-engines-and-catalogs",
+            "date": "2026-10-01",
+            "slug": "read-restrictions-and-catalog-labels-unifying-governance-acr-4b1101",
+            "title": "Read Restrictions and Catalog Labels: Unifying governance across engines and catalogs",
+            "vendor": "Databricks",
+            "summary": "In our previous posts, we showed how open table formats, open APIs and unified governance...",
+            "has_page": false,
+            "entity_uid": "a4718c15",
             "entity_kind": "company"
         },
         {
@@ -3704,6 +3846,29 @@
             "entity_kind": "company"
         },
         {
+            "url": "https://www.atlassian.com/blog/ai-at-work/ai-sdlc-transformation-playbook",
+            "date": "2026-10-01",
+            "slug": "the-ai-sdlc-transformation-playbook-d868b2",
+            "title": "The AI SDLC transformation playbook",
+            "vendor": "Atlassian",
+            "summary": "Teams across the industry are sprinting to reinvent their software development processes with agentic AI. Yet, navigating the fast-changing landscape of tools and opinions can be daunting for even the most AI-forward organizations.",
+            "has_page": true,
+            "entity_uid": "40000e9d",
+            "entity_kind": "company"
+        },
+        {
+            "url": "https://openai.com/index/the-den-family-social",
+            "date": "2026-10-01",
+            "slug": "the-den-frees-up-10-15-hours-a-week-to-grow-with-chatgpt-wor-b35ef3",
+            "title": "The Den frees up 10-15 hours a week to grow with ChatGPT Work",
+            "vendor": "OpenAI",
+            "summary": "As it opens a new location, the social club prepares grant applications in 2 hours instead of 3 days and liquor-license materials in 3 hours instead of 4 days.",
+            "has_page": true,
+            "entity_uid": "d9ea9793",
+            "entity_kind": "company",
+            "reader_note": "If your work involves assembling grant applications, licensing paperwork or similar documents from templates and evidence, this is the kind of task worth testing on your own material. The useful signal is the task type: structured, repetitive, and reviewed by someone else before it counts.\n\nBe sceptical of the framing. One organisation's account, reported by the vendor, tells you nothing about accuracy, rework, or whether the saved hours were real. It does not prove the output was accepted first time. Run a small trial, check the results yourself, and keep the review step."
+        },
+        {
             "url": "https://openai.com/index/the-eternal-complement",
             "date": "2026-10-01",
             "slug": "the-eternal-complement-2210ff",
@@ -3802,6 +3967,17 @@
             "has_page": true,
             "entity_uid": "7785d228",
             "entity_kind": "section"
+        },
+        {
+            "url": "https://www.atlassian.com/blog/ai-at-work/why-the-real-ai-advantage-is-organizational-system-design",
+            "date": "2026-10-01",
+            "slug": "why-the-real-ai-advantage-is-organizational-system-design-e578ad",
+            "title": "Why the real AI advantage is organizational system design",
+            "vendor": "Atlassian",
+            "summary": "Today, the industry celebrates developers for shipping code at unprecedented speed. They are doing this while code-completion tools generate syntax faster than anyone can read and review.",
+            "has_page": true,
+            "entity_uid": "40000e9d",
+            "entity_kind": "company"
         },
         {
             "url": "https://www.insurancejournal.com/news/midwest/2026/10/01/887487.htm",
@@ -3977,6 +4153,18 @@
             "reader_note": "If your workloads have to stay in the UK, this removes one obstacle: prompts and responses for these two models can now be processed in the London Region rather than being routed elsewhere. That is worth checking against your own data residency and procurement requirements, and worth confirming in your own account rather than assuming from the headline.\n\nIt does not prove that either model meets your accuracy, latency, or cost needs, and it says nothing about how your specific use case will perform. Treat regional availability as a prerequisite, not evidence."
         },
         {
+            "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/kinesis-video-streams-vpc-privatelink/",
+            "date": "2026-09-30",
+            "slug": "amazon-kinesis-video-streams-now-supports-vpc-endpoints-with-92b9af",
+            "title": "Amazon Kinesis Video Streams now supports VPC endpoints with AWS PrivateLink",
+            "vendor": "Amazon Web Services",
+            "summary": "Amazon Kinesis Video Streams now supports interface VPC endpoints powered by AWS PrivateLink , providing private connectivity from your Amazon Virtual Private Cloud (Amazon VPC).",
+            "has_page": true,
+            "entity_uid": "0d5de807",
+            "entity_kind": "company",
+            "reader_note": "If your video streams currently leave your network to reach the service, this lets you keep that traffic on private addresses instead. That can simplify conversations with security and compliance reviewers. Check the details before assuming it solves a problem: you still configure endpoint policies, DNS, and access controls yourself, and private connectivity says nothing about how the service stores, retains, or processes your footage.\n\nTreat this as a capability, not a deployment. It does not tell you what it costs, how it performs under your load, or whether it fits your setup. Test it in a non-production account first."
+        },
+        {
             "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-managed-grafana-now-supports-creating-grafana-13-2-workspaces",
             "date": "2026-09-30",
             "slug": "amazon-managed-grafana-now-supports-creating-grafana-13-2-wo-7a50fc",
@@ -4091,6 +4279,17 @@
             "entity_kind": "company"
         },
         {
+            "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/system-managed-iceberg-materialized-views",
+            "date": "2026-09-30",
+            "slug": "apache-iceberg-materialized-views-now-support-system-managed-e3dd0a",
+            "title": "Apache Iceberg materialized views now support system-managed write protection",
+            "vendor": "Amazon Web Services",
+            "summary": "Today, AWS announces system-managed materialized views for Apache Iceberg. Materialized views let you precompute an expensive query once and reuse the result across engines.",
+            "has_page": true,
+            "entity_uid": "0d5de807",
+            "entity_kind": "company"
+        },
+        {
             "url": "https://www.insurancejournal.com/news/national/2026/09/30/887260.htm",
             "date": "2026-09-30",
             "slug": "appeals-court-upholds-thomson-reuters-landmark-win-in-ai-tra-58d3c8",
@@ -4136,6 +4335,18 @@
             "entity_uid": "0d5de807",
             "entity_kind": "company",
             "reader_note": "This is housekeeping, not a new capability. Bulk updates reduce the manual work of keeping many skills current, and version checks tell you what is installed. Neither tells you whether a skill behaves correctly, so treat the version number as a label rather than a guarantee.\n\nBe sceptical of convenience that changes many things at once. If one command can update every skill, one mistake can too. Check what a skill does before you let it move, and keep a way to roll back. Nothing here proves the skills themselves are reliable, safe, or suited to your work."
+        },
+        {
+            "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/aws-continuum-penetration/",
+            "date": "2026-09-30",
+            "slug": "aws-continuum-for-penetration-testing-now-available-in-6-add-782f8d",
+            "title": "AWS Continuum for Penetration Testing now available in 6 additional Regions",
+            "vendor": "Amazon Web Services",
+            "summary": "AWS Continuum for Penetration Testing now available in 6 additional Regions AWS Continuum for Penetration Testing (AWS Security Agent) is a managed security service that enables AWS customers to conduct penetration testing against their web applications and APIs.",
+            "has_page": true,
+            "entity_uid": "0d5de807",
+            "entity_kind": "company",
+            "reader_note": "If your workloads sit in one of the newly covered Regions, this may remove a practical obstacle: testing can run closer to the systems it targets, which can matter for data residency and for keeping test traffic local. Check the Region list against where your applications actually run.\n\nBe sceptical of the scope. The description covers web applications and APIs, not your wider estate, and regional availability says nothing about how well the testing works. It does not prove the service finds real issues, or that its findings would satisfy an auditor."
         },
         {
             "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/iam-identity-center-apis-arns/",
@@ -85776,14 +85987,14 @@
             "vendor": "European Commission AI"
         }
     ],
-    "built_at": "2026-10-01T15:23:44-05:00",
+    "built_at": "2026-10-01T18:22:44-05:00",
     "coverage": {
         "feeds": 44,
-        "companies": 421,
+        "companies": 452,
         "feeds_healthy": 41
     },
     "page_uid": "bad4a071",
-    "generated": "2026-10-01T20:33:28Z",
+    "generated": "2026-10-01T23:33:00Z",
     "window_days": 30,
     "refresh_every_days": 1
 }

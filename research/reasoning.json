@@ -346,7 +346,10 @@
             "citations": 86,
             "paper_type": "Preprint",
             "topic_name": "Reasoning",
-            "abstract_source": "consensus"
+            "abstract_source": "consensus",
+            "explain_beginner": "A new paper looks at why large language models can give wrong answers when they need to reason through several steps. Even when these models know useful facts, they may not connect them in a sensible order. The researchers say that without logical rules, the model's thinking can drift into made-up claims. Their method, called LoT, asks the model to check and fix each reasoning step using a logic technique that tests whether an assumption leads to an absurd result. Tests across many kinds of problems suggest this logical checking improves reasoning. This matters because it offers a concrete way to reduce hallucinations.",
+            "explain_business": "For business leaders, this paper suggests that AI systems can make mistakes when they solve problems that require several reasoning steps. The researchers propose a method that makes a model check its own reasoning with logical rules, especially by testing whether an assumption leads to an impossible result. In tests across math, everyday knowledge, formal symbols, cause and effect, and social situations, this checking improved reasoning. In practice, this points to a prompting method that may reduce hallucination risk in AI tools. A decision it informs is whether to add logic-based verification steps before trusting AI output in workflows where errors are costly.",
+            "explain_practitioner": "The paper studies how large language models reason through multiple steps when given no worked examples. The authors say that when such reasoning is not guided by logic, models can invent unsupported details and fail to connect what they know. Their method, LoT, is a prompting approach that lets the model improve itself. It uses formal logic, particularly proof by contradiction, to inspect and repair each step. Tests covered math, everyday knowledge, formal symbols, cause and effect, and social situations. The main finding is that this logical checking improved reasoning across those tasks. Code is available."
         },
         {
             "uid": "r0000045",
@@ -401,7 +404,10 @@
             "citations": 40,
             "paper_type": "Journal Article",
             "topic_name": "Reasoning",
-            "abstract_source": "consensus"
+            "abstract_source": "consensus",
+            "explain_beginner": "Large language models can solve problems by working through steps, a method called chain of thought prompting. This paper asks how to choose helpful examples to show the model. Older methods often pick examples because the questions look similar, which can add confusion and is hard to explain. This work instead groups examples by the kind of reasoning they use. It builds sets of patterns for a task, then picks varied examples from those patterns. Tests across several tasks that need reasoning show this approach is steadier and usually better. It matters because users can get more reliable answers and see why a chosen example helped.",
+            "explain_business": "This research suggests that AI systems can be made more dependable by choosing examples based on how they reason, not just on how similar their wording is. In practice, teams using AI tools could favor prompt designs that organize examples by reasoning pattern and keep an audit trail of why each example was selected. The paper reports stronger and more consistent results across several tasks that require reasoning. That supports a decision to invest in interpretable prompt selection methods, especially where reliability and explainability matter, rather than relying only on surface level similarity when configuring large language models.",
+            "explain_practitioner": "The authors target example selection for chain of thought prompting. Instead of choosing demonstrations by question wording, they use reasoning patterns, meaning the route a model takes to an answer. They first create sets of patterns for each task using existing knowledge and prompting techniques from large models. Then they choose varied examples that cover different patterns. This reduces noise from examples that seem similar in wording but do not match well, and it makes the selection process easier to inspect. In experiments across multiple tasks that require reasoning, the method was more robust and produced consistent gains compared with methods that do not use labeled examples."
         },
         {
             "doi": "10.48550/arxiv.2406.10625",
@@ -419,7 +425,10 @@
             "citations": 38,
             "paper_type": "Preprint",
             "topic_name": "Reasoning",
-            "abstract_source": "consensus"
+            "abstract_source": "consensus",
+            "explain_beginner": "AI systems can write step by step explanations that sound convincing, but those explanations may not show what the system is really doing. This paper tested three ways to make the explanations more honest: giving the model examples in its prompt, training it further, and adjusting its internal settings. The authors found these methods barely helped. Internal adjustments worked very poorly. Prompt examples and extra training gave only small gains in narrow tests, and those gains did not hold across different tasks. This matters because people may trust AI explanations too much, especially in important areas like healthcare. The paper suggests current methods are not enough.",
+            "explain_business": "Many AI tools can show a step by step rationale for their answers. This paper finds that three common ways to make those rationales trustworthy, prompt examples, extra training, and internal model adjustments, provide little reliable benefit. Internal adjustments barely worked. Prompt examples and extra training helped only slightly in narrow tests and did not carry over to other tasks. For executives, this means AI generated reasoning should not be treated as proof of how a decision was made. In regulated or high stakes settings, such as healthcare, do not rely on these explanations for compliance or safety. Instead, require independent checks or human review before acting.",
+            "explain_practitioner": "The authors studied whether three steering methods can make a model's stated reasoning match its actual behavior. They designed new approaches within in-context learning, fine-tuning, and activation editing, then tested them across several benchmark datasets. The results were mostly negative. Activation editing produced minimal improvement. Fine-tuning and in-context learning yielded only marginal gains, and those gains appeared mainly in controlled settings. They did not transfer across varied reasoning tasks or truthful question answering benchmarks. The key result is that these common techniques are not sufficient to reliably improve explanation faithfulness. For practitioners, this means treating generated reasoning traces as faithful explanations remains an open problem, not a solved engineering step."
         },
         {
             "doi": "10.1145/3742413.3789091",
@@ -458,23 +467,6 @@
             "abstract_source": "consensus"
         },
         {
-            "doi": "10.48550/arxiv.2608.05152",
-            "uid": "r0000148",
-            "url": "https://arxiv.org/abs/2608.05152",
-            "note": "An attempt at statistical regularities in reasoning traces, early work but the direction an audit would need for quantitative assurance.",
-            "slug": "reasoning",
-            "year": 2026,
-            "added": "2026-10-01",
-            "title": "Mean-Field Dynamics of Chain-of-Thought Reasoning in Large Language Models",
-            "topic": "reasoning",
-            "authors": "Hao Ai",
-            "page_url": "/research/paper/r0000148/",
-            "citations": 0,
-            "paper_type": "Preprint",
-            "topic_name": "Reasoning",
-            "abstract_source": "consensus"
-        },
-        {
             "doi": "10.71465/gmssrj183",
             "uid": "r0000151",
             "url": "https://doi.org/10.71465/gmssrj183",
@@ -491,6 +483,23 @@
             "paper_type": "Journal Article",
             "topic_name": "Reasoning",
             "abstract_source": "consensus"
+        },
+        {
+            "doi": "10.48550/arxiv.2608.05152",
+            "uid": "r0000148",
+            "url": "https://arxiv.org/abs/2608.05152",
+            "note": "An attempt at statistical regularities in reasoning traces, early work but the direction an audit would need for quantitative assurance.",
+            "slug": "reasoning",
+            "year": 2026,
+            "added": "2026-10-01",
+            "title": "Mean-Field Dynamics of Chain-of-Thought Reasoning in Large Language Models",
+            "topic": "reasoning",
+            "authors": "Hao Ai",
+            "page_url": "/research/paper/r0000148/",
+            "citations": 0,
+            "paper_type": "Preprint",
+            "topic_name": "Reasoning",
+            "abstract_source": "consensus"
         }
     ],
     "reading": {
@@ -498,7 +507,7 @@
         "model": "claude-haiku-4-5",
         "generated_on": "2026-09-02"
     },
-    "built_at": "2026-10-01T15:23:44-05:00",
+    "built_at": "2026-10-01T18:22:44-05:00",
     "page_uid": "bbc8124a",
     "generated": "2026-10-01",
     "last_added": "2026-10-01",

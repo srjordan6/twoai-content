@@ -756,6 +756,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "A Loop Guard is a hard limit on how many times an automated agent can retry, how long it can run, or how much it can spend. For a small company, it matters when an agent runs on its own and can retry failed steps, because without it the agent can burn cost pursuing an impossible goal, and it does not matter for a single request that cannot repeat. It tends to save time by stopping the agent and having it report back instead of retrying forever, and it can cap spend, for example at 25 steps and $5 per task.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Set hard ceilings on iterations, wall-clock time and spend for every agent loop, not just a soft retry count; an agent chasing an impossible goal will happily consume unbounded resources unless something external forces a stop.",
                     "audience": "developer"
                 },
@@ -2422,6 +2426,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "Machine identity means the logins and keys that software uses, not the logins your staff use. It matters when you add new software or agents, because each one can add several more of these software logins, and an inventory can show many more of them than employee logins. It does not matter as much when you are not adding tools or checking access, and an inventory pass takes time to run but can save time by showing what software logins exist.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "They now outnumber human identities in most environments, and each new agent adds several more; extend your identity governance and access review processes explicitly to cover machine identities with the same rigor as human accounts, since most existing review processes were designed around and still focus primarily on human users.",
                     "audience": "ciso"
                 },
@@ -2473,6 +2481,10 @@
                 {
                     "body": "A materiality determination on a cyber incident starts the SEC's four-business-day disclosure clock, which makes the determination itself a governed process; have a clear, pre-established, documented process for making this determination quickly, since the disclosure clock starts running the moment materiality is determined, and delay in making that determination is itself a governance risk.",
                     "audience": "executive"
+                },
+                {
+                    "body": "For a small company, materiality means deciding whether an incident is serious enough that you must tell investors or regulators. If you are not a US public company, the SEC disclosure clock does not apply to you, but the question still matters when you have investors or regulators who need to know. In practice, it is a short, formal check that costs some staff time up front and can save time later by giving you a clear record of why you did or did not report.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "A public company's process for determining materiality on AI-related incidents is worth understanding specifically, since a slow, poorly governed determination process creates real disclosure timing risk that can itself become a securities law issue independent of the underlying incident.",
@@ -2528,6 +2540,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "MITRE ATLAS is a public list of ways attackers have gone after AI systems. For a small company, it matters when you have an AI system that could be targeted, because you can compare your setup against attacks that are already written down. It matters less if you do not have such a system, and using it costs time to map your systems during a security review, though it can save time by turning guesswork into matching against documented attacks.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "It turns AI threat modeling from speculation into pattern-matching against documented attacks; use this as a direct reference when threat modeling any AI system, since it provides documented, real-world attack patterns rather than requiring your team to speculatively imagine what an AI-specific attack might look like.",
                     "audience": "ciso"
                 },
@@ -2581,6 +2597,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "For a small business, a model artifact is the saved weights, adapters, and tuning data that make up a trained model, not the surrounding code. It matters when you rely on that model and would need to restore it after a loss, so it belongs in your backup and recovery plan with clear restore goals. It matters less if you do not keep your own trained model, and keeping a copy can save the time of restoring the capability while taking some time to store and check.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Losing it can mean losing a capability no backup of the surrounding code can restore; ensure model artifacts have their own dedicated backup and recovery procedure, distinct from standard code and infrastructure backups, since standard software recovery processes typically do not account for these large, specialized files.",
                     "audience": "ciso"
                 },
@@ -2632,6 +2652,10 @@
                 {
                     "body": "A genuine and hard-to-detect risk for any proprietary model exposed through an API, since standard access controls checking individual requests will not catch it; ask your team whether monitoring specifically looks for the aggregate query patterns characteristic of this attack.",
                     "audience": "executive"
+                },
+                {
+                    "body": "For a small company, model exfiltration means someone can ask your AI system many ordinary questions and slowly copy how it behaves or what it learned. It matters when outsiders can query your model often and one account starts sending many related requests, because each single request looks fine and only the overall pattern shows the theft. It matters less if your model is not valuable or few people can query it, and watching query rates and patterns takes some staff time but can save time by catching the problem before it grows.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Each request looks legitimate on its own; the theft only appears in the aggregate pattern, which is why per-request controls miss it. Implement query-pattern and volume-based monitoring specifically for this attack type, since request-level access controls alone are structurally unable to detect an attack that only becomes visible in aggregate.",
@@ -4943,6 +4967,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "A knowledge graph is a way to store facts as a connected map of things and how they relate, instead of a plain list. For a small company, it matters when you need to follow links between records, like customers, contracts, and obligations, to get exact answers across several steps, and it does not matter if your information is simple and you only look things up one at a time. It can save time on those linked lookups, but it does not replace simple lists for simple needs.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Worth pairing with vector-based retrieval rather than choosing one exclusively; knowledge graphs handle precise multi-hop relational queries well, while embedding-based retrieval handles fuzzy semantic similarity well, and the two approaches complement each other's weaknesses in a hybrid retrieval system.",
                     "audience": "developer"
                 },
@@ -5000,6 +5028,14 @@
                     "audience": "child"
                 },
                 {
+                    "body": "A large language model is a generative model trained on vast text that can understand, summarize, generate, and predict language, and its capabilities appear at large scale. For decisions, it can support drafting, analysis, and coding tasks, so leaders should treat it as a tool for those tasks rather than an automatic answer. Money and risk depend on the specific use, and because it predicts language it can be wrong, so a named person remains accountable for checking and approving its output.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a small company, a large language model is a tool that can draft, summarize, analyze, and generate language from a vast amount of text. It matters when your team has writing, analysis, or coding tasks that fit those abilities, and it does not matter when your work does not involve those tasks. It can save time on those tasks, but it can also take time to check the output, and the definition does not give a specific cost or time saving.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Not every task needs a frontier-scale LLM; matching model size to task complexity, sometimes a small language model or a fine-tuned smaller model, meaningfully reduces cost and latency without a corresponding capability loss for well-bounded tasks.",
                     "audience": "developer"
                 },
@@ -5051,6 +5087,14 @@
                 {
                     "body": "The AI's internal \"map\" of ideas, where similar concepts end up sitting close together, even ones from totally different examples, kind of like organizing a messy room so that similar things end up near each other.",
                     "audience": "child"
+                },
+                {
+                    "body": "Latent space is the model's compressed internal map where similar concepts sit close together, so moving between two points produces a coherent blend. For decisions, it means you can ask for gradual variations or mixtures of what the model has learned, and the output can stay coherent. It does not by itself set money or risk, and the person who approves using that blended output is accountable.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "Latent space is the model's compressed internal map where similar concepts sit close together, so moving between two points gives a coherent blend. For a company with five to fifty employees, it matters when you want the model to create a smooth mixture or variation of what it has learned, such as morphing between two images. It does not matter when you only need a single direct answer, and the definition does not say what it tends to cost or save in time.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Useful for building features like semantic search, similarity matching, and controlled generation via latent-space manipulation; understanding roughly how your model organizes its latent space helps explain otherwise puzzling output behavior.",
@@ -5106,6 +5150,14 @@
                     "audience": "child"
                 },
                 {
+                    "body": "Layer normalization is an internal technique in AI models that keeps the numbers inside each layer in a steady range so training is stable and faster. For decisions, it affects whether a model can be trained reliably and how much time and computing resources that training takes, which relates to cost and risk. Accountability for using it sits with the technical team that designs and trains the model, not with the business user.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company of this size, layer normalization is a behind-the-scenes part of how an AI model is trained. It matters when you depend on a vendor or partner to train a model and you care whether that training is stable and fast, and it does not matter for day-to-day use of an already trained tool. It tends to save time in model training by helping avoid unstable training, and that time saving is in the training work rather than in daily use.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Placement, pre-norm versus post-norm, is a real architectural choice with training-stability consequences, not a minor implementation detail; if you are debugging unstable training in a custom transformer, normalization placement is worth checking early.",
                     "audience": "developer"
                 },
@@ -5157,6 +5209,14 @@
                 {
                     "body": "The raw, before-cleanup numbers an AI produces showing how much it favors each possible next word, before those numbers get turned into neat percentages that add up to 100%.",
                     "audience": "child"
+                },
+                {
+                    "body": "Logits are the raw scores a model produces before they are turned into probabilities. For decisions, money and risk, they are an input rather than a final answer, so they show the model's confidence before any adjustment and can be changed to steer what the model does. The people who choose how to read or adjust those scores are accountable for the decision and its risk.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, logits are the raw scores behind a model's output before they become probabilities. They matter when you need to check how confident a tool really is or when you want to adjust how it behaves, and they do not matter for most everyday uses where you only need the final answer. In time terms, reading or adjusting them can take staff effort, while ignoring them can save that effort but may leave confidence and steering unchecked.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Inspect logits directly, not just the final sampled token, when debugging unexpected model output; the raw score distribution often reveals whether the model was genuinely confident, torn between close options, or essentially guessing, which the final chosen token alone does not show.",
@@ -5212,6 +5272,14 @@
                     "audience": "child"
                 },
                 {
+                    "body": "LSTM is an older AI design for handling sequences of speech or text. It has a control mechanism that lets it remember information over long sequences, and it was used in speech recognition and translation until transformers displaced it. For decisions, treat it as legacy technology: if your systems rely on it, the risk and accountability sit with the team that owns those systems, and new work should use the approach that replaced it.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, LSTM matters only if you run or support older speech recognition or text generation tools that use it. If you buy current AI services, it usually does not matter because transformers displaced it. It can save time by helping those older tools remember information over long sequences, but it is not a separate cost unless you build or maintain such tools.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Rarely the right default choice for a new project today given transformer alternatives, but still occasionally useful for resource-constrained, genuinely sequential streaming applications where transformer attention's memory requirements are prohibitive.",
                     "audience": "developer"
                 },
@@ -5263,6 +5331,14 @@
                 {
                     "body": "A newer kind of AI design that can handle really long pieces of text efficiently, getting slower only in a straightforward, predictable way as text gets longer, instead of getting dramatically slower the way older attention-based designs do.",
                     "audience": "child"
+                },
+                {
+                    "body": "Mamba is an AI model architecture for handling long documents with cost that grows in a straight line as length increases, while attention's cost grows much faster. Hybrid designs mix Mamba layers with transformer layers to keep attention's strengths while serving very long documents cheaply. For decisions, this matters when long documents drive cost or risk, and the accountable owner is whoever chooses the architecture and owns its running budget.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "Mamba is a way to build AI that reads very long documents with cost and time that grow more slowly as the documents get longer. For a company with five to fifty staff, it matters if you often process long documents and want to avoid high costs for running the AI, and it does not matter much if your documents are short or you rarely use AI for long text. It tends to save time and money on very long documents by making them cheaper to run.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Worth evaluating specifically for very-long-context use cases where standard attention's quadratic memory cost becomes the bottleneck; tooling and pretrained model availability are less mature than for standard transformers, which is a real practical consideration.",
@@ -5318,6 +5394,14 @@
                     "audience": "child"
                 },
                 {
+                    "body": "MCP is an open standard that lets AI models connect to tools and data sources through one common interface, so an integration is built once instead of once per model. For decisions, this means choosing whether to expose a company capability, such as a CRM, through one MCP server that any compliant AI model can call. This can mean less repeated integration work, the risk is that any compliant model can use the exposed capability, and the accountable party is whoever owns that MCP server and the data behind it.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, MCP means you can connect a tool or data source, such as a CRM, to AI models through one MCP server instead of building a separate link for each AI model. It matters when several AI models need to use the same company tool or data, and it does not matter much if you use one AI model with one tool or do not connect AI to your systems. The time cost is setting up the MCP server, and the time saved is not rebuilding the same integration for every model.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Adopting this standard for a new tool integration is usually the right default over a custom, model-specific integration, since it means the integration works with any MCP-compliant model rather than being locked to one provider's specific API.",
                     "audience": "developer"
                 },
@@ -5369,6 +5453,14 @@
                 {
                     "body": "An AI design with many specialist \"expert\" sections inside it, where a router decides which few experts should handle each specific word, so the AI has a lot of total knowledge but does not have to use all of it every single time.",
                     "audience": "child"
+                },
+                {
+                    "body": "Mixture of Experts means an AI model is built from several specialized parts, and a router chooses which few parts handle each input. For decisions, it can provide large total capacity at modest computing cost per token, so the money and speed tradeoffs depend on how the router sends work. Accountability stays with the people who choose, deploy and monitor the model, because the router and experts are still one system.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, Mixture of Experts means an AI tool can have large total capacity while only a few experts process each input, so it uses less computing per token. It matters when your AI use is heavy or varied enough that this efficiency helps, and it does not matter much for light or simple tasks. It tends to save computing work per token, which can help with time on busy AI work, but it does not promise a set time saving.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Serving infrastructure for MoE models is meaningfully more complex than for dense models, since routing decisions and expert load balancing add operational considerations that a simple dense-model deployment does not have; budget for that complexity if adopting this architecture.",
@@ -7240,6 +7332,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "For a small business, this is a public ranking of AI models built from many people chatting with two unnamed models and voting for the better answer. It matters when you are choosing an AI model or when a new model comes out and you want a quick sense of quality. It does not matter if you are not picking a model, and it can save the time you would spend comparing models yourself.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "A live, crowd-sourced ranking is a legitimate and citable signal, more resistant to a single vendor gaming it than a static benchmark, though the voter pool is self-selected rather than representative of all users.",
                     "audience": "journalist"
                 },
@@ -7291,6 +7387,10 @@
                 {
                     "body": "Still a reasonable floor check for broad knowledge, but a near-saturated headline number no longer meaningfully differentiates leading models; look at more recent, harder benchmarks for comparisons among frontier systems.",
                     "audience": "executive"
+                },
+                {
+                    "body": "MMLU is a general knowledge test for AI models, made of multiple-choice questions across many subjects like law and physics. For a small business, it matters when you are comparing models on broad knowledge, and it matters less when your work depends on your own tasks and information. A high MMLU score does not tell you what the model will cost or save in time for your five to fifty staff, so treat it as one signal and not a promise.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "An MMLU score quoted today carries less information than it did two years ago, precisely because most frontier models now score similarly high; a genuinely differentiating comparison needs a benchmark with headroom left.",
@@ -10402,6 +10502,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "For a small business, machine learning means software that learns from data and gets better with experience instead of following rules a person wrote out. It matters when you have data, like customer behavior, and want something to improve on its own, such as a recommendation engine. It does not matter if you have little data or simple tasks that fixed rules can handle, and it can save time by not needing manual rule updates but take time to collect the data it learns from.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "The engineering reality is that the model is the small part. Data collection, labelling, splitting, leakage prevention, evaluation design, monitoring for drift and retraining are the work. A model that scores well offline and degrades in production has almost always met a distribution shift the evaluation did not represent.",
                     "audience": "developer"
                 },
@@ -12419,6 +12523,10 @@
                     "audience": "child"
                 },
                 {
+                    "body": "Lost in the middle means an AI system recalls the start and end of a long document best and can miss what sits in the middle, so a key clause buried mid-document may be overlooked until it is moved to the top. The risk is a decision made on an incomplete reading of a contract, report or policy, and the cost is a missed term that only surfaces later. The person who signs off on the AI assisted work is accountable, so they should require critical instructions and facts at the edges and have the middle checked by a person.",
+                    "audience": "executive"
+                },
+                {
                     "body": "If you are giving an AI a long document along with important instructions, put the key instructions at the very start or very end, not buried in the middle; AI tools tend to pay more attention to the beginning and end of long text than to the middle.",
                     "audience": "small-business"
                 },
@@ -12472,6 +12580,10 @@
                     "audience": "child"
                 },
                 {
+                    "body": "Max tokens is the limit on how long a response from an AI system can be. It controls cost and speed, but if the limit is too low the response is cut off without warning, which can break automated steps such as a handoff that expects complete data. The business owner of the AI tool or process should set and review this limit, because that person is accountable for the tradeoff between lower cost and the risk of incomplete or unusable output.",
+                    "audience": "executive"
+                },
+                {
                     "body": "If an AI response seems to cut off abruptly mid-sentence or mid-thought, that is usually this length limit being hit rather than the AI running out of things to say; try asking it to continue, or ask for a shorter response in the first place.",
                     "audience": "small-business"
                 },
@@ -12523,6 +12635,10 @@
                 {
                     "body": "Using an AI to help write or improve the instructions you give to another AI, instead of a person doing all that instruction-writing work by hand, which lets the process of improving instructions get automated too.",
                     "audience": "child"
+                },
+                {
+                    "body": "Meta prompting means using a model to write or refine the prompts that guide it or another model, so prompt tuning runs as software rather than inside an employee's head. In practice this turns prompt work into a repeatable process, for example a pipeline that runs a prompt against an eval set until scores stop improving, which changes how much staff time the work takes and how consistent the results are. Accountability stays with whoever owns that pipeline and the eval set, because the model only proposes changes and the outcome depends on what it is measured against.",
+                    "audience": "executive"
                 },
                 {
                     "body": "If you are struggling to get good results from an AI tool, you can literally ask the AI itself to help you write a better prompt for what you are trying to do; this often works surprisingly well and saves you the trial and error.",
@@ -16148,6 +16264,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "Many-shot jailbreaking is when someone fills an AI tool with many fake examples of harmful behavior before the real harmful request, hoping to override the tool's safety training. For a small business, this matters if your staff use AI tools that accept long inputs, because someone could try to get the tool to produce harmful content, and it does not matter when the tool does not take long inputs or when no one is trying to misuse it. It tends to cost time if you have to watch for or block long inputs, and it does not save time by itself.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Include this specific attack pattern explicitly in any red-teaming or adversarial testing program for a long-context model, since it represents a documented, distinct vulnerability class that general jailbreak testing focused on shorter interactions may not adequately cover.",
                     "audience": "ciso"
                 },
@@ -16199,6 +16319,14 @@
                 {
                     "body": "A deep, detailed kind of research trying to actually reverse-engineer the specific internal wiring inside an AI that causes a particular behavior, going well beyond just noticing that certain inputs tend to produce certain outputs, and actually tracing the internal mechanism itself.",
                     "audience": "child"
+                },
+                {
+                    "body": "Mechanistic interpretability means looking inside an AI model to find the exact internal parts that cause a behavior, not just linking inputs to outputs. For decisions, it matters when you need to know why a model acted as it did, because that affects trust, risk and who is accountable for fixing it. The definition does not give a cost or a saving, so any budget effect has to be assessed separately.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a small company, mechanistic interpretability means someone can inspect the model's internal features and circuits to explain a behavior, and in the example, features are identified and steered to change behavior. It matters when a model's behavior is important enough that you need to know the cause, and it does not matter when you only need a working result and can treat the model as something you do not need to open. It tends to cost specialist time to trace and prove the mechanism, and it can save time by pointing to the exact internal cause instead of guessing from outputs.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Track this field's genuine current capability honestly when evaluating vendor transparency claims; current techniques can meaningfully trace specific circuits responsible for particular behaviors, but comprehensive, complete understanding of an entire large model remains a significant, unsolved research challenge.",
@@ -16258,6 +16386,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "A membership inference attack means someone can tell whether a particular record was part of the data used to train an AI model. For a small company, this matters when you use AI on sensitive records, such as medical or client information, because the fact that someone is in that data can itself be private, and it does not matter much if your data is not sensitive or you use models that were not trained on your records. It does not save time, and if it applies to you it can take time to check and respond to privacy or regulatory concerns.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Include resistance to this specific attack category in privacy risk assessment for any model trained on sensitive or potentially sensitive-membership data, since the risk here is distinct from and additional to protecting the actual content of the training data itself.",
                     "audience": "ciso"
                 },
@@ -16313,6 +16445,10 @@
                 {
                     "body": "Read the actual limitations section of a model card carefully before procurement, not just the capability claims, since a genuinely substantive model card should honestly document where the model is known to struggle, which is directly relevant to whether it fits your specific intended use case.",
                     "audience": "executive"
+                },
+                {
+                    "body": "A model card is a document that comes with an AI model and says what the model is meant to do, how well it performs, and where it should not be used. It matters when you are choosing a model for a task or checking whether it fits your work, and it does not matter if you never use that model. Reading it can save time by answering fit questions before you try the model, though reading and comparing cards takes time.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Verify a vendor's model card actually discloses substantive, specific limitations rather than only generic capability marketing; a model card that reads purely as promotional material without genuine, specific limitation disclosure has not actually fulfilled the real purpose of this documentation genre.",
@@ -16372,6 +16508,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "Model collapse means that when AI systems are trained on content made by other AI systems, their answers can slowly become less varied and less reliable. For a small company, this matters if you depend on AI tools for your work and you do not check the output, because you may spend more time fixing weak or repetitive results. It matters less when you use AI only for tasks where you can easily spot and fix mistakes, and it tends to cost time in corrections rather than save time once the quality drops.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "A systemic, industry-wide data quality concern worth factoring into long-term training data sourcing strategy; prioritize verified, high-quality, provenance-tracked data sources specifically as public internet content increasingly contains AI-generated material that could otherwise degrade future training quality.",
                     "audience": "ciso"
                 },
@@ -16427,6 +16567,10 @@
                 {
                     "body": "Budget and plan for ongoing monitoring and periodic retraining as a genuine, standing operational cost of any AI system your organization deploys, not a one-time project expense; a system validated well at launch will genuinely degrade over time without this ongoing maintenance investment.",
                     "audience": "executive"
+                },
+                {
+                    "body": "For a small business, model drift means a prediction tool can slowly become less accurate as your customers' behavior changes. It matters when you depend on those predictions for regular decisions, because you then need to check the tool and update it, and it does not matter much if you only use it for occasional rough guesses or if your market stays steady. The time cost is the checking and updating, and the time saved comes from not relying on predictions that have gone stale.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Build active, ongoing performance monitoring into standard operations for any deployed AI system specifically to catch this gradual degradation, since a system that passed pre-deployment testing provides no assurance whatsoever about its performance months or years later as real-world conditions genuinely shift.",
@@ -16486,6 +16630,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "Model inversion is when someone uses a model's outputs to work back to sensitive data the model learned from. For a company with five to fifty staff, this matters if you use a model trained on private customer or staff data, such as faces, because the model could leak that data, and it does not matter much if the model was not trained on sensitive data. It can cost time to check what data went into a model, and it can save time by avoiding a leak that would take time to handle.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Test explicitly for resistance to this attack category as part of security assessment for any model trained on sensitive data, treating the deployed model itself as a genuine, distinct potential data exposure point requiring its own dedicated protection, separate from securing the original training dataset.",
                     "audience": "ciso"
                 },
@@ -16541,6 +16689,10 @@
                 {
                     "body": "A distinct verification worth requesting separately from data provenance when evaluating a significant AI vendor or component; confirming where the underlying model itself came from and its modification history is a genuinely different question from confirming what data trained it, and both deserve independent verification.",
                     "audience": "executive"
+                },
+                {
+                    "body": "Model provenance is the verified record of where an AI model came from, what data trained it, and how it has been changed. For a small company, it matters when you download a model and plan to use it for real work, because you need to know it is the model you expect. It matters less for quick tests where you do not depend on the model, and checking provenance takes some time upfront but can save time later if you need to look up the model's history.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Maintain documented model provenance as a distinct supply-chain security artifact from data provenance, tracking model origin, training details, and full modification history specifically, since this is what lets you verify the model artifact you are actually running is genuinely the one the vendor intended to ship, unaltered.",
@@ -20951,6 +21103,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "For a small business, the KV cache is the part of an AI system that keeps what it has already read so it does not have to read it again. It matters when your team uses AI on long documents or when many people use the same AI at once, because that memory grows with every token held and with each session. It does not matter much for short requests or a single user, and it can save time by avoiding repeated work but may use more memory or computing capacity.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Memory footprint of the KV cache is often the actual bottleneck limiting how many concurrent requests a given amount of GPU memory can serve, more so than the model weights themselves for long-context workloads; techniques like paged attention specifically address this constraint.",
                     "audience": "developer"
                 },
@@ -21057,6 +21213,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "It means using one AI model to grade another AI model's answers against a set of rules. For a company with five to fifty staff, this matters when you have a large batch of answers to check and not enough hours to read them all, such as grading ten thousand outputs overnight. It does not matter when you only have a few answers to review yourself, and it can save the time of manual scoring but still needs spot-checks because the judge tends to prefer long, confident answers.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Powerful and biased: judges prefer verbose, confident answers, so the rubric and spot-checks carry the integrity. Regularly spot-check the judge model's scoring against genuine human judgment, since documented biases toward longer, more confident-sounding answers can systematically skew automated evaluation results if left unchecked.",
                     "audience": "developer"
                 },
@@ -21108,6 +21268,10 @@
                 {
                     "body": "MLOps extended to systems whose behavior changes with a prompt edit; a small, seemingly minor prompt change can have outsized effects on system behavior in a way traditional software changes usually do not, which is why this operational discipline deserves its own dedicated attention rather than being treated as an afterthought to deployment.",
                     "audience": "executive"
+                },
+                {
+                    "body": "LLMOps is the everyday work of running an LLM application: managing prompts, checking quality, tracing what happens, and controlling costs. For a small company it matters when a small prompt change can alter how the system behaves, so you need a release pipeline that tests prompts, models, and quality gates together, and it does not matter much if you do not run LLM applications or rarely change them. It tends to take time to set up and run, and it can save time by catching problems before release and by keeping costs under control.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Invest in proper tooling for prompt versioning, evaluation, tracing, and cost monitoring from early on, rather than retrofitting it after problems emerge in production; the operational surface area of an LLM-based system is genuinely larger than traditional software and needs corresponding tooling.",
@@ -21163,6 +21327,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "A local model is an AI model you download and run on your own computers, using tools like Ollama or llama.cpp, instead of sending work to an outside service. For a small company, this matters when you handle sensitive documents and want to keep them on premises, or when you want more control over cost and independence. It may not matter if your work is not sensitive or if you need the strongest capability, because a local model is priced in capability against frontier APIs, and it can cost time to set up and run.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Test capability gap between your intended local model and the equivalent cloud frontier model explicitly on your actual task before committing; the gap varies significantly by task type and has narrowed considerably for many bounded use cases, but is still real for genuinely open-ended tasks.",
                     "audience": "developer"
                 },
@@ -21216,6 +21384,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "MLOps is the work of keeping a machine learning model running well after it goes into use, including saving versions, watching for changes, retraining, and undoing a bad update. For a small company, this matters when a model's answers can get worse as your customers or market change, because you need a way to spot that and fix it without a crisis. It does not matter much if the model is simple, rarely changes, or you can check its output by hand, and it can save time by automating checks and updates, but it also takes time to set up and maintain.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Build in model performance monitoring and a defined retraining or rollback process from the start, not as an afterthought; models degrade silently as real-world data distribution shifts, and without active monitoring this degradation can go unnoticed for a long time.",
                     "audience": "developer"
                 },
@@ -21267,6 +21439,10 @@
                 {
                     "body": "The central governance point of an AI stack: one place to route, meter, redact, and audit every model call; if your organization uses multiple AI providers, this gives you one central place to enforce policy and get visibility, rather than trying to govern each integration separately, which tends to become unmanageable at scale.",
                     "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, a model gateway means one shared connection point for the AI models you use, so requests can be routed, logged, and checked against your rules in one place. It matters when you use several model providers or need to track, limit, or audit AI calls, and it matters less if you only use one provider or do not need central oversight. In time terms, it can reduce the work of checking each provider separately, but it adds a system to set up and maintain.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "A meaningful security and governance control point worth implementing if your organization uses multiple AI providers; centralizing model access lets you enforce consistent data handling policy, apply redaction of sensitive information, and maintain a single audit log across otherwise disparate integrations.",
@@ -24030,6 +24206,14 @@
                     "audience": "child"
                 },
                 {
+                    "body": "The learning rate is the setting that controls how much an AI model's internal weights change with each training update. If it is too high, training can diverge, and if it is too low, training can stall, so it affects both the risk of failure and the time spent reaching a usable model. The person accountable for the model should ensure this setting is tuned, often through a sweep, because it is the most sensitive dial in training.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, the learning rate is a technical setting used when an AI model is trained, not something most small businesses adjust themselves. It matters if you are paying for custom training or fine-tuning, because a rate that is too high can make training diverge and a rate that is too low can make it stall, which wastes time. It does not matter for using ready-made AI tools, and a sweep to find the right rate can save training time by helping the model train fast without instability.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "If a training run diverges (loss exploding) or stalls (loss barely moving), learning rate is usually the first hyperparameter worth checking and adjusting before investigating more exotic causes of the problem.",
                     "audience": "developer"
                 },
@@ -24081,6 +24265,14 @@
                 {
                     "body": "A plan for how the learning rate should change over the course of training, usually starting small, ramping up, and then gradually shrinking again near the end, rather than staying at one fixed setting the entire time.",
                     "audience": "child"
+                },
+                {
+                    "body": "A learning rate schedule is the plan for changing the learning rate over training, usually a warmup and then a decay. For decisions, it affects how stable a training run starts and how precise it finishes, so it is a risk and quality choice inside that run. The accountable owner is the team running the training, and the definition does not tie it to a separate cost.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "A learning rate schedule is the plan for changing the learning rate over training, usually a warmup and then a decay. For a company with five to fifty staff, it matters only when you are training a model, because it affects how stable the training starts and how precise it finishes. When you are not training a model, it does not matter, and the definition does not state a time cost or saving.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Use an established schedule pattern, warmup followed by cosine or linear decay, as a solid default rather than a constant learning rate; this is one of the more well-understood and reliably beneficial hyperparameter choices in modern training recipes.",
@@ -24136,6 +24328,14 @@
                     "audience": "child"
                 },
                 {
+                    "body": "LoRA is a way to adapt a large AI model to a specific job without retraining the whole model. It freezes the original model and trains small add-on pieces, so it needs far less computing power and the add-ons can be swapped for different jobs. For decisions, this can lower the cost and hardware barrier to fine-tuning, and accountability should stay with whoever chooses and deploys the base model and its adapters.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "LoRA lets a company tune a large AI model for a repeated task without retraining the whole model, which can make fine-tuning possible on modest hardware. It matters when you need a custom model often and want to swap small adapters for different tasks, and it does not matter much if you only use a general model as it comes. It can save time by avoiding full retraining, but you still need time to set up and switch the adapters.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "The default choice for fine-tuning a large model on limited hardware; the resulting small adapter files are cheap to store and easy to swap for different tasks, which also makes serving many task-specific variants of one base model practical.",
                     "audience": "developer"
                 },
@@ -24187,6 +24387,14 @@
                 {
                     "body": "The math formula that measures exactly how wrong an AI's current answer is compared to the correct one. Training is the process of trying to make this \"wrongness\" number as small as possible over and over again.",
                     "audience": "child"
+                },
+                {
+                    "body": "A loss function is the measure of how far a model's prediction is from the correct answer, and training minimizes that measure. For decisions, it defines what the model is rewarded for, so a poorly chosen loss can create risk and waste money by optimizing the wrong outcome. Accountability sits with whoever chooses or approves that measure, because the model becomes whatever the loss rewards.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a small company, the loss function is the training setting that tells a model how wrong its predictions are and what to improve. It matters when you train or tune a model for your own use, because the model becomes whatever the loss rewards, and it does not matter much when you simply use an existing tool. A well chosen loss can save time by steering training toward the result you need, while a poor one can cost time by rewarding the wrong behavior.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Choose or design the loss function carefully to match what you actually want the model to optimize for; a mismatch between the loss function and your real objective is a common and often subtle source of a model that trains successfully but does not actually do what you needed.",
@@ -24242,6 +24450,14 @@
                     "audience": "child"
                 },
                 {
+                    "body": "Memorization means the model can reproduce exact training examples instead of learning general patterns. For decisions, money, risk and accountability, the definition points to copyright and privacy risk because memorized content can be extracted, so the people who choose and operate the model must manage that risk. Money is at stake through that risk, and accountability sits with those who control the model and its data.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, memorization matters when the model is used with unique, private or copyrighted material, because it can repeat that material verbatim and the material can be extracted. It matters less when the model is used for general tasks that do not rely on such material. It can cost time because outputs may need checking for copied or private content, and it does not save time when the model simply repeats training examples instead of helping with the task.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Test for verbatim memorization of sensitive or copyrighted training content, particularly if deploying a model trained or fine-tuned on data with known privacy or copyright sensitivities; deduplication and privacy-preserving training techniques both help reduce, though not eliminate, this risk.",
                     "audience": "developer"
                 },
@@ -24293,6 +24509,14 @@
                 {
                     "body": "Using a lower level of number precision for most of the math during training, which is faster and uses less computer memory, while keeping full precision only where it is actually needed to keep training stable. It is a practical speed trick, not a change to what the AI is actually learning.",
                     "audience": "child"
+                },
+                {
+                    "body": "Mixed precision training means using lower precision number formats, such as bf16, for most training operations to speed training and cut memory, while keeping full precision where stability requires. For decisions, it can reduce the time and memory needed for a training run, and the example shows a run nearly doubling throughput. The risk is stability, so the team accountable for the training run should confirm that the full precision parts keep results reliable.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, mixed precision training matters if you train your own AI models, because it can speed training and cut memory by using lower precision for most operations and full precision where stability requires. It does not matter if you do not train models yourself. When it applies, it tends to save time, as in the example of a run nearly doubling throughput, and it is standard on modern accelerators.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Essentially a free performance win on modern hardware and should be enabled by default for any significant training job; most modern training frameworks support it natively, and the main risk is numerical instability in specific operations, which frameworks generally handle by keeping those specific operations in full precision automatically.",
@@ -26558,6 +26782,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "Management review is a regular leadership check of the rules and checks you use to manage AI, asking whether they are good enough, working, and have enough people and money. For a company with five to fifty staff, it matters when AI could cause safety problems or break rules, or after incidents, for example changing how often you check AI after two incidents. If AI is not used in risky ways, it may not be worth much time, and the main cost is the hours spent meeting and writing minutes, which can save time later by catching problems early.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Maintain detailed, substantive documented minutes from every management review session specifically as audit evidence, since a certification auditor examining ISO/IEC 42001 compliance will look for genuine documented evidence of this review, not merely confirmation that a meeting was scheduled.",
                     "audience": "ciso"
                 },
@@ -28127,6 +28355,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "For a small business with five to fifty staff, a model owner is the named person who is accountable for one AI system across its life, including its purpose, performance, documentation and failures. It matters when you use an AI system, for example a CV screening tool, because every entry in the AI register needs one and the vendor is not an acceptable answer. It does not matter if you have no AI system or no AI register, and it takes time to keep the records and watch performance but can save time when the system misbehaves because the owner gets the call.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Enforce a strict, no-exceptions policy that every AI system inventory entry requires a specific, named internal owner before it can be considered properly governed, treating \"vendor\" or a blank field as an unacceptable, incomplete answer that leaves a genuine accountability gap.",
                     "audience": "ciso"
                 },
@@ -28475,6 +28707,10 @@
                 {
                     "body": "Prioritize compliance with this category's transparency requirements specifically, since its deadline was left unchanged and now actually lands before the more prominent, deferred high-risk obligations; do not let attention to the deferred high-risk timeline cause this nearer, still-binding deadline to be overlooked.",
                     "audience": "executive"
+                },
+                {
+                    "body": "Limited Risk AI is the EU AI Act tier where you must tell people they are dealing with AI and mark synthetic content as such, rather than keep detailed paperwork. For a company with five to fifty staff, this matters if you use a chatbot, emotion recognition, biometric categorisation or deepfakes, and the deadline is 2 August 2026. If you do not use those tools, it does not apply to you, and because the duty is disclosure rather than documentation it tends to cost less time than a paperwork rule.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Implement the specific technical disclosure and labeling requirements for this category on the original, unchanged timeline, since it is a genuinely simpler compliance lift than the high-risk tier but still carries a real, binding, and now comparatively nearer-term deadline.",
@@ -29277,6 +29513,20 @@
             "uid": "e30b11f9",
             "slug": "langchain",
             "term": "LangChain",
+            "lenses": [
+                {
+                    "body": "LangChain is a set of building blocks for making a computer program that talks with a language helper. It is like a recipe card that tells the helper and other tools what to do first, next, and last, but it does not know the answers by itself.",
+                    "audience": "child"
+                },
+                {
+                    "body": "LangChain is an open-source framework that acts as a coordination layer for language models and other tools, deciding what runs in what order rather than supplying the model or the data. It matters when you need a repeatable sequence, such as looking up policy documents, asking a model, and opening a ticket. Your spending and risk come from the models and tools it calls, and accountability stays with the people who choose the data and tools, because LangChain supplies neither.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, LangChain is a way to build a helper that can look up your documents, ask a language model, and then take an action like opening a ticket. It matters when you have a repeated set of steps that mixes information lookup and a model decision, and it does not matter if you do not need to connect several steps or tools. It provides prebuilt pieces for those steps, so the time it saves is in connecting them, and the time it costs is in building the application, while the models and tools it calls are separate choices.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "Released as an open-source Python library in October 2022 by Harrison Chase; a JavaScript version followed.",
             "example": "A support application that uses LangChain to retrieve relevant policy documents, pass them to a model, and call a ticketing tool if the model decides a ticket is needed.",
             "related": [
@@ -29322,19 +29572,15 @@
             "term": "LlamaIndex",
             "lenses": [
                 {
-                    "body": "You hand LlamaIndex documents and it gives you a query engine. The pieces it owns are the ones you would otherwise write yourself: loaders for the file formats your data actually arrives in, a chunking step, an index over the chunks, a retriever, and a response synthesiser that assembles the retrieved passages into a prompt. The value is in the connectors and the defaults rather than in any single idea, which is why teams reach for it when the hard part is ingestion rather than orchestration.",
-                    "audience": "developer"
+                    "body": "LlamaIndex is a tool that helps a computer helper look things up in your own papers instead of guessing from what it already knows. Think of it like a school librarian who finds the right page in your class handbook when you ask a question. The helper then uses that page to answer you.",
+                    "audience": "child"
                 },
                 {
-                    "body": "Retrieval-augmented generation has two halves: find the right passage, then write an answer from it. LlamaIndex is a framework for the first half and a thin wrapper over the second. Studying it is a good way to see that the interesting engineering in a question-answering system is almost entirely in how documents are split, indexed and ranked, and almost never in the call to the model.",
-                    "audience": "student"
-                },
-                {
-                    "body": "LlamaIndex is one of two or three obvious choices for building a system that answers questions from your own documents rather than from what a model memorised. Choosing it is a low-stakes decision: it is open source, the abstractions are shallow, and the work that survives a change of framework, cleaning the documents and deciding what good retrieval means, is the work that costs money either way. Ask what the team plans to do about evaluation before asking which framework they picked.",
+                    "body": "LlamaIndex is an open source framework that connects language models to a company's private documents, so an assistant can answer from those documents instead of from the model's general memory. For decisions, it means the business can point policy answers back to a handbook or other source text, and the risk is that the wrong source gets used. The money and accountability sit with the business: the work to load, split, index, and retrieve documents has a cost, and a person must own which sources are used and what the assistant says.",
                     "audience": "executive"
                 },
                 {
-                    "body": "If you want a chatbot that answers from your own handbook, contracts or product data rather than making things up, this is one of the tools a developer would use to build it. You would not install it yourself. What is worth knowing is that the quality of that assistant depends far more on how tidy and well organised your documents are than on which tool is used to read them.",
+                    "body": "For a small business, LlamaIndex is a way to let an assistant answer questions from your own documents, such as a staff handbook, instead of from the model's general memory. It matters when staff often need answers from a known set of documents and you want those answers tied to that text, and it does not matter if you have no private documents to search or if a simple search or a person can answer just as well. The time cost is the work to load, split, index, and retrieve the documents, and the time saved is in finding the relevant pieces for an answer.",
                     "audience": "small-business"
                 }
             ],
@@ -29426,6 +29672,20 @@
             "uid": "e6bda5e2",
             "slug": "microsoft-agent-framework",
             "term": "Microsoft Agent Framework",
+            "lenses": [
+                {
+                    "body": "Microsoft Agent Framework is a set of building blocks for making computer helpers that can work together. It is like a team where one helper writes something and another helper checks it, and the first helper passes its work to the next.",
+                    "audience": "child"
+                },
+                {
+                    "body": "Microsoft Agent Framework is Microsoft's unified software toolkit for building agents, and it is the successor to Semantic Kernel and AutoGen. It combines their agent and enterprise features and adds workflows that connect multiple agents, so for decisions it is a platform choice for building agents that pass work to each other. Money and risk sit in the workflows you approve and the people accountable for those workflows, and the definition does not state prices, savings or specific risk controls.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, Microsoft Agent Framework is a way to build software agents that can hand work to each other, such as a copywriter agent passing its output to a reviewer agent. It matters when you need a multi step handoff like that, and it does not matter when you do not. The definition does not state a time cost or saving, so any time effect depends on the workflow you build.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "Announced in public preview October 2025, reached Release Candidate February 2026, and shipped version 1.0 on 3 April 2026.",
             "example": "Composing a copywriter agent and a reviewer agent into a sequential workflow where each hands its output to the next.",
             "related": [
@@ -29812,6 +30072,20 @@
             "uid": "55b29d0b",
             "slug": "llm-gateway",
             "term": "LLM Gateway (AI Proxy)",
+            "lenses": [
+                {
+                    "body": "Imagine a helper, like a mailroom, that stands between your computer program and the AI helpers it talks to. It picks which AI helper to ask, stops things from getting too busy, remembers answers, and keeps the passwords safe. If that helper stops working, your program cannot talk to the AI helpers.",
+                    "audience": "child"
+                },
+                {
+                    "body": "An LLM gateway is a central service between your applications and AI model providers. It handles routing, failover, caching, rate limits, passwords, and usage records in one place, so teams do not rebuild those controls in every service. It can enforce cost limits and provider failover centrally and reduce integration effort, but because it sits in the request path, its downtime becomes your downtime, so whoever owns the gateway is accountable for that availability and risk.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, an LLM gateway means one place to manage AI model traffic instead of adding routing, failover, caching, rate limits, passwords, and usage logs to each tool or service. It matters when you use several AI features or providers and want central cost limits and failover, and it matters less if you have one simple AI feature with little traffic. It can save time by avoiding repeated integration work, but it adds a service in the request path, so if it fails, your AI features can fail too.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "",
             "example": "Routing all model traffic through a gateway so cost limits and provider failover are enforced centrally rather than reimplemented in every service.",
             "related": [
@@ -30801,6 +31075,20 @@
             "uid": "e434bac1",
             "slug": "liquid-cooling",
             "term": "Liquid Cooling",
+            "lenses": [
+                {
+                    "body": "Liquid cooling is a way to cool down computers that get very hot. Instead of blowing air on them with fans, it runs water or a special liquid close to or through the hot parts. Think of it like putting a cold pack on a hot forehead to carry the heat away.",
+                    "audience": "child"
+                },
+                {
+                    "body": "Liquid cooling means removing heat from data center computer equipment with a liquid close to or through the hot parts instead of blowing air over them. It becomes a business decision when dense AI chip racks produce more heat than ordinary fans can handle, as with GPU racks above 100 kW. The money and risk question is whether the cooling is needed for the equipment to work, while insurers may worry about leaks damaging the building, so the data center owner or operator is accountable for managing that leak risk.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, liquid cooling is usually not something you buy or run yourself. It matters only if your work depends on very dense AI computer racks that ordinary fans cannot cool, such as GPU racks above 100 kW. Otherwise it does not affect your day to day, and it tends to be a data center cost rather than a direct time saver or time cost for your small business.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "Standard industry term",
             "example": "A data center with GPU racks above 100 kW may switch to liquid cooling, and insurers then worry about the risk of leaks damaging the building.",
             "related": [
@@ -31587,6 +31875,20 @@
             "uid": "d010eae3",
             "slug": "load-shedding",
             "term": "Load Shedding",
+            "lenses": [
+                {
+                    "body": "Load shedding is when the power company turns off electricity for some places for a while so the whole electricity supply does not stop working. It is like a parent unplugging some toys for a bit so the house does not lose all its power at once.",
+                    "audience": "child"
+                },
+                {
+                    "body": "Load shedding means the electricity utility deliberately cuts power to certain areas or customers for a period to keep the whole grid from failing. For decisions, it can affect operations, money and risk because a site may need to switch to backup generators, and the utility is accountable for the controlled cut while the affected business is accountable for its own response.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, load shedding matters when the electricity utility cuts power to your area and your work depends on electricity. It does not matter as much if your work can pause or move to another location during the cut. It tends to cost time because normal work stops or switches to backup power for the period of the cut, and it does not tend to save time.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "Standard industry term from electrical power engineering, in use since the mid twentieth century.",
             "example": "During a heatwave, the local utility announced load shedding, so the data centre switched to backup generators for two hours.",
             "related": [
@@ -33207,6 +33509,20 @@
             "uid": "ae25af66",
             "slug": "material-misrepresentation",
             "term": "Material Misrepresentation",
+            "lenses": [
+                {
+                    "body": "A material misrepresentation is saying something untrue that matters a lot to a grown-up's choice. It is like telling a babysitter there is no candy in the house when there is, and then the babysitter trusts you less or says no to a treat. If a company does this on an insurance paper, the insurance may stop working.",
+                    "audience": "child"
+                },
+                {
+                    "body": "A material misrepresentation is a false or misleading statement important enough to change a decision, such as granting coverage, approving an auditor, or investing. In AI insurance, if the insured makes such a statement in an application or report, the insurer may cancel the policy or refuse to pay claims. That puts money and risk on the line, and accountability sits with whoever signed or submitted the statement.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, this means any false or misleading statement on an AI insurance application or report can let the insurer cancel the policy or refuse claims. It matters when you describe your AI system's risks, security, or safety steps, because an important error can leave a claim unpaid. It does not matter for routine, accurate updates, and it tends to cost a little time to check that what you submit is correct, while it can save the time lost to a canceled policy or unpaid claim.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "Standard industry term from insurance and securities law.",
             "example": "An AI startup that says its system has no known security flaws when it actually does could see its cyber insurance voided for material misrepresentation.",
             "related": [
@@ -33425,6 +33741,20 @@
             "uid": "a84c34f9",
             "slug": "layered-program",
             "term": "Layered Program",
+            "lenses": [
+                {
+                    "body": "Imagine a big bill is like a tall stack of blocks. The first insurance company pays the bottom blocks up to a set amount, then the next company pays the next blocks, and so on. That way many companies share the cost instead of one company paying everything.",
+                    "audience": "child"
+                },
+                {
+                    "body": "A layered program splits insurance coverage into levels, where the first level pays claims up to a set amount and higher levels pay only after the levels below are used up. For decisions, it means you can arrange a large total coverage amount across several insurers instead of one insurer carrying all the risk. Accountability follows each layer, so you need to know which insurer pays at which point and how the layers fit together.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, a layered program matters when one claim could be larger than the first layer, so the higher layers are needed to reach the total coverage. It does not matter for claims that stay within the first layer, because the higher layers never pay. The definition does not say what it tends to cost or save in time, though it does involve several insurers instead of one.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "Standard industry term",
             "example": "A hospital buying insurance for an AI diagnostic tool might use a layered program with a first layer of 5 million dollars per claim and additional layers of 5 million each up to 25 million dollars in total.",
             "related": [
@@ -33605,6 +33935,20 @@
             "uid": "60dfce5c",
             "slug": "loss-run",
             "term": "Loss Run",
+            "lenses": [
+                {
+                    "body": "A loss run is like a report card that lists the times something went wrong in the past, such as a fire, a flood, or a security problem. Insurance people read it to see how safe or risky a place has been. For example, a computer building might share a list of its power outages and broken machines from past years.",
+                    "audience": "child"
+                },
+                {
+                    "body": "A loss run is a report of past losses or claims, such as fires, floods, or security incidents, that an insurer reviews before deciding on coverage. It gives the insurer a view of the risk in a property or operation, so it can affect the coverage decision. The definition does not tie the loss run to a money amount, and the insurer makes the coverage decision while the person or business provides the loss history.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, a loss run is the list of past claims or incidents, such as fires, floods, or security problems, that an insurer may review when deciding on coverage. It matters when the company is seeking coverage, because the insurer uses it to judge how risky the property or operation is. It does not matter for daily work, and the definition does not say how much time it costs or saves, though the example shows it can cover several years of incidents.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "Standard industry term",
             "example": "The data centre operator provided a loss run showing every power outage and equipment failure from the previous five years.",
             "related": [
@@ -33643,6 +33987,20 @@
             "uid": "23d40293",
             "slug": "loss-ratio",
             "term": "Loss Ratio",
+            "lenses": [
+                {
+                    "body": "A loss ratio is the part of the money an insurance company takes in that it pays back out for problems. If it takes in one million dollars and pays out six hundred thousand dollars, its loss ratio is sixty percent. It is like a class collecting money for a party and spending part of it on snacks, the rest stays for later.",
+                    "audience": "child"
+                },
+                {
+                    "body": "Loss ratio is the share of premium income that an insurer pays out for claims, so it shows how much of the money coming in is used for AI related losses like system failures or data breaches. A lower ratio means more of each premium dollar stays with the insurer, while a higher ratio means tighter margins and more risk. The people accountable are the leaders who set prices, decide which AI risks to accept, and manage how much loss the business can absorb.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, loss ratio is mainly a signal about the AI insurance you buy, not a number you usually calculate yourself. It matters when you are comparing AI coverage or when claims from AI problems affect your costs, and it does not matter much for daily work if you do not buy that insurance or have no AI related claims. It tends to cost time only when you review policies or handle claim paperwork, and it does not save time in normal operations.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "Standard industry term",
             "example": "If an AI insurance company collects one million dollars in premiums and pays out six hundred thousand dollars for claims about faulty AI decisions, its loss ratio is sixty percent.",
             "related": [
@@ -33951,6 +34309,20 @@
             "uid": "3e12d2da",
             "slug": "manuscript-form",
             "term": "Manuscript Form",
+            "lenses": [
+                {
+                    "body": "A manuscript form is a special set of rules for an insurance agreement that someone writes just for you, like making up your own rules for a game instead of using the rules in the box. If you had a self driving car, the rules could say exactly which computer problems the insurance would pay for.",
+                    "audience": "child"
+                },
+                {
+                    "body": "A manuscript form is a policy written for one client or deal instead of a standard template. It lets the insurer and the policyholder set unique terms for AI risks that ordinary forms do not cover, so it shapes which risks are transferred and which losses the company may have to handle itself. The insurer and the policyholder who agree to those terms are accountable for them.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, a manuscript form matters when your AI risk is unusual and a standard policy does not cover it, such as a self driving car fleet with specific software failures. It does not matter when a standard form already covers your AI risk. It is not the quick default choice because it is written for one client, and it can save time later by making clear what is insured.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "Standard industry term from traditional insurance, where manuscript means custom drafted wording rather than a preprinted form.",
             "example": "A company buying coverage for its self driving car fleet might use a manuscript form to spell out exactly which software failures are insured.",
             "related": [
@@ -34079,6 +34451,20 @@
             "uid": "607b2782",
             "slug": "lloyd-s-of-london",
             "term": "Lloyd's of London",
+            "lenses": [
+                {
+                    "body": "Lloyd's of London is like a big market where many different teams agree to share the risk if something goes wrong. If a company makes a car computer that can drive, it might go there to find people who will pay if the computer makes a mistake. It is not one single insurance company, it is a place where people meet to make these deals.",
+                    "audience": "child"
+                },
+                {
+                    "body": "Lloyd's of London is a marketplace where many separate groups of backers join together to insure unusual or difficult to place risks, including AI. For an executive, this means the cover is not from one insurance company, so the financial backing comes from separate backers and accountability follows the terms they agree. It matters when a risk is hard to place, such as accidents caused by AI mistakes in software that drives cars.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a small company, Lloyd's of London is a marketplace where separate backers can insure unusual or difficult to place risks, including AI. It matters if your business has an AI risk that is unusual or hard to place, and it does not matter if your risk is not unusual or difficult to place. It can cost time to find backers through brokers, and it can save time by having many backers in one marketplace.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "The name comes from Edward Lloyd's coffee house in London in the late 1600s, where ship owners and merchants first met to arrange insurance.",
             "example": "A company building software that drives cars might go to Lloyd's of London to find insurers willing to cover accidents caused by AI mistakes.",
             "related": [
@@ -34259,6 +34645,20 @@
             "uid": "b536545a",
             "slug": "model-poisoning",
             "term": "Model Poisoning",
+            "lenses": [
+                {
+                    "body": "Model poisoning is when someone messes with the information used to teach a computer helper. It is like changing a recipe so the cake seems fine, but if someone adds a special clue, the cake turns out wrong. The helper acts normal most of the time and only makes mistakes when that special clue shows up.",
+                    "audience": "child"
+                },
+                {
+                    "body": "Model poisoning means corrupting the training or fine tuning data so an AI model changes how it behaves, often planting hidden backdoors or biases that appear only on certain inputs. For decisions, money and risk, the model can look normal most of the time and still act wrongly on a specific trigger, so a business may rely on it and get a bad answer in a targeted case. The party that controls the model and its training data is accountable for that risk.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a small business, model poisoning means the AI tools you use may have been taught with corrupted data and can give wrong answers only when a certain trigger appears. It matters when you rely on an AI model for important work and cannot check every answer, and it matters less for low stakes tasks or when you can review the output. It can cost time through checking and fixing mistakes, and it can save time only when the model is reliable for the job.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "Standard industry term in AI security, popularized by OWASP and adversarial machine learning research.",
             "example": "An attacker slips a few poisoned documents into a public dataset so a language model gives incorrect answers only when asked about a particular company.",
             "related": [
@@ -34439,6 +34839,20 @@
             "uid": "e9d9b1cd",
             "slug": "liveness-detection",
             "term": "Liveness Detection",
+            "lenses": [
+                {
+                    "body": "Liveness detection is a security check that makes sure a face or voice belongs to a real person who is there, not a photo, video, or fake. It is like a bouncer checking that you are really you and not a picture of you.",
+                    "audience": "child"
+                },
+                {
+                    "body": "Liveness detection confirms that a face or voice sample comes from a real live person rather than a photo, video, deepfake, or other fake. For decisions, it affects when you approve identity checks and large transfers, because it reduces the risk that a stolen photo or synthetic sample unlocks an account. Accountability sits with whoever owns the identity check and the transfer approval, so they must decide when to require it.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, liveness detection means checking that a face or voice comes from a real live person before an identity check is passed. It matters when you approve large transfers or other sensitive account actions, because a stolen photo or fake could otherwise unlock an account. It does not matter for every routine login or low risk task, and it adds a check before approval, so it can cost time, and the definition does not describe a time saving.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "Standard industry term",
             "example": "A bank requires liveness detection before approving a large transfer, so a fraudster cannot unlock an account with a stolen photo of the customer.",
             "related": [
@@ -35628,6 +36042,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "For a company with five to fifty staff, Microsoft Copilot is an AI assistant built into Windows, the Edge browser and Microsoft 365 apps such as Word, Excel, Outlook and Teams. It matters when your team already uses those tools and wants help with tasks like explaining a formula or charting a column of sales figures in Excel. It does not matter much if you do not use those Microsoft tools or do not need that kind of help, and it may save time on those tasks, but the definition and example do not give a cost or a time figure.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Copilot is a family of Microsoft assistants rather than one product: Microsoft 365 Copilot works over a tenant's documents and email through Microsoft Graph, GitHub Copilot is the coding assistant, and Copilot Studio builds custom agents. Access control follows the user's existing permissions.",
                     "audience": "developer"
                 },
@@ -36302,6 +36720,20 @@
             "uid": "fa905445",
             "slug": "lakehouse",
             "term": "Lakehouse",
+            "lenses": [
+                {
+                    "body": "A lakehouse is a way to keep lots of computer information in a cheap storage place, like a big toy box. It also adds neat shelves and labels so people can find and use that information easily. It can hold both the notes from support calls and a list of support tickets so people can look at them together.",
+                    "audience": "child"
+                },
+                {
+                    "body": "A lakehouse is a data platform that keeps raw files in low cost storage and adds the tables, transactions and SQL access of a data warehouse. For decisions, it lets teams query raw and structured data side by side, such as support call transcripts and ticket tables, and it can hold both AI training data and AI outputs. The definition does not set costs or risks, so money and risk depend on how the platform is run, and accountability should sit with the leader who owns the data platform and its use.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, a lakehouse means one place to keep raw files and structured tables so you can query them together, like support call transcripts and ticket tables. It matters when you need to keep raw files and tables together for AI or queries, and it does not matter if you do not need that. It can save time by letting you query raw files and tables side by side, and it can cost time to set up and run.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "",
             "example": "Raw support call transcripts and structured ticket tables queried side by side.",
             "related": [
@@ -36458,7 +36890,7 @@
         "schema": "v2 (term, slug, category, definition, example, origin)",
         "generated": "2026-07-23"
     },
-    "built_at": "2026-10-01T15:23:44-05:00",
+    "built_at": "2026-10-01T18:22:44-05:00",
     "page_uid": "76dd9a8f",
     "readings": {
         "/ai-glossary/aime/": {
