@@ -5,54 +5,54 @@
     "slug": "litellm",
     "facts": {
         "repo": "BerriAI/litellm",
-        "stars": 60031,
+        "stars": 60043,
         "licence": "custom",
         "archived": false,
         "language": "Python",
         "repo_url": "https://github.com/BerriAI/litellm",
-        "last_push": "2026-10-02T09:09:22Z",
+        "last_push": "2026-10-02T13:29:06Z",
         "description": "The fastest, litest AI Gateway. Rust core with Python SDK. Call 100+ LLM APIs in OpenAI (or native) format with cost tracking, guardrails, load balancing, and logging [Bedrock, Azure, OpenAI, Anthropic, OpenAI, VertexAI, vLLM, Nvidia NIM]",
         "official_site": "https://docs.litellm.ai/docs/"
     },
     "model": "ollama:deepseek-v4.1-flash",
     "shape": "lang-profile",
-    "title": "LiteLLM: AI Gateway for Unified LLM Access and Control",
-    "answer": "LiteLLM is an AI gateway from BerriAI that provides a unified interface to over 100 LLM APIs in OpenAI format, with cost tracking, guardrails, load balancing, and logging. It sits between your application and model providers, centralizing access, budgets, and observability. It is actively maintained as of 2026. The key thing to know is that its Python proxy is widely used but has had memory and cost-tracking incidents, while a faster Rust core is in early beta, so production teams should weigh stability against performance.",
-    "built_at": "2026-10-02T06:41:10-05:00",
+    "title": "LiteLLM: An AI Gateway and Python SDK for Multi-Provider LLM Access",
+    "answer": "LiteLLM is an AI gateway and Python SDK from BerriAI that lets you call over 100 LLM APIs, including OpenAI, Anthropic, Bedrock, Azure, VertexAI, vLLM and Nvidia NIM, in OpenAI or native format. It adds cost tracking, guardrails, load balancing and logging, and its Rust core is being built for sub-1ms overhead. The one thing to know before adopting it is that it sits in the request path of every model call, so its reliability and release quality directly affect your production traffic.",
+    "built_at": "2026-10-02T13:04:21-05:00",
     "category": "technology-and-core-infrastructure",
     "hub_name": "Programming Languages and Frameworks",
     "page_uid": "b9fc5220",
     "sections": [
         {
-            "body": "LiteLLM is an AI gateway made by BerriAI. It is described as the fastest, litest AI Gateway, with a Rust core and a Python SDK. It lets you call over 100 LLM APIs in OpenAI or native format, with cost tracking, guardrails, load balancing, and logging. It supports providers such as Bedrock, Azure, OpenAI, Anthropic, VertexAI, vLLM, and Nvidia NIM. The repository is BerriAI/litellm on GitHub, with 60,031 stars as of the facts, and it is actively maintained, with the last push on October 2, 2026. The licence is custom. In the AI stack, it sits as a gateway layer between your application and model providers, acting as a control plane for model access, budgets, and observability. It also includes an Agent Gateway and an MCP Gateway for agent and tool access, as described in the blog on identity and FinOps. The official site is docs.litellm.ai.",
+            "body": "LiteLLM is made by BerriAI and is distributed as a Python SDK plus a proxy server, with a Rust core under active development. The repository is BerriAI/litellm on GitHub, the official documentation lives at docs.litellm.ai, and the licence is listed as custom rather than a standard open source licence. It sits in the gateway layer of the AI stack, between your application and the model providers. Rather than calling OpenAI, Anthropic, Bedrock, Azure, VertexAI, vLLM or Nvidia NIM directly, you point your code at LiteLLM, which normalises requests into OpenAI or native format and handles the provider-specific translation. The site describes it as the fastest, litest AI gateway, and the project has been publishing incident reports and migration notes through 2026, so it is a mature and actively maintained piece of infrastructure rather than a weekend experiment.",
             "heading": "What it is and where it sits in AI work"
         },
         {
-            "body": "LiteLLM is used for routing requests to multiple LLM providers, load balancing, cost tracking, guardrails, and logging. It handles reliability testing across providers, batch completions to many models in parallel, and load testing. In production, it supports SSO/SAML, audit logs, spend tracking, multi-team management, and guardrails. It is strongest when you need a unified interface to many LLM APIs, want to enforce budgets and rate limits across teams, and need to centralize access to models and tools. The Agent Gateway authenticates callers, controls which users and teams can invoke each agent, and records request, response, latency, and cost data. The Model Gateway routes LLM traffic and applies budgets and rate limits. The MCP Gateway centralizes tool access and upstream authentication. It is a good fit for platform teams managing shared AI agents and for finance and operations teams needing per-user attribution and spend controls. It supports OIDC and other credentials, and can forward verified user and team context to agents.",
+            "body": "The concrete jobs LiteLLM does are routing and normalising model calls, tracking spend, enforcing budgets and rate limits, applying guardrails, load balancing across providers, logging requests and responses, and serving as a control plane across an Agent Gateway, a Model Gateway and an MCP Gateway. The documentation shows it used for reliability testing across providers, with batch_completion_models_all_responses sending one conversation to every model in parallel, and for load testing with load_test_model. It is strongest where a team needs one consistent interface to many providers, per-user and per-team cost attribution, and centralised credential handling for tools. The identity and FinOps material shows it handling OIDC authentication, forwarding verified user and team context as headers, and supporting budgets at the key, team, agent and customer levels. It is also used in front of coding agents, and the site notes that server-side auto mode in Claude Code depends on a contract between Claude Code and the API that some gateways did not preserve, LiteLLM included, until a fix shipped.",
             "heading": "What it is used for and where it is strongest"
         },
         {
-            "body": "The Python SDK is approachable for developers who already know Python and have some familiarity with LLM APIs. The official site offers tutorials, code examples, and blog posts that walk through testing multiple providers, load testing, and production deployment. For basic use, you can start with a few lines of Python to call models. For production gateway deployment, you need systems knowledge such as Redis, Kubernetes, nginx, and OIDC, because the gateway integrates with these components. The site does not explicitly state a learning curve, but the material assumes comfort with HTTP, API keys, and infrastructure concepts. A beginner can follow the tutorials, but running the gateway at scale requires understanding of memory, concurrency, and caching. The incident reports show that misconfigurations or bugs can cause outages, so production operators should be prepared to monitor and upgrade.",
+            "body": "The Python SDK is approachable for anyone who has called an LLM API before, because the surface is deliberately close to the OpenAI format. The harder parts are operational rather than syntactic. Running the proxy in production means understanding Redis, rate limiting, budgets, routing strategy, Kubernetes deployment and the failure modes that come with all of them, and the incident reports show that a Redis outage combined with provider retries can produce severe memory growth. The official site offers tutorials, a blog with tag archives for ai-gateway and incident-report, and reference material on the Agent, Model and MCP Gateways, so a beginner has a clear path in. There is no indication in the material read that formal mathematics or machine learning theory is a prerequisite, since LiteLLM does not train models. What it does require is comfort with backend systems, HTTP, authentication and deployment.",
             "heading": "How hard it is to learn and what you need first"
         },
         {
-            "body": "LiteLLM has a Python SDK and a Rust core, and it integrates with over 100 LLM APIs, including Bedrock, Azure, OpenAI, Anthropic, VertexAI, vLLM, and Nvidia NIM. It works with Redis for caching and rate limiting, OIDC for authentication, MCP for tool access, and A2A for agent-to-agent communication. The documentation is extensive, with 60 pages read on the official site, covering tutorials, blog posts, and incident reports. The GitHub repository has 60,031 stars and active development, with the last push on October 2, 2026. The blog covers AI gateway topics, incident reports, and identity and FinOps. Community support appears to be centered on GitHub, with issues and pull requests, and the site mentions SSO/SAML, audit logs, spend tracking, multi-team management, and guardrails. There is no mention of a dedicated forum or chat, but the blog and docs provide substantial guidance.",
+            "body": "The project has a large following, with roughly 60,043 stars on GitHub at the time of the facts, and the documentation covers integrations with Bedrock, Azure, OpenAI, Anthropic, VertexAI, vLLM and Nvidia NIM among more than 100 providers. The site documents an A2A JSON-RPC interface for invoking shared agents, OAuth2 with authorization_code flow and PKCE for MCP servers, OIDC for user authentication, and a LiteAdmin MCP connector that lets an agent handle tasks through the gateway's management API, on which a Slack admin agent called LiteAdmin was built. There is an early beta of a Rust AI gateway, and the team published AIGatewayBench to compare it against Portkey, Bifrost and the Python proxy. The blog carries incident reports, migration notes and performance write-ups, which is a sign of an engaged maintainer team, though the material read does not describe third-party community forums, conferences or a plugin marketplace.",
             "heading": "Ecosystem and community"
         },
         {
-            "body": "LiteLLM is built for both quick experiments and production performance, but with different components. The Python SDK is easy to prototype with, letting you call many models in a few lines. The Python proxy, however, has had performance and stability issues: it peaks around 359MB of memory under load, can be OOM-killed, and has had incidents with unbounded memory growth and silent cost regressions. The Rust gateway is in early beta and aims for production performance, with sub-1ms overhead, a sub-100MB memory binary, about 15x the throughput (453 to 6,782 requests per second) on about 11x less memory (359MB to 32MB), and per-request overhead cut from about 7.5ms to about 0.05ms. The cost is that the Rust gateway is not yet fully mature, and the migration is ongoing. Teams can prototype with Python and plan to move to Rust for production, but should weigh the early beta status against the promised gains.",
+            "body": "LiteLLM is built for both, but the two paths have different costs. The Python SDK is quick to adopt for experiments, since you can swap a provider call for a LiteLLM call with minimal changes. The proxy is aimed squarely at production, with SSO and SAML, audit logs, spend tracking, multi-team management and guardrails, and the site reports that the Python proxy peaks around 359MB of memory under load and adds about 7.5ms per request. The Rust gateway is the answer to that, and the site claims it serves about 15 times the throughput, 453 to 6,782 requests per second, on about 11 times less memory, 359MB to 32MB, cutting per-request overhead to about 0.05ms and committing to sub-1ms overhead with a sub-100MB binary. Those figures come from the vendor's own benchmark, and the Rust gateway was still an early beta, so the performance advantage is real in their testing but not yet a settled production guarantee.",
             "heading": "Prototyping speed against production performance"
         },
         {
-            "body": "LiteLLM is used in production by enterprise customers, as shown by incident reports describing outages and cost regressions in customer deployments. It is a current choice, not a legacy one, with active development and a large community of 60,031 stars on GitHub. The site mentions multi-team management, budgets, and SSO/SAML, which are features for organizations. For someone choosing it for work, knowing LiteLLM is valuable for roles in AI infrastructure, platform engineering, MLOps, and FinOps, because it sits at the intersection of model access, cost control, and observability. The facts do not give exact adoption numbers or a list of notable users, so we cannot say how widespread it is beyond the star count and the enterprise incidents. It is not a model or a training framework, so it is not a substitute for learning PyTorch or TensorFlow, but it is a practical tool for deploying and managing LLM applications.",
+            "body": "The facts and the site show adoption among enterprise teams running shared AI infrastructure, including an enterprise customer running litellm-database:v1.100.0 behind nginx, teams with thousands of API keys, and organisations using it in front of Claude Code on Amazon Bedrock. The site describes it as built for production and mentions SSO, audit logs, spend tracking, multi-team management and guardrails, which are the concerns of platform and FinOps teams rather than individual hobbyists. It is a current choice rather than a legacy one, given the active Rust migration and the 2026 release cadence. For someone choosing what to learn, the transferable skills are gateway operations, cost attribution, identity propagation and multi-provider routing, which apply to Portkey, Bifrost and similar tools too. The material read does not name specific employers hiring for LiteLLM skills or give salary data, so claims about the job market beyond that would be speculation.",
             "heading": "Industry adoption and careers"
         },
         {
-            "body": "LiteLLM is primarily a Python library and a gateway server, with a Rust core for performance. It is typically used with Python applications, but because it exposes an OpenAI-compatible API, it can be used from any language over HTTP. It integrates with model providers like Bedrock, Azure, OpenAI, Anthropic, VertexAI, vLLM, and Nvidia NIM, and with infrastructure like Redis, OIDC, and MCP. It is often used alongside agent frameworks, coding assistants like Claude Code, and serving engines like vLLM. In the polyglot pattern, you might have a Python application using the LiteLLM SDK, a Rust gateway handling traffic, and providers accessed over HTTP. It sits beside other gateways such as Portkey and Bifrost, as mentioned in the benchmark, and it can be part of a stack that includes vector databases, orchestration tools, and monitoring systems. The site does not list specific framework integrations beyond the providers and protocols mentioned.",
+            "body": "LiteLLM is written in Python and is typically used alongside Python application code, though the proxy is language agnostic because clients speak HTTP and the OpenAI format. It is commonly paired with provider SDKs and APIs such as OpenAI, Anthropic, Bedrock, Azure, VertexAI, vLLM and Nvidia NIM, with Redis for caching and rate limiting, with Kubernetes for deployment, and with identity providers through OIDC and OAuth2. It also sits beside agent frameworks through the A2A JSON-RPC interface and beside MCP servers through the MCP Gateway. The polyglot pattern it belongs to is the one where a Python or TypeScript application calls a gateway rather than each provider directly, so provider quirks, credentials and cost logic live in one place. The site's own comparison set is Portkey, Bifrost and the LiteLLM Python proxy, which places it in the gateway category rather than the training or orchestration category.",
             "heading": "How it fits beside the others"
         },
         {
-            "body": "LiteLLM has known weaknesses. The Python proxy has had memory issues, including OOM kills and a 61GB RSS incident, and silent cost regressions from caching bugs. The Rust gateway is in early beta, so its stability and feature completeness are not yet proven. The official material does not say when LiteLLM was first released, how many production users it has, or what the long-term support plan is for the Python proxy. The licence is custom, and the site does not explain its terms. The benchmark comparing the Rust gateway to Portkey and Bifrost is from the LiteLLM team, so it may not be independent. The incident reports show that the team is transparent about failures, but they also show that the gateway can cause outages and unexpected costs. Open questions include how the Rust migration will affect existing users, whether the Python proxy will be deprecated, and how the gateway handles new provider quirks. The site does not say how it compares to other gateways in independent tests.",
+            "body": "The clearest limits come from the project's own incident reports. A one-line change in PR #38133 turned a retry breadcrumb into a structure that roughly doubled in size with every retry, and combined with an unreachable Redis it produced kernel OOM kills, one worker reaching 61GB RSS, and thousands of HTTP 502s and 499s between September 7 and September 9, 2026. A separate regression in v1.91.0 and v1.91.1 silently broke Anthropic prompt caching for Claude Code on Bedrock, dropping cache hit rates from roughly 90% to 25-45% and raising daily spend two to three times, with no error surfaced. The Rust gateway is an early beta, and the site's performance claims come from its own benchmark, so independent verification is not available in the material read. The licence is listed as custom, and the documentation does not explain its terms. The site also does not say how the Rust migration will handle every existing Python feature, or when the pure Rust server will be generally available.",
             "heading": "Limits and open questions"
         }
     ],
@@ -74,6 +74,11 @@
         },
         {
             "kind": "framework",
+            "name": "keras",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/079f2091/"
+        },
+        {
+            "kind": "framework",
             "name": "langchain",
             "path": "/ai-ecosystem/technology-and-core-infrastructure/10376bfa/"
         },
@@ -84,8 +89,18 @@
         },
         {
             "kind": "language",
+            "name": "C++",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/b393c4f6/"
+        },
+        {
+            "kind": "language",
             "name": "Go",
             "path": "/ai-ecosystem/technology-and-core-infrastructure/a218afb2/"
+        },
+        {
+            "kind": "language",
+            "name": "Julia",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/3719f5ac/"
         }
     ],
     "generated": "2026-10-02",
@@ -171,5 +186,5 @@
     "subject_kind": "framework",
     "source_read_on": "2026-10-02",
     "site_pages_read": 60,
-    "refresh_every_days": 30
+    "refresh_every_days": 90
 }

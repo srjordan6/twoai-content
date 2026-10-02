@@ -11,7 +11,7 @@
     "authors": "Tri Dao et al.",
     "journal": "ArXiv",
     "abstract": "",
-    "built_at": "2026-10-02T06:23:54-05:00",
+    "built_at": "2026-10-02T12:22:03-05:00",
     "page_uid": "r0000168",
     "citations": 1938,
     "generated": "2026-10-02",
@@ -21,6 +21,5 @@
     "abstract_source": "consensus",
     "explain_beginner": "The paper tests a network security tool that reads raw packet bytes and predicts the next byte. It compares two model designs, a Transformer and a Mamba-2 state space model, using the same benign data and attack families. The Transformer caught 15.0% of zero-day attack windows with very few false alarms, while Mamba-2 caught 14.1% with more false alarms. So swapping attention for a state space design did not improve detection here. Its benefit is efficiency: similar results with fewer parameters, linear processing, and constant memory streaming. Threshold choice mattered more than model choice. Limits include low recall, blindness to encrypted payloads, and one training corpus.",
     "explain_business": "This paper evaluates a raw-byte network anomaly detector for zero-day attacks. It compares a Transformer with a Mamba-2 state space model. Detection is modest, 15% or 14% of zero-day windows, with few false positives. The state space model does not detect better, but it uses fewer parameters, linear time, and constant memory. The bigger operational lever is alert threshold selection, not model family. EVT thresholds depend only on the benign tail, so they remain stable across labelled attack families, unlike Youden. Because the two model families are closely related, architecture-specific controls may transfer, which matters for audits. Decisions should weigh efficiency against recall, encrypted payload blindness, and one training corpus.",
-    "refresh_every_days": 30,
     "explain_practitioner": "The authors built a detector that does not tokenize, treating raw packet bytes as a next-byte prediction. Per-window surprise becomes alerts. They compared a causal Transformer against a smaller Mamba-2 selective state space model. At the EVT point, the Transformer detected 15.0% of zero-day windows at 0.038% false positives, while Mamba-2 detected 14.1% at 0.1%. Replacing self-attention with a state space backbone did not improve detection. Its advantage was architectural: comparable detection at 57% of parameters, linear scaling in sequence length, and streaming with constant memory. Threshold selection affected deployed behaviour more than backbone choice. EVT thresholds, fitted on the benign tail, were invariant to labelled attack families, unlike Youden."
 }

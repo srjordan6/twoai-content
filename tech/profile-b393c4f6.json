@@ -1,0 +1,139 @@
+{
+    "tax": "lang-profile",
+    "uid": "b393c4f6",
+    "name": "C++",
+    "slug": "cpp",
+    "facts": {
+        "ai_role": "The performance layer underneath the Python surface: PyTorch's libtorch, TensorFlow's core, CUDA kernels, llama.cpp, and most inference runtimes are C++.",
+        "steward": "ISO/IEC JTC1 SC22 WG21 standards committee",
+        "verified": "2026-10-02",
+        "first_release": "1985",
+        "official_site": "https://isocpp.org/",
+        "tracked_repos": null
+    },
+    "model": "ollama:deepseek-v4.1-flash",
+    "shape": "lang-profile",
+    "title": "C++ in AI: The Performance Layer Beneath Python",
+    "answer": "C++ is a compiled systems language first released in 1985 and standardised by ISO, and in AI work it is the performance layer underneath the Python surface: PyTorch's libtorch, TensorFlow's core, CUDA kernels, llama.cpp and most inference runtimes are written in it. A reader deciding whether to use it should know that it buys speed and memory control at the cost of manual complexity, and that the official site is a standardisation hub rather than a tutorial.",
+    "built_at": "2026-10-02T13:03:53-05:00",
+    "category": "technology-and-core-infrastructure",
+    "hub_name": "Programming Languages and Frameworks",
+    "page_uid": "b393c4f6",
+    "sections": [
+        {
+            "body": "C++ is a compiled, general purpose programming language whose development began in 1979 and whose first commercial release came in 1985. It is not owned by a company. It is stewarded by the ISO/IEC JTC1 SC22 WG21 standards committee, and the official site at isocpp.org is the committee's public face, carrying meeting minutes, standards paper mailings, trip reports and survey announcements rather than product documentation. In the AI stack it sits at the performance layer underneath the Python surface. The facts this site holds are blunt about that position: PyTorch's libtorch, TensorFlow's core, CUDA kernels, llama.cpp and most inference runtimes are C++. When a model is trained or served at scale, the code doing the arithmetic is usually C++ even when the code the researcher writes is Python. The committee itself treats machine learning as a standing concern, with SG19, a machine learning study group, holding regular virtual meetings whose minutes appear on the site alongside those of SG14 on low latency, games, embedded and financial trading.",
+            "heading": "What it is and where it sits in AI work"
+        },
+        {
+            "body": "The concrete AI jobs C++ does are the ones where time and memory are tight. It is used for training kernels and inference runtimes, for data pipelines that must move large volumes without stalling, for serving, and for edge deployment where a model has to run on a device with limited resources. The site's own material points to this through the standardisation work: C++26 adds std::simd and std::execution as standard library performance enhancers, and a CppCon 2025 talk by Lemire and Thiesen describes building a JSON parser that parses directly into C++ structures using experimental reflective metaprogramming, a data handling task that sits close to real AI pipelines. Where it is the best choice is where the workload is compute bound, latency sensitive or memory constrained, and where the alternative is a managed language that cannot give the same control. The site does not claim it is the best choice for exploratory model research, and nothing in the material read suggests it is.",
+            "heading": "What it is used for and where it is strongest"
+        },
+        {
+            "body": "C++ has a reputation for a steep learning curve, and the official site does not present itself as a beginner's course. It is a standardisation hub: the pages read are blog posts, meeting minutes, paper mailings, survey announcements and conference promotions. A newcomer looking for a tutorial will not find one in this material. The prerequisites implied by the language's role are real. To use C++ well in AI work you need some mathematics for the models themselves, and systems knowledge for memory, concurrency and performance, because the language gives you direct control over those things and expects you to manage them. The site does offer one route in for the curious: the annual global C++ developer survey is described as a one-pager taking about ten minutes, and its results are posted publicly. That tells you what the community cares about, not how to write code. For learning the language itself, the official material read here does not say where to start.",
+            "heading": "How hard it is to learn and what you need first"
+        },
+        {
+            "body": "The ecosystem around C++ in AI is large and mostly indirect. The libraries that matter, libtorch, TensorFlow's core, CUDA kernels, llama.cpp and the inference runtimes, are named in the facts this site holds, and they are the practical surface a developer touches. The official site's own ecosystem is the standards process: regular paper mailings, study group minutes for machine learning and for low latency work, and trip reports from ISO meetings. Compiler support is tracked there too. GCC 16.1 shipped with C++26 reflection, contracts and safety hardening, with C++20 enabled by default, though C++20 modules support is still experimental and must be enabled with a flag. Community support takes the form of CppCon, whose 2026 edition starts on September 12 in Aurora, Colorado, and of the survey whose write-in responses are forwarded to the committee and to tool vendors. Documentation of the language itself is not what this site provides.",
+            "heading": "Ecosystem and community"
+        },
+        {
+            "body": "C++ is built for production performance, not for quick experiments. The site's material is consistent on this: the committee's work targets efficiency under real space and time constraints, and the language's role in AI is the performance layer beneath a scripting surface. That does not mean you cannot prototype in it, but the cost is real. You manage memory, you reason about undefined behaviour, and you wait for compiles. The committee is trying to reduce part of that cost. C++26 includes an initial round of memory safety hardening, and the C++29 working draft has a new annex cataloguing every case of core language undefined behaviour, described as a first step toward addressing it systematically rather than one paper at a time. Draft profiles for stronger portable memory safety guarantees are being prototyped and targeted at C++29. Those are improvements to a language that already asks a lot, not a change of character. The site does not present C++ as a fast prototyping tool.",
+            "heading": "Prototyping speed against production performance"
+        },
+        {
+            "body": "C++ is a current standard, not a legacy choice, in the parts of the industry where performance matters. The facts this site holds place it underneath PyTorch, TensorFlow, CUDA, llama.cpp and most inference runtimes, which is a statement about present adoption rather than history. The site's own material supports the career case indirectly. Herb Sutter's CppCon 2026 keynote cites industry data from SlashData and IDC documenting sustained growth in demand for professional programmers, especially those who know languages that can operate under real space and time constraints. The committee is still actively evolving the language, with C++26 technical work completed in March 2026 and the first additions voted into the C++29 working draft in June. For someone choosing what to learn, that means C++ remains a durable skill for AI infrastructure and inference work. The material read does not quantify salaries, job counts or regional demand, so nothing here should be read as a claim about those.",
+            "heading": "Industry adoption and careers"
+        },
+        {
+            "body": "The pattern C++ belongs to is polyglot. Python is the surface where models are described and experiments are run, and C++ is the layer underneath where the same work is executed at speed. The facts this site holds name the specific pairings: PyTorch's libtorch and TensorFlow's core are C++ underneath their Python APIs, CUDA kernels are C++, and llama.cpp and most inference runtimes are C++. The site's own material adds a second kind of pairing, with Rust. A CppCon 2025 talk is titled 'How C++ Finally Beats Rust at JSON Serialization', which places the two languages in direct comparison on data handling performance. The committee's work on memory safety profiles and on cataloguing undefined behaviour reads as a response to the same competitive pressure. The practical pattern for a team is usually Python for research and C++ for the parts that must be fast, with Rust as the alternative when memory safety is the deciding factor.",
+            "heading": "How it fits beside the others"
+        },
+        {
+            "body": "C++ is weak exactly where it is strong elsewhere. It gives control, and control means the programmer can get memory management and undefined behaviour wrong. The committee is addressing this, but the work is not finished. Memory safety profiles are drafts being prototyped and targeted at C++29, and the catalogue of undefined behaviour is described as a first step. C++20 modules support in GCC 16.1 is still experimental and must be enabled with a flag, so a headline feature remains awkward in practice. The official material read here does not say how quickly profiles will be usable, how compilers will differ in supporting them, or what the migration cost will be for existing code. It also does not offer guidance on learning the language, on AI specific libraries beyond the names in the facts, or on benchmarking C++ against alternatives for training and inference. Those questions are left open by the pages read.",
+            "heading": "Limits and open questions"
+        }
+    ],
+    "siblings": [
+        {
+            "kind": "framework",
+            "name": "ai",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/4c80ad91/"
+        },
+        {
+            "kind": "framework",
+            "name": "crewAI",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/52f2d4fc/"
+        },
+        {
+            "kind": "framework",
+            "name": "jax",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/1722316f/"
+        },
+        {
+            "kind": "framework",
+            "name": "keras",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/079f2091/"
+        },
+        {
+            "kind": "framework",
+            "name": "langchain",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/10376bfa/"
+        },
+        {
+            "kind": "framework",
+            "name": "litellm",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/b9fc5220/"
+        },
+        {
+            "kind": "framework",
+            "name": "llama_index",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/07b3602c/"
+        },
+        {
+            "kind": "language",
+            "name": "Go",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/a218afb2/"
+        },
+        {
+            "kind": "language",
+            "name": "Julia",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/3719f5ac/"
+        }
+    ],
+    "generated": "2026-10-02",
+    "site_pages": [
+        {
+            "url": "https://isocpp.org/blog/category/standardization/P30",
+            "date": ""
+        },
+        {
+            "url": "https://isocpp.org/blog/rss/category/standardization",
+            "date": ""
+        },
+        {
+            "url": "https://isocpp.org/blog/2026/09/why-we-should-double-check-the-ai-output-a-bug-which-wasnt-giovanni-dicanio",
+            "date": ""
+        },
+        {
+            "url": "https://isocpp.org/blog/2026/09/cppcon-2026-keynote-cpp-growing-in-a-world-of-efficiency-safety-and-ai-herb",
+            "date": ""
+        },
+        {
+            "url": "https://isocpp.org/blog/category/standardization/P10",
+            "date": ""
+        },
+        {
+            "url": "https://isocpp.org/blog/category/standardization/P20",
+            "date": ""
+        }
+    ],
+    "source_url": "https://isocpp.org/",
+    "parent_name": "Programming Languages",
+    "parent_path": "/ai-ecosystem/technology-and-core-infrastructure/6badc1e5/",
+    "site_domain": "isocpp.org",
+    "subject_key": "lang:cpp",
+    "subject_kind": "language",
+    "source_read_on": "2026-10-02",
+    "site_pages_read": 60,
+    "refresh_every_days": 90
+}

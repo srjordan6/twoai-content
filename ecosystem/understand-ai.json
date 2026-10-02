@@ -306,14 +306,14 @@
         "assumption_source": "https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them"
     },
     "reading": {
-        "body": "A 40-page contract costs roughly 1.3 cents to read and summarize, and 441 of the 458 tracked API models can hold the whole thing in one pass.\n\nThe arithmetic is small at this size. About 26,700 input tokens at the median $0.42 per million comes to roughly $0.0112, and about 1,000 output tokens at $1.88 per million comes to roughly $0.0019. Price is not what stops a single contract from being processed. The constraint is the context window, and it binds for only 17 of the 458 models tracked, which would have to split the document. The largest window among those models is 2,000,000 tokens, far above the 27,700 this task needs.\n\nThe picture changes with volume. A library of contracts will not fit in any window, so the work moves to retrieval, where every contract is embedded once and the model receives only the passages matching a question. That is an architecture decision rather than a cost decision, and it is the default shape of enterprise deployments for exactly this reason.\n\nWhat the data does not cover is whether the output is right. It counts tokens, prices them, and measures how much fits. It says nothing about accuracy, latency, or where the computation runs. A summary can state a clause the contract does not contain, so for anything with legal weight the summary is a map to the pages to read, not a replacement for them. The median price is also a median across 458 API models from 64 providers, not the price of any particular model, and the context window count describes API models only.",
+        "body": "A 40 page contract costs about 1.3 cents to read and summarize, and 441 of the 458 tracked API models can hold it in one pass.\n\nThe pattern is that document work at this size is settled on both axes. Capability is nearly universal, since only 17 of 458 models cannot fit roughly 27,700 tokens, and price is trivial at the median of $0.42 per million input tokens and $1.88 per million output tokens. The binding constraint for a single contract is neither the model nor the bill.\n\nThe constraint moves when the unit of work moves. One contract fits in a context window, but a library of contracts does not, which is why retrieval exists: embed every document once, then hand the model only the passages that match the question. That is an architectural answer to a capacity limit, not a capability upgrade.\n\nWhat the data does not cover is accuracy. A summary can state a clause the contract does not contain, and nothing in the token count, the context window, or the price predicts when that happens. For anything with legal weight the summary is a map to the pages, not a replacement for them.",
         "model": "ollama:deepseek-v4.1-flash",
         "generated_on": "2026-10-02"
     },
-    "built_at": "2026-10-02T09:27:13-05",
+    "built_at": "2026-10-02T13:04:45-05",
     "category": "research-knowledge-and-learning",
     "page_uid": "d2390ba3",
     "verified": "2026-10-02",
     "generated": "2026-10-02",
-    "refresh_every_days": 7
+    "refresh_every_days": 1
 }

@@ -1,0 +1,214 @@
+{
+    "tax": "lang-profile",
+    "uid": "079f2091",
+    "name": "keras",
+    "slug": "keras",
+    "facts": {
+        "repo": "keras-team/keras",
+        "stars": 64346,
+        "licence": "Apache-2.0",
+        "archived": false,
+        "language": "Python",
+        "repo_url": "https://github.com/keras-team/keras",
+        "last_push": "2026-10-02T05:20:03Z",
+        "description": "Deep Learning for humans",
+        "official_site": "https://keras.io/"
+    },
+    "model": "ollama:deepseek-v4.1-flash",
+    "shape": "lang-profile",
+    "title": "Keras: A Multi-Backend Deep Learning API for AI Development",
+    "answer": "Keras is an open-source Python deep learning API, now at version 3, that lets you build and train neural networks on top of JAX, TensorFlow, PyTorch, or OpenVINO. It sits at the model-building layer of the AI stack, offering layers, losses, optimizers, and training loops. The one thing to know before choosing it: the same code runs across backends, so you can prototype quickly and switch for performance without rewriting, though custom components must stick to keras.ops to stay portable.",
+    "built_at": "2026-10-02T13:04:14-05:00",
+    "category": "technology-and-core-infrastructure",
+    "hub_name": "Programming Languages and Frameworks",
+    "page_uid": "079f2091",
+    "sections": [
+        {
+            "body": "Keras is an open-source deep learning library for Python, maintained by the Keras team and released under the Apache 2.0 licence. Its official site describes it as deep learning for humans, and the repository shows active development with a last push in October 2026 and over 64,000 stars. Keras 3.0, announced on the official site, is a full rewrite that runs on top of JAX, TensorFlow, PyTorch, or OpenVINO for inference. It occupies the model-building layer of the AI stack, providing high-level APIs for defining, training, evaluating, and saving neural networks, while the backend handles tensor computation and hardware acceleration. It is not a backend itself, and it is not a data processing or deployment framework, though it integrates with those.",
+            "heading": "What it is and where it sits in AI work"
+        },
+        {
+            "body": "Keras is used for the full cycle of deep learning work: building models with the Sequential, Functional, or subclassing APIs, training with fit(), evaluating with evaluate(), and running inference with predict(). The official guides show concrete jobs such as image classification on MNIST, autoencoder construction, transfer learning with pre-trained ImageNet weights, and text generation with a mini-GPT built from KerasHub layers. It is strongest when you want a readable, consistent interface across different model architectures and backends. The Keras 3 page notes that JAX typically delivers the best training and inference performance on GPU, TPU, and CPU, though results vary by model, and non-XLA TensorFlow is occasionally faster on GPU. For teams that need to move between backends or share custom layers across frameworks, Keras is a natural fit. It is also well suited to education and prototyping because the same fit() and evaluate() calls work across Sequential, Functional, and subclassed models.",
+            "heading": "What it is used for and where it is strongest"
+        },
+        {
+            "body": "Keras is designed for human readability, and the official guides start from basic concepts. A beginner can build a working model with a few lines, as the Sequential guide shows, and the Functional API guide explains how to handle non-linear topology, shared layers, and multiple inputs or outputs. The main prerequisites are comfort with Python and a basic understanding of tensors and neural network concepts such as layers, loss functions, and optimizers. The site does not assume advanced mathematics on its introductory pages, but deeper work with custom losses, distribution APIs, or backend-specific performance tuning will require more. The official site offers guides, examples, and API references, including recipes for sample size estimation and text generation, which give a beginner concrete starting points. There is no separate mathematics curriculum on the site, so learners may need external resources for the theory behind the code.",
+            "heading": "How hard it is to learn and what you need first"
+        },
+        {
+            "body": "Keras has a broad ecosystem. The Keras 3 page states that it has been chosen by over 2.5 million developers and powers systems such as the Waymo self-driving fleet and the YouTube recommendation engine. The library implements over a hundred layers, dozens of metrics, loss functions, optimizers, callbacks, training and evaluation loops, and saving and serialization infrastructure. It works with tf.data.Dataset objects, PyTorch DataLoader objects, NumPy arrays, and Pandas dataframes regardless of backend. The keras.ops namespace provides cross-backend operations such as ops.matmul, ops.sum, ops.stack, ops.einsum, and neural network functions like ops.softmax and ops.conv. KerasHub appears in the text generation example, offering pre-built layers like TokenAndPositionEmbedding and TransformerDecoder. The official site hosts guides, examples, and API documentation, and the GitHub repository is active with a large star count, indicating a substantial community.",
+            "heading": "Ecosystem and community"
+        },
+        {
+            "body": "Keras is built for both quick experiments and production use, but the balance depends on how you use it. The Sequential and Functional APIs make prototyping fast, with built-in training loops and default settings that let you train a model in a few lines. For production, Keras 3 offers a distribution API in the keras.distribution namespace, currently implemented for the JAX backend with TensorFlow and PyTorch coming soon, which supports model parallelism, data parallelism, and combinations of both. The Keras 3 page notes that JAX typically delivers the best performance on GPU, TPU, and CPU, but results vary by model, so backend choice matters. The cost of this flexibility is that custom components must use keras.ops to remain portable across backends. If you use backend-specific operations, you lose the cross-framework benefit. The site does not provide detailed production deployment guides beyond saving and serialization, so teams may need additional tooling for serving at scale.",
+            "heading": "Prototyping speed against production performance"
+        },
+        {
+            "body": "Keras is a current standard rather than a legacy choice. The Keras 3 page states it has been chosen by over 2.5 million developers and powers systems such as the Waymo self-driving fleet and the YouTube recommendation engine. Its multi-backend design means skills transfer across JAX, TensorFlow, and PyTorch, which is valuable for engineers working in polyglot environments. For someone choosing what to learn, Keras offers a gentle entry point into deep learning with a consistent API, and its adoption in large-scale systems suggests it is not going away. The official site does not list specific job roles or certifications, so career guidance must come from the broader market. The facts show active development and a large community, which are positive signals for long-term relevance.",
+            "heading": "Industry adoption and careers"
+        },
+        {
+            "body": "Keras is typically used with Python and sits alongside JAX, TensorFlow, and PyTorch as a high-level API rather than a replacement for them. The Keras 3 page describes it as a low-level cross-framework language for developing custom components such as layers, models, or metrics that can be used in native workflows in JAX, TensorFlow, or PyTorch with one codebase. It can instantiate a model as a PyTorch Module, export it as a TensorFlow SavedModel, or instantiate it as a stateless JAX function. This places Keras in a polyglot pattern where the same model definition can move between backends. It also works with data pipelines from NumPy, Pandas, tf.data, and PyTorch DataLoader. The site does not claim Keras replaces backend-specific APIs for advanced use, but it offers a shared surface for common work.",
+            "heading": "How it fits beside the others"
+        },
+        {
+            "body": "Keras is weak where you need fine-grained control over backend-specific features or maximum performance without abstraction. The Keras 3 page notes that custom components must use keras.ops to work across backends, so using native operations ties you to one framework. The distribution API is currently implemented only for the JAX backend, with TensorFlow and PyTorch support described as coming soon, which limits multi-backend distributed training today. The site does not detail production serving, monitoring, or edge deployment, so those areas remain open for teams to solve with other tools. The official material also does not specify memory management or low-level optimization techniques. For beginners, the site offers no formal mathematics prerequisites, leaving a gap for those who want to understand the theory behind the APIs. These are not flaws in the library but boundaries of what the official documentation covers.",
+            "heading": "Limits and open questions"
+        }
+    ],
+    "siblings": [
+        {
+            "kind": "framework",
+            "name": "ai",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/4c80ad91/"
+        },
+        {
+            "kind": "framework",
+            "name": "crewAI",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/52f2d4fc/"
+        },
+        {
+            "kind": "framework",
+            "name": "jax",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/1722316f/"
+        },
+        {
+            "kind": "framework",
+            "name": "langchain",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/10376bfa/"
+        },
+        {
+            "kind": "framework",
+            "name": "litellm",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/b9fc5220/"
+        },
+        {
+            "kind": "framework",
+            "name": "llama_index",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/07b3602c/"
+        },
+        {
+            "kind": "language",
+            "name": "C++",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/b393c4f6/"
+        },
+        {
+            "kind": "language",
+            "name": "Go",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/a218afb2/"
+        },
+        {
+            "kind": "language",
+            "name": "Julia",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/3719f5ac/"
+        }
+    ],
+    "generated": "2026-10-02",
+    "site_pages": [
+        {
+            "url": "https://keras.io/guides/functional_api/",
+            "date": ""
+        },
+        {
+            "url": "https://keras.io/guides/training_with_built_in_methods/",
+            "date": ""
+        },
+        {
+            "url": "https://keras.io/examples/keras_recipes/sample_size_estimate/",
+            "date": ""
+        },
+        {
+            "url": "https://keras.io/keras_3/",
+            "date": ""
+        },
+        {
+            "url": "https://keras.io/examples/generative/text_generation_gpt/",
+            "date": ""
+        },
+        {
+            "url": "https://keras.io/guides/sequential_model/",
+            "date": ""
+        },
+        {
+            "url": "https://keras.io/examples/vision/forwardforward/",
+            "date": ""
+        },
+        {
+            "url": "https://keras.io/examples/generative/midi_generation_with_transformer/",
+            "date": ""
+        },
+        {
+            "url": "https://keras.io/examples/generative/ddpm/",
+            "date": ""
+        },
+        {
+            "url": "https://keras.io/api/models/model/",
+            "date": ""
+        },
+        {
+            "url": "https://keras.io/api/models/model_training_apis/",
+            "date": ""
+        },
+        {
+            "url": "https://keras.io/guides/making_new_layers_and_models_via_subclassing/",
+            "date": ""
+        },
+        {
+            "url": "https://keras.io/examples/generative/molecule_generation/",
+            "date": ""
+        },
+        {
+            "url": "https://keras.io/examples/generative/fine_tune_via_textual_inversion/",
+            "date": ""
+        },
+        {
+            "url": "https://keras.io/examples/generative/finetune_stable_diffusion/",
+            "date": ""
+        },
+        {
+            "url": "https://keras.io/examples/generative/adain/",
+            "date": ""
+        },
+        {
+            "url": "https://keras.io/examples/generative/random_walks_with_stable_diffusion/",
+            "date": ""
+        },
+        {
+            "url": "https://keras.io/examples/generative/gaugan/",
+            "date": ""
+        },
+        {
+            "url": "https://keras.io/examples/generative/gpt2_text_generation_with_keras_hub/",
+            "date": ""
+        },
+        {
+            "url": "https://keras.io/examples/keras_recipes/float8_training_and_inference_with_transformer/",
+            "date": ""
+        },
+        {
+            "url": "https://keras.io/examples/keras_recipes/tfrecord/",
+            "date": ""
+        },
+        {
+            "url": "https://keras.io/examples/generative/wgan-graphs/",
+            "date": ""
+        },
+        {
+            "url": "https://keras.io/examples/generative/random_walks_with_stable_diffusion_3/",
+            "date": ""
+        },
+        {
+            "url": "https://keras.io/examples/generative/vq_vae/",
+            "date": ""
+        }
+    ],
+    "source_url": "https://keras.io/",
+    "parent_name": "AI Frameworks",
+    "parent_path": "/ai-ecosystem/technology-and-core-infrastructure/2eb54277/",
+    "site_domain": "keras.io",
+    "subject_key": "framework:keras-team/keras",
+    "subject_kind": "framework",
+    "source_read_on": "2026-10-02",
+    "site_pages_read": 60,
+    "refresh_every_days": 90
+}
