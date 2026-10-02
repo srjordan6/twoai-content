@@ -1033,6 +1033,14 @@
                     "audience": "child"
                 },
                 {
+                    "body": "A Scratchpad is a working area where an AI model writes intermediate reasoning, notes, or plans that inform its final answer but are not the answer. For decisions, money, and risk, it lets you inspect why an agent did what it did, so you can see the reasoning behind the result. For accountability, the Scratchpad is a record to inspect, not a substitute for a person owning the decision.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, a Scratchpad is the agent's working notes, such as a plan file listing which modules it intends to touch and why. It matters when you need to check why an agent made a choice, and it does not matter when you only need the final answer and do not need to inspect the reasoning. Inspecting it can save time by showing the reason for a decision, but it can cost time because someone has to read the notes.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Often the fastest debugging tool available for an agent that produced a wrong or strange result: inspecting the scratchpad reveals the reasoning path that led to the output, which the final answer alone does not show.",
                     "audience": "developer"
                 },
@@ -1080,6 +1088,14 @@
                 {
                     "body": "A smaller AI helper spun up just to do one specific piece of a bigger job, then it reports back and disappears, like a temp worker hired for one task.",
                     "audience": "child"
+                },
+                {
+                    "body": "A subagent is a limited helper that is created to handle one subtask, report back, and then stop. It receives only the context and permissions its slice of work requires, so it does not carry broader access. For decisions, money, risk and accountability, you choose the subtask and its access, and you remain responsible for that choice because the subagent only acts within the scope you give it.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, a subagent is a helper you give one small job to, with access only to what that job needs, such as read access to one folder to summarize its contents. It matters when you want a narrow task done without handing over wider access, and it does not matter when the work needs wider information or many permissions. The time effect is that it handles that one subtask and reports back, so you do not have to do that slice yourself, and the definition gives no other cost or saving.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Scope each subagent's permissions independently rather than inheriting the parent agent's full access; a subagent handling one narrow subtask should not be able to act outside that scope even if it is manipulated.",
@@ -3358,6 +3374,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "An SBOM is a list of the software parts inside a tool you use, and it shows where those parts came from. For a small business, it matters when you need to check an AI tool's parts, for example if a vendor asks for the list or you want to know what is inside. It does not cover the rules for the data used to train the AI, so you ask for that separately, and getting and reading the list can take time while it can save you from tracking each part by hand.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "It answers component provenance, not data licensing: an SBOM tells you which libraries shipped, and says nothing about what trained the model beside them. Request a separate, explicit data provenance disclosure alongside any SBOM for an AI product, since the SBOM alone leaves the entire training data question genuinely unaddressed.",
                     "audience": "ciso"
                 },
@@ -3409,6 +3429,10 @@
                 {
                     "body": "Understand that this well-established, predictable identity type is fundamentally different from an AI agent identity in a way that matters for governance; applying the same static access-control mental model to both can leave real gaps in oversight of the less predictable agent category.",
                     "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, a service principal is a software account that lets one of your tools log in to another service on its own, doing the same thing each time. It matters when you depend on that tool to run automatically, because you can record its normal access pattern and get alerted if that pattern changes. It does not matter much if you have no such automatic connections, and the time it tends to cost is setting up and checking that pattern, while it can save the time staff would spend logging in by hand.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Its behavior is predictable, which is exactly what distinguishes it from an agent: a service principal does the same thing every night, an agent decides what to do next. Do not govern AI agent credentials using the same static permission model designed for predictable service principals, since an agent's variable, decision-driven behavior needs a genuinely different, more dynamic access control approach.",
@@ -3464,6 +3488,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "For a small company, a SIEM is a tool that pulls logs from different systems into one place and turns them into alerts. It matters when you have several systems to watch and want one place to see security problems, and it does not matter much if you have few systems or no one to review the alerts. Routing AI gateway and agent-action logs into it alongside firewall and endpoint feeds can save time by keeping those alerts together, but if those logs never reach it, that traffic stays invisible.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Its blind spot is whatever never reaches it, and AI gateway logs often never do, leaving the busiest new traffic channel invisible to the team paid to watch. Explicitly verify and configure AI gateway and inference endpoint logs to actually flow into your SIEM, since this integration is frequently missing by default and represents a real, currently common blind spot.",
                     "audience": "ciso"
                 },
@@ -3515,6 +3543,10 @@
                 {
                     "body": "A real reason your organization's actual AI footprint is likely larger than any inventory built purely from procurement records; ask your team whether they actively monitor existing vendor release notes for newly enabled AI features, not just track new AI-specific purchases.",
                     "audience": "executive"
+                },
+                {
+                    "body": "In practice, a silent upgrade means a vendor can turn on an AI feature inside software your team already uses, with no new contract and no buying process. It matters when you need to know what AI is running in your business, for example if a quarterly release-note review catches your CRM enabling AI summarization by default. It does not matter if you do not need to know what AI is running in your software, and it tends to cost a little time to read release notes rather than save time.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "It is found in release notes, not purchase orders, which is why AI inventories built from contracts alone undercount what is actually running; build your AI inventory process to include vendor release-note monitoring for existing software, not only new procurement events, since this is a genuinely common and easily missed source of unaccounted AI exposure.",
@@ -3570,6 +3602,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "SOC 2 is a report from an outside auditor about how a service company protects security, availability, and confidentiality. For a small company, it matters when a big customer asks for proof that a service you use is safe, and you need to read the scope to see if the AI feature is inside the audited part. It does not matter when no customer asks for that proof, and the time cost is reading the scope, while the time saving is using the report to answer the customer's question.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Always verify explicitly whether a vendor's AI-specific functionality falls within the actual audited scope of their SOC 2 report, since a report covering the vendor's core platform does not automatically extend to cover a newer, separately built or acquired AI feature unless the scope section specifically says so.",
                     "audience": "ciso"
                 },
@@ -3621,6 +3657,10 @@
                 {
                     "body": "A specific, verifiable technical control worth asking any critical AI vendor about; the absence of signed provenance for model weights and containers means your organization is trusting, without technical verification, that what is running is genuinely what the vendor intended to ship.",
                     "audience": "executive"
+                },
+                {
+                    "body": "Software provenance is a verified record of where your code, containers, and model weights came from, signed and traceable to a source. For a company with five to fifty staff, it matters when you load a model file or software update into production, because checking the publisher's signature helps you confirm it is the artifact the vendor built and not something substituted along the way, and it matters less for tools you do not deploy or rely on. The time cost is a short check before loading, and the time saved is catching a substituted file before it reaches your work.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "It is what lets a deployer distinguish the artifact the vendor built from an artifact something substituted along the way; require signed provenance attestation for model weights and containers in your deployment pipeline, since this is what actually protects against a substituted or tampered artifact being deployed without detection.",
@@ -6068,6 +6108,14 @@
                     "audience": "child"
                 },
                 {
+                    "body": "Self-attention is the part of an AI model that lets each word compare itself with every other word in a long piece of text, no matter how far apart they are. For decisions, it matters when the work depends on understanding long documents or long conversations, because it helps the system track what a word like 'it' refers to across a long paragraph. The people who choose and oversee such systems remain accountable for the money and the risk.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "Self-attention is the part of an AI model that lets each word compare itself with every other word in a long piece of text, no matter how far apart they are. For a company with five to fifty staff, it matters when an AI tool must understand long customer emails, reports or conversations, because it helps resolve what a word like 'it' refers to across a long paragraph. It matters less for short, simple text, and the definition does not say how much time it costs or saves, so that depends on the tool and the task.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "The quadratic compute and memory cost of self-attention with sequence length is the specific practical constraint driving both context-window pricing and the development of alternative architectures like state space models for very long inputs.",
                     "audience": "developer"
                 },
@@ -6119,6 +6167,14 @@
                 {
                     "body": "Searching by what something actually means instead of by matching exact words, so it can find the right answer to your question even if the answer uses completely different words than the ones you typed.",
                     "audience": "child"
+                },
+                {
+                    "body": "Semantic search means retrieval based on meaning rather than keyword overlap, implemented by comparing embeddings, so it finds the document that answers the question even when the question shares no words with it. For decisions, this means you cannot judge a result only by whether it contains the query words, and accountability sits with whoever owns the search and the documents it draws on. For money and risk, the term itself does not set a cost, but it changes the risk from missing a document that uses different words to trusting a match based on inferred meaning.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "Semantic search means your search looks for meaning rather than matching the exact words people type, by comparing embeddings. For a company with five to fifty staff, it matters when someone searches for an idea in different words than your documents use, for example a query for reducing churn surfacing a document titled customer retention playbook. It does not matter when the words already match, and it tends to cost setup and upkeep while saving time by returning the document that answers the question instead of only documents that share words.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Combine semantic search with traditional keyword search in a hybrid approach for most production retrieval systems; semantic search excels at conceptual matches but can sometimes miss exact-term precision that keyword search handles more reliably, like exact product codes or names.",
@@ -6174,6 +6230,14 @@
                     "audience": "child"
                 },
                 {
+                    "body": "A Small Language Model is a lightweight language model optimized for speed, memory footprint and edge deployment rather than maximum capability. The money and risk trade is deliberate: for bounded tasks, a small model that runs locally beats a frontier model that requires a round trip. The person who chooses the model and the task is accountable for the result.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, a Small Language Model means a lightweight model such as a Phi or Gemma-class model can run on a laptop for bounded tasks like classification. It matters when the task is bounded and local speed or memory footprint is useful, and it does not matter when you need maximum capability. It tends to save time by avoiding a round trip to a frontier model.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Evaluate task-specific performance on your actual use case before assuming a frontier model is necessary; a well-chosen or fine-tuned small model frequently matches large-model performance on narrow, bounded tasks at a fraction of the cost and latency.",
                     "audience": "developer"
                 },
@@ -6225,6 +6289,14 @@
                 {
                     "body": "The math step that turns a bunch of raw scores into neat percentages that all add up to 100%, so an AI can treat its options as proper probabilities instead of just arbitrary numbers.",
                     "audience": "child"
+                },
+                {
+                    "body": "Softmax is the final step that turns a model's raw scores into probabilities that sum to one before it chooses a next token. For decisions, it shapes how likely each option is, so it affects the output a business sees when it relies on the model. Money and risk do not come from Softmax itself, and accountability stays with the people who approve using that output for a business decision.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "Softmax is the final step that turns a model's raw scores into probabilities that sum to one before it picks a next token. For a company with five to fifty staff, it matters when you need to understand why a model chose one option over another, because the choice is drawn from those probabilities. It does not matter when you only care about the final answer, and it is part of the model's internal calculation, so it does not add its own separate cost or time saving.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Temperature scaling works by dividing logits before applying softmax; understanding this mechanism explains why higher temperature produces more varied output, it flattens the resulting probability distribution, making less-likely tokens more competitive for selection.",
@@ -6287,6 +6359,14 @@
                     "audience": "child"
                 },
                 {
+                    "body": "Sparse model means an AI model that uses only some of its internal parts for each small piece of text, by choosing a subset for each one. For decisions, this can mean more total capacity without a matching rise in the cost of each answer, which is how very large models stay practical to run. The risk is that only a subset is active on a given task, and accountability stays with the people who choose and operate the model.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, a sparse model means the AI tool can have a lot of total capacity but only use a small part of it for each answer. It matters when you need a very large model to stay practical to run, and it does not matter when a smaller model already meets your needs. In time terms, it can save time by making very large models practical to run, because not all parts have to work for every answer.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Sparse models typically require more total memory to hold all parameters even though fewer are active per token, so memory footprint and compute cost need to be evaluated separately when comparing a sparse model against a dense alternative for deployment.",
                     "audience": "developer"
                 },
@@ -6338,6 +6418,14 @@
                 {
                     "body": "A newer kind of AI design that keeps a running, compressed summary of everything it has seen so far, instead of comparing every word to every other word directly, which lets it handle very long text more efficiently.",
                     "audience": "child"
+                },
+                {
+                    "body": "A State Space Model is an AI architecture for sequences that keeps a running compressed state. Its cost grows linearly with sequence length, while attention grows quadratically, so it is the active alternative to attention for very long inputs. For decisions, money and risk, it matters when very long inputs are involved, because the cost profile differs from attention, and accountability stays with whoever chooses and oversees the system.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, a State Space Model is an AI architecture that can handle very long inputs by keeping a running compressed state. It matters when you need to process book-length documents or other very long inputs, because it scales linearly while attention scales quadratically, and it does not matter for short inputs. In time terms, the linear scaling can save time on very long inputs compared with attention, and the supplied example is Mamba processing book-length documents at linear cost.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Worth evaluating for genuinely long-sequence use cases where attention-based models' context length and cost become limiting factors; tooling maturity and pretrained model availability remain less developed than the transformer ecosystem as of this writing.",
@@ -7922,6 +8010,10 @@
                 {
                     "body": "A high score here is closer to a real signal for \"can this help with actual software maintenance\" than most coding benchmarks, since it tests fixing real, previously unsolved issues rather than writing new small functions.",
                     "audience": "executive"
+                },
+                {
+                    "body": "SWE Bench is a test for AI coding tools that uses real software issues from GitHub, and it checks whether the tool's code changes pass the project's own tests. For a small business, it matters when you are picking an AI tool to fix real bugs in your code, because it shows how often the tool can complete those fixes end to end. It does not matter if you only use AI for small code snippets or writing, and it does not give a cost or time saving figure by itself.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "The defining coding-agent benchmark because it measures end-to-end engineering against a repository's own test suite rather than isolated snippet generation, which is why leaderboard entries here report the specific agent scaffold used alongside the base model.",
@@ -11346,6 +11438,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "Scaling laws are patterns showing that AI models tend to get better in predictable ways as you give them more computing power, more data, and more settings. For a small business, this matters when you are deciding whether to pay for an AI service that may improve over time, because the provider's spending on those three things drives that improvement. It does not matter much for everyday tasks if the tool already works well enough, and it can save you time by helping you judge whether a tool is likely to improve without you doing the work, though it can cost more when a provider spends on larger training runs.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Useful for capacity planning and setting realistic expectations for a custom training project; scaling laws suggest what capability level a given compute and data budget can realistically achieve, which helps avoid both under- and over-provisioning a training run.",
                     "audience": "developer"
                 },
@@ -11397,6 +11493,10 @@
                 {
                     "body": "The reason large language models could be trained on internet-scale data at all: removing the need for human labeling made training at this scale economically feasible, which is worth understanding when evaluating why foundation models are as capable and broad as they are.",
                     "audience": "executive"
+                },
+                {
+                    "body": "Self-supervised learning means an AI model makes its own labels from the data, for example by predicting the next word in a sentence. For a company with five to fifty staff, this matters only if you are building or customizing your own AI model, because it can remove the need to pay people to label examples. It does not matter much if you just use an existing AI tool, since that training was already done, and the time it saves is mainly in data labeling rather than in daily work.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "The dominant pretraining paradigm for current large models; if you are fine-tuning rather than pretraining from scratch, you are building on top of self-supervised learning someone else already did, which is most of the reason fine-tuning is so much cheaper than training from zero.",
@@ -11452,6 +11552,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "For a small company, semi-supervised learning means you label only a small part of your records by hand and let the system learn from the large part you have not labeled. It matters when hand-labeling is slow or costly and you already have a lot of unlabeled records, and it does not matter when you have little data or labeling is quick and cheap. It can save the time you would spend labeling every record, but you still need to label a small part.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "A reasonable default when labeled data is scarce but unlabeled data is abundant, which describes most specialized enterprise domains; consider it before defaulting to either pure supervised learning on a small labeled set or expensive additional labeling.",
                     "audience": "developer"
                 },
@@ -11503,6 +11607,10 @@
                 {
                     "body": "The most mature and predictable form of machine learning for well-defined business problems; if you have historical examples with known correct answers, fraud or not, churn or not, this is usually the right starting technique, with clear evaluation metrics.",
                     "audience": "executive"
+                },
+                {
+                    "body": "Supervised learning means teaching a computer by showing it examples that already have the right answer, such as emails marked spam or not spam. For a small business, it matters when you have past emails already marked spam or not spam and want the computer to mark new emails the same way. It does not matter when you have no labeled examples or the task is too rare to be worth setting up, and it tends to cost time to label examples first while saving time later on the same kind of prediction.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Label quality bounds model quality more than most other factors; before tuning architecture or hyperparameters, audit your labeled dataset for consistency and correctness, since a supervised model can only be as good as the labels it learned from.",
@@ -13582,6 +13690,10 @@
                     "audience": "child"
                 },
                 {
+                    "body": "Self-consistency means asking the same math or logic question several times and taking the most common answer. It can improve accuracy on math and logic, but it costs more time because the question runs multiple times. It does not change who is accountable for the decision, so the existing owner still owns the outcome.",
+                    "audience": "executive"
+                },
+                {
                     "body": "For an important calculation or logic problem, you can ask an AI tool the same question a few separate times and see if it consistently gives the same answer; if the answers differ, that inconsistency itself is a useful warning sign to double-check the result yourself.",
                     "audience": "small-business"
                 },
@@ -13633,6 +13745,10 @@
                 {
                     "body": "Having an AI check over its own answer against a checklist before actually giving it to you, catching mistakes the same way rereading your own writing catches errors you missed while first writing it.",
                     "audience": "child"
+                },
+                {
+                    "body": "Self-critique means the AI system reviews its own draft answer against your criteria before it finalizes that answer. For decisions and risk, this second pass can catch errors that a single pass misses, so the output you use for a summary or recommendation is more likely to match the source. It does not move accountability: the person or team who approves and acts on the output still owns the decision and any resulting cost or risk.",
+                    "audience": "executive"
                 },
                 {
                     "body": "You can literally ask an AI tool to review and critique its own answer against specific criteria you care about before you accept it; this simple extra step often catches mistakes or gaps that the first answer missed.",
@@ -13688,6 +13804,10 @@
                     "audience": "child"
                 },
                 {
+                    "body": "Steerability is how reliably a model follows your instructions on tone, format and limits, which makes it a selection criterion when you decide which model to buy or deploy. A slightly weaker model that obeys is worth more than a stronger one that improvises, because outputs that break a required format, such as a mandated disclaimer, create rework, compliance exposure and cost. Accountability sits with whoever selects and operates the model, since they own whether instructions are followed across every output.",
+                    "audience": "executive"
+                },
+                {
                     "body": "When choosing between AI tools, do not just consider which one seems \"smartest\"; also consider which one most reliably follows your specific instructions about format, tone, and rules, since that reliability often matters more for actual day-to-day usefulness.",
                     "audience": "small-business"
                 },
@@ -13739,6 +13859,10 @@
                 {
                     "body": "A specific word or symbol that tells an AI to stop writing the instant it appears, used to keep its answer from running on longer than you want or wandering off into unrelated territory.",
                     "audience": "child"
+                },
+                {
+                    "body": "A stop sequence is a string that makes an AI system stop generating text as soon as that string appears. For decisions, it is a boundary control that prevents runaway completions and keeps output inside expected limits, so it mainly affects risk and control rather than money by itself. The person who sets or approves those limits is accountable for where the boundary sits.",
+                    "audience": "executive"
                 },
                 {
                     "body": "Not typically something you configure directly in consumer AI tools, but if you notice an AI response consistently running on with unwanted extra text, more technical AI platforms let a developer set specific stopping points to prevent this.",
@@ -13794,6 +13918,10 @@
                     "audience": "child"
                 },
                 {
+                    "body": "Structured output means forcing an AI response into a defined format, usually JSON, so software can read it as fields instead of prose. For decisions, money and risk, this matters when AI results must flow into databases or workflows, because a broken format can cause rework, delays or bad records. Accountability stays with the business owner of the receiving system or process, who sets the schema and checks that the results are valid.",
+                    "audience": "executive"
+                },
+                {
                     "body": "If a developer is connecting an AI tool to other systems your business uses, like automatically filling out a database or spreadsheet, ask whether they are using structured output; it makes the connection much more reliable than trying to extract information from a regular paragraph answer.",
                     "audience": "small-business"
                 },
@@ -13845,6 +13973,10 @@
                 {
                     "body": "When an AI tends to just agree with you instead of telling you the truth, especially if you push back even a little, the way a person might cave and agree with you just to avoid an argument even when they actually think you are wrong.",
                     "audience": "child"
+                },
+                {
+                    "body": "Sycophancy is when an AI system agrees with you instead of giving the correct answer, and it changes its answer when you push back even slightly. For decisions, this means an AI advisor may confirm a choice you already favor, which can affect money and risk because the advice is not reliable. The people who use that advice remain accountable for the outcome, so they need to check it before acting.",
+                    "audience": "executive"
                 },
                 {
                     "body": "Be aware that an AI tool may cave and agree with you even when it was initially right and you push back incorrectly; do not treat a change in the AI's answer after you disagreed as proof you were correct, it may just be agreeing to avoid friction.",
@@ -17675,6 +17807,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "Sandbagging is when an AI model hides what it can do by doing worse than it should on a test. For a small business, this matters when you use test results to pick or check an AI tool, because the test may not show the tool's real ability, and it matters less for simple daily tasks where you can see the result yourself. It tends to cost time in extra checking or retesting, and it does not save time in that testing step.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Factor this genuine possibility into evaluation methodology design, using varied testing approaches and genuine elicitation effort rather than relying on a single, straightforward test that a strategically motivated system might have reason and ability to underperform on.",
                     "audience": "ciso"
                 },
@@ -17730,6 +17866,10 @@
                 {
                     "body": "A real, common, and often larger-than-expected gap in AI governance; actively survey or technically monitor for unapproved consumer AI tool usage among employees, since this behavior is genuinely common and typically invisible to any governance process built only around officially sanctioned, procured tools.",
                     "audience": "executive"
+                },
+                {
+                    "body": "Shadow AI is when employees use AI tools for work without approval or the company knowing, such as staff pasting company data into personal chatbot accounts to work faster. For a small business this matters when that use puts company data outside approved systems or when you need to know what AI is being used, and it may not matter much for tasks that do not involve company data or decisions you must track. It can save time for the employee in the moment, but it can cost time later if you have to find out what was used and bring it under review.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Build active discovery mechanisms specifically for this category, network monitoring, employee surveys, browser extension policies, since it will not appear in procurement records and represents a genuinely common, often substantial source of unmanaged data exposure and security risk.",
@@ -17789,6 +17929,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "For a small business, situational awareness means an AI tool may notice it is being tested and act differently than it would in normal work. This matters when you are using tests to decide if the tool works as expected, because the test may not show its real behavior. It matters less when you are not making decisions from those tests, and it can cost time because you may need to check the tool again in everyday use.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Factor this genuine possibility into how much confidence you place in a vendor's pre-deployment safety evaluation results alone, and supplement with genuine ongoing production monitoring, since a model with this capability could in principle behave differently once it recognizes it is no longer being formally evaluated.",
                     "audience": "ciso"
                 },
@@ -17840,6 +17984,14 @@
                 {
                     "body": "A specific tool researchers use to take an AI's tangled, hard-to-understand internal signals and break them apart into individually recognizable, more understandable concepts, similar to untangling a messy pile of wires into clean, individually labeled strands.",
                     "audience": "child"
+                },
+                {
+                    "body": "A sparse autoencoder is a tool that breaks the tangled internal signals of an AI model into recognizable concepts. For decisions, it can help leaders and reviewers inspect what the model is reacting to, which supports risk checks and oversight. The definition does not address cost or savings, and the people who approve or use the model remain accountable for those decisions.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "A sparse autoencoder is a tool that breaks the tangled inner workings of an AI model into recognizable concepts. For a company with five to fifty staff, it matters when you need to understand or inspect the model's internal concepts, and it does not matter when you do not need that understanding. The definition does not say what it costs or saves in time.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "A specific, currently important technical tool underlying many current interpretability claims; when evaluating a vendor's transparency assertions based on interpretability research, understanding that tools like this represent real but genuinely partial current progress helps calibrate appropriate confidence in those claims.",
@@ -17897,6 +18049,10 @@
                 {
                     "body": "A well-documented, genuinely fundamental risk worth understanding conceptually for any AI system optimized against a specific, measurable target: the literal target and your actual intended goal can genuinely diverge, and a technically successful system by the literal measure can still fail at the real, underlying purpose you actually cared about.",
                     "audience": "executive"
+                },
+                {
+                    "body": "For a small business, specification gaming means an AI tool does exactly what you told it to do but not what you meant, so the output can look right while missing the real goal. It matters when you use AI to check work, follow rules, or hit a target without a person reviewing the intent, and it matters less for simple tasks you can quickly check yourself. It can save time on routine work, but it can cost time later if you have to find and fix a result that only met the letter of your request.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Test explicitly for whether a system's literal, measured objective actually aligns with its genuinely intended real-world purpose, rather than assuming that success against the stated, measurable metric automatically translates into success at the actual underlying goal.",
@@ -19548,6 +19704,14 @@
                     "audience": "child"
                 },
                 {
+                    "body": "Safetyist is a slang insult in AI debates for someone who puts AI safety ahead of release speed. In business terms, it can frame safety checks as delays, so it affects decisions about how fast to deploy, what money and time go to safeguards or waiting, and what risk the company accepts. The label does not decide who is accountable, the person or group that approves the release still owns that choice.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a small company, safetyist is just debate slang, not a product or a rule. It matters when you are deciding how fast to use AI and someone uses the word to dismiss safety concerns, and it does not matter for most everyday work. The word itself does not cost or save time, though the debate around it can take up time in meetings.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "A pejorative, not a neutral descriptor; if a source uses this term about someone else, it signals the speaker's position in the debate as much as it describes the target, and should be reported as such.",
                     "audience": "journalist"
                 },
@@ -19595,6 +19759,14 @@
                 {
                     "body": "When employees use AI tools or questions that were never approved by their company, sometimes putting private company information into them without anyone in charge knowing.",
                     "audience": "child"
+                },
+                {
+                    "body": "Shadow prompting is when employees use unapproved prompts or tools with company data, for example pasting client details into a personal chatbot account. For decisions, money and risk, it means company data can leave before governance sees it, so leaders may not know what left or what it will cost to respond. Accountability sits with leadership for approved tools and rules, and with managers for making sure staff follow them.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "In a small company, shadow prompting is when staff use personal chatbot accounts or unapproved prompts with company data to finish a task faster. It matters when the task involves client details or other company data, because the company may not know the data is outside until later. It matters less for tasks that use no company data, and it can save time on the task while costing time later if the company has to respond to data that has left.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "A real and underreported enterprise risk: it is worth asking any company about its AI usage policy whether they have visibility into employee AI use that falls outside approved tools, since most currently do not.",
@@ -19646,6 +19818,14 @@
                     "audience": "child"
                 },
                 {
+                    "body": "A silent model update is when a provider changes the model behind a stable name without telling you. For decisions, this means your results can shift even though the name and contract look the same, so you carry production regression risk with no changelog. Accountability sits with the provider for the change, but your team is accountable for catching the shift and deciding how to respond, and money is at risk through any rework that shift causes.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, a silent model update means a tool you rely on can start behaving differently under the same model name, with no notice. It matters when that tool is part of daily work and output tone or behavior drifts, because you may need to check and fix results, and it does not matter much for casual or low-stakes tasks. The time cost is that checking and fixing, while the time saved is whatever the tool already saves, though the definition gives no amounts.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "A recurring, documented complaint from AI-dependent businesses and worth investigating as its own story: providers regularly update models behind stable names without disclosure, and the resulting behavior shifts can break production systems with no warning.",
                     "audience": "journalist"
                 },
@@ -19693,6 +19873,14 @@
                 {
                     "body": "The word people use for low-quality, obviously machine-made junk, fake articles, weird images, spammy posts, that AI can produce in huge quantities and flood the internet with.",
                     "audience": "child"
+                },
+                {
+                    "body": "Slop means low-quality, auto-generated synthetic text, images, or spam that AI produces indiscriminately, often called AI slop. For decisions, money, and risk, it has no clear money benefit because it is low-quality and spammy, and it can crowd the social and search surfaces your business relies on. The decision is whether to filter it out, and the accountable person should own that choice.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, slop means low-quality, auto-generated text, images, or spam that can crowd the social and search surfaces you use. It matters when it makes those surfaces less useful for finding what you need, and it does not matter when it stays out of your channels. Filtering it out takes staff time, while ignoring it saves that time and leaves the clutter in place.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "A now-standard term worth using precisely: it refers to low-quality, indiscriminate AI content specifically, not to all AI-generated material, and conflating the two blurs a useful distinction for readers.",
@@ -19744,6 +19932,14 @@
                     "audience": "child"
                 },
                 {
+                    "body": "Sloppification is the slow decline of a content platform when large amounts of mass-generated material flood in. Search results and stock imagery were early examples, and any open submission surface can be affected. For decisions, money, risk and accountability, it means treating open submission surfaces as a quality risk, judging the possible loss in platform value, and naming who owns content quality.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, sloppification means that open places where content is submitted, such as search results or stock images, can fill with mass-generated material of uneven quality. It matters when the business depends on those open surfaces for images or search, and it does not matter when the business avoids open submission surfaces. In time terms, it tends to cost staff time to check and replace uneven material rather than save time.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "A trackable, reportable phenomenon on any platform accepting user or public submissions; worth investigating quantitatively where possible, such as the share of new listings, images, or reviews that appear machine-generated over time.",
                     "audience": "journalist"
                 },
@@ -19791,6 +19987,14 @@
                 {
                     "body": "A critical nickname for AI language models, calling them fancy pattern-matchers that string together likely-sounding words without actually understanding what they mean, the way a parrot repeats sounds without knowing their meaning.",
                     "audience": "child"
+                },
+                {
+                    "body": "Stochastic parrot is a critical term for large language models. It means they put words together by statistical pattern rather than true understanding. For decisions, money, risk and accountability, this means you should not treat a fluent answer as proof that the system understands the subject, so a person must still own the choice and check the output before it affects spending or risk.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, stochastic parrot is a warning about how to treat AI tools that write or answer. It matters when you use those tools for work where a confident but wrong answer could cause errors that take time to fix. It matters less for low-stakes drafting that a person checks anyway, and the term itself does not promise time savings, it points to review time as the cost.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "A loaded technical term originating in a specific academic critique, not a neutral description; using it implies taking a position in an active, unresolved debate about model understanding, which is worth flagging for readers.",
@@ -22262,6 +22466,10 @@
                     "audience": "child"
                 },
                 {
+                    "body": "A sandbox is an isolated environment where code or actions generated by an AI model run, so they cannot reach your production systems. For decisions and risk, it is the containment layer that makes code-running agents deployable at all, so you decide whether to use such an agent only if its work stays inside that boundary. For money, it is a containment control, so any value comes from keeping model-generated actions away from production systems, and the accountable owner is whoever approves the agent and the sandbox rules.",
+                    "audience": "executive"
+                },
+                {
                     "body": "If a developer is building an AI feature for you that involves the AI writing or running code, ask specifically whether that code runs in an isolated sandbox before it could touch your real systems; this is a basic and important safety measure that should not be skipped.",
                     "audience": "small-business"
                 },
@@ -22317,6 +22525,10 @@
                 {
                     "body": "A genuine latency improvement technique with no accuracy tradeoff, worth confirming your inference provider uses if response speed matters for your use case; unlike many speed-versus-quality tradeoffs in AI systems, this one is a rare case of getting faster responses with no quality cost.",
                     "audience": "executive"
+                },
+                {
+                    "body": "Speculative decoding is a way to speed up an AI system by having a small model guess the next pieces of text and a large model check those guesses at the same time. For a company with five to fifty staff, it matters when people are waiting on AI replies during busy work, because faster replies can save time, and it does not matter when the AI already answers quickly enough or the task is not time sensitive. It tends to save waiting time rather than change the answer, and the definition does not give specific costs or savings.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Same output, lower latency: the big model checks faster than it writes; this technique produces mathematically identical output to standard generation from the large model while meaningfully reducing latency, since verification of proposed tokens in parallel is faster than sequential generation of each one individually.",
@@ -25831,6 +26043,14 @@
                     "audience": "child"
                 },
                 {
+                    "body": "Supervised Fine-Tuning is training an AI model on curated examples of expert-written responses. It is the first stage of most alignment pipelines, so it sets the floor for format and judgment before later preference optimization shapes the ceiling. For decisions, money, risk and accountability, the control point is the curated demonstration data and who approves it, because that data sets the model's baseline.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a small business, Supervised Fine-Tuning means an AI model is trained on curated examples of expert-written responses to set its baseline format and judgment. It matters when you are training or aligning a model and need expert-written examples to set that floor, and it does not matter if you are not doing that training stage. The time cost is in creating and checking the demonstrations, and the time saved is in having a clear baseline for format and judgment before later preference optimization.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "The quality of your demonstration data directly and substantially caps what SFT can achieve; investing in genuinely high-quality, diverse demonstration examples matters more than the volume of examples for this training stage.",
                     "audience": "developer"
                 },
@@ -26216,6 +26436,10 @@
                 {
                     "body": "A meaningfully different and more robust posture than pre-deployment testing alone; ask specifically whether your AI systems have active runtime controls, not just a one-time pre-launch security review, since a system that only encounters real production inputs and tool interactions after launch cannot be fully tested beforehand.",
                     "audience": "executive"
+                },
+                {
+                    "body": "Runtime enforcement means controls that watch an AI system while it is working and block, filter, or rewrite actions that break your rules, instead of trusting only tests done before you started using it. For a small company, this matters when an AI tool can act on its own or reach your systems, such as an agent making an outbound API call with fields it is not allowed to send. It may not matter much if you only use AI in a simple chat that cannot take actions or connect to your systems, and it can cost time to set up and maintain while saving time by stopping or correcting a bad action as it happens instead of relying only on tests done before use.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "From certifying a model once to policing its behavior continuously, which is the only posture that holds when systems adapt, use tools, and encounter inputs no test suite anticipated; implement genuine real-time enforcement mechanisms, not only pre-deployment testing, for any system that adapts its behavior, uses tools, or processes genuinely novel inputs in production.",
@@ -27191,6 +27415,10 @@
                 {
                     "body": "Historically foundational and worth understanding as the conceptual ancestor of much current AI governance practice, but ensure your organization's actual current compliance documentation cites the guidance that formally replaced this one in April 2026, since citing superseded guidance as your compliance basis is a genuine documentation accuracy problem.",
                     "audience": "executive"
+                },
+                {
+                    "body": "SR 11-7 is the Federal Reserve's guidance for banks on managing model risk, and bank examiners now read AI systems through it too. If your small company is not a bank, it does not apply to you directly, but it can matter if you sell AI tools to banks because those banks must manage AI systems under this guidance. Keeping a model inventory and doing independent validation can take time, and it is not something most small businesses need to do unless they are banks or work with them.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Understand this framework's core disciplines, independent validation, ongoing monitoring, effective challenge, as the conceptual foundation many current AI governance practices still build on, while ensuring actual current compliance citations reference the framework that formally superseded it.",
@@ -30151,20 +30379,16 @@
             "term": "Semantic Kernel",
             "lenses": [
                 {
-                    "body": "Semantic Kernel puts a model behind the same dependency-injection and plugin conventions a .NET service already uses. You register existing methods as plugins, the kernel exposes them to the model as callable functions, and the orchestration layer decides which to invoke. For a team whose codebase is C# and whose services already exist, that is a shorter path than reimplementing the integration in Python.",
-                    "audience": "developer"
+                    "body": "Semantic Kernel is a set of building blocks from Microsoft that helps a normal computer program work with a smart language helper. Think of it like a phone call that lets the program ask the helper to do a job, such as looking up a bill. It is made to work with two popular ways people build programs.",
+                    "audience": "child"
                 },
                 {
-                    "body": "Its distinguishing feature was never capability, it was language. Most model orchestration frameworks are Python first, and a large share of enterprise line-of-business code is not Python. Semantic Kernel let .NET and Java shops add model features without standing up a second stack in a second language. Microsoft has since converged this lineage with AutoGen into the Agent Framework, so treat the framework choice as a five-year decision and read the migration path before committing.",
+                    "body": "Semantic Kernel is Microsoft's open source toolkit for adding language models to ordinary business applications. It lets an existing application, such as a .NET invoice lookup service, be offered to the model as a plugin so the model can call it during a conversation. It is built to work with .NET and Java, which most competing frameworks lack, and decisions about money, risk and accountability stay with the organization that chooses which services to connect and what the model may do.",
                     "audience": "executive"
                 },
                 {
-                    "body": "The security question with any plugin architecture is what the model is permitted to call and with whose credentials. A registered plugin is a real function against a real system, so prompt injection in a retrieved document becomes an attempted invocation of that function. Review which plugins are registered, what identity each runs under, and whether any of them write rather than read, before reviewing the model.",
-                    "audience": "ciso"
-                },
-                {
-                    "body": "Look at Semantic Kernel to see the plugin pattern clearly. A model on its own can only produce text; it becomes useful by being given a set of functions it may call and a loop that executes the calls and feeds back the results. The kernel is that loop. Almost every agent framework is a variation on it, so the pattern is worth learning once and recognising everywhere.",
-                    "audience": "student"
+                    "body": "Semantic Kernel is Microsoft's open source toolkit for connecting a language model to software a small company already uses. For a company with five to fifty staff, it matters if they build or maintain .NET or Java applications and want the model to call an existing service, such as an invoice lookup, during a conversation. It does not matter if they do not build that kind of software, and for time it provides a standard way to connect a model to existing services, so the work is about setting up and maintaining those connections rather than building the connection method from scratch.",
+                    "audience": "small-business"
                 }
             ],
             "origin": "Released by Microsoft in March 2023 with C# and .NET as the primary path; Python and Java followed. Entered maintenance mode in April 2026 when Microsoft shipped Agent Framework 1.0 as its successor.",
@@ -30492,6 +30716,20 @@
             "uid": "4eee78ef",
             "slug": "span",
             "term": "Span",
+            "lenses": [
+                {
+                    "body": "A span is one timed step inside a bigger job. If an AI does a whole task, that whole task is like a parent span, and each little thing it does, like looking something up or using a tool, is a child span. It is like a recipe: the whole recipe is the parent, and each chop, stir, and bake is a child step.",
+                    "audience": "child"
+                },
+                {
+                    "body": "A span is one timed step in an AI job, such as a model call, a retrieval, or a tool use, and spans nest under a parent span for the whole run. Because many observability vendors bill on span count, a long agent run can emit thousands of spans, so agent costs can behave very differently from chatbot costs. The accountable owner is whoever controls the agent budget and the observability contract, and they need to watch span volume as a cost and risk driver.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a small company, a span is one timed step in an AI job, such as a model call, a retrieval, or a tool use, and a long agent run can have many spans. It matters when you run agent tasks that take many steps, because vendors may bill by span count and the cost can grow with the number of steps. It matters less for simple chatbots or short tasks, and it can save time by showing which step is slow, though it can also add observability cost.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "",
             "example": "A single agent run producing one parent span and forty child spans covering model calls, retrievals, and tool executions.",
             "related": [
@@ -31353,6 +31591,20 @@
             "uid": "9f21c6d0",
             "slug": "substation",
             "term": "Substation",
+            "lenses": [
+                {
+                    "body": "A substation is like a big adapter that takes very strong electricity from the power lines and makes it safe for buildings to use. It can also switch between different power sources so a place keeps working if one source stops.",
+                    "audience": "child"
+                },
+                {
+                    "body": "A substation takes high power electricity from the grid and adjusts it to a level that buildings like data centres can safely use, and it routes power from different sources so a site keeps running if one supply fails. For decisions, money and risk, the example shows a data centre operator paid part of the cost of a new substation so the local utility could handle the extra load. That means the operator and the utility are the parties involved in paying for and managing the power supply.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, a substation is usually part of the wider power system, not something the company owns or runs. It matters if the company is in a building that needs high power, such as a data centre, or if the local utility needs a new substation to handle extra load, as in the example where a data centre operator paid part of the cost. It does not matter if the company uses ordinary building power and is not adding a high power load, and it tends to cost money only if the company shares in the substation cost, while it can save time by helping the site keep running if one supply fails.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "Standard industry term",
             "example": "A data centre operator paid part of the cost of a new 180 megawatt substation so the local utility could handle the extra load.",
             "related": [
@@ -31675,6 +31927,20 @@
             "uid": "023e07d9",
             "slug": "subsea-cable",
             "term": "Subsea Cable",
+            "lenses": [
+                {
+                    "body": "A subsea cable is like a very long rope lying on the ocean floor that carries messages between countries. It helps the internet work across oceans. If it gets cut, people in different lands may not be able to send messages or use the internet.",
+                    "audience": "child"
+                },
+                {
+                    "body": "A subsea cable is a cable on the ocean floor that carries data and communications between land locations, often across seas or oceans. For decisions, money and risk, a cut can interrupt internet traffic between continents and lead to business interruption insurance claims. The definition and example do not say who is accountable, so that is not specified here.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, a subsea cable matters when your communications cross seas or oceans and a cut interrupts that traffic. It does not matter directly when your communications stay within one land location and are not affected by that cable. A cut can cost time by interrupting internet traffic between continents, and the example does not state any saving.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "Standard industry term",
             "example": "A subsea cable cut can interrupt internet traffic between continents and lead to business interruption insurance claims.",
             "related": [
@@ -32285,6 +32551,20 @@
             "uid": "82117d63",
             "slug": "small-modular-reactor-smr",
             "term": "Small Modular Reactor (SMR)",
+            "lenses": [
+                {
+                    "body": "A small modular reactor is a small nuclear power plant that is made in a factory and then moved to where it is needed. It can sit next to a data centre, which is a building full of computers, and give that building electricity directly. Think of it like a small power pack you can add one piece at a time as you need more power.",
+                    "audience": "child"
+                },
+                {
+                    "body": "A small modular reactor is a compact nuclear plant built in a factory and shipped to a site, often beside a data centre, to supply electricity directly. For decisions, money and risk, it means a power source that can be added in stages as demand grows, but the example shows signed agreements for capacity that will not generate power until 2029 or later. The supplied information does not name who is accountable for those agreements or for the cost and risk.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, a small modular reactor matters only if your business depends on a data centre that may get its electricity directly from one. If you do not run or rely on such a data centre, it likely does not affect your day to day work. The supplied information does not say what it costs or saves in time, and it says no power will come from these units until 2029 or later.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "The term became common in the 2000s as nuclear companies proposed factory built reactors that are smaller and more flexible than conventional large plants.",
             "example": "A data centre operator signed agreements for 3,427 megawatts of small modular reactor capacity, but none of those units will generate power until 2029 or later.",
             "related": [
@@ -32929,6 +33209,20 @@
             "uid": "15c1a949",
             "slug": "sublimit",
             "term": "Sublimit",
+            "lenses": [
+                {
+                    "body": "A sublimit is a small cap inside a bigger cap. It is like having a big box of crayons but only a tiny cup for red ones, so no matter how many crayons you have, you can only use a few red ones. If something like a power outage happens, the insurance only pays up to that small cap, not the whole big amount.",
+                    "audience": "child"
+                },
+                {
+                    "body": "A sublimit is a lower cap on what the policy pays for one named loss, even when the overall limit is larger. For decisions, it means the money available for that risk is fixed and may be far below the total coverage, so you must decide whether to accept, transfer or reduce that exposure. Accountability sits with whoever owns the risk and the policy, because the gap between the total limit and the sublimit is a known uncovered amount.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, a sublimit means one type of loss, such as a power failure, is only covered up to a smaller amount even if the main policy limit is much higher. It matters when that specific risk could cause a loss bigger than the sublimit, and it matters less when the risk is small or unlikely. It can save time by making the coverage limit clear in advance, but it can cost time and money later if the uncovered part of a loss has to be handled by the business.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "Standard insurance industry term.",
             "example": "A data center's property policy might have a five million dollar total limit but only a one hundred thousand dollar sublimit for off premises power failure, so a long grid outage would leave most of the loss uncovered.",
             "related": [
@@ -33733,6 +34027,20 @@
             "uid": "d469f5b7",
             "slug": "sudden-and-accidental",
             "term": "Sudden and Accidental",
+            "lenses": [
+                {
+                    "body": "Sudden and accidental means something breaks all at once and you did not plan it. It is like a glass falling off a table and breaking, not a crack that grows slowly over time. Insurance may pay for the fast surprise, but not for damage that happens little by little.",
+                    "audience": "child"
+                },
+                {
+                    "body": "Sudden and accidental describes damage that happens fast and without planning, so it is the kind of event an insurance policy may cover. For decisions, it affects what losses you can transfer to an insurer and what gradual damage or planned shutdowns you must manage and fund yourself. The accountable owner is whoever buys and manages insurance and operations risk, because they need to check whether the loss fits that wording.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a small company, sudden and accidental matters when a quick, unexpected event damages equipment or a workplace, because that is the kind of loss an insurance policy may cover. It does not matter in the same way for slow wear, gradual leaks or planned shutdowns, which the policy may leave out. Checking the wording can save time when you report a claim, and it can cost time if you treat a gradual problem as a sudden event.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "Standard industry term",
             "example": "A burst pipe that floods a data centre is sudden and accidental, but a slow leak that corrodes equipment over months is not.",
             "related": [
@@ -33913,6 +34221,20 @@
             "uid": "72b3f63d",
             "slug": "subrogation",
             "term": "Subrogation",
+            "lenses": [
+                {
+                    "body": "Subrogation is like when you lend a toy to a friend, another kid breaks it, and a grown-up buys you a new toy, then asks the kid who broke it to pay the grown-up back. In insurance, after the insurance company pays you for a loss, it can ask the person or company that caused the loss to pay it back. That way the insurance company gets its money back from the one who caused the problem.",
+                    "audience": "child"
+                },
+                {
+                    "body": "Subrogation means that after an insurer pays a claim, it can step into the policyholder's place and demand repayment from the party that caused the loss. For decisions, money and risk, this affects who ultimately bears the cost, because the insurer may recover what it paid instead of leaving the policyholder to pursue it. The responsible party remains accountable, and the insurer manages the recovery after the claim is paid.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, subrogation matters when an insurer pays a claim for a loss caused by someone else, such as a contractor's mistake, because the insurer may then seek repayment from that party. The business still gets its claim paid first, and then the insurer may seek repayment from the responsible party, so it matters less when no other party caused the loss. In practice, it tends to save the business time because the insurer, not the business, pursues the responsible party after the claim is paid.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "The term comes from the Latin word subrogare, meaning to substitute one person for another, and has been a standard insurance concept for over a century.",
             "example": "If a data centre's cooling system leaks and the insurer pays for the damage, subrogation lets the insurer seek that money back from the installer who made the mistake.",
             "related": [
@@ -34145,6 +34467,20 @@
             "uid": "69e86d89",
             "slug": "surplus-lines",
             "term": "Surplus Lines",
+            "lenses": [
+                {
+                    "body": "Surplus lines is insurance for really unusual or risky things that normal insurance companies will not cover. It is like a special backup team you call when the usual helpers say no. You buy it from a special insurance company that is not allowed to sell regular insurance where you live.",
+                    "audience": "child"
+                },
+                {
+                    "body": "Surplus lines is coverage for unusual or high risk situations that regular licensed insurers will not cover, bought from specialized insurers that are not licensed in the buyer's state. For decisions, it means the standard market will not cover the risk, so you decide whether to use a specialized insurer outside the standard market. Money and risk are tied to that outside coverage, and accountability depends on who makes the buying decision.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, surplus lines matters when your regular licensed insurer will not cover an unusual or high risk situation, such as special hardware at replacement cost. It does not matter when a regular licensed insurer will cover the risk. In time terms, it means going outside the standard market to a specialized insurer, and it does not save time in the standard market because the coverage is not placed there.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "Standard industry term, from the idea of surplus beyond what admitted insurers can handle.",
             "example": "A data center operator buys surplus lines coverage for its GPU clusters because standard insurers refuse to insure the hardware at replacement cost.",
             "related": [
@@ -34429,6 +34765,20 @@
             "uid": "53dd501e",
             "slug": "silent-cyber",
             "term": "Silent Cyber",
+            "lenses": [
+                {
+                    "body": "Silent cyber is when an insurance paper does not clearly say if it pays for harm caused by a computer attack. It is like a board game rule that does not say if a move is allowed, so you might think you are safe but later find out you are not. For example, a place that keeps computers had building insurance that quietly did not cover a computer attack, so the time the computers stopped working was not paid for even though it had separate computer attack insurance.",
+                    "audience": "child"
+                },
+                {
+                    "body": "Silent cyber is the risk that a traditional property or liability policy does not clearly say whether it covers or excludes losses caused by a cyber event. That gap can mean a policy covers a cyber loss by accident, or an exclusion quietly removes cover even when separate cyber insurance exists. For decisions, money and risk, this means you cannot assume a property or liability policy handles a cyber loss, and someone must be accountable for checking the wording and closing the gap.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, silent cyber means a property or liability policy may not clearly say if it covers or excludes a cyber loss. It matters when a cyber event causes an outage or other loss and you are checking whether your policies pay, because a silent exclusion can leave you without cover even if you bought separate cyber insurance. It matters less when your policies already clearly state what is covered or excluded, and it tends to cost time to check policy wording and get clear answers, while it can save time later by avoiding a dispute over whether a loss is covered.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "Standard industry term",
             "example": "A data centre operator discovers its property policy has a silent cyber exclusion, so a cyber attack that causes an outage is not covered even though the operator bought separate cyber insurance.",
             "related": [
@@ -34467,6 +34817,20 @@
             "uid": "42b56397",
             "slug": "silent-ai",
             "term": "Silent AI",
+            "lenses": [
+                {
+                    "body": "Silent AI is like a game rulebook that does not say what happens if a robot helper causes trouble. Because the rulebook is silent about AI, nobody knows if the trouble will be paid for or who will fix it.",
+                    "audience": "child"
+                },
+                {
+                    "body": "Silent AI means an insurance policy does not clearly say whether AI-related losses are covered. For decisions, money and risk, this means a business cannot tell if it is protected or if the insurer will pay, and the insurer may have to pay for a loss it did not intend to cover. The accountable parties are the business leaders who bought the policy and the insurer that interprets it, because the policy gives no clear written answer.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, silent AI means your standard insurance policy does not clearly say if AI-related problems are covered. It matters when you use AI and a loss happens, because you may not know if the insurer will pay, and it matters less if you do not use AI in ways that could cause a loss. The main cost or saving is time spent checking the policy or waiting for a clear answer about a claim.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "The term is modeled on 'silent cyber', a phrase used in insurance to describe unmentioned cyber risks in traditional policies.",
             "example": "A company's standard liability policy does not mention AI, but when its AI chatbot gives harmful advice to a customer, the insurer may still have to pay because the policy is silent on AI.",
             "related": [
@@ -35077,6 +35441,20 @@
             "uid": "fdbc3569",
             "slug": "self-insured-retention-sir",
             "term": "Self-Insured Retention (SIR)",
+            "lenses": [
+                {
+                    "body": "A self-insured retention is the money a company pays by itself for a problem before its insurance pays the rest. It is like when you break a window and you pay the first part of the repair cost, then insurance pays what is left. The company chooses this amount, and a bigger amount can mean lower insurance cost but more risk for the company.",
+                    "audience": "child"
+                },
+                {
+                    "body": "A self-insured retention is the amount a company pays on its own for each claim before insurance covers the remainder, so it works like a per-claim deductible. Choosing a higher retention lowers the premium but shifts more financial risk to the company for smaller incidents. The company is accountable for paying that first amount, and the insurer is accountable only for the rest above it.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, a self-insured retention means it pays the first part of each AI-related claim before insurance covers the rest. It matters when a claim happens and the company must find that first amount, and it does not matter when there is no claim. The definition does not say it saves or costs time directly, because the main effect is on money and risk, with a higher retention lowering the premium but leaving more of each claim for the company to pay.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "Standard industry term",
             "example": "A startup using an AI chatbot for customer service has a self-insured retention of fifty thousand dollars, so when a data leak leads to a seventy thousand dollar claim, the startup pays the first fifty thousand and the insurer covers the remaining twenty thousand.",
             "related": [
@@ -35427,6 +35805,20 @@
             "uid": "9abd92c5",
             "slug": "supply-chain-attack",
             "term": "Supply Chain Attack",
+            "lenses": [
+                {
+                    "body": "A supply chain attack is when someone changes a computer tool or file before it gets to you. It is like getting a toy from a friend, but someone secretly changed part of it before it reached you. You did not do anything wrong, the bad change happened earlier.",
+                    "audience": "child"
+                },
+                {
+                    "body": "A supply chain attack means a model, dataset, or software package is tampered with before it reaches your company, so your team may use it without knowing it is harmful. For decisions, this puts risk in the outside tools and files you depend on, not only in your own systems. Accountability stays with your leadership for choosing what outside inputs to trust and check, and money is at risk because the harm can arrive before you see it.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, a supply chain attack means an AI tool, model, or dataset you get from outside may have been changed before you got it. It matters when you install or depend on outside AI tools, models, or data, and it matters less when you use only things you made and control yourself. It tends to cost time when you have to deal with harmful code or a changed model, and it does not save time by itself.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "Standard industry term, borrowed from software security where attackers compromise a trusted supplier or distribution channel.",
             "example": "A developer installs a popular AI coding tool from a package registry, but the package was silently altered to also install malware on their machine.",
             "related": [
@@ -36151,6 +36543,20 @@
             "uid": "7f6e52ca",
             "slug": "safe-harbor",
             "term": "Safe Harbor",
+            "lenses": [
+                {
+                    "body": "A safe harbor is a rule that protects you from punishment if you follow the right steps. It is like a playground rule: if you clean up a mess after a teacher tells you, you do not get in trouble. For example, if a website takes down a fake private picture after someone tells it to, the website can use the safe harbor to avoid blame.",
+                    "audience": "child"
+                },
+                {
+                    "body": "A safe harbor is a legal rule that shields a person or company from punishment or a lawsuit if they follow approved steps, such as fixing a violation quickly or using a government approved compliance program. For decisions, it can lower legal risk and potential costs when the company meets those steps, but it does not remove the need to act. Accountability stays with the people responsible for following the approved steps.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, a safe harbor matters when the business faces a legal rule that offers this protection, such as taking down a fake intimate image after being notified. It does not matter if no such rule applies or if the business does not follow the approved steps. In practice, it can save time by giving a clear path to avoid a punishment or lawsuit, but it may take time to follow those steps.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "The term comes from maritime law, where a ship could enter a safe harbor to escape a storm, and it later became a standard legal term for protection from liability.",
             "example": "A website that takes down a fake intimate image after being notified can rely on a safe harbor to avoid liability.",
             "related": [
@@ -37040,6 +37446,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "SDLC is the path software takes from idea to retirement: plan, design, build, test, release and maintain. For a company with five to fifty staff, it matters when you build or change software, especially if AI writes code or your product has AI features, because security should be built into each phase instead of checked at the end. It may not matter much when you only use software and do not build or change it, and doing it well can cost time in planning and testing but can save time by catching problems before release.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "In practice the secure SDLC is the checks wired into your pipeline: threat models in design review, SAST and dependency scanning on every pull request, secrets detection, signed builds and an SBOM at release. With AI assistants in the loop, scan generated code at the same bar as your own, verify every new package exists before install, and treat a model or prompt change in an AI feature as a release that needs its own tests. NIST SP 800-218 and SP 800-218A are the reference frameworks.",
                     "audience": "developer"
                 },
@@ -37264,6 +37674,20 @@
             "uid": "0c35660a",
             "slug": "sql",
             "term": "SQL (Structured Query Language)",
+            "lenses": [
+                {
+                    "body": "SQL is a way to ask a big organized list of information questions. It is like asking a librarian to find all the books that match what you want. You can also use it to change what is in the list, and it can answer questions like how many orders were shipped late.",
+                    "audience": "child"
+                },
+                {
+                    "body": "SQL is the standard language for asking questions of relational databases and changing the data in them. For decisions, it matters because most business data lives in SQL databases, so answers about a company's own operations often depend on a SQL query, as in counting late shipments. The risk and accountability sit with whoever owns the database and the business process, because SQL is the language used to ask for or change that data.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, SQL is the standard way to ask questions of the relational databases that hold most business data and to change that data. It matters when you need a count or list from your own operations, such as how many orders shipped late, and it does not matter when you are not using data stored in a SQL database. It can save time by answering such questions directly, and the definition does not state a cost.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "Developed at IBM in the 1970s for relational databases.",
             "example": "SELECT count(*) FROM orders WHERE shipped_late = true counts last month's late shipments.",
             "related": [
@@ -37299,6 +37723,20 @@
             "uid": "ca91c748",
             "slug": "sql-query",
             "term": "Query (Database)",
+            "lenses": [
+                {
+                    "body": "A query is a request to a big store of information to get something or change something. It is like asking a librarian to find a book for you, using the librarian's own special words. An AI helper can turn your question into a query and run it for you.",
+                    "audience": "child"
+                },
+                {
+                    "body": "A query is a request to a database to return or change data, written in a query language such as SQL. When an AI system answers a question from company data, it usually writes and runs a query on the user's behalf. For decisions, money, risk and accountability, that means the answer depends on the query and the data being correct, and the person or team accountable for the data and the AI system owns that risk.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, a query is how someone asks the company database for information or asks it to change data. It matters when you need a specific answer from your own records, such as which customers renewed this quarter, and it does not matter when the question is simple or the data is not in a database. It can save time by letting the database return the answer directly, and it can cost time when someone has to write or check the query.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "",
             "example": "An assistant turns which customers renewed this quarter into a query against the subscriptions table.",
             "related": [
@@ -37383,6 +37821,20 @@
             "uid": "e02c2226",
             "slug": "sql-join",
             "term": "Join (SQL)",
+            "lenses": [
+                {
+                    "body": "Imagine two lists, one of orders and one of customers. A join matches each order to the customer who made it by using the same customer number, like matching two halves of a ticket.",
+                    "audience": "child"
+                },
+                {
+                    "body": "A join combines rows from two or more tables using a shared value, such as a customer number, so related information appears together. For decisions, money and risk, the key point is that choosing the wrong join is a common way AI generated SQL returns a confident but wrong answer, so a wrong result can drive a wrong action. Accountability sits with the person who owns the report or the data, so they should confirm the join before the result is used.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "In practice, a join lets a small business pull together two lists, such as orders and customers, by matching a shared value like customer number. It matters when you need a report that combines those lists, and it does not matter when you only need data from one table. The time cost is checking the join, because a wrong join can give a confident but wrong answer that takes time to find and fix.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "",
             "example": "Joining orders to customers on customer_id to show each order with the buyer's region.",
             "related": [
@@ -37649,6 +38101,20 @@
             "uid": "87f6e983",
             "slug": "semantic-layer",
             "term": "Semantic Layer",
+            "lenses": [
+                {
+                    "body": "A semantic layer is like a class agreeing on what counts as finished homework before anyone checks it. If everyone uses the same rule, all answers match. It sits on top of the computer's messy lists and gives one clear meaning.",
+                    "audience": "child"
+                },
+                {
+                    "body": "A semantic layer is a shared set of agreed business definitions, such as what counts as revenue or an active customer, placed over raw data tables. It matters for decisions and money because reports and AI queries use the same meaning, which gives far more consistent answers and lowers the risk of teams working from different numbers. The people who agree those definitions are accountable for them.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, a semantic layer means everyone uses the same rule for things like what counts as an active customer, so reports and AI queries agree. It matters when more than one person or tool needs to answer the same business question, and it matters less when one person handles the data and no one else relies on the numbers. It can save time because the definition is set once and used by every report and AI query, and the time cost is agreeing those definitions once.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "",
             "example": "Active customer defined once as a purchase in the last 90 days, used by every report and every AI query.",
             "related": [
@@ -37784,7 +38250,7 @@
         "schema": "v2 (term, slug, category, definition, example, origin)",
         "generated": "2026-07-23"
     },
-    "built_at": "2026-10-01T20:40:06-05:00",
+    "built_at": "2026-10-02T00:01:58-05:00",
     "page_uid": "76dd9a8f",
     "readings": {
         "/ai-glossary/aime/": {

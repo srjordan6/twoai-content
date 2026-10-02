@@ -11,7 +11,7 @@
     "authors": "Si-Zhe Chen et al.",
     "journal": "Proceedings of the 2025 ACM SIGSAC Conference on Computer and Communications Security",
     "abstract": "",
-    "built_at": "2026-10-01T20:40:06-05:00",
+    "built_at": "2026-10-02T00:01:58-05:00",
     "page_uid": "r0000220",
     "citations": 222,
     "generated": "2026-10-02",
@@ -19,8 +19,8 @@
     "topic_name": "Security and Privacy",
     "topic_slug": "security",
     "abstract_source": "consensus",
-    "explain_beginner": "",
-    "explain_business": "",
+    "explain_beginner": "Large language models often read outside material, such as documents, web pages, or API results, to help users. Attackers can hide instructions in that material and try to make the model follow them instead of the user's real request. This paper introduces SecAlign, a training method that shows the model examples where it could obey an attacker or obey the real instruction. The model learns to prefer the safe response. The authors report that attack success falls below 10 percent, even for stronger unseen attacks, while usefulness stays close to before. This matters because assistants that rely on outside data need stronger protection.",
+    "explain_business": "Businesses using AI assistants that read documents, web content, or API results face prompt injection risk. Attackers can place hidden instructions in that outside data and try to redirect the assistant. SecAlign is a defensive training method that teaches a model to choose safe responses over unsafe responses that follow attackers. The authors report attack success below 10 percent, including for more advanced unseen attacks, while keeping usefulness similar to the original model. In practice, this informs security and procurement decisions. Teams can evaluate SecAlign for products that rely on external data, and they can ask vendors to reproduce the under 10 percent result as part of due diligence.",
     "refresh_every_days": 30,
-    "explain_practitioner": ""
+    "explain_practitioner": "SecAlign treats prompt injection as a preference learning problem. The authors create training examples where an outside data source contains an injected instruction. Each example pairs a safe answer that follows the legitimate user request with an unsafe answer that follows the attacker. They then apply preference optimization so the model assigns higher preference to the safe answer. In their evaluations, this is the first known approach to push success rates for multiple prompt injection attacks below 10 percent, including attacks more advanced than those used in training. That suggests generalization to unknown future attacks. The defended models keep utility close to the original, and code is released."
 }
