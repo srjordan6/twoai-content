@@ -1,0 +1,170 @@
+{
+    "tax": "lang-profile",
+    "uid": "b9fc5220",
+    "name": "litellm",
+    "slug": "litellm",
+    "facts": {
+        "repo": "BerriAI/litellm",
+        "stars": 60028,
+        "licence": "custom",
+        "archived": false,
+        "language": "Python",
+        "repo_url": "https://github.com/BerriAI/litellm",
+        "last_push": "2026-10-02T05:54:58Z",
+        "description": "The fastest, litest AI Gateway. Rust core with Python SDK. Call 100+ LLM APIs in OpenAI (or native) format with cost tracking, guardrails, load balancing, and logging [Bedrock, Azure, OpenAI, Anthropic, OpenAI, VertexAI, vLLM, Nvidia NIM]",
+        "official_site": "https://docs.litellm.ai/docs/"
+    },
+    "model": "ollama:deepseek-v4.1-flash",
+    "shape": "lang-profile",
+    "title": "LiteLLM: An AI Gateway for Multi-Provider LLM Traffic and Cost Control",
+    "answer": "LiteLLM is an AI gateway from BerriAI that routes calls to more than 100 LLM APIs in OpenAI or native format, with cost tracking, guardrails, load balancing and logging. It sits between your application and model providers, and now also fronts agents and MCP tools. The one thing to know is that its Rust core is in early beta, so the performance and memory gains are real but newer than the Python proxy most teams run today.",
+    "built_at": "2026-10-02T04:27:56-05:00",
+    "category": "technology-and-core-infrastructure",
+    "hub_name": "Programming Languages and Frameworks",
+    "page_uid": "b9fc5220",
+    "sections": [
+        {
+            "body": "LiteLLM is made by BerriAI and is an AI gateway, with a Rust core and a Python SDK. It calls more than 100 LLM APIs in OpenAI or native format, and the providers named on the site include Bedrock, Azure, OpenAI, Anthropic, VertexAI, vLLM and Nvidia NIM. It sits in the gateway layer of the AI stack, between applications and model providers, and it also now includes an Agent Gateway and an MCP Gateway. The repository is active, with the last push on October 2, 2026, and the site describes a migration toward a pure Rust server. It is not a model or a training framework. It is infrastructure for routing, authentication, budgets, logging and guardrails.",
+            "heading": "What it is and where it sits in AI work"
+        },
+        {
+            "body": "LiteLLM handles the concrete jobs of routing LLM traffic, tracking cost, applying guardrails, load balancing and logging. The site shows reliability testing across providers with batch_completion_models_all_responses and load_test_model, and it describes a control plane across the Agent Gateway, the Model Gateway and the MCP Gateway. The Agent Gateway authenticates callers, controls which users and teams can invoke each agent, and records request, response, latency and cost data. The Model Gateway routes LLM traffic and applies budgets and rate limits. The MCP Gateway centralizes tool access and upstream authentication. Budgets can be set at the level of keys, teams, agents and customers. It is strongest where you need one place to manage many providers, attribute spend and enforce access, and the Rust gateway is aimed at the lowest p99 added latency, the smallest memory footprint and the fastest whole-session times for coding agents, though that Rust path is in early beta.",
+            "heading": "What it is used for and where it is strongest"
+        },
+        {
+            "body": "The official site offers documentation and a tutorial on testing multiple providers, but it does not set out a formal prerequisite list or a structured learning path. The Python SDK is the natural entry point for someone who already knows Python, and the tutorial shows code that calls models in parallel and runs load tests. Running the proxy in production, as the incident reports show, involves Redis, nginx and Kubernetes, so some systems familiarity is useful. The site does not say how much time a beginner should expect to spend, and it does not offer a guided course. A developer who knows Python and has deployed a web service will find the SDK approachable, while the gateway deployment and the identity and budget features demand more operational care.",
+            "heading": "How hard it is to learn and what you need first"
+        },
+        {
+            "body": "The ecosystem around LiteLLM includes the Python SDK and the Rust core, integrations with more than 100 LLM APIs, and support for MCP, A2A and OIDC. The site mentions LiteAdmin MCP and a Slack admin agent built on the same connector. Documentation lives at docs.litellm.ai, and the blog carries posts tagged ai-gateway and incident-report. The GitHub repository is BerriAI/litellm and has 60,028 stars. The licence is custom, which is worth checking before adoption. The site does not describe a community forum, a Discord server or a support plan beyond the documentation, the blog and the repository. The incident reports show a practice of publishing postmortems, which is a form of community communication.",
+            "heading": "Ecosystem and community"
+        },
+        {
+            "body": "LiteLLM serves both quick experiments and production traffic, but the balance is shifting. The Python SDK lets a developer call many providers with little setup, and the site's tutorial shows batch calls and load tests that are easy to run. The gateway is built for production, with SSO and SAML, audit logs, spend tracking, multi-team management and guardrails. The Rust core is aimed at production performance, with a commitment to sub-1ms overhead and a sub-100MB binary, and the site reports about 15x the throughput and about 11x less memory than the Python proxy, which peaks around 359MB under load. The cost is that the Rust gateway is in early beta, so teams that need the performance gains are adopting something newer, and the Python proxy has had incidents including an OOM outage and a silent cost regression. The site does not say how completely the Rust gateway matches the Python proxy's feature set.",
+            "heading": "Prototyping speed against production performance"
+        },
+        {
+            "body": "The facts show enterprise use, with an incident report describing an enterprise customer running litellm-database:v1.100.0 behind nginx on Kubernetes, and the repository has 60,028 stars. The site presents LiteLLM as a current choice, with active development, a Rust migration and frequent releases, not as a legacy tool. For someone choosing it for work, that means skills in LLM gateways, cost management, identity and access for AI, and agent and MCP gateways are relevant. The site does not list specific employers, job titles or salary data, and it does not claim a particular market share. The adoption signal is the enterprise incident, the star count and the breadth of provider integrations, which together suggest that operating a gateway like this is a real job in AI engineering.",
+            "heading": "Industry adoption and careers"
+        },
+        {
+            "body": "LiteLLM is written in Python and now has a Rust core, so it is a polyglot project. It is typically used with Python applications, but because it speaks OpenAI format, any HTTP client can call the proxy. It sits beside model providers rather than replacing them, and it integrates with MCP servers and A2A agents. It uses OIDC for identity and can forward user and team context as headers. The site does not mention specific frameworks such as LangChain or LlamaIndex, so it is best understood as provider-agnostic infrastructure that complements model-specific SDKs. The pattern is a Python SDK for application code and a Rust server for the gateway, with the gateway fronting many providers, agents and tools.",
+            "heading": "How it fits beside the others"
+        },
+        {
+            "body": "LiteLLM's limits include a custom licence that the site does not explain in the pages read, a Rust gateway that is in early beta, and a Python proxy that has had production incidents, including an OOM outage tied to retries and an unreachable Redis, and a silent cost regression that broke prompt caching for Claude Code on Bedrock. The site does not say how many of the 100+ providers are fully supported or tested, and the benchmark against Portkey and Bifrost is the project's own. The site does not say what the custom licence permits, how the Rust migration will affect the Python SDK, or whether the Rust gateway supports every feature. The Agent Gateway and MCP Gateway pages are partially shown, so the full budget and identity model is not settled here. The official material also does not offer a formal learning path or a statement of how the project handles provider deprecations.",
+            "heading": "Limits and open questions"
+        }
+    ],
+    "siblings": [
+        {
+            "kind": "framework",
+            "name": "ai",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/4c80ad91/"
+        },
+        {
+            "kind": "framework",
+            "name": "crewAI",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/52f2d4fc/"
+        },
+        {
+            "kind": "framework",
+            "name": "jax",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/1722316f/"
+        },
+        {
+            "kind": "framework",
+            "name": "langchain",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/10376bfa/"
+        },
+        {
+            "kind": "framework",
+            "name": "llama_index",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/07b3602c/"
+        }
+    ],
+    "generated": "2026-10-02",
+    "site_pages": [
+        {
+            "url": "https://docs.litellm.ai/docs/tutorials/litellm_Test_Multiple_Providers",
+            "date": ""
+        },
+        {
+            "url": "https://docs.litellm.ai/blog/tags/ai-gateway",
+            "date": ""
+        },
+        {
+            "url": "https://docs.litellm.ai/blog/tags/incident-report",
+            "date": ""
+        },
+        {
+            "url": "https://docs.litellm.ai/blog/ai-gateway-identity-and-finops",
+            "date": ""
+        },
+        {
+            "url": "https://docs.litellm.ai/docs/proxy/litellm_managed_files",
+            "date": ""
+        },
+        {
+            "url": "https://docs.litellm.ai/blog/save-claude-code-costs-with-litellm",
+            "date": ""
+        },
+        {
+            "url": "https://docs.litellm.ai/docs/tutorials/google_genai_sdk",
+            "date": ""
+        },
+        {
+            "url": "https://docs.litellm.ai/docs/tutorials/litellm_proxy_aporia",
+            "date": ""
+        },
+        {
+            "url": "https://docs.litellm.ai/docs/proxy/guardrails/litellm_content_filter",
+            "date": ""
+        },
+        {
+            "url": "https://docs.litellm.ai/docs/proxy/litellm_prompt_management",
+            "date": ""
+        },
+        {
+            "url": "https://docs.litellm.ai/docs/",
+            "date": ""
+        },
+        {
+            "url": "https://docs.litellm.ai/docs/providers/litellm_proxy",
+            "date": ""
+        },
+        {
+            "url": "https://docs.litellm.ai/blog/litellm-admin-mcp",
+            "date": "Sep 23, 2026"
+        },
+        {
+            "url": "https://docs.litellm.ai/blog/litellm-roi-calculator",
+            "date": "Sep 26, 2026"
+        },
+        {
+            "url": "https://docs.litellm.ai/blog/tags/llms",
+            "date": ""
+        },
+        {
+            "url": "https://docs.litellm.ai/blog/google-ai-studio-managed-agents",
+            "date": "May 19, 2026"
+        },
+        {
+            "url": "https://docs.litellm.ai/docs/providers/vllm_batches",
+            "date": ""
+        },
+        {
+            "url": "https://docs.litellm.ai/blog/litellm-rust-launch",
+            "date": ""
+        }
+    ],
+    "source_url": "https://docs.litellm.ai/docs/",
+    "parent_name": "AI Frameworks",
+    "parent_path": "/ai-ecosystem/technology-and-core-infrastructure/2eb54277/",
+    "site_domain": "docs.litellm.ai",
+    "subject_key": "framework:BerriAI/litellm",
+    "subject_kind": "framework",
+    "source_read_on": "2026-10-02",
+    "site_pages_read": 60,
+    "refresh_every_days": 30
+}

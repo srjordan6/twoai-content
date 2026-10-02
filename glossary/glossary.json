@@ -1147,6 +1147,14 @@
                     "audience": "child"
                 },
                 {
+                    "body": "A tool registry is the catalog of tools, with their schemas and permissions, that an AI agent is allowed to call. For decisions about money and risk, it is the control surface that limits the agent to approved actions, so an agent cannot misuse a tool it was never granted. Accountability sits with whoever grants those permissions, as in a finance agent that can generate reports but cannot execute payments.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, a tool registry is the catalog of tools, with their schemas and permissions, that an AI agent is allowed to call. It matters when the agent could otherwise use a tool you did not grant, and it matters less when the agent only uses tools you have already approved. In practice, the time cost is deciding and recording those permissions, and the time saved is that the allowed tools are already listed, so the agent cannot misuse a tool it was never granted.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Treat the tool registry the same way you treat an access-control list: review it on a schedule, remove unused entries, and require a change-control process before adding a new tool, especially one with write access or financial consequences.",
                     "audience": "ciso"
                 },
@@ -3716,6 +3724,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "Threat modeling is a planned review of how a system could be attacked, done before you launch it. For a small company, it means asking early how an AI feature could be misused through what people type, what it reads in, or what it can reach through other tools, which matters when you are adding or changing an AI feature that takes outside input or connects to other systems, and matters less for a simple tool with no outside input or connections. It tends to cost planning time before launch and aims to save time you would otherwise spend fixing problems later.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "AI adds questions the old model never asked: what can the prompt channel deliver, what can retrieval import, what can a tool call reach. Explicitly extend your threat modeling template and process to include these AI-specific question categories, since a conventional web application threat model, however thorough, was not designed to prompt for these newer AI-specific attack vectors.",
                     "audience": "ciso"
                 },
@@ -3767,6 +3779,10 @@
                 {
                     "body": "AI governance sits in the second line: it sets policy and monitors, while the teams deploying AI own the risk and internal audit independently checks both. Make sure your organization's AI governance function is actually positioned as second line, distinct from both the teams deploying AI, first line, and internal audit, third line, since blurring these roles undermines the whole point of the structure.",
                     "audience": "executive"
+                },
+                {
+                    "body": "For a small company, the Three Lines Model means the people who use AI tools own the risk, a manager or risk lead sets AI policy and monitors it, and an independent check, which the model calls internal audit, verifies both. It matters when AI use carries real risk, and it does not matter much for low-risk use. It can cost time to assign roles and do reviews, but it can save time by making clear who does what and reducing repeated fixes.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Position your AI governance and security function explicitly as second line, setting policy and monitoring, while ensuring the teams actually deploying and operating AI systems retain clear first-line risk ownership, and that internal audit maintains genuine third-line independence to check both.",
@@ -3822,6 +3838,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "Tool allowlisting means you pick the exact tools an AI agent may use for a certain job, and the system checks that list when the job runs. For a small company, this matters when the same agent does different jobs, because you can give the reporting job read-only tools and the filing job one write tool, each as small as the job allows. It does not matter much if the agent only does one job or uses no tools, and it tends to cost a little time to set and review the lists while saving time by keeping each job's tools narrow.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Scope it per workflow, not per agent: the same agent doing two jobs should hold two different tool sets, each as small as the job allows. Implement allowlisting at the workflow or task level rather than granting one broad, static tool set to an agent identity regardless of which specific task it is currently performing.",
                     "audience": "ciso"
                 },
@@ -3875,6 +3895,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "Unbounded consumption means your AI usage keeps running and running, so it can add cost and use up capacity, whether from an attack, a defect, or an automated loop. For a small business, this matters when you have automated connections that can keep calling an AI model without anyone noticing, and it may not matter if nothing can run without a person starting it. It tends to cost time because someone has to find and stop the runaway calls, and it can save time only if a spend alert catches the problem early, as in the example of an integration retrying a failing model call thousands of times overnight.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "It is OWASP LLM10, and in practice it is seen first on an invoice rather than in a dashboard; implement real-time usage monitoring with automatic circuit breakers, not just after-the-fact billing alerts, since waiting to discover this problem on an invoice means the damage, financial and potentially operational, has already fully occurred.",
                     "audience": "ciso"
                 },
@@ -3926,6 +3950,10 @@
                 {
                     "body": "A more secure default for short-lived, dynamically spun-up AI agent processes than a traditional, longer-lived credential; ask whether your organization's agent infrastructure uses this pattern, since it is a genuine, meaningful security improvement over static credentials for this specific, increasingly common use case.",
                     "audience": "executive"
+                },
+                {
+                    "body": "Workload identity means the running software gets its own login instead of using a shared key or a person's account. For a small company, this matters when you run cloud or container software that starts and stops on its own, because the login lasts only as long as that run. It does not matter much if you use simple hosted tools with no such automated processes, and in time terms it can save the work of using one shared API key, though the definition does not say how much setup time it takes.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "It narrows credentials to the workload's lifetime, which is the right shape for agent processes that spin up and vanish; prefer workload identity over longer-lived static credentials for ephemeral agent processes specifically, since the automatically time-bound nature of this credential type genuinely reduces the risk window compared to a static, long-lived credential.",
@@ -6481,6 +6509,14 @@
                     "audience": "child"
                 },
                 {
+                    "body": "A transformer is the deep learning architecture behind modern large language models such as GPT, BERT, Gemini, and Claude. For decisions about money and risk, it matters because its parallelizable training lets model scale grow with hardware, which affects what AI tools can do and how they are built. Accountability for those decisions stays with the people who approve the tool, the budget, and the risk, not with the architecture itself.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "A transformer is the architecture behind modern large language models such as GPT, BERT, Gemini, and Claude. For a company with five to fifty staff, it matters when you use or buy tools built on those models, because the architecture is what allows them to be trained at large scale. It does not matter for most day to day operations unless an AI tool you rely on uses it, and the time it saves or costs depends on the specific tool, not on the term itself.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "The default architecture choice for essentially any new NLP or general sequence-modeling project today; deviating from it requires a specific, well-justified reason, like extreme long-context requirements or edge-device constraints, rather than being a neutral starting-point decision.",
                     "audience": "developer"
                 },
@@ -6532,6 +6568,14 @@
                 {
                     "body": "An AI design shaped like the letter U, that shrinks a picture down to understand its big shapes, then builds it back up to full size, using shortcut connections between matching shrink and rebuild stages to keep fine details from getting lost.",
                     "audience": "child"
+                },
+                {
+                    "body": "U-Net is a model design that shrinks an image down and then rebuilds it while keeping fine details, which matters when image quality or exact boundaries affect a decision. It was first built for medical image segmentation and later used as the denoising part of early diffusion image generators, such as the denoiser inside classic Stable Diffusion. For money, risk and accountability, the question is whether the image output is good enough for the use you choose, and the party that selects, tests and deploys it owns that choice.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, U-Net matters only if you use or build tools that need to clean up images or separate parts of an image, for example medical image segmentation or diffusion image generation. It does not matter if your work does not depend on image processing or image generation. When it does matter, it can save time only if it replaces manual image work, and it costs time to set up, test and check the results.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Largely superseded by diffusion transformer backbones in state-of-the-art image generation systems, but still a solid, well-understood choice for medical imaging and other segmentation tasks where its original design was purpose-built and remains well-suited.",
@@ -6587,6 +6631,14 @@
                     "audience": "child"
                 },
                 {
+                    "body": "A variational autoencoder is a method that lets an AI system compress data into a simpler internal form and then rebuild it, while keeping that internal form smooth enough to generate new variations. For decisions, it means the system is built to produce plausible variations rather than store exact fixed codes, so the risk is treating its output as a precise copy. Money is affected only through the AI system it is part of, and the team that owns that system is accountable for how it is used.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a small company, a variational autoencoder is a technical part inside AI tools that compress and recreate images or similar data. It matters if you build or customize image generation systems, because it affects how the system stores and generates content. It does not matter for most day to day work, and it tends to save or cost time only as part of the AI pipeline you already run, not as a separate task.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "If working with a latent diffusion pipeline, the VAE component's reconstruction quality sets a hard ceiling on final output quality, since diffusion operates in the VAE's compressed latent space and any information lost in that compression cannot be recovered later.",
                     "audience": "developer"
                 },
@@ -6640,6 +6692,14 @@
                     "audience": "child"
                 },
                 {
+                    "body": "A Vision Transformer is a way to build image recognition by treating a picture as a sequence of tiles and using attention instead of convolutions. For decisions, it matters when you choose or review systems that classify images or that combine images with text, because at sufficient data scale it matched then passed older image methods. Money and risk depend on the data and the system around it, and accountability stays with the people who choose and operate that system.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "A Vision Transformer is a technical way to make image recognition work by breaking a picture into tiles and using attention instead of convolutions. For a company with five to fifty staff, it matters when you use tools that classify images or that combine images with text, and it does not matter when your work does not involve images. Whether it costs or saves time depends on the system you use and the work it replaces, so treat it as a detail inside a tool rather than a reason to change your operations.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Favor CNNs over ViTs for smaller datasets or resource-constrained settings, since ViTs generally need more training data to reach comparable performance; the crossover point where ViT advantages emerge depends on dataset scale, which is worth checking against your actual data volume.",
                     "audience": "developer"
                 },
@@ -6691,6 +6751,14 @@
                 {
                     "body": "An AI that can look at pictures and talk about them in words, connecting what it sees in an image to what it can say about it, which lets it answer questions about photos, charts, or screenshots.",
                     "audience": "child"
+                },
+                {
+                    "body": "A vision-language model is a system trained on both images and text, so it can connect what it sees to what it says. For decisions, that means it can help when a choice depends on screenshots, charts, or documents as well as words. The model does not own the outcome, so people still set the rules, review the output, and remain accountable.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "In practice, a vision-language model can read screenshots, charts, and documents and turn what it sees into text you can use. It matters when your team spends time looking at images and text together, such as checking a document or a chart, and it matters less when your work is only words or only pictures. It can save time on those mixed tasks, but it does not remove the need for a person to check the result.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Test VLM performance specifically on your actual document or image types, since performance on natural photographs does not reliably predict performance on charts, dense text screenshots, or specialized diagrams, which are meaningfully different visual distributions.",
@@ -11666,6 +11734,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "Symbolic AI is software that follows clear rules written by people, instead of learning patterns from data. For a small business, it matters when you need a decision to be explainable and consistent, and it does not matter much when the task is about learning from data. It can save time on repeated rule-following work, but it costs time to write and update the rules.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Worth combining with neural approaches, see neurosymbolic AI, rather than treating the two paradigms as strictly competing; symbolic components can add exactly the guarantees and transparency a neural pipeline lacks on its own.",
                     "audience": "developer"
                 },
@@ -11717,6 +11789,10 @@
                 {
                     "body": "The same capability that improved your voice assistant products also enabled convincing voice-cloning fraud; if your organization handles voice authentication or has executives whose voice is publicly available, this is now a real security consideration, not a hypothetical one.",
                     "audience": "executive"
+                },
+                {
+                    "body": "For a small business, text to speech means turning written words into spoken audio that sounds natural. It matters when you want spoken versions of written material, such as an audiobook, or when you use voice assistants, and it also brings a risk of voice-cloning fraud. It does not matter if your work stays in text and you never need spoken output, and it tends to save the time of recording a person reading the text aloud.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "If building voice authentication, do not treat voice alone as a sufficient security factor anymore; modern TTS and voice cloning have made synthetic voice convincing enough that additional verification is now genuinely necessary, not just cautious extra.",
@@ -11772,6 +11848,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "For a small business, transfer learning means taking a model that already learned one job and using it as the starting point for your own job, such as fine-tuning a general image model to spot defects in your product photos. It matters when you have a specific task and only a modest set of examples, because most of the learning is already done and you mainly need to adjust the model to your case. It matters less when your task is very different from the original model's task or when you already have a large dataset and can train from scratch, and it tends to save time in data collection and training.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Default to transfer learning, starting from a pretrained model, rather than training from scratch unless you have a specific, well-justified reason not to; the data and compute savings are usually substantial and the resulting model quality is often better too.",
                     "audience": "developer"
                 },
@@ -11825,6 +11905,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "The Turing Test is a way to check whether a machine can talk so much like a person that you cannot tell the difference in a short conversation. For a small company, it matters when you are judging if a chatbot sounds natural to customers, and it does not matter much when you need to know if the tool can actually do the job, because modern models pass casual versions while the harder capability questions have moved elsewhere. It tends to save time on quick conversational checks, but it does not answer the capability questions that matter for real work, so you still need to test that yourself.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Not a useful evaluation method for a modern system, since passing it has become trivial for current conversational models; use task-specific benchmarks and human preference evaluation instead when assessing whether a model is actually good for your use case.",
                     "audience": "developer"
                 },
@@ -11876,6 +11960,10 @@
                 {
                     "body": "Useful for exploratory analysis, discovering unexpected customer segments or patterns you did not think to look for, but the output requires human interpretation before it becomes actionable; do not expect it to produce ready-made business decisions on its own.",
                     "audience": "executive"
+                },
+                {
+                    "body": "For a small company, unsupervised learning means a computer looks at information you already have, such as customer records, and puts similar ones into groups without you saying in advance what those groups should be. It matters when you want to find natural groups in your customers or sales but do not already know the categories, and it does not matter when you already know exactly how you want to sort things. It can save the time you would spend guessing or sorting the groups yourself, but you still need to decide what each group means.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Validate discovered clusters or patterns against domain knowledge before acting on them; an algorithm will confidently find structure in data even when that structure is statistical noise or an artifact of preprocessing rather than a meaningful real-world pattern.",
@@ -14032,6 +14120,10 @@
                     "audience": "child"
                 },
                 {
+                    "body": "A system prompt is the high-level instruction set given to an AI model before any user interaction, and it defines the model's role, boundaries, and context. It is the governing document of a deployment, so decisions about scope, tone, and escalation rules are set there, as in a support bot that must stay in scope and hand off certain cases. Because it is a favorite target of injection attacks, it carries direct risk, and the person accountable for the deployment is accountable for what it says.",
+                    "audience": "executive"
+                },
+                {
                     "body": "This is the reason two different AI-powered products built on the same underlying model can behave very differently: the company building the product has set hidden rules and a role for the AI before you ever start typing, which shapes its whole personality and boundaries.",
                     "audience": "small-business"
                 },
@@ -14083,6 +14175,10 @@
                 {
                     "body": "A setting that controls how random or predictable an AI's answers are: low means it plays it safe and gives similar answers every time, high means it takes more risks and gives more varied, surprising answers.",
                     "audience": "child"
+                },
+                {
+                    "body": "Temperature is the setting that controls how random or repeatable a model's output is. Low values give the same answer for the same input, which suits code and math, while high values give more varied and creative answers, which suits creative drafting. For decisions, money and risk, this setting affects how predictable results are, so the person who sets or approves it is accountable for that choice.",
+                    "audience": "executive"
                 },
                 {
                     "body": "If an AI tool has a \"creativity\" slider, that is usually this setting; turn it down for tasks where you want consistent, factual, predictable answers, and turn it up for brainstorming or creative writing where variety is actually valuable.",
@@ -14138,6 +14234,10 @@
                     "audience": "child"
                 },
                 {
+                    "body": "A token is the basic unit of text a model processes, such as a word, part of a word, or punctuation. For decisions, money, risk and accountability, tokens are the unit used for billing, context limits and speed, so they affect what you pay, how much text the model can handle at once, and how fast it responds. In English, a token is roughly three-quarters of a word, so a 1,000-word document uses about 1,330 tokens, and the accountable owner is whoever manages the budget or the use case.",
+                    "audience": "executive"
+                },
+                {
                     "body": "When an AI tool's pricing is based on \"tokens,\" know that roughly 750 words is about 1,000 tokens in English; this rough conversion helps you estimate costs before committing to a plan or a large task.",
                     "audience": "small-business"
                 },
@@ -14189,6 +14289,10 @@
                 {
                     "body": "The tool that chops up your text into the small pieces an AI actually works with, and turns the AI's output pieces back into readable text. You usually never see it working, until it does something weird with a number or an unusual word.",
                     "audience": "child"
+                },
+                {
+                    "body": "The tokenizer is the hidden step that turns raw text into numerical tokens and back, so it is invisible until odd behavior appears, such as byte-pair encoding splitting an unusual surname into four fragments or quirks with numbers, rare words and non-English text. For decisions, money and risk, that means a text-based AI tool can produce strange or wrong results for reasons that are not obvious, so any budget or decision that relies on its text output carries hidden risk. The person accountable for the AI tool and its use must own checking those cases, because the tokenizer itself will not flag them.",
+                    "audience": "executive"
                 },
                 {
                     "body": "If an AI tool seems to struggle specifically with numbers, unusual names, or a language other than English, that can be a tokenizer quirk rather than a general intelligence limitation; it is worth testing the same request phrased slightly differently before concluding the tool just cannot handle it.",
@@ -14244,6 +14348,10 @@
                     "audience": "child"
                 },
                 {
+                    "body": "Top-K is a setting for AI text generation that limits each next word choice to the K most likely candidates, so a lower K makes the output more predictable and a higher K allows more variety. For decisions and risk, it is a control you can set and review, because the hard cutoff can change how often the AI stays on the expected path. The people who choose the K value and approve the AI output remain accountable, and the setting itself is not a separate cost item.",
+                    "audience": "executive"
+                },
+                {
                     "body": "Not typically something you adjust directly in consumer tools, but if working with a more technical AI platform, this setting limits how many alternative word choices the AI considers at each step, which affects how varied or focused its writing feels.",
                     "audience": "small-business"
                 },
@@ -14295,6 +14403,10 @@
                 {
                     "body": "A setting that lets an AI choose its next word from a flexible-sized group of likely options, where the group gets bigger when the AI is unsure and smaller when it is very confident, adapting instead of using a fixed number every time.",
                     "audience": "child"
+                },
+                {
+                    "body": "Top-P is a dial that sets how wide the AI's word choices are at each step, keeping only the smallest set of likely options that together cross a chosen threshold. For decisions, it shapes whether output is more predictable or more varied, so it can affect how much checking and rework your team needs. The accountable owner is still the person or team that approves the AI output, not the setting.",
+                    "audience": "executive"
                 },
                 {
                     "body": "Not typically something you adjust directly in consumer AI tools, but this setting, often paired with the \"creativity\" or temperature setting, is part of what shapes how varied or predictable an AI tool's writing feels.",
@@ -14350,6 +14462,10 @@
                     "audience": "child"
                 },
                 {
+                    "body": "Tree of Thoughts is a prompting method where an AI explores several reasoning paths in a tree, scores them, and backtracks from weak ones instead of following one line of thought. For decisions, it is meant for problems where the first path is often wrong, such as planning puzzles, so it adds deliberate search before a choice is made. The definition gives no cost or saving, and it does not change who is accountable: a person still owns the final decision.",
+                    "audience": "executive"
+                },
+                {
                     "body": "For a genuinely difficult problem where a single AI attempt seems unreliable, some more advanced AI tools offer a mode that explores multiple different approaches and picks the best one, similar to brainstorming several solutions instead of committing to the first idea; it costs more but can be worth it for high-stakes questions.",
                     "audience": "small-business"
                 },
@@ -14401,6 +14517,10 @@
                 {
                     "body": "The actual message or question you type into an AI, separate from the hidden background instructions the company set up beforehand. Your message is meant to work within those hidden rules, not override them.",
                     "audience": "child"
+                },
+                {
+                    "body": "A user prompt is the instruction a person types into an AI system, separate from the system prompt that sets the rules. For decisions, money and risk, that separation matters because user content must not override system rules, and keeping it from doing so is a core security concern. The definition does not name who is accountable, but it places the rules and boundaries in the system prompt, as in a user asking for a summary inside those limits.",
+                    "audience": "executive"
                 },
                 {
                     "body": "What you type into an AI tool is meant to work within rules the company already set up behind the scenes, which is why a tool usually will not do certain things no matter how you phrase your request; that boundary is by design, not a bug in how the tool understood you.",
@@ -18112,6 +18232,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "Synthetic data is made-up information used to train or test an AI model when real information is scarce, sensitive, or expensive. For a small company, it matters when you need to test an AI tool but cannot use private customer details or do not have enough real examples, and it does not matter much if you already have enough safe real data or are not training or testing a model. It can save time by reducing the need to collect and clean real data, but it can cost time if the made-up data carries the generator's blind spots and gives poor results.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Test models trained on significant synthetic data specifically for inherited biases or blind spots traceable back to the generating system, treating synthetic data quality assurance as its own distinct concern from simply verifying adequate dataset volume.",
                     "audience": "ciso"
                 },
@@ -18167,6 +18291,10 @@
                 {
                     "body": "Read this document specifically, not just marketing materials, when evaluating a significant frontier model vendor's actual safety practices, since it is genuinely designed to show the real evaluation work, testing results, and known risks, rather than simply promoting capability.",
                     "audience": "executive"
+                },
+                {
+                    "body": "For a small business, a system card is a document from the maker of an AI system that explains how the system was tested for safety, what was done to reduce harm, and what risks are still known. It matters when you are deciding whether to use that system or when you need to understand the risks before you rely on it, and it does not matter much for simple tools where those safety concerns do not apply. Reading one takes time, but it can save time by putting the safety and risk details in one place.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Treat this as the primary, substantive reference document for understanding a vendor's actual safety testing and known risk profile for a given system, since it is specifically structured to disclose genuine safety evaluation work rather than serve as promotional capability marketing.",
@@ -18226,6 +18354,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "For a company with five to fifty staff, third-party risk means the AI features that come inside software and services you already buy, often added by vendor updates rather than by your own choice. It matters when those tools touch your important work or data, or when you need to know what AI is in the products you use, and it may not matter much for simple tools that do not affect your work or data. Checking vendor updates and asking vendors what AI they now include can take time, and doing it early can save time later by preventing surprises.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Build active vendor release-note and feature-update monitoring into your third-party risk management process specifically, since procurement-based vendor risk assessment alone will systematically miss AI capability that arrives through this quiet, update-driven delivery mechanism.",
                     "audience": "ciso"
                 },
@@ -18283,6 +18415,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "Voice cloning means someone can copy a person's voice from a short audio sample. For a small business, it matters when a caller uses a copied voice to pass a phone verification it should not. It does not matter for everyday tasks that do not rely on voice checks, and it tends to cost time because staff must confirm identity another way.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Implement multi-factor, out-of-band verification specifically for any high-stakes action currently authorized based even partly on voice confirmation, wire transfers, credential resets, given the genuinely low current technical barrier to producing a convincing voice clone from very little source audio.",
                     "audience": "ciso"
                 },
@@ -18338,6 +18474,10 @@
                 {
                     "body": "A genuinely useful but explicitly limited tool worth understanding honestly; it helps a willing verifier confirm content origin but does not reliably prevent a determined bad actor from removing it, so do not rely on watermarking alone as your organization's complete defense against synthetic media misuse.",
                     "audience": "executive"
+                },
+                {
+                    "body": "Watermarking means adding a signal to AI-made content so its origin can be detected. For a company with five to fifty staff, it matters when you need to check whether an image or text came from AI, or when you want your own AI-made content to show where it came from. It does not matter much for internal use where no one needs to verify origin, and it can save time when you need to confirm where content came from, but it can cost time if you depend on it and the mark has been removed.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Treat watermarking as one useful layer within a broader content provenance and authenticity strategy, not a standalone, complete solution, given the well-documented, genuine limitation that watermarks rarely survive deliberate, determined removal by a motivated adversary.",
@@ -20046,6 +20186,14 @@
                     "audience": "child"
                 },
                 {
+                    "body": "A vibe check is an informal, subjective assessment of a model's quality from a few personal prompts, often done on release day. For decisions, money and risk, treat it as an early signal that can catch regressions benchmarks miss, not as a final proof or a replacement for benchmarks. The person who acts on the vibe check is accountable for that decision, because the assessment is personal and not a formal measure.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, a vibe check means a few people running their favorite test prompts within hours of a launch. It matters when you want a quick, informal sense of whether a model still works for your prompts, and it does not matter as a formal measure or when you need a benchmark-backed decision. It tends to cost little time, just a few prompts, and can save time by catching a regression that leaderboards miss.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "A legitimate, common practice worth naming accurately in coverage of a model release: informal spot-testing by early users often surfaces real issues before formal benchmark results are published.",
                     "audience": "journalist"
                 },
@@ -20093,6 +20241,14 @@
                 {
                     "body": "Building software by just telling an AI what you want in plain words and mostly trusting what it gives back, without checking every line carefully. Fine for a quick experiment, risky for something that really needs to work.",
                     "audience": "child"
+                },
+                {
+                    "body": "Vibe coding means telling an AI assistant what you want in plain language and accepting its output largely on trust. It can be productive for prototypes, but it is hazardous for production, so decisions about money and risk should treat it as a way to explore ideas, not a reliable way to build final systems. Accountability stays with whoever chooses to trust and use the output, because the method does not require reading the generated code.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a small company, vibe coding means describing what you want to an AI assistant and using what it produces without reading the code. It matters when you need a quick prototype or a working app built through conversation, and it does not matter as much when you need production software, because that is where the trust becomes hazardous. It can save time on early experiments, but it is hazardous for production work.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Worth distinguishing in coverage between prototyping use, which is broadly reasonable, and production use, which carries real risk; conflating the two misrepresents both the appeal and the danger of the practice.",
@@ -22637,6 +22793,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "For a small business, test time compute means the AI tool can spend more time thinking through a hard question before it gives you an answer, which uses more computing power for that request. It matters when the task is difficult and a poor answer would cost you more time to fix, and it does not matter for simple tasks where a quick answer is fine. It can cost more per use or take longer, but it can save time by giving a better answer the first time.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Route genuinely hard problems to higher test-time-compute settings, longer reasoning, multiple samples, rather than applying it universally; the added latency and cost are only worth paying where problem difficulty actually benefits from the extra computation, which a simple query does not.",
                     "audience": "developer"
                 },
@@ -22688,6 +22848,10 @@
                 {
                     "body": "The capacity number that, with latency, defines what a deployment can actually serve; understand this alongside latency, not instead of it, since a system can have high total throughput while still feeling slow to any individual user if it is not architected well, and vice versa.",
                     "audience": "executive"
+                },
+                {
+                    "body": "Throughput is how much work an AI system can handle in a set amount of time, such as the number of requests or tokens it processes per second. For a small company, it matters when many requests arrive at once and slow replies would hold up work, and it matters less when requests are few or spread out. The practical effect is time saved when the system keeps up with demand, or time lost when people wait for replies.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Optimize for throughput and latency somewhat separately, since techniques that improve one, like larger batch sizes, can sometimes worsen the other for individual requests; understand which metric actually matters most for your specific use case, high-volume batch work versus interactive user-facing requests.",
@@ -22796,6 +22960,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "TPU is Google's custom chip for speeding up the math that machine learning uses. It matters to a small company only if that company runs very large machine learning training jobs, such as large training runs scheduled across TPU pods. For most companies with five to fifty staff, it does not matter because they use AI tools rather than train large models, and it tends to save time only on those large training runs.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "If working within Google Cloud's ecosystem, evaluate TPU options alongside GPU options for training or serving workloads; the relative cost and performance advantage varies by specific model architecture and workload characteristics, so benchmark rather than assume one is universally better.",
                     "audience": "developer"
                 },
@@ -22849,6 +23017,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "A training cluster is a large group of computer chips working together on one AI training job, like a single machine made of many chips. For a company with five to fifty staff, this matters only if you are paying for or waiting on a frontier AI model that someone else is building, and it does not matter for normal day to day use of AI tools. Running one takes months and a lot of capital, so it is not something a small business would own, and it does not save you time in your own operations.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Coordinating a training run across a cluster of this scale introduces real engineering challenges beyond single-machine training, fault tolerance for inevitable hardware failures, efficient gradient synchronization across nodes, and interconnect bandwidth management, that are worth understanding even if you never personally operate at this scale.",
                     "audience": "developer"
                 },
@@ -22900,6 +23072,10 @@
                 {
                     "body": "Users forgive slow completion far more readily than a slow start; prioritize optimizing this specific metric for any user-facing interactive AI feature, since the initial responsiveness has an outsized effect on perceived quality compared to total completion time, which streaming can further help mask.",
                     "audience": "executive"
+                },
+                {
+                    "body": "TTFT is the delay before an AI tool produces the first piece of its answer. For a small business, it matters when an employee is waiting at the screen, because a slow start is harder to forgive than a slow finish. It matters less when no one is waiting for the answer to begin, and a fast start, such as within half a second, saves that waiting time at the start of each request.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Measure and optimize this metric separately from total completion time; techniques like streaming and prompt caching specifically target reducing this figure, and it deserves its own dedicated attention in performance monitoring rather than being folded into a single generic latency number.",
@@ -23059,6 +23235,10 @@
                 {
                     "body": "A specific piece of open-source infrastructure worth knowing about if your organization is evaluating self-hosting AI models rather than relying entirely on external API providers; it represents a mature, well-adopted option rather than requiring custom infrastructure to be built from scratch.",
                     "audience": "executive"
+                },
+                {
+                    "body": "vLLM is open-source software that helps a small company run its own AI model on its own computers and answer many requests at once. It matters when you run the model yourself and need it to keep up with a busy flow of users, because it can do more work on the same machines and save waiting time. It does not matter if you use an online AI service that already runs the model for you, so you only need to think about vLLM when you run the model yourself.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "The common denominator of self-hosted serving stacks; a solid, well-supported default choice when self-hosting model serving infrastructure rather than using a fully managed API, since it implements many of the efficiency techniques, paged attention, continuous batching, that would otherwise need to be built from scratch.",
@@ -26104,6 +26284,14 @@
                     "audience": "child"
                 },
                 {
+                    "body": "Tokens per parameter is the ratio of training data to model size, so it guides how much data a model of a given size should see during training. For decisions, money and risk, it belongs in the training plan because modern runs push this ratio far above old defaults, which changes how the run is sized and resourced. The risk is a training plan that does not follow the ratio, and the accountable owner is whoever approves that plan and its budget.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "Tokens per parameter is the ratio of training data to model size, so it describes how much data a model of a given size should see during training. For a company with five to fifty staff, it matters only if you are training your own model or paying for a training plan, because the ratio is part of sizing that plan. It does not matter if you are only using an existing AI tool, and it tends to affect time only through the training plan itself.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Use current compute-optimal ratio guidance rather than older rule-of-thumb defaults when planning a custom training run's data requirements relative to intended model size, since the field's understanding of the optimal ratio has meaningfully shifted since the original scaling law research.",
                     "audience": "developer"
                 },
@@ -26157,6 +26345,14 @@
                     "audience": "child"
                 },
                 {
+                    "body": "An underfitting model is too simple to capture the patterns in its training data, so it performs poorly everywhere. For decisions, that means you should not rely on its output, and the person accountable for the model should keep it from being used until it is fixed or replaced. It is the opposite of overfitting and the cheaper failure to diagnose, so catching it early can save money and time.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "Underfitting means a model is too simple to learn the patterns in your data, so it gives weak results across the board. For a company with five to fifty staff, this matters when you depend on the model for regular work or decisions, and it does not matter much when the model is only a rough guide or not used. Because it is the cheaper failure to diagnose, spotting it early can save the time you might otherwise spend trusting or adjusting a model that will not perform well.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "If a model performs poorly even on training data, suspect underfitting first: check for insufficient model capacity, too few training steps, or a learning rate too low to make meaningful progress, before investigating more complex explanations.",
                     "audience": "developer"
                 },
@@ -26208,6 +26404,14 @@
                 {
                     "body": "The core learned numbers inside an AI that determine how strongly each internal connection influences another, adjusted throughout training. These numbers are essentially what the AI actually is: if you have the weights, you have a working copy of the model.",
                     "audience": "child"
+                },
+                {
+                    "body": "For decisions, money and risk, the weights are the model itself, so releasing them releases the model and stealing them steals it. Accountability sits with whoever controls access to those weights, because they are the learned numerical values that determine connection strength between artificial neurons and are adjusted throughout training.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "In practice, weights are the learned numerical values that determine connection strength between artificial neurons, and they are what a model is. For a company with five to fifty staff, this matters when you release, store or protect a trained model, because releasing the weights releases the model and stealing them steals it. It does not matter when you never handle the weights themselves, and the definition does not state any time cost or saving.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Treat model weight files with the same or greater security rigor as source code and credentials; unauthorized access to weights is functionally equivalent to unauthorized access to the fully trained, deployable model itself, not merely to a description of it.",
@@ -27299,6 +27503,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "For a company with five to fifty staff, this means keeping separate who builds an AI tool, who uses it, and who checks it for risk and rules. It matters when AI affects important decisions or compliance, and it may not matter for simple, low-risk tasks. It tends to cost time to set up those separate checks, and it can save time by avoiding the situation where the same team validates its own model.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Audit specifically for role collapse in your AI governance structure, verifying the team checking a given AI system's risk and performance is genuinely independent from the team that built and operates it, since this specific collapse is a documented, common, and structurally serious governance gap in AI contexts.",
                     "audience": "ciso"
                 },
@@ -27659,6 +27867,10 @@
                 {
                     "body": "Ensure your organization conducts these specifically for AI-relevant scenarios, not just generic security incidents; scenarios like an unannounced vendor model change or silent model drift are genuinely distinct enough from typical security incidents to warrant their own specific, dedicated rehearsal.",
                     "audience": "executive"
+                },
+                {
+                    "body": "A tabletop exercise is a practice meeting where your team walks through a made-up AI problem, such as a chatbot that needs to be shut off or a supplier changing its AI without telling you. It matters when you have AI tools and need to check that your plans, roles, and ways to escalate a problem actually work, and it does not matter if you have no AI tools or no plans to test. It tends to cost a two-hour meeting for the people involved and can save time later by revealing gaps, like nobody knowing who can shut the chatbot off, before a real event.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Design and conduct AI-specific tabletop scenarios explicitly, covering failure modes like silent drift, prompt injection, and unannounced vendor model changes, rather than relying solely on generic security incident tabletops that may not adequately surface AI-specific response gaps.",
@@ -29600,6 +29812,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "Systemic risk is a heavier set of safety rules for very large general-purpose AI models, the kind run by frontier labs, not by a company with five to fifty staff. It matters to you only if you train such a model yourself, which the definition says is essentially not done by businesses that deploy AI, so for most small firms it does not apply. That tends to save your team time, because the model provider carries the evaluation, adversarial testing, incident reporting and cybersecurity work instead of you.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Recognize this classification tier as relevant primarily to a small number of frontier training labs rather than to typical enterprise AI deployment, and focus your organization's own compliance effort on the obligation tiers that actually apply to your deployment context instead.",
                     "audience": "ciso"
                 },
@@ -30863,6 +31079,20 @@
             "uid": "7f9fc038",
             "slug": "token-drift",
             "term": "Token Drift",
+            "lenses": [
+                {
+                    "body": "Token drift is when a computer has to read more and more little pieces of text each time it answers, even though nobody meant to change the program. It is like a lunchbox that slowly gets packed with more food each day, so lunch takes longer and costs more. The change is small at first, but over time it adds up.",
+                    "audience": "child"
+                },
+                {
+                    "body": "Token drift means the amount of text a workload processes per request slowly grows, even when no one intended to change the application. Because cost scales with that amount, it usually shows up as a rising bill before it shows up as a bug. The people who own the application and its budget need to watch it, and they should review prompt, context, and retrieval changes that may be adding text.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, token drift means the AI tool starts using more text per request over time, so the same work can cost more without any code change. It matters when you pay per use and your bill starts rising, especially if your prompts, history, or retrieved passages get longer. It does not matter much if usage is low or costs are fixed, and catching it early can save the time you would otherwise spend looking for a bug that is not there.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "",
             "example": "Average prompt length creeping up over a month as a retrieval step returns steadily longer chunks, doubling per-request cost with no code change.",
             "related": [
@@ -31643,6 +31873,20 @@
             "uid": "b397e944",
             "slug": "transformer-electrical",
             "term": "Transformer (Electrical)",
+            "lenses": [
+                {
+                    "body": "A transformer is a box that changes how strong electricity is. It can make electricity stronger or weaker so power can travel safely and work in different machines. In a data centre it takes very strong electricity from the big power lines and makes it weaker for computers and cooling systems, a bit like a water tap that turns strong pressure into a gentle flow.",
+                    "audience": "child"
+                },
+                {
+                    "body": "A transformer changes the strength of electricity, stepping it up or down so power can move safely and efficiently. In a data centre it takes high voltage power from the grid and reduces it to the lower voltages that servers and cooling systems need. For decisions, money, risk and accountability, this means a new data centre can face transformer lead times of up to four years, so the project owner and the insurer pricing supply chain cover must plan and price for that delay.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, a transformer is usually not something you buy or manage unless your work involves a data centre or the power supply to one. It matters when a data centre you rely on is being built or expanded, because transformer lead times can run to four years and that can delay when the data centre is ready. It does not matter for most everyday office power, and it tends to cost time in planning and waiting rather than save time.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "Standard industry term",
             "example": "An insurer pricing supply chain cover for a new data centre must account for transformer lead times that can run to four years.",
             "related": [
@@ -31733,6 +31977,20 @@
             "uid": "2e714c12",
             "slug": "tier-iii-tier-iv-uptime-institute",
             "term": "Tier III / Tier IV (Uptime Institute)",
+            "lenses": [
+                {
+                    "body": "Tier III and Tier IV are two high grades for a data centre, which is a building full of computers. A Tier III data centre can be worked on without turning the computers off, and a Tier IV data centre can keep running even if one big piece of equipment breaks. Think of a fridge: Tier III is like cleaning it while it stays cold, and Tier IV is like it still keeps food cold if one part breaks.",
+                    "audience": "child"
+                },
+                {
+                    "body": "Tier III and Tier IV are the top two Uptime Institute ratings for data centre reliability. Tier III allows maintenance or repair without turning off the computers, and Tier IV keeps running even if one major piece of equipment fails completely. For decisions, this is about how much downtime risk you accept, what you are willing to spend for that level, and who is accountable if the work cannot continue.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, Tier III and Tier IV describe how well a data centre can stay online during maintenance or a major equipment failure. It matters if your work cannot stop, such as AI training runs that cannot afford downtime, and it matters less if a short outage would not seriously disrupt you. It can save time when downtime would stop work, but the definition does not state a cost or time amount.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "The Uptime Institute introduced the tier system in the 1990s to give data centre owners a common way to describe reliability.",
             "example": "An AI company that cannot afford any downtime for its training runs will often choose a Tier IV data centre over a Tier III one.",
             "related": [
@@ -32797,6 +33055,20 @@
             "uid": "87fcb865",
             "slug": "thermal-runaway",
             "term": "Thermal Runaway",
+            "lenses": [
+                {
+                    "body": "Thermal runaway is when something gets hotter and hotter and the heat cannot get out. It is like wearing a thick coat in summer, so your body heat stays in and you keep getting warmer. In a computer building, if the cooling stops, this can burn the computers and the information inside.",
+                    "audience": "child"
+                },
+                {
+                    "body": "Thermal runaway means heat builds up faster than it can be removed, so temperatures rise on their own and can end in fire or destroyed equipment. In a data centre, a cooling failure such as a stopped pump can destroy customer servers and stored data, so the money at risk is the value of those servers and that data. The risk is operational and accountability sits with whoever manages the cooling and the battery cells, because those are the points where it can start.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, thermal runaway matters if you run your own servers or battery cells, or if a data centre holds systems you depend on. It does not matter much if your work does not rely on those servers or that data. When it matters, it can cost time because a cooling failure can destroy servers and stored data, and it can save time only if you are not the one managing the cooling.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "The term comes from engineering and chemistry, where it describes a self accelerating heating process that becomes impossible to stop.",
             "example": "A pump failure that stops coolant flow can lead to thermal runaway and destroy a customer's servers and stored data.",
             "related": [
@@ -33043,6 +33315,20 @@
             "uid": "e4ff2057",
             "slug": "ul-9540a",
             "term": "UL 9540A",
+            "lenses": [
+                {
+                    "body": "Imagine one hot coal in a grill. UL 9540A is a test that watches what happens when one small part of a battery gets too hot, to see if the heat or fire spreads to the rest of the battery. It helps grown-ups know if a big battery is safe to put in a building.",
+                    "audience": "child"
+                },
+                {
+                    "body": "UL 9540A is a standard test method that measures how a battery cell behaves when it overheats and enters thermal runaway, which is when a battery gets too hot and can catch fire. For decisions, money and risk, it gives insurers and engineers evidence about fire risk before a battery energy storage system is installed. The people who use that test data, such as the underwriter in the example, are accountable for deciding whether a fire in one cell would spread to the rest of the battery container.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, UL 9540A matters if the company is installing or insuring a battery energy storage system, because it shows how a battery cell behaves when it overheats and enters thermal runaway. It does not matter for most day to day operations if the company is not involved with such a battery system. It tends to save time by giving insurers and engineers the fire risk information before installation, so that question does not have to be answered later.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "It was developed by Underwriters Laboratories, a safety certification company, to address fire safety concerns in large battery energy storage systems.",
             "example": "The underwriter asked for the UL 9540A test data to see whether a fire in one lithium ion cell would spread to the rest of the battery container.",
             "related": [
@@ -33081,6 +33367,20 @@
             "uid": "3823b9d1",
             "slug": "umbrella-policy",
             "term": "Umbrella Policy",
+            "lenses": [
+                {
+                    "body": "An umbrella policy is extra insurance that sits on top of the insurance you already have. Think of it like a second umbrella that opens when your first umbrella is too small for a big rainstorm. If an AI helper causes a problem that costs more than your regular insurance can pay, this extra insurance pays the rest.",
+                    "audience": "child"
+                },
+                {
+                    "body": "An umbrella policy is extra liability insurance that adds coverage on top of existing policies, such as general liability or auto insurance. In AI insurance, it applies when a claim from an AI system goes beyond the limits of your primary policy, protecting you from very large losses. For decisions, money, risk and accountability, it means you decide whether to buy extra protection above your current limits, it affects how a very large claim is paid, and it covers the remaining amount after your primary policy limit without saying who is accountable.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, an umbrella policy is extra liability insurance that adds coverage on top of existing policies, such as general liability or auto insurance. It matters when a claim from an AI system, like a chatbot, goes beyond the primary policy limit, because it covers the remaining amount. It does not matter when a claim stays within the primary limit, and the definition does not say what it costs or what time it saves.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "Standard industry term",
             "example": "A company using an AI chatbot faces a lawsuit for defamation that costs more than its standard liability limit, so the umbrella policy covers the remaining amount.",
             "related": [
@@ -33171,6 +33471,20 @@
             "uid": "ed7e4428",
             "slug": "waiting-period",
             "term": "Waiting Period",
+            "lenses": [
+                {
+                    "body": "A waiting period is the time you must wait after something goes wrong before insurance starts to help. It is like a rule that says you only get a bandage if you have been hurt for a while, not for a tiny scrape.",
+                    "audience": "child"
+                },
+                {
+                    "body": "A waiting period is the time after a loss event before the policy pays for the interruption, so it works like a time deductible. If the outage is shorter than the waiting period, the policy pays nothing, so your business carries the full cost and risk for that early period. You decide whether you can absorb that gap, and you should make sure someone is accountable for covering it.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, a waiting period is the time after an outage starts before insurance pays for the interruption. It matters when an outage could be shorter than the waiting period, because then the policy pays nothing, and it matters less when the outage is longer than the waiting period, because the policy starts paying after that time. In practice it tends to cost you the time and money of the early part of the outage, and it does not save time during the waiting period.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "The term comes from property and business interruption insurance, where insurers require a set number of hours before coverage starts.",
             "example": "A data center policy with a 48 hour waiting period would not pay for a cloud outage that is fixed in three hours.",
             "related": [
@@ -33625,6 +33939,20 @@
             "uid": "cdced115",
             "slug": "underwriting",
             "term": "Underwriting",
+            "lenses": [
+                {
+                    "body": "Underwriting is when an insurance company looks at something risky and decides if it will promise to pay for problems, and what that promise will cost. It is a bit like a parent checking where you are going and what you will do before saying yes. If a data centre changes how it cools its computers, the insurance company may check again because the risk is different.",
+                    "audience": "child"
+                },
+                {
+                    "body": "Underwriting is how an insurer reviews a risk, decides whether to offer coverage, and sets the price and terms. For AI and data centre risks, that review can cover physical damage, cyber attacks, and liability from model outputs. It affects decisions about coverage, cost, and risk, and the insurer is accountable for the underwriting decision it makes.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, underwriting is the insurer's check before it agrees to cover a risk and set the price and terms. It matters when the company buys or renews insurance, or when its risk changes, such as a data centre switching from air to liquid cooling. It does not matter for daily work when the policy and risk stay the same, and the main time cost is staff time spent answering the insurer's questions.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "Standard industry term from insurance, in use since the early days of marine insurance when backers wrote their names under the risk details.",
             "example": "A data centre switching from air to liquid cooling becomes a re-underwriting event because its risk profile changes without its policy changing.",
             "related": [
@@ -34183,6 +34511,20 @@
             "uid": "ab9f83d3",
             "slug": "total-insured-value-tiv",
             "term": "Total Insured Value (TIV)",
+            "lenses": [
+                {
+                    "body": "Total Insured Value is the full value of the things an insurance policy protects, like adding up the price of everything in your house if it all had to be replaced. If the policy says you pay five percent first, you pay five cents of every dollar of that total before the insurance helps. It is like a sticker price for all the covered things put together.",
+                    "audience": "child"
+                },
+                {
+                    "body": "Total Insured Value is the full property value an insurance policy covers for a site or project. It drives percentage deductibles and sublimits, so a five percent deductible means the company pays five percent of that total before coverage applies. For decisions, this number sets how much risk stays with the company, how much money may be needed for a loss, and the policyholder or risk owner is accountable for that retained amount.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, Total Insured Value is the full value of property covered at your site or project. It matters when your policy uses percentage deductibles or sublimits, because a five percent deductible means you pay five percent of that total before insurance pays. It matters less when your policy does not use percentage deductibles or sublimits, and the time cost is adding up the covered property value and checking those terms, with no direct time saving stated by the term itself.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "Standard insurance industry term",
             "example": "A hyperscale data centre campus with total insured values over one billion dollars would face a fifty million dollar out of pocket cost under a five percent windstorm deductible.",
             "related": [
@@ -34429,6 +34771,20 @@
             "uid": "1f66db61",
             "slug": "war-exclusion",
             "term": "War Exclusion",
+            "lenses": [
+                {
+                    "body": "A war exclusion is a rule in an insurance plan that says the insurance company will not pay if a war or a fight like a war causes the damage. It is like a game rule that says you get no do-over if the playground breaks during a big fight between teams. So if a big attack shuts down a computer building, the owner may have to pay for it without help from insurance.",
+                    "audience": "child"
+                },
+                {
+                    "body": "A war exclusion is a clause that says the insurer will not pay for losses caused by war, civil war, or similar hostilities, and in AI insurance it can also remove cover for state sponsored cyber attacks, drone strikes by non state actors, or conflicts like a Taiwan Strait crisis. For decisions and money, it means the business cannot count on insurance to cover those losses, so leadership must decide how to carry or manage that risk. The insurer is not accountable for those losses under the policy, so the policyholder and its leadership remain accountable for the financial impact.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, a war exclusion matters when a war, civil war, similar hostilities, a state sponsored cyber attack, a drone strike by a non state actor, or a conflict like a Taiwan Strait crisis causes a loss, because the insurer may not pay. It does not matter for losses that are not caused by those events. When it applies, it can cost the business time because it must handle the loss and recovery without insurance money, and when it does not apply it tends to have no effect on time.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "Standard industry term used in insurance policies for many decades.",
             "example": "If a state sponsored cyber attack shuts down a data centre, the war exclusion may mean the owner cannot claim on their policy.",
             "related": [
@@ -34571,6 +34927,20 @@
             "uid": "04255956",
             "slug": "technology-e-and-o",
             "term": "Technology E&O",
+            "lenses": [
+                {
+                    "body": "Technology E&O is like a repair kit for a company that makes computer tools. If the tool makes a mistake and costs a customer money, this insurance can help pay for the customer's complaint and any money owed. It only helps if the customer tells the company about the problem while the insurance is active.",
+                    "audience": "child"
+                },
+                {
+                    "body": "Technology E&O is insurance for a technology company when its product or service causes a customer financial harm through a mistake or failure, such as faulty software, data errors, or missed deadlines. It can pay legal defense and settlements for claims reported during the policy period, so the decision is about transferring that customer claim risk and funding the response. The company is the one facing the customer claim, and the insurer may cover legal defense and settlements, so leadership should decide who is accountable for that claim.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, Technology E&O matters when it sells a technology product or service that could cause a customer financial harm through a mistake or failure, such as faulty software, data errors, or missed deadlines. It does not matter for every business, only for those with that kind of customer risk, and it usually only covers claims reported during the policy period. In practice it can save time by paying for legal defense and settlements, though the definition does not say what it costs.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "The term comes from errors and omissions insurance, a longstanding professional liability coverage, with technology added to show it applies to software and IT firms.",
             "example": "A startup that builds an AI model buys a technology E&O policy to cover lawsuits from clients who say the model gave wrong advice.",
             "related": [
@@ -35909,6 +36279,20 @@
             "uid": "7e5b2f55",
             "slug": "training-data-extraction",
             "term": "Training Data Extraction",
+            "lenses": [
+                {
+                    "body": "Imagine a parrot that learned secrets by listening to people. Someone can keep asking the parrot questions until it repeats a secret it heard. Training data extraction is when a person does that with a computer helper to get private things it learned.",
+                    "audience": "child"
+                },
+                {
+                    "body": "Training data extraction is an attack where someone gets an AI system to repeat private information it was taught on, such as names, addresses, or secret codes. For decisions, it means deciding how to protect the private information the AI learned on. For money and risk, the concern is that a leak of that private information can create a problem the organization must handle, and accountability sits with the leaders responsible for the data and the AI system.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, training data extraction matters when the AI system was taught on private customer or staff information, such as names, addresses, or secret codes. It does not matter as much when the AI only uses public material. In practice, it can cost time to review what the AI learned on and to respond if private information is repeated, and it does not tend to save time in itself.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "Standard industry term from machine learning security research.",
             "example": "A cyber insurer worries about training data extraction when a chatbot accidentally repeats a customer's passport number that was in its learning material.",
             "related": [
@@ -36103,6 +36487,20 @@
             "uid": "35a29caa",
             "slug": "synthetic-identity-fraud",
             "term": "Synthetic Identity Fraud",
+            "lenses": [
+                {
+                    "body": "Synthetic identity fraud is when someone takes a real piece of information, like a real child's ID number, and mixes it with a pretend name and birthday to make a made up person. Then they use that made up person to get a credit card and spend money, and because the made up person is not a real kid, it can take a long time for anyone to notice. It is like using a real key with a pretend name tag to open a door that should stay closed.",
+                    "audience": "child"
+                },
+                {
+                    "body": "Synthetic identity fraud means a criminal combines real information, such as a stolen Social Security number, with made up details to create an identity that belongs to no real person. That fake identity can be used to open accounts, apply for loans, or make purchases, and because it is not tied to a real victim, it can go unnoticed for a long time. For decisions, money, risk and accountability, the business needs to check whether an identity belongs to a real person before opening accounts, approving loans, or allowing purchases, and the people who make those decisions are the ones accountable for that check, and it also needs to watch accounts over time because the fake identity may not be tied to a real victim.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, synthetic identity fraud matters when the company opens accounts, approves loans, or allows purchases, because a fake identity can be used at those points. It may not matter as much if the company never opens accounts, approves loans, or allows purchases, but it still matters if it does any of those things. In practice, it tends to cost time to check whether an identity belongs to a real person and to watch accounts over time, and it can save time by catching a fake identity before it is used over several months and then spent up to the card limit.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "Standard industry term that became widely used in the early 2000s as digital identity verification and credit reporting made it easier to mix real and fake data.",
             "example": "A fraudster uses a real child's Social Security number with a fake adult name to apply for a credit card and build up a credit history over several months before maxing out the card and disappearing.",
             "related": [
@@ -36453,6 +36851,20 @@
             "uid": "52346f8a",
             "slug": "whistleblower-protection",
             "term": "Whistleblower Protection",
+            "lenses": [
+                {
+                    "body": "Whistleblower protection is a rule that says if you tell the truth about something wrong or dangerous at work, your boss cannot punish you for it. It is like a school rule that says you can tell a teacher about bullying without getting in trouble yourself.",
+                    "audience": "child"
+                },
+                {
+                    "body": "Whistleblower protection means employees who report safety problems, illegal acts, or rule breaking by their AI company are legally shielded from being fired, demoted, or otherwise punished for speaking up. The definition does not address money directly, but for decisions and risk it means the company must give workers clear notice of these rights and cannot punish them for reporting a critical safety incident. The accountable people are the company and its leaders, who must protect reporters rather than retaliate.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a small AI company with five to fifty staff, whistleblower protection means workers who report safety problems, illegal acts, or rule breaking are legally shielded from being fired, demoted, or otherwise punished for speaking up. It matters when staff report a critical safety incident or other rule breaking, because the company must give clear notice of these rights and cannot punish them. It does not matter when there is nothing to report, and the definition does not say what it costs or saves in time.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "Standard industry term from employment law, now applied to AI safety rules.",
             "example": "A frontier AI developer must give its workers clear notice of their whistleblower rights and cannot punish them for reporting a critical safety incident.",
             "related": [
@@ -36647,6 +37059,20 @@
             "uid": "e852d727",
             "slug": "udap",
             "term": "UDAP",
+            "lenses": [
+                {
+                    "body": "UDAP are rules that say businesses cannot trick or hurt people. It is like a game rule that says you cannot pretend to be someone else to win. These rules also cover AI, so a chatbot cannot pretend to be a real therapist.",
+                    "audience": "child"
+                },
+                {
+                    "body": "UDAP means state laws against unfair or deceptive acts or practices, and they apply to AI products and services. For decisions, this affects how you design, market, and monitor AI, because misleading or harmful use can lead to a state attorney general suing your business. Money and risk are tied to legal action if that happens, and the business that offers or uses the AI is accountable, as in the example of a chatbot company sued for pretending to be a licensed therapist.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, UDAP means state laws against unfair or deceptive acts or practices apply to any AI you use or sell. It matters when your AI could mislead or harm customers, as when a chatbot pretends to be a licensed therapist, and it does not matter when your AI does neither. It can save time by giving you a clear rule to check AI messages, but it can cost time if you have to fix or defend a misleading AI.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "The term comes from state consumer protection statutes, many enacted in the 1960s and 1970s.",
             "example": "A state attorney general used its UDAP law to sue a chatbot company for pretending to be a licensed therapist.",
             "related": [
@@ -37606,6 +38032,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "A transfer station is a reseller that sells cheap access to an AI model in places the provider does not serve, often by using stolen accounts and keys. It matters when your staff use that reseller for work, because the reseller can keep a copy of every exchange and sell it, so your business information may leave your control. It does not matter if you use the official provider in a region it serves, and the cheap route may save money but can cost time and control if you later have to stop using it.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Treat any discounted third-party route to a frontier model as a transfer station until proven otherwise. Your prompts, code and credentials pass through an unknown operator who can log and sell them, and Anthropic has documented fake resellers that silently swapped in a different model while harvesting customer credentials. Buy model access only from the provider or an authorized cloud partner.",
                     "audience": "developer"
                 },
@@ -37919,6 +38349,20 @@
             "uid": "70be76a5",
             "slug": "text-to-sql",
             "term": "Text to SQL",
+            "lenses": [
+                {
+                    "body": "Text to SQL means a computer turns a question you type in normal words into a special set of instructions that can find the answer in a list of information. It is like asking a librarian for a book by describing it, and the librarian knows the shelf code to find it.",
+                    "audience": "child"
+                },
+                {
+                    "body": "Text to SQL means a language model turns a plain English question into a SQL query, so people can get answers without writing SQL themselves. For decisions and money, it can reduce the need for SQL writing work, but the answer is only as reliable as the database structure and the agreed business definitions behind it. Risk and accountability stay with the people who own the data and those definitions, not with the tool.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, Text to SQL means a staff member can ask a plain English question and get a database query without writing SQL. It matters when you have data in a database and clear, agreed definitions for what the question means, and it does not matter much when your data is not in a database or your definitions are unclear. It tends to save time by reducing the need to write SQL, but unclear definitions or database structure can mean more time spent checking the answer.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "",
             "example": "How many support tickets closed within a day last month becomes a query with a date filter and a count.",
             "related": [
@@ -38250,7 +38694,7 @@
         "schema": "v2 (term, slug, category, definition, example, origin)",
         "generated": "2026-07-23"
     },
-    "built_at": "2026-10-02T00:01:58-05:00",
+    "built_at": "2026-10-02T04:09:31-05:00",
     "page_uid": "76dd9a8f",
     "readings": {
         "/ai-glossary/aime/": {

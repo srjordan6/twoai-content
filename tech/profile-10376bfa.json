@@ -1,0 +1,194 @@
+{
+    "tax": "lang-profile",
+    "uid": "10376bfa",
+    "name": "langchain",
+    "slug": "langchain",
+    "facts": {
+        "repo": "langchain-ai/langchain",
+        "stars": 147373,
+        "licence": "MIT",
+        "archived": false,
+        "language": "Python",
+        "repo_url": "https://github.com/langchain-ai/langchain",
+        "last_push": "2026-10-02T01:01:52Z",
+        "description": "The agent engineering platform.",
+        "official_site": "https://docs.langchain.com/oss/python/langchain/overview"
+    },
+    "model": "ollama:deepseek-v4.1-flash",
+    "shape": "lang-profile",
+    "title": "LangChain: the agent engineering platform for LLM applications",
+    "answer": "LangChain is an open source, MIT licensed framework from the langchain-ai project for building applications on top of large language models, with Python and JavaScript or TypeScript libraries and a surrounding platform called LangSmith. It sits at the orchestration layer, connecting model providers, tools and tracing to your application code. The one thing to know before committing is that the framework is only half the story: the documentation read here is dominated by LangSmith features such as the LLM Gateway, evaluation and tracing, several of which need a paid or Enterprise plan.",
+    "built_at": "2026-10-02T04:27:32-05:00",
+    "category": "technology-and-core-infrastructure",
+    "hub_name": "Programming Languages and Frameworks",
+    "page_uid": "10376bfa",
+    "sections": [
+        {
+            "body": "LangChain is maintained by the langchain-ai organisation on GitHub, where the repository langchain-ai/langchain carries an MIT licence, roughly 147,000 stars and a last push of 2 October 2026, and is not archived. The repository describes itself as the agent engineering platform. The site's own metadata lists the language as Python, though the documentation is published in two parallel trees, one for Python and one for JavaScript and TypeScript, so the Python label understates the surface. It sits at the application and orchestration layer of the AI stack, above model providers and inference platforms, and it extends into operations through LangSmith, which covers tracing, evaluation, a gateway and a playground. The material read does not record a first release date or a versioning policy.",
+            "heading": "What it is and where it sits in AI work"
+        },
+        {
+            "body": "The concrete jobs visible in the documentation are calling chat and completion models, tool calling, structured output, image, audio and video input, token level streaming, token usage and logprobs, and tracing those calls. Integration pages cover Google Gemini through ChatGoogleGenerativeAI, Mistral through the @langchain/mistralai package, and Fireworks through @langchain/fireworks, among others, each with its own package, account and API key. Around that, LangSmith handles evaluation, prompt pulling, a playground, and an LLM Gateway that routes requests by model ID, retries against fallback models on rate limits or provider errors, and enforces spend policies. It is strongest where you need many providers behind one interface and want observability from the start. The pages read do not show it being used for training or fine tuning models.",
+            "heading": "What it is used for and where it is strongest"
+        },
+        {
+            "body": "The learning curve is shallow at the entry point and grows with the platform. Every integration page follows the same shape: create an account with the provider, generate an API key, set an environment variable such as MISTRAL_API_KEY or FIREWORKS_API_KEY, install the integration package, then call the model. That requires comfort with Python or TypeScript, package installation and environment variables, and nothing in the pages read demands mathematics beyond that. Deeper work does ask for more: Zod schemas for tool definitions in TypeScript, async patterns such as awaiting pending trace batches in serverless functions, and for the self hosted auth proxy, Envoy, Kubernetes secrets and Ed25519 signing keys. The official site offers per integration pages, language specific overviews, and an MCP endpoint so the documentation can be queried by an agent, but the pages read do not include a structured beginner course.",
+            "heading": "How hard it is to learn and what you need first"
+        },
+        {
+            "body": "The ecosystem is broad and mostly integration shaped. The documentation read covers Google Gemini, Mistral, Fireworks and Moonshot AI models, the Vercel AI SDK for JavaScript and TypeScript tracing, LiteLLM and other internal gateways, and LangSmith features including the Playground, Evals, Fleet, Chat and Insights. Packages are split per provider, for example @langchain/google-genai, @langchain/mistralai and @langchain/fireworks, and the repository shows sustained activity with a last push on 2 October 2026 and about 147,000 stars. Documentation is detailed enough to name exact minimum versions, such as langsmith 0.7.2 for LangSmithTelemetry and 0.3.63 for wrapAISDK. The pages read do not quantify community channels such as forums, chat servers or contributor counts.",
+            "heading": "Ecosystem and community"
+        },
+        {
+            "body": "Both, with the cost falling in different places. Prototyping is quick because each integration is a package, a key and a few lines, and the Playground lets you try prompts and models without writing code. Production concerns are addressed deliberately: the LLM Gateway gives fallback chains of one primary plus up to five backups, triggers on status codes such as 429 and 500 to 504, translates between provider API formats, and applies spend caps at organisation, workspace, API key or user level. The costs are real. Each fallback attempt is traced and counted separately, so a request that uses two fallbacks records three model calls. Gateway Credits are denominated in LangChain Standard Units at one dollar per unit, the self hosted auth proxy needs a LangSmith Enterprise plan, and the JavaScript Google integration is built on a deprecated Google library and is itself slated for deprecation in favour of ChatGoogle.",
+            "heading": "Prototyping speed against production performance"
+        },
+        {
+            "body": "Adoption signals in the material are strong but indirect. The repository has about 147,000 stars, is not archived, and was pushed on 2 October 2026, which points to a current project rather than a legacy one. The documentation assumes organisational use throughout, with organisation and workspace permissions, role scoped API keys, spend policies, self hosted deployments on version 0.13.33 and later, Kubernetes secrets and an Enterprise plan tier, which suggests it is bought and operated by teams rather than only tried by individuals. The pages read do not name customer organisations, do not give download or deployment numbers, and do not discuss hiring demand, so any claim about specific employers or salary effects would go beyond what the site supports.",
+            "heading": "Industry adoption and careers"
+        },
+        {
+            "body": "LangChain is used with Python and with JavaScript and TypeScript, and the documentation keeps those two trees separate. In practice it sits between your application and a model provider, so it is typically paired with provider APIs and SDKs from OpenAI, Anthropic, Google, Mistral, Fireworks or Moonshot AI, with an inference platform underneath, and with a gateway such as LiteLLM or LangChain's own LLM Gateway in front. In JavaScript and TypeScript it is commonly used alongside the Vercel AI SDK, which LangSmith can trace, and with Next.js, which the tracing guide calls out for flushing runs in serverless environments. The self hosted auth proxy adds Envoy, and LangSmith deployments involve PostgreSQL and Kubernetes. The polyglot pattern is a Python or TypeScript application, provider or gateway access underneath, and LangSmith alongside for tracing, evaluation and cost control.",
+            "heading": "How it fits beside the others"
+        },
+        {
+            "body": "The documentation read is weighted towards LangSmith and provider integrations, so it gives a fuller picture of the platform than of the core agent APIs, even though the repository calls itself the agent engineering platform. Several things are left open. No first release date, versioning policy, supported Python version range or dependency footprint appears in the pages read. There are no performance or latency figures, and nothing on how fallback chains behave with streaming, or what a fallback costs in added latency. The JavaScript Google integration is deprecated in favour of ChatGoogle, which means migration work for anyone on it. The auth proxy is gated behind an Enterprise plan, while Gateway Credits are excluded on Enterprise, which is an odd split. The metadata lists the language as Python while the documentation covers JavaScript and TypeScript equally, so the repository description alone is a poor guide to what the project now is.",
+            "heading": "Limits and open questions"
+        }
+    ],
+    "siblings": [
+        {
+            "kind": "framework",
+            "name": "ai",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/4c80ad91/"
+        },
+        {
+            "kind": "framework",
+            "name": "crewAI",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/52f2d4fc/"
+        },
+        {
+            "kind": "framework",
+            "name": "jax",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/1722316f/"
+        },
+        {
+            "kind": "framework",
+            "name": "litellm",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/b9fc5220/"
+        },
+        {
+            "kind": "framework",
+            "name": "llama_index",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/07b3602c/"
+        }
+    ],
+    "generated": "2026-10-02",
+    "site_pages": [
+        {
+            "url": "https://docs.langchain.com/langsmith/llm-gateway-fallbacks",
+            "date": ""
+        },
+        {
+            "url": "https://docs.langchain.com/langsmith/llm-auth-proxy-self-hosted",
+            "date": ""
+        },
+        {
+            "url": "https://docs.langchain.com/langsmith/trace-with-vercel-ai-sdk",
+            "date": ""
+        },
+        {
+            "url": "https://docs.langchain.com/oss/javascript/integrations/chat/google_generative_ai",
+            "date": ""
+        },
+        {
+            "url": "https://docs.langchain.com/oss/javascript/integrations/llms/fireworks",
+            "date": ""
+        },
+        {
+            "url": "https://docs.langchain.com/langsmith/llm-gateway-credits",
+            "date": ""
+        },
+        {
+            "url": "https://docs.langchain.com/oss/javascript/integrations/llms/mistral",
+            "date": ""
+        },
+        {
+            "url": "https://docs.langchain.com/langsmith/llm-gateway-coding-agents",
+            "date": ""
+        },
+        {
+            "url": "https://docs.langchain.com/oss/python/langchain/frontend/declarative-generative-ui",
+            "date": ""
+        },
+        {
+            "url": "https://docs.langchain.com/oss/javascript/langchain/frontend/declarative-generative-ui",
+            "date": ""
+        },
+        {
+            "url": "https://docs.langchain.com/oss/javascript/integrations/llms/ibm",
+            "date": ""
+        },
+        {
+            "url": "https://docs.langchain.com/langsmith/llm-gateway-quickstart",
+            "date": ""
+        },
+        {
+            "url": "https://docs.langchain.com/langsmith/llm-gateway-data-policy",
+            "date": ""
+        },
+        {
+            "url": "https://docs.langchain.com/oss/javascript/integrations/llms/ollama",
+            "date": ""
+        },
+        {
+            "url": "https://docs.langchain.com/langsmith/log-llm-trace",
+            "date": ""
+        },
+        {
+            "url": "https://docs.langchain.com/langsmith/llm-gateway-api-formats",
+            "date": ""
+        },
+        {
+            "url": "https://docs.langchain.com/langsmith/llm-gateway",
+            "date": ""
+        },
+        {
+            "url": "https://docs.langchain.com/oss/python/langgraph/agentic-rag",
+            "date": ""
+        },
+        {
+            "url": "https://docs.langchain.com/langsmith/llm-as-judge",
+            "date": ""
+        },
+        {
+            "url": "https://docs.langchain.com/langsmith/llm-as-judge-sdk",
+            "date": ""
+        },
+        {
+            "url": "https://docs.langchain.com/langsmith/generative-ui-react",
+            "date": ""
+        },
+        {
+            "url": "https://docs.langchain.com/langsmith/llm-gateway-how-it-works",
+            "date": ""
+        },
+        {
+            "url": "https://docs.langchain.com/oss/javascript/integrations/llms/openai",
+            "date": ""
+        },
+        {
+            "url": "https://docs.langchain.com/langsmith/legacy-trace-with-vercel-ai-sdk",
+            "date": ""
+        }
+    ],
+    "source_url": "https://docs.langchain.com/oss/python/langchain/overview",
+    "parent_name": "AI Frameworks",
+    "parent_path": "/ai-ecosystem/technology-and-core-infrastructure/2eb54277/",
+    "site_domain": "docs.langchain.com",
+    "subject_key": "framework:langchain-ai/langchain",
+    "subject_kind": "framework",
+    "source_read_on": "2026-10-02",
+    "site_pages_read": 60,
+    "refresh_every_days": 30
+}

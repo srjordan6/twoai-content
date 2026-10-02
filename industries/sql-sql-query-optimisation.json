@@ -4,7 +4,7 @@
     "slug": "sql-query-optimisation",
     "shape": "art-topic",
     "title": "AI Query Optimisation",
-    "answer": "Query optimisers choose how a database executes a query, picking join orders, access paths and algorithms. Research and commercial systems now use machine learning to estimate costs, recommend indexes and tune settings automatically. The aim is faster queries and less manual tuning. The risk is that a learned choice is hard to explain when it goes wrong, which makes debugging and trust harder.",
+    "answer": "AI query optimisation covers the parts of a database that decide how a query is executed, including join order, access paths, cardinality estimates and configuration knobs. Classical optimisers rely on cost models and heuristics, while learned systems use statistics and past executions to predict costs, recommend indexes and tune settings automatically. The field spans research prototypes and features shipped in commercial engines, and it sits inside the broader area of AI and SQL. The central tension is that a learned choice can be accurate on average yet hard to explain when it goes wrong, which matters when a plan change causes a regression.",
     "crumbs": [
         {
             "name": "AI and SQL",
@@ -12,7 +12,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-10-02T01:16:36-05",
+    "built_at": "2026-10-02T04:49:57-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "AI and SQL",
@@ -20,23 +20,23 @@
     "page_uid": "5a695195",
     "sections": [
         {
-            "body": "Query optimisers choose how a database executes a query, picking join orders, access paths and algorithms. Research and commercial systems now use machine learning to estimate costs, recommend indexes and tune settings automatically. The aim is faster queries and less manual tuning. The risk is that a learned choice is hard to explain when it goes wrong, which makes debugging and trust harder.",
+            "body": "AI query optimisation covers the parts of a database that decide how a query is executed, including join order, access paths, cardinality estimates and configuration knobs. Classical optimisers rely on cost models and heuristics, while learned systems use statistics and past executions to predict costs, recommend indexes and tune settings automatically. The field spans research prototypes and features shipped in commercial engines, and it sits inside the broader area of AI and SQL. The central tension is that a learned choice can be accurate on average yet hard to explain when it goes wrong, which matters when a plan change causes a regression.",
             "heading": "Scope"
         },
         {
-            "body": "Learned query optimisation runs alongside the database engine, often as a component of the query planner or as an external service. It depends on query logs, execution statistics, schema metadata and sometimes hardware counters as training data. The models themselves may run on the same server, on a separate CPU or GPU, or in a managed cloud service. Many teams prototype on PostgreSQL, which is a common open source base, and the site itself is built from a PostgreSQL database.",
+            "body": "These systems run inside or alongside the database engine, so the substrate is the DBMS itself, commonly PostgreSQL, MySQL, SQL Server, Oracle, and cloud warehouses such as Snowflake, BigQuery and Redshift. Learned components may be embedded in the optimiser, exposed as extensions, or served as separate advisory services that read query logs and telemetry. The Model Context Protocol has become a common way to connect AI assistants to these systems: this site tracks 2511 active MCP servers, 263 of them for SQL databases and warehouses. The site's own pages are built from a PostgreSQL database, which is a reminder that the same engine being optimised is often the one holding the metadata.",
             "heading": "What it runs on"
         },
         {
-            "body": "The work starts with collecting representative queries and their actual execution costs. Models are trained to predict cardinality, select join orders, recommend indexes or tune configuration knobs. Common approaches include regression, neural networks and reinforcement learning, with evaluation on benchmarks and held out production workloads. Because a learned plan can be wrong, teams often keep a traditional optimiser as a fallback and compare plans before switching.",
+            "body": "Work usually starts with query logs, execution plans and runtime counters, which are cleaned and featurised before any model is trained. Common approaches include regression for cardinality estimation, reinforcement learning or learned cost models for join ordering, and bandit methods for configuration tuning, with evaluation on standard benchmarks such as TPC-H, TPC-DS and the Join Order Benchmark. Models are typically trained offline and then deployed either as advisors that rank plans or as components that sit inside the optimiser loop. The site's library holds 288 research papers, a portion of which cover learned query optimisation, and the field is small enough that a single paper can shift practice.",
             "heading": "How the work is done"
         },
         {
-            "body": "Query logs and execution traces often contain sensitive values, so provenance and access control matter before any model training. Teams need to know which queries trained a model, how the model version maps to a plan, and who can change it. When a learned choice causes a regression, the ability to explain and roll back is a practical requirement, not just a research goal. Licensing and data use terms for third party training data also need review.",
+            "body": "Provenance matters because query logs and plan caches often contain literal values, table names and user identifiers that may be sensitive or regulated. A learned optimiser that changes plans silently can be difficult to audit, so teams need versioned models, recorded inputs and a way to fall back to a classical plan. Rights and licensing also apply to the training data and to any third party model or service used in the loop. The risk is not only a slow query, it is an unexplained regression that is hard to reproduce, which is why explainability and rollback are treated as first class concerns.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The direction is toward tighter integration with AI assistants and agents that write and run SQL. The site tracks 263 Model Context Protocol servers for SQL databases and warehouses, which suggests a growing layer where AI systems reach databases directly. In that setting, query optimisation may become a service that agents call, with learned components suggesting plans, indexes and settings. The open questions are how to keep those suggestions explainable, auditable and safe when they touch production systems.",
+            "body": "Learned components are moving from research prototypes into mainstream engines, often as optional features that advise the classical optimiser rather than replace it. Expect more work on explainability, on benchmarks that test robustness to distribution shift, and on standard ways to package a learned optimiser for reuse. The MCP ecosystem for SQL is likely to keep growing, which will make it easier for AI assistants to inspect plans and suggest changes. The open question is whether learned optimisation becomes a default part of the database or remains a specialist add on for workloads where the gains justify the opacity.",
             "heading": "Where it is going"
         }
     ],

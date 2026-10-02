@@ -4,7 +4,7 @@
     "slug": "sql-mcp-servers",
     "shape": "art-topic",
     "title": "MCP Database Servers",
-    "answer": "Model Context Protocol servers expose a database to an AI assistant as a set of tools, such as listing tables, describing a schema and running a query. This site's MCP directory tracks active servers, including many for PostgreSQL, MySQL, SQLite and cloud warehouses. Of the 2451 active MCP servers tracked here, 263 are for SQL databases and warehouses. That is the scope: a bridge between an assistant's tool-calling interface and a database's query engine.",
+    "answer": "Model Context Protocol servers expose a database to an AI assistant as a set of tools, such as listing tables, describing a schema and running a query. This site's MCP directory tracks active servers, including many for PostgreSQL, MySQL, SQLite and cloud warehouses. The directory currently lists 2511 active MCP servers, of which 263 are for SQL databases and warehouses. That makes database access one of the larger single purposes a server is built for.",
     "crumbs": [
         {
             "name": "AI and SQL",
@@ -12,7 +12,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-10-02T01:16:36-05",
+    "built_at": "2026-10-02T04:49:57-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "AI and SQL",
@@ -20,23 +20,23 @@
     "page_uid": "20be2010",
     "sections": [
         {
-            "body": "Model Context Protocol servers expose a database to an AI assistant as a set of tools, such as listing tables, describing a schema and running a query. This site's MCP directory tracks active servers, including many for PostgreSQL, MySQL, SQLite and cloud warehouses. Of the 2451 active MCP servers tracked here, 263 are for SQL databases and warehouses. That is the scope: a bridge between an assistant's tool-calling interface and a database's query engine.",
+            "body": "Model Context Protocol servers expose a database to an AI assistant as a set of tools, such as listing tables, describing a schema and running a query. This site's MCP directory tracks active servers, including many for PostgreSQL, MySQL, SQLite and cloud warehouses. The directory currently lists 2511 active MCP servers, of which 263 are for SQL databases and warehouses. That makes database access one of the larger single purposes a server is built for.",
             "heading": "Scope"
         },
         {
-            "body": "MCP database servers typically run as a local process or a small remote service, speaking JSON-RPC over standard input and output or over HTTP. They connect to the database using the same client libraries and drivers that any application would use, so a PostgreSQL server uses a PostgreSQL driver, a MySQL server uses a MySQL driver, and so on. The server process holds the connection credentials and the query logic, while the assistant only sees the tool definitions and the results. Some servers are packaged as single binaries or container images, and some run inside the same environment as the assistant.",
+            "body": "A database server runs either as a local process on the analyst's machine or as a remote service, and it speaks JSON-RPC over standard input and output or over HTTP. It holds a connection to the database through the vendor's driver, for example psycopg for PostgreSQL, and reads its credentials from environment variables or a configuration file supplied by the assistant host. Some teams run the server in a container next to the database, others keep it on the workstation. This site's own pages are built from a PostgreSQL database, the same kind of source these servers are pointed at.",
             "heading": "What it runs on"
         },
         {
-            "body": "The server declares a set of tools, each with a name, a description and a parameter schema, and the assistant chooses which tool to call based on the user's request. For a query tool, the server receives the call, validates the parameters, translates them into a SQL statement or executes a prepared statement, and returns the rows as structured data. Many servers separate read-only tools from write tools, and some require the assistant to request a schema description before it can run a query. The assistant never talks to the database directly, it only talks to the server.",
+            "body": "The server publishes a small set of tools, typically listing tables, describing a table and running a query. The assistant chooses a tool, fills in the arguments, and the server executes the call and returns rows as text or JSON. Many servers restrict execution to SELECT statements or apply a row limit, and some cache the schema so the model does not rediscover tables on every turn. Write access, where a server offers it, is usually a separate tool that is disabled by default.",
             "heading": "How the work is done"
         },
         {
-            "body": "The main risks are credential exposure, over-permissioned database accounts, SQL injection through poorly validated parameters, and unintended data leakage when an assistant summarizes query results. Provenance matters because a server's origin, version and maintainer determine how much you can trust its tool definitions and its handling of credentials. Many servers are open source and can be inspected, but others are closed or distributed as binaries, so the audit trail is thinner. Access control usually lives in the database itself, so the server's database user is often scoped to the minimum needed for its tools.",
+            "body": "The main risks are credentials that are broader than the task needs, prompt injection through data the model reads, and queries that scan or lock more than intended. Provenance matters because a result the assistant reports may come from a query the user never saw, so servers that log the SQL they run make review easier. In practice, access follows the database's own roles, with a read-only account for exploration and a narrower grant for anything that writes. The server's own license and maintenance record vary by project, so the repository is the place to check them.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The number of SQL and warehouse MCP servers is growing alongside the general MCP ecosystem, and more of them are adding read-only defaults, query timeouts and row limits. Expect tighter integration with agent frameworks, better schema discovery, and more attention to audit logging and permission scoping. The line between a database MCP server and a general data access layer is blurring, as servers add support for multiple engines and for semantic layers. Standardization efforts around tool definitions and authentication are likely to shape the next round of servers.",
+            "body": "Growth in the directory points to more servers for warehouses and analytical engines, not only transactional databases. Closer integration with schema metadata is likely, so a server can hand the model column descriptions and relationships rather than bare table names. Query review and audit logging are moving into the server itself, since that is the point where the SQL is visible. Common tool names and result shapes would let an assistant move between servers without relearning each one.",
             "heading": "Where it is going"
         }
     ],

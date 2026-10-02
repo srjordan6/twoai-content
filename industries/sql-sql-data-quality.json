@@ -4,7 +4,7 @@
     "slug": "sql-data-quality",
     "shape": "art-topic",
     "title": "Data Quality for AI",
-    "answer": "Data quality for AI covers the accuracy, completeness, consistency and timeliness of the rows an AI system reads, and it matters because a model cannot tell a wrong value from a right one. The usual controls are tests written in SQL, lineage records and data contracts, which together describe what the data should look like and where it came from. For an AI system the stakes are higher than for a dashboard, because a bad row can be learned as a pattern and then repeated across many outputs. The scope therefore includes the tables, views and feature sets that feed training, retrieval and inference, not just the reports built on top of them.",
+    "answer": "Data quality for AI covers the accuracy, completeness, consistency and timeliness of the rows an AI system reads. Tests written in SQL, lineage records and data contracts are the usual controls, because a model cannot tell a wrong value from a right one. In practice this means checking that values are in range, that keys are unique, that relationships hold and that data arrives when it is expected. The scope stops at the data layer, but it reaches into every feature, prompt and retrieval index that depends on those rows.",
     "crumbs": [
         {
             "name": "AI and SQL",
@@ -12,7 +12,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-10-02T01:16:36-05",
+    "built_at": "2026-10-02T04:49:57-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "AI and SQL",
@@ -20,23 +20,23 @@
     "page_uid": "bfd29330",
     "sections": [
         {
-            "body": "Data quality for AI covers the accuracy, completeness, consistency and timeliness of the rows an AI system reads, and it matters because a model cannot tell a wrong value from a right one. The usual controls are tests written in SQL, lineage records and data contracts, which together describe what the data should look like and where it came from. For an AI system the stakes are higher than for a dashboard, because a bad row can be learned as a pattern and then repeated across many outputs. The scope therefore includes the tables, views and feature sets that feed training, retrieval and inference, not just the reports built on top of them.",
+            "body": "Data quality for AI covers the accuracy, completeness, consistency and timeliness of the rows an AI system reads. Tests written in SQL, lineage records and data contracts are the usual controls, because a model cannot tell a wrong value from a right one. In practice this means checking that values are in range, that keys are unique, that relationships hold and that data arrives when it is expected. The scope stops at the data layer, but it reaches into every feature, prompt and retrieval index that depends on those rows.",
             "heading": "Scope"
         },
         {
-            "body": "Data quality work runs on the same SQL databases and warehouses that hold the data, with checks executed as queries against tables, views and materialized aggregates. Orchestration tools such as dbt and Great Expectations are common places to schedule those checks, and they write results back to tables that teams can query. Model Context Protocol servers are increasingly used to connect AI assistants to these systems, and this site currently tracks 2451 active MCP servers, 263 of them for SQL databases and warehouses. The site's own pages are built from a PostgreSQL database, which is a reminder that the quality of the publishing pipeline depends on the same kind of checks.",
+            "body": "Data quality work runs on the same databases and warehouses that hold the data, with SQL tests executed inside the warehouse or against a copy. Orchestrators schedule those tests, and catalogs and lineage services store the results and the column-level history. This site tracks 2511 active Model Context Protocol servers, and 263 of them are for SQL databases and warehouses, which is where many checks are wired into agent workflows. Metadata stores, version control and CI runners round out the stack, because a test is only useful if it runs on every change.",
             "heading": "What it runs on"
         },
         {
-            "body": "The work is done by writing assertions in SQL, such as checks for nulls, duplicates, out-of-range values, broken foreign keys and stale timestamps, then running them on a schedule or in a continuous integration pipeline. Teams profile new tables to learn their shape, define expected distributions, and set thresholds that separate normal variation from a real break. Lineage records show which downstream models and features depend on a given column, so a failure can be traced to its source and its blast radius understood. Data contracts turn those expectations into explicit agreements between the team that produces a table and the team that consumes it, and incidents are triaged with the same discipline as software bugs.",
+            "body": "The work starts with profiling: counting rows, measuring null rates, listing distinct values and mapping foreign keys. From there practitioners write SQL assertions for freshness, volume, uniqueness, accepted values and referential integrity, then set thresholds and owners for each check. Data contracts turn those expectations into an agreement between the team that produces a table and the team that consumes it. Lineage records show which upstream column fed a feature or a prompt, so a failure can be traced back to its source. For AI systems, the same discipline extends to label quality, embedding drift and the gap between training and serving data.",
             "heading": "How the work is done"
         },
         {
-            "body": "Governance for data quality rests on provenance, ownership and permission, because a team needs to know where a row came from, who is accountable for it and what it may be used for. Lineage and audit trails record the path from source system to model input, and data contracts document the agreed meaning of each field. Risks include privacy exposure when personal data is copied into training sets, regulatory exposure when data is used beyond its licence, and silent bias when a subset of the population is missing or mislabelled. Access controls, masking and retention rules are the usual ways teams limit those risks, and reviews check that the data's stated rights match its actual use.",
+            "body": "Provenance is the record of where each row came from, who changed it and what transformations ran along the way. Rights and risk enter through consent, licensing, purpose limitation and retention rules, especially when personal data feeds a model. A model trained or grounded on bad rows can produce confident wrong answers, and those errors can spread quietly through downstream reports and decisions. Controls include audit trails, access controls, data contracts and clear ownership for every critical table. The aim is to make the quality of the data as visible and reviewable as the quality of the code.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The direction of travel is toward treating data quality as a runtime property of AI systems rather than a one-time cleanup before a project starts. Expect more automated test generation, where a model proposes SQL checks from a table's profile and a human approves them, and more use of MCP servers to let assistants inspect and repair data pipelines directly. Data contracts are becoming a standard part of the interface between producers and consumers, and quality metrics are moving into the same dashboards that track model performance. The open questions are how to measure quality for unstructured and retrieved data, and how to keep checks fast enough for systems that read from a database on every request.",
+            "body": "The direction is toward continuous, column-level monitoring rather than periodic batch checks. Data contracts are moving into code, so schema and quality expectations ship with the pipeline that produces the data. AI agents are beginning to run SQL checks, explain failures and open tickets, which shifts the human role toward setting policy and reviewing exceptions. Quality metrics are also becoming part of the model release process, alongside accuracy and latency. The likely result is that data quality stops being a separate project and becomes a standing property of every AI system.",
             "heading": "Where it is going"
         }
     ],

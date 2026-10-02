@@ -2,9 +2,9 @@
     "shape": "incident",
     "title": "China's Z.ai disables AI coding assistant features after security issue",
     "reading": {
-        "body": "This is a data egress failure inside a developer tool, not a model error. A coding assistant's codebase indexing feature was enabled by default, and it sent local code repositories to a cloud provider without the consent of the developers whose machines held them. The failure sits in the default configuration of a feature that reads local files and transmits them off the machine, which means the exposure happened before any user action and without any user decision.\n\nCatching it would have required treating the default state as the control point. A consent gate before the first upload, a default of off for a feature that moves source code off the device, or egress monitoring on the client would each have surfaced the transfer. The company's own account places the cause in the default-enabled setting, so the review that would have caught it is a review of shipped defaults rather than of the model.\n\nWhat is not established is whether any code was retained or used. Z.ai said independent reviews found no code data retained, which is the company's statement about those reviews and not a finding reported here. One company retracted a separate claim that six workspaces containing sensitive data had been uploaded, so that claim stands withdrawn rather than confirmed. Intent is not established by any of this.",
+        "body": "This is a data handling failure in a developer tool rather than a model error. The upload happened in the indexing step of a coding assistant, where the tool reads a local repository to build a searchable index, and the setting that governed it was on by default. Nothing in the reporting describes the assistant generating a wrong answer or acting on its own judgement, so the failure sits in the deployment defaults and the data path, not in the model's output.\n\nCatching it before release would have required the indexing feature to ship off by default, or an explicit consent step before any repository left the machine, or egress monitoring that flagged outbound uploads from a local development environment. A default that transmits data is a decision made at configuration time, and it is testable at that point.\n\nWhat is not established is whether any code was retained or read after upload. Z.ai's statement that independent reviews found no code data retained is the company's own account, and the claim that six workspaces with sensitive data were uploaded was retracted by the company that made it. Intent is not established by any of the reporting.",
         "model": "claude-haiku-4-5",
-        "generated_on": "2026-09-28"
+        "generated_on": "2026-10-02"
     },
     "reports": [
         {
@@ -14,12 +14,12 @@
             "published": "2026-09-27"
         }
     ],
-    "summary": "Developers reported that Z.ai's ZCode AI coding assistant uploaded local code repositories to Alibaba Cloud without consent. Z.ai said a default-enabled Codebase Indexing feature caused the behavior. The company apologized, patched the vulnerability, and later disabled the upload path. One company retracted a separate claim that six workspaces containing sensitive data had been uploaded. Z.ai said independent reviews found no code data retained.",
-    "built_at": "2026-10-01T18:13:45-05",
+    "summary": "Developers reported that Z.ai's ZCode AI coding assistant uploaded local code repositories to Alibaba Cloud without consent. Z.ai said a Codebase Indexing feature enabled by default caused the behavior. The company apologized, patched the vulnerability, and later disabled the upload path. One company retracted a separate claim that six workspaces containing sensitive data had been uploaded. Z.ai said independent reviews found no code data retained.",
+    "built_at": "2026-10-02T03:21:39-05",
     "cite_url": "https://incidentdatabase.ai/cite/1714",
     "page_uid": "742291ce",
     "title_en": "China's Z.ai disables AI coding assistant features after security issue",
-    "generated": "2026-10-01",
+    "generated": "2026-10-02",
     "published": "2026-09-27",
     "title_lang": "",
     "incident_id": 1714,

@@ -1,0 +1,130 @@
+{
+    "tax": "lang-profile",
+    "uid": "1722316f",
+    "name": "jax",
+    "slug": "jax",
+    "facts": {
+        "repo": "jax-ml/jax",
+        "stars": 36370,
+        "licence": "Apache-2.0",
+        "archived": false,
+        "language": "Python",
+        "repo_url": "https://github.com/jax-ml/jax",
+        "last_push": "2026-10-02T05:43:59Z",
+        "description": "Composable transformations of Python+NumPy programs: differentiate, vectorize, JIT to GPU/TPU, and more",
+        "official_site": "https://docs.jax.dev/en/latest/"
+    },
+    "model": "ollama:deepseek-v4.1-flash",
+    "shape": "lang-profile",
+    "title": "JAX: Composable Transformations for Python and NumPy AI Work",
+    "answer": "JAX is a Python library for composable transformations of Python and NumPy programs, letting you differentiate, vectorize, and JIT compile code to GPU or TPU. It sits at the numerical and transformation layer of AI work, beneath model code, and its official docs cover autodiff, matmul precision, distributed data loading, and experimental fault tolerance. The one thing to know before choosing it is that it gives fine control over performance and numerics, but distributed fault tolerance is still experimental and platform-dependent.",
+    "built_at": "2026-10-02T04:29:12-05:00",
+    "category": "technology-and-core-infrastructure",
+    "hub_name": "Programming Languages and Frameworks",
+    "page_uid": "1722316f",
+    "sections": [
+        {
+            "body": "JAX is a Python library described as composable transformations of Python and NumPy programs: differentiate, vectorize, JIT to GPU/TPU, and more. It lives in the jax-ml/jax repository under the Apache-2.0 licence, with 36,370 stars and a last push on 2026-10-02. Its official documentation is at docs.jax.dev, and the pages read on 2026-10-02 cover automatic differentiation, matmul precision, distributed data loading, and fault-tolerant multi-controller execution. It sits at the array computation and program transformation layer of AI work, below model definitions and training loops. The facts do not give a first release date or a corporate owner.",
+            "heading": "What it is and where it sits in AI work"
+        },
+        {
+            "body": "The docs show JAX used for automatic differentiation, including jax.grad, jacfwd, jacrev, Hessian-vector products, and custom JVPs or VJPs. It is used to control matrix multiplication precision for dot products, with presets such as F32_F32_F32, BF16_BF16_F32, and TF32_TF32_F32, and to run distributed data loading across multi-host or multi-process environments. It also supports multi-controller distributed programs and experimental fault tolerance on GPUs. It is strongest where a numerical program needs composable transformations, JIT compilation to GPU or TPU, and explicit control over numerics or sharding. The pages read do not describe high-level model building, serving, edge deployment, or agent frameworks, so those uses are not settled by this material.",
+            "heading": "What it is used for and where it is strongest"
+        },
+        {
+            "body": "The official site is organized in levels, with 101 docs covering the basics of jax.grad, argnums, differentiating with respect to containers, value_and_grad, finite differences, and Transformations: grad and vmap. The 301 cookbook starts one level up with Hessian-vector products, full Jacobians, and the jvp and vjp machinery. The 201 precision page assumes comfort with dtypes, matmul algorithms, and accelerator behavior. The 501 pages on distributed data loading and fault tolerance assume multi-host or multi-process systems knowledge, including sharding, devices, RPC, and coordination services. A beginner needs Python and NumPy first, plus linear algebra and calculus for autodiff, and systems knowledge for distributed work. The site offers the 101 material as a starting point, but the pages read do not present a separate beginner course.",
+            "heading": "How hard it is to learn and what you need first"
+        },
+        {
+            "body": "The project lives at github.com/jax-ml/jax, is licensed Apache-2.0, and had 36,370 stars with a last push on 2026-10-02. The official documentation at docs.jax.dev was read across 60 pages on 2026-10-02, including pages on data loading, precision, fault tolerance, and an autodiff cookbook. The docs reference jax.lax, jax.custom_vjp, jax.custom_jvp, jax.distributed.initialize, jax.config, jax_default_matmul_precision, XLA_FLAGS, cuBLASLt, NVIDIA tensor cores, TPUs, and GPUs. The pages read do not list a model zoo, third-party library directory, or community forum, so the wider ecosystem is not described there. The repository activity and star count are the main community signals in the facts.",
+            "heading": "Ecosystem and community"
+        },
+        {
+            "body": "JAX is built for both quick experiments and performance work, but with tradeoffs. Its NumPy-like surface and transformations such as grad and vmap support fast iteration, while JIT compilation to GPU or TPU, dot algorithm presets, and sharding controls target production speed and memory behavior. By default JAX leans toward speed in matmul precision, so float32 dot products may use reduced precision internally, and the precision argument lets you choose accuracy or throughput. Distributed data loading can be more efficient than loading full global data, but it is more complex and can silently produce incorrect results if the wrong shards reach devices. Fault tolerance is experimental, currently only fully on GPUs, has rough edges, and is probably buggy. That is the cost of using JAX for production performance.",
+            "heading": "Prototyping speed against production performance"
+        },
+        {
+            "body": "The facts show a maintained repository with 36,370 stars and a last push on 2026-10-02, plus official documentation at docs.jax.dev. They do not name employers, industries, or adoption rates, and they do not say whether JAX is a current standard or a legacy choice. For someone choosing it for work, the evidence supports learning it as an active Python library for numerical AI work, especially where differentiation, JIT compilation, precision control, and distributed execution matter. The pages read do not provide hiring data or company case studies, so career claims beyond that would be speculation.",
+            "heading": "Industry adoption and careers"
+        },
+        {
+            "body": "JAX is a Python library for Python and NumPy programs, so it is typically used with Python code and NumPy-style arrays. The docs show it working with accelerator runtimes and libraries such as XLA, cuBLASLt, NCCL, NVIDIA tensor cores, and TPUs. It belongs to a polyglot pattern where Python expresses the model and transformations, while compiled kernels and communication libraries run underneath. The pages read do not compare JAX with PyTorch, TensorFlow, or other frameworks, and they do not describe language bindings beyond Python. That comparison is therefore not settled by this material.",
+            "heading": "How it fits beside the others"
+        },
+        {
+            "body": "The clearest limits are in distributed execution. Multi-controller JAX is not fault tolerant by default, and if any process fails, the others intentionally crash. Fault tolerance is experimental, currently only fully on GPUs, has rough edges, and is probably buggy. If process 0 fails, all processes terminate even with fate sharing disabled, because process 0 runs the coordination service. Distributed data loading can run without errors while producing incorrect results if shards land on the wrong devices. Precision support is platform-dependent and checked at compile time, so requesting an unsupported algorithm is a compile-time error. The official material does not state a first release date, corporate owner, adoption figures, or comparisons with other frameworks, and the pages read do not cover serving, edge deployment, or agent building.",
+            "heading": "Limits and open questions"
+        }
+    ],
+    "siblings": [
+        {
+            "kind": "framework",
+            "name": "ai",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/4c80ad91/"
+        },
+        {
+            "kind": "framework",
+            "name": "crewAI",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/52f2d4fc/"
+        },
+        {
+            "kind": "framework",
+            "name": "langchain",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/10376bfa/"
+        },
+        {
+            "kind": "framework",
+            "name": "litellm",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/b9fc5220/"
+        },
+        {
+            "kind": "framework",
+            "name": "llama_index",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/07b3602c/"
+        }
+    ],
+    "generated": "2026-10-02",
+    "site_pages": [
+        {
+            "url": "https://docs.jax.dev/en/latest/501/data-loading.html",
+            "date": ""
+        },
+        {
+            "url": "https://docs.jax.dev/en/latest/201/precision.html",
+            "date": ""
+        },
+        {
+            "url": "https://docs.jax.dev/en/latest/501/fault-tolerance.html",
+            "date": ""
+        },
+        {
+            "url": "https://docs.jax.dev/en/latest/301/cookbook.html",
+            "date": ""
+        },
+        {
+            "url": "https://docs.jax.dev/en/latest/301/sharding-ad.html",
+            "date": ""
+        },
+        {
+            "url": "https://docs.jax.dev/en/latest/401/cute-dsl.html",
+            "date": ""
+        },
+        {
+            "url": "https://docs.jax.dev/en/latest/101/default_dtypes.html",
+            "date": ""
+        },
+        {
+            "url": "https://docs.jax.dev/en/latest/",
+            "date": ""
+        }
+    ],
+    "source_url": "https://docs.jax.dev/en/latest/",
+    "parent_name": "AI Frameworks",
+    "parent_path": "/ai-ecosystem/technology-and-core-infrastructure/2eb54277/",
+    "site_domain": "docs.jax.dev",
+    "subject_key": "framework:jax-ml/jax",
+    "subject_kind": "framework",
+    "source_read_on": "2026-10-02",
+    "site_pages_read": 60,
+    "refresh_every_days": 30
+}
