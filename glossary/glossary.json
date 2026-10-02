@@ -813,6 +813,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "For a small company, a multi-agent system means using several AI helpers with different roles that work together, hand tasks to each other, or debate, instead of one AI helper doing everything. It matters when a job is too complex for one helper, such as a due-diligence memo where one helper researches, one criticizes, and one writes, and it does not matter much for simple jobs one helper can handle. It can save time by splitting and checking the work, but it can also cost time because the helpers must coordinate and that coordination can fail.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Each agent in the system needs its own scoped identity and permissions rather than a shared credential, since a compromised or misbehaving single agent should not be able to act with the combined privileges of the whole system.",
                     "audience": "ciso"
                 },
@@ -866,6 +870,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "It means one AI tool acts as a lead that breaks a job into smaller pieces and hands them to helper AI tools, then puts their answers together. For a company with five to fifty staff, this matters when a task can be split into separate parts, such as a market analysis with several research threads, because the parts can run in parallel. It does not matter for simple one-step tasks, and it can save time on bigger jobs, but one request can turn into many model calls.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "This is the pattern behind most production \"deep research\" systems, and the reason a single user request can quietly fan out into dozens of model calls; monitor and cap that fan-out explicitly, since cost scales with delegation depth.",
                     "audience": "developer"
                 },
@@ -917,6 +925,10 @@
                 {
                     "body": "When an agent fails at a complex task, the root cause is often a bad plan rather than a bad execution of a good plan; ask your team to distinguish the two before concluding the model itself is at fault.",
                     "audience": "executive"
+                },
+                {
+                    "body": "For a small company, the planner is the part of an AI agent that breaks a goal into ordered steps before any work starts, such as turning prepare the board pack into gather, draft, chart, and review. It matters when a job has several steps and the order affects the result, because a perfect worker following a bad plan still fails. It matters less for a single simple task, and a good plan can save time by giving clear steps to follow, while a bad plan can cost time because the work may fail even if each step is done well.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Plan quality is the ceiling on agent quality: a flawless step-executor working from a bad plan still fails, so debugging a failing agent should start by inspecting the plan it produced, not the execution of individual steps.",
@@ -2711,6 +2723,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "Model risk management is the work of checking and watching the models, including AI and machine learning models, that a company uses to make regulated decisions. For a small business, it matters when you use such a model for something like a lending decision or when a regulator expects proof that the model is sound, and it likely does not matter if you are not using a model for a regulated decision. It tends to cost time to write down the model's limits and have someone independent test it, and it can save time by catching mistakes before they affect decisions.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Independent validation and ongoing monitoring requirements under this discipline apply specifically and explicitly to AI and machine learning models now, not just traditional statistical models; ensure your model governance program has been extended to cover AI systems with the same rigor previously applied only to conventional models.",
                     "audience": "ciso"
                 },
@@ -2762,6 +2778,10 @@
                 {
                     "body": "Ask specifically what your model supply chain actually looks like, not just who your primary AI vendor is; a vendor's own model may itself depend on base weights, data, or infrastructure from other parties whose risk was never separately evaluated in your procurement process.",
                     "audience": "executive"
+                },
+                {
+                    "body": "In practice, if you use an AI tool or model built by someone else, your model supply chain is all the outside pieces it relies on, like the base model, the data used to tune it, the pipeline that runs it, and the hosting service. It matters when you depend on that AI for important work, when a vendor changes or stops a component, or when you need to know what data and services are involved, and it matters less for casual, low stakes use. The main cost is the time to list and update these dependencies, and the main saving is having one place to check when a vendor changes or something breaks.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Each inherited component carries inherited risk that procurement never priced; map your model supply chain explicitly, base weights, tuning data, training pipeline, hosting service, the same way you would map a conventional software supply chain, since each link carries its own distinct risk that a simple vendor contract review does not surface.",
@@ -2817,6 +2837,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "NIST SP 800-207 is a set of security rules for zero trust, which means check every request, assume a breach may happen, and give only the access needed. For a small company with five to fifty staff, it matters when you use AI agents or other software that can reach your systems and data, because you need to approve each action instead of trusting it once. It may not matter much if you have no such automated tools or sensitive systems, and the main cost is the time to set up identity and permission checks, which can save time by limiting broad access.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "It was written before agent traffic existed, so applying it to AI means extending its identity and policy model to non-human actors it never anticipated; explicitly extend your zero trust architecture's identity and policy model to treat AI agents as first-class subjects, since the original framework's examples and assumptions were built around human and traditional service traffic.",
                     "audience": "ciso"
                 },
@@ -2868,6 +2892,10 @@
                 {
                     "body": "Ask specifically whether your organization's access review process includes non-human identities, service accounts, agent credentials, workload identities, or only human employees; given how numerous these have become, a gap here represents a substantial and growing unreviewed risk surface.",
                     "audience": "executive"
+                },
+                {
+                    "body": "A non-human identity is a login used by software or an AI agent, not a person. For a small company, this matters when you check who can get into your systems, because these logins are often missed. If you have few of them and no regular access review, it may not matter yet, but including them in a review takes a little time and can save time later by avoiding a surprise.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "It is the population most access reviews miss, because review processes were designed around employees; explicitly extend periodic access review processes to include non-human identities with the same rigor, cadence, and ownership accountability as human employee access reviews, since this population is both large and frequently overlooked.",
@@ -2923,6 +2951,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "A notified body is an accredited outside organization that checks whether certain high-risk AI systems meet EU rules before they can be sold. For a small business, it matters if you are putting a high-risk AI system on the market, because you may need to book an assessment slot months ahead and that waiting can delay your launch. It likely does not matter if your AI is not high-risk, and the main time effect is the preparation and waiting for the assessment, which tends to cost time rather than save it.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Begin technical documentation and control implementation early enough to accommodate potential queuing delays for notified-body assessment; the current capacity constraint in this market means assessment timeline, not just your own preparation timeline, needs to be factored into project planning.",
                     "audience": "ciso"
                 },
@@ -2974,6 +3006,10 @@
                 {
                     "body": "A meaningful, worthwhile safety layer, but ask whether it is your organization's only control or one layer among several; relying on output filtering alone, with no upstream controls, leaves you dependent on catching every problem at the very last possible moment, which is a fragile single point of failure.",
                     "audience": "executive"
+                },
+                {
+                    "body": "Output filtering checks what an AI writes before anyone sees it, and it blocks or hides things that should not go out, like account numbers. For a company with five to fifty staff, it matters when the AI can reach private customer or business data, because a leak could cost trust and time to fix. It matters less for a public bot that only uses information you are happy to share, and it tends to cost some setup and checking time while saving time by catching mistakes before staff have to clean them up.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "It catches what retrieval pulled in, what the prompt coaxed out, and what upstream controls missed; treat this as a genuine defense-in-depth layer, not a replacement for upstream controls like input validation and access control, since it is specifically valuable as the last line catching what everything earlier in the pipeline missed.",
@@ -3029,6 +3065,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "The OWASP LLM Top 10 is a agreed list of the highest-priority security risks in AI applications that use large language models. For a small company it matters when you build or review such an AI application, because it gives you ten categories to walk through as a security check. It does not matter if you are not building or using an LLM application, and it can save time by giving you a ready structure for that review.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "It functions as the scoring baseline for AI application security the way the original OWASP Top 10 does for web; use this list as your primary structured checklist when conducting or commissioning a security review of any LLM-based application, since it represents current community consensus on the highest-priority risk categories.",
                     "audience": "ciso"
                 },
@@ -3080,6 +3120,10 @@
                 {
                     "body": "A meaningfully stronger control than a documented policy alone; ask whether your agent systems actually enforce permissions at the moment of each action attempt, or whether the \"policy\" is really just a written description of intended behavior that nothing actively checks against in real time.",
                     "audience": "executive"
+                },
+                {
+                    "body": "For a small business, permission-based execution means that when an AI tool tries to do something, like make a payment, your rules are checked at that moment and the action can be stopped if it does not fit. It matters when the AI can take actions like making payments, because you want a check before the action happens, not a broad permission given earlier, and it does not matter much for AI that only drafts text or answers questions and cannot act on its own. In practice it can cost some setup time and a moment at each action, and it can save time by stopping a bad action before it happens.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Enforcement, not documentation: the policy engine sits in the execution path and can say no. Implement this as an active runtime control point, not merely as a documented policy that describes intended behavior, since only an actively enforcing system can actually prevent an unauthorized action rather than just having a rule about it.",
@@ -5516,6 +5560,14 @@
                     "audience": "child"
                 },
                 {
+                    "body": "Multi-head attention means the model runs several attention operations at once so it can track different relationship types at the same time, such as syntax and reference. It is a standard internal part of every transformer block, not a separate product or policy. For decisions, money and risk, it does not by itself set cost or risk, and the term does not assign accountability, so accountability belongs to the people who decide to use the model.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "Multi-head attention is an internal part of AI models that run several attention operations at once to track different relationships in text, such as a pronoun's antecedent and its verb. For a small business, it matters when you are choosing or relying on a tool built this way for text tasks, because that is how the tool handles those relationships. It does not matter for day-to-day operations if you only use the tool's final output, and it is not a separate cost or time item you manage, so any time saved comes through the tool as a whole.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "The number of attention heads is a tunable hyperparameter with real tradeoffs; more heads can capture more relationship types but increase compute cost, and the useful default range is well established in the literature for most model sizes rather than needing extensive tuning per project.",
                     "audience": "developer"
                 },
@@ -5567,6 +5619,14 @@
                 {
                     "body": "AI that can work with more than one kind of information at once, like reading text, looking at pictures, and listening to sound, all inside the same system, instead of needing separate AI tools for each one.",
                     "audience": "child"
+                },
+                {
+                    "body": "Multimodal AI means one system can work with several kinds of information, such as text, images, audio and video, instead of separate tools for each. For decisions and money, this can bring a chart, a meeting and a written answer into one place, so the build or buy choice is whether one system covers several data types or you keep separate tools. The risk is that one system touches more kinds of data at once, so the person who acts on the output remains accountable for checking it and for the final call.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "Multimodal AI means one system can handle several kinds of information, such as text, images, audio and video, in one place. For a company with five to fifty staff, it matters when work mixes formats, for example when you need to read a chart, hear a meeting and get a written answer, and it does not matter much when your work is only text or you do not need to combine formats. In time terms, it can save time by reducing the need to move between separate tools, but it can cost time because staff still need to check the output.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Test each modality's handling independently as well as jointly; a multimodal model can be strong on text and weak on image reasoning, or vice versa, and aggregate benchmark scores can mask significant per-modality weakness that matters for your specific use case.",
@@ -5622,6 +5682,14 @@
                     "audience": "child"
                 },
                 {
+                    "body": "A neural network is a computing system built from interconnected nodes whose connection strengths are learned from data. For decisions, money and risk, it is the architecture behind deep learning systems such as image classifiers and large language models, so the costs and risks belong to the specific system and data, not to the term alone. Accountability stays with the people who choose to use and oversee that system.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a small business, a neural network is a computing system made of connected nodes that learn from data, and it is the base for deep learning tools such as image classifiers and large language models. It matters when you use or buy a tool that relies on deep learning, because the tool's behavior comes from what it learned from data. It does not matter as a term to manage day to day if you are only using ordinary software, and the time it costs or saves depends on the specific tool and how you use it.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Architecture choice, CNN, transformer, or other, matters far more than the underlying \"neural network\" label suggests; treat the specific architecture as the meaningful engineering decision, since \"we use a neural network\" alone conveys almost no useful information about the system's actual design.",
                     "audience": "developer"
                 },
@@ -5673,6 +5741,14 @@
                 {
                     "body": "A trick for telling an AI where each word sits in a sentence, since otherwise the AI would just see a jumbled bag of words with no sense of order, unable to tell \"dog bites man\" apart from \"man bites dog.\"",
                     "audience": "child"
+                },
+                {
+                    "body": "Positional encoding is how an AI model keeps track of the order of words or steps, because otherwise it sees them as an unordered set. For decisions, it matters when order changes meaning, as in 'dog bites man' versus 'man bites dog', so a tool that loses order can give wrong answers. For money and risk, the concern is wrong outputs when order is lost, and the team that chooses or builds the model is accountable for checking that order information is included.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "In practice, positional encoding is the part of an AI model that remembers the order of words or steps. It matters to a small business when it uses AI on text where who did what to whom changes the meaning, as in 'dog bites man' versus 'man bites dog', and it does not matter much for tasks where order does not change meaning, such as finding a single fact. It tends to save time by reducing order mix-ups, and it is usually built into the AI tool rather than a separate cost.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "RoPE has become the de facto standard positional method in most modern open models over older fixed sinusoidal encodings, largely due to its better extrapolation behavior to sequence lengths beyond what the model was trained on.",
@@ -7446,6 +7522,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "For a company with five to fifty staff, this term means a test of whether an AI tool that claims to read a very long document can actually find one specific fact buried in the middle of it. It matters when you need a single detail from a long contract, report, or record, and it does not matter much for short emails or simple questions. If the tool passes, it can save the time you would spend searching the document yourself, and if it fails, you may spend time checking its answer by hand.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Run this before trusting an advertised context window in production: a model can accept a long input without reliably using all of it, and this test specifically catches attention degradation at the far end or middle of long contexts.",
                     "audience": "developer"
                 },
@@ -7495,6 +7575,14 @@
                     "audience": "child"
                 },
                 {
+                    "body": "Pass@k is the chance that at least one of k tries is correct, and it is a standard measure for code generation. Pass@1 tells you how reliable one try is, while pass@10 tells you whether the ability exists at all. For decisions, money and risk, a low pass@1 means a single result is not reliable, a strong pass@10 means retries can make the tool usable, and the person who owns the process must decide if retries are worth the time and is accountable for checking the result.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "Pass@k is the chance that at least one of k tries at a code task is correct. For a company with five to fifty staff, it matters when you can try again and check the result, because a modest pass@1 with a strong pass@10 can be usable with retries. It does not matter much when you need one reliable answer every time, and it tends to cost time for the extra tries but can save time by getting a correct result.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Pass@1 is what matters for a single-shot production feature; pass@10 or higher tells you whether the capability exists at all, which is the right metric when your system can sample multiple attempts and pick the best, such as an agent with a verifier.",
                     "audience": "developer"
                 },
@@ -7542,6 +7630,14 @@
                 {
                     "body": "A score for how surprised the AI is by real text, lower meaning less surprised, which usually means it understood the pattern well. It is an old-school way to check training, not how helpful the AI actually is.",
                     "audience": "child"
+                },
+                {
+                    "body": "Perplexity is a training score for how well a model predicts text, where lower means it predicts the sample better. It helps technical teams track model learning during pre-training, but it does not tell you whether the model will be more useful for your business tasks. Decisions about money, risk and accountability should rest on task results and human review, not on perplexity alone.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, perplexity is a technical training score, not a business result. It matters only if you are building or fine-tuning your own language model and need to check how well it predicts text during training, and it does not tell you whether the model will save time on customer emails, scheduling or other daily work. It can save a technical team time as a quick training signal, but it does not replace testing on your actual tasks.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "If a vendor cites perplexity as evidence of a better product, treat it as a training metric, not a usefulness claim; ask for task-based or preference-based evaluation results instead.",
@@ -10559,6 +10655,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "Moravec's Paradox means machines find abstract thinking, like chess, easier than physical tasks, like folding laundry. For a small business, this matters when you consider using machines for hands-on work, because those tasks can be hard for machines even if they feel easy to people. It matters less for tasks that are mostly thinking or paperwork, where machines can often help, so the time saved tends to be on mental work rather than physical work.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "A caution against assuming capability transfers intuitively from one domain to another; a model's strength on abstract, symbolic tasks tells you little about its readiness for sensorimotor or physical-world tasks, which require fundamentally different capabilities.",
                     "audience": "developer"
                 },
@@ -10610,6 +10710,10 @@
                 {
                     "body": "Every AI product you evaluate is narrow AI regardless of how \"intelligent\" its marketing sounds; the practical question is always how narrow, exactly, and whether that specific narrow scope actually matches your intended use case.",
                     "audience": "executive"
+                },
+                {
+                    "body": "Narrow AI is a tool built for one specific job, like a spam filter or a voice assistant, so it will not handle other tasks on its own. For a small company it matters when you have a clear repeated task that fits the tool, and it does not matter when you need broad judgment or work that changes often. It can save time on that one task, but it cannot take over work outside its narrow purpose.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Test explicitly at the boundaries of a model's intended scope, not just within it; narrow AI systems can fail unpredictably, and sometimes confidently, just outside the distribution they were trained and evaluated on.",
@@ -10665,6 +10769,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "For a small company, natural language generation means using software to turn data or intent into fluent, human-readable text. It matters when you need routine written summaries from your data, such as an automated earnings summary from financial data, and it can save the time you would spend drafting them by hand. It does not matter when you have no data to turn into text or when you would rather write the text yourself, and because the output can be indistinguishable from drafting, you still need to review it for risks.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Fluency is not the same as accuracy; a highly fluent NLG system can produce confidently wrong output with no stylistic tell, so fluency-based quality checks are insufficient on their own for anything where factual correctness matters.",
                     "audience": "developer"
                 },
@@ -10716,6 +10824,10 @@
                 {
                     "body": "A vendor offering \"NLP\" today is usually offering LLM-based capability, since the field has consolidated around that approach; older, specialized NLP systems still exist for specific high-precision needs but are increasingly the exception rather than the default.",
                     "audience": "executive"
+                },
+                {
+                    "body": "NLP means software can understand and generate human language, so tasks like translation, judging the mood of feedback, and summarizing can come from one capability instead of separate tools. For a small business, it matters when you have a lot of text to read or write, such as customer messages, reviews, or documents, and it can save time by sorting or summarizing that text. It matters less if your work has little written language, and it can cost time because someone still has to check the output.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Consider whether a general LLM or a specialized, older-style NLP model is the right fit for your specific subtask; specialized models can still outperform general LLMs on narrow, well-defined tasks like precise entity extraction, at lower cost.",
@@ -10771,6 +10883,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "For a small company, natural language understanding means software reads a customer message and works out what the person wants, such as turning \"I can't log in\" into a support category. It matters when your team gets enough messages that sorting them by hand takes time away from other work, and it does not matter much if you get only a few messages or already know who handles each one. It can save time by sending messages to the right place, but you may spend time setting it up and checking that it sorts them correctly.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Test intent classification accuracy separately from response quality when evaluating a language system; a model can generate fluent, well-written responses while still misclassifying the underlying user intent, which breaks downstream routing logic.",
                     "audience": "developer"
                 },
@@ -10824,6 +10940,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "Neurosymbolic AI is a mix of two kinds of computer programs, one that learns from examples and one that follows fixed rules. For a small company, it matters when you need to pull information out of messy documents and then apply clear compliance rules, because the learned part handles the reading and the rules part gives you a consistent decision. It does not matter much for simple tasks that do not need both learning and strict rules, and it can save time on repetitive document checks but may take more setup time than a single method.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "A genuinely different architecture pattern from pure neural approaches, worth the added engineering complexity specifically when your use case requires hard guarantees, not just high accuracy, since a neural network alone provides no such guarantee.",
                     "audience": "developer"
                 },
@@ -10875,6 +10995,10 @@
                 {
                     "body": "A quiet but critical dependency in any document-AI product; OCR errors on the front end propagate into everything downstream, so the quality of a document-processing system often depends more on OCR accuracy than on the language model built on top of it.",
                     "audience": "executive"
+                },
+                {
+                    "body": "OCR turns pictures or scans of paper into text a computer can read. For a small company, it matters when you have paper documents like invoices that you want a computer to read, for example to digitize invoices before an extraction model reads them. It does not matter if your documents are already digital text, and it tends to save the time you would spend retyping text from images.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Test OCR quality on your actual document types, since accuracy varies enormously by font, scan quality, handwriting, and layout; a downstream language model cannot recover information the OCR step failed to extract correctly.",
@@ -12694,6 +12818,10 @@
                     "audience": "child"
                 },
                 {
+                    "body": "Multi-turn means an AI interaction that runs across several exchanges and keeps the conversation state, instead of a single request and response. For decisions, money and risk, that retained state is both an asset and a liability, because context builds up and so does drift, so a business must decide when continuing is worth it and when to stop. Accountability should sit with the person or team who owns the final output.",
+                    "audience": "executive"
+                },
+                {
                     "body": "A long, ongoing conversation with an AI tool can build up useful context over time, but it can also accumulate confusion if earlier parts were unclear or wrong; if something feels off partway through a long conversation, consider starting fresh rather than trying to untangle it.",
                     "audience": "small-business"
                 },
@@ -12747,6 +12875,10 @@
                     "audience": "child"
                 },
                 {
+                    "body": "Negative prompting means telling an AI system what should not appear in its output. For decisions, it sets clear boundaries on results, which can reduce rework and the chance of an unwanted result, and it matters most when a bad output would carry cost or risk. The person who sets or approves the prompt remains accountable for the final output.",
+                    "audience": "executive"
+                },
+                {
                     "body": "If an AI tool keeps making the same kind of mistake or including something you do not want, try explicitly telling it what to avoid, not just what you want; sometimes stating the problem directly works better than only describing the ideal result.",
                     "audience": "small-business"
                 },
@@ -12798,6 +12930,10 @@
                 {
                     "body": "Giving an AI exactly one example of what you want before asking it to do the real task, which is often enough to show it the format you need, even if it is not enough to teach it every tricky detail.",
                     "audience": "child"
+                },
+                {
+                    "body": "One shot prompting means giving an AI system one example of the output you want before asking it to do the task. It is often enough to set the format, but it rarely teaches the system the nuance or exceptions that matter in higher-risk decisions. The person who requests the output remains accountable for whether it is used, so treat it as a format-setting shortcut and not as a substitute for judgment where money or risk is involved.",
+                    "audience": "executive"
                 },
                 {
                     "body": "Showing an AI tool just one clear example of what you want is often enough to get the format right, even without a long list of examples; try this as a quick fix before assuming you need something more complicated.",
@@ -16752,6 +16888,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "Model theft or extraction is when someone sends many queries to an AI model and uses the answers to train a copy of it. For a company with five to fifty staff this matters if you own a proprietary model, because the copy can lead to litigation or terms of service problems, and it tends to cost time in checking terms and watching for unusual use. It matters less if you do not own a proprietary model.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Monitor for aggregate query patterns characteristic of this attack, not just individual request content, since each individual query in this attack looks legitimate on its own and only the pattern across many requests reveals the actual extraction attempt underway.",
                     "audience": "ciso"
                 },
@@ -16807,6 +16947,10 @@
                 {
                     "body": "A genuinely emerging, unresolved research question worth being aware of as a topic some major labs are now studying seriously, though not yet an area with established consensus, settled practices, or clear operational implications for most organizations deploying AI today.",
                     "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, model welfare is the emerging question of whether advanced AI systems warrant moral consideration, and it is a research area, not a settled position. It matters to you only if you want to follow how major labs study this question, and it does not matter for your everyday choices about using AI tools. Because it is not a settled position, it does not tend to cost or save your team time today.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "A genuinely emerging, actively contested research question worth covering with appropriate epistemic care; avoid framing either a confident affirmative or confident dismissive position as settled scientific or philosophical consensus, since the field itself has not reached agreement.",
@@ -16866,6 +17010,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "It is a voluntary US guide for managing AI risk, built around four parts: Govern, Map, Measure, and Manage. For a company with five to fifty staff, it matters when AI affects customers, money, or risk, or when a customer or partner asks how you manage AI risk, and it matters less if you only use AI for low-stakes tasks and no one asks. Checking your own AI use against the four parts takes time, but it can save time later by finding problems before they grow.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Structure your organization's AI risk management program explicitly around this framework's four functions, Govern, Map, Measure, Manage, since it provides a well-tested, widely recognized structure that most other US AI guidance and many state-level frameworks reference or build upon.",
                     "audience": "ciso"
                 },
@@ -16921,6 +17069,10 @@
                 {
                     "body": "Understand precisely what \"open\" actually means for a given model before assuming full transparency; open weights alone, without open training data and process, still leaves genuine gaps in your ability to fully understand and verify how the model was actually built.",
                     "audience": "executive"
+                },
+                {
+                    "body": "Open weights means the model's trained parameters are released for download, so you can run and modify it on your own computers. For a small company, this matters when you want local execution or changes, as with Llama or Mistral weights on private infrastructure, and it does not matter if you only use a hosted service. The definition does not state any time or cost savings.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Evaluate the specific security and provenance implications of open weights explicitly, distinct from any claim of broader openness; a model with genuinely open weights but undisclosed training data and process still carries real, meaningful gaps in verifiable provenance.",
@@ -19024,6 +19176,14 @@
                     "audience": "child"
                 },
                 {
+                    "body": "Model whiplash is the disruption that happens when a model version changes often and alters its behavior while your work is already running. It can break tuned prompts and calibrated workflows, which means money and time already spent on tuning may need to be spent again. The risk is an overnight failure like a prompt suite failing after a silent upgrade, so the accountable owner is whoever is responsible for the affected workflow and for deciding whether to pin the version.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, model whiplash means an AI tool you rely on can start behaving differently without warning, so prompts and workflows you set up may stop working. It matters when you have tuned prompts or calibrated workflows in daily use, and it matters less if you only use AI occasionally or can easily adjust. It can cost time to retune and test after a change, while version pinning can save that time by keeping the behavior steady.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Worth asking any AI-dependent business how they handle version changes from their model provider; the absence of a version-pinning strategy is a real operational vulnerability, not a hypothetical one.",
                     "audience": "journalist"
                 },
@@ -19073,6 +19233,14 @@
                     "audience": "child"
                 },
                 {
+                    "body": "P(doom) is a person's stated probability that AI causes catastrophic outcomes, used to summarize their risk stance in one number. For decisions, money and risk, it can help you compare how worried someone is, but it is not a formal risk measure and whether the number means anything is part of the argument. The person stating it is accountable for that stance, not the number itself.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, p(doom) is a person's stated probability that AI causes catastrophic outcomes. It matters when you or your team are judging how much to worry about AI risk, and it does not matter as a direct measure for daily operations. It can cost time when people argue about whether the number means anything, and it does not save time by itself.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Report a stated P(doom) figure alongside how the person arrived at it if possible; the bare number without context can misleadingly imply more precision or shared methodology than actually exists across different speakers.",
                     "audience": "journalist"
                 },
@@ -19120,6 +19288,14 @@
                 {
                     "body": "A famous thought experiment: imagine an AI told to make as many paperclips as possible, and it takes the goal so literally that it uses up everything, even things people need, just to make more paperclips. It shows how a harmless-sounding goal can go very wrong.",
                     "audience": "child"
+                },
+                {
+                    "body": "The paperclip maximizer is a thought experiment about an AI that is told to make paperclips and then uses every resource to do so, which shows how a goal can be misaligned with what people actually want. For decisions, money and risk, it means a system can pursue its metric at the expense of everything else even with no malice, so leaders should ask who owns the goal, what the metric ignores, and who is accountable when the system optimizes too narrowly.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, the paperclip maximizer is a reminder that an AI or automated system can chase one measure and use up time and resources that the business needs elsewhere. It matters when the system's metric is not the same as the outcome the business wants, and it does not matter when the metric and the wanted outcome are the same. In time terms, the risk is spending time on the metric and then more time on the things it pushed aside.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "A useful, well-established reference for explaining alignment risk to a general audience, and worth using accurately: the point is about literal goal specification going wrong, not about AI developing malicious intent.",
@@ -21498,6 +21674,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "A model router sends each request to the cheapest model that can handle it, and only sends harder requests to a more powerful model. For a company with five to fifty staff, this matters when you use AI for many simple, routine tasks, because those can go to a cheaper model. It does not matter much if you rarely use AI or if your requests are always hard, and it is about saving money on routine work, not about saving time.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Worth implementing for any application with a meaningful volume of simple, routine requests mixed with occasional complex ones; a well-tuned router can substantially cut cost with minimal quality impact, though the routing logic itself, deciding what counts as \"simple,\" needs careful design and testing.",
                     "audience": "developer"
                 },
@@ -21549,6 +21729,10 @@
                 {
                     "body": "The hardware basis of the AI PC and on-device assistant wave; understand this as the enabling hardware trend behind the current push toward on-device AI features in consumer devices, which matters for evaluating whether a \"local AI\" product claim is genuinely differentiated or hardware-dependent marketing.",
                     "audience": "executive"
+                },
+                {
+                    "body": "An NPU is a chip inside a laptop or similar device that runs AI math locally. For a small company, it matters when staff use on-device AI features such as live transcription, because those tasks can run without the device working as hard. It does not matter much if your team rarely uses those features or uses AI tools that run elsewhere, and it tends to save time only on the local AI tasks it handles, not on general work.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Check whether your target device has a capable NPU and whether your model or framework can actually take advantage of it before assuming on-device inference will be efficient; not all local model runtimes are optimized to use NPU hardware effectively yet, which varies by platform.",
@@ -21708,6 +21892,10 @@
                 {
                     "body": "A behind-the-scenes technical improvement that directly affects how much AI serving capacity you get from a given amount of hardware; worth confirming your inference provider or self-hosted stack uses modern techniques like this one, since the efficiency gain is substantial.",
                     "audience": "executive"
+                },
+                {
+                    "body": "Paged Attention is a memory-management method that stores an AI's session memory in separate blocks instead of one continuous block, similar to how a computer operating system manages memory. For a small business, it matters if you run your own AI service that many staff or customers use at the same time, because it lets the same hardware handle more sessions at once and cuts wasted memory. It does not matter much if you only use AI tools occasionally or through a vendor, and it tends to save time by avoiding memory waste and fitting more sessions into the same hardware.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "It cut serving memory waste dramatically and underpins modern high-throughput inference engines; if self-hosting model serving infrastructure, use an inference engine that implements this technique, since the memory efficiency gain translates directly into meaningfully higher request throughput on the same hardware.",
@@ -24572,6 +24760,14 @@
                     "audience": "child"
                 },
                 {
+                    "body": "An optimizer is the algorithm that updates a model's internal settings during training. The choice of optimizer affects how fast training runs, how stable it is, and the final quality of the model, so it can change time, cost, and risk. The technical team that owns model training is accountable for this choice, and AdamW is a common default in transformer training.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, the optimizer is a technical choice made by whoever builds or trains your AI models, not a daily business decision. It matters when you are training or fine-tuning a model, because it affects speed, stability, and final quality, and it does not matter when you are only using ready-made AI tools. It tends to cost or save time in model training, and AdamW is a common default in transformer training.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "AdamW is the standard, well-tested default for training modern transformer models; deviating from it requires a specific, well-justified reason, since it has proven reliable across an enormous range of model architectures and scales in practice.",
                     "audience": "developer"
                 },
@@ -24623,6 +24819,14 @@
                 {
                     "body": "When an AI does really well on the exact examples it studied but performs poorly on new, similar examples it has not seen before, because it basically memorized specific quirks and noise in its training material instead of learning the actual general pattern underneath.",
                     "audience": "child"
+                },
+                {
+                    "body": "Overfitting means a model looks good on the data it learned from but performs poorly on new data because it memorized noise instead of the real pattern. For decisions, this creates false confidence, so money and risk can be misjudged if you trust the training results alone. Accountability sits with whoever approves using the model, and they should ask for evidence on data the model has not seen.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a small company, overfitting means an AI tool may seem accurate on the examples it was built from but then make poor calls on new customers or jobs. It matters when you use the tool on new work, and it matters less when you are only reviewing past results. It tends to cost time when bad outputs on new work have to be checked or corrected, and checking performance on data the model has not seen can save that time.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Always evaluate on a held-out validation set distinct from training data to detect overfitting; a model that looks impressively accurate on training data alone tells you very little about how it will actually perform on new, unseen inputs.",
@@ -24678,6 +24882,14 @@
                     "audience": "child"
                 },
                 {
+                    "body": "Parameter count is the headline size number for a model, counting the internal learned variables, weights and biases that store what it knows. It helps you compare models at sizes such as 7, 70, or 400 plus billion parameters, but it is only one of three scaling inputs, so it does not by itself tell you capability, cost, or risk. The person or team choosing the model is accountable for explaining why that size fits the job and for checking the other scaling inputs.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, parameter count is a size label for an AI model, not something you use directly in daily work. It matters when you compare models at different sizes, such as 7, 70, or 400 plus billion parameters, because that number is the headline size. It does not matter on its own for most choices, because it is only one of three scaling inputs, and it does not directly measure time saved or cost.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Do not treat parameter count as a sufficient proxy for capability when evaluating models; a smaller model trained on more data or with better data curation can genuinely outperform a larger model trained less carefully, so test actual task performance rather than relying on parameter count alone.",
                     "audience": "developer"
                 },
@@ -24731,6 +24943,14 @@
                     "audience": "child"
                 },
                 {
+                    "body": "PEFT means adapting a large model by training only a small fraction of its weights instead of the whole model. For decisions and money, it matters because you can choose a PEFT method to tune a large model and adaptation no longer requires frontier budgets. For risk and accountability, the change is limited to a small fraction of weights, and the person who chooses the method and approves the tuned model owns that choice.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, PEFT means you can tune a large model by training only a small fraction of its weights. It matters when you need to adapt a large model and want to do it on one workstation, and it does not matter when you are not tuning a large model. It tends to save the time of training all weights and avoids frontier budgets, because only a small fraction is trained.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Default to a PEFT method rather than full fine-tuning whenever adapting a large pretrained model, unless you have a specific reason requiring full parameter updates; the compute and storage savings are substantial and the quality gap versus full fine-tuning is often small for many practical tasks.",
                     "audience": "developer"
                 },
@@ -24782,6 +25002,14 @@
                 {
                     "body": "Everything done to shape an AI's behavior after its first huge round of learning: teaching it to follow instructions, teaching it what kinds of answers people prefer, and teaching it safety rules. This is where a raw, unshaped AI gets turned into something actually usable and well-behaved.",
                     "audience": "child"
+                },
+                {
+                    "body": "Post-training is all tuning after pre-training that shapes behavior, including instruction tuning, preference optimization, and safety training. For decisions and money, it shapes how helpful or refusing a model is, affects risk and whether the model is deployable, and is where an increasing share of capability gains now comes from. The people who approve the tuning choices and the deployment are accountable for the resulting behavior.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "Post-training is the tuning after pre-training that shapes behavior, including instruction tuning, preference optimization, and safety training. For a company with five to fifty staff, it matters when you need a raw base model turned into a deployable assistant that follows instructions and applies refusal policy, and it does not matter if you use an already deployable assistant or do not tune models yourself. It tends to cost time in the tuning work and can save time by making the assistant more helpful and deployable.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "Understand that a model's behavior, helpfulness, refusal patterns, tone, is shaped substantially by post-training decisions the provider made, which are largely opaque to you as a user of the API; behavioral quirks often trace back to post-training choices rather than to the underlying pretrained capability.",
@@ -26904,6 +27132,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "For a small business, this means that if you use a high-risk AI system, you have to keep watching how it works after you start using it and feed what you find back into your risk management. It matters when your AI is high-risk and already deployed, and it does not apply to AI that is not high-risk or not yet in use. In practice it costs ongoing staff time to collect and review performance data and to handle any model update and refreshed conformity assessment that the findings trigger.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Build active monitoring processes with a genuine, documented feedback loop back into the risk-management system, not merely passive logging; this specific obligation requires demonstrable evidence that post-deployment findings actually inform and update ongoing risk management, not just that data is being collected.",
                     "audience": "ciso"
                 },
@@ -27901,6 +28133,10 @@
                 {
                     "body": "Calculated as net completed output value divided by total labor hours across generation, review, correction, and release. A rising ratio means AI is producing more usable value per labor hour; a flat one means activity without economic change; a declining one means correction debt may be exceeding visible time savings. The discipline: do not scale what you cannot measure.",
                     "audience": "executive"
+                },
+                {
+                    "body": "For a small business, NEYR means checking whether AI gives you more finished, usable work for each hour your team spends, including the time to create, review, fix, and release the work. It matters when you are deciding whether to keep or expand an AI tool in a regular workflow, because extra review and correction can cancel out faster drafting. It does not matter much for single tasks or work you do not reuse, and it can either save time by reducing total effort or cost time by creating rework.",
+                    "audience": "small-business"
                 },
                 {
                     "body": "A more rigorous efficiency signal than headline \"hours saved\" claims, since it nets out the review and correction time those claims typically omit; ask a portfolio company for this ratio rather than accepting an unaudited time-savings figure.",
@@ -29411,6 +29647,20 @@
             "uid": "8a3b8359",
             "slug": "output-validation",
             "term": "Output Validation",
+            "lenses": [
+                {
+                    "body": "Output validation is like a parent checking your homework before you hand it in. The computer makes an answer, and a checker looks at it to see if it follows the rules before anyone uses it. If the answer is wrong, the checker stops it so it does not become a wrong action.",
+                    "audience": "child"
+                },
+                {
+                    "body": "Output validation means checking what an AI model or agent produces against rules, a schema, or a second system before it is acted on or shown. It is a control point, not a way to make the model more accurate, so it makes failures visible while they can still be caught. For decisions, money, and risk, it can stop a wrong answer from becoming a wrong action, and accountability sits with whoever owns that control point between generation and execution.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, output validation means putting a check between what an AI tool produces and what your business does with it. It matters when the output is acted on or shown without a person catching errors first, and it matters less when a person already reviews everything before use. The check can take time to set up or run, and it can save time by catching a wrong answer before it becomes a wrong action.",
+                    "audience": "small-business"
+                }
+            ],
             "example": "Rejecting a generated database query that does not parse or touches a table outside the agent's scope, before it reaches the database.",
             "related": [
                 {
@@ -29445,6 +29695,20 @@
             "uid": "5dee4b13",
             "slug": "personalization",
             "term": "Personalization",
+            "lenses": [
+                {
+                    "body": "Personalization is when a computer remembers what you like and uses it to change what it shows you. It is like a friend who remembers you like blue crayons and hands you blue ones next time. The computer keeps a note about you, so if you ask it to forget you, that note has to be erased too.",
+                    "audience": "child"
+                },
+                {
+                    "body": "Personalization means a system adapts its output to one person using that person's history, preferences, or context. In AI this usually works by looking up stored user data, so the personalization store is a record about the user and falls under privacy rules for retention, access, and erasure. Decisions about money and risk should treat that store as part of privacy work, with clear accountability for who maintains it and who answers deletion requests.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, personalization means the tools you use can remember a customer's or employee's preferences and apply them later. It matters when that memory saves people from repeating themselves, and it does not matter when the work is a single task or the preference is not useful. It can save time by recalling formats or choices, but it also costs time to keep the stored data correct and to handle access and deletion requests.",
+                    "audience": "small-business"
+                }
+            ],
             "example": "An assistant recalling a user's preferred report format from earlier sessions, held in a profile store that a deletion request must also reach.",
             "related": [
                 {
@@ -29903,6 +30167,20 @@
             "uid": "7b225d2e",
             "slug": "opentelemetry",
             "term": "OpenTelemetry (OTel)",
+            "lenses": [
+                {
+                    "body": "OpenTelemetry is a common way for computer programs to keep notes about what they are doing. Because the notes follow one shared format, you can switch to a different helper that reads the notes without changing the program. It is like using the same kind of notebook so any teacher can read your work.",
+                    "audience": "child"
+                },
+                {
+                    "body": "OpenTelemetry is a vendor neutral standard for sending traces, metrics, and logs from software to monitoring tools. For decisions and money, it means you can change observability vendors by changing configuration instead of doing an instrumentation project again, which lowers the cost and risk of being stuck with one vendor. The application owner is accountable for instrumenting once, and the chosen backend provider is accountable for the compatible backend it supplies.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "OpenTelemetry is a shared standard for sending traces, metrics, and logs from your software to monitoring tools. For a small company, it matters when you want to change monitoring tools without asking developers to instrument the software again, and it does not matter much if you are happy with one tool and do not plan to switch. It can save time by making a switch a configuration change instead of an instrumentation project, though you still need someone to do the initial instrumentation.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "Formed in 2019 from the merger of the OpenTracing and OpenCensus projects; a Cloud Native Computing Foundation project.",
             "example": "An agent emitting OTel spans for each model call and tool invocation, routed to a self-hosted collector today and a hosted platform tomorrow with no code change.",
             "related": [
@@ -30022,6 +30300,20 @@
             "uid": "25d5c735",
             "slug": "openinference",
             "term": "OpenInference",
+            "lenses": [
+                {
+                    "body": "OpenInference is a shared way to label the parts of an AI's work, like a recipe card that says which line is the question, which line is the answer, and which line is looking something up. It helps different computer programs read the same record in the same way, so they do not get confused.",
+                    "audience": "child"
+                },
+                {
+                    "body": "OpenInference is a shared labeling convention for AI work inside technical traces, so prompts, completions, retrievals, tool calls and token counts mean the same thing across tools. For decisions and risk, it helps different tools read the same trace the same way, which reduces the chance that two tools describe the same AI activity differently. It does not set who is accountable or what the AI costs, so those remain with the teams that own the AI system and its monitoring.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, OpenInference matters when you use AI tools that need to be watched or compared, because it makes prompts, answers, retrievals, tool calls and token counts show up in a standard way. It does not matter much if you only use one simple AI tool and never look at its traces. It can save time when you connect more than one compatible platform, because the same trace can be read the same way instead of being treated as an opaque function call.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "Developed by Arize AI as a set of OpenTelemetry semantic conventions for LLM applications.",
             "example": "Instrumenting a RAG pipeline with OpenInference so any compatible platform can show the retrieved documents as retrieval spans rather than opaque function calls.",
             "related": [
@@ -30653,6 +30945,20 @@
             "uid": "2beb18c0",
             "slug": "n-1-redundancy",
             "term": "N+1 Redundancy",
+            "lenses": [
+                {
+                    "body": "Imagine you need one fan to keep a room cool, and you keep a spare fan ready. If the first fan stops, the spare fan starts so the room stays cool. That is N+1 redundancy: one extra backup beyond what you need.",
+                    "audience": "child"
+                },
+                {
+                    "body": "N+1 redundancy means having one more backup unit than the minimum needed to keep a service running. If one unit fails, the extra unit takes over so service continues without interruption. For decisions, it is a choice about how much interruption risk to accept, the money question is whether the extra unit is worth it, and accountability sits with the person who owns that choice.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, N+1 redundancy means having one more backup unit than you need for something that must keep running. It matters when a single failure would stop that service, and it may not matter when a short interruption is acceptable. It tends to cost the time and money to keep an extra unit ready, and it can save the time lost when a failure would otherwise stop service.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "Standard industry term used in data centre engineering.",
             "example": "A data centre with N+1 cooling redundancy has enough extra air conditioners that one can break and the servers still stay cool.",
             "related": [
@@ -31581,6 +31887,20 @@
             "uid": "2ab8f282",
             "slug": "neocloud",
             "term": "Neocloud",
+            "lenses": [
+                {
+                    "body": "A neocloud is a company that rents out very strong computer parts for computers that are learning to do hard jobs. It is like renting a very fast bike for a race instead of buying one, because you only need it for a big job.",
+                    "audience": "child"
+                },
+                {
+                    "body": "A neocloud rents out powerful AI hardware, such as graphics processing units, to businesses that need to train or run AI models. For decisions and money, it means you can rent AI computing power instead of buying and running that hardware yourself, so the cost is a rental cost. For risk and accountability, you depend on the neocloud for the hardware, and the neocloud is the provider responsible for renting it to you.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, a neocloud is a place to rent powerful AI hardware when you need to train or run AI models but do not want to own that hardware. It matters when your work needs that kind of AI computing power, and it does not matter when you do not use AI models or can do the work without it. In time, it can save the work of buying and running your own AI hardware, and it costs the rental fee for the hardware you use.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "The term combines the prefix neo, meaning new, with cloud, reflecting a wave of cloud providers created specifically for AI workloads rather than general computing.",
             "example": "A neocloud operator might lease thousands of Nvidia chips to a startup that is building a large language model.",
             "related": [
@@ -31799,6 +32119,20 @@
             "uid": "85edeae7",
             "slug": "pfas",
             "term": "PFAS",
+            "lenses": [
+                {
+                    "body": "PFAS are a big family of man-made chemicals. Think of them like a family with many members who all share one special feature. In a computer building, if a cooling liquid from this family leaks, the insurance will not pay for the cleanup.",
+                    "audience": "child"
+                },
+                {
+                    "body": "PFAS is a large group of synthetic chemicals, and an absolute PFAS structural exclusion in data centre insurance means the policy will not cover any substance in that group, including engineered cooling fluids, whatever the brand. For decisions, money and risk, treat any PFAS-containing coolant as uninsured, because a leak means the operator pays for cleanup out of pocket. The accountable party is the operator, so leadership must decide who owns that financial exposure.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, PFAS matters if it runs or insures a data centre that uses a PFAS-containing cooling fluid, because an absolute PFAS structural exclusion means a leak cleanup is not covered and must be paid for out of pocket. It does not matter if the company does not run such a data centre or does not use those fluids, so it can stay outside normal planning. When it matters, it costs staff time and money to handle the cleanup without insurance, and it saves no time through the policy because the exclusion removes that cover.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "The acronym PFAS became widely used by environmental regulators in the early 2000s to group thousands of fluorinated compounds under one label.",
             "example": "If a data centre uses a dielectric coolant that contains PFAS and it leaks, the insurance policy's absolute PFAS structural exclusion means the operator must pay for the cleanup out of pocket.",
             "related": [
@@ -32391,6 +32725,20 @@
             "uid": "3138660f",
             "slug": "per-occurrence-limit",
             "term": "Per Occurrence Limit",
+            "lenses": [
+                {
+                    "body": "A per occurrence limit is the most an insurance helper will pay for one single accident, like one fire. Imagine a rule for a broken toy: if the same accident breaks more toys, the helper still pays only that one amount, even if fixing everything costs more. The helper also has a separate total for the whole year.",
+                    "audience": "child"
+                },
+                {
+                    "body": "A per occurrence limit is the most the policy pays for all losses from one event, such as one fire or one power outage, and it is separate from the total the policy pays over a year. For decisions, it caps the money available from one incident, so any damage above the limit stays as your risk and your cost. The business remains accountable for covering that excess, even if the total damage from the event is higher.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, this is the most the policy pays for one event, like one fire or one power outage, and it is separate from the yearly total. It matters when one event could damage several things at once, such as several GPU clusters in a data centre fire, because the payout stops at the limit even if total damage is higher, and it matters less for small, separate incidents that stay under the limit. In time terms, it can save time by making the payout rule clear, and it can cost time if you must cover costs above the limit yourself.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "Standard industry term",
             "example": "If a data centre fire damages several GPU clusters at once, the per occurrence limit caps the payout for that one fire even if the total damage is higher.",
             "related": [
@@ -32959,6 +33307,20 @@
             "uid": "26b6f491",
             "slug": "parametric-insurance",
             "term": "Parametric Insurance",
+            "lenses": [
+                {
+                    "body": "Parametric insurance is like a deal that pays automatically when something clear happens, such as your AI helper being broken for more than four hours in one day. It is like a vending machine that gives you a snack as soon as you put in the right coin, instead of a person checking how hungry you are.",
+                    "audience": "child"
+                },
+                {
+                    "body": "Parametric insurance pays a set amount when a defined measurable event happens, such as an AI system outage, a data breach, or a model missing a performance threshold, instead of waiting for an adjuster to calculate actual losses. For decisions, it can make the trigger and payout clearer in advance, which affects money and risk planning, but the payout is tied to the event rather than to actual losses. The people who choose the trigger and the insurer who confirms the event are the ones accountable for whether the payment happens as agreed.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, parametric insurance means a set payment, such as $50,000, arrives when a clear event happens, such as an AI chatbot being down for more than four hours in a single day, instead of waiting for an adjuster to calculate actual losses. It matters when that kind of outage would disrupt the business, and it matters less when the business does not depend on such systems or the event would not cause real harm. It can save the time of a loss calculation, and the cost is the amount paid for the coverage.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "Standard industry term, first used in the 1990s for natural disaster coverage and later adapted to technology risks.",
             "example": "A company buys parametric insurance that pays $50,000 if its AI chatbot is down for more than four hours in a single day.",
             "related": [
@@ -33253,6 +33615,20 @@
             "uid": "8a73d2df",
             "slug": "pollution-exclusion",
             "term": "Pollution Exclusion",
+            "lenses": [
+                {
+                    "body": "A pollution exclusion is a rule in an insurance plan that says the plan will not pay if harmful stuff like chemicals or smoke gets out and hurts people or things. It is like a club rule that says you are not covered if you spill paint on the carpet, unless you buy a special extra pass. If a battery fire sends bad smoke or dirty water into the air or ground, the insurance may not pay to clean it up.",
+                    "audience": "child"
+                },
+                {
+                    "body": "A pollution exclusion is a clause in an insurance policy that removes or limits coverage for harm caused by releases of harmful substances such as chemicals, smoke, refrigerants, or cooling fluids. In decisions, it means cleanup costs, property damage, and injury claims tied to those releases will not be paid unless separate environmental coverage is bought. The people who buy and approve the policy are accountable for accepting that uncovered risk, so they need to decide whether to buy separate coverage or carry the exposure.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, this clause matters if the work involves harmful substances such as chemicals, smoke, refrigerants, or cooling fluids, because a release could lead to cleanup costs, property damage, or injury claims. It matters less if the company does not handle those substances. It can save time by making clear early that the policy will not pay for those claims, but it can cost time if the company has to buy separate environmental coverage or handle the cleanup without insurance.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "Standard industry term.",
             "example": "A battery fire at a data center could release hydrogen fluoride, but an absolute pollution exclusion would bar coverage for offsite smoke and contaminated firefighting water runoff.",
             "related": [
@@ -34039,6 +34415,20 @@
             "uid": "45ce5830",
             "slug": "notice-prejudice",
             "term": "Notice Prejudice",
+            "lenses": [
+                {
+                    "body": "Notice prejudice is when an insurance company says no to paying for a later problem because you did not tell them about an early warning. Imagine your bike has a warning light that blinks before the tire goes flat, and if you do not tell a grown-up when it blinks, the insurance person might say you should have told us then, so we will not pay.",
+                    "audience": "child"
+                },
+                {
+                    "body": "Notice prejudice is an insurer's argument that a policyholder failed to report an early AI warning, such as a predictive maintenance alert, and that this late notice harmed the insurer's ability to respond, so the later loss should not be covered. For decisions, it means early warning data can become a claims and risk issue, not just an operations tool, and money may depend on whether and when the warning was escalated. Accountability can sit with whoever was responsible for acting on or reporting the alert, so reporting duties and evidence should be clear before a loss.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, notice prejudice means an insurer may refuse a later claim if your AI monitoring logged an early warning, like a predictive maintenance alert, and no one told the insurer in time. It matters when you rely on AI alerts for equipment or property and a loss follows, because the claim can turn on whether you reported the warning, not only on the damage. It does not matter if there was no warning or no duty to report it, and the time cost is staff time to watch and pass on alerts, while the time saved is not having to argue later about when the warning was known.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "Standard insurance term adapted to disputes over AI generated predictive alerts.",
             "example": "A carrier denies a claim for a ruptured pipe because the AI system logged a cavitation warning fourteen days earlier, saying the operator's failure to notify at that time prejudiced the insurer.",
             "related": [
@@ -34181,6 +34571,20 @@
             "uid": "bd3c9ac8",
             "slug": "naic-model-bulletin",
             "term": "NAIC Model Bulletin",
+            "lenses": [
+                {
+                    "body": "The NAIC Model Bulletin is like a rulebook that a group of insurance leaders writes for insurance companies. It tells them how to use smart computer helpers in jobs like deciding who gets insurance, paying claims, and spotting cheating. Before an insurance worker starts using a new smart computer helper, they check this rulebook to make sure they follow the rules.",
+                    "audience": "child"
+                },
+                {
+                    "body": "The NAIC Model Bulletin is guidance from insurance regulators that tells insurers how to govern their use of AI in underwriting, claims handling, and fraud detection. Many US states have adopted it as the main rulebook, so decisions about AI tools in those areas should follow it. The insurer is accountable for governing that AI use, and the bulletin shapes how risk and money are managed in those core insurance operations.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "If your small business is not an insurer, this bulletin is not a direct rule you follow. It matters when your insurer uses AI in underwriting, claims handling, or fraud detection, because that insurer is expected to follow the bulletin. If you are a small insurer with five to fifty staff, it means checking the bulletin before rolling out an AI tool, which can add review time and does not by itself save time.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "It comes from the National Association of Insurance Commissioners, the group of US state insurance regulators.",
             "example": "A claims manager checks the NAIC Model Bulletin before rolling out a new AI tool that triages incoming claims.",
             "related": [
@@ -34929,6 +35333,20 @@
             "uid": "1cda4f36",
             "slug": "ot-ransomware",
             "term": "OT Ransomware",
+            "lenses": [
+                {
+                    "body": "OT ransomware is bad software that locks the controls for big machines, like the cooling, power and building systems in a place full of computers. It is a bit like someone putting a lock on the thermostat and hiding the key until you pay them. If the cooling stops, the computers can get too hot, so grown ups may have only minutes to turn them off.",
+                    "audience": "child"
+                },
+                {
+                    "body": "OT ransomware is malicious software that locks the operational technology systems controlling physical equipment such as cooling, power and building management in a data centre, and demands payment to restore them. For decisions, money and risk, it means leaders may face a choice about paying, restoring physical controls and preventing tenant servers from overheating. Accountability sits with the people responsible for the data centre's operations and security.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, OT ransomware matters if the company runs or depends on physical equipment like cooling, power or building management in a data centre. If the company only uses ordinary office computers, this specific threat is less likely to be its main concern. When it does matter, it tends to cost time through emergency shutdowns and recovery, and it does not save time in the example.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "Standard industry term combining operational technology with ransomware.",
             "example": "A data centre suffered OT ransomware that seized its cooling controls, so staff had only minutes to shut down tenant servers before they overheated.",
             "related": [
@@ -36110,6 +36528,10 @@
                     "audience": "executive"
                 },
                 {
+                    "body": "Perplexity AI is a tool that answers a question by searching the web and writing a response with numbered links to its sources. For a company with five to fifty staff, it matters when you need a quick answer with citations, such as asking which states passed AI laws this year and following the links to the bills. It may save time by putting an answer and its sources in one place, but it does not replace checking those sources yourself, and it is not needed when you already know where to look.",
+                    "audience": "small-business"
+                },
+                {
                     "body": "Perplexity offers an API that returns answers grounded in live web search with citations, useful when an application needs current information rather than a model's training data. Results depend on what the search step retrieves, so quality varies with the question.",
                     "audience": "developer"
                 },
@@ -36636,6 +37058,20 @@
             "uid": "d21b652d",
             "slug": "pgvector",
             "term": "pgvector",
+            "lenses": [
+                {
+                    "body": "pgvector is a helper for a computer filing cabinet called PostgreSQL. It lets the cabinet store lists of numbers and find the lists that are most alike. It is like a librarian who finds books about the same idea and follows the same library rules as everyone else.",
+                    "audience": "child"
+                },
+                {
+                    "body": "pgvector means a PostgreSQL database can store and search embeddings next to the rest of an application's data, using the same filters and permissions. For decisions, it lets you consider meaning based search inside the database you already use, so cost and risk depend on that database setup. The accountable owner is the team that owns the database and its permissions.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "For a company with five to fifty staff, pgvector means you can add search by meaning to a PostgreSQL database and keep it with your other data, using the same filters and permissions. It matters when staff need to find items closest in meaning, such as help articles for a customer question, and it does not matter if you have no embeddings or no need for that kind of search. It can save time by using one SQL query instead of searching elsewhere, but the definition does not give a specific cost or time saving.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "An open source extension for PostgreSQL.",
             "example": "A support assistant finds the five help articles closest in meaning to a customer's question with one SQL query.",
             "related": [
@@ -36890,7 +37326,7 @@
         "schema": "v2 (term, slug, category, definition, example, origin)",
         "generated": "2026-07-23"
     },
-    "built_at": "2026-10-01T18:22:44-05:00",
+    "built_at": "2026-10-01T19:17:42-05:00",
     "page_uid": "76dd9a8f",
     "readings": {
         "/ai-glossary/aime/": {
@@ -39920,7 +40356,7 @@
         }
     },
     "converted": "2026-07-28",
-    "generated": "2026-10-01",
+    "generated": "2026-10-02",
     "categories": [
         {
             "name": "Agents",
