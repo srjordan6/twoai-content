@@ -5,54 +5,54 @@
     "slug": "jax",
     "facts": {
         "repo": "jax-ml/jax",
-        "stars": 36370,
+        "stars": 36371,
         "licence": "Apache-2.0",
         "archived": false,
         "language": "Python",
         "repo_url": "https://github.com/jax-ml/jax",
-        "last_push": "2026-10-02T09:25:11Z",
+        "last_push": "2026-10-02T14:23:01Z",
         "description": "Composable transformations of Python+NumPy programs: differentiate, vectorize, JIT to GPU/TPU, and more",
         "official_site": "https://docs.jax.dev/en/latest/"
     },
     "model": "ollama:deepseek-v4.1-flash",
     "shape": "lang-profile",
-    "title": "JAX: Composable Transformations for AI and Numerical Computing",
-    "answer": "JAX is a Python library for composable transformations of NumPy-style programs, including automatic differentiation, vectorization, and just-in-time compilation to GPU and TPU. It sits below model code as a numerical and transformation layer for AI work, with documented support for distributed arrays, data loading, precision control, and experimental fault tolerance. The one thing to know before choosing it is that its defaults favor speed over exact numerics, and its distributed fault tolerance is experimental, so production use demands care with precision settings and sharding.",
-    "built_at": "2026-10-02T06:47:18-05:00",
+    "title": "JAX: Composable Transformations for Python and NumPy in AI",
+    "answer": "JAX is an Apache-2.0 Python library from the jax-ml project that composes NumPy-style programs with automatic differentiation, vectorization and JIT compilation to GPU and TPU. It sits at the numerical computation layer of AI work, underneath model code and training loops. The one thing to know before adopting it is that JAX leans toward speed by default, so float32 dot products may run at reduced internal precision unless you name a dot algorithm explicitly.",
+    "built_at": "2026-10-02T15:32:34-05:00",
     "category": "technology-and-core-infrastructure",
     "hub_name": "Programming Languages and Frameworks",
     "page_uid": "1722316f",
     "sections": [
         {
-            "body": "JAX is a Python library maintained in the jax-ml/jax repository under the Apache-2.0 licence, with official documentation at docs.jax.dev. Its own description calls it composable transformations of Python and NumPy programs: differentiate, vectorize, JIT to GPU and TPU, and more. That places it in the numerical computing and program transformation layer of the AI stack, beneath model definitions and training loops. It provides jax.Array, sharding, automatic differentiation, and accelerator compilation rather than a model zoo or a serving product. The facts and the pages read do not state when JAX first appeared, and they do not name a corporate owner beyond the repository.",
+            "body": "JAX is a Python library maintained under the jax-ml organization on GitHub, licensed Apache-2.0, with roughly 36,000 stars and a last push in October 2026. Its own description calls it composable transformations of Python and NumPy programs: differentiate, vectorize, JIT to GPU and TPU, and more. It therefore occupies the numerical and transformation layer of the AI stack, the level where array math, gradients and compilation live, rather than the level of ready-made model classes or training loops. The official documentation lives at docs.jax.dev, and the site presents it as a set of guides numbered by depth, from 101 material on grad and vmap up through 201, 301 and 501 pages on precision, autodiff recipes, distributed data loading and fault tolerance.",
             "heading": "What it is and where it sits in AI work"
         },
         {
-            "body": "The documented jobs include automatic differentiation through jax.grad, jacfwd, jacrev, Hessian-vector products, custom JVP and VJP rules, and stop_gradient; vectorization; just-in-time compilation to GPU and TPU; distributed data loading for multi-host or multi-process data-parallel and model-parallel workloads; and precision control for matrix multiplications on accelerators. It is strongest where a team needs composable transformations over NumPy-like code, explicit control of matmul precision, and sharded arrays across many devices. The pages read do not cover agent frameworks, model serving, or edge deployment, so those uses are not established by this material.",
+            "body": "The documented work spans training and inference math, automatic differentiation, distributed data loading and precision control. The cookbook shows Hessian-vector products, full Jacobians through jacfwd and jacrev, stop_gradient for targets in TD(0) reinforcement learning, straight-through rounding, and custom JVPs and VJPs. The precision page covers matrix multiplication on accelerators, including TF32 on NVIDIA tensor cores, bfloat16 passes on TPU and float8 modes. The distributed data loading page covers multi-host and multi-process training, including loading model weights from checkpoints and spatially sharded images. JAX is strongest where you want to express a numerical program once and have it differentiated, vectorized and compiled across GPU and TPU, and where you are willing to control precision and sharding yourself.",
             "heading": "What it is used for and where it is strongest"
         },
         {
-            "body": "The official site is layered from 101 material on jax.grad and vmap through 201 precision controls, a 301 autodiff cookbook, and 501 pages on distributed data loading and fault tolerance. A beginner needs Python and NumPy familiarity first, because JAX is built as transformations of Python and NumPy programs. The cookbook assumes comfort with Jacobians, Hessians, forward-mode and reverse-mode differentiation, and the precision page assumes knowledge of dtypes, matmul, and accelerator hardware. Distributed work adds systems concepts such as processes, devices, sharding, heartbeats, and coordination services. The site offers a cookbook and reference pages, but the facts do not describe a separate beginner course or certification.",
+            "body": "The documentation is layered, and the 101 material on jax.grad, argnums, value_and_grad and finite-difference checks is the stated entry point, with the cookbook explicitly starting one level up at Hessian-vector products and the jvp and vjp machinery. That implies comfort with NumPy-style array programming and with calculus ideas such as Jacobians and tangent spaces, since the cookbook defines the Jacobian as a linear map between tangent spaces. Systems knowledge matters for the distributed pages, which assume familiarity with multi-process execution, device assignment and sharding. The official site offers worked examples, jaxpr output, and debugging recipes, such as running once under jax.default_matmul_precision('highest') to rule out reduced-precision accumulation, but it does not present a beginner course in Python or linear algebra.",
             "heading": "How hard it is to learn and what you need first"
         },
         {
-            "body": "The repository has 36,370 stars and a last push on 2026-10-02, so the project is active. The pages read show integration with NumPy-style code, the XLA compiler through XLA_FLAGS, NVIDIA tensor cores, TPU bfloat16 paths, cuBLASLt fast accumulation, and multi-controller process coordination. They also show jax.lax, jax.custom_jvp, jax.custom_vjp, jax.distributed.initialize, jax.config, jax.Array, and Sharding as part of the public surface. The facts do not list named model libraries, pretrained model hubs, or third-party framework integrations, and they do not give contributor counts, forum activity, or commercial support options. Community evidence here is the active repository and the official documentation site.",
+            "body": "The facts show a repository with about 36,000 stars and an active push date, and the official documentation is organized as a coherent multi-page guide rather than scattered notes. The site documents integrations at the level of hardware and libraries rather than a model zoo: NVIDIA tensor cores and cuBLASLt fast-accumulation mode appear on the precision page, TPU bfloat16 behavior appears alongside it, and XLA flags and NCCL settings appear on the fault tolerance page. jax.lax, jax.custom_jvp and jax.custom_vjp are documented extension points. The site does not enumerate a catalogue of third-party model libraries or pretrained checkpoints, so claims about the wider ecosystem beyond these documented pieces are not settled by the material read.",
             "heading": "Ecosystem and community"
         },
         {
-            "body": "JAX supports quick experiments because NumPy-like code can be differentiated, vectorized, and compiled with small changes, and the 101 material covers the basics. It also targets production performance through JIT to GPU and TPU, sharded arrays, distributed data loading, and matmul precision presets that trade accuracy for speed. The cost is complexity and care. The precision page says JAX defaults lean toward speed, with float32 dot products sometimes computed in bfloat16 on TPU or TF32 on recent GPUs, so exact numerics require explicit settings. Distributed data loading is more efficient but more complex, and wrong shards can silently produce incorrect results. Fault tolerance is experimental, only fully on GPUs, and not enabled by default.",
+            "body": "JAX is built for both, but with a deliberate default toward speed. The precision page states that by default JAX leans toward speed, so float32 dot products may be computed with reduced-precision arithmetic internally, bfloat16 on TPU and TF32 on recent GPUs. That makes quick experiments fast, and it also means a prototype can silently differ from a strict float32 reference. Production control is available through named dot algorithm presets such as F32_F32_F32, BF16_BF16_F32 and the TF32 and float8 variants, through preferred_element_type to keep an f32 accumulator, through jax_default_matmul_precision as a context manager, config update or environment variable, and through fully custom jax.lax.DotAlgorithm specifications. The cost is that precision support is platform-dependent and checked at compile time, so requesting an algorithm a backend cannot provide is a compile-time error.",
             "heading": "Prototyping speed against production performance"
         },
         {
-            "body": "The facts show a maintained, widely starred repository, with 36,370 stars and a last push on 2026-10-02, and official documentation that covers GPU and TPU execution, distributed training, and precision control. That supports the view that JAX is a current tool for numerical and accelerator-heavy AI work, not a legacy choice. The pages read mention NVIDIA tensor cores, TPUs, multi-controller JAX, and distributed data loading, which are relevant to training and large-scale computation roles. The facts do not give adoption surveys, employer counts, or salary data, so they cannot settle how often JAX is required in job listings or whether it is a standard across industry. For a developer or student, the safe reading is that JAX skills fit accelerator and distributed numerical work, while the market size remains unstated here.",
+            "body": "The material read supports a picture of a current, actively developed library rather than a legacy one: the repository shows a 2026 push date, the documentation is maintained in numbered guide tiers, and the fault tolerance page describes experimental work on GPU-only recoverability. The site documents use in multi-controller distributed training across multiple machines, in accelerator matmul tuning, and in reinforcement learning updates, which are settings typical of research and large-scale training teams. It does not name specific companies, products or job markets, so any claim about which employers require JAX, or how large the hiring pool is, is not settled by these facts. For someone choosing what to learn, the honest reading is that JAX is a live and technically deep option whose documented strengths are transformation, compilation and distributed execution.",
             "heading": "Industry adoption and careers"
         },
         {
-            "body": "JAX is a Python library, and its description frames it as composable transformations of Python and NumPy programs, so it typically sits beside NumPy rather than replacing Python. It uses XLA as a compiler path to GPU and TPU, and the pages read refer to XLA_FLAGS, jaxpr intermediate representations, NVIDIA tensor cores, TPU bfloat16, and cuBLASLt. That is the polyglot pattern of a Python front end, a compiler and intermediate representation, and hardware-specific backends. The pages read do not describe integrations with PyTorch, TensorFlow, or other named AI frameworks, and the facts do not list a model library ecosystem. So the established fit is Python numerical code plus XLA plus accelerators, with other framework relationships left open.",
+            "body": "JAX is a Python library whose programs are described as Python plus NumPy, so it is typically used with the Python scientific stack and with NumPy-style array code rather than replacing it. The documented surface is jax.numpy for array operations, jax.lax for lower-level primitives such as stop_gradient and DotAlgorithm, jax.grad, jacfwd, jacrev, custom_jvp and custom_vjp for differentiation, and jax.distributed.initialize for multi-controller execution. It compiles through XLA to GPU and TPU, and the precision page references NVIDIA tensor cores and cuBLASLt, while the fault tolerance page references NCCL and XLA flags. That places it in the polyglot pattern where Python expresses the model and the numerical program, while compiled kernels and collective communication libraries do the heavy execution.",
             "heading": "How it fits beside the others"
         },
         {
-            "body": "The documented limits are significant. Multi-controller JAX is not fault tolerant by default, and if any process crashes the others intentionally crash too. Fault tolerance is experimental, currently only fully on GPUs, has rough edges, and is probably buggy. If process 0 fails, all processes terminate even with fate sharing disabled, because process 0 runs the coordination service. Distributed data loading can run without errors while producing incorrect results if shards land on the wrong devices. Precision support is platform-dependent and checked at compile time, so an unsupported algorithm is a compile-time error. The official material does not state a first release date, corporate governance, adoption numbers, or coverage of agents, serving, and edge deployment.",
+            "body": "The site is candid about several weaknesses. Fault tolerance is still experimental, currently only works fully on GPUs, has rough edges and is probably buggy, and multi-controller JAX is not fault tolerant by default: if any process crashes, the others intentionally crash too, and if process 0 fails, all processes terminate even with fate sharing disabled because process 0 runs the coordination service. Distributed data loading can run without errors while producing incorrect results if the wrong shards reach the wrong devices, since the computation has no way to know what the input should be. Precision support is platform-dependent and a mismatch is a compile-time error. The material read does not say how mature the float8 paths are in practice, how recoverability behaves beyond GPUs, or what the wider third-party ecosystem contains.",
             "heading": "Limits and open questions"
         }
     ],
@@ -64,8 +64,18 @@
         },
         {
             "kind": "framework",
+            "name": "autogen",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/60f558b0/"
+        },
+        {
+            "kind": "framework",
             "name": "crewAI",
             "path": "/ai-ecosystem/technology-and-core-infrastructure/52f2d4fc/"
+        },
+        {
+            "kind": "framework",
+            "name": "haystack",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/244d606e/"
         },
         {
             "kind": "framework",
@@ -86,6 +96,11 @@
             "kind": "framework",
             "name": "llama_index",
             "path": "/ai-ecosystem/technology-and-core-infrastructure/07b3602c/"
+        },
+        {
+            "kind": "framework",
+            "name": "semantic-kernel",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/7a5bc5c6/"
         },
         {
             "kind": "language",
@@ -146,5 +161,5 @@
     "subject_kind": "framework",
     "source_read_on": "2026-10-02",
     "site_pages_read": 60,
-    "refresh_every_days": 90
+    "refresh_every_days": 30
 }

@@ -5,62 +5,72 @@
     "slug": "ai",
     "facts": {
         "repo": "vercel/ai",
-        "stars": 27080,
+        "stars": 27088,
         "licence": "custom",
         "archived": false,
         "language": "TypeScript",
         "repo_url": "https://github.com/vercel/ai",
-        "last_push": "2026-10-01T23:30:29Z",
+        "last_push": "2026-10-02T10:48:04Z",
         "description": "The AI Toolkit for TypeScript. From the creators of Next.js, the AI SDK is a free open-source library for building AI-powered applications and agents ",
         "official_site": "https://ai-sdk.dev"
     },
     "model": "ollama:deepseek-v4.1-flash",
     "shape": "lang-profile",
-    "title": "AI SDK: The TypeScript Toolkit for AI Applications and Agents",
-    "answer": "AI SDK is a free open-source TypeScript library from Vercel, the creators of Next.js, for building AI-powered applications and agents. It sits at the application layer, giving TypeScript developers model-agnostic primitives for text and object generation, embeddings, reranking, speech, transcription, streaming, tools, middleware, telemetry, evaluation and harness-backed agents. The one thing to know before choosing it is that it targets TypeScript and Next.js teams that want provider flexibility and production telemetry, while some evaluation and agent APIs are explicitly experimental and may change in patch releases.",
-    "built_at": "2026-10-02T04:29:29-05:00",
+    "title": "AI SDK: The TypeScript Toolkit for Building AI Applications and Agents",
+    "answer": "The AI SDK is a free, open-source TypeScript library from the creators of Next.js for building AI-powered applications and agents. It sits at the application layer, giving developers a unified interface to language models, embeddings, speech, transcription, reranking, evaluation and agent harnesses. The one thing to know before adopting it: it is TypeScript-first and provider-agnostic, so it suits web and Node.js teams, while its evaluation and harness APIs are still marked experimental and may change in patch releases.",
+    "built_at": "2026-10-02T15:32:46-05:00",
     "category": "technology-and-core-infrastructure",
     "hub_name": "Programming Languages and Frameworks",
     "page_uid": "4c80ad91",
     "sections": [
         {
-            "body": "AI SDK is made by Vercel, the company behind Next.js, and is described on its repository as the AI Toolkit for TypeScript and a free open-source library for building AI-powered applications and agents. The facts record a custom licence, TypeScript as its language, 27,080 stars, and a last push on 1 October 2026. The official site at ai-sdk.dev was read on 2 October 2026. It sits at the application layer of the AI stack, above model providers, and gives TypeScript code a common interface for model calls, streaming, tools, agents, middleware, telemetry and evaluation. It is not a model training framework in the material read. The facts do not give a first release date, so when it first appeared is not settled here.",
+            "body": "The AI SDK is made by Vercel, the company behind Next.js, and lives in the vercel/ai repository under a custom licence. It is a free, open-source library for TypeScript, described as the AI Toolkit for TypeScript and aimed at building AI-powered applications and agents. It appeared in the AI stack at the application layer rather than the model or infrastructure layer: it does not train models, it calls them. Its core abstractions wrap language models, embeddings, speech generation, transcription, reranking and evaluation behind one interface, so application code can move between providers without being rewritten. The repository has been active recently, with a last push in October 2026 and roughly 27,000 stars, which indicates a widely watched project rather than a dormant one.",
             "heading": "What it is and where it sits in AI work"
         },
         {
-            "body": "The site documents concrete jobs across AI application work. Core calls cover text and object generation, embeddings, reranking, speech generation and transcription, in both streaming and non-streaming forms. Middleware wraps language models to add guardrails, retrieval augmented generation, caching and logging without tying the code to one provider. Agents appear through ToolLoopAgent and HarnessAgent, the latter backed by a harness adapter and a sandbox adapter, with generate and stream methods that return AI SDK compatible results. Evaluation is handled by experimental_evaluate against an evaluation model. It is strongest for TypeScript and Next.js teams that want one API across providers, plus telemetry and middleware for production concerns. The site does not claim it is best for model training or for non-TypeScript stacks.",
+            "body": "The SDK covers text and object generation, embeddings, reranking, speech generation, transcription, evaluation and agent execution. Its telemetry page shows that supported calls emit OpenTelemetry events by default, including streaming and non-streaming generation, embeddings, reranking and speech, which makes it a natural fit for teams that need observability in production. Middleware is a particular strength: wrapLanguageModel can add guardrails, retrieval, caching and logging in a model-agnostic way, and built-in middlewares handle reasoning extraction, JSON extraction, simulated streaming, default instructions and tool input examples. HarnessAgent extends the same surface to coding agents backed by harness adapters and sandboxes. It is strongest where a TypeScript application needs one consistent interface across many providers, and where middleware and telemetry matter as much as the model call itself.",
             "heading": "What it is used for and where it is strongest"
         },
         {
-            "body": "The learning curve depends on what you already know. A working developer needs solid TypeScript and JavaScript, comfort with async code, and some familiarity with large language model concepts such as prompts, structured output, streaming, tools and provider credentials. The official site offers documentation pages, installation commands and examples, including Next.js and Node.js telemetry setup, middleware examples and harness installation with pnpm, npm, yarn or bun. It does not present a beginner curriculum or state formal mathematics prerequisites. Evaluation work touches probabilities, calibration and tolerance, and telemetry work benefits from OpenTelemetry knowledge. HarnessAgent requires sandbox and harness credentials, so systems knowledge helps. A student can start with the docs, but the material read does not say how long mastery takes.",
+            "body": "The learning curve is moderate for a working TypeScript developer and steeper for someone new to the language. The documentation assumes comfort with TypeScript types, async code and package installation, and the agent harness pages assume familiarity with sandboxes, environment variables and credentials. There is no mathematics prerequisite in the material read: the SDK is about calling and composing models, not about training them. The official site offers a full documentation set covering core APIs, middleware, telemetry, evaluation and harnesses, with code examples throughout, so a beginner can follow along, but the evaluation and harness areas are explicitly experimental and their APIs may change in patch releases, which raises the cost of learning them early.",
             "heading": "How hard it is to learn and what you need first"
         },
         {
-            "body": "The repository is vercel/ai on GitHub, with 27,080 stars at the time of the facts, and the official site is ai-sdk.dev. The ecosystem shown in the pages includes provider registries, Vercel AI Gateway for string model IDs, OpenAI, Anthropic and Google adapters, TypeSafe AI's Jev for native evaluations, and OpenTelemetry through @ai-sdk/otel. Harness work uses @ai-sdk/harness, @ai-sdk/harness-claude-code, @ai-sdk/sandbox-vercel and @ai-sdk/sandbox-just-bash. The site also publishes a Language Model Middleware specification for community middleware. Documentation covers core APIs, telemetry, evaluation and harness agents. The facts show a large star count but do not quantify contributors, release cadence, forum activity or commercial support. The custom licence is recorded, but the facts do not explain its terms.",
+            "body": "The ecosystem is built around provider adapters and optional packages. Telemetry requires the @ai-sdk/otel package, harness work requires @ai-sdk/harness plus an adapter such as @ai-sdk/harness-claude-code and a sandbox such as @ai-sdk/sandbox-vercel or @ai-sdk/sandbox-just-bash. Evaluation can resolve models through a provider registry or through Vercel AI Gateway, and TypeSafe AI's Jev supplies native Choice, Score and Boolean evaluations, while OpenAI, Anthropic and Google adapt structured output for the same three types. The SDK publishes a Language Model Middleware specification so the community can build and distribute middleware independently of the models. Documentation is extensive and page-by-page, and the repository's star count suggests an active audience, though the facts do not quantify community size or support channels.",
             "heading": "Ecosystem and community"
         },
         {
-            "body": "The SDK supports quick experiments through simple model calls, provider registries, string model IDs and Vercel AI Gateway defaults, and middleware such as simulateStreamingMiddleware can make a non-streaming model behave like a streaming one. For production, the site documents telemetry that is opt-out, OpenTelemetry integration, recordInputs and recordOutputs controls, runtimeContext and tool context filtering, custom Tracer support, and middleware for caching, guardrails and logging. HarnessAgent adds sandbox-backed agents with lifecycle callbacks. The cost is that some pieces are explicitly experimental. The evaluation API and evaluation model specification may change in patch releases, and language model adapters evaluate all questions in one prompt rather than with independent-question semantics. Telemetry records inputs and outputs by default, so privacy and data transfer need deliberate configuration.",
+            "body": "The SDK is built for both quick experiments and production use, and the split is visible in its design. Prototyping is fast because a model can be swapped by changing a string ID or a provider, and middleware such as simulateStreamingMiddleware lets a non-streaming model behave like a streaming one during development. Production concerns are addressed directly: telemetry is opt-out rather than opt-in, inputs and outputs can be excluded for privacy, data transfer and performance reasons, runtime context and tool context can be filtered before reaching telemetry providers, and a custom Tracer can be supplied instead of the OpenTelemetry singleton. The cost is configuration. Getting the full benefit means registering telemetry at startup, choosing what to record, and accepting that the evaluation and harness APIs are experimental and may change in patch releases.",
             "heading": "Prototyping speed against production performance"
         },
         {
-            "body": "The facts do not name enterprise users or job market data. They do show a repository from Vercel, the creators of Next.js, with 27,080 stars, active development through a last push on 1 October 2026, and archived set to false. That supports the reading that AI SDK is a current choice for TypeScript and Next.js developers rather than a legacy one. For someone choosing work skills, it is most relevant to AI application engineering, agent development, full-stack Next.js roles and platform work that needs provider abstraction, telemetry and evaluation. The official material read does not list adopters, salaries or hiring demand, so those questions remain open. A developer should treat the star count as a signal of interest, not as proof of production adoption.",
+            "body": "The facts show a project with about 27,000 stars, an active repository and a last push in October 2026, which places it among the more visible TypeScript AI libraries, but they do not name specific companies using it in production. Its association with Vercel and Next.js gives it a natural home in web teams already on that stack, and the harness adapters for Claude Code and Codex show it reaching into agent tooling. Nothing in the material supports calling it a legacy choice, and nothing supports calling it an industry standard either. For someone choosing what to learn, it is a current and actively developed option for TypeScript application work, and its value in a career is tied to how much of that work is done in TypeScript rather than Python.",
             "heading": "Industry adoption and careers"
         },
         {
-            "body": "AI SDK is a TypeScript library, so it fits beside TypeScript and JavaScript runtimes, especially Next.js and Node.js. It is designed to sit above model providers, with provider registries and adapters for OpenAI, Anthropic and Google, and it can route string model IDs through Vercel AI Gateway. It works with OpenTelemetry for observability, with sandbox adapters for agent execution, and with harness adapters such as Claude Code and Codex. The polyglot pattern is a TypeScript application layer that calls multiple model backends through one interface, while provider SDKs and gateways handle the model side. The pages read do not compare it with Python frameworks or other TypeScript libraries, so its position beside those is not settled by this material.",
+            "body": "The AI SDK is a TypeScript library, and its documentation is written for TypeScript and JavaScript projects, with Next.js treated as a first-class environment through the instrumentation.ts registration pattern and Node.js covered separately. It is provider-agnostic rather than tied to one model vendor, resolving models through registries, string IDs or Vercel AI Gateway, and it adapts OpenAI, Anthropic and Google structured output for evaluation. It belongs to the polyglot pattern where a TypeScript application layer calls models that may be trained and served elsewhere, often in Python. The facts do not describe direct integrations with Python frameworks, so the boundary between this library and that world is left to the reader to establish.",
             "heading": "How it fits beside the others"
         },
         {
-            "body": "The material read does not present AI SDK as a training framework, and it does not cover model pretraining, fine tuning or dataset pipelines. Several APIs are experimental and may change in patch releases, including experimental_evaluate, the evaluation model specification and experimental_streamTranscribe. Evaluation probability estimates are not guaranteed to be calibrated, and language model adapters do not provide independent-question execution semantics. Middleware that allows system messages in message histories should only be used with trusted input. HarnessAgent needs sandbox and harness credentials, and bridge-backed harnesses need a real network sandbox. The official pages do not state a first release date, benchmark performance, licence terms in detail, or comparisons with other frameworks. They also do not say how large the community is beyond the repository star count.",
+            "body": "The clearest limit is maturity in the newer areas. The evaluation API and its model specification are experimental and may change in patch releases, and the harness pages describe adapters and sandboxes that are still being shaped. Evaluation through language-model adapters evaluates all questions in one prompt and does not provide TypeSafe's independent-question execution semantics, and Boolean probability estimates are not guaranteed to be calibrated. Choice and Score answers carry no probability distributions. The material does not say how the custom licence compares with common open-source licences, does not quantify performance or latency, does not list production users, and does not describe support or release cadence beyond the repository activity. Those questions are left open by the official pages read.",
             "heading": "Limits and open questions"
         }
     ],
     "siblings": [
         {
             "kind": "framework",
+            "name": "autogen",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/60f558b0/"
+        },
+        {
+            "kind": "framework",
             "name": "crewAI",
             "path": "/ai-ecosystem/technology-and-core-infrastructure/52f2d4fc/"
+        },
+        {
+            "kind": "framework",
+            "name": "haystack",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/244d606e/"
         },
         {
             "kind": "framework",
@@ -86,6 +96,11 @@
             "kind": "framework",
             "name": "llama_index",
             "path": "/ai-ecosystem/technology-and-core-infrastructure/07b3602c/"
+        },
+        {
+            "kind": "framework",
+            "name": "semantic-kernel",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/7a5bc5c6/"
         },
         {
             "kind": "language",
@@ -210,5 +225,5 @@
     "subject_kind": "framework",
     "source_read_on": "2026-10-02",
     "site_pages_read": 60,
-    "refresh_every_days": 90
+    "refresh_every_days": 30
 }
