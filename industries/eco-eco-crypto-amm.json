@@ -4,7 +4,7 @@
     "slug": "eco-crypto-amm",
     "shape": "art-topic",
     "title": "Routing Across Automated Market Makers",
-    "answer": "Routing across automated market makers is the practice of finding and executing a trade path through one or more on-chain liquidity pools to get a desired asset at a better effective price than a single pool would offer. It covers order splitting, multi-hop paths, and the choice between different pool designs such as constant product, stable swaps, and concentrated liquidity. The scope includes both simple swaps and more complex strategies that route across several chains or layer 2 networks. It sits in crypto markets and decentralised finance, where the router is often a smart contract or an off-chain service that submits transactions.",
+    "answer": "Routing across automated market makers is the practice of choosing and sequencing trades across multiple liquidity pools rather than sending an order to a single pool. It covers multi-hop paths, order splitting, and the comparison of quotes from different AMM protocols. The scope includes both simple swaps and more complex routes that pass through several tokens or chains. It also includes the routers, aggregators, and solver systems that compute those paths. The field sits inside crypto markets and decentralised finance, where execution quality is measured by output amount, price impact, and cost.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-10-01T20:12:45-05",
+    "built_at": "2026-10-01T21:25:04-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Economist",
@@ -28,23 +28,23 @@
     "page_uid": "a5e9d65f",
     "sections": [
         {
-            "body": "Routing across automated market makers is the practice of finding and executing a trade path through one or more on-chain liquidity pools to get a desired asset at a better effective price than a single pool would offer. It covers order splitting, multi-hop paths, and the choice between different pool designs such as constant product, stable swaps, and concentrated liquidity. The scope includes both simple swaps and more complex strategies that route across several chains or layer 2 networks. It sits in crypto markets and decentralised finance, where the router is often a smart contract or an off-chain service that submits transactions.",
+            "body": "Routing across automated market makers is the practice of choosing and sequencing trades across multiple liquidity pools rather than sending an order to a single pool. It covers multi-hop paths, order splitting, and the comparison of quotes from different AMM protocols. The scope includes both simple swaps and more complex routes that pass through several tokens or chains. It also includes the routers, aggregators, and solver systems that compute those paths. The field sits inside crypto markets and decentralised finance, where execution quality is measured by output amount, price impact, and cost.",
             "heading": "Scope"
         },
         {
-            "body": "The work runs on public blockchains and their virtual machines, most commonly Ethereum and EVM-compatible networks, plus layer 2 rollups and sidechains. Routers depend on RPC nodes, block explorers, and indexers to read pool reserves, tick data, and recent trades. They also rely on price oracles and mempool monitoring to estimate slippage, gas costs, and competing transactions. Execution happens through signed transactions that call pool contracts, with nonce management and gas bidding handled by the router or a wallet.",
+            "body": "Routing runs on public blockchains and the smart contracts that hold AMM pools, with execution settled on chain. Off-chain components include nodes, RPC providers, indexers, and price or liquidity APIs that feed route calculations. Many routers also rely on mempools, relayers, and solver networks to submit transactions or bundles. Gas costs, block times, and layer two environments shape what routes are practical. Well-known AMMs such as Uniswap, Curve, and Balancer are common venues, though any pool with a compatible interface can be included.",
             "heading": "What it runs on"
         },
         {
-            "body": "A router typically starts with a graph of pools and tokens, then searches for paths that minimise the effective price after fees, slippage, and gas. It may split a single order across several pools or hops to reduce price impact, and it simulates the result against current state before submitting. Many routers use off-chain computation for pathfinding and on-chain contracts for settlement, sometimes with a solver or auction mechanism. The method also includes handling failed transactions, front-running, and sandwich attacks by adjusting slippage tolerance or using private transaction channels.",
+            "body": "The work starts by gathering pool states and quotes, then modelling each possible path as a graph of tokens and pools. A router or solver searches that graph for routes that maximise output after fees, gas, and expected slippage. Orders may be split across several pools or executed in sequence to reduce price impact. Simulation and historical data help estimate outcomes before a transaction is signed. On chain, the chosen route is executed atomically, so either all steps succeed or the whole transaction reverts.",
             "heading": "How the work is done"
         },
         {
-            "body": "Rights and risk in this area turn on smart contract correctness, liquidity provenance, and the legal status of the tokens being routed. A router can inherit bugs from the pools it touches, and it can expose users to impermanent loss, oracle manipulation, and MEV extraction. Provenance matters because a pool's liquidity may come from unknown or sanctioned sources, and the router may not screen for that. Regulatory treatment of DeFi routing varies by jurisdiction, and compliance pages on this site track the shifting rules.",
+            "body": "Rights and risk in routing centre on smart contract exposure, transaction ordering, and the provenance of quotes. A route can fail because of slippage, liquidity changes, or a revert, and users may pay gas even when no swap occurs. MEV, frontrunning, and sandwich attacks can worsen execution, while opaque solver behaviour makes it hard to know why a route was chosen. Audits, open source code, and on-chain records provide some provenance, but they do not remove counterparty or protocol risk. Regulatory treatment of AMMs and aggregators varies by jurisdiction and continues to develop.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The direction of travel is toward intent-based routing, where a user states a desired outcome and competing solvers find the best path across many venues. Cross-chain routing and account abstraction are making the user experience less dependent on manual network and gas choices. AI and machine learning are being applied to pathfinding, slippage prediction, and MEV detection, though the core problem remains a search over a changing graph. Over time, routing may become more modular, with shared solvers and standardised settlement layers, but the risks of smart contract failure and market manipulation will not disappear.",
+            "body": "Routing is moving toward intent based systems, where a user states a desired outcome and solvers compete to find an execution path. Cross chain routing and account abstraction are expanding the set of venues and the ways transactions can be paid for. Batch auctions and private order flow are being explored to reduce MEV and improve fairness. Machine learning is increasingly used to predict liquidity, gas, and slippage, though the final execution remains on chain. The direction is toward more automated, multi venue execution with greater transparency about how routes are selected.",
             "heading": "Where it is going"
         }
     ],
