@@ -10,49 +10,49 @@
         "archived": false,
         "language": "Python",
         "repo_url": "https://github.com/jax-ml/jax",
-        "last_push": "2026-10-02T05:43:59Z",
+        "last_push": "2026-10-02T09:25:11Z",
         "description": "Composable transformations of Python+NumPy programs: differentiate, vectorize, JIT to GPU/TPU, and more",
         "official_site": "https://docs.jax.dev/en/latest/"
     },
     "model": "ollama:deepseek-v4.1-flash",
     "shape": "lang-profile",
-    "title": "JAX: Composable Transformations for Python and NumPy AI Work",
-    "answer": "JAX is a Python library for composable transformations of Python and NumPy programs, letting you differentiate, vectorize, and JIT compile code to GPU or TPU. It sits at the numerical and transformation layer of AI work, beneath model code, and its official docs cover autodiff, matmul precision, distributed data loading, and experimental fault tolerance. The one thing to know before choosing it is that it gives fine control over performance and numerics, but distributed fault tolerance is still experimental and platform-dependent.",
-    "built_at": "2026-10-02T04:29:12-05:00",
+    "title": "JAX: Composable Transformations for AI and Numerical Computing",
+    "answer": "JAX is a Python library for composable transformations of NumPy-style programs, including automatic differentiation, vectorization, and just-in-time compilation to GPU and TPU. It sits below model code as a numerical and transformation layer for AI work, with documented support for distributed arrays, data loading, precision control, and experimental fault tolerance. The one thing to know before choosing it is that its defaults favor speed over exact numerics, and its distributed fault tolerance is experimental, so production use demands care with precision settings and sharding.",
+    "built_at": "2026-10-02T06:47:18-05:00",
     "category": "technology-and-core-infrastructure",
     "hub_name": "Programming Languages and Frameworks",
     "page_uid": "1722316f",
     "sections": [
         {
-            "body": "JAX is a Python library described as composable transformations of Python and NumPy programs: differentiate, vectorize, JIT to GPU/TPU, and more. It lives in the jax-ml/jax repository under the Apache-2.0 licence, with 36,370 stars and a last push on 2026-10-02. Its official documentation is at docs.jax.dev, and the pages read on 2026-10-02 cover automatic differentiation, matmul precision, distributed data loading, and fault-tolerant multi-controller execution. It sits at the array computation and program transformation layer of AI work, below model definitions and training loops. The facts do not give a first release date or a corporate owner.",
+            "body": "JAX is a Python library maintained in the jax-ml/jax repository under the Apache-2.0 licence, with official documentation at docs.jax.dev. Its own description calls it composable transformations of Python and NumPy programs: differentiate, vectorize, JIT to GPU and TPU, and more. That places it in the numerical computing and program transformation layer of the AI stack, beneath model definitions and training loops. It provides jax.Array, sharding, automatic differentiation, and accelerator compilation rather than a model zoo or a serving product. The facts and the pages read do not state when JAX first appeared, and they do not name a corporate owner beyond the repository.",
             "heading": "What it is and where it sits in AI work"
         },
         {
-            "body": "The docs show JAX used for automatic differentiation, including jax.grad, jacfwd, jacrev, Hessian-vector products, and custom JVPs or VJPs. It is used to control matrix multiplication precision for dot products, with presets such as F32_F32_F32, BF16_BF16_F32, and TF32_TF32_F32, and to run distributed data loading across multi-host or multi-process environments. It also supports multi-controller distributed programs and experimental fault tolerance on GPUs. It is strongest where a numerical program needs composable transformations, JIT compilation to GPU or TPU, and explicit control over numerics or sharding. The pages read do not describe high-level model building, serving, edge deployment, or agent frameworks, so those uses are not settled by this material.",
+            "body": "The documented jobs include automatic differentiation through jax.grad, jacfwd, jacrev, Hessian-vector products, custom JVP and VJP rules, and stop_gradient; vectorization; just-in-time compilation to GPU and TPU; distributed data loading for multi-host or multi-process data-parallel and model-parallel workloads; and precision control for matrix multiplications on accelerators. It is strongest where a team needs composable transformations over NumPy-like code, explicit control of matmul precision, and sharded arrays across many devices. The pages read do not cover agent frameworks, model serving, or edge deployment, so those uses are not established by this material.",
             "heading": "What it is used for and where it is strongest"
         },
         {
-            "body": "The official site is organized in levels, with 101 docs covering the basics of jax.grad, argnums, differentiating with respect to containers, value_and_grad, finite differences, and Transformations: grad and vmap. The 301 cookbook starts one level up with Hessian-vector products, full Jacobians, and the jvp and vjp machinery. The 201 precision page assumes comfort with dtypes, matmul algorithms, and accelerator behavior. The 501 pages on distributed data loading and fault tolerance assume multi-host or multi-process systems knowledge, including sharding, devices, RPC, and coordination services. A beginner needs Python and NumPy first, plus linear algebra and calculus for autodiff, and systems knowledge for distributed work. The site offers the 101 material as a starting point, but the pages read do not present a separate beginner course.",
+            "body": "The official site is layered from 101 material on jax.grad and vmap through 201 precision controls, a 301 autodiff cookbook, and 501 pages on distributed data loading and fault tolerance. A beginner needs Python and NumPy familiarity first, because JAX is built as transformations of Python and NumPy programs. The cookbook assumes comfort with Jacobians, Hessians, forward-mode and reverse-mode differentiation, and the precision page assumes knowledge of dtypes, matmul, and accelerator hardware. Distributed work adds systems concepts such as processes, devices, sharding, heartbeats, and coordination services. The site offers a cookbook and reference pages, but the facts do not describe a separate beginner course or certification.",
             "heading": "How hard it is to learn and what you need first"
         },
         {
-            "body": "The project lives at github.com/jax-ml/jax, is licensed Apache-2.0, and had 36,370 stars with a last push on 2026-10-02. The official documentation at docs.jax.dev was read across 60 pages on 2026-10-02, including pages on data loading, precision, fault tolerance, and an autodiff cookbook. The docs reference jax.lax, jax.custom_vjp, jax.custom_jvp, jax.distributed.initialize, jax.config, jax_default_matmul_precision, XLA_FLAGS, cuBLASLt, NVIDIA tensor cores, TPUs, and GPUs. The pages read do not list a model zoo, third-party library directory, or community forum, so the wider ecosystem is not described there. The repository activity and star count are the main community signals in the facts.",
+            "body": "The repository has 36,370 stars and a last push on 2026-10-02, so the project is active. The pages read show integration with NumPy-style code, the XLA compiler through XLA_FLAGS, NVIDIA tensor cores, TPU bfloat16 paths, cuBLASLt fast accumulation, and multi-controller process coordination. They also show jax.lax, jax.custom_jvp, jax.custom_vjp, jax.distributed.initialize, jax.config, jax.Array, and Sharding as part of the public surface. The facts do not list named model libraries, pretrained model hubs, or third-party framework integrations, and they do not give contributor counts, forum activity, or commercial support options. Community evidence here is the active repository and the official documentation site.",
             "heading": "Ecosystem and community"
         },
         {
-            "body": "JAX is built for both quick experiments and performance work, but with tradeoffs. Its NumPy-like surface and transformations such as grad and vmap support fast iteration, while JIT compilation to GPU or TPU, dot algorithm presets, and sharding controls target production speed and memory behavior. By default JAX leans toward speed in matmul precision, so float32 dot products may use reduced precision internally, and the precision argument lets you choose accuracy or throughput. Distributed data loading can be more efficient than loading full global data, but it is more complex and can silently produce incorrect results if the wrong shards reach devices. Fault tolerance is experimental, currently only fully on GPUs, has rough edges, and is probably buggy. That is the cost of using JAX for production performance.",
+            "body": "JAX supports quick experiments because NumPy-like code can be differentiated, vectorized, and compiled with small changes, and the 101 material covers the basics. It also targets production performance through JIT to GPU and TPU, sharded arrays, distributed data loading, and matmul precision presets that trade accuracy for speed. The cost is complexity and care. The precision page says JAX defaults lean toward speed, with float32 dot products sometimes computed in bfloat16 on TPU or TF32 on recent GPUs, so exact numerics require explicit settings. Distributed data loading is more efficient but more complex, and wrong shards can silently produce incorrect results. Fault tolerance is experimental, only fully on GPUs, and not enabled by default.",
             "heading": "Prototyping speed against production performance"
         },
         {
-            "body": "The facts show a maintained repository with 36,370 stars and a last push on 2026-10-02, plus official documentation at docs.jax.dev. They do not name employers, industries, or adoption rates, and they do not say whether JAX is a current standard or a legacy choice. For someone choosing it for work, the evidence supports learning it as an active Python library for numerical AI work, especially where differentiation, JIT compilation, precision control, and distributed execution matter. The pages read do not provide hiring data or company case studies, so career claims beyond that would be speculation.",
+            "body": "The facts show a maintained, widely starred repository, with 36,370 stars and a last push on 2026-10-02, and official documentation that covers GPU and TPU execution, distributed training, and precision control. That supports the view that JAX is a current tool for numerical and accelerator-heavy AI work, not a legacy choice. The pages read mention NVIDIA tensor cores, TPUs, multi-controller JAX, and distributed data loading, which are relevant to training and large-scale computation roles. The facts do not give adoption surveys, employer counts, or salary data, so they cannot settle how often JAX is required in job listings or whether it is a standard across industry. For a developer or student, the safe reading is that JAX skills fit accelerator and distributed numerical work, while the market size remains unstated here.",
             "heading": "Industry adoption and careers"
         },
         {
-            "body": "JAX is a Python library for Python and NumPy programs, so it is typically used with Python code and NumPy-style arrays. The docs show it working with accelerator runtimes and libraries such as XLA, cuBLASLt, NCCL, NVIDIA tensor cores, and TPUs. It belongs to a polyglot pattern where Python expresses the model and transformations, while compiled kernels and communication libraries run underneath. The pages read do not compare JAX with PyTorch, TensorFlow, or other frameworks, and they do not describe language bindings beyond Python. That comparison is therefore not settled by this material.",
+            "body": "JAX is a Python library, and its description frames it as composable transformations of Python and NumPy programs, so it typically sits beside NumPy rather than replacing Python. It uses XLA as a compiler path to GPU and TPU, and the pages read refer to XLA_FLAGS, jaxpr intermediate representations, NVIDIA tensor cores, TPU bfloat16, and cuBLASLt. That is the polyglot pattern of a Python front end, a compiler and intermediate representation, and hardware-specific backends. The pages read do not describe integrations with PyTorch, TensorFlow, or other named AI frameworks, and the facts do not list a model library ecosystem. So the established fit is Python numerical code plus XLA plus accelerators, with other framework relationships left open.",
             "heading": "How it fits beside the others"
         },
         {
-            "body": "The clearest limits are in distributed execution. Multi-controller JAX is not fault tolerant by default, and if any process fails, the others intentionally crash. Fault tolerance is experimental, currently only fully on GPUs, has rough edges, and is probably buggy. If process 0 fails, all processes terminate even with fate sharing disabled, because process 0 runs the coordination service. Distributed data loading can run without errors while producing incorrect results if shards land on the wrong devices. Precision support is platform-dependent and checked at compile time, so requesting an unsupported algorithm is a compile-time error. The official material does not state a first release date, corporate owner, adoption figures, or comparisons with other frameworks, and the pages read do not cover serving, edge deployment, or agent building.",
+            "body": "The documented limits are significant. Multi-controller JAX is not fault tolerant by default, and if any process crashes the others intentionally crash too. Fault tolerance is experimental, currently only fully on GPUs, has rough edges, and is probably buggy. If process 0 fails, all processes terminate even with fate sharing disabled, because process 0 runs the coordination service. Distributed data loading can run without errors while producing incorrect results if shards land on the wrong devices. Precision support is platform-dependent and checked at compile time, so an unsupported algorithm is a compile-time error. The official material does not state a first release date, corporate governance, adoption numbers, or coverage of agents, serving, and edge deployment.",
             "heading": "Limits and open questions"
         }
     ],
@@ -81,6 +81,11 @@
             "kind": "framework",
             "name": "llama_index",
             "path": "/ai-ecosystem/technology-and-core-infrastructure/07b3602c/"
+        },
+        {
+            "kind": "language",
+            "name": "Go",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/a218afb2/"
         }
     ],
     "generated": "2026-10-02",
@@ -126,5 +131,5 @@
     "subject_kind": "framework",
     "source_read_on": "2026-10-02",
     "site_pages_read": 60,
-    "refresh_every_days": 30
+    "refresh_every_days": 90
 }

@@ -5,7 +5,7 @@
     "slug": "llama-index",
     "facts": {
         "repo": "run-llama/llama_index",
-        "stars": 52380,
+        "stars": 52383,
         "licence": "MIT",
         "archived": false,
         "language": "Python",
@@ -16,43 +16,43 @@
     },
     "model": "ollama:deepseek-v4.1-flash",
     "shape": "lang-profile",
-    "title": "LlamaIndex: the Python document processing platform for AI applications",
-    "answer": "LlamaIndex is an open source Python framework, MIT licensed and maintained by run-llama, for connecting language models to your own data. It sits between model providers and your application, handling document parsing, retrieval, graph based question answering and provider routing. The one thing to know before adopting it is that it is broad rather than narrow: the same project covers LLM abstraction, LlamaParse document parsing and GraphRAG pipelines, so expect to assemble pieces rather than call a single finished product.",
-    "built_at": "2026-10-02T04:28:55-05:00",
+    "title": "LlamaIndex: A Python Framework for Document Processing and LLM Apps",
+    "answer": "LlamaIndex is an open-source Python framework and document processing platform for AI, maintained by run-llama under the MIT licence. It sits in the application layer of the AI stack, connecting large language models to external data and services for retrieval-augmented generation, agents, and structured prediction. The one thing to know is that it offers broad integrations with LLM providers, vector stores, and cloud platforms, but some features remain under development, so production use requires checking current limitations.",
+    "built_at": "2026-10-02T06:44:18-05:00",
     "category": "technology-and-core-infrastructure",
     "hub_name": "Programming Languages and Frameworks",
     "page_uid": "07b3602c",
     "sections": [
         {
-            "body": "LlamaIndex is maintained by run-llama and published under the MIT licence, with source at github.com/run-llama/llama_index. It is written in Python, the repository is not archived, and the most recent push recorded is 1 October 2026, with 52,380 stars. The project describes itself as the document processing platform for AI, and the official site at developers.llamaindex.ai splits into two broad areas, the Python framework API reference and the LlamaParse documentation for parsing and self hosting. In the AI stack it sits above the model layer and below your application. It does not train foundation models. It provides the classes that call them, the abstractions that route between them, and the machinery that turns documents into something a model can retrieve from.",
+            "body": "LlamaIndex is an open-source Python framework maintained by run-llama, described in the site facts as the document processing platform for AI. The repository is at run-llama/llama_index and carries the MIT licence. The facts do not state when it first appeared. It sits in the application layer of the AI stack, providing abstractions for interacting with language models, connecting them to external data sources, and orchestrating workflows such as retrieval-augmented generation and agents. The official documentation includes API references for core classes like the LLM class in llama-index-core, as well as integrations with providers such as Cloudflare AI Gateway and Baseten.",
             "heading": "What it is and where it sits in AI work"
         },
         {
-            "body": "The concrete work falls into a few areas. First, model access: the LLM class in llama-index-core is the main entry point for interacting with language models, with predict, stream, structured_predict and async variants, plus integrations such as Baseten and the Cloudflare AI Gateway, which routes requests across several providers with fallback and load balancing. Second, retrieval and graph work: the Agentic GraphRAG example with Vertex AI walks through chunking documents, extracting entities and relationships, summarising them, partitioning a graph into communities with hierarchical Leiden, and answering queries from community summaries. Third, document parsing: LlamaParse self hosting lets you register provider endpoints, set priorities and tags, and run each parsing tier against an ordered list of models with fallback. Fourth, evaluation and fine tuning, shown in a notebook that distils GPT-4 judgments into a smaller GPT-3.5 pairwise judge. It is strongest where documents, retrieval and provider flexibility matter more than raw model training.",
+            "body": "LlamaIndex is used for concrete AI jobs including document processing, retrieval-augmented generation, GraphRAG, fine-tuning through knowledge distillation, agents, structured prediction, streaming, and asynchronous operations. It is strongest when you need to connect large language models to external data, build document-centric pipelines, or orchestrate complex workflows across multiple providers. The official examples show GraphRAG with Vertex AI, where documents are chunked, entities and relationships are extracted, communities are built, and summaries are used to answer queries. Another example demonstrates fine-tuning a GPT-3.5 pairwise judge by distilling knowledge from GPT-4. It supports many LLM providers and vector stores, making it a good choice for RAG and document AI, though the facts do not show it being used for training models from scratch or for edge deployment.",
             "heading": "What it is used for and where it is strongest"
         },
         {
-            "body": "You need working Python before anything else, and the examples assume you are comfortable with virtual environments and pip. Beyond that, the prerequisites depend on what you are doing. Provider integrations expect you to understand API keys, endpoints and deployment names, and the Vertex AI example requires an existing Google Cloud project with the Vertex AI API enabled. GraphRAG work assumes some familiarity with embeddings, vector stores and graph concepts such as entities, relations and communities. The official site offers API reference pages that document fields, defaults and methods precisely, plus notebook style examples with install commands and full pipelines. What it does not appear to offer, based on the pages read, is a structured beginner course or a guided tutorial track, so a newcomer should expect to learn by adapting the examples.",
+            "body": "The learning curve depends on your background. You need working knowledge of Python, and familiarity with large language models and concepts like retrieval-augmented generation helps. The official site provides API references, developer documentation, and example notebooks, such as the Agentic GraphRAG with Vertex AI example and the fine-tuning notebook for a pairwise judge. These resources assume you can read code and follow setup steps, including cloud project configuration for services like Vertex AI. The facts do not show a dedicated beginner tutorial or guided learning path, so newcomers may need to rely on examples and community resources.",
             "heading": "How hard it is to learn and what you need first"
         },
         {
-            "body": "The integration surface is wide. The pages read cover Cloudflare AI Gateway, Baseten, Vertex AI through VertexTextEmbedding and VertexAIVectorStore, Azure deployments, OpenAI models, HuggingFace models, and gateways such as Bifrost, Portkey and LiteLLM. Graph work leans on graspologic for hierarchical Leiden community detection. Documentation is split between the framework API reference, which is detailed and generated from the code, and the LlamaParse self hosting documentation, which covers Helm values and provider configuration. The repository carries 52,380 stars and is actively pushed to, which indicates a live project rather than an abandoned one. The material read does not give community sizes, forum activity or release cadence, so those questions are not settled here.",
+            "body": "The ecosystem around LlamaIndex is broad. The official documentation covers integrations with numerous LLM providers, including OpenAI, HuggingFace, Vertex AI, Azure, Baseten, and Cloudflare AI Gateway, as well as vector stores like VertexAIVectorStore and graph libraries such as graspologic. It also includes LlamaParse for document parsing and self-hosted LlamaCloud configuration. The GitHub repository has over 52,000 stars and shows recent activity, indicating a large and active community. The MIT licence permits commercial use and modification. Documentation is hosted at developers.llamaindex.ai and includes API references, examples, and configuration guides.",
             "heading": "Ecosystem and community"
         },
         {
-            "body": "It is built for both, and the cost sits in the middle. Notebook examples with a few pip installs get a GraphRAG pipeline or a fine tuning experiment running quickly, and the LLM class gives a single interface across providers so you can swap models without rewriting application code. For production, the self hosted LlamaParse configuration is clearly aimed at operators: multiple credentials, custom endpoints and headers, API gateways, per tier model ordering, priority based fallback and startup credential validation. The cost of that abstraction is indirection and some rough edges. The Cloudflare AI Gateway page states that binding support is not yet implemented, the LLM class raises NotImplementedError for output parsing during streaming, and Baseten async operations require a webhook and are not supported on the model APIs endpoint. You gain portability and lose some direct control.",
+            "body": "LlamaIndex aims to serve both rapid prototyping and production deployment. For experiments, it offers simple APIs, example notebooks, and integrations that let you call LLMs and build pipelines quickly. For production, it provides features such as centralized LLM provider configuration, fallback and load balancing through Cloudflare AI Gateway, dedicated endpoints with Baseten, async operations with webhooks, and self-hosted LlamaCloud with Helm-based configuration. The cost is added complexity: production setups require managing credentials, provider-specific settings, and routing rules. Some features are still maturing, such as binding support for Cloudflare AI Gateway and async operations with Baseten model APIs, so teams should verify current capabilities.",
             "heading": "Prototyping speed against production performance"
         },
         {
-            "body": "Adoption evidence in the material is indirect. The repository has 52,380 stars, is not archived, and was pushed to on 1 October 2026, so it is a current project rather than a legacy choice. The integrations documented cover the major commercial providers and clouds, which suggests it is used in organisations that already run on Azure, Vertex AI or Cloudflare. The pages read do not name customer companies, do not give download or deployment numbers, and do not describe job market demand, so any claim about who uses it in production would go beyond what is known here. For someone choosing what to learn, the transferable skills are retrieval augmented generation, document parsing pipelines, provider abstraction and graph based retrieval, all of which appear in adjacent frameworks too.",
+            "body": "The facts show a popular open-source project with over 52,000 GitHub stars and recent commits, which suggests it is a current tool rather than a legacy choice. It is used by developers building LLM applications, particularly for document processing and retrieval-augmented generation. For someone choosing it for work, familiarity with LlamaIndex can be valuable for roles involving AI application development, data engineering for AI, and LLM orchestration. However, the facts do not provide specific data on enterprise adoption or job market demand, so those considering it should also look at broader industry trends.",
             "heading": "Industry adoption and careers"
         },
         {
-            "body": "LlamaIndex is a Python library, and the examples assume a Python environment throughout. It is typically used alongside model providers such as OpenAI, Azure OpenAI, Vertex AI, Baseten and Cloudflare AI Gateway, embedding and vector store services such as Vertex AI Vector Search, graph libraries such as graspologic, and LLM gateways such as LiteLLM, Portkey and Bifrost. The polyglot pattern it belongs to puts Python in the orchestration, data preparation and retrieval layer, where the ecosystem of parsing, embedding and evaluation tools is strongest, and leaves latency sensitive serving to whatever runtime your team already uses. The pages read do not mention bindings for other languages, so whether a non Python option exists is not settled by this material.",
+            "body": "LlamaIndex is a Python framework, so it fits naturally into Python-based AI stacks. It is typically used alongside LLM provider SDKs, vector databases, and cloud AI services. The documentation shows integrations with OpenAI, HuggingFace, Vertex AI, Azure, Baseten, and Cloudflare AI Gateway, as well as vector stores like VertexAIVectorStore and graph libraries such as graspologic. This makes it a polyglot orchestrator in the sense that it connects to many external services and models, allowing developers to switch providers or combine them. It does not replace lower-level frameworks like PyTorch or TensorFlow, but rather sits above them in the application layer, coordinating data and model calls.",
             "heading": "How it fits beside the others"
         },
         {
-            "body": "Several parts are explicitly incomplete. Binding support in the Cloudflare AI Gateway class raises NotImplementedError, streaming output parsing is unsupported in the LLM class, and Baseten async calls need a webhook and do not work against the model APIs endpoint. The GraphRAG example notes that only relationship descriptions are used today, with entity descriptions planned for a later retrieval stage. The LlamaParse configuration documentation warns that a recognised model_id is not a guarantee of upstream availability, since the provider account, region, deployment or gateway must still be configured. The material read does not include benchmarks, latency or cost comparisons, a stated comparison with other frameworks, or a clear account of how the open source framework and the LlamaParse product relate commercially. Those are open questions.",
+            "body": "LlamaIndex has several limitations visible in the official material. Some features are not yet implemented, such as binding support for Cloudflare AI Gateway, output parsing for streaming, and async operations with Baseten model APIs. The GraphRAG example notes that entity descriptions are not yet used during retrieval, only relationship descriptions. The official material does not state when the project first appeared, nor does it provide performance benchmarks or comparisons with other frameworks. It also does not offer a structured beginner tutorial, leaving newcomers to learn from examples and API references. These gaps mean that teams should evaluate the current state of specific features before committing to production use.",
             "heading": "Limits and open questions"
         }
     ],
@@ -81,6 +81,11 @@
             "kind": "framework",
             "name": "litellm",
             "path": "/ai-ecosystem/technology-and-core-infrastructure/b9fc5220/"
+        },
+        {
+            "kind": "language",
+            "name": "Go",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/a218afb2/"
         }
     ],
     "generated": "2026-10-02",
@@ -190,5 +195,5 @@
     "subject_kind": "framework",
     "source_read_on": "2026-10-02",
     "site_pages_read": 60,
-    "refresh_every_days": 30
+    "refresh_every_days": 90
 }
