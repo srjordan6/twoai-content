@@ -1,5 +1,5 @@
 {
-    "count": 687,
+    "count": 688,
     "terms": [
         {
             "uid": "4a4b22f9",
@@ -4594,12 +4594,12 @@
                     "term": "Parameters"
                 },
                 {
-                    "slug": "activation-function",
-                    "term": "Activation Function"
+                    "slug": "active-parameters",
+                    "term": "Active Parameters"
                 },
                 {
-                    "slug": "attention-mechanism",
-                    "term": "Attention Mechanism"
+                    "slug": "activation-function",
+                    "term": "Activation Function"
                 }
             ],
             "category": "Architecture",
@@ -5644,7 +5644,7 @@
                 }
             ],
             "category": "Architecture",
-            "definition": "An architecture combining multiple specialized sub-networks with a router that decides which experts process each input. It buys large total capacity at modest per-token compute, since only a few experts fire per token."
+            "definition": "An architecture combining multiple specialized sub-networks with a router that decides which experts process each input. It buys large total capacity at modest per-token compute, since only a few experts fire per token. The catch is memory: every expert has to be loaded and ready even though few run on any one token, so an MoE model needs as much GPU memory as its total parameter count suggests, plus routing that keeps the load spread evenly across experts."
         },
         {
             "uid": "50073158",
@@ -38738,6 +38738,20 @@
             "uid": "730ad7a4",
             "slug": "variant-ai-incident",
             "term": "Variant (AI incident)",
+            "lenses": [
+                {
+                    "body": "Imagine you tell your teacher that a robot toy said something wrong. Later, another kid tells the teacher the same robot toy said the same wrong thing. The teacher writes it down as the same problem happening again, not as a brand new problem. That is what a variant means.",
+                    "audience": "child"
+                },
+                {
+                    "body": "A variant is a repeat report of harm that matches an incident already on file, same kind of AI system, same failure, same harm. It is filed under the original incident, so the record shows one recurring problem rather than many separate ones. This matters for decisions, money, risk and accountability because it shows whether a known failure is still happening, and it does not require outside reporting such as news coverage to be recorded.",
+                    "audience": "executive"
+                },
+                {
+                    "body": "In practice, a variant means someone reports the same kind of AI failure that was already recorded, and it gets filed under that first case instead of as a new one. For a company with five to fifty staff, this matters when you are checking whether a known AI problem keeps affecting customers or work, and it does not matter when the report is about a different system or a different harm. It tends to save time because you can look at one recurring record instead of many separate ones, and it costs little because no outside reporting is needed to file it.",
+                    "audience": "small-business"
+                }
+            ],
             "origin": "Defined by the AI Incident Database (AIID). Introduced in McGregor, Paeth and Lam, \"Indexing AI Risks with Incidents, Issues, and Variants\" (2022), https://arxiv.org/abs/2211.10384 . Related terms: AI Incident Database (AIID), Incident Register.",
             "example": "A second chatbot user reports the same fabricated refund policy that an earlier, already catalogued incident described; the database records it as a variant of that incident rather than as a new one.",
             "related": [
@@ -38768,6 +38782,41 @@
             ],
             "category": "Safety & Governance",
             "definition": "In the AI Incident Database, a variant is a new report of harm that repeats a case already on file: the same kind of AI system, failing for the same reasons, causing the same kind of harm. Rather than open a separate incident, the database files it under the first reported incident, so the record shows one problem recurring instead of many unrelated ones. Unlike a full incident, a variant does not need outside reporting such as news coverage before it is recorded."
+        },
+        {
+            "uid": "231db6fd",
+            "slug": "active-parameters",
+            "term": "Active Parameters",
+            "origin": "Related terms: Dense Model, Mixture of Experts (MoE), Sparse Model, Router (MoE Router), Parameters.",
+            "example": "A mixture-of-experts model described as 30B total, 3B active runs each token through roughly 3 billion parameters, but all 30 billion must sit in memory.",
+            "related": [
+                {
+                    "slug": "dense-model",
+                    "term": "Dense Model"
+                },
+                {
+                    "slug": "token",
+                    "term": "Token"
+                },
+                {
+                    "slug": "compute",
+                    "term": "Compute"
+                },
+                {
+                    "slug": "parameters",
+                    "term": "Parameters"
+                },
+                {
+                    "slug": "activation-function",
+                    "term": "Activation Function"
+                },
+                {
+                    "slug": "attention-mechanism",
+                    "term": "Attention Mechanism"
+                }
+            ],
+            "category": "Architecture",
+            "definition": "The parameters a model actually uses to process one token, as opposed to the total it holds. In a dense model the two numbers are the same. In a mixture-of-experts model they differ sharply, and that gap is the point: compute cost and speed per token follow the active count, while the memory needed to serve the model follows the total."
         }
     ],
     "source": {
@@ -38775,7 +38824,7 @@
         "schema": "v2 (term, slug, category, definition, example, origin)",
         "generated": "2026-07-23"
     },
-    "built_at": "2026-10-02T23:38:13-05:00",
+    "built_at": "2026-10-03T01:27:57-05:00",
     "page_uid": "76dd9a8f",
     "readings": {
         "/ai-glossary/aime/": {
