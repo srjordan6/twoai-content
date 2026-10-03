@@ -38,6 +38,18 @@
             "reader_note": "The guide is written for teams already building on these models, so treat it as operational advice rather than evidence of what works at scale. Prompt and tuning guidance can be tested against your own tasks, and that is the honest way to judge it.\n\nBe sceptical of any claim that a documented capability is a deployed one. Nothing here shows reliability under your load, your data, or your failure modes. It tells you what the vendor says is possible, not what your team will get."
         },
         {
+            "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/agentcore-gateway-private-tls-vpc/",
+            "date": "2026-10-02",
+            "slug": "agentcore-gateway-supports-private-tls-certificates-for-vpc--2ea429",
+            "title": "AgentCore Gateway supports private TLS certificates for VPC endpoints",
+            "vendor": "Amazon Web Services",
+            "summary": "Amazon Bedrock AgentCore Gateway now supports TLS certificates signed by private certificate authorities (CAs) on MCP, OpenAPI, and HTTP proxy targets. This feature enables you to connect securely to gateway targets that use TLS certificates issued by your own private certificate authority.",
+            "has_page": true,
+            "entity_uid": "0d5de807",
+            "entity_kind": "company",
+            "reader_note": "This removes a practical blocker if your internal services already use private CAs. It does not tell you how certificate rotation, revocation, or expiry are handled, and it does not show that the feature works at your scale or with your existing tooling. Treat the announcement as a starting point for a test, not as evidence that the integration is solved.\n\nThe claim is narrow and verifiable, so check it against your own endpoints before planning around it. A supported configuration is not the same as a tested one in your environment."
+        },
+        {
             "url": "https://blog.apify.com/ai-agent-vs-mcp-server/",
             "date": "2026-10-02",
             "slug": "ai-agent-vs-mcp-server-which-one-should-you-build-39079f",
@@ -153,6 +165,18 @@
             "summary": "<p>After building his first computers in his teens, Jon Martindale has spent the past two decades covering the latest advances in technology.",
             "has_page": true,
             "entity_kind": "company"
+        },
+        {
+            "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/aurora-dsql-partial-indexes/",
+            "date": "2026-10-02",
+            "slug": "amazon-aurora-dsql-now-supports-partial-indexes-81e9e2",
+            "title": "Amazon Aurora DSQL now supports partial indexes",
+            "vendor": "Amazon Web Services",
+            "summary": "Amazon Aurora DSQL now lets you build an index over a specific subset of a table, storing only qualifying rows rather than every row in the entire table, which improves query performance and lowers index storage cost.",
+            "has_page": true,
+            "entity_uid": "0d5de807",
+            "entity_kind": "company",
+            "reader_note": "This is a routine feature addition, not a shift in what the database can do. If you run Aurora DSQL, partial indexes are worth testing on the queries that scan large tables for a narrow slice of rows, since a smaller index can mean less storage and faster reads. Check the query planner actually uses the index before assuming a gain.\n\nBe sceptical of the storage and performance claims until you measure them on your own data. A supported feature is not a tuned one, and the vendor's framing is not a finding."
         },
         {
             "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/amazon-eks-distro-kubernetes-version-1-37",
@@ -1679,6 +1703,17 @@
             "reader_note": "A named grocery retailer running ChatGPT Enterprise and the API is a signal about procurement, not about results. It tells you a large, established company is willing to put these tools in front of its staff. It does not tell you which teams, which tasks, or how many people.\n\nTreat the customer-facing claim as unproven. Nothing here shows shoppers noticed a difference, and \"reimagining retail\" is a vendor's framing rather than a finding. If you are weighing something similar, ask for the workflow, the adoption numbers and the measure of success before you treat this as evidence."
         },
         {
+            "url": "https://www.databricks.com/blog/how-genie-one-reshapes-work-finance-teams",
+            "date": "2026-10-01",
+            "slug": "how-genie-one-reshapes-work-for-finance-teams-60ad2a",
+            "title": "How Genie One reshapes work for finance teams",
+            "vendor": "Databricks",
+            "summary": "A finance team’s job is not simply to report the numbers: it’s to interpret what...",
+            "has_page": false,
+            "entity_uid": "a4718c15",
+            "entity_kind": "company"
+        },
+        {
             "url": "https://machinelearning.apple.com/research/harness-autonomous-ml-engineering",
             "date": "2026-10-01",
             "slug": "how-much-of-a-harness-does-a-strong-agent-need-for-autonomou-95bf30",
@@ -2069,6 +2104,16 @@
             "summary": "<p>Mark's enthusiasm for computers dampened at an early age by the rubber-keyed Sinclair Spectrum 48K and feelings of Commodore 64 envy. However, in the mid-80s, hope in a digital future was rekindled by the purchase of an Atari 520 STe.",
             "has_page": true,
             "entity_kind": "company"
+        },
+        {
+            "url": "https://www.pib.gov.in/PressReleaseDetail.aspx?PRID\\u003d2317586\\u0026reg\\u003d48\\u0026lang\\u003d1",
+            "date": "2026-10-01",
+            "slug": "raksha-mantri-launches-key-digital-and-financial-management--9bc452",
+            "title": "Raksha Mantri Launches Key Digital and Financial Management Initiatives at Defence Accounts Department’s 279th Annual Day Celebration in New Delhi",
+            "vendor": "PIB (India)",
+            "summary": "Raksha Mantri Launches Key Digital and Financial Management Initiatives at Defence Accounts Department’s 279th Annual Day Celebration in New Delhi PIB",
+            "has_page": true,
+            "entity_kind": "regulator"
         },
         {
             "url": "https://www.databricks.com/blog/read-restrictions-and-catalog-labels-unifying-governance-across-engines-and-catalogs",
@@ -2725,53 +2770,6 @@
             "entity_uid": "0d5de807",
             "entity_kind": "company",
             "reader_note": "If you use Aurora PostgreSQL, this may reduce the number of steps between your database and your data lake. That could simplify some pipelines.\n\nBut be sceptical: the announcement does not describe performance, concurrency, or cost. Treat the vendor's framing as a claim, not a finding. The announcement describes a capability, not a deployment. It does not prove that ETL is unnecessary for your workloads. Test it on your own data before you change your architecture."
-        },
-        {
-            "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/aws-accounts-phone-number-verification/",
-            "date": "2026-09-30",
-            "slug": "aws-accounts-now-support-phone-number-verification-f5adff",
-            "title": "AWS accounts now support phone number verification",
-            "vendor": "Amazon Web Services",
-            "summary": "AWS Accounts now support phone number verification for primary contact phone numbers. Previously, phone numbers in AWS account contact information were validated for format but never verified through an out-of-band mechanism.",
-            "has_page": true,
-            "entity_uid": "0d5de807",
-            "entity_kind": "company"
-        },
-        {
-            "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/aws-cli-agent-toolkit-update-skill/",
-            "date": "2026-09-30",
-            "slug": "aws-cli-now-supports-bulk-skill-updates-and-version-checks-f-8e1a2c",
-            "title": "AWS CLI now supports bulk skill updates and version checks for the Agent Toolkit for AWS",
-            "vendor": "Amazon Web Services",
-            "summary": "Today, AWS expanded the AWS Command Line Interface (CLI) commands for the Agent Toolkit for AWS with two new capabilities that make it easier to keep agent skills up to date.",
-            "has_page": true,
-            "entity_uid": "0d5de807",
-            "entity_kind": "company",
-            "reader_note": "This is housekeeping, not a new capability. Bulk updates reduce the manual work of keeping many skills current, and version checks tell you what is installed. Neither tells you whether a skill behaves correctly, so treat the version number as a label rather than a guarantee.\n\nBe sceptical of convenience that changes many things at once. If one command can update every skill, one mistake can too. Check what a skill does before you let it move, and keep a way to roll back. Nothing here proves the skills themselves are reliable, safe, or suited to your work."
-        },
-        {
-            "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/aws-continuum-penetration/",
-            "date": "2026-09-30",
-            "slug": "aws-continuum-for-penetration-testing-now-available-in-6-add-782f8d",
-            "title": "AWS Continuum for Penetration Testing now available in 6 additional Regions",
-            "vendor": "Amazon Web Services",
-            "summary": "AWS Continuum for Penetration Testing now available in 6 additional Regions AWS Continuum for Penetration Testing (AWS Security Agent) is a managed security service that enables AWS customers to conduct penetration testing against their web applications and APIs.",
-            "has_page": true,
-            "entity_uid": "0d5de807",
-            "entity_kind": "company",
-            "reader_note": "If your workloads sit in one of the newly covered Regions, this may remove a practical obstacle: testing can run closer to the systems it targets, which can matter for data residency and for keeping test traffic local. Check the Region list against where your applications actually run.\n\nBe sceptical of the scope. The description covers web applications and APIs, not your wider estate, and regional availability says nothing about how well the testing works. It does not prove the service finds real issues, or that its findings would satisfy an auditor."
-        },
-        {
-            "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/iam-identity-center-apis-arns/",
-            "date": "2026-09-30",
-            "slug": "aws-iam-identity-center-identity-store-apis-now-accept-resou-1eb385",
-            "title": "AWS IAM Identity Center Identity Store APIs now accept resource ARNs in addition to resource IDs",
-            "vendor": "Amazon Web Services",
-            "summary": "AWS IAM Identity Center's Identity Store APIs now accept the Amazon Resource Name (ARN) for a user, group, group membership, or identity store anywhere the APIs previously accepted the resource ID. ARN support is additive and existing integrations continue to work unchanged.",
-            "has_page": true,
-            "entity_uid": "0d5de807",
-            "entity_kind": "company",
-            "reader_note": "Treat this as an option rather than a migration. Where you currently resolve and store an ID before calling these APIs, you may be able to pass an ARN instead, which can simplify configuration and logging in your own tooling.\n\nBe sceptical of reading more into it. This changes how resources are named in a request, not what the APIs do or who is permitted to do it. It does not show that ARN handling is consistent across other AWS services, and it proves nothing about the wider identity roadmap."
         }
     ],
     "archive": [
@@ -2810,6 +2808,18 @@
             "entity_uid": "d9ea9793",
             "entity_kind": "company",
             "reader_note": "The guide is written for teams already building on these models, so treat it as operational advice rather than evidence of what works at scale. Prompt and tuning guidance can be tested against your own tasks, and that is the honest way to judge it.\n\nBe sceptical of any claim that a documented capability is a deployed one. Nothing here shows reliability under your load, your data, or your failure modes. It tells you what the vendor says is possible, not what your team will get."
+        },
+        {
+            "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/agentcore-gateway-private-tls-vpc/",
+            "date": "2026-10-02",
+            "slug": "agentcore-gateway-supports-private-tls-certificates-for-vpc--2ea429",
+            "title": "AgentCore Gateway supports private TLS certificates for VPC endpoints",
+            "vendor": "Amazon Web Services",
+            "summary": "Amazon Bedrock AgentCore Gateway now supports TLS certificates signed by private certificate authorities (CAs) on MCP, OpenAPI, and HTTP proxy targets. This feature enables you to connect securely to gateway targets that use TLS certificates issued by your own private certificate authority.",
+            "has_page": true,
+            "entity_uid": "0d5de807",
+            "entity_kind": "company",
+            "reader_note": "This removes a practical blocker if your internal services already use private CAs. It does not tell you how certificate rotation, revocation, or expiry are handled, and it does not show that the feature works at your scale or with your existing tooling. Treat the announcement as a starting point for a test, not as evidence that the integration is solved.\n\nThe claim is narrow and verifiable, so check it against your own endpoints before planning around it. A supported configuration is not the same as a tested one in your environment."
         },
         {
             "url": "https://blog.apify.com/ai-agent-vs-mcp-server/",
@@ -2927,6 +2937,18 @@
             "summary": "<p>After building his first computers in his teens, Jon Martindale has spent the past two decades covering the latest advances in technology.",
             "has_page": true,
             "entity_kind": "company"
+        },
+        {
+            "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/aurora-dsql-partial-indexes/",
+            "date": "2026-10-02",
+            "slug": "amazon-aurora-dsql-now-supports-partial-indexes-81e9e2",
+            "title": "Amazon Aurora DSQL now supports partial indexes",
+            "vendor": "Amazon Web Services",
+            "summary": "Amazon Aurora DSQL now lets you build an index over a specific subset of a table, storing only qualifying rows rather than every row in the entire table, which improves query performance and lowers index storage cost.",
+            "has_page": true,
+            "entity_uid": "0d5de807",
+            "entity_kind": "company",
+            "reader_note": "This is a routine feature addition, not a shift in what the database can do. If you run Aurora DSQL, partial indexes are worth testing on the queries that scan large tables for a narrow slice of rows, since a smaller index can mean less storage and faster reads. Check the query planner actually uses the index before assuming a gain.\n\nBe sceptical of the storage and performance claims until you measure them on your own data. A supported feature is not a tuned one, and the vendor's framing is not a finding."
         },
         {
             "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/amazon-eks-distro-kubernetes-version-1-37",
@@ -4453,6 +4475,17 @@
             "reader_note": "A named grocery retailer running ChatGPT Enterprise and the API is a signal about procurement, not about results. It tells you a large, established company is willing to put these tools in front of its staff. It does not tell you which teams, which tasks, or how many people.\n\nTreat the customer-facing claim as unproven. Nothing here shows shoppers noticed a difference, and \"reimagining retail\" is a vendor's framing rather than a finding. If you are weighing something similar, ask for the workflow, the adoption numbers and the measure of success before you treat this as evidence."
         },
         {
+            "url": "https://www.databricks.com/blog/how-genie-one-reshapes-work-finance-teams",
+            "date": "2026-10-01",
+            "slug": "how-genie-one-reshapes-work-for-finance-teams-60ad2a",
+            "title": "How Genie One reshapes work for finance teams",
+            "vendor": "Databricks",
+            "summary": "A finance team’s job is not simply to report the numbers: it’s to interpret what...",
+            "has_page": false,
+            "entity_uid": "a4718c15",
+            "entity_kind": "company"
+        },
+        {
             "url": "https://machinelearning.apple.com/research/harness-autonomous-ml-engineering",
             "date": "2026-10-01",
             "slug": "how-much-of-a-harness-does-a-strong-agent-need-for-autonomou-95bf30",
@@ -4843,6 +4876,16 @@
             "summary": "<p>Mark's enthusiasm for computers dampened at an early age by the rubber-keyed Sinclair Spectrum 48K and feelings of Commodore 64 envy. However, in the mid-80s, hope in a digital future was rekindled by the purchase of an Atari 520 STe.",
             "has_page": true,
             "entity_kind": "company"
+        },
+        {
+            "url": "https://www.pib.gov.in/PressReleaseDetail.aspx?PRID\\u003d2317586\\u0026reg\\u003d48\\u0026lang\\u003d1",
+            "date": "2026-10-01",
+            "slug": "raksha-mantri-launches-key-digital-and-financial-management--9bc452",
+            "title": "Raksha Mantri Launches Key Digital and Financial Management Initiatives at Defence Accounts Department’s 279th Annual Day Celebration in New Delhi",
+            "vendor": "PIB (India)",
+            "summary": "Raksha Mantri Launches Key Digital and Financial Management Initiatives at Defence Accounts Department’s 279th Annual Day Celebration in New Delhi PIB",
+            "has_page": true,
+            "entity_kind": "regulator"
         },
         {
             "url": "https://www.databricks.com/blog/read-restrictions-and-catalog-labels-unifying-governance-across-engines-and-catalogs",
@@ -8938,6 +8981,16 @@
             "has_page": true,
             "entity_uid": "25c8dabc",
             "entity_kind": "section"
+        },
+        {
+            "url": "https://www.pib.gov.in/PressReleaseDetail.aspx?PRID\\u003d2315994\\u0026reg\\u003d48\\u0026lang\\u003d1",
+            "date": "2026-09-28",
+            "slug": "india-france-space-cooperation-enters-new-phase-with-focus-o-721fb2",
+            "title": "India-France Space Cooperation Enters New Phase with Focus on Human Spaceflight, Start-ups and New Space Ecosystem: Dr. Jitendra Singh",
+            "vendor": "PIB (India)",
+            "summary": "India-France Space Cooperation Enters New Phase with Focus on Human Spaceflight, Start-ups and New Space Ecosystem: Dr. Jitendra Singh PIB",
+            "has_page": true,
+            "entity_kind": "regulator"
         },
         {
             "url": "https://www.insurancejournal.com/news/national/2026/09/28/887060.htm",
@@ -23219,6 +23272,16 @@
             "summary": "What happens when human imagination, artificial intelligence, art and technology come together? From September 1 to 6, Samsung Electronics presented a special exhibition themed “Design is an Act of Love” during Design Miami Seoul 2026 at Dongdaemun Design Plaza (DDP) in Seoul.",
             "has_page": true,
             "entity_kind": "company"
+        },
+        {
+            "url": "https://www.pib.gov.in/PressReleaseDetail.aspx?PRID\\u003d2307419\\u0026reg\\u003d1\\u0026lang\\u003d1",
+            "date": "2026-09-07",
+            "slug": "meai-and-ibm-hold-workshop-on-ai-enabled-mining-tenement-sys-e4f3d5",
+            "title": "MEAI and IBM Hold Workshop on AI-Enabled Mining Tenement System",
+            "vendor": "PIB (India)",
+            "summary": "MEAI and IBM Hold Workshop on AI-Enabled Mining Tenement System PIB",
+            "has_page": false,
+            "entity_kind": "regulator"
         },
         {
             "url": "https://news.samsung.com/global/samsung-enhances-long-term-value-of-refrigerators-and-laundry-appliances-with-ai-focused-software-updates",
@@ -49935,7 +49998,7 @@
             "slug": "red-teaming-anthropic-s-internal-agent-monitoring-systems-5fbad0",
             "title": "Red-Teaming Anthropic's Internal Agent Monitoring Systems",
             "vendor": "METR",
-            "summary": "Update : Further details on this exercise are included in our Frontier Risk Report (February-March 2026), within the Anthropic section of Appendix B .",
+            "summary": "In collaboration with Anthropic, a METR staff member (David Rein) recently spent three weeks red-teaming a subset of Anthropic’s internal agent monitoring and security systems, many of which are described in the Opus 4.6 Sabotage Risk Report (Appendix 8.4, especially 8.4.8).",
             "has_page": true,
             "entity_kind": "regulator"
         },
@@ -88295,14 +88358,14 @@
             "vendor": "European Commission AI"
         }
     ],
-    "built_at": "2026-10-02T15:20:47-05:00",
+    "built_at": "2026-10-02T18:20:20-05:00",
     "coverage": {
         "feeds": 42,
         "companies": 503,
         "feeds_healthy": 42
     },
     "page_uid": "bad4a071",
-    "generated": "2026-10-02T20:33:23Z",
+    "generated": "2026-10-02T23:41:13Z",
     "window_days": 30,
     "refresh_every_days": 1
 }
