@@ -1,0 +1,58 @@
+{
+    "kev": 0,
+    "num": 1390,
+    "uid": "72c5da3e",
+    "cves": [
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-93355",
+            "product": "LiteLLM",
+            "summary": "LiteLLM contains a weak authentication vulnerability that allows an attacker holding a valid JWT from the configured identity provider to authenticate as any existing user by exploiting an email-based fallback lookup in ",
+            "headline": "LiteLLM lets a JWT with an unverified email log in as another user",
+            "published": "2026-09-28",
+            "cvss_score": 7.6,
+            "cvss_severity": "HIGH"
+        }
+    ],
+    "high": 1,
+    "name": "Weak Authentication",
+    "count": 1,
+    "shape": "cwe",
+    "title": "CWE-1390: Weak Authentication",
+    "cwe_id": "CWE-1390",
+    "latest": "2026-09-28",
+    "status": "Incomplete",
+    "ai_text": "In AI software this weakness shows up in the gateways and proxy layers that sit in front of many models. The one CVE here is in LiteLLM, an LLM proxy and gateway that routes requests to providers and tracks keys and spend. Access is reached through the normal login path, where a token is accepted without properly proving the identity it claims. Because the check trusts an unverified email, a token holder can be treated as a different user. That lets an attacker act as that account, reach its keys, budgets and model access, and use the gateway under someone else's identity.",
+    "ai_model": "ollama:deepseek-v4.1-flash",
+    "built_at": "2026-10-02T22:34:20-05",
+    "critical": 0,
+    "page_uid": "72c5da3e",
+    "generated": "2026-10-02",
+    "mitre_url": "https://cwe.mitre.org/data/definitions/1390.html",
+    "likelihood": "",
+    "abstraction": "Class",
+    "description": "The product uses an authentication mechanism to restrict access to specific users or identities, but the mechanism does not sufficiently prove that the claimed identity is correct.",
+    "mitigations": [
+    ],
+    "consequences": [
+        {
+            "note": "This weakness can lead to the exposure of resources or functionality to unintended actors, possibly providing attackers with sensitive information or even execute arbitrary code.",
+            "scope": [
+                "Integrity",
+                "Confidentiality",
+                "Availability",
+                "Access Control"
+            ],
+            "impact": [
+                "Read Application Data",
+                "Gain Privileges or Assume Identity",
+                "Execute Unauthorized Code or Commands"
+            ]
+        }
+    ],
+    "ai_written_on": "2026-10-02",
+    "alternate_terms": [
+    ],
+    "refresh_every_days": 1,
+    "extended_description": "Attackers may be able to bypass weak authentication faster and/or with less effort than expected."
+}

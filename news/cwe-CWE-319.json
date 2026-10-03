@@ -1,0 +1,107 @@
+{
+    "kev": 0,
+    "num": 319,
+    "uid": "69736916",
+    "cves": [
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-101057",
+            "product": "MCP",
+            "summary": "utcp-mcp (the MCP plugin of python-utcp) through 1.1.2 connects to the HTTP and WebSocket MCP server URLs given in a call template's mcpServers configuration without the ensure_secure_url validation that the HTTP-family ",
+            "headline": "utcp-mcp through 1.1.2 dials plain-HTTP MCP server URLs without the secure-URL check",
+            "published": "2026-09-27",
+            "cvss_score": 2.3,
+            "cvss_severity": "LOW"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-91988",
+            "product": "MCP",
+            "summary": "atomic-agents-stack before 1.1.0 accepts cleartext HTTP schemes in the HTTP MCP server-registry backend factory, allowing network man-in-the-middle attackers to rewrite catalog responses. Attackers can inject arbitrary c",
+            "headline": "Atomic Agents Stack before 1.1.0 lets network attackers run code on the agent host",
+            "published": "2026-09-15",
+            "cvss_score": 9.2,
+            "cvss_severity": "CRITICAL"
+        }
+    ],
+    "high": 0,
+    "name": "Cleartext Transmission of Sensitive Information",
+    "count": 2,
+    "shape": "cwe",
+    "title": "CWE-319: Cleartext Transmission of Sensitive Information",
+    "cwe_id": "CWE-319",
+    "latest": "2026-09-27",
+    "status": "Draft",
+    "ai_text": "In AI software this weakness shows up in MCP servers and agent frameworks, the plumbing that lets models call tools and other agents. Both CVEs sit in that layer. CVE-2026-101057 affects utcp-mcp through 1.1.2, which connects to plain HTTP MCP server URLs without the secure URL check. CVE-2026-91988 affects Atomic Agents Stack before 1.1.0. In each case the traffic between the agent and its MCP server moves in cleartext, so anyone positioned on the network path can read or alter it. That lets an attacker capture sensitive data in transit and, in the Atomic Agents Stack case, run code on the agent host.",
+    "ai_model": "ollama:deepseek-v4.1-flash",
+    "built_at": "2026-10-02T22:34:20-05",
+    "critical": 1,
+    "page_uid": "69736916",
+    "generated": "2026-10-02",
+    "mitre_url": "https://cwe.mitre.org/data/definitions/319.html",
+    "likelihood": "",
+    "abstraction": "Base",
+    "description": "The product transmits sensitive or security-critical data in cleartext in a communication channel that can be sniffed by unauthorized actors.",
+    "mitigations": [
+        {
+            "phase": [
+                "Architecture and Design"
+            ],
+            "description": "Before transmitting, encrypt the data using reliable, confidentiality-protecting cryptographic protocols."
+        },
+        {
+            "phase": [
+                "Implementation"
+            ],
+            "description": "When using web applications with SSL, use SSL for the entire session from login to logout, not just for the initial login page."
+        },
+        {
+            "phase": [
+                "Implementation"
+            ],
+            "description": "When designing hardware platforms, ensure that approved encryption algorithms (such as those recommended by NIST) protect paths from security critical data to trusted user applications."
+        },
+        {
+            "phase": [
+                "Testing"
+            ],
+            "description": "Use tools and techniques that require manual (human) analysis, such as penetration testing, threat modeling, and interactive tools that allow the tester to record and modify an active session. These may be more effective than strictly automated techniques. This is especially the case with weaknesses that are related to design and business rules."
+        },
+        {
+            "phase": [
+                "Operation"
+            ],
+            "description": "Configure servers to use encrypted channels for communication, which may include SSL or other secure protocols."
+        }
+    ],
+    "consequences": [
+        {
+            "note": "Anyone can read the information by gaining access to the channel being used for communication. Many communication channels can be sniffed (monitored) by adversaries during data transmission. For example, in networking, packets can traverse many intermediary nodes from the source to the destination, whether across the internet, an internal network, the cloud, etc. Some actors might have privileged access to a network interface or any link along the channel, such as a router, but they might not be authorized to collect the underlying data. As a result, network traffic could be sniffed by adversaries, spilling security-critical data.",
+            "scope": [
+                "Integrity",
+                "Confidentiality"
+            ],
+            "impact": [
+                "Read Application Data",
+                "Modify Files or Directories"
+            ]
+        },
+        {
+            "note": "When full communications are recorded or logged, such as with a packet dump, an adversary could attempt to obtain the dump long after the transmission has occurred and try to sniff the cleartext from the recorded communications in the dump itself. Even if the information is encoded in a way that is not human-readable, certain techniques could determine which encoding is being used, then decode the information.",
+            "scope": [
+                "Integrity",
+                "Confidentiality"
+            ],
+            "impact": [
+                "Read Application Data",
+                "Modify Files or Directories",
+                "Other"
+            ]
+        }
+    ],
+    "ai_written_on": "2026-10-02",
+    "alternate_terms": [
+    ],
+    "refresh_every_days": 1,
+    "extended_description": ""
+}

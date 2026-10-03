@@ -1,0 +1,66 @@
+{
+    "kev": 0,
+    "num": 307,
+    "uid": "ac55b271",
+    "cves": [
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-19297",
+            "product": "Langflow",
+            "summary": "IBM Langflow OSS 1.0.0 through 1.9.6 could allow a remote attacker to obtain unauthorized access to user accounts due to improper restriction of excessive authentication attempts.",
+            "headline": "Langflow 1.0.0 through 1.9.6 lets a remote attacker take over user accounts",
+            "published": "2026-08-13",
+            "cvss_score": 9.1,
+            "cvss_severity": "CRITICAL"
+        }
+    ],
+    "high": 0,
+    "name": "Improper Restriction of Excessive Authentication Attempts",
+    "count": 1,
+    "shape": "cwe",
+    "title": "CWE-307: Improper Restriction of Excessive Authentication Attempts",
+    "cwe_id": "CWE-307",
+    "latest": "2026-08-13",
+    "status": "Draft",
+    "ai_text": "In AI software this weakness shows up in LLM application platforms, as the single CVE here shows. CVE-2026-19297 covers Langflow, the visual framework for building LLM applications and agents, across versions 1.0.0 through 1.9.6. The flaw is that the product does not sufficiently limit repeated failed authentication attempts in a short window, so a remote attacker can keep guessing against the same account without being slowed or locked out. That lets the attacker take over user accounts on the affected Langflow deployment. The CVE names only Langflow, so the pattern is best read as an authentication weakness in an LLM application builder rather than in model serving or notebooks.",
+    "ai_model": "ollama:deepseek-v4.1-flash",
+    "built_at": "2026-10-02T22:34:20-05",
+    "critical": 1,
+    "page_uid": "ac55b271",
+    "generated": "2026-10-02",
+    "mitre_url": "https://cwe.mitre.org/data/definitions/307.html",
+    "likelihood": "",
+    "abstraction": "Base",
+    "description": "The product does not implement sufficient measures to prevent multiple failed authentication attempts within a short time frame.",
+    "mitigations": [
+        {
+            "phase": [
+                "Architecture and Design"
+            ],
+            "description": "Common protection mechanisms include: Disconnecting the user after a small number of failed attempts Implementing a timeout Locking out a targeted account Requiring a computational task on the user's part."
+        },
+        {
+            "phase": [
+                "Architecture and Design"
+            ],
+            "strategy": "Libraries or Frameworks",
+            "description": "Use a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid [REF-1482]. Consider using libraries with authentication capabilities such as OpenSSL or the ESAPI Authenticator. [REF-45]"
+        }
+    ],
+    "consequences": [
+        {
+            "note": "An attacker could perform an arbitrary number of authentication attempts using different passwords, and eventually gain access to the targeted account using a brute force attack.",
+            "scope": [
+                "Access Control"
+            ],
+            "impact": [
+                "Bypass Protection Mechanism"
+            ]
+        }
+    ],
+    "ai_written_on": "2026-10-02",
+    "alternate_terms": [
+    ],
+    "refresh_every_days": 1,
+    "extended_description": ""
+}

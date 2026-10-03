@@ -1,0 +1,52 @@
+{
+    "kev": 0,
+    "num": 696,
+    "uid": "af22fd0d",
+    "cves": [
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-103012",
+            "product": "Claude",
+            "summary": "Claude Code selected an API key stored by Claude Code, for example from an earlier `/login` or written directly to its configuration, ahead of the user's valid Claude Enterprise or Team sign-in when fetching the organiza",
+            "headline": "Claude Code 2.0.68 and 2.1.38 can start without organization policy",
+            "published": "2026-09-30",
+            "cvss_score": 2,
+            "cvss_severity": "LOW"
+        }
+    ],
+    "high": 0,
+    "name": "Incorrect Behavior Order",
+    "count": 1,
+    "shape": "cwe",
+    "title": "CWE-696: Incorrect Behavior Order",
+    "cwe_id": "CWE-696",
+    "latest": "2026-09-30",
+    "status": "Incomplete",
+    "ai_text": "In AI software this ordering flaw shows up in agent frameworks and coding assistants, where setup steps must run in a set sequence. The one CVE here is in Claude Code, a command line coding agent, in versions 2.0.68 and 2.1.38. The product can start before organization policy is applied, so the policy check happens after the agent is already running rather than before. An attacker who can reach that window gets an agent session operating outside the restrictions the organization intended, which weakens the controls meant to govern what the tool may do. The result is a trust gap at startup rather than a break in the model itself.",
+    "ai_model": "ollama:deepseek-v4.1-flash",
+    "built_at": "2026-10-02T22:34:20-05",
+    "critical": 0,
+    "page_uid": "af22fd0d",
+    "generated": "2026-10-02",
+    "mitre_url": "https://cwe.mitre.org/data/definitions/696.html",
+    "likelihood": "",
+    "abstraction": "Class",
+    "description": "The product performs multiple related behaviors, but the behaviors are performed in the wrong order in ways that may produce resultant weaknesses.",
+    "mitigations": [
+    ],
+    "consequences": [
+        {
+            "scope": [
+                "Integrity"
+            ],
+            "impact": [
+                "Alter Execution Logic"
+            ]
+        }
+    ],
+    "ai_written_on": "2026-10-02",
+    "alternate_terms": [
+    ],
+    "refresh_every_days": 1,
+    "extended_description": ""
+}

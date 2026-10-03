@@ -1,0 +1,148 @@
+{
+    "kev": 0,
+    "num": 125,
+    "uid": "8c5bb180",
+    "cves": [
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-104433",
+            "product": "sglang",
+            "summary": "Mooncake transfer engine before 0.3.12 contains an out-of-bounds read vulnerability in the readString function of include/common.h that allows unauthenticated attackers to crash the service by sending a zero-length hands",
+            "headline": "Mooncake before 0.3.12 lets an unauthenticated frame crash SGLang servers",
+            "published": "2026-10-03",
+            "cvss_score": 8.7,
+            "cvss_severity": "HIGH"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-80490",
+            "product": "Haystack",
+            "summary": "Algorithm::AhoCorasick::XS versions through 0.04 for Perl read the haystack string length before the scalar is stringified.\n\nThe matches, first_match and match_details methods use the T_STD_STRING typemap to translate Pe",
+            "headline": "Algorithm::AhoCorasick::XS through 0.04 aborts Perl on numeric haystack input",
+            "published": "2026-09-30",
+            "cvss_score": null,
+            "cvss_severity": ""
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-55093",
+            "product": "TensorFlow",
+            "summary": "Tract is a tiny, no-nonsense, self-contained TensorFlow and ONNX inference toolkit. Prior to 0.21.16, 0.22.2, and 0.23.1, tract-nnef uses unchecked usize multiplication in nnef/src/tensors.rs read_tensor for attacker-con",
+            "headline": "Tract before 0.21.16 lets a crafted NNEF model read heap memory",
+            "published": "2026-09-14",
+            "cvss_score": 6.1,
+            "cvss_severity": "MEDIUM"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-43630",
+            "product": "llama.cpp",
+            "summary": "llama.cpp builds b5702 through b7653 contain an out-of-bounds read vulnerability in the recurrent memory state restore path that allows attackers with write access to the slot save directory to read memory past the end o",
+            "headline": "llama.cpp b5702 to b7653 slot file leaks heap memory into server logs",
+            "published": "2026-08-06",
+            "cvss_score": 6.3,
+            "cvss_severity": "MEDIUM"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-43628",
+            "product": "llama.cpp",
+            "summary": "llama.cpp builds b3978 through b9058 contain an integer underflow and out-of-bounds read vulnerability in the DRY sampler that allows unauthenticated attackers to trigger a heap buffer underflow by sending a crafted HTTP",
+            "headline": "llama.cpp b3978 to b9058 lets a crafted request crash the server",
+            "published": "2026-08-06",
+            "cvss_score": 8.5,
+            "cvss_severity": "HIGH"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-65918",
+            "product": "PyTorch",
+            "summary": "PyTorch torchvision through 0.28.0, fixed in commit 4e05dc2, contains an out-of-bounds heap read vulnerability in the GIF decoder's read_from_tensor callback that passes unclamped length to memcpy. Attackers can supply m",
+            "headline": "PyTorch torchvision 0.28.0 GIF decoder reads past heap memory on crafted GIFs",
+            "published": "2026-07-23",
+            "cvss_score": 7.1,
+            "cvss_severity": "HIGH"
+        }
+    ],
+    "high": 3,
+    "name": "Out-of-bounds Read",
+    "count": 6,
+    "shape": "cwe",
+    "title": "CWE-125: Out-of-bounds Read",
+    "cwe_id": "CWE-125",
+    "latest": "2026-10-03",
+    "status": "Draft",
+    "ai_text": "In AI software, CWE-125 shows up in model serving, inference runtimes and data loading code. The CVEs sit in projects such as SGLang, llama.cpp and PyTorch torchvision, plus TensorFlow and Haystack components. Attackers reach it through crafted inputs the software parses, like a malformed model file, a GIF image, a network frame or a request sent to a server. The read past the buffer then crashes the process or leaks heap memory into logs, which can expose data the service was holding. In llama.cpp, a crafted request or slot file caused a crash or a heap leak, and in SGLang an unauthenticated frame crashed servers.",
+    "ai_model": "ollama:deepseek-v4.1-flash",
+    "built_at": "2026-10-02T22:34:20-05",
+    "critical": 0,
+    "page_uid": "8c5bb180",
+    "generated": "2026-10-02",
+    "mitre_url": "https://cwe.mitre.org/data/definitions/125.html",
+    "likelihood": "",
+    "abstraction": "Base",
+    "description": "The product reads data past the end, or before the beginning, of the intended buffer.",
+    "mitigations": [
+        {
+            "phase": [
+                "Implementation"
+            ],
+            "strategy": "Input Validation",
+            "description": "Assume all input is malicious. Use an accept known good input validation strategy, i.e., use a list of acceptable inputs that strictly conform to specifications. Reject any input that does not strictly conform to specifications, or transform it into something that does. When performing input validation, consider all potentially relevant properties, including length, type of input, the full range of acceptable values, missing or extra inputs, syntax, consistency across related fields, and conformance to business rules. As an example of business rule logic, boat may be syntactically valid because it only contains alphanumeric characters, but it is not valid if the input is only expected to contain colors such as red or blue. Do not rely exclusively on looking for malicious or malformed inputs. This is likely to miss at least one undesirable input, especially if the code's environment changes. This can give attackers enough room to bypass the intended validation. However, denylists can be useful for detecting potential attacks or determining which inputs are so malformed that they should be rejected outright. To reduce the likelihood of introducing an out-of-bounds read, ensure that you validate and ensure correct calculations for any length argument, buffer size calculation, or offset. Be especially careful of relying on a sentinel (i.e. special character such as NUL) in untrusted inputs."
+        },
+        {
+            "phase": [
+                "Architecture and Design"
+            ],
+            "strategy": "Language Selection",
+            "description": "Use a language that provides appropriate memory abstractions."
+        }
+    ],
+    "consequences": [
+        {
+            "note": "An attacker could get secret values such as cryptographic keys, PII, memory addresses, or other information that could be used in additional attacks.",
+            "scope": [
+                "Confidentiality"
+            ],
+            "impact": [
+                "Read Memory"
+            ]
+        },
+        {
+            "note": "Out-of-bounds memory could contain memory addresses or other information that can be used to bypass ASLR and other protection mechanisms in order to improve the reliability of exploiting a separate weakness for code execution.",
+            "scope": [
+                "Confidentiality"
+            ],
+            "impact": [
+                "Bypass Protection Mechanism"
+            ]
+        },
+        {
+            "note": "An attacker could cause a segmentation fault or crash by causing memory to be read outside of the bounds of the buffer. This is especially likely when the code reads a variable amount of data and assumes that a sentinel exists to stop the read operation, such as a NUL in a string.",
+            "scope": [
+                "Availability"
+            ],
+            "impact": [
+                "DoS: Crash, Exit, or Restart"
+            ]
+        },
+        {
+            "note": "The read operation could produce other undefined or unexpected results.",
+            "scope": [
+                "Other"
+            ],
+            "impact": [
+                "Varies by Context"
+            ]
+        }
+    ],
+    "ai_written_on": "2026-10-02",
+    "alternate_terms": [
+        {
+            "term": "OOB read",
+            "description": "Shorthand for Out of bounds read"
+        }
+    ],
+    "refresh_every_days": 1,
+    "extended_description": ""
+}

@@ -1,0 +1,113 @@
+{
+    "kev": 0,
+    "num": 1333,
+    "uid": "1ac3e445",
+    "cves": [
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-70493",
+            "product": "Open WebUI",
+            "summary": "Open WebUI is an extensible, feature-rich, and user-friendly self-hosted AI platform. From 0.9.6 until 0.11.0, the built-in knowledge search path in backend/open_webui/tools/knowledge_fs.py and backend/open_webui/tools/b",
+            "headline": "Open WebUI 0.9.6 to 0.11.0 lets a chat user stall a worker with a crafted search pattern",
+            "published": "2026-08-04",
+            "cvss_score": 6.5,
+            "cvss_severity": "MEDIUM"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-59220",
+            "product": "Open WebUI",
+            "summary": "Open WebUI is an extensible, feature-rich, and user-friendly self-hosted AI platform. From 0.9.2 before 0.10.0, the SKILL_MENTION_RE and strip_re regular expressions in backend/open_webui/utils/middleware.py parsed <$ski",
+            "headline": "Open WebUI 0.9.2 to 0.9.x lets a chat message stall the server",
+            "published": "2026-07-09",
+            "cvss_score": 6.5,
+            "cvss_severity": "MEDIUM"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-55574",
+            "product": "vLLM",
+            "summary": "vLLM is a high-throughput and memory-efficient inference and serving engine for LLMs. Prior to 0.24.0, the structured_outputs.regex API parameter passes a user-supplied regular expression string directly to the grammar c",
+            "headline": "vLLM before 0.24.0 lets one regex request hang an inference worker",
+            "published": "2026-07-06",
+            "cvss_score": 8.7,
+            "cvss_severity": "HIGH"
+        }
+    ],
+    "high": 1,
+    "name": "Inefficient Regular Expression Complexity",
+    "count": 3,
+    "shape": "cwe",
+    "title": "CWE-1333: Inefficient Regular Expression Complexity",
+    "cwe_id": "CWE-1333",
+    "latest": "2026-08-04",
+    "status": "Draft",
+    "ai_text": "In AI software this weakness shows up in the chat and serving layers that sit in front of models. The three CVEs here are all in that layer: two in Open WebUI, a chat front end, and one in vLLM, a model serving engine. In each case the regex is reached through ordinary user input, a chat message or a search pattern, so no special access is needed. The result is the same shape of failure: a single request can occupy a worker until it stalls, and in the Open WebUI cases the server itself can hang. The affected versions are Open WebUI 0.9.2 through 0.11.0 and vLLM before 0.24.0.",
+    "ai_model": "ollama:deepseek-v4.1-flash",
+    "built_at": "2026-10-02T22:34:20-05",
+    "critical": 0,
+    "page_uid": "1ac3e445",
+    "generated": "2026-10-02",
+    "mitre_url": "https://cwe.mitre.org/data/definitions/1333.html",
+    "likelihood": "",
+    "abstraction": "Base",
+    "description": "The product uses a regular expression with a worst-case computational complexity that is inefficient and possibly exponential.",
+    "mitigations": [
+        {
+            "phase": [
+                "Architecture and Design"
+            ],
+            "description": "Use regular expressions that do not support backtracking, e.g. by removing nested quantifiers.",
+            "effectiveness": "High"
+        },
+        {
+            "phase": [
+                "System Configuration"
+            ],
+            "description": "Set backtracking limits in the configuration of the regular expression implementation, such as PHP's pcre.backtrack_limit. Also consider limits on execution time for the process.",
+            "effectiveness": "Moderate"
+        },
+        {
+            "phase": [
+                "Implementation"
+            ],
+            "description": "Do not use regular expressions with untrusted input. If regular expressions must be used, avoid using backtracking in the expression.",
+            "effectiveness": "High"
+        },
+        {
+            "phase": [
+                "Implementation"
+            ],
+            "description": "Limit the length of the input that the regular expression will process.",
+            "effectiveness": "Moderate"
+        }
+    ],
+    "consequences": [
+        {
+            "note": "Attackers can create crafted inputs that intentionally cause the regular expression to use excessive backtracking in a way that causes the CPU consumption to spike.",
+            "scope": [
+                "Availability"
+            ],
+            "impact": [
+                "DoS: Resource Consumption (CPU)"
+            ]
+        }
+    ],
+    "ai_written_on": "2026-10-02",
+    "alternate_terms": [
+        {
+            "term": "ReDoS",
+            "description": "ReDoS is an abbreviation of Regular expression Denial of Service."
+        },
+        {
+            "term": "Regular Expression Denial of Service",
+            "description": "While this term is attack-focused, this is commonly used to describe the weakness."
+        },
+        {
+            "term": "Catastrophic backtracking",
+            "description": "This term is used to describe the behavior of the regular expression as a negative technical impact."
+        }
+    ],
+    "refresh_every_days": 1,
+    "extended_description": ""
+}

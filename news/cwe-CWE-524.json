@@ -1,0 +1,70 @@
+{
+    "kev": 0,
+    "num": 524,
+    "uid": "e9c5edc1",
+    "cves": [
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-59213",
+            "product": "Ollama",
+            "summary": "Open WebUI is an extensible, feature-rich, and user-friendly self-hosted AI platform. From 0.6.27 before 0.10.0, get_all_models handlers in routers/openai.py and routers/ollama.py passed a lambda to aiocache key instead ",
+            "headline": "Open WebUI 0.6.27 to 0.9.x shares one user's model list with another caller",
+            "published": "2026-07-09",
+            "cvss_score": 3.5,
+            "cvss_severity": "LOW"
+        }
+    ],
+    "high": 0,
+    "name": "Use of Cache Containing Sensitive Information",
+    "count": 1,
+    "shape": "cwe",
+    "title": "CWE-524: Use of Cache Containing Sensitive Information",
+    "cwe_id": "CWE-524",
+    "latest": "2026-07-09",
+    "status": "Incomplete",
+    "ai_text": "In AI software this weakness shows up in shared model serving and chat front ends, where one cache is reused across callers. The single CVE here is in Open WebUI, the browser interface that sits in front of Ollama model serving. A user's model list is held in a cache that another caller can read, so the boundary between accounts is not kept. Reaching it needs only ordinary use of the shared interface, no special access. What it lets an attacker do is see which models another user has, which leaks usage and configuration details across tenants. The product named in the CVE is Open WebUI, with Ollama as the serving layer behind it.",
+    "ai_model": "ollama:deepseek-v4.1-flash",
+    "built_at": "2026-10-02T22:34:20-05",
+    "critical": 0,
+    "page_uid": "e9c5edc1",
+    "generated": "2026-10-02",
+    "mitre_url": "https://cwe.mitre.org/data/definitions/524.html",
+    "likelihood": "",
+    "abstraction": "Base",
+    "description": "The code uses a cache that contains sensitive information, but the cache can be read by an actor outside of the intended control sphere.",
+    "mitigations": [
+        {
+            "phase": [
+                "Architecture and Design"
+            ],
+            "description": "Protect information stored in cache."
+        },
+        {
+            "phase": [
+                "Architecture and Design"
+            ],
+            "description": "Do not store unnecessarily sensitive information in the cache."
+        },
+        {
+            "phase": [
+                "Architecture and Design"
+            ],
+            "description": "Consider using encryption in the cache."
+        }
+    ],
+    "consequences": [
+        {
+            "scope": [
+                "Confidentiality"
+            ],
+            "impact": [
+                "Read Application Data"
+            ]
+        }
+    ],
+    "ai_written_on": "2026-10-02",
+    "alternate_terms": [
+    ],
+    "refresh_every_days": 1,
+    "extended_description": "Applications may use caches to improve efficiency when communicating with remote entities or performing intensive calculations. A cache maintains a pool of objects, threads, connections, pages, financial data, passwords, or other resources to minimize the time it takes to initialize and access these resources. If the cache is accessible to unauthorized actors, attackers can read the cache and obtain this sensitive information."
+}

@@ -1,0 +1,55 @@
+{
+    "kev": 0,
+    "num": 669,
+    "uid": "72f43a7f",
+    "cves": [
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-38924",
+            "product": "MCP",
+            "summary": "In Oraios AI Serena before 1.0.0, the listen address of the MCP server in HTTP mode is 0.0.0.0. NOTE: the Supplier observed that 0.0.0.0 was a \"potential security hazard\" but the Serena documentation, at the time of the ",
+            "headline": "Serena MCP server before 1.0.0 listens on 0.0.0.0 in HTTP mode",
+            "published": "2026-09-14",
+            "cvss_score": 2.9,
+            "cvss_severity": "LOW"
+        }
+    ],
+    "high": 0,
+    "name": "Incorrect Resource Transfer Between Spheres",
+    "count": 1,
+    "shape": "cwe",
+    "title": "CWE-669: Incorrect Resource Transfer Between Spheres",
+    "cwe_id": "CWE-669",
+    "latest": "2026-09-14",
+    "status": "Draft",
+    "ai_text": "In AI software this weakness shows up where a tool meant for one trust boundary quietly serves another. The one CVE here is in an MCP server, Serena, a coding assistant backend that speaks the Model Context Protocol to agent frameworks and LLM applications. Before version 1.0.0 it listened on 0.0.0.0 in HTTP mode, so the interface built for a local, trusted client was reachable from the wider network instead. An attacker on that network could reach the server directly rather than through the agent that was supposed to mediate access, gaining unintended control over the resources and tools the server exposes to the model.",
+    "ai_model": "ollama:deepseek-v4.1-flash",
+    "built_at": "2026-10-02T22:34:20-05",
+    "critical": 0,
+    "page_uid": "72f43a7f",
+    "generated": "2026-10-02",
+    "mitre_url": "https://cwe.mitre.org/data/definitions/669.html",
+    "likelihood": "",
+    "abstraction": "Class",
+    "description": "The product does not properly transfer a resource/behavior to another sphere, or improperly imports a resource/behavior from another sphere, in a manner that provides unintended control over that resource.",
+    "mitigations": [
+    ],
+    "consequences": [
+        {
+            "scope": [
+                "Confidentiality",
+                "Integrity"
+            ],
+            "impact": [
+                "Read Application Data",
+                "Modify Application Data",
+                "Unexpected State"
+            ]
+        }
+    ],
+    "ai_written_on": "2026-10-02",
+    "alternate_terms": [
+    ],
+    "refresh_every_days": 1,
+    "extended_description": ""
+}

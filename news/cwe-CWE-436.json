@@ -1,0 +1,54 @@
+{
+    "kev": 0,
+    "num": 436,
+    "uid": "1bcdea75",
+    "cves": [
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-73614",
+            "product": "Claude",
+            "summary": "Network-AI ClaudeHookBridge before 5.15.1 truncates the target string to 500 characters before evaluating denyPatterns, while Claude Code executes the full untruncated command. Attackers can position dangerous content pa",
+            "headline": "Network-AI ClaudeHookBridge before 5.15.1 lets a long Bash command bypass the deny list",
+            "published": "2026-08-13",
+            "cvss_score": 8.7,
+            "cvss_severity": "HIGH"
+        }
+    ],
+    "high": 1,
+    "name": "Interpretation Conflict",
+    "count": 1,
+    "shape": "cwe",
+    "title": "CWE-436: Interpretation Conflict",
+    "cwe_id": "CWE-436",
+    "latest": "2026-08-13",
+    "status": "Incomplete",
+    "ai_text": "In AI software this weakness shows up where a guard and the tool it guards read the same input differently. The one CVE here is in ClaudeHookBridge, a hook bridge that sits in front of Claude and screens commands before they run. The bridge checks a command against a deny list, but a long Bash command is interpreted differently by the bridge than by the shell that finally executes it, so the bridge believes the command is allowed while the shell does something else. An attacker who can get a command through this gap can run actions the deny list was meant to stop, using the mismatch between the two readings rather than any flaw in the list itself.",
+    "ai_model": "ollama:deepseek-v4.1-flash",
+    "built_at": "2026-10-02T22:34:20-05",
+    "critical": 0,
+    "page_uid": "1bcdea75",
+    "generated": "2026-10-02",
+    "mitre_url": "https://cwe.mitre.org/data/definitions/436.html",
+    "likelihood": "",
+    "abstraction": "Class",
+    "description": "Product A handles inputs or steps differently than Product B, which causes A to perform incorrect actions based on its perception of B's state.",
+    "mitigations": [
+    ],
+    "consequences": [
+        {
+            "scope": [
+                "Integrity",
+                "Other"
+            ],
+            "impact": [
+                "Unexpected State",
+                "Varies by Context"
+            ]
+        }
+    ],
+    "ai_written_on": "2026-10-02",
+    "alternate_terms": [
+    ],
+    "refresh_every_days": 1,
+    "extended_description": "This is generally found in proxies, firewalls, anti-virus software, and other intermediary devices that monitor, allow, deny, or modify traffic based on how the client or server is expected to behave."
+}

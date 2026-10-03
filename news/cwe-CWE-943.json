@@ -1,0 +1,72 @@
+{
+    "kev": 0,
+    "num": 943,
+    "uid": "bda75a0b",
+    "cves": [
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-91937",
+            "product": "Flowise",
+            "summary": "Flowise before 3.1.4 fails to sanitize the overrideConfig.sessionId parameter before using it in MongoDB queries within the MongoDBMemory node. Unauthenticated attackers can submit MongoDB operator objects through the pr",
+            "headline": "Flowise before 3.1.4 lets unauthenticated attackers read other users' chat history",
+            "published": "2026-09-15",
+            "cvss_score": 8.7,
+            "cvss_severity": "HIGH"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-55253",
+            "product": "LangChain",
+            "summary": "LangChain MongoDB provides integrations between MongoDB, Atlas, LangChain, and LangGraph. Prior to langgraph-checkpoint-mongodb 0.3.0 and langgraph-store-mongodb 0.4.0, MongoDBSaver.list(), MongoDBSaver.alist(), and Mong",
+            "headline": "LangChain MongoDB filter flaw lets a logged in caller read other tenants' data",
+            "published": "2026-09-14",
+            "cvss_score": 7.7,
+            "cvss_severity": "HIGH"
+        }
+    ],
+    "high": 2,
+    "name": "Improper Neutralization of Special Elements in Data Query Logic",
+    "count": 2,
+    "shape": "cwe",
+    "title": "CWE-943: Improper Neutralization of Special Elements in Data Query Logic",
+    "cwe_id": "CWE-943",
+    "latest": "2026-09-15",
+    "status": "Incomplete",
+    "ai_text": "In AI software this weakness shows up in the data layers behind chat and agent products, where user input is folded into database queries without proper neutralization. The two CVEs here sit in LLM application frameworks rather than model serving or notebooks. In Flowise before 3.1.4, an unauthenticated party can reach the query logic and read other users' chat history. In LangChain, a logged in caller can abuse a MongoDB filter flaw to read data belonging to other tenants. Both cases involve a query built from caller supplied values, and both let an attacker step outside their own account and view records that belong to someone else.",
+    "ai_model": "ollama:deepseek-v4.1-flash",
+    "built_at": "2026-10-02T22:34:20-05",
+    "critical": 0,
+    "page_uid": "bda75a0b",
+    "generated": "2026-10-02",
+    "mitre_url": "https://cwe.mitre.org/data/definitions/943.html",
+    "likelihood": "",
+    "abstraction": "Class",
+    "description": "The product generates a query intended to access or manipulate data in a data store such as a database, but it does not neutralize or incorrectly neutralizes special elements that can modify the intended logic of the query.",
+    "mitigations": [
+    ],
+    "consequences": [
+        {
+            "scope": [
+                "Confidentiality",
+                "Integrity",
+                "Availability",
+                "Access Control"
+            ],
+            "impact": [
+                "Bypass Protection Mechanism",
+                "Read Application Data",
+                "Modify Application Data",
+                "Varies by Context"
+            ]
+        }
+    ],
+    "ai_written_on": "2026-10-02",
+    "alternate_terms": [
+        {
+            "term": "NoSQL Injection, NoSQLi",
+            "description": "Injection of data query language into NoSQL databases such as Cassandra, ElasticSearch, MongoDB, Redis, and others"
+        }
+    ],
+    "refresh_every_days": 1,
+    "extended_description": "Depending on the capabilities of the query language, an attacker could inject additional logic into the query to: Modify the intended selection criteria, thus changing which data entities (e.g., records) are returned, modified, or otherwise manipulated Append additional commands to the query Return more entities than intended Return fewer entities than intended Cause entities to be sorted in an unexpected way The ability to execute additional commands or change which entities are returned has obvious risks. But when the product logic depends on the order or number of entities, this can also lead to vulnerabilities. For example, if the query expects to return only one entity that specifies an administrative user, but an attacker can change which entities are returned, this could cause the logic to return information for a regular user and incorrectly assume that the user has administrative privileges. While this weakness is most commonly associated with SQL injection, there are many other query languages that are also subject to injection attacks, including HTSQL, LDAP, DQL, XQuery, Xpath, and NoSQL languages."
+}

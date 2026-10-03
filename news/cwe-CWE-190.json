@@ -1,0 +1,175 @@
+{
+    "kev": 0,
+    "num": 190,
+    "uid": "8c2ff39c",
+    "cves": [
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-73558",
+            "product": "vLLM",
+            "summary": "vLLM is an inference and serving engine for large language models. Prior to 0.27.0, an integer overflow in blockIdx.x * 2 * d in activation_kernels.cu can cause act_and_mul_kernel to consume another batched user's input,",
+            "headline": "vLLM before 0.27.0 can leak one user's inference result into another user's batch",
+            "published": "2026-08-13",
+            "cvss_score": 5.3,
+            "cvss_severity": "MEDIUM"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-43629",
+            "product": "llama.cpp",
+            "summary": "llama.cpp builds b4882 through b9058 contain a heap buffer overflow vulnerability in the KV cache state restore path where the state_read_data() function computes write size without overflow checking, allowing attackers ",
+            "headline": "llama.cpp b4882 to b9058 heap overflow via crafted KV cache state file",
+            "published": "2026-08-06",
+            "cvss_score": 9.2,
+            "cvss_severity": "CRITICAL"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-43627",
+            "product": "llama.cpp",
+            "summary": "llama.cpp builds b1283 through b9058 contain an integer overflow vulnerability in the llama_batch_init() function where unchecked multiplications in malloc() calls can wrap past INT32_MAX when computing allocation sizes.",
+            "headline": "llama.cpp b1283 to b9058 integer overflow in llama_batch_init can corrupt the heap",
+            "published": "2026-08-06",
+            "cvss_score": 8.5,
+            "cvss_severity": "HIGH"
+        }
+    ],
+    "high": 1,
+    "name": "Integer Overflow or Wraparound",
+    "count": 3,
+    "shape": "cwe",
+    "title": "CWE-190: Integer Overflow or Wraparound",
+    "cwe_id": "CWE-190",
+    "latest": "2026-08-13",
+    "status": "Stable",
+    "ai_text": "In AI software this weakness shows up in model serving and inference engines, where counts and sizes are computed from user supplied input. The CVEs sit in vLLM and llama.cpp, both widely used to run large language models. In llama.cpp, a crafted KV cache state file and a batch initialization routine let an integer overflow corrupt the heap, and in vLLM a size calculation before version 0.27.0 lets one user's inference result leak into another user's batch. The usual path is a request or file that carries a length or batch size the code trusts. The result is memory corruption or cross user data exposure rather than a clean crash.",
+    "ai_model": "ollama:deepseek-v4.1-flash",
+    "built_at": "2026-10-02T22:34:20-05",
+    "critical": 1,
+    "page_uid": "8c2ff39c",
+    "generated": "2026-10-02",
+    "mitre_url": "https://cwe.mitre.org/data/definitions/190.html",
+    "likelihood": "",
+    "abstraction": "Base",
+    "description": "The product performs a calculation that can produce an integer overflow or wraparound when the logic assumes that the resulting value will always be larger than the original value. This occurs when an integer value is incremented to a value that is too large to store in the associated representation. When this occurs, the value may become a very small or negative number.",
+    "mitigations": [
+        {
+            "phase": [
+                "Requirements"
+            ],
+            "description": "Ensure that all protocols are strictly defined, such that all out-of-bounds behavior can be identified simply, and require strict conformance to the protocol."
+        },
+        {
+            "phase": [
+                "Requirements"
+            ],
+            "strategy": "Language Selection",
+            "description": "Use a language that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid. If possible, choose a language or compiler that performs automatic bounds checking."
+        },
+        {
+            "phase": [
+                "Architecture and Design"
+            ],
+            "strategy": "Libraries or Frameworks",
+            "description": "Use a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid [REF-1482]. Use libraries or frameworks that make it easier to handle numbers without unexpected consequences. Examples include safe integer handling packages such as SafeInt (C++) or IntegerLib (C or C++). [REF-106]"
+        },
+        {
+            "phase": [
+                "Implementation"
+            ],
+            "strategy": "Input Validation",
+            "description": "Perform input validation on any numeric input by ensuring that it is within the expected range. Enforce that the input meets both the minimum and maximum requirements for the expected range. Use unsigned integers where possible. This makes it easier to perform validation for integer overflows. When signed integers are required, ensure that the range check includes minimum values as well as maximum values."
+        },
+        {
+            "phase": [
+                "Implementation"
+            ],
+            "description": "Understand the programming language's underlying representation and how it interacts with numeric calculation (CWE-681). Pay close attention to byte size discrepancies, precision, signed/unsigned distinctions, truncation, conversion and casting between types, not-a-number calculations, and how the language handles numbers that are too large or too small for its underlying representation. [REF-7] Also be careful to account for 32-bit, 64-bit, and other potential differences that may affect the numeric representation."
+        },
+        {
+            "phase": [
+                "Architecture and Design"
+            ],
+            "description": "For any security checks that are performed on the client side, ensure that these checks are duplicated on the server side, in order to avoid CWE-602. Attackers can bypass the client-side checks by modifying values after the checks have been performed, or by changing the client to remove the client-side checks entirely. Then, these modified values would be submitted to the server."
+        },
+        {
+            "phase": [
+                "Implementation"
+            ],
+            "strategy": "Compilation or Build Hardening",
+            "description": "Examine compiler warnings closely and eliminate problems with potential security implications, such as signed / unsigned mismatch in memory operations, or use of uninitialized variables. Even if the weakness is rarely exploitable, a single failure may lead to the compromise of the entire system."
+        }
+    ],
+    "consequences": [
+        {
+            "note": "This weakness can generally lead to undefined behavior and therefore crashes. When the calculated result is used for resource allocation, this weakness can cause too many (or too few) resources to be allocated, possibly enabling crashes if the product requests more resources than can be provided.",
+            "scope": [
+                "Availability"
+            ],
+            "impact": [
+                "DoS: Crash, Exit, or Restart",
+                "DoS: Resource Consumption (Memory)",
+                "DoS: Instability"
+            ]
+        },
+        {
+            "note": "If the value in question is important to data (as opposed to flow), simple data corruption has occurred. Also, if the overflow/wraparound results in other conditions such as buffer overflows, further memory corruption may occur.",
+            "scope": [
+                "Integrity"
+            ],
+            "impact": [
+                "Modify Memory"
+            ]
+        },
+        {
+            "note": "This weakness can sometimes trigger buffer overflows, which can be used to execute arbitrary code. This is usually outside the scope of the product's implicit security policy.",
+            "scope": [
+                "Confidentiality",
+                "Availability",
+                "Access Control"
+            ],
+            "impact": [
+                "Execute Unauthorized Code or Commands",
+                "Bypass Protection Mechanism"
+            ]
+        },
+        {
+            "note": "If the overflow/wraparound occurs in a loop index variable, this could cause the loop to terminate at the wrong time - too early, too late, or not at all (i.e., infinite loops). With too many iterations, some loops could consume too many resources such as memory, file handles, etc., possibly leading to a crash or other DoS.",
+            "scope": [
+                "Availability",
+                "Other"
+            ],
+            "impact": [
+                "Alter Execution Logic",
+                "DoS: Crash, Exit, or Restart",
+                "DoS: Resource Consumption (CPU)"
+            ]
+        },
+        {
+            "note": "If integer values are used in security-critical decisions, such as calculating quotas or allocation limits, integer overflows can be used to cause an incorrect security decision.",
+            "scope": [
+                "Access Control"
+            ],
+            "impact": [
+                "Bypass Protection Mechanism"
+            ]
+        }
+    ],
+    "ai_written_on": "2026-10-02",
+    "alternate_terms": [
+        {
+            "term": "Overflow",
+            "description": "The terms overflow and wraparound are used interchangeably by some people, but they can have more precise distinctions by others. See Terminology Notes."
+        },
+        {
+            "term": "Wraparound",
+            "description": "The terms overflow and wraparound are used interchangeably by some people, but they can have more precise distinctions by others. See Terminology Notes."
+        },
+        {
+            "term": "wrap, wrap-around, wrap around",
+            "description": "Alternate spellings of wraparound"
+        }
+    ],
+    "refresh_every_days": 1,
+    "extended_description": ""
+}

@@ -1,0 +1,142 @@
+{
+    "kev": 0,
+    "num": 184,
+    "uid": "01951b1b",
+    "cves": [
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-55096",
+            "product": "MCP",
+            "summary": "fast-mcp-telegram is a Telegram MCP Server. Prior to version 30.1, the send_message/send_message_to_phone MCP tools accept files as a list of http(s) URLs, which the server downloads and attaches to the outgoing Telegram",
+            "headline": "fast-mcp-telegram before 30.1 lets a crafted URL read internal servers",
+            "published": "2026-09-28",
+            "cvss_score": 7.1,
+            "cvss_severity": "HIGH"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-61788",
+            "product": "MCP",
+            "summary": "DBHub is a database MCP server for Postgres, MySQL, SQL Server, Oracle, MariaDB, SQLite. Prior to version 0.22.6, setting `readonly = true` on the `execute_sql` tool does not make the connection read-only. The connectors",
+            "headline": "DBHub before 0.22.6 lets a SELECT write files and run code on the database server",
+            "published": "2026-09-24",
+            "cvss_score": 7.4,
+            "cvss_severity": "HIGH"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-85787",
+            "product": "MCP",
+            "summary": "An incomplete list of disallowed inputs in the SQL validation component in Amazon awslabs postgres-mcp-server before  version 1.1.7 might allow an unauthenticated actor to modify data beyond the read-only scope by placin",
+            "headline": "Postgres MCP Server before 1.1.7 lets crafted SQL change data beyond read-only scope",
+            "published": "2026-09-04",
+            "cvss_score": 7.1,
+            "cvss_severity": "HIGH"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-73484",
+            "product": "Flowise",
+            "summary": "Flowise before 3.1.3 contains a sandbox escape vulnerability in pythonCodeValidator.ts that fails to block native Pandas DataFrame methods like to_csv, to_json, pipe, and query. Authenticated attackers can exploit this t",
+            "headline": "Flowise before 3.1.3 lets a signed-in user escape the Python sandbox and write files",
+            "published": "2026-08-13",
+            "cvss_score": 8.6,
+            "cvss_severity": "HIGH"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-17630",
+            "product": "Langflow",
+            "summary": "IBM Langflow OSS 1.0.0 through 1.10.3 could allow a remote attacker to execute arbitrary code due to improper validation of configuration parameters.",
+            "headline": "Langflow 1.0.0 to 1.10.3 lets a remote attacker run code through bad config validation",
+            "published": "2026-08-05",
+            "cvss_score": 7.2,
+            "cvss_severity": "HIGH"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-70470",
+            "product": "Flowise",
+            "summary": "Flowise is a drag & drop user interface to build a customized large language model flow. Prior to 3.1.3, Flowise validatePythonCodeForDataFrame in packages/components/src/pythonCodeValidator.ts can be bypassed with Unico",
+            "headline": "Flowise before 3.1.3 lets crafted Python run commands on the host",
+            "published": "2026-08-04",
+            "cvss_score": 9.5,
+            "cvss_severity": "CRITICAL"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-69263",
+            "product": "Flowise",
+            "summary": "Flowise is a drag & drop user interface to build a customized large language model flow. Prior to 3.1.3, the mitigation for CVE-2025-8943 blocked -y and --yes flags on npx, but packages/components/nodes/tools/MCP/core.ts",
+            "headline": "Flowise before 3.1.3 lets a Custom MCP server auto-install and run a package",
+            "published": "2026-08-04",
+            "cvss_score": 8.7,
+            "cvss_severity": "HIGH"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-13448",
+            "product": "Langflow",
+            "summary": "IBM Langflow OSS 1.0.0 through 1.10.1 Lanflow OSS contains an unauthenticated remote code execution vulnerability in the public flow build endpoint ( /api/v1/build_public_tmp/{flow_id}/flow ). The vulnerability stems fro",
+            "headline": "Langflow 1.0.0 to 1.10.1 lets an unauthenticated request run code on the server",
+            "published": "2026-07-17",
+            "cvss_score": 8.1,
+            "cvss_severity": "HIGH"
+        }
+    ],
+    "high": 7,
+    "name": "Incomplete List of Disallowed Inputs",
+    "count": 8,
+    "shape": "cwe",
+    "title": "CWE-184: Incomplete List of Disallowed Inputs",
+    "cwe_id": "CWE-184",
+    "latest": "2026-09-28",
+    "status": "Draft",
+    "ai_text": "In AI software this weakness shows up in agent frameworks and MCP servers that try to block dangerous input with a fixed list. The CVEs sit in Flowise, Langflow, DBHub, Postgres MCP Server and fast-mcp-telegram. The list is meant to stop unsafe queries, URLs or Python, but it misses cases the product still passes along. A crafted URL, SQL statement or configuration then slips past the check. An attacker can read internal servers, change data beyond read-only scope, write files or run code on the host. Flowise, Langflow and DBHub all show this pattern, where the filter looks complete but is not.",
+    "ai_model": "ollama:deepseek-v4.1-flash",
+    "built_at": "2026-10-02T22:34:20-05",
+    "critical": 1,
+    "page_uid": "01951b1b",
+    "generated": "2026-10-02",
+    "mitre_url": "https://cwe.mitre.org/data/definitions/184.html",
+    "likelihood": "",
+    "abstraction": "Base",
+    "description": "The product implements a protection mechanism that relies on a list of inputs (or properties of inputs) that are not allowed by policy or otherwise require other action to neutralize before additional processing takes place, but the list is incomplete.",
+    "mitigations": [
+        {
+            "phase": [
+                "Implementation"
+            ],
+            "strategy": "Input Validation",
+            "description": "Do not rely exclusively on detecting disallowed inputs. There are too many variants to encode a character, especially when different environments are used, so there is a high likelihood of missing some variants. Only use detection of disallowed inputs as a mechanism for detecting suspicious activity. Ensure that you are using other protection mechanisms that only identify good input - such as lists of allowed inputs - and ensure that you are properly encoding your outputs."
+        }
+    ],
+    "consequences": [
+        {
+            "note": "Attackers may be able to find other malicious inputs that were not expected by the developer, allowing them to bypass the intended protection mechanism.",
+            "scope": [
+                "Access Control"
+            ],
+            "impact": [
+                "Bypass Protection Mechanism"
+            ]
+        }
+    ],
+    "ai_written_on": "2026-10-02",
+    "alternate_terms": [
+        {
+            "term": "Denylist / Deny List",
+            "description": "This is used by CWE and CAPEC instead of other commonly-used terms. Its counterpart is allowlist."
+        },
+        {
+            "term": "Blocklist / Block List",
+            "description": "This is often used by security tools such as firewalls, email or web gateways, proxies, etc."
+        },
+        {
+            "term": "Blacklist / Black List",
+            "description": "This term is frequently used, but usage has been declining as organizations have started to adopt other terms."
+        }
+    ],
+    "refresh_every_days": 1,
+    "extended_description": ""
+}

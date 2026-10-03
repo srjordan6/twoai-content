@@ -1,0 +1,129 @@
+{
+    "kev": 0,
+    "num": 617,
+    "uid": "9d551e87",
+    "cves": [
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-94623",
+            "product": "vLLM",
+            "summary": "vLLM through 0.29.0 contains a denial of service vulnerability in the NIXL connector's prefix caching implementation that fails to properly validate block counts across multi-prompt completion requests in prefill/decode ",
+            "headline": "vLLM through 0.29.0 lets crafted multi-prompt requests crash the decode worker",
+            "published": "2026-09-21",
+            "cvss_score": 8.7,
+            "cvss_severity": "HIGH"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-86317",
+            "product": "llama.cpp",
+            "summary": "A vulnerability was detected in ggml-org llama.cpp up to 0.4.0. This impacts the function rpc_server::deserialize_tensor of the file ggml/src/ggml-rpc/ggml-rpc.cpp of the component RPC Server. Performing a manipulation o",
+            "headline": "llama.cpp up to 0.4.0 RPC server can be crashed by a remote request",
+            "published": "2026-09-07",
+            "cvss_score": 6.9,
+            "cvss_severity": "MEDIUM"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-52131",
+            "product": "llama.cpp",
+            "summary": "llama.cpp b5693 and before has a Reachable Assertion via the gguf_reader::read function.",
+            "headline": "llama.cpp b5693 and before crashes on a crafted GGUF file via gguf_reader::read",
+            "published": "2026-09-01",
+            "cvss_score": 7.5,
+            "cvss_severity": "HIGH"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-18581",
+            "product": "llama.cpp",
+            "summary": "A vulnerability was determined in ggml-org llama.cpp e15efe0. Affected by this issue is some unknown functionality of the file common/jinja/parser.cpp of the component Jinja Minja Template Parser. Executing a manipulatio",
+            "headline": "llama.cpp e15efe0 Jinja template parser crashes on crafted input",
+            "published": "2026-08-03",
+            "cvss_score": 1.9,
+            "cvss_severity": "LOW"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-17513",
+            "product": "llama.cpp",
+            "summary": "A vulnerability was found in ggml-org whisper.cpp 95ea8f9b. Affected is the function ggml_ftype_to_ggml_type of the file ggml/src/ggml.c. The manipulation of the argument ftype results in reachable assertion. The attack ",
+            "headline": "whisper.cpp 95ea8f9b crashes on a crafted local ftype value",
+            "published": "2026-07-27",
+            "cvss_score": 1.9,
+            "cvss_severity": "LOW"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-47475",
+            "product": "ChatGPT",
+            "summary": "NVIDIA TensorRT-LLM contains a vulnerability in the OpenAI-compatible inference API where an attacker could trigger a reachable assertion in the sampler thread. A successful exploit of this vulnerability might lead to de",
+            "headline": "TensorRT-LLM inference API lets a request crash the sampler thread",
+            "published": "2026-07-14",
+            "cvss_score": 6.2,
+            "cvss_severity": "MEDIUM"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-55514",
+            "product": "vLLM",
+            "summary": "vLLM is a library for LLM inference and serving. From 0.12.0 to before 0.24.0, sending a pure prompt embeds payload in a /v1/completions request with a model using M-RoPE causes EngineCore to fail an assertion and fatall",
+            "headline": "vLLM 0.12.0 to 0.23.x lets an authorized user crash the server with one request",
+            "published": "2026-07-06",
+            "cvss_score": 7.1,
+            "cvss_severity": "HIGH"
+        }
+    ],
+    "high": 3,
+    "name": "Reachable Assertion",
+    "count": 7,
+    "shape": "cwe",
+    "title": "CWE-617: Reachable Assertion",
+    "cwe_id": "CWE-617",
+    "latest": "2026-09-21",
+    "status": "Draft",
+    "ai_text": "In AI software this weakness shows up in model serving and inference stacks, where a reachable assertion turns a normal request into a process exit. The CVEs sit in vLLM, llama.cpp, whisper.cpp and TensorRT-LLM, reached through crafted prompts, GGUF model files, Jinja templates, RPC calls or a single API request. An attacker who can send that input crashes the decode worker, sampler thread or server, taking the service down for everyone else. vLLM, llama.cpp and TensorRT-LLM are the named examples here. The impact is denial of service rather than code execution, but a single request is often enough.",
+    "ai_model": "ollama:deepseek-v4.1-flash",
+    "built_at": "2026-10-02T22:34:20-05",
+    "critical": 0,
+    "page_uid": "9d551e87",
+    "generated": "2026-10-02",
+    "mitre_url": "https://cwe.mitre.org/data/definitions/617.html",
+    "likelihood": "",
+    "abstraction": "Base",
+    "description": "The product contains an assert() or similar statement that can be triggered by an attacker, which leads to an application exit or other behavior that is more severe than necessary.",
+    "mitigations": [
+        {
+            "phase": [
+                "Implementation"
+            ],
+            "description": "Make sensitive open/close operation non reachable by directly user-controlled data (e.g. open/close resources)"
+        },
+        {
+            "phase": [
+                "Implementation"
+            ],
+            "strategy": "Input Validation",
+            "description": "Perform input validation on user data."
+        }
+    ],
+    "consequences": [
+        {
+            "note": "An attacker that can trigger an assert statement can still lead to a denial of service if the relevant code can be triggered by an attacker, and if the scope of the assert() extends beyond the attacker's own session.",
+            "scope": [
+                "Availability"
+            ],
+            "impact": [
+                "DoS: Crash, Exit, or Restart"
+            ]
+        }
+    ],
+    "ai_written_on": "2026-10-02",
+    "alternate_terms": [
+        {
+            "term": "assertion failure"
+        }
+    ],
+    "refresh_every_days": 1,
+    "extended_description": "While assertion is good for catching logic errors and reducing the chances of reaching more serious vulnerability conditions, it can still lead to a denial of service. For example, if a server handles multiple simultaneous connections, and an assert() occurs in one single connection that causes all other connections to be dropped, this is a reachable assertion that leads to a denial of service."
+}

@@ -1,0 +1,222 @@
+{
+    "kev": 0,
+    "num": 129,
+    "uid": "77e5a83b",
+    "cves": [
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-100654",
+            "product": "vLLM",
+            "summary": "vLLM before 0.29.0 accepts user-controlled stop_token_ids on the OpenAI-compatible POST /v1/completions and POST /v1/chat/completions endpoints but validates only that the values are integers, not that each token id is w",
+            "headline": "vLLM before 0.29.0 lets an API user crash EngineCore with a malformed completion request",
+            "published": "2026-09-26",
+            "cvss_score": 7.1,
+            "cvss_severity": "HIGH"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-93989",
+            "product": "vLLM",
+            "summary": "vLLM through 0.29.0 fails to properly validate bad_words token indices against the model's generation output width in SamplingParams.update_from_tokenizer(). Attackers can supply out-of-bounds token indices that corrupt ",
+            "headline": "vLLM through 0.29.0 lets bad_words indices corrupt logits across requests",
+            "published": "2026-09-19",
+            "cvss_score": 2.3,
+            "cvss_severity": "LOW"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-93841",
+            "product": "vLLM",
+            "summary": "vLLM through 0.29.0 contains a memory corruption vulnerability in the Triton _bincount_kernel where prompt token IDs index the penalty prompt-presence bitset without bounds checking against vocabulary size. Attackers can",
+            "headline": "vLLM through 0.29.0 lets audio requests corrupt other users' sampler state",
+            "published": "2026-09-18",
+            "cvss_score": 6.3,
+            "cvss_severity": "MEDIUM"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-93840",
+            "product": "vLLM",
+            "summary": "vLLM before 0.29.0 validates allowed_token_ids against tokenizer length instead of model output logits width in SamplingParams._validate_allowed_token_ids(). Attackers can supply token IDs above the output vocabulary tha",
+            "headline": "vLLM before 0.29.0 lets crafted token IDs corrupt GPU logits across requests",
+            "published": "2026-09-18",
+            "cvss_score": 6.3,
+            "cvss_severity": "MEDIUM"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-93592",
+            "product": "vLLM",
+            "summary": "vLLM versions before 0.28.0 fail to validate the lower bound of token IDs in the /v1/embeddings and /pooling endpoints, allowing unauthenticated attackers to crash the engine by submitting negative token IDs. A single re",
+            "headline": "vLLM before 0.28.0 lets an unauthenticated request crash the engine",
+            "published": "2026-09-18",
+            "cvss_score": 8.7,
+            "cvss_severity": "HIGH"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-15685",
+            "product": "Ollama",
+            "summary": "Ollama downloadBlob Improper Validation of Array Index Denial-of-Service Vulnerability. This vulnerability allows remote attackers to create a denial-of-service condition on affected installations of Ollama. Authenticati",
+            "headline": "Ollama 0.7.1 downloadBlob flaw lets a remote request crash the service",
+            "published": "2026-07-13",
+            "cvss_score": 7.5,
+            "cvss_severity": "HIGH"
+        }
+    ],
+    "high": 3,
+    "name": "Improper Validation of Array Index",
+    "count": 6,
+    "shape": "cwe",
+    "title": "CWE-129: Improper Validation of Array Index",
+    "cwe_id": "CWE-129",
+    "latest": "2026-09-26",
+    "status": "Draft",
+    "ai_text": "In AI software this weakness shows up in model serving and inference engines, where request fields are used directly as array positions. The CVEs here are all in vLLM, with one in Ollama. In vLLM, an API user sends a completion, audio or token request whose indices, such as bad_words positions or crafted token IDs, are not checked against the valid range. The engine then reads or writes outside the intended array, which corrupts logits and sampler state for other users' requests or crashes EngineCore. In Ollama 0.7.1, a remote request to downloadBlob crashes the service. The result is denial of service and cross request corruption in shared serving processes.",
+    "ai_model": "ollama:deepseek-v4.1-flash",
+    "built_at": "2026-10-02T22:34:20-05",
+    "critical": 0,
+    "page_uid": "77e5a83b",
+    "generated": "2026-10-02",
+    "mitre_url": "https://cwe.mitre.org/data/definitions/129.html",
+    "likelihood": "",
+    "abstraction": "Variant",
+    "description": "The product uses untrusted input when calculating or using an array index, but the product does not validate or incorrectly validates the index to ensure the index references a valid position within the array.",
+    "mitigations": [
+        {
+            "phase": [
+                "Architecture and Design"
+            ],
+            "strategy": "Input Validation",
+            "description": "Use an input validation framework such as Struts or the OWASP ESAPI Validation API. Note that using a framework does not automatically address all input validation problems; be mindful of weaknesses that could arise from misusing the framework itself (CWE-1173)."
+        },
+        {
+            "phase": [
+                "Architecture and Design"
+            ],
+            "description": "For any security checks that are performed on the client side, ensure that these checks are duplicated on the server side, in order to avoid CWE-602. Attackers can bypass the client-side checks by modifying values after the checks have been performed, or by changing the client to remove the client-side checks entirely. Then, these modified values would be submitted to the server. Even though client-side checks provide minimal benefits with respect to server-side security, they are still useful. First, they can support intrusion detection. If the server receives input that should have been rejected by the client, then it may be an indication of an attack. Second, client-side error-checking can provide helpful feedback to the user about the expectations for valid input. Third, there may be a reduction in server-side processing time for accidental input errors, although this is typically a small savings."
+        },
+        {
+            "phase": [
+                "Requirements"
+            ],
+            "strategy": "Language Selection",
+            "description": "Use a language that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid. For example, Ada allows the programmer to constrain the values of a variable and languages such as Java and Ruby will allow the programmer to handle exceptions when an out-of-bounds index is accessed."
+        },
+        {
+            "phase": [
+                "Operation Build and Compilation"
+            ],
+            "strategy": "Environment Hardening",
+            "description": "Run or compile the software using features or extensions that randomly arrange the positions of a program's executable and libraries in memory. Because this makes the addresses unpredictable, it can prevent an attacker from reliably jumping to exploitable code. Examples include Address Space Layout Randomization (ASLR) [REF-58] [REF-60] and Position-Independent Executables (PIE) [REF-64]. Imported modules may be similarly realigned if their default memory addresses conflict with other modules, in a process known as rebasing (for Windows) and prelinking (for Linux) [REF-1332] using randomly generated addresses. ASLR for libraries cannot be used in conjunction with prelink since it would require relocating the libraries at run-time, defeating the whole purpose of prelinking. For more information on these techniques see D3-SAOR (Segment Address Offset Randomization) from D3FEND [REF-1335].",
+            "effectiveness": "Defense in Depth"
+        },
+        {
+            "phase": [
+                "Operation"
+            ],
+            "strategy": "Environment Hardening",
+            "description": "Use a CPU and operating system that offers Data Execution Protection (using hardware NX or XD bits) or the equivalent techniques that simulate this feature in software, such as PaX [REF-60] [REF-61]. These techniques ensure that any instruction executed is exclusively at a memory address that is part of the code segment. For more information on these techniques see D3-PSEP (Process Segment Execution Prevention) from D3FEND [REF-1336].",
+            "effectiveness": "Defense in Depth"
+        },
+        {
+            "phase": [
+                "Implementation"
+            ],
+            "strategy": "Input Validation",
+            "description": "Assume all input is malicious. Use an accept known good input validation strategy, i.e., use a list of acceptable inputs that strictly conform to specifications. Reject any input that does not strictly conform to specifications, or transform it into something that does. When performing input validation, consider all potentially relevant properties, including length, type of input, the full range of acceptable values, missing or extra inputs, syntax, consistency across related fields, and conformance to business rules. As an example of business rule logic, boat may be syntactically valid because it only contains alphanumeric characters, but it is not valid if the input is only expected to contain colors such as red or blue. Do not rely exclusively on looking for malicious or malformed inputs. This is likely to miss at least one undesirable input, especially if the code's environment changes. This can give attackers enough room to bypass the intended validation. However, denylists can be useful for detecting potential attacks or determining which inputs are so malformed that they should be rejected outright. When accessing a user-controlled array index, use a stringent range of values that are within the target array. Make sure that you do not allow negative values to be used. That is, verify the minimum as well as the maximum of the range of acceptable values."
+        },
+        {
+            "phase": [
+                "Implementation"
+            ],
+            "description": "Be especially careful to validate all input when invoking code that crosses language boundaries, such as from an interpreted language to native code. This could create an unexpected interaction between the language boundaries. Ensure that you are not violating any of the expectations of the language with which you are interfacing. For example, even though Java may not be susceptible to buffer overflows, providing a large argument in a call to native code might trigger an overflow."
+        },
+        {
+            "phase": [
+                "Architecture and Design Operation"
+            ],
+            "strategy": "Environment Hardening",
+            "description": "Run your code using the lowest privileges that are required to accomplish the necessary tasks [REF-76]. If possible, create isolated accounts with limited privileges that are only used for a single task. That way, a successful attack will not immediately give the attacker access to the rest of the software or its environment. For example, database applications rarely need to run as the database administrator, especially in day-to-day operations."
+        },
+        {
+            "phase": [
+                "Architecture and Design Operation"
+            ],
+            "strategy": "Sandbox or Jail",
+            "description": "Run the code in a jail or similar sandbox environment that enforces strict boundaries between the process and the operating system. This may effectively restrict which files can be accessed in a particular directory or which commands can be executed by the software. OS-level examples include the Unix chroot jail, AppArmor, and SELinux. In general, managed code may provide some protection. For example, java.io.FilePermission in the Java SecurityManager allows the software to specify restrictions on file operations. This may not be a feasible solution, and it only limits the impact to the operating system; the rest of the application may still be subject to compromise. Be careful to avoid CWE-243 and other weaknesses related to jails.",
+            "effectiveness": "Limited"
+        }
+    ],
+    "consequences": [
+        {
+            "note": "Use of an index that is outside the bounds of an array will very likely result in the corruption of relevant memory and perhaps instructions, leading to a crash, if the values are outside of the valid memory area.",
+            "scope": [
+                "Integrity",
+                "Availability"
+            ],
+            "impact": [
+                "DoS: Crash, Exit, or Restart"
+            ]
+        },
+        {
+            "note": "If the memory corrupted is data, rather than instructions, the system will continue to function with improper values.",
+            "scope": [
+                "Integrity"
+            ],
+            "impact": [
+                "Modify Memory"
+            ]
+        },
+        {
+            "note": "Use of an index that is outside the bounds of an array can also trigger out-of-bounds read or write operations, or operations on the wrong objects; i.e., buffer overflows are not always the result. This may result in the exposure or modification of sensitive data.",
+            "scope": [
+                "Confidentiality",
+                "Integrity"
+            ],
+            "impact": [
+                "Modify Memory",
+                "Read Memory"
+            ]
+        },
+        {
+            "note": "If the memory accessible by the attacker can be effectively controlled, it may be possible to execute arbitrary code, as with a standard buffer overflow and possibly without the use of large inputs if a precise index can be controlled.",
+            "scope": [
+                "Integrity",
+                "Confidentiality",
+                "Availability"
+            ],
+            "impact": [
+                "Execute Unauthorized Code or Commands"
+            ]
+        },
+        {
+            "note": "A single fault could allow either an overflow (CWE-788) or underflow (CWE-786) of the array index. What happens next will depend on the type of operation being performed out of bounds, but can expose sensitive information, cause a system crash, or possibly lead to arbitrary code execution.",
+            "scope": [
+                "Integrity",
+                "Availability",
+                "Confidentiality"
+            ],
+            "impact": [
+                "DoS: Crash, Exit, or Restart",
+                "Execute Unauthorized Code or Commands",
+                "Read Memory",
+                "Modify Memory"
+            ]
+        }
+    ],
+    "ai_written_on": "2026-10-02",
+    "alternate_terms": [
+        {
+            "term": "out-of-bounds array index"
+        },
+        {
+            "term": "index-out-of-range"
+        },
+        {
+            "term": "array index underflow"
+        }
+    ],
+    "refresh_every_days": 1,
+    "extended_description": ""
+}

@@ -1,0 +1,108 @@
+{
+    "kev": 0,
+    "num": 470,
+    "uid": "8299b262",
+    "cves": [
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-79784",
+            "product": "Transformers",
+            "summary": "Vocos instantiates a class named by a configuration file without restricting which class may be named. instantiate_class in vocos/pretrained.py takes the class_path value from the configuration, splits it into a module a",
+            "headline": "Vocos loads a model config that can run any importable code",
+            "published": "2026-08-25",
+            "cvss_score": 8.6,
+            "cvss_severity": "HIGH"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-58659",
+            "product": "PyTorch",
+            "summary": "PyTorch Lightning through 2.6.5, fixed in commit d710d68, contains a remote code execution vulnerability in the _load_state function that imports and executes attacker-controlled module names from checkpoint _instantiato",
+            "headline": "PyTorch Lightning 2.6.5 runs attacker code from a crafted checkpoint file",
+            "published": "2026-07-15",
+            "cvss_score": 8.4,
+            "cvss_severity": "HIGH"
+        }
+    ],
+    "high": 2,
+    "name": "Use of Externally-Controlled Input to Select Classes or Code ('Unsafe Reflection')",
+    "count": 2,
+    "shape": "cwe",
+    "title": "CWE-470: Use of Externally-Controlled Input to Select Classes or Code ('Unsafe Reflection')",
+    "cwe_id": "CWE-470",
+    "latest": "2026-08-25",
+    "status": "Draft",
+    "ai_text": "In AI software this weakness shows up in model loading and checkpoint handling, where a file or config names the code to run. The two CVEs sit in Transformers and PyTorch, both widely used libraries for model serving and training. In Transformers, Vocos loads a model config that can run any importable code. In PyTorch, PyTorch Lightning 2.6.5 runs attacker code from a crafted checkpoint file. The usual way in is a downloaded model, config or checkpoint that a user opens or loads. Because the input picks the class or code, an attacker who supplies that file can get their own code to run inside the victim's process, on the victim's machine or server.",
+    "ai_model": "ollama:deepseek-v4.1-flash",
+    "built_at": "2026-10-02T22:34:20-05",
+    "critical": 0,
+    "page_uid": "8299b262",
+    "generated": "2026-10-02",
+    "mitre_url": "https://cwe.mitre.org/data/definitions/470.html",
+    "likelihood": "",
+    "abstraction": "Base",
+    "description": "The product uses external input with reflection to select which classes or code to use, but it does not sufficiently prevent the input from selecting improper classes or code.",
+    "mitigations": [
+        {
+            "phase": [
+                "Architecture and Design"
+            ],
+            "description": "Refactor your code to avoid using reflection."
+        },
+        {
+            "phase": [
+                "Architecture and Design"
+            ],
+            "description": "Do not use user-controlled inputs to select and load classes or code."
+        },
+        {
+            "phase": [
+                "Implementation"
+            ],
+            "description": "Apply strict input validation by using allowlists or indirect selection to ensure that the user is only selecting allowable classes or code."
+        }
+    ],
+    "consequences": [
+        {
+            "note": "The attacker might be able to execute code that is not directly accessible to the attacker. Alternately, the attacker could call unexpected code in the wrong place or the wrong time, possibly modifying critical system state.",
+            "scope": [
+                "Integrity",
+                "Confidentiality",
+                "Availability",
+                "Other"
+            ],
+            "impact": [
+                "Execute Unauthorized Code or Commands",
+                "Alter Execution Logic"
+            ]
+        },
+        {
+            "note": "The attacker might be able to use reflection to call the wrong code, possibly with unexpected arguments that violate the API (CWE-227). This could cause the product to exit or hang.",
+            "scope": [
+                "Availability",
+                "Other"
+            ],
+            "impact": [
+                "DoS: Crash, Exit, or Restart",
+                "Other"
+            ]
+        },
+        {
+            "note": "By causing the wrong code to be invoked, the attacker might be able to trigger a runtime error that leaks sensitive information in the error message, such as CWE-536.",
+            "scope": [
+                "Confidentiality"
+            ],
+            "impact": [
+                "Read Application Data"
+            ]
+        }
+    ],
+    "ai_written_on": "2026-10-02",
+    "alternate_terms": [
+        {
+            "term": "Reflection Injection"
+        }
+    ],
+    "refresh_every_days": 1,
+    "extended_description": "If the product uses external inputs to determine which class to instantiate or which method to invoke, then an attacker could supply values to select unexpected classes or methods. If this occurs, then the attacker could create control flow paths that were not intended by the developer. These paths could bypass authentication or access control checks, or otherwise cause the product to behave in an unexpected manner. This situation becomes a doomsday scenario if the attacker can upload files into a location that appears on the product's classpath (CWE-427) or add new entries to the product's classpath (CWE-426). Under either of these conditions, the attacker can use reflection to introduce new, malicious behavior into the product."
+}

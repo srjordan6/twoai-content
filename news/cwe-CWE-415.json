@@ -1,0 +1,77 @@
+{
+    "kev": 0,
+    "num": 415,
+    "uid": "b99a0e25",
+    "cves": [
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-43622",
+            "product": "llama.cpp",
+            "summary": "llama.cpp builds b1886 through b7445 contain a double free vulnerability in the LLaMA-Android JNI wrapper where new_1batch() allocates memory using malloc() while free_1batch() deallocates it using the C++ delete operato",
+            "headline": "llama.cpp b1886 to b7445 double free in LLaMA-Android JNI wrapper can crash the process",
+            "published": "2026-08-06",
+            "cvss_score": 8.5,
+            "cvss_severity": "HIGH"
+        }
+    ],
+    "high": 1,
+    "name": "Double Free",
+    "count": 1,
+    "shape": "cwe",
+    "title": "CWE-415: Double Free",
+    "cwe_id": "CWE-415",
+    "latest": "2026-08-06",
+    "status": "Draft",
+    "ai_text": "In AI software this weakness shows up in model serving and local inference code, where memory is managed by hand across language boundaries. The one CVE here is in llama.cpp, the inference engine behind many local LLM applications, and it sits in the LLaMA-Android JNI wrapper that bridges Java and native code. That boundary is the usual way in, because ownership of a buffer can be released on both sides. An attacker who reaches it can free the same memory twice, which corrupts the allocator and crashes the process, taking down the model serving or app session that depends on it.",
+    "ai_model": "ollama:deepseek-v4.1-flash",
+    "built_at": "2026-10-02T22:34:20-05",
+    "critical": 0,
+    "page_uid": "b99a0e25",
+    "generated": "2026-10-02",
+    "mitre_url": "https://cwe.mitre.org/data/definitions/415.html",
+    "likelihood": "",
+    "abstraction": "Variant",
+    "description": "The product calls free() twice on the same memory address.",
+    "mitigations": [
+        {
+            "phase": [
+                "Architecture and Design"
+            ],
+            "description": "Choose a language that provides automatic memory management."
+        },
+        {
+            "phase": [
+                "Implementation"
+            ],
+            "description": "Ensure that each allocation is freed only once. After freeing a chunk, set the pointer to NULL to ensure the pointer cannot be freed again. In complicated error conditions, be sure that clean-up routines respect the state of allocation properly. If the language is object oriented, ensure that object destructors delete each chunk of memory only once."
+        },
+        {
+            "phase": [
+                "Implementation"
+            ],
+            "description": "Use a static analysis tool to find double free instances."
+        }
+    ],
+    "consequences": [
+        {
+            "note": "When a program calls free() twice with the same argument, the program's memory management data structures may become corrupted, potentially leading to the reading or modification of unexpected memory addresses. This corruption can cause the program to crash or, in some circumstances, cause two later calls to malloc() to return the same pointer. If malloc() returns the same value twice and the program later gives the attacker control over the data that is written into this doubly-allocated memory, the program becomes vulnerable to a buffer overflow attack. Doubly freeing memory may result in a write-what-where condition, allowing an attacker to execute arbitrary code.",
+            "scope": [
+                "Integrity",
+                "Confidentiality",
+                "Availability"
+            ],
+            "impact": [
+                "Modify Memory",
+                "Execute Unauthorized Code or Commands"
+            ]
+        }
+    ],
+    "ai_written_on": "2026-10-02",
+    "alternate_terms": [
+        {
+            "term": "Double-free"
+        }
+    ],
+    "refresh_every_days": 1,
+    "extended_description": ""
+}

@@ -1,0 +1,72 @@
+{
+    "kev": 0,
+    "num": 1336,
+    "uid": "101cd3e7",
+    "cves": [
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-37004",
+            "product": "LiteLLM",
+            "summary": "BerriAI litellm <=1.82.4 is vulnerable to Server-Side Template Injection (SSTI), which allows unauthenticated remote attackers to execute arbitrary OS commands via a crafted dotprompt_content parameter in the /prompts/te",
+            "headline": "LiteLLM 1.82.4 and earlier lets an unauthenticated request run OS commands",
+            "published": "2026-08-27",
+            "cvss_score": 9.8,
+            "cvss_severity": "CRITICAL"
+        }
+    ],
+    "high": 0,
+    "name": "Improper Neutralization of Special Elements Used in a Template Engine",
+    "count": 1,
+    "shape": "cwe",
+    "title": "CWE-1336: Improper Neutralization of Special Elements Used in a Template Engine",
+    "cwe_id": "CWE-1336",
+    "latest": "2026-08-27",
+    "status": "Incomplete",
+    "ai_text": "In AI software this weakness shows up in LLM gateway and proxy products, as the single CVE here shows. LiteLLM 1.82.4 and earlier is the example, a tool teams run in front of many model providers to route and log requests. The flaw sits in a template engine that processes externally influenced input, so a request reaching the gateway can be read as a template expression rather than plain text. Because the gateway is often reachable without authentication, an attacker can send crafted input and get operating system commands to run on the host. That turns a shared model access point into a foothold on the server itself.",
+    "ai_model": "ollama:deepseek-v4.1-flash",
+    "built_at": "2026-10-02T22:34:20-05",
+    "critical": 1,
+    "page_uid": "101cd3e7",
+    "generated": "2026-10-02",
+    "mitre_url": "https://cwe.mitre.org/data/definitions/1336.html",
+    "likelihood": "",
+    "abstraction": "Base",
+    "description": "The product uses a template engine to insert or process externally-influenced input, but it does not neutralize or incorrectly neutralizes special elements or syntax that can be interpreted as template expressions or other code directives when processed by the engine.",
+    "mitigations": [
+        {
+            "phase": [
+                "Architecture and Design"
+            ],
+            "description": "Choose a template engine that offers a sandbox or restricted mode, or at least limits the power of any available expressions, function calls, or commands."
+        },
+        {
+            "phase": [
+                "Implementation"
+            ],
+            "description": "Use the template engine's sandbox or restricted mode, if available."
+        }
+    ],
+    "consequences": [
+        {
+            "scope": [
+                "Integrity"
+            ],
+            "impact": [
+                "Execute Unauthorized Code or Commands"
+            ]
+        }
+    ],
+    "ai_written_on": "2026-10-02",
+    "alternate_terms": [
+        {
+            "term": "Server-Side Template Injection / SSTI",
+            "description": "This term is used for injection into template engines being used by a server."
+        },
+        {
+            "term": "Client-Side Template Injection / CSTI",
+            "description": "This term is used for injection into template engines being used by a client."
+        }
+    ],
+    "refresh_every_days": 1,
+    "extended_description": "Many web applications use template engines that allow developers to insert externally-influenced values into free text or messages in order to generate a full web page, document, message, etc. Such engines include Twig, Jinja2, Pug, Java Server Pages, FreeMarker, Velocity, ColdFusion, Smarty, and many others - including PHP itself. Some CMS (Content Management Systems) also use templates. Template engines often have their own custom command or expression language. If an attacker can influence input into a template before it is processed, then the attacker can invoke arbitrary expressions, i.e. perform injection attacks. For example, in some template languages, an attacker could inject the expression {{7*7}} and determine if the output returns 49 instead. The syntax varies depending on the language. In some cases, XSS-style attacks can work, which can obscure the root cause if the developer does not closely investigate the root cause of the error. Template engines can be used on the server or client, so both sides could be affected by injection. The mechanisms of attack or the affected technologies might be different, but the mistake is fundamentally the same."
+}

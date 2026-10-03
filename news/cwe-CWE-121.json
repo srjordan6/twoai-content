@@ -1,0 +1,127 @@
+{
+    "kev": 0,
+    "num": 121,
+    "uid": "a08b158e",
+    "cves": [
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-47477",
+            "product": "Triton Inference Server",
+            "summary": "NVIDIA Triton Inference Server for Linux contains a vulnerability where an attacker can cause a stack-based buffer overflow. A successful exploit of this vulnerability might lead to denial of service.",
+            "headline": "Triton Inference Server on Linux has a stack overflow that can cause denial of service",
+            "published": "2026-07-14",
+            "cvss_score": 7.5,
+            "cvss_severity": "HIGH"
+        }
+    ],
+    "high": 1,
+    "name": "Stack-based Buffer Overflow",
+    "count": 1,
+    "shape": "cwe",
+    "title": "CWE-121: Stack-based Buffer Overflow",
+    "cwe_id": "CWE-121",
+    "latest": "2026-07-14",
+    "status": "Draft",
+    "ai_text": "In AI software this weakness shows up in model serving, where a network-facing inference server parses requests and writes into fixed-size stack buffers. The one CVE here is CVE-2026-47477 in Triton Inference Server on Linux, a stack overflow that can cause denial of service. The flaw is reached through the server's request handling path, so a remote caller can send input that overflows a local buffer and crashes or hangs the process. That takes the serving endpoint down for every application depending on it, which is the main impact the CVE records. Only Triton Inference Server appears in this class.",
+    "ai_model": "ollama:deepseek-v4.1-flash",
+    "built_at": "2026-10-02T22:34:20-05",
+    "critical": 0,
+    "page_uid": "a08b158e",
+    "generated": "2026-10-02",
+    "mitre_url": "https://cwe.mitre.org/data/definitions/121.html",
+    "likelihood": "",
+    "abstraction": "Variant",
+    "description": "A stack-based buffer overflow condition is a condition where the buffer being overwritten is allocated on the stack (i.e., is a local variable or, rarely, a parameter to a function).",
+    "mitigations": [
+        {
+            "phase": [
+                "Operation Build and Compilation"
+            ],
+            "strategy": "Environment Hardening",
+            "description": "Use automatic buffer overflow detection mechanisms that are offered by certain compilers or compiler extensions. Examples include: the Microsoft Visual Studio /GS flag, Fedora/Red Hat FORTIFY_SOURCE GCC flag, StackGuard, and ProPolice, which provide various mechanisms including canary-based detection and range/index checking. D3-SFCV (Stack Frame Canary Validation) from D3FEND [REF-1334] discusses canary-based detection in detail.",
+            "effectiveness": "Defense in Depth"
+        },
+        {
+            "phase": [
+                "Architecture and Design"
+            ],
+            "description": "Use an abstraction library to abstract away risky APIs. Not a complete solution."
+        },
+        {
+            "phase": [
+                "Implementation"
+            ],
+            "description": "Implement and perform bounds checking on input."
+        },
+        {
+            "phase": [
+                "Implementation"
+            ],
+            "description": "Do not use dangerous functions such as gets. Use safer, equivalent functions which check for boundary errors."
+        },
+        {
+            "phase": [
+                "Operation Build and Compilation"
+            ],
+            "strategy": "Environment Hardening",
+            "description": "Run or compile the software using features or extensions that randomly arrange the positions of a program's executable and libraries in memory. Because this makes the addresses unpredictable, it can prevent an attacker from reliably jumping to exploitable code. Examples include Address Space Layout Randomization (ASLR) [REF-58] [REF-60] and Position-Independent Executables (PIE) [REF-64]. Imported modules may be similarly realigned if their default memory addresses conflict with other modules, in a process known as rebasing (for Windows) and prelinking (for Linux) [REF-1332] using randomly generated addresses. ASLR for libraries cannot be used in conjunction with prelink since it would require relocating the libraries at run-time, defeating the whole purpose of prelinking. For more information on these techniques see D3-SAOR (Segment Address Offset Randomization) from D3FEND [REF-1335].",
+            "effectiveness": "Defense in Depth"
+        }
+    ],
+    "consequences": [
+        {
+            "note": "Buffer overflows generally lead to crashes. Other attacks leading to lack of availability are possible, including putting the program into an infinite loop.",
+            "scope": [
+                "Availability"
+            ],
+            "impact": [
+                "Modify Memory",
+                "DoS: Crash, Exit, or Restart",
+                "DoS: Resource Consumption (CPU)",
+                "DoS: Resource Consumption (Memory)"
+            ]
+        },
+        {
+            "note": "Buffer overflows often can be used to execute arbitrary code, which is usually outside the scope of a program's implicit security policy.",
+            "scope": [
+                "Integrity",
+                "Confidentiality",
+                "Availability",
+                "Access Control"
+            ],
+            "impact": [
+                "Modify Memory",
+                "Execute Unauthorized Code or Commands",
+                "Bypass Protection Mechanism"
+            ]
+        },
+        {
+            "note": "When the consequence is arbitrary code execution, this can often be used to subvert any other security service.",
+            "scope": [
+                "Integrity",
+                "Confidentiality",
+                "Availability",
+                "Access Control",
+                "Other"
+            ],
+            "impact": [
+                "Modify Memory",
+                "Execute Unauthorized Code or Commands",
+                "Bypass Protection Mechanism",
+                "Other"
+            ]
+        }
+    ],
+    "ai_written_on": "2026-10-02",
+    "alternate_terms": [
+        {
+            "term": "Stack Overflow",
+            "description": "Stack Overflow is often used to mean the same thing as stack-based buffer overflow, however it is also used on occasion to mean stack exhaustion, usually a result from an excessively recursive function call. Due to the ambiguity of the term, use of stack overflow to describe either circumstance is discouraged."
+        },
+        {
+            "term": "Stack Buffer Overflow"
+        }
+    ],
+    "refresh_every_days": 1,
+    "extended_description": ""
+}

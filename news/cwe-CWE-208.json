@@ -1,0 +1,54 @@
+{
+    "kev": 0,
+    "num": 208,
+    "uid": "f7d3cda0",
+    "cves": [
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-59218",
+            "product": "Open WebUI",
+            "summary": "Open WebUI is an extensible, feature-rich, and user-friendly self-hosted AI platform. Prior to 0.10.0, the /api/v1/auths/signin endpoint looked users up by email and only ran bcrypt password verification when a credentia",
+            "headline": "Open WebUI before 0.10.0 leaks which emails have accounts",
+            "published": "2026-07-09",
+            "cvss_score": 5.3,
+            "cvss_severity": "MEDIUM"
+        }
+    ],
+    "high": 0,
+    "name": "Observable Timing Discrepancy",
+    "count": 1,
+    "shape": "cwe",
+    "title": "CWE-208: Observable Timing Discrepancy",
+    "cwe_id": "CWE-208",
+    "latest": "2026-07-09",
+    "status": "Incomplete",
+    "ai_text": "In AI software this weakness shows up in LLM chat and workspace front ends, where login and account flows answer faster or slower depending on whether a record exists. CVE-2026-59218 is the given case, in Open WebUI before 0.10.0, a self hosted LLM interface. The timing difference is reached through ordinary account and sign in requests, with no special access needed. By measuring how long responses take, an attacker can tell which email addresses already have accounts, which supports targeted phishing and credential stuffing against known users. The leak is small but repeatable, and it turns a routine login page into a directory of valid accounts.",
+    "ai_model": "ollama:deepseek-v4.1-flash",
+    "built_at": "2026-10-02T22:34:20-05",
+    "critical": 0,
+    "page_uid": "f7d3cda0",
+    "generated": "2026-10-02",
+    "mitre_url": "https://cwe.mitre.org/data/definitions/208.html",
+    "likelihood": "",
+    "abstraction": "Base",
+    "description": "Two separate operations in a product require different amounts of time to complete, in a way that is observable to an actor and reveals security-relevant information about the state of the product, such as whether a particular operation was successful or not.",
+    "mitigations": [
+    ],
+    "consequences": [
+        {
+            "scope": [
+                "Confidentiality",
+                "Access Control"
+            ],
+            "impact": [
+                "Read Application Data",
+                "Bypass Protection Mechanism"
+            ]
+        }
+    ],
+    "ai_written_on": "2026-10-02",
+    "alternate_terms": [
+    ],
+    "refresh_every_days": 1,
+    "extended_description": "In security-relevant contexts, even small variations in timing can be exploited by attackers to indirectly infer certain details about the product's internal operations. For example, in some cryptographic algorithms, attackers can use timing differences to infer certain properties about a private key, making the key easier to guess. Timing discrepancies effectively form a timing side channel."
+}

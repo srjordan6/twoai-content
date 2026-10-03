@@ -1,0 +1,90 @@
+{
+    "kev": 0,
+    "num": 201,
+    "uid": "44282e23",
+    "cves": [
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-87015",
+            "product": "Open WebUI",
+            "summary": "Open WebUI is an extensible, feature-rich, and user-friendly self-hosted AI platform. From 0.6.27 until 0.11.1, backend/open_webui/utils/tools.py captured a cookie jar from the enclosing connection loop instead of bindin",
+            "headline": "Open WebUI 0.6.27 to 0.11.0 leaks session cookies to tool servers",
+            "published": "2026-09-09",
+            "cvss_score": 6.8,
+            "cvss_severity": "MEDIUM"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-44970",
+            "product": "MCP",
+            "summary": "dbt-mcp is a Model Context Protocol server for interacting with dbt. Prior to 1.17.1, DefaultUsageTracker.emit_tool_called_event() in src/dbt_mcp/tracking/tracking.py serialized every MCP tool call's complete arguments d",
+            "headline": "dbt-mcp before 1.17.1 sends full tool call arguments, including SQL and vars, to telemetry",
+            "published": "2026-07-16",
+            "cvss_score": 3.1,
+            "cvss_severity": "LOW"
+        }
+    ],
+    "high": 0,
+    "name": "Insertion of Sensitive Information Into Sent Data",
+    "count": 2,
+    "shape": "cwe",
+    "title": "CWE-201: Insertion of Sensitive Information Into Sent Data",
+    "cwe_id": "CWE-201",
+    "latest": "2026-09-09",
+    "status": "Draft",
+    "ai_text": "In AI software this weakness shows up in the data that tools and servers send onward. The two CVEs here sit in an LLM chat interface and an MCP server. Open WebUI, a self hosted LLM front end, leaked session cookies to tool servers it called. dbt-mcp, a connector that exposes dbt to AI agents, sent full tool call arguments, including SQL and variables, to telemetry. In both cases the sensitive data rides along with normal outbound traffic, so the receiving party, a tool server or a telemetry endpoint, gets more than it should. An attacker who controls or reads that destination can capture session cookies or query contents and reuse them against the user or the data platform.",
+    "ai_model": "ollama:deepseek-v4.1-flash",
+    "built_at": "2026-10-02T22:34:20-05",
+    "critical": 0,
+    "page_uid": "44282e23",
+    "generated": "2026-10-02",
+    "mitre_url": "https://cwe.mitre.org/data/definitions/201.html",
+    "likelihood": "",
+    "abstraction": "Base",
+    "description": "The code transmits data to another actor, but a portion of the data includes sensitive information that should not be accessible to that actor.",
+    "mitigations": [
+        {
+            "phase": [
+                "Requirements"
+            ],
+            "description": "Specify which data in the software should be regarded as sensitive. Consider which types of users should have access to which types of data."
+        },
+        {
+            "phase": [
+                "Implementation"
+            ],
+            "description": "Ensure that any possibly sensitive data specified in the requirements is verified with designers to ensure that it is either a calculated risk or mitigated elsewhere. Any information that is not necessary to the functionality should be removed in order to lower both the overhead and the possibility of security sensitive data being sent."
+        },
+        {
+            "phase": [
+                "System Configuration"
+            ],
+            "description": "Setup default error messages so that unexpected errors do not disclose sensitive information."
+        },
+        {
+            "phase": [
+                "Architecture and Design"
+            ],
+            "strategy": "Separation of Privilege",
+            "description": "Compartmentalize the system to have safe areas where trust boundaries can be unambiguously drawn. Do not allow sensitive data to go outside of the trust boundary and always be careful when interfacing with a compartment outside of the safe area. Ensure that appropriate compartmentalization is built into the system design, and the compartmentalization allows for and reinforces privilege separation functionality. Architects and designers should rely on the principle of least privilege to decide the appropriate time to use privileges and the time to drop privileges."
+        }
+    ],
+    "consequences": [
+        {
+            "note": "Sensitive data may be exposed to attackers.",
+            "scope": [
+                "Confidentiality"
+            ],
+            "impact": [
+                "Read Files or Directories",
+                "Read Memory",
+                "Read Application Data"
+            ]
+        }
+    ],
+    "ai_written_on": "2026-10-02",
+    "alternate_terms": [
+    ],
+    "refresh_every_days": 1,
+    "extended_description": ""
+}

@@ -1,0 +1,54 @@
+{
+    "kev": 0,
+    "num": 348,
+    "uid": "771a3bbb",
+    "cves": [
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-100653",
+            "product": "vLLM",
+            "summary": "vLLM is an inference and serving engine for large language models. In versions from 0.22.1 through 0.28.0, the operator-supplied model revision pin (--revision / --code-revision) is not propagated to several Hugging Face",
+            "headline": "vLLM 0.22.1 to 0.28.0 ignores the revision pin for some model artifacts",
+            "published": "2026-09-26",
+            "cvss_score": 8.3,
+            "cvss_severity": "HIGH"
+        }
+    ],
+    "high": 1,
+    "name": "Use of Less Trusted Source",
+    "count": 1,
+    "shape": "cwe",
+    "title": "CWE-348: Use of Less Trusted Source",
+    "cwe_id": "CWE-348",
+    "latest": "2026-09-26",
+    "status": "Draft",
+    "ai_text": "In AI software this weakness shows up where a serving stack trusts a weaker copy of the same data over a stronger one. The single CVE here is in vLLM, a model serving product, versions 0.22.1 to 0.28.0. The flaw is that vLLM ignores the revision pin for some model artifacts, so the artifact actually loaded is not the one the operator pinned. The less trusted source wins over the pinned, verifiable one. An attacker who can influence that unpinned artifact path could get a different model loaded than the one intended, which undermines the integrity of what the serving stack runs. Only vLLM appears in this class.",
+    "ai_model": "ollama:deepseek-v4.1-flash",
+    "built_at": "2026-10-02T22:34:20-05",
+    "critical": 0,
+    "page_uid": "771a3bbb",
+    "generated": "2026-10-02",
+    "mitre_url": "https://cwe.mitre.org/data/definitions/348.html",
+    "likelihood": "",
+    "abstraction": "Base",
+    "description": "The product has two different sources of the same data or information, but it uses the source that has less support for verification, is less trusted, or is less resistant to attack.",
+    "mitigations": [
+    ],
+    "consequences": [
+        {
+            "note": "An attacker could utilize the untrusted data source to bypass protection mechanisms and gain access to sensitive data.",
+            "scope": [
+                "Access Control"
+            ],
+            "impact": [
+                "Bypass Protection Mechanism",
+                "Gain Privileges or Assume Identity"
+            ]
+        }
+    ],
+    "ai_written_on": "2026-10-02",
+    "alternate_terms": [
+    ],
+    "refresh_every_days": 1,
+    "extended_description": ""
+}

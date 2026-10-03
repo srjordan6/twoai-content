@@ -1,5 +1,5 @@
 {
-    "date": "2026-10-02",
+    "date": "2026-10-03",
     "latest": [
         {
             "url": "https://blog.cloudflare.com/network-performance-birthday-week-2026/",
@@ -177,6 +177,18 @@
             "entity_uid": "0d5de807",
             "entity_kind": "company",
             "reader_note": "This is a routine feature addition, not a shift in what the database can do. If you run Aurora DSQL, partial indexes are worth testing on the queries that scan large tables for a narrow slice of rows, since a smaller index can mean less storage and faster reads. Check the query planner actually uses the index before assuming a gain.\n\nBe sceptical of the storage and performance claims until you measure them on your own data. A supported feature is not a tuned one, and the vendor's framing is not a finding."
+        },
+        {
+            "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/amazon-ecs-vpc-lattice-blue-green-deployments",
+            "date": "2026-10-02",
+            "slug": "amazon-ecs-adds-amazon-vpc-lattice-support-for-blue-green-li-f2297c",
+            "title": "Amazon ECS adds Amazon VPC Lattice support for blue/green, linear, and canary deployments",
+            "vendor": "Amazon Web Services",
+            "summary": "Amazon Elastic Container Service (Amazon ECS) now supports built-in blue/green, linear, and canary deployment strategies for ECS services using Amazon VPC Lattice .",
+            "has_page": true,
+            "entity_uid": "0d5de807",
+            "entity_kind": "company",
+            "reader_note": "This gives ECS teams a native way to shift traffic gradually between task sets without building that logic themselves. Treat the announcement as a statement of intent and availability, not proof it fits your setup. Confirm which regions and ECS configurations are covered, and test a rollback before trusting it in production.\n\nIt does not show that these strategies are safer by default, or that they replace your existing pipeline. A capability demonstrated is not a capability deployed."
         },
         {
             "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/amazon-eks-distro-kubernetes-version-1-37",
@@ -569,9 +581,11 @@
             "slug": "how-rogo-ships-agent-written-code-to-production-in-5-minutes-ff507a",
             "title": "How Rogo ships agent-written code to production in 5 minutes on Vercel",
             "vendor": "Vercel",
-            "has_page": false,
+            "summary": "Rogo builds Felix, an AI agent for the largest financial institutions. On Vercel, engineers ship agent-written code in minutes and resolve incidents with agent swarms.",
+            "has_page": true,
             "entity_uid": "b4ead33d",
-            "entity_kind": "company"
+            "entity_kind": "company",
+            "reader_note": "Treat this as a workflow claim, not a benchmark. Shipping agent-written code in minutes says something about the pipeline around the agent, review, tests, and deployment, and little about whether the agent's output was correct. Ask what a human still approves before production.\n\nIt also does not show that this works at your scale, in your regulated environment, or with your review requirements. The vendor chose what to highlight."
         },
         {
             "url": "https://www.databricks.com/blog/how-choose-your-first-genie-agents-maximum-impact",
@@ -636,9 +650,11 @@
             "slug": "jev-for-python-engineers-7ab79e",
             "title": "Jev for Python engineers",
             "vendor": "Vercel",
-            "has_page": false,
+            "summary": "Explore Jev with Vercel's Python AI SDK. Learn how its fast, structured decisions work, try the experimental evaluate() API, and follow two experiments in text classification and Python code generation.",
+            "has_page": true,
             "entity_uid": "b4ead33d",
-            "entity_kind": "company"
+            "entity_kind": "company",
+            "reader_note": "The announcement describes an experimental API and two worked examples, not a shipped product. Treat the results as demonstrations of what the tooling can do under controlled conditions, not as evidence it will hold up on your own data or workloads. The vendor chose the tasks and the framing.\n\nWhat changes for you is modest: a new option to evaluate, and a reason to test it against whatever you already use. Run it on your own inputs before drawing conclusions. A working example is not a working deployment."
         },
         {
             "url": "https://machinelearning.apple.com/research/language-discrimination-multilingual-learning",
@@ -822,9 +838,11 @@
             "slug": "open-sourcing-astabrief-the-fast-report-generation-model-in--e5ba9a",
             "title": "Open-sourcing AstaBrief, the fast report-generation model in Asta",
             "vendor": "Hugging Face",
-            "has_page": false,
+            "summary": "Astella open-sourced AstaBrief 8B, a model that generates cited reports from a research question and retrieved literature excerpts, and released its training data. It is available as Fast mode in Asta's report feature and runs about 3.5× faster than the Claude-powered Thinking mode.",
+            "has_page": true,
             "entity_uid": "bad597a3",
-            "entity_kind": "company"
+            "entity_kind": "company",
+            "reader_note": "For a practitioner, the practical change is a report generator you can run yourself, with training data you can inspect. Treat the speed comparison with care: it is the vendor's own measurement, against a different model in a different mode, and it says nothing about accuracy or citation quality. The open weights and data are the useful part, because they let you test those things on your own questions.\n\nWhat this does not prove is that the model is reliable in production. A released model is not a deployed one, and a vendor's framing is not a finding."
         },
         {
             "url": "https://www.tomshardware.com/pc-components/cpus/openais-jalapeno-asics-are-deployed-alongside-amd-epyc-turin-cpus-as-hosts-hardware-vp-says-nvidias-vera-standalone-is-a-little-bit-behind-on-that-maturity-level",
@@ -2220,9 +2238,11 @@
             "slug": "speed-insights-deprecates-first-input-delay-on-november-1st-dbbf16",
             "title": "Speed Insights deprecates First Input Delay on November 1st",
             "vendor": "Vercel",
-            "has_page": false,
+            "summary": "Speed Insights is deprecating First Input Delay (FID), ending new measurements on November 1. Existing data remains viewable, with no action required.",
+            "has_page": true,
             "entity_uid": "b4ead33d",
-            "entity_kind": "company"
+            "entity_kind": "company",
+            "reader_note": "This is a routine metric retirement, not a new capability. If you track Core Web Vitals, check whether your dashboards or alerts still reference FID, since new measurements stop on the date given. Historical data stays visible, so past reports will not break.\n\nBe sceptical of any framing that presents this as a performance improvement. It is a change in what is measured, not in how your site performs. It does not tell you whether your pages are fast, only that one older signal is being retired."
         },
         {
             "url": "https://blog.cloudflare.com/workers-ml-kem-ml-dsa-support/",
@@ -2758,18 +2778,6 @@
             "entity_uid": "7785d228",
             "entity_kind": "section",
             "reader_note": "For practitioners, this is a reminder that training data provenance can become a legal issue, not just an engineering one. If your work involves third-party content, keep records of what you use and why. The decision may shape how some disputes are argued, but it does not settle every question about AI training.\n\nBe sceptical of broad claims either way. A court upholding one ruling in one dispute does not prove that all training on copyrighted material is unlawful, nor that licensing is always required. It also says nothing about whether a similar system works, ships, or scales. Treat it as a legal data point, not a product verdict."
-        },
-        {
-            "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/aurora-postgresql-query-apache-iceberg-and-parquet/",
-            "date": "2026-09-30",
-            "slug": "aurora-postgresql-now-supports-querying-of-apache-iceberg-an-4caa57",
-            "title": "Aurora PostgreSQL now supports querying of Apache Iceberg and Parquet data",
-            "vendor": "Amazon Web Services",
-            "summary": "Starting today, you can directly query operational data together with data stored in data lakes in Apache Iceberg and Parquet formats using your existing PostgreSQL applications and tools, without extract, transform, and load (ETL) pipelines or data duplication.",
-            "has_page": true,
-            "entity_uid": "0d5de807",
-            "entity_kind": "company",
-            "reader_note": "If you use Aurora PostgreSQL, this may reduce the number of steps between your database and your data lake. That could simplify some pipelines.\n\nBut be sceptical: the announcement does not describe performance, concurrency, or cost. Treat the vendor's framing as a claim, not a finding. The announcement describes a capability, not a deployment. It does not prove that ETL is unnecessary for your workloads. Test it on your own data before you change your architecture."
         }
     ],
     "archive": [
@@ -2949,6 +2957,18 @@
             "entity_uid": "0d5de807",
             "entity_kind": "company",
             "reader_note": "This is a routine feature addition, not a shift in what the database can do. If you run Aurora DSQL, partial indexes are worth testing on the queries that scan large tables for a narrow slice of rows, since a smaller index can mean less storage and faster reads. Check the query planner actually uses the index before assuming a gain.\n\nBe sceptical of the storage and performance claims until you measure them on your own data. A supported feature is not a tuned one, and the vendor's framing is not a finding."
+        },
+        {
+            "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/amazon-ecs-vpc-lattice-blue-green-deployments",
+            "date": "2026-10-02",
+            "slug": "amazon-ecs-adds-amazon-vpc-lattice-support-for-blue-green-li-f2297c",
+            "title": "Amazon ECS adds Amazon VPC Lattice support for blue/green, linear, and canary deployments",
+            "vendor": "Amazon Web Services",
+            "summary": "Amazon Elastic Container Service (Amazon ECS) now supports built-in blue/green, linear, and canary deployment strategies for ECS services using Amazon VPC Lattice .",
+            "has_page": true,
+            "entity_uid": "0d5de807",
+            "entity_kind": "company",
+            "reader_note": "This gives ECS teams a native way to shift traffic gradually between task sets without building that logic themselves. Treat the announcement as a statement of intent and availability, not proof it fits your setup. Confirm which regions and ECS configurations are covered, and test a rollback before trusting it in production.\n\nIt does not show that these strategies are safer by default, or that they replace your existing pipeline. A capability demonstrated is not a capability deployed."
         },
         {
             "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/amazon-eks-distro-kubernetes-version-1-37",
@@ -3341,9 +3361,11 @@
             "slug": "how-rogo-ships-agent-written-code-to-production-in-5-minutes-ff507a",
             "title": "How Rogo ships agent-written code to production in 5 minutes on Vercel",
             "vendor": "Vercel",
-            "has_page": false,
+            "summary": "Rogo builds Felix, an AI agent for the largest financial institutions. On Vercel, engineers ship agent-written code in minutes and resolve incidents with agent swarms.",
+            "has_page": true,
             "entity_uid": "b4ead33d",
-            "entity_kind": "company"
+            "entity_kind": "company",
+            "reader_note": "Treat this as a workflow claim, not a benchmark. Shipping agent-written code in minutes says something about the pipeline around the agent, review, tests, and deployment, and little about whether the agent's output was correct. Ask what a human still approves before production.\n\nIt also does not show that this works at your scale, in your regulated environment, or with your review requirements. The vendor chose what to highlight."
         },
         {
             "url": "https://www.databricks.com/blog/how-choose-your-first-genie-agents-maximum-impact",
@@ -3408,9 +3430,11 @@
             "slug": "jev-for-python-engineers-7ab79e",
             "title": "Jev for Python engineers",
             "vendor": "Vercel",
-            "has_page": false,
+            "summary": "Explore Jev with Vercel's Python AI SDK. Learn how its fast, structured decisions work, try the experimental evaluate() API, and follow two experiments in text classification and Python code generation.",
+            "has_page": true,
             "entity_uid": "b4ead33d",
-            "entity_kind": "company"
+            "entity_kind": "company",
+            "reader_note": "The announcement describes an experimental API and two worked examples, not a shipped product. Treat the results as demonstrations of what the tooling can do under controlled conditions, not as evidence it will hold up on your own data or workloads. The vendor chose the tasks and the framing.\n\nWhat changes for you is modest: a new option to evaluate, and a reason to test it against whatever you already use. Run it on your own inputs before drawing conclusions. A working example is not a working deployment."
         },
         {
             "url": "https://machinelearning.apple.com/research/language-discrimination-multilingual-learning",
@@ -3594,9 +3618,11 @@
             "slug": "open-sourcing-astabrief-the-fast-report-generation-model-in--e5ba9a",
             "title": "Open-sourcing AstaBrief, the fast report-generation model in Asta",
             "vendor": "Hugging Face",
-            "has_page": false,
+            "summary": "Astella open-sourced AstaBrief 8B, a model that generates cited reports from a research question and retrieved literature excerpts, and released its training data. It is available as Fast mode in Asta's report feature and runs about 3.5× faster than the Claude-powered Thinking mode.",
+            "has_page": true,
             "entity_uid": "bad597a3",
-            "entity_kind": "company"
+            "entity_kind": "company",
+            "reader_note": "For a practitioner, the practical change is a report generator you can run yourself, with training data you can inspect. Treat the speed comparison with care: it is the vendor's own measurement, against a different model in a different mode, and it says nothing about accuracy or citation quality. The open weights and data are the useful part, because they let you test those things on your own questions.\n\nWhat this does not prove is that the model is reliable in production. A released model is not a deployed one, and a vendor's framing is not a finding."
         },
         {
             "url": "https://www.tomshardware.com/pc-components/cpus/openais-jalapeno-asics-are-deployed-alongside-amd-epyc-turin-cpus-as-hosts-hardware-vp-says-nvidias-vera-standalone-is-a-little-bit-behind-on-that-maturity-level",
@@ -4992,9 +5018,11 @@
             "slug": "speed-insights-deprecates-first-input-delay-on-november-1st-dbbf16",
             "title": "Speed Insights deprecates First Input Delay on November 1st",
             "vendor": "Vercel",
-            "has_page": false,
+            "summary": "Speed Insights is deprecating First Input Delay (FID), ending new measurements on November 1. Existing data remains viewable, with no action required.",
+            "has_page": true,
             "entity_uid": "b4ead33d",
-            "entity_kind": "company"
+            "entity_kind": "company",
+            "reader_note": "This is a routine metric retirement, not a new capability. If you track Core Web Vitals, check whether your dashboards or alerts still reference FID, since new measurements stop on the date given. Historical data stays visible, so past reports will not break.\n\nBe sceptical of any framing that presents this as a performance improvement. It is a change in what is measured, not in how your site performs. It does not tell you whether your pages are fast, only that one older signal is being retired."
         },
         {
             "url": "https://blog.cloudflare.com/workers-ml-kem-ml-dsa-support/",
@@ -88042,22 +88070,16 @@
         {
             "items": [
                 {
-                    "url": "https://openai.com/index/towards-safety-cases-for-frontier-ai-training",
-                    "date": "2026-09-30",
-                    "slug": "towards-safety-cases-for-frontier-ai-training-f95544",
-                    "title": "Towards safety cases for frontier AI training"
-                },
-                {
                     "url": "https://openai.com/index/helping-small-businesses-put-ai-to-work",
                     "date": "2026-09-30",
                     "slug": "helping-small-businesses-put-ai-to-work-3cfffd",
                     "title": "Helping small businesses put AI to work"
                 },
                 {
-                    "url": "https://openai.com/index/grab-openai-ai-skills-southeast-asia",
-                    "date": "2026-09-23",
-                    "slug": "grab-and-openai-bring-practical-ai-skills-to-southeast-asia-908e58",
-                    "title": "Grab and OpenAI bring practical AI skills to Southeast Asia"
+                    "url": "https://openai.com/index/towards-safety-cases-for-frontier-ai-training",
+                    "date": "2026-09-30",
+                    "slug": "towards-safety-cases-for-frontier-ai-training-f95544",
+                    "title": "Towards safety cases for frontier AI training"
                 },
                 {
                     "url": "https://openai.com/index/airbnb-gpt-6-astra",
@@ -88070,6 +88092,12 @@
                     "date": "2026-09-23",
                     "slug": "ringg-s-ai-agents-resolve-up-to-65-of-customer-calls-with-op-c24a6e",
                     "title": "Ringg’s AI agents resolve up to 65% of customer calls with OpenAI"
+                },
+                {
+                    "url": "https://openai.com/index/grab-openai-ai-skills-southeast-asia",
+                    "date": "2026-09-23",
+                    "slug": "grab-and-openai-bring-practical-ai-skills-to-southeast-asia-908e58",
+                    "title": "Grab and OpenAI bring practical AI skills to Southeast Asia"
                 },
                 {
                     "url": "https://openai.com/index/building-standards-next-phase-ai",
@@ -88148,15 +88176,9 @@
                     "date": "2026-09-09",
                     "slug": "funding-grants-for-new-research-into-ai-and-teen-development-c34d7a",
                     "title": "Funding grants for new research into AI and teen development"
-                },
-                {
-                    "url": "https://openai.com/index/gilbert-tobin",
-                    "date": "2026-09-03",
-                    "slug": "how-law-firm-gilbert-tobin-governs-and-scales-ai-with-openai-8e955f",
-                    "title": "How law firm Gilbert + Tobin governs and scales AI with OpenAI"
                 }
             ],
-            "total": 19,
+            "total": 18,
             "vendor": "OpenAI"
         },
         {
@@ -88168,22 +88190,10 @@
                     "title": "Introducing Stable Video 3D: Quality Novel View Synthesis and 3D Generation from Single Images - Stability AI"
                 },
                 {
-                    "url": "https://stability.ai/news-updates/stable-diffusion-3-research-paper",
+                    "url": "https://stability.ai/news-updates/stable-diffusion-3-api",
                     "date": "2026-09-04",
-                    "slug": "stable-diffusion-3-research-paper-stability-ai-51ef63",
-                    "title": "Stable Diffusion 3: Research Paper - Stability AI"
-                },
-                {
-                    "url": "https://stability.ai/news-updates/stable-video-diffusion-open-ai-video-model",
-                    "date": "2026-09-04",
-                    "slug": "introducing-stable-video-diffusion-stability-ai-e81924",
-                    "title": "Introducing Stable Video Diffusion - Stability AI"
-                },
-                {
-                    "url": "https://stability.ai/news-updates/introducing-our-new-chief-pipeline-architect-rob-legato",
-                    "date": "2026-09-04",
-                    "slug": "introducing-our-new-chief-pipeline-architect-robert-legato-s-e5727d",
-                    "title": "Introducing Our New Chief Pipeline Architect, Robert Legato - Stability AI"
+                    "slug": "stable-diffusion-3-api-now-available-stability-ai-f34044",
+                    "title": "Stable Diffusion 3 API Now Available - Stability AI"
                 },
                 {
                     "url": "https://stability.ai/news-updates/introducing-stability-ai-membership",
@@ -88198,34 +88208,10 @@
                     "title": "Introducing Stable Cascade - Stability AI"
                 },
                 {
-                    "url": "https://stability.ai/research/minds-eye",
+                    "url": "https://stability.ai/news-updates/introducing-our-new-chief-pipeline-architect-rob-legato",
                     "date": "2026-09-04",
-                    "slug": "reconstructing-the-mind-s-eye-fmri-to-image-with-contrastive-f84d9d",
-                    "title": "Reconstructing the Mind’s Eye: fMRI-to-Image with Contrastive Learning and Diffusion Priors - Stability AI"
-                },
-                {
-                    "url": "https://stability.ai/news-updates/triposr-3d-generation",
-                    "date": "2026-09-04",
-                    "slug": "introducing-triposr-fast-3d-object-generation-from-single-im-d2b8e8",
-                    "title": "Introducing TripoSR: Fast 3D Object Generation from Single Images - Stability AI"
-                },
-                {
-                    "url": "https://stability.ai/news-updates/stable-diffusion-3-medium",
-                    "date": "2026-09-04",
-                    "slug": "announcing-the-open-release-of-stable-diffusion-3-medium-our-77cb6f",
-                    "title": "Announcing the Open Release of Stable Diffusion 3 Medium, Our Most Sophisticated Image Generation Model to Date - Stability AI"
-                },
-                {
-                    "url": "https://stability.ai/news-updates/stable-diffusion-v2-release",
-                    "date": "2026-09-04",
-                    "slug": "stable-diffusion-2-0-release-stability-ai-f3cffd",
-                    "title": "Stable Diffusion 2.0 Release - Stability AI"
-                },
-                {
-                    "url": "https://stability.ai/news-updates/stable-diffusion-3-api",
-                    "date": "2026-09-04",
-                    "slug": "stable-diffusion-3-api-now-available-stability-ai-f34044",
-                    "title": "Stable Diffusion 3 API Now Available - Stability AI"
+                    "slug": "introducing-our-new-chief-pipeline-architect-robert-legato-s-e5727d",
+                    "title": "Introducing Our New Chief Pipeline Architect, Robert Legato - Stability AI"
                 },
                 {
                     "url": "https://stability.ai/news-updates/stable-diffusion-3",
@@ -88240,37 +88226,43 @@
                     "title": "Millions create with our technology. Help build what comes next. - Stability AI"
                 },
                 {
-                    "url": "https://stability.ai/guides/the-brands-leading-ai-adoption-dont-just-prompt-for-on-brand-creative-they-build-an-entire-platform-for-it",
-                    "date": "2026-09-03",
-                    "slug": "the-brands-leading-ai-adoption-don-t-just-prompt-for-on-bran-de08d5",
-                    "title": "The brands leading AI adoption don't just prompt for on-brand creative. They build an entire platform for it. - Stability AI"
+                    "url": "https://stability.ai/news-updates/stable-diffusion-3-medium",
+                    "date": "2026-09-04",
+                    "slug": "announcing-the-open-release-of-stable-diffusion-3-medium-our-77cb6f",
+                    "title": "Announcing the Open Release of Stable Diffusion 3 Medium, Our Most Sophisticated Image Generation Model to Date - Stability AI"
                 },
                 {
-                    "url": "https://stability.ai/news-updates/putting-the-ai-supercomputer-to-work",
-                    "date": "2026-09-03",
-                    "slug": "behind-the-compute-benchmarking-compute-solutions-stability--04f493",
-                    "title": "Behind the Compute: Benchmarking Compute Solutions - Stability AI"
+                    "url": "https://stability.ai/news-updates/stable-diffusion-3-research-paper",
+                    "date": "2026-09-04",
+                    "slug": "stable-diffusion-3-research-paper-stability-ai-51ef63",
+                    "title": "Stable Diffusion 3: Research Paper - Stability AI"
                 },
                 {
-                    "url": "https://stability.ai/guides/how-artists-are-using-ai-to-make-music-findings-from-analyzing-hundreds-of-musical-works",
-                    "date": "2026-09-03",
-                    "slug": "how-artists-are-using-ai-to-make-music-findings-from-analyzi-bd72a5",
-                    "title": "How Artists Are Using AI to Make Music: Findings from Analyzing Hundreds of Musical Works - Stability AI"
+                    "url": "https://stability.ai/news-updates/stable-diffusion-v2-release",
+                    "date": "2026-09-04",
+                    "slug": "stable-diffusion-2-0-release-stability-ai-f3cffd",
+                    "title": "Stable Diffusion 2.0 Release - Stability AI"
                 },
                 {
-                    "url": "https://stability.ai/news-updates/introducing-stable-diffusion-3-5",
-                    "date": "2026-09-03",
-                    "slug": "introducing-stable-diffusion-3-5-stability-ai-c766a9",
-                    "title": "Introducing Stable Diffusion 3.5 - Stability AI"
+                    "url": "https://stability.ai/news-updates/stable-video-diffusion-open-ai-video-model",
+                    "date": "2026-09-04",
+                    "slug": "introducing-stable-video-diffusion-stability-ai-e81924",
+                    "title": "Introducing Stable Video Diffusion - Stability AI"
                 },
                 {
-                    "url": "https://stability.ai/research/stable-audio-efficient-timing-latent-diffusion",
-                    "date": "2026-09-03",
-                    "slug": "stable-audio-fast-timing-conditioned-latent-audio-diffusion--9cbc73",
-                    "title": "Stable Audio: Fast Timing-Conditioned Latent Audio Diffusion - Stability AI"
+                    "url": "https://stability.ai/news-updates/triposr-3d-generation",
+                    "date": "2026-09-04",
+                    "slug": "introducing-triposr-fast-3d-object-generation-from-single-im-d2b8e8",
+                    "title": "Introducing TripoSR: Fast 3D Object Generation from Single Images - Stability AI"
+                },
+                {
+                    "url": "https://stability.ai/research/minds-eye",
+                    "date": "2026-09-04",
+                    "slug": "reconstructing-the-mind-s-eye-fmri-to-image-with-contrastive-f84d9d",
+                    "title": "Reconstructing the Mind’s Eye: fMRI-to-Image with Contrastive Learning and Diffusion Priors - Stability AI"
                 }
             ],
-            "total": 18,
+            "total": 13,
             "vendor": "Stability AI"
         },
         {
@@ -88358,14 +88350,14 @@
             "vendor": "European Commission AI"
         }
     ],
-    "built_at": "2026-10-02T18:20:20-05:00",
+    "built_at": "2026-10-02T21:52:01-05:00",
     "coverage": {
         "feeds": 42,
         "companies": 503,
         "feeds_healthy": 42
     },
     "page_uid": "bad4a071",
-    "generated": "2026-10-02T23:41:13Z",
+    "generated": "2026-10-03T03:04:46Z",
     "window_days": 30,
     "refresh_every_days": 1
 }

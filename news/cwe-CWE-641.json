@@ -1,0 +1,84 @@
+{
+    "kev": 0,
+    "num": 641,
+    "uid": "8996e9b5",
+    "cves": [
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-50510",
+            "product": "Copilot",
+            "summary": "Improper restriction of names for files and other resources in Github Copilot allows an unauthorized attacker to execute code locally.",
+            "headline": "GitHub Copilot for JetBrains before 1.13.0-251 lets an attacker run code locally",
+            "published": "2026-07-14",
+            "cvss_score": 7.8,
+            "cvss_severity": "HIGH"
+        }
+    ],
+    "high": 1,
+    "name": "Improper Restriction of Names for Files and Other Resources",
+    "count": 1,
+    "shape": "cwe",
+    "title": "CWE-641: Improper Restriction of Names for Files and Other Resources",
+    "cwe_id": "CWE-641",
+    "latest": "2026-07-14",
+    "status": "Incomplete",
+    "ai_text": "In AI software this weakness shows up in coding assistants that build file or resource names from input they did not fully check. The one CVE here is in GitHub Copilot for JetBrains, a plugin that lives inside an IDE rather than a standalone model server. The name is assembled from content the assistant reads or generates, and the plugin does not properly restrict the result. That lets an attacker run code locally on the developer's machine, under the same account the IDE runs as. So the impact lands on the workstation, not the model, and the product named in the CVE is Copilot for JetBrains.",
+    "ai_model": "ollama:deepseek-v4.1-flash",
+    "built_at": "2026-10-02T22:34:20-05",
+    "critical": 0,
+    "page_uid": "8996e9b5",
+    "generated": "2026-10-02",
+    "mitre_url": "https://cwe.mitre.org/data/definitions/641.html",
+    "likelihood": "",
+    "abstraction": "Base",
+    "description": "The product constructs the name of a file or other resource using input from an upstream component, but it does not restrict or incorrectly restricts the resulting name.",
+    "mitigations": [
+        {
+            "phase": [
+                "Architecture and Design"
+            ],
+            "description": "Do not allow users to control names of resources used on the server side."
+        },
+        {
+            "phase": [
+                "Architecture and Design"
+            ],
+            "description": "Perform allowlist input validation at entry points and also before consuming the resources. Reject bad file names rather than trying to cleanse them."
+        },
+        {
+            "phase": [
+                "Architecture and Design"
+            ],
+            "description": "Make sure that technologies consuming the resources are not vulnerable (e.g. buffer overflow, format string, etc.) in a way that would allow code execution if the name of the resource is malformed."
+        }
+    ],
+    "consequences": [
+        {
+            "note": "Execution of arbitrary code in the context of usage of the resources with dangerous names.",
+            "scope": [
+                "Integrity",
+                "Confidentiality",
+                "Availability"
+            ],
+            "impact": [
+                "Execute Unauthorized Code or Commands"
+            ]
+        },
+        {
+            "note": "Crash of the consumer code of these resources resulting in information leakage or denial of service.",
+            "scope": [
+                "Confidentiality",
+                "Availability"
+            ],
+            "impact": [
+                "Read Application Data",
+                "DoS: Crash, Exit, or Restart"
+            ]
+        }
+    ],
+    "ai_written_on": "2026-10-02",
+    "alternate_terms": [
+    ],
+    "refresh_every_days": 1,
+    "extended_description": "This may produce resultant weaknesses. For instance, if the names of these resources contain scripting characters, it is possible that a script may get executed in the client's browser if the application ever displays the name of the resource on a dynamically generated web page. Alternately, if the resources are consumed by some application parser, a specially crafted name can exploit some vulnerability internal to the parser, potentially resulting in execution of arbitrary code on the server machine. The problems will vary based on the context of usage of such malformed resource names and whether vulnerabilities are present in or assumptions are made by the targeted technology that would make code execution possible."
+}

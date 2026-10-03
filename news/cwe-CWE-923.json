@@ -1,0 +1,54 @@
+{
+    "kev": 0,
+    "num": 923,
+    "uid": "7f1e4014",
+    "cves": [
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-18655",
+            "product": "MCP",
+            "summary": "Improper restriction of intended endpoints in the RabbitMQ broker connection tools of the Amazon MQ MCP Server (awslabs.amazon-mq-mcp-server) before 2.0.24 may allow a remote unauthenticated actor (via prompt injection) ",
+            "headline": "Amazon MQ MCP Server before 2.0.24 leaks RabbitMQ broker credentials to a crafted endpoint",
+            "published": "2026-08-03",
+            "cvss_score": 7.1,
+            "cvss_severity": "HIGH"
+        }
+    ],
+    "high": 1,
+    "name": "Improper Restriction of Communication Channel to Intended Endpoints",
+    "count": 1,
+    "shape": "cwe",
+    "title": "CWE-923: Improper Restriction of Communication Channel to Intended Endpoints",
+    "cwe_id": "CWE-923",
+    "latest": "2026-08-03",
+    "status": "Incomplete",
+    "ai_text": "In AI software this weakness shows up in MCP servers, the connector layer that lets AI agents reach outside tools and services. The one CVE here is in Amazon MQ MCP Server before 2.0.24, where the server leaks RabbitMQ broker credentials to a crafted endpoint. The channel is opened for a privileged operation, passing credentials to a broker, but the server does not confirm it is talking to the intended endpoint. An attacker who controls or impersonates that endpoint can receive the credentials and then use them against the broker. This is the MCP pattern: an AI agent trusts a configured server, and the server trusts whatever answers at the other end.",
+    "ai_model": "ollama:deepseek-v4.1-flash",
+    "built_at": "2026-10-02T22:34:20-05",
+    "critical": 0,
+    "page_uid": "7f1e4014",
+    "generated": "2026-10-02",
+    "mitre_url": "https://cwe.mitre.org/data/definitions/923.html",
+    "likelihood": "",
+    "abstraction": "Class",
+    "description": "The product establishes a communication channel to (or from) an endpoint for privileged or protected operations, but it does not properly ensure that it is communicating with the correct endpoint.",
+    "mitigations": [
+    ],
+    "consequences": [
+        {
+            "note": "If an attacker can spoof the endpoint, the attacker gains all the privileges that were intended for the original endpoint.",
+            "scope": [
+                "Integrity",
+                "Confidentiality"
+            ],
+            "impact": [
+                "Gain Privileges or Assume Identity"
+            ]
+        }
+    ],
+    "ai_written_on": "2026-10-02",
+    "alternate_terms": [
+    ],
+    "refresh_every_days": 1,
+    "extended_description": "Attackers might be able to spoof the intended endpoint from a different system or process, thus gaining the same level of access as the intended endpoint. While this issue frequently involves authentication between network-based clients and servers, other types of communication channels and endpoints can have this weakness."
+}

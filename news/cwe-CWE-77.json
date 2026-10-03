@@ -1,0 +1,150 @@
+{
+    "kev": 0,
+    "num": 77,
+    "uid": "a0d036b7",
+    "cves": [
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-65111",
+            "product": "NeMo",
+            "summary": "NVIDIA NeMo Speech for all platforms contains a vulnerability where malicious input created by an attacker could cause a code injection. A successful exploit of this vulnerability might lead to code execution, informatio",
+            "headline": "NeMo Speech before 3.0.0 lets crafted input run code on the host",
+            "published": "2026-09-22",
+            "cvss_score": 7.8,
+            "cvss_severity": "HIGH"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-55946",
+            "product": "Copilot",
+            "summary": "Improper neutralization of special elements used in a command ('command injection') in Microsoft Copilot allows an unauthorized attacker to disclose information over a network.",
+            "headline": "Microsoft Copilot command injection lets an attacker disclose information over the network",
+            "published": "2026-09-17",
+            "cvss_score": 6.1,
+            "cvss_severity": "MEDIUM"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-81380",
+            "product": "Copilot",
+            "summary": "Improper neutralization of special elements used in a command ('command injection') in GitHub Copilot and Visual Studio Code allows an unauthorized attacker to disclose information over a network.",
+            "headline": "GitHub Copilot and VS Code before 1.136.2 let a network attacker disclose information",
+            "published": "2026-09-08",
+            "cvss_score": 5.3,
+            "cvss_severity": "MEDIUM"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-54449",
+            "product": "MCP",
+            "summary": "LangBot is a global IM bot platform designed for LLMs. In version 4.10.7 and earlier, any authenticated user can add or change an STDIO MCP server configuration without an adequate authorization boundary. In src/langbot/",
+            "headline": "LangBot 4.10.7 and earlier lets any signed-in user run commands on the server",
+            "published": "2026-08-20",
+            "cvss_score": 8.8,
+            "cvss_severity": "HIGH"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-24301",
+            "product": "Copilot",
+            "summary": "Improper neutralization of special elements used in a command ('command injection') in Microsoft Copilot allows an unauthorized attacker to disclose information over a network.",
+            "headline": "Microsoft Copilot command injection lets an attacker disclose information over the network",
+            "published": "2026-08-18",
+            "cvss_score": 8.8,
+            "cvss_severity": "HIGH"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-47708",
+            "product": "MCP",
+            "summary": "MCP-for-Stata is an MCP server for Stata to integrate Stata into an agent. Prior to version 1.17.3, the `log_file_name` parameter in the `stata_do` API and CLI is directly interpolated into a Stata command string without",
+            "headline": "MCP-for-Stata before 1.17.3 lets a crafted log_file_name run Stata commands",
+            "published": "2026-07-21",
+            "cvss_score": 9.3,
+            "cvss_severity": "CRITICAL"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-30623",
+            "product": "LiteLLM",
+            "summary": "LiteLLM 1.18.10 contains a remote code execution vulnerability in its MCP server creation functionality. The application allows users to add MCP servers via a JSON configuration specifying arbitrary command and args valu",
+            "headline": "LiteLLM 1.18.10 lets a JSON config run OS commands on the host",
+            "published": "2026-07-15",
+            "cvss_score": 9.8,
+            "cvss_severity": "CRITICAL"
+        }
+    ],
+    "high": 3,
+    "name": "Improper Neutralization of Special Elements used in a Command ('Command Injection')",
+    "count": 7,
+    "shape": "cwe",
+    "title": "CWE-77: Improper Neutralization of Special Elements used in a Command ('Command Injection')",
+    "cwe_id": "CWE-77",
+    "latest": "2026-09-22",
+    "status": "Draft",
+    "ai_text": "In AI software this weakness shows up in agent frameworks, MCP servers, model gateways and coding assistants, where user or model supplied text is passed into a command without being neutralized. The CVEs cover NeMo Speech, Microsoft Copilot, GitHub Copilot, LangBot, MCP-for-Stata and LiteLLM. It is usually reached through ordinary inputs the product already accepts, such as a configuration file, a log file name, a chat message or a signed-in user request. What it lets an attacker do ranges from running commands on the host, as in NeMo Speech, LangBot and LiteLLM, to disclosing information over the network, as in the Copilot issues.",
+    "ai_model": "ollama:deepseek-v4.1-flash",
+    "built_at": "2026-10-02T22:34:20-05",
+    "critical": 2,
+    "page_uid": "a0d036b7",
+    "generated": "2026-10-02",
+    "mitre_url": "https://cwe.mitre.org/data/definitions/77.html",
+    "likelihood": "",
+    "abstraction": "Class",
+    "description": "The product constructs all or part of a command using externally-influenced input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could modify the intended command when it is sent to a downstream component.",
+    "mitigations": [
+        {
+            "phase": [
+                "Architecture and Design"
+            ],
+            "description": "If at all possible, use library calls rather than external processes to recreate the desired functionality."
+        },
+        {
+            "phase": [
+                "Implementation"
+            ],
+            "description": "If possible, ensure that all external commands called from the program are statically created."
+        },
+        {
+            "phase": [
+                "Implementation"
+            ],
+            "strategy": "Input Validation",
+            "description": "Assume all input is malicious. Use an accept known good input validation strategy, i.e., use a list of acceptable inputs that strictly conform to specifications. Reject any input that does not strictly conform to specifications, or transform it into something that does. When performing input validation, consider all potentially relevant properties, including length, type of input, the full range of acceptable values, missing or extra inputs, syntax, consistency across related fields, and conformance to business rules. As an example of business rule logic, boat may be syntactically valid because it only contains alphanumeric characters, but it is not valid if the input is only expected to contain colors such as red or blue. Do not rely exclusively on looking for malicious or malformed inputs. This is likely to miss at least one undesirable input, especially if the code's environment changes. This can give attackers enough room to bypass the intended validation. However, denylists can be useful for detecting potential attacks or determining which inputs are so malformed that they should be rejected outright."
+        },
+        {
+            "phase": [
+                "Operation"
+            ],
+            "description": "Run time: Run time policy enforcement may be used in an allowlist fashion to prevent use of any non-sanctioned commands."
+        },
+        {
+            "phase": [
+                "System Configuration"
+            ],
+            "description": "Assign permissions that prevent the user from accessing/opening privileged files."
+        }
+    ],
+    "consequences": [
+        {
+            "note": "If a malicious user injects a character (such as a semi-colon) that delimits the end of one command and the beginning of another, it may be possible to then insert an entirely new and unrelated command that was not intended to be executed. This gives an attacker a privilege or capability that they would not otherwise have.",
+            "scope": [
+                "Integrity",
+                "Confidentiality",
+                "Availability"
+            ],
+            "impact": [
+                "Execute Unauthorized Code or Commands"
+            ]
+        }
+    ],
+    "ai_written_on": "2026-10-02",
+    "alternate_terms": [
+        {
+            "term": "Command injection",
+            "description": "an attack-oriented phrase for this weakness. Note: often used when OS command injection (CWE-78) was intended."
+        }
+    ],
+    "refresh_every_days": 1,
+    "extended_description": "Many protocols and products have their own custom command language. While OS or shell command strings are frequently discovered and targeted, developers may not realize that these other command languages might also be vulnerable to attacks."
+}

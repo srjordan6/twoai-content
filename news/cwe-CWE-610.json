@@ -1,0 +1,64 @@
+{
+    "kev": 0,
+    "num": 610,
+    "uid": "f1b2f1d1",
+    "cves": [
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-15583",
+            "product": "MCP",
+            "summary": "A confused-deputy flaw in Grafana MCP Server allows an unauthenticated remote attacker to exfiltrate the server's environment-configured Grafana service-account token by supplying a crafted X-Grafana-URL request header. ",
+            "headline": "Grafana MCP Server lets an unauthenticated request leak its Grafana token",
+            "published": "2026-07-15",
+            "cvss_score": 8.6,
+            "cvss_severity": "HIGH"
+        }
+    ],
+    "high": 1,
+    "name": "Externally Controlled Reference to a Resource in Another Sphere",
+    "count": 1,
+    "shape": "cwe",
+    "title": "CWE-610: Externally Controlled Reference to a Resource in Another Sphere",
+    "cwe_id": "CWE-610",
+    "latest": "2026-07-15",
+    "status": "Draft",
+    "ai_text": "In AI software this weakness shows up in MCP servers, the connector layer that AI agents and LLM applications use to reach outside tools and data. The one CVE here is Grafana MCP Server, where a request the server does not authenticate can make it hand back its own Grafana token. The reference is controlled from outside, so it resolves to a credential the server was meant to keep to itself. An attacker who reaches the server can take that token and use the access it carries into the connected Grafana environment, reading or changing what the token allows. The pattern is a connector trusting a caller it never verified.",
+    "ai_model": "ollama:deepseek-v4.1-flash",
+    "built_at": "2026-10-02T22:34:20-05",
+    "critical": 0,
+    "page_uid": "f1b2f1d1",
+    "generated": "2026-10-02",
+    "mitre_url": "https://cwe.mitre.org/data/definitions/610.html",
+    "likelihood": "",
+    "abstraction": "Class",
+    "description": "The product uses an externally controlled name or reference that resolves to a resource that is outside of the intended control sphere.",
+    "mitigations": [
+    ],
+    "consequences": [
+        {
+            "note": "An adversary could read or modify data, depending on how the resource is intended to be used.",
+            "scope": [
+                "Confidentiality",
+                "Integrity"
+            ],
+            "impact": [
+                "Read Application Data",
+                "Modify Application Data"
+            ]
+        },
+        {
+            "note": "An adversary that can supply a reference to an unintended resource can potentially access a resource that they do not have privileges for, thus bypassing existing access control mechanisms.",
+            "scope": [
+                "Access Control"
+            ],
+            "impact": [
+                "Gain Privileges or Assume Identity"
+            ]
+        }
+    ],
+    "ai_written_on": "2026-10-02",
+    "alternate_terms": [
+    ],
+    "refresh_every_days": 1,
+    "extended_description": ""
+}

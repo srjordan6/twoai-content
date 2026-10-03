@@ -1,0 +1,97 @@
+{
+    "kev": 0,
+    "num": 532,
+    "uid": "db2ba15b",
+    "cves": [
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-93982",
+            "product": "MCP",
+            "summary": "OpenPanel through 2.3.0 writes Model Context Protocol authentication tokens from URL query parameters to plaintext application logs without redaction. Attackers with access to application stdout or centralized logging sy",
+            "headline": "OpenPanel 2.3.0 logs MCP auth tokens in plaintext, letting log readers replay them",
+            "published": "2026-09-19",
+            "cvss_score": 4.8,
+            "cvss_severity": "MEDIUM"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-44969",
+            "product": "MCP",
+            "summary": "dbt-mcp is a Model Context Protocol server for interacting with dbt. Prior to 1.17.1, DbtMCP.call_tool() in src/dbt_mcp/mcp/server.py logged the raw arguments dictionary at INFO level before each tool call and at ERROR l",
+            "headline": "dbt-mcp before 1.17.1 logs SQL queries and vars in plaintext to a file",
+            "published": "2026-07-16",
+            "cvss_score": 2.5,
+            "cvss_severity": "LOW"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-15737",
+            "product": "AWS Bedrock",
+            "summary": "AWS Bedrock AgentCore Python SDK is an open-source Python library that provides client tools for building AI agents on the Amazon Bedrock AgentCore platform.\n\n\n\nUnintended logging of sensitive user content in the OpenTel",
+            "headline": "AWS Bedrock AgentCore SDK 1.4.8 and 1.5.0 log raw prompts and responses to CloudWatch",
+            "published": "2026-07-16",
+            "cvss_score": 5.7,
+            "cvss_severity": "MEDIUM"
+        }
+    ],
+    "high": 0,
+    "name": "Insertion of Sensitive Information into Log File",
+    "count": 3,
+    "shape": "cwe",
+    "title": "CWE-532: Insertion of Sensitive Information into Log File",
+    "cwe_id": "CWE-532",
+    "latest": "2026-09-19",
+    "status": "Incomplete",
+    "ai_text": "In AI software this weakness shows up in MCP servers and agent tooling, where the components that connect models to outside systems keep their own logs. The three CVEs here are OpenPanel 2.3.0, dbt-mcp before 1.17.1, and the AWS Bedrock AgentCore SDK 1.4.8 and 1.5.0. The sensitive data reaches the log through ordinary operation rather than any clever attack, because the product writes it there itself: MCP auth tokens in plaintext, SQL queries and variables in plaintext to a file, and raw prompts and responses to CloudWatch. Anyone who can read those logs, including support staff or a compromised log store, can replay the tokens or read the queries and prompts. That turns routine logging into a quiet leak of credentials and user content.",
+    "ai_model": "ollama:deepseek-v4.1-flash",
+    "built_at": "2026-10-02T22:34:20-05",
+    "critical": 0,
+    "page_uid": "db2ba15b",
+    "generated": "2026-10-02",
+    "mitre_url": "https://cwe.mitre.org/data/definitions/532.html",
+    "likelihood": "",
+    "abstraction": "Base",
+    "description": "The product writes sensitive information to a log file.",
+    "mitigations": [
+        {
+            "phase": [
+                "Architecture and Design Implementation"
+            ],
+            "description": "Consider seriously the sensitivity of the information written into log files. Do not write secrets into the log files."
+        },
+        {
+            "phase": [
+                "Distribution"
+            ],
+            "description": "Remove debug log files before deploying the application into production."
+        },
+        {
+            "phase": [
+                "Operation"
+            ],
+            "description": "Protect log files against unauthorized read/write."
+        },
+        {
+            "phase": [
+                "Implementation"
+            ],
+            "description": "Adjust configurations appropriately when software is transitioned from a debug state to production."
+        }
+    ],
+    "consequences": [
+        {
+            "note": "Logging sensitive user data, full path names, or system information often provides attackers with an additional, less-protected path to acquiring the information.",
+            "scope": [
+                "Confidentiality"
+            ],
+            "impact": [
+                "Read Application Data"
+            ]
+        }
+    ],
+    "ai_written_on": "2026-10-02",
+    "alternate_terms": [
+    ],
+    "refresh_every_days": 1,
+    "extended_description": ""
+}

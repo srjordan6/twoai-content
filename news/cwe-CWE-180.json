@@ -1,0 +1,59 @@
+{
+    "kev": 0,
+    "num": 180,
+    "uid": "1dc2f00d",
+    "cves": [
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-72917",
+            "product": "AnythingLLM",
+            "summary": "AnythingLLM is an application that turns pieces of content into context that any LLM can use as references during chatting. From 1.0.0 to 1.15.0, AnythingLLM's unauthenticated account-recovery flow in server/utils/Passwo",
+            "headline": "AnythingLLM 1.0.0 to 1.15.0 lets one recovery code reset an account",
+            "published": "2026-08-10",
+            "cvss_score": 5.9,
+            "cvss_severity": "MEDIUM"
+        }
+    ],
+    "high": 0,
+    "name": "Incorrect Behavior Order: Validate Before Canonicalize",
+    "count": 1,
+    "shape": "cwe",
+    "title": "CWE-180: Incorrect Behavior Order: Validate Before Canonicalize",
+    "cwe_id": "CWE-180",
+    "latest": "2026-08-10",
+    "status": "Draft",
+    "ai_text": "In AI software this weakness shows up in LLM applications that handle account recovery, as CVE-2026-72917 in AnythingLLM 1.0.0 to 1.15.0 shows. The product checks a submitted recovery code before normalizing it, so a value that looks wrong at validation time can become a valid match once canonicalization runs. An attacker reaches it through the ordinary recovery flow and can reset another user's account with a single code. The CVE names AnythingLLM, a self hosted LLM chat application, as the affected product. The result is account takeover without knowing the victim's password.",
+    "ai_model": "ollama:deepseek-v4.1-flash",
+    "built_at": "2026-10-02T22:34:20-05",
+    "critical": 0,
+    "page_uid": "1dc2f00d",
+    "generated": "2026-10-02",
+    "mitre_url": "https://cwe.mitre.org/data/definitions/180.html",
+    "likelihood": "",
+    "abstraction": "Variant",
+    "description": "The product validates input before it is canonicalized, which prevents the product from detecting data that becomes invalid after the canonicalization step.",
+    "mitigations": [
+        {
+            "phase": [
+                "Implementation"
+            ],
+            "strategy": "Input Validation",
+            "description": "Inputs should be decoded and canonicalized to the application's current internal representation before being validated (CWE-180). Make sure that the application does not decode the same input twice (CWE-174). Such errors could be used to bypass allowlist validation schemes by introducing dangerous inputs after they have been checked."
+        }
+    ],
+    "consequences": [
+        {
+            "scope": [
+                "Access Control"
+            ],
+            "impact": [
+                "Bypass Protection Mechanism"
+            ]
+        }
+    ],
+    "ai_written_on": "2026-10-02",
+    "alternate_terms": [
+    ],
+    "refresh_every_days": 1,
+    "extended_description": "This can be used by an attacker to bypass the validation and launch attacks that expose weaknesses that would otherwise be prevented, such as injection."
+}

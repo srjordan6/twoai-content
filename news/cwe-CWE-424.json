@@ -1,0 +1,59 @@
+{
+    "kev": 0,
+    "num": 424,
+    "uid": "42391a8e",
+    "cves": [
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-37008",
+            "product": "CrewAI",
+            "summary": "CrewAI before fb2323b offers a Python blocklist approach that operates at the wrong level of abstraction, a different vulnerability than CVE-2026-2275. Import-time blocking of module names does not address the availabili",
+            "headline": "CrewAI before fb2323b sandbox can be escaped through Python runtime objects",
+            "published": "2026-09-13",
+            "cvss_score": 8.1,
+            "cvss_severity": "HIGH"
+        }
+    ],
+    "high": 1,
+    "name": "Improper Protection of Alternate Path",
+    "count": 1,
+    "shape": "cwe",
+    "title": "CWE-424: Improper Protection of Alternate Path",
+    "cwe_id": "CWE-424",
+    "latest": "2026-09-13",
+    "status": "Draft",
+    "ai_text": "In AI software this weakness shows up in agent frameworks, where the code that runs a task is not the only way in. CVE-2026-37008 is the example here, affecting CrewAI before a specific commit. The sandbox that is meant to keep agent code contained does not cover every route to the underlying Python runtime, so the restricted path is not the only path. An attacker who can get code into an agent's execution can reach runtime objects the sandbox was supposed to block, escaping the intended boundary. That gives access to functionality and resources the sandbox was meant to protect, which in an agent framework can mean the host environment the agents run in.",
+    "ai_model": "ollama:deepseek-v4.1-flash",
+    "built_at": "2026-10-02T22:34:20-05",
+    "critical": 0,
+    "page_uid": "42391a8e",
+    "generated": "2026-10-02",
+    "mitre_url": "https://cwe.mitre.org/data/definitions/424.html",
+    "likelihood": "",
+    "abstraction": "Class",
+    "description": "The product does not sufficiently protect all possible paths that a user can take to access restricted functionality or resources.",
+    "mitigations": [
+        {
+            "phase": [
+                "Architecture and Design"
+            ],
+            "description": "Deploy different layers of protection to implement security in depth."
+        }
+    ],
+    "consequences": [
+        {
+            "scope": [
+                "Access Control"
+            ],
+            "impact": [
+                "Bypass Protection Mechanism",
+                "Gain Privileges or Assume Identity"
+            ]
+        }
+    ],
+    "ai_written_on": "2026-10-02",
+    "alternate_terms": [
+    ],
+    "refresh_every_days": 1,
+    "extended_description": ""
+}

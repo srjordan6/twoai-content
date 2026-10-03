@@ -1,0 +1,134 @@
+{
+    "kev": 0,
+    "num": 601,
+    "uid": "020393eb",
+    "cves": [
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-18266",
+            "product": "Dify",
+            "summary": "Dify AI Workflow oauth_redirect_url Open Redirect Vulnerability. This vulnerability allows remote attackers to disclose sensitive information on affected installations of Dify. User interaction is required to exploit thi",
+            "headline": "Dify OAuth flow redirects users to attacker sites through oauth_redirect_url",
+            "published": "2026-07-29",
+            "cvss_score": 5.4,
+            "cvss_severity": "MEDIUM"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-59806",
+            "product": "Gradio",
+            "summary": "Gradio before 6.20.0 contains an open redirect and server-side request forgery vulnerability that allows attackers to redirect users to arbitrary URLs or perform client-side SSRF by supplying unvalidated HTTP/HTTPS URLs ",
+            "headline": "Gradio before 6.20.0 redirects users and fetches internal URLs via file endpoint",
+            "published": "2026-07-08",
+            "cvss_score": 4.9,
+            "cvss_severity": "MEDIUM"
+        }
+    ],
+    "high": 0,
+    "name": "URL Redirection to Untrusted Site ('Open Redirect')",
+    "count": 2,
+    "shape": "cwe",
+    "title": "CWE-601: URL Redirection to Untrusted Site ('Open Redirect')",
+    "cwe_id": "CWE-601",
+    "latest": "2026-07-29",
+    "status": "Draft",
+    "ai_text": "In AI software this weakness shows up in the web layers that wrap models and agents. The two CVEs here sit in an LLM application platform, Dify, and in a model serving and demo framework, Gradio. Both are reached through ordinary web requests to endpoints that handle redirects or files, in Dify the OAuth flow and its oauth_redirect_url parameter, in Gradio a file endpoint. An attacker can send a crafted link that makes the product bounce a user to an untrusted site, which aids phishing and credential theft, and in Gradio's case the same endpoint also reaches internal URLs, exposing services behind the deployment. The products named are Dify and Gradio.",
+    "ai_model": "ollama:deepseek-v4.1-flash",
+    "built_at": "2026-10-02T22:34:20-05",
+    "critical": 0,
+    "page_uid": "020393eb",
+    "generated": "2026-10-02",
+    "mitre_url": "https://cwe.mitre.org/data/definitions/601.html",
+    "likelihood": "",
+    "abstraction": "Base",
+    "description": "The web application accepts a user-controlled input that specifies a link to an external site, and uses that link in a redirect.",
+    "mitigations": [
+        {
+            "phase": [
+                "Implementation"
+            ],
+            "strategy": "Input Validation",
+            "description": "Assume all input is malicious. Use an accept known good input validation strategy, i.e., use a list of acceptable inputs that strictly conform to specifications. Reject any input that does not strictly conform to specifications, or transform it into something that does. When performing input validation, consider all potentially relevant properties, including length, type of input, the full range of acceptable values, missing or extra inputs, syntax, consistency across related fields, and conformance to business rules. As an example of business rule logic, boat may be syntactically valid because it only contains alphanumeric characters, but it is not valid if the input is only expected to contain colors such as red or blue. Do not rely exclusively on looking for malicious or malformed inputs. This is likely to miss at least one undesirable input, especially if the code's environment changes. This can give attackers enough room to bypass the intended validation. However, denylists can be useful for detecting potential attacks or determining which inputs are so malformed that they should be rejected outright. Use a list of approved URLs or domains to be used for redirection."
+        },
+        {
+            "phase": [
+                "Architecture and Design"
+            ],
+            "description": "Use an intermediate disclaimer page that provides the user with a clear warning that they are leaving the current site. Implement a long timeout before the redirect occurs, or force the user to click on the link. Be careful to avoid XSS problems (CWE-79) when generating the disclaimer page."
+        },
+        {
+            "phase": [
+                "Architecture and Design"
+            ],
+            "strategy": "Enforcement by Conversion",
+            "description": "When the set of acceptable objects, such as filenames or URLs, is limited or known, create a mapping from a set of fixed input values (such as numeric IDs) to the actual filenames or URLs, and reject all other inputs. For example, ID 1 could map to /login.asp and ID 2 could map to http://www.example.com/. Features such as the ESAPI AccessReferenceMap [REF-45] provide this capability."
+        },
+        {
+            "phase": [
+                "Architecture and Design"
+            ],
+            "description": "Ensure that no externally-supplied requests are honored by requiring that all redirect requests include a unique nonce generated by the application [REF-483]. Be sure that the nonce is not predictable (CWE-330)."
+        },
+        {
+            "phase": [
+                "Architecture and Design Implementation"
+            ],
+            "strategy": "Attack Surface Reduction",
+            "description": "Understand all the potential areas where untrusted inputs can enter your software: parameters or arguments, cookies, anything read from the network, environment variables, reverse DNS lookups, query results, request headers, URL components, e-mail, files, filenames, databases, and any external systems that provide data to the application. Remember that such inputs may be obtained indirectly through API calls. Many open redirect problems occur because the programmer assumed that certain inputs could not be modified, such as cookies and hidden form fields."
+        },
+        {
+            "phase": [
+                "Operation"
+            ],
+            "strategy": "Firewall",
+            "description": "Use an application firewall that can detect attacks against this weakness. It can be beneficial in cases in which the code cannot be fixed (because it is controlled by a third party), as an emergency prevention measure while more comprehensive software assurance measures are applied, or to provide defense in depth [REF-1481].",
+            "effectiveness": "Moderate"
+        }
+    ],
+    "consequences": [
+        {
+            "note": "The user may be redirected to an untrusted page that contains malware which may then compromise the user's system. In some cases, an open redirect can also enable the immediate download of a file without the user's permission, because the redirection to an external site may lead to endpoints on those sites that automatically trigger a download action (drive-by download [REF-1478]). This will expose the user to extensive risk. The user's interaction with the web server may also be compromised if the malware conducts keylogging or other attacks that steal credentials, personally identifiable information (PII), or other important data.",
+            "scope": [
+                "Access Control"
+            ],
+            "impact": [
+                "Bypass Protection Mechanism",
+                "Gain Privileges or Assume Identity"
+            ]
+        },
+        {
+            "note": "By modifying the URL value to a malicious site, an attacker may successfully launch a phishing scam. The user may be subjected to phishing attacks by being redirected to an untrusted page. The phishing attack may point to an attacker controlled web page that appears to be a trusted web site. The phishers may then steal the user's credentials and then use these credentials to access the legitimate web site. Because the server name in the modified link is identical to the original site, phishing attempts have a more trustworthy appearance.",
+            "scope": [
+                "Access Control",
+                "Confidentiality",
+                "Other"
+            ],
+            "impact": [
+                "Bypass Protection Mechanism",
+                "Gain Privileges or Assume Identity",
+                "Other"
+            ]
+        }
+    ],
+    "ai_written_on": "2026-10-02",
+    "alternate_terms": [
+        {
+            "term": "Open Redirect"
+        },
+        {
+            "term": "Cross-site Redirect"
+        },
+        {
+            "term": "Cross-domain Redirect"
+        },
+        {
+            "term": "Unvalidated Redirect"
+        },
+        {
+            "term": "Drive-by download",
+            "description": "an attack, sometimes enabled by open redirects, which redirects the victim to a site that automatically triggers a download action of malicious software or files"
+        }
+    ],
+    "refresh_every_days": 1,
+    "extended_description": ""
+}

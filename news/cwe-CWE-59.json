@@ -1,0 +1,81 @@
+{
+    "kev": 0,
+    "num": 59,
+    "uid": "bea1c473",
+    "cves": [
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-77815",
+            "product": "Stable Diffusion WebUI",
+            "summary": "to_abs_path in scripts/iib/tool.py normalised the requested path with os.path.normpath, which collapses dot segments but does not resolve symbolic links. A symlink placed inside a scanned directory therefore satisfies th",
+            "headline": "Infinite Image Browsing symlink in a scanned image directory can expose files outside it",
+            "published": "2026-08-21",
+            "cvss_score": 8.7,
+            "cvss_severity": "HIGH"
+        }
+    ],
+    "high": 1,
+    "name": "Improper Link Resolution Before File Access ('Link Following')",
+    "count": 1,
+    "shape": "cwe",
+    "title": "CWE-59: Improper Link Resolution Before File Access ('Link Following')",
+    "cwe_id": "CWE-59",
+    "latest": "2026-08-21",
+    "status": "Draft",
+    "ai_text": "In AI software this weakness shows up in image generation tools that scan folders of user-supplied files. The one CVE here is in Stable Diffusion WebUI, a popular interface for running image models locally. The product walks a directory of images and follows a symlink placed inside it, so a link that points elsewhere resolves to a file outside the intended folder. An attacker who can drop a file into that scanned directory can use this to reach content beyond it, exposing files the user did not intend to share. The reach depends on what the process can read, which for a local web UI often includes the user's own files.",
+    "ai_model": "ollama:deepseek-v4.1-flash",
+    "built_at": "2026-10-02T22:34:20-05",
+    "critical": 0,
+    "page_uid": "bea1c473",
+    "generated": "2026-10-02",
+    "mitre_url": "https://cwe.mitre.org/data/definitions/59.html",
+    "likelihood": "",
+    "abstraction": "Base",
+    "description": "The product attempts to access a file based on the filename, but it does not properly prevent that filename from identifying a link or shortcut that resolves to an unintended resource.",
+    "mitigations": [
+        {
+            "phase": [
+                "Architecture and Design"
+            ],
+            "strategy": "Separation of Privilege",
+            "description": "Follow the principle of least privilege when assigning access rights to entities in a software system. Denying access to a file can prevent an attacker from replacing that file with a link to a sensitive file. Ensure good compartmentalization in the system to provide protected areas that can be trusted."
+        }
+    ],
+    "consequences": [
+        {
+            "note": "An attacker may be able to traverse the file system to unintended locations and read or overwrite the contents of unexpected files. If the files are used for a security mechanism then an attacker may be able to bypass the mechanism.",
+            "scope": [
+                "Confidentiality",
+                "Integrity",
+                "Access Control"
+            ],
+            "impact": [
+                "Read Files or Directories",
+                "Modify Files or Directories",
+                "Bypass Protection Mechanism"
+            ]
+        },
+        {
+            "note": "Windows simple shortcuts, sometimes referred to as soft links, can be exploited remotely since a .LNK file can be uploaded like a normal file. This can enable remote execution.",
+            "scope": [
+                "Other"
+            ],
+            "impact": [
+                "Execute Unauthorized Code or Commands"
+            ]
+        }
+    ],
+    "ai_written_on": "2026-10-02",
+    "alternate_terms": [
+        {
+            "term": "insecure temporary file",
+            "description": "Some people use the phrase insecure temporary file when referring to a link following weakness, but other weaknesses can produce insecure temporary files without any symlink involvement at all."
+        },
+        {
+            "term": "Zip Slip",
+            "description": "Zip slip is an attack that uses file archives (e.g., ZIP, tar, rar, etc.) that contain filenames with path traversal sequences that cause the files to be written outside of the directory under which the archive is expected to be extracted [REF-1282]. It is most commonly used for relative path traversal (CWE-23) and link following (CWE-59)."
+        }
+    ],
+    "refresh_every_days": 1,
+    "extended_description": ""
+}

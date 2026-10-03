@@ -1,0 +1,99 @@
+{
+    "kev": 0,
+    "num": 798,
+    "uid": "981ef5bc",
+    "cves": [
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-13446",
+            "product": "Langflow",
+            "summary": "IBM Langflow OSS 1.0.0 through 1.10.1 contains hard-coded credentials, such as a password or cryptographic key, which it uses for its own inbound authentication, outbound communication to external components, or encrypt",
+            "headline": "Langflow 1.0.0 to 1.10.1 ships hard-coded credentials for its own authentication",
+            "published": "2026-07-17",
+            "cvss_score": 9.8,
+            "cvss_severity": "CRITICAL"
+        }
+    ],
+    "high": 0,
+    "name": "Use of Hard-coded Credentials",
+    "count": 1,
+    "shape": "cwe",
+    "title": "CWE-798: Use of Hard-coded Credentials",
+    "cwe_id": "CWE-798",
+    "latest": "2026-07-17",
+    "status": "Draft",
+    "ai_text": "In AI software this weakness shows up as shipped secrets baked into the product itself, and the CVEs here place it in Langflow, an LLM application builder, where versions 1.0.0 to 1.10.1 carry hard-coded credentials for their own authentication. The flaw is reached simply by using the product as delivered, since the credentials are already present in the code rather than supplied by the operator. An attacker who knows or guesses them can authenticate as a legitimate user and reach whatever the application exposes, including flows, stored prompts and connected model or tool access. The exposure is broad because the same credentials exist in every copy of the affected release.",
+    "ai_model": "ollama:deepseek-v4.1-flash",
+    "built_at": "2026-10-02T22:34:20-05",
+    "critical": 1,
+    "page_uid": "981ef5bc",
+    "generated": "2026-10-02",
+    "mitre_url": "https://cwe.mitre.org/data/definitions/798.html",
+    "likelihood": "",
+    "abstraction": "Base",
+    "description": "The product contains hard-coded credentials, such as a password or cryptographic key.",
+    "mitigations": [
+        {
+            "phase": [
+                "Architecture and Design"
+            ],
+            "description": "For outbound authentication: store passwords, keys, and other credentials outside of the code in a strongly-protected, encrypted configuration file or database that is protected from access by all outsiders, including other local users on the same system. Properly protect the key (CWE-320). If you cannot use encryption to protect the file, then make sure that the permissions are as restrictive as possible [REF-7]. In Windows environments, the Encrypted File System (EFS) may provide some protection."
+        },
+        {
+            "phase": [
+                "Architecture and Design"
+            ],
+            "description": "For inbound authentication: Rather than hard-code a default username and password, key, or other authentication credentials for first time logins, utilize a first login mode that requires the user to enter a unique strong password or key."
+        },
+        {
+            "phase": [
+                "Architecture and Design"
+            ],
+            "description": "If the product must contain hard-coded credentials or they cannot be removed, perform access control checks and limit which entities can access the feature that requires the hard-coded credentials. For example, a feature might only be enabled through the system console instead of through a network connection."
+        },
+        {
+            "phase": [
+                "Architecture and Design"
+            ],
+            "description": "For inbound authentication using passwords: apply strong one-way hashes to passwords and store those hashes in a configuration file or database with appropriate access control. That way, theft of the file/database still requires the attacker to try to crack the password. When handling an incoming password during authentication, take the hash of the password and compare it to the saved hash. Use randomly assigned salts for each separate hash that is generated. This increases the amount of computation that an attacker needs to conduct a brute-force attack, possibly limiting the effectiveness of the rainbow table method."
+        },
+        {
+            "phase": [
+                "Architecture and Design"
+            ],
+            "description": "For front-end to back-end connections: Three solutions are possible, although none are complete. The first suggestion involves the use of generated passwords or keys that are changed automatically and must be entered at given time intervals by a system administrator. These passwords will be held in memory and only be valid for the time intervals. Next, the passwords or keys should be limited at the back end to only performing actions valid for the front end, as opposed to having full access. Finally, the messages sent should be tagged and checksummed with time sensitive values so as to prevent replay-style attacks."
+        }
+    ],
+    "consequences": [
+        {
+            "note": "If hard-coded passwords are used, it is almost certain that malicious users will gain access to the account in question. Any user of the product that hard-codes passwords may be able to extract the password. Client-side systems with hard-coded passwords pose even more of a threat, since the extraction of a password from a binary is usually very simple.",
+            "scope": [
+                "Access Control"
+            ],
+            "impact": [
+                "Bypass Protection Mechanism"
+            ]
+        },
+        {
+            "note": "This weakness can lead to the exposure of resources or functionality to unintended actors, possibly providing attackers with sensitive information or even execute arbitrary code. If the password is ever discovered or published (a common occurrence on the Internet), then anybody with knowledge of this password can access the product. Finally, since all installations of the product will have the same password, even across different organizations, this enables massive attacks such as worms to take place.",
+            "scope": [
+                "Integrity",
+                "Confidentiality",
+                "Availability",
+                "Access Control",
+                "Other"
+            ],
+            "impact": [
+                "Read Application Data",
+                "Gain Privileges or Assume Identity",
+                "Execute Unauthorized Code or Commands",
+                "Other"
+            ]
+        }
+    ],
+    "ai_written_on": "2026-10-02",
+    "alternate_terms": [
+    ],
+    "refresh_every_days": 1,
+    "extended_description": "There are two main variations: Inbound: the product contains an authentication mechanism that checks the input credentials against a hard-coded set of credentials. In this variant, a default administration account is created, and a simple password is hard-coded into the product and associated with that account. This hard-coded password is the same for each installation of the product, and it usually cannot be changed or disabled by system administrators without manually modifying the program, or otherwise patching the product. It can also be difficult for the administrator to detect. Outbound: the product connects to another system or component, and it contains hard-coded credentials for connecting to that component. This variant applies to front-end systems that authenticate with a back-end service. The back-end service may require a fixed password that can be easily discovered. The programmer may simply hard-code those back-end credentials into the front-end product."
+}

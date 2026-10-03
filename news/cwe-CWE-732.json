@@ -1,0 +1,144 @@
+{
+    "kev": 0,
+    "num": 732,
+    "uid": "951a4936",
+    "cves": [
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-77268",
+            "product": "MCP",
+            "summary": "MCP Atlassian is a Model Context Protocol (MCP) server for Atlassian products (Confluence and Jira). Prior to 0.22.0, the OAuth fallback token directory and JSON file are created without explicit owner-only modes. Local ",
+            "headline": "MCP Atlassian before 0.22.0 stores OAuth tokens readable by other local users",
+            "published": "2026-09-22",
+            "cvss_score": 5.5,
+            "cvss_severity": "MEDIUM"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-77256",
+            "product": "MCP",
+            "summary": "MCP Atlassian is a Model Context Protocol (MCP) server for Atlassian products (Confluence and Jira). Prior to 0.22.0, the plaintext OAuth fallback file containing refresh and access tokens is written with permissions inh",
+            "headline": "MCP Atlassian before 0.22.0 saves OAuth tokens in a file other local users can read",
+            "published": "2026-09-22",
+            "cvss_score": 8.3,
+            "cvss_severity": "HIGH"
+        }
+    ],
+    "high": 1,
+    "name": "Incorrect Permission Assignment for Critical Resource",
+    "count": 2,
+    "shape": "cwe",
+    "title": "CWE-732: Incorrect Permission Assignment for Critical Resource",
+    "cwe_id": "CWE-732",
+    "latest": "2026-09-22",
+    "status": "Draft",
+    "ai_text": "In AI software this weakness shows up in MCP servers, the connectors that link AI assistants to outside tools. Both CVEs here are in MCP Atlassian before 0.22.0, which stores OAuth tokens in a file that other local users can read. The exposure is local rather than remote, so anyone with an account on the same machine can reach the tokens. Those tokens are the credentials the server uses to act on Atlassian services, so reading them lets an attacker take over that access and read or change whatever the connector can reach. The fix is file permissions that keep the token file private to its owner.",
+    "ai_model": "ollama:deepseek-v4.1-flash",
+    "built_at": "2026-10-02T22:34:20-05",
+    "critical": 0,
+    "page_uid": "951a4936",
+    "generated": "2026-10-02",
+    "mitre_url": "https://cwe.mitre.org/data/definitions/732.html",
+    "likelihood": "",
+    "abstraction": "Class",
+    "description": "The product specifies permissions for a security-critical resource in a way that allows that resource to be read or modified by unintended actors.",
+    "mitigations": [
+        {
+            "phase": [
+                "Implementation"
+            ],
+            "description": "When using a critical resource such as a configuration file, check to see if the resource has insecure permissions (such as being modifiable by any regular user) [REF-62], and generate an error or even exit the software if there is a possibility that the resource could have been modified by an unauthorized party."
+        },
+        {
+            "phase": [
+                "Architecture and Design"
+            ],
+            "description": "Divide the software into anonymous, normal, privileged, and administrative areas. Reduce the attack surface by carefully defining distinct user groups, privileges, and/or roles. Map these against data, functionality, and the related resources. Then set the permissions accordingly. This will allow you to maintain more fine-grained control over your resources. [REF-207]",
+            "effectiveness": "Moderate"
+        },
+        {
+            "phase": [
+                "Architecture and Design Operation"
+            ],
+            "strategy": "Sandbox or Jail",
+            "description": "Run the code in a jail or similar sandbox environment that enforces strict boundaries between the process and the operating system. This may effectively restrict which files can be accessed in a particular directory or which commands can be executed by the software. OS-level examples include the Unix chroot jail, AppArmor, and SELinux. In general, managed code may provide some protection. For example, java.io.FilePermission in the Java SecurityManager allows the software to specify restrictions on file operations. This may not be a feasible solution, and it only limits the impact to the operating system; the rest of the application may still be subject to compromise. Be careful to avoid CWE-243 and other weaknesses related to jails.",
+            "effectiveness": "Limited"
+        },
+        {
+            "phase": [
+                "Implementation Installation"
+            ],
+            "description": "During program startup, explicitly set the default permissions or umask to the most restrictive setting possible. Also set the appropriate permissions during program installation. This will prevent you from inheriting insecure permissions from any user who installs or runs the program.",
+            "effectiveness": "High"
+        },
+        {
+            "phase": [
+                "System Configuration"
+            ],
+            "description": "For all configuration files, executables, and libraries, make sure that they are only readable and writable by the software's administrator.",
+            "effectiveness": "High"
+        },
+        {
+            "phase": [
+                "Documentation"
+            ],
+            "description": "Do not suggest insecure configuration changes in documentation, especially if those configurations can extend to resources and other programs that are outside the scope of the application."
+        },
+        {
+            "phase": [
+                "Installation"
+            ],
+            "description": "Do not assume that a system administrator will manually change the configuration to the settings that are recommended in the software's manual."
+        },
+        {
+            "phase": [
+                "Operation System Configuration"
+            ],
+            "strategy": "Environment Hardening",
+            "description": "Ensure that the software runs properly under the United States Government Configuration Baseline (USGCB) [REF-199] or an equivalent hardening configuration guide, which many organizations use to limit the attack surface and potential risk of deployed software."
+        },
+        {
+            "phase": [
+                "Implementation System Configuration Operation"
+            ],
+            "description": "When storing data in the cloud (e.g., S3 buckets, Azure blobs, Google Cloud Storage, etc.), use the provider's controls to disable public access."
+        }
+    ],
+    "consequences": [
+        {
+            "note": "An attacker may be able to read sensitive information from the associated resource, such as credentials or configuration information stored in a file.",
+            "scope": [
+                "Confidentiality"
+            ],
+            "impact": [
+                "Read Application Data",
+                "Read Files or Directories"
+            ]
+        },
+        {
+            "note": "An attacker may be able to modify critical properties of the associated resource to gain privileges, such as replacing a world-writable executable with a Trojan horse.",
+            "scope": [
+                "Access Control"
+            ],
+            "impact": [
+                "Gain Privileges or Assume Identity"
+            ]
+        },
+        {
+            "note": "An attacker may be able to destroy or corrupt critical data in the associated resource, such as deletion of records from a database.",
+            "scope": [
+                "Integrity",
+                "Other"
+            ],
+            "impact": [
+                "Modify Application Data",
+                "Other"
+            ]
+        }
+    ],
+    "ai_written_on": "2026-10-02",
+    "alternate_terms": [
+    ],
+    "refresh_every_days": 1,
+    "extended_description": "When a resource is given a permission setting that provides access to a wider range of actors than required, it could lead to the exposure of sensitive information, or the modification of that resource by unintended parties. This is especially dangerous when the resource is related to program configuration, execution, or sensitive user data. For example, consider a misconfigured storage account for the cloud that can be read or written by a public or anonymous user."
+}

@@ -1,0 +1,88 @@
+{
+    "kev": 0,
+    "num": 613,
+    "uid": "de02146f",
+    "cves": [
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-81268",
+            "product": "Langflow",
+            "summary": "IBM Langflow OSS 1.0.0 through 1.11.5 could allow a remote authenticated attacker to execute flows and obtain sensitive information due to insufficient session expiration of API keys after user deactivation.",
+            "headline": "Langflow 1.0.0 to 1.11.5 keeps API keys alive after a user is deactivated",
+            "published": "2026-09-10",
+            "cvss_score": 8.1,
+            "cvss_severity": "HIGH"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-87014",
+            "product": "Open WebUI",
+            "summary": "Open WebUI is an extensible, feature-rich, and user-friendly self-hosted AI platform. From 0.9.0 until 0.11.1, role synchronization in backend/open_webui/routers/auths.py and backend/open_webui/utils/oauth.py updated an ",
+            "headline": "Open WebUI 0.9.0 to 0.11.0 lets a demoted admin keep reading all notes",
+            "published": "2026-09-09",
+            "cvss_score": 6.5,
+            "cvss_severity": "MEDIUM"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-56400",
+            "product": "Open WebUI",
+            "summary": "open-webui before 0.3.14 contains a cross-origin resource sharing misconfiguration allowing arbitrary origins with allow_origins=* and authenticated requests to the /api/v1/functions endpoint. Attackers can execute arbit",
+            "headline": "Open WebUI before 0.3.14 lets a malicious site run code when an admin visits it",
+            "published": "2026-07-15",
+            "cvss_score": 9,
+            "cvss_severity": "CRITICAL"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-59219",
+            "product": "Open WebUI",
+            "summary": "Open WebUI is an extensible, feature-rich, and user-friendly self-hosted AI platform. From 0.9.0 before 0.10.0 with Redis configured, Socket.IO connect, user-join, join-channels, join-note, and the terminal websocket fir",
+            "headline": "Open WebUI 0.9.0 to 0.10.0 with Redis lets revoked JWTs keep realtime access",
+            "published": "2026-07-09",
+            "cvss_score": 7.1,
+            "cvss_severity": "HIGH"
+        }
+    ],
+    "high": 2,
+    "name": "Insufficient Session Expiration",
+    "count": 4,
+    "shape": "cwe",
+    "title": "CWE-613: Insufficient Session Expiration",
+    "cwe_id": "CWE-613",
+    "latest": "2026-09-10",
+    "status": "Incomplete",
+    "ai_text": "In AI software this weakness shows up in LLM application platforms and chat interfaces, as the CVEs here all sit in Langflow and Open WebUI. The usual way it is reached is through credentials that stay valid after the account or role behind them changes, so a deactivated user, a demoted admin or a revoked token still carries authority. What it lets an attacker do is keep using that old access, reading notes, reaching realtime channels or holding API keys that should already be dead. CVE-2026-81268 in Langflow and CVE-2026-87014 and CVE-2026-59219 in Open WebUI are the examples.",
+    "ai_model": "ollama:deepseek-v4.1-flash",
+    "built_at": "2026-10-02T22:34:20-05",
+    "critical": 1,
+    "page_uid": "de02146f",
+    "generated": "2026-10-02",
+    "mitre_url": "https://cwe.mitre.org/data/definitions/613.html",
+    "likelihood": "",
+    "abstraction": "Base",
+    "description": "According to WASC, Insufficient Session Expiration is when a web site permits an attacker to reuse old session credentials or session IDs for authorization.",
+    "mitigations": [
+        {
+            "phase": [
+                "Implementation"
+            ],
+            "description": "Set sessions/credentials expiration date."
+        }
+    ],
+    "consequences": [
+        {
+            "scope": [
+                "Access Control"
+            ],
+            "impact": [
+                "Bypass Protection Mechanism"
+            ]
+        }
+    ],
+    "ai_written_on": "2026-10-02",
+    "alternate_terms": [
+    ],
+    "refresh_every_days": 1,
+    "extended_description": ""
+}

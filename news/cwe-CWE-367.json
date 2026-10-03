@@ -1,0 +1,186 @@
+{
+    "kev": 0,
+    "num": 367,
+    "uid": "599d1088",
+    "cves": [
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-77242",
+            "product": "MCP",
+            "summary": "MCP Atlassian is a Model Context Protocol (MCP) server for Atlassian products (Confluence and Jira). Prior to 0.22.0, validate_url_for_ssrf checks a hostname's resolved addresses, but Requests and urllib3 resolve the hos",
+            "headline": "MCP Atlassian before 0.22.0 lets a crafted URL reach internal endpoints",
+            "published": "2026-09-22",
+            "cvss_score": 7.5,
+            "cvss_severity": "HIGH"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-87996",
+            "product": "Open WebUI",
+            "summary": "Open WebUI is an extensible, feature-rich, and user-friendly self-hosted AI platform. From 0.9.6 until 0.11.1, SafePlaywrightURLLoader in backend/open_webui/retrieval/web/utils.py validated a user-controlled hostname in ",
+            "headline": "Open WebUI 0.9.6 to 0.11.1 lets a logged-in user reach internal services via web search",
+            "published": "2026-09-09",
+            "cvss_score": 7.7,
+            "cvss_severity": "HIGH"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-43632",
+            "product": "llama.cpp",
+            "summary": "llama.cpp builds b7492 through the latest b9060 contains a use-after-free vulnerability in llama-server affecting six tokenization endpoints (/tokenize, /detokenize, /infill, /apply-template, /rerank, and /anthropic/coun",
+            "headline": "llama.cpp b7492 to b9060 use-after-free in six llama-server tokenization endpoints",
+            "published": "2026-08-06",
+            "cvss_score": 9.2,
+            "cvss_severity": "CRITICAL"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-54020",
+            "product": "Open WebUI",
+            "summary": "Open WebUI is an extensible, feature-rich, and user-friendly self-hosted AI platform. Prior to 0.11.0, Open WebUI resolved a hostname during URL validation and rejected private, loopback, and link-local addresses, but th",
+            "headline": "Open WebUI before 0.11.0 lets a logged-in user reach internal services by DNS trickery",
+            "published": "2026-08-04",
+            "cvss_score": 6.3,
+            "cvss_severity": "MEDIUM"
+        }
+    ],
+    "high": 2,
+    "name": "Time-of-check Time-of-use (TOCTOU) Race Condition",
+    "count": 4,
+    "shape": "cwe",
+    "title": "CWE-367: Time-of-check Time-of-use (TOCTOU) Race Condition",
+    "cwe_id": "CWE-367",
+    "latest": "2026-09-22",
+    "status": "Incomplete",
+    "ai_text": "In AI software this weakness shows up in MCP servers, LLM applications and model serving tools. The CVEs sit in MCP Atlassian, Open WebUI and llama.cpp. The usual route is a check on a URL, a search target or a token buffer that passes, then the resource changes before it is used. In MCP Atlassian a crafted URL reaches internal endpoints, and in Open WebUI a logged-in user reaches internal services through web search or DNS trickery. In llama.cpp the gap becomes a use-after-free in six llama-server tokenization endpoints. The result is access to internal services or memory corruption.",
+    "ai_model": "ollama:deepseek-v4.1-flash",
+    "built_at": "2026-10-02T22:34:20-05",
+    "critical": 1,
+    "page_uid": "599d1088",
+    "generated": "2026-10-02",
+    "mitre_url": "https://cwe.mitre.org/data/definitions/367.html",
+    "likelihood": "",
+    "abstraction": "Base",
+    "description": "The product checks the state of a resource before using that resource, but the resource's state can change between the check and the use in a way that invalidates the results of the check.",
+    "mitigations": [
+        {
+            "phase": [
+                "Implementation"
+            ],
+            "description": "The most basic advice for TOCTOU vulnerabilities is to not perform a check before the use. This does not resolve the underlying issue of the execution of a function on a resource whose state and identity cannot be assured, but it does help to limit the false sense of security given by the check."
+        },
+        {
+            "phase": [
+                "Implementation"
+            ],
+            "description": "When the file being altered is owned by the current user and group, set the effective gid and uid to that of the current user and group when executing this statement."
+        },
+        {
+            "phase": [
+                "Architecture and Design"
+            ],
+            "description": "Limit the interleaving of operations on files from multiple processes."
+        },
+        {
+            "phase": [
+                "Implementation Architecture and Design"
+            ],
+            "description": "If you cannot perform operations atomically and you must share access to the resource between multiple processes or threads, then try to limit the amount of time (CPU cycles) between the check and use of the resource. This will not fix the problem, but it could make it more difficult for an attack to succeed."
+        },
+        {
+            "phase": [
+                "Implementation"
+            ],
+            "description": "Recheck the resource after the use call to verify that the action was taken appropriately."
+        },
+        {
+            "phase": [
+                "Architecture and Design"
+            ],
+            "description": "Ensure that some environmental locking mechanism can be used to protect resources effectively."
+        },
+        {
+            "phase": [
+                "Implementation"
+            ],
+            "description": "Ensure that locking occurs before the check, as opposed to afterwards, such that the resource, as checked, is the same as it is when in use."
+        }
+    ],
+    "consequences": [
+        {
+            "note": "The attacker can gain access to otherwise unauthorized resources.",
+            "scope": [
+                "Integrity",
+                "Other"
+            ],
+            "impact": [
+                "Alter Execution Logic",
+                "Unexpected State"
+            ]
+        },
+        {
+            "note": "Race conditions such as this kind may be employed to gain read or write access to resources which are not normally readable or writable by the user in question.",
+            "scope": [
+                "Integrity",
+                "Other"
+            ],
+            "impact": [
+                "Modify Application Data",
+                "Modify Files or Directories",
+                "Modify Memory",
+                "Other"
+            ]
+        },
+        {
+            "note": "The resource in question, or other resources (through the corrupted one), may be changed in undesirable ways by a malicious user.",
+            "scope": [
+                "Integrity",
+                "Other"
+            ],
+            "impact": [
+                "Other"
+            ]
+        },
+        {
+            "note": "If a file or other resource is written in this method, as opposed to in a valid way, logging of the activity may not occur.",
+            "scope": [
+                "Non-Repudiation"
+            ],
+            "impact": [
+                "Hide Activities"
+            ]
+        },
+        {
+            "note": "In some cases it may be possible to delete files a malicious user might not otherwise have access to, such as log files.",
+            "scope": [
+                "Non-Repudiation",
+                "Other"
+            ],
+            "impact": [
+                "Other"
+            ]
+        },
+        {
+            "note": "The product may perform invalid actions when the resource is in an unexpected state.",
+            "scope": [
+                "Other"
+            ],
+            "impact": [
+                "Unexpected State"
+            ]
+        }
+    ],
+    "ai_written_on": "2026-10-02",
+    "alternate_terms": [
+        {
+            "term": "TOCTTOU",
+            "description": "The TOCTTOU acronym expands to Time Of Check To Time Of Use."
+        },
+        {
+            "term": "TOCCTOU",
+            "description": "The TOCCTOU acronym is most likely a typo of TOCTTOU, but it has been used in some influential documents, so the typo is repeated fairly frequently."
+        }
+    ],
+    "refresh_every_days": 1,
+    "extended_description": ""
+}

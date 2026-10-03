@@ -1,0 +1,119 @@
+{
+    "kev": 0,
+    "num": 209,
+    "uid": "e06e5d87",
+    "cves": [
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-85709",
+            "product": "Ollama",
+            "summary": "LightRAG provides simple and fast retrieval-augmented generation. Prior to 1.5.5, the LightRAG API server returns raw Python exception text from error handlers in document_routes.py, graph_routes.py, query_routes.py, oll",
+            "headline": "LightRAG before 1.5.5 leaks server paths and database details in error replies",
+            "published": "2026-09-22",
+            "cvss_score": 5.3,
+            "cvss_severity": "MEDIUM"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-73844",
+            "product": "MCP",
+            "summary": "CKAN MCP Server is a tool for querying CKAN open data portals. Prior to 0.4.112, error paths reflect raw upstream response bodies and internal exception messages back to the caller instead of a sanitized, generic message",
+            "headline": "CKAN MCP Server before 0.4.112 leaks internal errors and upstream responses",
+            "published": "2026-08-14",
+            "cvss_score": 3.7,
+            "cvss_severity": "LOW"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-73555",
+            "product": "vLLM",
+            "summary": "vLLM is an inference and serving engine for large language models. Prior to 0.26.0, the validation_exception_handler in vllm/entrypoints/openai/server_utils.py converts FastAPI RequestValidationError objects with str(exc",
+            "headline": "vLLM before 0.26.0 leaks server paths and usernames through malformed JSON requests",
+            "published": "2026-08-13",
+            "cvss_score": 5.3,
+            "cvss_severity": "MEDIUM"
+        }
+    ],
+    "high": 0,
+    "name": "Generation of Error Message Containing Sensitive Information",
+    "count": 3,
+    "shape": "cwe",
+    "title": "CWE-209: Generation of Error Message Containing Sensitive Information",
+    "cwe_id": "CWE-209",
+    "latest": "2026-09-22",
+    "status": "Draft",
+    "ai_text": "In AI software this weakness shows up in model serving, retrieval pipelines and MCP servers, where error handling is often bolted on late. The three CVEs sit in Ollama, vLLM and an MCP server for CKAN. In each case a malformed or failing request is the usual way in, and the reply that comes back carries more than it should. LightRAG before 1.5.5 exposes server paths and database details, CKAN MCP Server before 0.4.112 exposes internal errors and upstream responses, and vLLM before 0.26.0 exposes server paths and usernames through malformed JSON. An attacker who can trigger these errors learns the layout of the host, the accounts in use and details of connected systems, which helps plan later attempts.",
+    "ai_model": "ollama:deepseek-v4.1-flash",
+    "built_at": "2026-10-02T22:34:20-05",
+    "critical": 0,
+    "page_uid": "e06e5d87",
+    "generated": "2026-10-02",
+    "mitre_url": "https://cwe.mitre.org/data/definitions/209.html",
+    "likelihood": "",
+    "abstraction": "Base",
+    "description": "The product generates an error message that includes sensitive information about its environment, users, or associated data.",
+    "mitigations": [
+        {
+            "phase": [
+                "Implementation"
+            ],
+            "description": "Ensure that error messages only contain minimal details that are useful to the intended audience and no one else. The messages need to strike the balance between being too cryptic (which can confuse users) or being too detailed (which may reveal more than intended). The messages should not reveal the methods that were used to determine the error. Attackers can use detailed information to refine or optimize their original attack, thereby increasing their chances of success. If errors must be captured in some detail, record them in log messages, but consider what could occur if the log messages can be viewed by attackers. Highly sensitive information such as passwords should never be saved to log files. Avoid inconsistent messaging that might accidentally tip off an attacker about internal state, such as whether a user account exists or not."
+        },
+        {
+            "phase": [
+                "Implementation"
+            ],
+            "description": "Handle exceptions internally and do not display errors containing potentially sensitive information to a user."
+        },
+        {
+            "phase": [
+                "Implementation"
+            ],
+            "strategy": "Attack Surface Reduction",
+            "description": "Use naming conventions and strong types to make it easier to spot when sensitive data is being used. When creating structures, objects, or other complex entities, separate the sensitive and non-sensitive data as much as possible.",
+            "effectiveness": "Defense in Depth"
+        },
+        {
+            "phase": [
+                "Implementation Build and Compilation"
+            ],
+            "strategy": "Compilation or Build Hardening",
+            "description": "Debugging information should not make its way into a production release."
+        },
+        {
+            "phase": [
+                "Implementation Build and Compilation"
+            ],
+            "strategy": "Environment Hardening",
+            "description": "Debugging information should not make its way into a production release."
+        },
+        {
+            "phase": [
+                "System Configuration"
+            ],
+            "description": "Where available, configure the environment to use less verbose error messages. For example, in PHP, disable the display_errors setting during configuration, or at runtime using the error_reporting() function."
+        },
+        {
+            "phase": [
+                "System Configuration"
+            ],
+            "description": "Create default error pages or messages that do not leak any information."
+        }
+    ],
+    "consequences": [
+        {
+            "note": "Often this will either reveal sensitive information which may be used to launch another, more focused attack or disclose private information stored in the server. For example, an attempt to exploit a path traversal weakness (CWE-22) might yield the full pathname of the installed application. In turn, this could be used to select the proper number of .. sequences to navigate to the targeted file. An attack using SQL injection (CWE-89) might not initially succeed, but an error message could reveal the malformed query, which would expose query logic and possibly even passwords or other sensitive information used within the query.",
+            "scope": [
+                "Confidentiality"
+            ],
+            "impact": [
+                "Read Application Data"
+            ]
+        }
+    ],
+    "ai_written_on": "2026-10-02",
+    "alternate_terms": [
+    ],
+    "refresh_every_days": 1,
+    "extended_description": ""
+}

@@ -1,0 +1,84 @@
+{
+    "kev": 0,
+    "num": 273,
+    "uid": "bf5da220",
+    "cves": [
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-80047",
+            "product": "Transformers",
+            "summary": "A vulnerability in Hugging Face Transformers (versions 4.57.0 to 5.16.1) allows remote Python files to be written to local disk without user consent when using GenerativePreTrainedModel.load_custom_generate(). The functi",
+            "headline": "Transformers 4.57.0 to 5.16.1 writes remote Python to disk before trust check",
+            "published": "2026-09-01",
+            "cvss_score": 7.8,
+            "cvss_severity": "HIGH"
+        }
+    ],
+    "high": 1,
+    "name": "Improper Check for Dropped Privileges",
+    "count": 1,
+    "shape": "cwe",
+    "title": "CWE-273: Improper Check for Dropped Privileges",
+    "cwe_id": "CWE-273",
+    "latest": "2026-09-01",
+    "status": "Incomplete",
+    "ai_text": "In AI software this weakness shows up in model and library tooling, as the single CVE here sits in Transformers, the widely used model loading library, rather than in agent frameworks or MCP servers. The flaw is reached when the library handles a remote model or code artifact and tries to step down from its trusted, privileged loading path, but never confirms that step actually took effect. Because the check is missing or wrong, the library can still write remote Python to disk before the trust check runs. An attacker who controls the remote source can then get code onto the machine under conditions the library believed were safe, affecting Transformers versions 4.57.0 through 5.16.1.",
+    "ai_model": "ollama:deepseek-v4.1-flash",
+    "built_at": "2026-10-02T22:34:20-05",
+    "critical": 0,
+    "page_uid": "bf5da220",
+    "generated": "2026-10-02",
+    "mitre_url": "https://cwe.mitre.org/data/definitions/273.html",
+    "likelihood": "",
+    "abstraction": "Base",
+    "description": "The product attempts to drop privileges but does not check or incorrectly checks to see if the drop succeeded.",
+    "mitigations": [
+        {
+            "phase": [
+                "Architecture and Design"
+            ],
+            "strategy": "Separation of Privilege",
+            "description": "Compartmentalize the system to have safe areas where trust boundaries can be unambiguously drawn. Do not allow sensitive data to go outside of the trust boundary and always be careful when interfacing with a compartment outside of the safe area. Ensure that appropriate compartmentalization is built into the system design, and the compartmentalization allows for and reinforces privilege separation functionality. Architects and designers should rely on the principle of least privilege to decide the appropriate time to use privileges and the time to drop privileges."
+        },
+        {
+            "phase": [
+                "Implementation"
+            ],
+            "description": "Check the results of all functions that return a value and verify that the value is expected.",
+            "effectiveness": "High"
+        },
+        {
+            "phase": [
+                "Implementation"
+            ],
+            "description": "In Windows, make sure that the process token has the SeImpersonatePrivilege(Microsoft Server 2003). Code that relies on impersonation for security must ensure that the impersonation succeeded, i.e., that a proper privilege demotion happened."
+        }
+    ],
+    "consequences": [
+        {
+            "note": "If privileges are not dropped, neither are access rights of the user. Often these rights can be prevented from being dropped.",
+            "scope": [
+                "Access Control"
+            ],
+            "impact": [
+                "Gain Privileges or Assume Identity"
+            ]
+        },
+        {
+            "note": "If privileges are not dropped, in some cases the system may record actions as the user which is being impersonated rather than the impersonator.",
+            "scope": [
+                "Access Control",
+                "Non-Repudiation"
+            ],
+            "impact": [
+                "Gain Privileges or Assume Identity",
+                "Hide Activities"
+            ]
+        }
+    ],
+    "ai_written_on": "2026-10-02",
+    "alternate_terms": [
+    ],
+    "refresh_every_days": 1,
+    "extended_description": "If the drop fails, the product will continue to run with the raised privileges, which might provide additional access to unprivileged users."
+}

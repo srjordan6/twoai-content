@@ -1,0 +1,59 @@
+{
+    "kev": 0,
+    "num": 338,
+    "uid": "f6edbf01",
+    "cves": [
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-9205",
+            "product": "Langflow",
+            "summary": "IBM Langflow OSS contains a weak cryptographic key derivation vulnerability in the ensure_fernet_key() function.",
+            "headline": "Langflow 1.0.0 to 1.11.0 derives weak Fernet keys, exposing encrypted data",
+            "published": "2026-08-05",
+            "cvss_score": 7.4,
+            "cvss_severity": "HIGH"
+        }
+    ],
+    "high": 1,
+    "name": "Use of Cryptographically Weak Pseudo-Random Number Generator (PRNG)",
+    "count": 1,
+    "shape": "cwe",
+    "title": "CWE-338: Use of Cryptographically Weak Pseudo-Random Number Generator (PRNG)",
+    "cwe_id": "CWE-338",
+    "latest": "2026-08-05",
+    "status": "Draft",
+    "ai_text": "In AI software this weakness shows up in LLM application platforms, as the single CVE here shows. Langflow, a tool for building LLM workflows, is the example, in versions 1.0.0 to 1.11.0. The flaw is reached through the key generation the product uses to protect stored data, where a weak random source feeds the Fernet encryption keys. Because those keys are predictable, an attacker who can reach the encrypted data can recover it, defeating the protection the product was meant to provide. The impact stays inside the application's own stored secrets rather than spreading to the model itself.",
+    "ai_model": "ollama:deepseek-v4.1-flash",
+    "built_at": "2026-10-02T22:34:20-05",
+    "critical": 0,
+    "page_uid": "f6edbf01",
+    "generated": "2026-10-02",
+    "mitre_url": "https://cwe.mitre.org/data/definitions/338.html",
+    "likelihood": "",
+    "abstraction": "Base",
+    "description": "The product uses a Pseudo-Random Number Generator (PRNG) in a security context, but the PRNG's algorithm is not cryptographically strong.",
+    "mitigations": [
+        {
+            "phase": [
+                "Implementation"
+            ],
+            "description": "Use functions or hardware which use a hardware-based random number generation for all crypto. This is the recommended solution. Use CyptGenRandom on Windows, or hw_rand() on Linux."
+        }
+    ],
+    "consequences": [
+        {
+            "note": "If a PRNG is used for authentication and authorization, such as a session ID or a seed for generating a cryptographic key, then an attacker may be able to easily guess the ID or cryptographic key and gain access to restricted functionality.",
+            "scope": [
+                "Access Control"
+            ],
+            "impact": [
+                "Bypass Protection Mechanism"
+            ]
+        }
+    ],
+    "ai_written_on": "2026-10-02",
+    "alternate_terms": [
+    ],
+    "refresh_every_days": 1,
+    "extended_description": "When a non-cryptographic PRNG is used in a cryptographic context, it can expose the cryptography to certain types of attacks. Often a pseudo-random number generator (PRNG) is not designed for cryptography. Sometimes a mediocre source of randomness is sufficient or preferable for algorithms that use random numbers. Weak generators generally take less processing power and/or do not use the precious, finite, entropy sources on a system. While such PRNGs might have very useful features, these same features could be used to break the cryptography."
+}

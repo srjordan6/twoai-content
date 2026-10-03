@@ -1,0 +1,134 @@
+{
+    "kev": 0,
+    "num": 122,
+    "uid": "2078a4f3",
+    "cves": [
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-70638",
+            "product": "llama.cpp",
+            "summary": "llama.cpp builds b1886 through b7445 contain an integer overflow vulnerability in the LLaMA-Android JNI wrapper where the new_1batch() function multiplies sizeof(llama_seq_id) by an attacker-controlled n_seq_max paramete",
+            "headline": "llama.cpp b1886 to b7445 Android JNI wrapper integer overflow allows heap corruption",
+            "published": "2026-08-06",
+            "cvss_score": 8.5,
+            "cvss_severity": "HIGH"
+        }
+    ],
+    "high": 1,
+    "name": "Heap-based Buffer Overflow",
+    "count": 1,
+    "shape": "cwe",
+    "title": "CWE-122: Heap-based Buffer Overflow",
+    "cwe_id": "CWE-122",
+    "latest": "2026-08-06",
+    "status": "Draft",
+    "ai_text": "In AI software this weakness shows up in model serving and inference code, where large tensors and token buffers are allocated on the heap. The one CVE given is in llama.cpp, the popular local inference engine, specifically its Android JNI wrapper. The flaw is an integer overflow in that wrapper, which corrupts heap memory rather than a stack buffer. An attacker who can reach the wrapper with crafted input could crash the process or, in the worst case, corrupt memory in a way that may lead to code execution on the device. The CVE covers versions b1886 through b7445.",
+    "ai_model": "ollama:deepseek-v4.1-flash",
+    "built_at": "2026-10-02T22:34:20-05",
+    "critical": 0,
+    "page_uid": "2078a4f3",
+    "generated": "2026-10-02",
+    "mitre_url": "https://cwe.mitre.org/data/definitions/122.html",
+    "likelihood": "",
+    "abstraction": "Variant",
+    "description": "A heap overflow condition is a buffer overflow, where the buffer that can be overwritten is allocated in the heap portion of memory, generally meaning that the buffer was allocated using a routine such as malloc().",
+    "mitigations": [
+        {
+            "description": "Pre-design: Use a language or compiler that performs automatic bounds checking."
+        },
+        {
+            "phase": [
+                "Architecture and Design"
+            ],
+            "description": "Use an abstraction library to abstract away risky APIs. Not a complete solution."
+        },
+        {
+            "phase": [
+                "Operation Build and Compilation"
+            ],
+            "strategy": "Environment Hardening",
+            "description": "Use automatic buffer overflow detection mechanisms that are offered by certain compilers or compiler extensions. Examples include: the Microsoft Visual Studio /GS flag, Fedora/Red Hat FORTIFY_SOURCE GCC flag, StackGuard, and ProPolice, which provide various mechanisms including canary-based detection and range/index checking. D3-SFCV (Stack Frame Canary Validation) from D3FEND [REF-1334] discusses canary-based detection in detail.",
+            "effectiveness": "Defense in Depth"
+        },
+        {
+            "phase": [
+                "Operation Build and Compilation"
+            ],
+            "strategy": "Environment Hardening",
+            "description": "Run or compile the software using features or extensions that randomly arrange the positions of a program's executable and libraries in memory. Because this makes the addresses unpredictable, it can prevent an attacker from reliably jumping to exploitable code. Examples include Address Space Layout Randomization (ASLR) [REF-58] [REF-60] and Position-Independent Executables (PIE) [REF-64]. Imported modules may be similarly realigned if their default memory addresses conflict with other modules, in a process known as rebasing (for Windows) and prelinking (for Linux) [REF-1332] using randomly generated addresses. ASLR for libraries cannot be used in conjunction with prelink since it would require relocating the libraries at run-time, defeating the whole purpose of prelinking. For more information on these techniques see D3-SAOR (Segment Address Offset Randomization) from D3FEND [REF-1335].",
+            "effectiveness": "Defense in Depth"
+        },
+        {
+            "phase": [
+                "Implementation"
+            ],
+            "description": "Implement and perform bounds checking on input."
+        },
+        {
+            "phase": [
+                "Implementation"
+            ],
+            "strategy": "Libraries or Frameworks",
+            "description": "Do not use dangerous functions such as gets. Look for their safe equivalent, which checks for the boundary."
+        },
+        {
+            "phase": [
+                "Operation"
+            ],
+            "description": "Use OS-level preventative functionality. This is not a complete solution, but it provides some defense in depth."
+        }
+    ],
+    "consequences": [
+        {
+            "note": "Buffer overflows generally lead to crashes. Other attacks leading to lack of availability are possible, including putting the program into an infinite loop.",
+            "scope": [
+                "Availability"
+            ],
+            "impact": [
+                "DoS: Crash, Exit, or Restart",
+                "DoS: Resource Consumption (CPU)",
+                "DoS: Resource Consumption (Memory)"
+            ]
+        },
+        {
+            "note": "Buffer overflows often can be used to execute arbitrary code, which is usually outside the scope of a program's implicit security policy. Besides important user data, heap-based overflows can be used to overwrite function pointers that may be living in memory, pointing it to the attacker's code. Even in applications that do not explicitly use function pointers, the run-time will usually leave many in memory. For example, object methods in C++ are generally implemented using function pointers. Even in C programs, there is often a global offset table used by the underlying runtime.",
+            "scope": [
+                "Integrity",
+                "Confidentiality",
+                "Availability",
+                "Access Control"
+            ],
+            "impact": [
+                "Execute Unauthorized Code or Commands",
+                "Bypass Protection Mechanism",
+                "Modify Memory"
+            ]
+        },
+        {
+            "note": "When the consequence is arbitrary code execution, this can often be used to subvert any other security service.",
+            "scope": [
+                "Integrity",
+                "Confidentiality",
+                "Availability",
+                "Access Control",
+                "Other"
+            ],
+            "impact": [
+                "Execute Unauthorized Code or Commands",
+                "Bypass Protection Mechanism",
+                "Other"
+            ]
+        }
+    ],
+    "ai_written_on": "2026-10-02",
+    "alternate_terms": [
+        {
+            "term": "Heap Overflow"
+        },
+        {
+            "term": "Heap Buffer Overflow"
+        }
+    ],
+    "refresh_every_days": 1,
+    "extended_description": ""
+}

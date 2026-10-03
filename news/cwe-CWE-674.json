@@ -1,0 +1,90 @@
+{
+    "kev": 0,
+    "num": 674,
+    "uid": "b43e3a49",
+    "cves": [
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-52132",
+            "product": "llama.cpp",
+            "summary": "llama.cpp through commit 97f06e9, when started with the --reranking flag, allows remote attackers to cause a denial of service (std::bad_alloc and HTTP 500) via a negative top_n value in a POST request to /rerank.",
+            "headline": "llama.cpp through 0.4.0 with --reranking crashes on a negative top_n in /rerank",
+            "published": "2026-09-01",
+            "cvss_score": 7.5,
+            "cvss_severity": "HIGH"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-52130",
+            "product": "llama.cpp",
+            "summary": "llama.cpp b5693 and before is vulnerable to Uncontrolled Recursion in common/json-schema-to-grammar.cpp, resulting in a denial of service.",
+            "headline": "llama.cpp b5693 and before can be crashed by a crafted JSON schema",
+            "published": "2026-09-01",
+            "cvss_score": 7.5,
+            "cvss_severity": "HIGH"
+        }
+    ],
+    "high": 2,
+    "name": "Uncontrolled Recursion",
+    "count": 2,
+    "shape": "cwe",
+    "title": "CWE-674: Uncontrolled Recursion",
+    "cwe_id": "CWE-674",
+    "latest": "2026-09-01",
+    "status": "Draft",
+    "ai_text": "In AI software this weakness shows up in model serving and inference tools, where a request can drive the program into deep or endless recursion. Both CVEs here are in llama.cpp, a local inference engine used to run language models. One is reached through the reranking endpoint when a negative top_n value is supplied, the other through a crafted JSON schema. In each case the recursion is not bounded, so the process consumes stack or memory until it crashes. The result is a denial of service against the serving process, which can take the model endpoint down for other users. No code execution or data theft is shown in these reports.",
+    "ai_model": "ollama:deepseek-v4.1-flash",
+    "built_at": "2026-10-02T22:34:20-05",
+    "critical": 0,
+    "page_uid": "b43e3a49",
+    "generated": "2026-10-02",
+    "mitre_url": "https://cwe.mitre.org/data/definitions/674.html",
+    "likelihood": "",
+    "abstraction": "Class",
+    "description": "The product does not properly control the amount of recursion that takes place, consuming excessive resources, such as allocated memory or the program stack.",
+    "mitigations": [
+        {
+            "phase": [
+                "Implementation"
+            ],
+            "description": "Ensure that an end condition will be reached under all logic conditions. The end condition may include checking against the depth of recursion and exiting with an error if the recursion goes too deep. The complexity of the end condition contributes to the effectiveness of this action.",
+            "effectiveness": "Moderate"
+        },
+        {
+            "phase": [
+                "Implementation"
+            ],
+            "description": "Increase the stack size.",
+            "effectiveness": "Limited"
+        }
+    ],
+    "consequences": [
+        {
+            "note": "Resources including CPU, memory, and stack memory could be rapidly consumed or exhausted, eventually leading to an exit or crash.",
+            "scope": [
+                "Availability"
+            ],
+            "impact": [
+                "DoS: Resource Consumption (CPU)",
+                "DoS: Resource Consumption (Memory)"
+            ]
+        },
+        {
+            "note": "In some cases, an application's interpreter might kill a process or thread that appears to be consuming too much resources, such as with PHP's memory_limit setting. When the interpreter kills the process/thread, it might report an error containing detailed information such as the application's installation path.",
+            "scope": [
+                "Confidentiality"
+            ],
+            "impact": [
+                "Read Application Data"
+            ]
+        }
+    ],
+    "ai_written_on": "2026-10-02",
+    "alternate_terms": [
+        {
+            "term": "Stack Exhaustion"
+        }
+    ],
+    "refresh_every_days": 1,
+    "extended_description": ""
+}

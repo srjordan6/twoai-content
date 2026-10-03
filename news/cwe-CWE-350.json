@@ -1,0 +1,66 @@
+{
+    "kev": 0,
+    "num": 350,
+    "uid": "a0231be6",
+    "cves": [
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-61568",
+            "product": "MCP",
+            "summary": "`@zereight/mcp-gitlab` is a Model Context Protocol server for GitLab. Versions prior to 2.1.30 expose the Streamable HTTP MCP endpoint without an effective Host or Origin allowlist. A malicious web page can use DNS rebin",
+            "headline": "MCP GitLab server before 2.1.30 lets a malicious web page reach its local HTTP endpoint",
+            "published": "2026-09-15",
+            "cvss_score": 9.6,
+            "cvss_severity": "CRITICAL"
+        }
+    ],
+    "high": 0,
+    "name": "Reliance on Reverse DNS Resolution for a Security-Critical Action",
+    "count": 1,
+    "shape": "cwe",
+    "title": "CWE-350: Reliance on Reverse DNS Resolution for a Security-Critical Action",
+    "cwe_id": "CWE-350",
+    "latest": "2026-09-15",
+    "status": "Draft",
+    "ai_text": "In AI software this weakness shows up in MCP servers, the connector layer that lets AI assistants reach outside tools and services. The one CVE here is in an MCP GitLab server before version 2.1.30. A malicious web page can reach the server's local HTTP endpoint, and the server trusts a reverse DNS lookup to decide whether a request is safe. Because the IP address is not truly tied to the hostname, that check can pass for the wrong caller. An attacker can then act through the AI assistant's GitLab connection, reaching repositories and actions the server was trusted to perform on the user's behalf.",
+    "ai_model": "ollama:deepseek-v4.1-flash",
+    "built_at": "2026-10-02T22:34:20-05",
+    "critical": 1,
+    "page_uid": "a0231be6",
+    "generated": "2026-10-02",
+    "mitre_url": "https://cwe.mitre.org/data/definitions/350.html",
+    "likelihood": "",
+    "abstraction": "Variant",
+    "description": "The product performs reverse DNS resolution on an IP address to obtain the hostname and make a security decision, but it does not properly ensure that the IP address is truly associated with the hostname.",
+    "mitigations": [
+        {
+            "phase": [
+                "Architecture and Design"
+            ],
+            "description": "Use other means of identity verification that cannot be simply spoofed. Possibilities include a username/password or certificate."
+        },
+        {
+            "phase": [
+                "Implementation"
+            ],
+            "description": "Perform proper forward and reverse DNS lookups to detect DNS spoofing."
+        }
+    ],
+    "consequences": [
+        {
+            "note": "Malicious users can fake authentication information by providing false DNS information.",
+            "scope": [
+                "Access Control"
+            ],
+            "impact": [
+                "Gain Privileges or Assume Identity",
+                "Bypass Protection Mechanism"
+            ]
+        }
+    ],
+    "ai_written_on": "2026-10-02",
+    "alternate_terms": [
+    ],
+    "refresh_every_days": 1,
+    "extended_description": "Since DNS names can be easily spoofed or misreported, and it may be difficult for the product to detect if a trusted DNS server has been compromised, DNS names do not constitute a valid authentication mechanism. When the product performs a reverse DNS resolution for an IP address, if an attacker controls the DNS server for that IP address, then the attacker can cause the server to return an arbitrary hostname. As a result, the attacker may be able to bypass authentication, cause the wrong hostname to be recorded in log files to hide activities, or perform other attacks. Attackers can spoof DNS names by either (1) compromising a DNS server and modifying its records (sometimes called DNS cache poisoning), or (2) having legitimate control over a DNS server associated with their IP address."
+}

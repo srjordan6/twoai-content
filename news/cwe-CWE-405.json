@@ -1,0 +1,75 @@
+{
+    "kev": 0,
+    "num": 405,
+    "uid": "0cdcab22",
+    "cves": [
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-87011",
+            "product": "Open WebUI",
+            "summary": "Open WebUI is an extensible, feature-rich, and user-friendly self-hosted AI platform. From 0.9.0 until 0.11.1, the unauthenticated POST /oauth/backchannel-logout handler in backend/open_webui/utils/oauth.py fetched the O",
+            "headline": "Open WebUI 0.9.0 to 0.11.0 lets invalid logout tokens stall the server",
+            "published": "2026-09-09",
+            "cvss_score": 7.5,
+            "cvss_severity": "HIGH"
+        }
+    ],
+    "high": 1,
+    "name": "Asymmetric Resource Consumption (Amplification)",
+    "count": 1,
+    "shape": "cwe",
+    "title": "CWE-405: Asymmetric Resource Consumption (Amplification)",
+    "cwe_id": "CWE-405",
+    "latest": "2026-09-09",
+    "status": "Incomplete",
+    "ai_text": "In AI software this weakness shows up in LLM chat front ends that hold sessions for many users at once. The one CVE here is in Open WebUI, a self hosted chat interface for large language models, versions 0.9.0 to 0.11.0. It is reached through the logout path, where a token that is not valid is still processed in a way that ties up the server. A small, cheap request from one client can therefore consume far more of the server's capacity than the effort it took to send, and repeated requests can stall the service for everyone else using the same instance.",
+    "ai_model": "ollama:deepseek-v4.1-flash",
+    "built_at": "2026-10-02T22:34:20-05",
+    "critical": 0,
+    "page_uid": "0cdcab22",
+    "generated": "2026-10-02",
+    "mitre_url": "https://cwe.mitre.org/data/definitions/405.html",
+    "likelihood": "",
+    "abstraction": "Class",
+    "description": "The product does not properly control situations in which an adversary can cause the product to consume or produce excessive resources without requiring the adversary to invest equivalent work or otherwise prove authorization, i.e., the adversary's influence is asymmetric.",
+    "mitigations": [
+        {
+            "phase": [
+                "Architecture and Design"
+            ],
+            "description": "An application must make resources available to a client commensurate with the client's access level."
+        },
+        {
+            "phase": [
+                "Architecture and Design"
+            ],
+            "description": "An application must, at all times, keep track of allocated resources and meter their usage appropriately."
+        },
+        {
+            "phase": [
+                "System Configuration"
+            ],
+            "description": "Consider disabling resource-intensive algorithms on the server side, such as Diffie-Hellman key exchange.",
+            "effectiveness": "High"
+        }
+    ],
+    "consequences": [
+        {
+            "note": "Sometimes this is a factor in flood attacks, but other types of amplification exist.",
+            "scope": [
+                "Availability"
+            ],
+            "impact": [
+                "DoS: Amplification",
+                "DoS: Resource Consumption (CPU)",
+                "DoS: Resource Consumption (Memory)",
+                "DoS: Resource Consumption (Other)"
+            ]
+        }
+    ],
+    "ai_written_on": "2026-10-02",
+    "alternate_terms": [
+    ],
+    "refresh_every_days": 1,
+    "extended_description": "This can lead to poor performance due to amplification of resource consumption, typically in a non-linear fashion. This situation is worsened if the product allows malicious users or attackers to consume more resources than their access level permits."
+}

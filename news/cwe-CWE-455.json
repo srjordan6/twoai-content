@@ -1,0 +1,61 @@
+{
+    "kev": 0,
+    "num": 455,
+    "uid": "a1aa7bd6",
+    "cves": [
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-16584",
+            "product": "MCP",
+            "summary": "Improper handling of an initialization failure in AWS API MCP Server from 0.2.13 through 1.3.46 might allow an actor to bypass the user-configured security policy and execute AWS API operations that the policy was set to",
+            "headline": "AWS API MCP Server 0.2.13 to 1.3.46 can skip its security policy check at startup",
+            "published": "2026-07-23",
+            "cvss_score": 7.3,
+            "cvss_severity": "HIGH"
+        }
+    ],
+    "high": 1,
+    "name": "Non-exit on Failed Initialization",
+    "count": 1,
+    "shape": "cwe",
+    "title": "CWE-455: Non-exit on Failed Initialization",
+    "cwe_id": "CWE-455",
+    "latest": "2026-07-23",
+    "status": "Draft",
+    "ai_text": "In AI software this weakness shows up in MCP servers, the connector layer that lets agents call outside tools. The one CVE here is AWS API MCP Server, versions 0.2.13 to 1.3.46, which can skip its security policy check at startup. The failure is reached during initialization, when the server loads its configuration and the policy check does not complete, yet the process keeps running instead of stopping. The server then comes up in a less secure state than the administrator intended, so the guardrails meant to constrain which API calls agents may make are not in force. An attacker who can reach that running server may then use the agent to invoke actions the policy was meant to block.",
+    "ai_model": "ollama:deepseek-v4.1-flash",
+    "built_at": "2026-10-02T22:34:20-05",
+    "critical": 0,
+    "page_uid": "a1aa7bd6",
+    "generated": "2026-10-02",
+    "mitre_url": "https://cwe.mitre.org/data/definitions/455.html",
+    "likelihood": "",
+    "abstraction": "Base",
+    "description": "The product does not exit or otherwise modify its operation when security-relevant errors occur during initialization, such as when a configuration file has a format error or a hardware security module (HSM) cannot be activated, which can cause the product to execute in a less secure fashion than intended by the administrator.",
+    "mitigations": [
+        {
+            "phase": [
+                "Implementation"
+            ],
+            "description": "Follow the principle of failing securely when an error occurs. The system should enter a state where it is not vulnerable and will not display sensitive error messages to a potential attacker."
+        }
+    ],
+    "consequences": [
+        {
+            "note": "The application could be placed in an insecure state that may allow an attacker to modify sensitive data or allow unintended logic to be executed.",
+            "scope": [
+                "Integrity",
+                "Other"
+            ],
+            "impact": [
+                "Modify Application Data",
+                "Alter Execution Logic"
+            ]
+        }
+    ],
+    "ai_written_on": "2026-10-02",
+    "alternate_terms": [
+    ],
+    "refresh_every_days": 1,
+    "extended_description": ""
+}

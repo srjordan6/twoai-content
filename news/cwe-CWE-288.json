@@ -1,0 +1,58 @@
+{
+    "kev": 0,
+    "num": 288,
+    "uid": "8736fb3d",
+    "cves": [
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-47481",
+            "product": "Triton Inference Server",
+            "summary": "NVIDIA Triton Inference Server for Linux contains a vulnerability where an attacker can cause an authentication bypass through an alternative path or channel. A successful exploit of this vulnerability might lead to code",
+            "headline": "Triton Inference Server on Linux has an authentication bypass through an alternative path",
+            "published": "2026-07-14",
+            "cvss_score": 6.5,
+            "cvss_severity": "MEDIUM"
+        }
+    ],
+    "high": 0,
+    "name": "Authentication Bypass Using an Alternate Path or Channel",
+    "count": 1,
+    "shape": "cwe",
+    "title": "CWE-288: Authentication Bypass Using an Alternate Path or Channel",
+    "cwe_id": "CWE-288",
+    "latest": "2026-07-14",
+    "status": "Incomplete",
+    "ai_text": "In AI software this weakness shows up in model serving, where a network service exposes more than one way in. CVE-2026-47481 is the example here, filed against Triton Inference Server on Linux, an authentication bypass through an alternative path. The product expects callers to authenticate, but a second route into the same server skips that check, so a request that never passes the login step is still handled. An attacker who can reach that alternate path gets the access the normal path would have denied, which in a serving product means reaching the models and endpoints behind it. The CVEs given cover only this one product, so the pattern is a serving layer with a second, unguarded channel.",
+    "ai_model": "ollama:deepseek-v4.1-flash",
+    "built_at": "2026-10-02T22:34:20-05",
+    "critical": 0,
+    "page_uid": "8736fb3d",
+    "generated": "2026-10-02",
+    "mitre_url": "https://cwe.mitre.org/data/definitions/288.html",
+    "likelihood": "",
+    "abstraction": "Base",
+    "description": "The product requires authentication, but the product has an alternate path or channel that does not require authentication.",
+    "mitigations": [
+        {
+            "phase": [
+                "Architecture and Design"
+            ],
+            "description": "Funnel all access through a single choke point to simplify how users can access a resource. For every access, perform a check to determine if the user has permissions to access the resource."
+        }
+    ],
+    "consequences": [
+        {
+            "scope": [
+                "Access Control"
+            ],
+            "impact": [
+                "Bypass Protection Mechanism"
+            ]
+        }
+    ],
+    "ai_written_on": "2026-10-02",
+    "alternate_terms": [
+    ],
+    "refresh_every_days": 1,
+    "extended_description": ""
+}

@@ -1,0 +1,171 @@
+{
+    "kev": 0,
+    "num": 770,
+    "uid": "03368112",
+    "cves": [
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-100649",
+            "product": "vLLM",
+            "summary": "vLLM before 0.29.0 contains a resource-limit bypass vulnerability in PyNvVideoCodec decoder allocation where sampler subclass shadowing allows independent counter increments. Unauthenticated attackers can select differen",
+            "headline": "vLLM before 0.29.0 lets video requests exhaust GPU memory past decoder limits",
+            "published": "2026-09-26",
+            "cvss_score": 6.3,
+            "cvss_severity": "MEDIUM"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-94624",
+            "product": "vLLM",
+            "summary": "vLLM through 0.29.0 contains a denial of service vulnerability in P2P KV offloading when OffloadingConnector is configured with TieringOffloadingSpec and a peer-to-peer secondary tier. Attackers can supply arbitrary remo",
+            "headline": "vLLM 0.29.0 crashes on unreachable P2P KV offload peers",
+            "published": "2026-09-21",
+            "cvss_score": 8.7,
+            "cvss_severity": "HIGH"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-57173",
+            "product": "vLLM",
+            "summary": "vLLM is an inference and serving engine for large language models. Prior to 0.24.0, the input_audio handling path for /v1/chat/completions calls AudioMediaIO.load_bytes or AudioMediaIO.load_file without passing VLLM_MAX_",
+            "headline": "vLLM before 0.24.0 lets a small audio clip exhaust server memory",
+            "published": "2026-09-16",
+            "cvss_score": 6.5,
+            "cvss_severity": "MEDIUM"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-47628",
+            "product": "Triton Inference Server",
+            "summary": "NVIDIA Triton Inference Server for Linux contains a vulnerability where an attacker could cause an allocation of resources without limits. A successful exploit might lead to denial of service.",
+            "headline": "Triton Inference Server up to 26.05 lets a remote request exhaust resources",
+            "published": "2026-08-18",
+            "cvss_score": 7.5,
+            "cvss_severity": "HIGH"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-12570",
+            "product": "TensorFlow",
+            "summary": "A vulnerability in keras-team/keras versions <= 3.15.0 allows for a denial of service (DoS) attack when loading malicious .keras model files via the keras.models.load_model() function. The H5IOStore.__getitem__ method in",
+            "headline": "Keras 3.15.0 and earlier can run out of memory loading a crafted .keras model",
+            "published": "2026-08-10",
+            "cvss_score": 5.5,
+            "cvss_severity": "MEDIUM"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-67432",
+            "product": "MCP",
+            "summary": "MCP Ruby SDK is the official Ruby SDK for Model Context Protocol servers and clients. Prior to 0.23.0, MCP::Server::Transports::StreamableHTTPTransport in the mcp gem reads and parses an entire JSON-RPC POST body without",
+            "headline": "MCP Ruby SDK before 0.23.0 lets a remote POST exhaust server memory",
+            "published": "2026-07-29",
+            "cvss_score": 7.5,
+            "cvss_severity": "HIGH"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-24271",
+            "product": "ChatGPT",
+            "summary": "NVIDIA TensorRT-LLM contains a vulnerability in the OpenAI-compatible inference API, where an attacker could cause allocation of GPU resources without limits or throttling. A successful exploit of this vulnerability migh",
+            "headline": "TensorRT-LLM inference API lets a request exhaust GPU memory and stall service",
+            "published": "2026-07-14",
+            "cvss_score": 6.2,
+            "cvss_severity": "MEDIUM"
+        }
+    ],
+    "high": 3,
+    "name": "Allocation of Resources Without Limits or Throttling",
+    "count": 7,
+    "shape": "cwe",
+    "title": "CWE-770: Allocation of Resources Without Limits or Throttling",
+    "cwe_id": "CWE-770",
+    "latest": "2026-09-26",
+    "status": "Incomplete",
+    "ai_text": "In AI software this weakness shows up in model serving and inference stacks, where a single request can consume far more memory than intended. The CVEs sit in vLLM, Triton Inference Server, TensorRT-LLM, Keras and the MCP Ruby SDK. The usual route is an ordinary request, a video or audio clip, a crafted model file, or a remote POST, that the server accepts without limiting how much memory it may take. An attacker can then exhaust GPU or server memory and stall or crash the service, as seen with vLLM, Triton Inference Server and TensorRT-LLM. The result is denial of service rather than data theft.",
+    "ai_model": "ollama:deepseek-v4.1-flash",
+    "built_at": "2026-10-02T22:34:20-05",
+    "critical": 0,
+    "page_uid": "03368112",
+    "generated": "2026-10-02",
+    "mitre_url": "https://cwe.mitre.org/data/definitions/770.html",
+    "likelihood": "",
+    "abstraction": "Base",
+    "description": "The product allocates a reusable resource or group of resources on behalf of an actor without imposing any intended restrictions on the size or number of resources that can be allocated.",
+    "mitigations": [
+        {
+            "phase": [
+                "Requirements"
+            ],
+            "description": "Clearly specify the minimum and maximum expectations for capabilities, and dictate which behaviors are acceptable when resource allocation reaches limits."
+        },
+        {
+            "phase": [
+                "Architecture and Design"
+            ],
+            "description": "Limit the amount of resources that are accessible to unprivileged users. Set per-user limits for resources. Allow the system administrator to define these limits. Be careful to avoid CWE-410."
+        },
+        {
+            "phase": [
+                "Architecture and Design"
+            ],
+            "description": "Design throttling mechanisms into the system architecture. The best protection is to limit the amount of resources that an unauthorized user can cause to be expended. A strong authentication and access control model will help prevent such attacks from occurring in the first place, and it will help the administrator to identify who is committing the abuse. The login application should be protected against DoS attacks as much as possible. Limiting the database access, perhaps by caching result sets, can help minimize the resources expended. To further limit the potential for a DoS attack, consider tracking the rate of requests received from users and blocking requests that exceed a defined rate threshold."
+        },
+        {
+            "phase": [
+                "Implementation"
+            ],
+            "strategy": "Input Validation",
+            "description": "Assume all input is malicious. Use an accept known good input validation strategy, i.e., use a list of acceptable inputs that strictly conform to specifications. Reject any input that does not strictly conform to specifications, or transform it into something that does. When performing input validation, consider all potentially relevant properties, including length, type of input, the full range of acceptable values, missing or extra inputs, syntax, consistency across related fields, and conformance to business rules. As an example of business rule logic, boat may be syntactically valid because it only contains alphanumeric characters, but it is not valid if the input is only expected to contain colors such as red or blue. Do not rely exclusively on looking for malicious or malformed inputs. This is likely to miss at least one undesirable input, especially if the code's environment changes. This can give attackers enough room to bypass the intended validation. However, denylists can be useful for detecting potential attacks or determining which inputs are so malformed that they should be rejected outright."
+        },
+        {
+            "phase": [
+                "Architecture and Design"
+            ],
+            "description": "For any security checks that are performed on the client side, ensure that these checks are duplicated on the server side, in order to avoid CWE-602. Attackers can bypass the client-side checks by modifying values after the checks have been performed, or by changing the client to remove the client-side checks entirely. Then, these modified values would be submitted to the server."
+        },
+        {
+            "phase": [
+                "Architecture and Design"
+            ],
+            "description": "Mitigation of resource exhaustion attacks requires that the target system either: recognizes the attack and denies that user further access for a given amount of time, typically by using increasing time delays uniformly throttles all requests in order to make it more difficult to consume resources more quickly than they can again be freed. The first of these solutions is an issue in itself though, since it may allow attackers to prevent the use of the system by a particular valid user. If the attacker impersonates the valid user, they may be able to prevent the user from accessing the server in question. The second solution can be difficult to effectively institute -- and even when properly done, it does not provide a full solution. It simply requires more resources on the part of the attacker."
+        },
+        {
+            "phase": [
+                "Architecture and Design"
+            ],
+            "description": "Ensure that protocols have specific limits of scale placed on them."
+        },
+        {
+            "phase": [
+                "Architecture and Design Implementation"
+            ],
+            "description": "If the program must fail, ensure that it fails gracefully (fails closed). There may be a temptation to simply let the program fail poorly in cases such as low memory conditions, but an attacker may be able to assert control before the software has fully exited. Alternately, an uncontrolled failure could cause cascading problems with other downstream components; for example, the program could send a signal to a downstream process so the process immediately knows that a problem has occurred and has a better chance of recovery. Ensure that all failures in resource allocation place the system into a safe posture."
+        },
+        {
+            "phase": [
+                "Operation Architecture and Design"
+            ],
+            "strategy": "Resource Limitation",
+            "description": "Use quotas or other resource-limiting settings provided by the operating system or environment. For example, when managing system resources in POSIX, setrlimit() can be used to set limits for certain types of resources, and getrlimit() can determine how many resources are available. However, these functions are not available on all operating systems. When the current levels get close to the maximum that is defined for the application (see CWE-770), then limit the allocation of further resources to privileged users; alternately, begin releasing resources for less-privileged users. While this mitigation may protect the system from attack, it will not necessarily stop attackers from adversely impacting other users. Ensure that the application performs the appropriate error checks and error handling in case resources become unavailable (CWE-703)."
+        }
+    ],
+    "consequences": [
+        {
+            "note": "When allocating resources without limits, an attacker could prevent other systems, applications, or processes from accessing the same type of resource. It can be easy for an attacker to consume many resources by rapidly making many requests or causing larger resources to be used than is needed.",
+            "scope": [
+                "Availability"
+            ],
+            "impact": [
+                "DoS: Resource Consumption (CPU)",
+                "DoS: Resource Consumption (Memory)",
+                "DoS: Resource Consumption (Other)"
+            ]
+        }
+    ],
+    "ai_written_on": "2026-10-02",
+    "alternate_terms": [
+    ],
+    "refresh_every_days": 1,
+    "extended_description": ""
+}

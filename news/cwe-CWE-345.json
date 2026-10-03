@@ -1,0 +1,64 @@
+{
+    "kev": 0,
+    "num": 345,
+    "uid": "1f67b2bf",
+    "cves": [
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-63127",
+            "product": "MCP",
+            "summary": "RMCP is an official Rust SDK for the Model Context Protocol. Prior to 2.0.0, the rmcp crate's OAuth implementation in crates/rmcp/src/transport/auth.rs omits the RFC 9728 resource field from ResourceServerMetadata and al",
+            "headline": "rmcp before 2.0.0 lets a malicious MCP server steal the victim's access token",
+            "published": "2026-09-16",
+            "cvss_score": 8.2,
+            "cvss_severity": "HIGH"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-73846",
+            "product": "MCP",
+            "summary": "CKAN MCP Server is a tool for querying CKAN open data portals. Prior to 0.4.112, canonicalizeParams in src/utils/cache.ts serializes request parameters with unescaped ampersand, equals-sign, and vertical-bar delimiters, ",
+            "headline": "CKAN MCP Server before 0.4.112 lets crafted queries poison a shared cache",
+            "published": "2026-08-14",
+            "cvss_score": 6.5,
+            "cvss_severity": "MEDIUM"
+        }
+    ],
+    "high": 1,
+    "name": "Insufficient Verification of Data Authenticity",
+    "count": 2,
+    "shape": "cwe",
+    "title": "CWE-345: Insufficient Verification of Data Authenticity",
+    "cwe_id": "CWE-345",
+    "latest": "2026-09-16",
+    "status": "Draft",
+    "ai_text": "In AI software this weakness shows up in MCP servers and the clients that talk to them, where trust in the other side is assumed rather than checked. Both given CVEs sit in that layer. In rmcp before 2.0.0, a malicious MCP server can take the victim's access token because the client does not properly verify who it is really connected to. In CKAN MCP Server before 0.4.112, crafted queries can poison a shared cache, so other users later receive data that was never genuine. The usual route is a server or query the client accepts at face value. The result is stolen credentials or corrupted shared results, with impact spreading to anyone using the same cache or token.",
+    "ai_model": "ollama:deepseek-v4.1-flash",
+    "built_at": "2026-10-02T22:34:20-05",
+    "critical": 0,
+    "page_uid": "1f67b2bf",
+    "generated": "2026-10-02",
+    "mitre_url": "https://cwe.mitre.org/data/definitions/345.html",
+    "likelihood": "",
+    "abstraction": "Class",
+    "description": "The product does not sufficiently verify the origin or authenticity of data, in a way that causes it to accept invalid data.",
+    "mitigations": [
+    ],
+    "consequences": [
+        {
+            "scope": [
+                "Integrity",
+                "Other"
+            ],
+            "impact": [
+                "Varies by Context",
+                "Unexpected State"
+            ]
+        }
+    ],
+    "ai_written_on": "2026-10-02",
+    "alternate_terms": [
+    ],
+    "refresh_every_days": 1,
+    "extended_description": ""
+}

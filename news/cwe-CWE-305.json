@@ -1,0 +1,52 @@
+{
+    "kev": 0,
+    "num": 305,
+    "uid": "f6986588",
+    "cves": [
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-59563",
+            "product": "MCP",
+            "summary": "Zscaler MCP Server versions 0.7.0 and 0.7.1 has an issue where HMAC confirmation tokens were not bound to the target resource identifier, allowing an MCP client or agent to replay a token generated for one resource to af",
+            "headline": "Zscaler MCP Server 0.7.0 and 0.7.1 let a client replay a token on another resource",
+            "published": "2026-09-28",
+            "cvss_score": 4.6,
+            "cvss_severity": "MEDIUM"
+        }
+    ],
+    "high": 0,
+    "name": "Authentication Bypass by Primary Weakness",
+    "count": 1,
+    "shape": "cwe",
+    "title": "CWE-305: Authentication Bypass by Primary Weakness",
+    "cwe_id": "CWE-305",
+    "latest": "2026-09-28",
+    "status": "Draft",
+    "ai_text": "In AI software this weakness shows up in MCP servers, the connector layer that lets AI agents call tools and data sources. CVE-2026-59563 is the example here, affecting Zscaler MCP Server versions 0.7.0 and 0.7.1. The authentication check itself is sound, but a separate flaw in how the server ties a token to a specific resource lets a client present a token issued for one resource and have it accepted for another. An attacker who already holds a valid token can reach resources they were never granted, so the server treats them as authenticated for something they should not touch. The result is unauthorized access to whatever the MCP server exposes to AI clients.",
+    "ai_model": "ollama:deepseek-v4.1-flash",
+    "built_at": "2026-10-02T22:34:20-05",
+    "critical": 0,
+    "page_uid": "f6986588",
+    "generated": "2026-10-02",
+    "mitre_url": "https://cwe.mitre.org/data/definitions/305.html",
+    "likelihood": "",
+    "abstraction": "Base",
+    "description": "The authentication algorithm is sound, but the implemented mechanism can be bypassed as the result of a separate weakness that is primary to the authentication error.",
+    "mitigations": [
+    ],
+    "consequences": [
+        {
+            "scope": [
+                "Access Control"
+            ],
+            "impact": [
+                "Bypass Protection Mechanism"
+            ]
+        }
+    ],
+    "ai_written_on": "2026-10-02",
+    "alternate_terms": [
+    ],
+    "refresh_every_days": 1,
+    "extended_description": ""
+}

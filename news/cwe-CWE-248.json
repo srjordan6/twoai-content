@@ -1,0 +1,65 @@
+{
+    "kev": 0,
+    "num": 248,
+    "uid": "07e759c1",
+    "cves": [
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-94622",
+            "product": "vLLM",
+            "summary": "vLLM versions through 0.29.0 contain a denial of service vulnerability in the NIXL connector's metadata handling for prefill/decode disaggregated deployments. Attackers can send requests with incomplete kv_transfer_param",
+            "headline": "vLLM through 0.29.0 crashes decode engines via incomplete NIXL metadata",
+            "published": "2026-09-21",
+            "cvss_score": 8.7,
+            "cvss_severity": "HIGH"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-47480",
+            "product": "Triton Inference Server",
+            "summary": "NVIDIA Triton Inference Server for Linux contains a vulnerability where an attacker can cause an uncaught exception. A successful exploit of this vulnerability might lead to denial of service.",
+            "headline": "Triton Inference Server on Linux lets a remote request crash the service",
+            "published": "2026-07-14",
+            "cvss_score": 7.5,
+            "cvss_severity": "HIGH"
+        }
+    ],
+    "high": 2,
+    "name": "Uncaught Exception",
+    "count": 2,
+    "shape": "cwe",
+    "title": "CWE-248: Uncaught Exception",
+    "cwe_id": "CWE-248",
+    "latest": "2026-09-21",
+    "status": "Draft",
+    "ai_text": "In AI software this weakness shows up in model serving and inference engines, where a single malformed request can throw an exception that nothing catches. The two CVEs here are both in that layer, vLLM and Triton Inference Server, and both are reached remotely over the network rather than by a local user. In vLLM through 0.29.0, incomplete NIXL metadata causes decode engines to crash. In Triton Inference Server on Linux, a remote request is enough to bring the service down. The result is the same in each case, an unhandled error takes out the serving process, so the model endpoint stops answering and any work in flight is lost.",
+    "ai_model": "ollama:deepseek-v4.1-flash",
+    "built_at": "2026-10-02T22:34:20-05",
+    "critical": 0,
+    "page_uid": "07e759c1",
+    "generated": "2026-10-02",
+    "mitre_url": "https://cwe.mitre.org/data/definitions/248.html",
+    "likelihood": "",
+    "abstraction": "Base",
+    "description": "An exception is thrown from a function, but it is not caught.",
+    "mitigations": [
+    ],
+    "consequences": [
+        {
+            "note": "An uncaught exception could cause the system to be placed in a state that could lead to a crash, exposure of sensitive information or other unintended behaviors.",
+            "scope": [
+                "Availability",
+                "Confidentiality"
+            ],
+            "impact": [
+                "DoS: Crash, Exit, or Restart",
+                "Read Application Data"
+            ]
+        }
+    ],
+    "ai_written_on": "2026-10-02",
+    "alternate_terms": [
+    ],
+    "refresh_every_days": 1,
+    "extended_description": "When an exception is not caught, it may cause the program to crash or expose sensitive information."
+}

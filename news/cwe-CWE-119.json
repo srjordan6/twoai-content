@@ -1,0 +1,141 @@
+{
+    "kev": 0,
+    "num": 119,
+    "uid": "77e99393",
+    "cves": [
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-17512",
+            "product": "llama.cpp",
+            "summary": "A vulnerability has been found in ggml-org whisper.cpp 1.8.4-58. This impacts the function log_mel_spectrogram of the file src/whisper.cpp. The manipulation leads to out-of-bounds read. The attack needs to be performed l",
+            "headline": "whisper.cpp 1.8.4-58 local out-of-bounds read in log_mel_spectrogram",
+            "published": "2026-07-27",
+            "cvss_score": 1.9,
+            "cvss_severity": "LOW"
+        }
+    ],
+    "high": 0,
+    "name": "Improper Restriction of Operations within the Bounds of a Memory Buffer",
+    "count": 1,
+    "shape": "cwe",
+    "title": "CWE-119: Improper Restriction of Operations within the Bounds of a Memory Buffer",
+    "cwe_id": "CWE-119",
+    "latest": "2026-07-27",
+    "status": "Stable",
+    "ai_text": "In AI software this weakness shows up in model serving and inference code, where audio and tensor buffers are handled directly. The one CVE here sits in llama.cpp, the runtime behind whisper.cpp 1.8.4-58, a local speech transcription tool. The flaw is an out-of-bounds read in log_mel_spectrogram, the step that turns raw audio into mel spectrogram input for the model. It is reached by feeding the tool crafted audio, so the parsing of that input runs past the buffer it was given. An attacker who can supply audio to a local whisper.cpp user can cause the process to read memory outside the intended region, which may expose adjacent program data or crash the service.",
+    "ai_model": "ollama:deepseek-v4.1-flash",
+    "built_at": "2026-10-02T22:34:20-05",
+    "critical": 0,
+    "page_uid": "77e99393",
+    "generated": "2026-10-02",
+    "mitre_url": "https://cwe.mitre.org/data/definitions/119.html",
+    "likelihood": "",
+    "abstraction": "Class",
+    "description": "The product performs operations on a memory buffer, but it reads from or writes to a memory location outside the buffer's intended boundary. This may result in read or write operations on unexpected memory locations that could be linked to other variables, data structures, or internal program data.",
+    "mitigations": [
+        {
+            "phase": [
+                "Requirements"
+            ],
+            "strategy": "Language Selection",
+            "description": "Use a language that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid. For example, many languages that perform their own memory management, such as Java and Perl, are not subject to buffer overflows. Other languages, such as Ada and C#, typically provide overflow protection, but the protection can be disabled by the programmer. Be wary that a language's interface to native code may still be subject to overflows, even if the language itself is theoretically safe."
+        },
+        {
+            "phase": [
+                "Architecture and Design"
+            ],
+            "strategy": "Libraries or Frameworks",
+            "description": "Use a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid. Examples include the Safe C String Library (SafeStr) by Messier and Viega [REF-57], and the Strsafe.h library from Microsoft [REF-56]. These libraries provide safer versions of overflow-prone string-handling functions."
+        },
+        {
+            "phase": [
+                "Operation Build and Compilation"
+            ],
+            "strategy": "Environment Hardening",
+            "description": "Use automatic buffer overflow detection mechanisms that are offered by certain compilers or compiler extensions. Examples include: the Microsoft Visual Studio /GS flag, Fedora/Red Hat FORTIFY_SOURCE GCC flag, StackGuard, and ProPolice, which provide various mechanisms including canary-based detection and range/index checking. D3-SFCV (Stack Frame Canary Validation) from D3FEND [REF-1334] discusses canary-based detection in detail.",
+            "effectiveness": "Defense in Depth"
+        },
+        {
+            "phase": [
+                "Implementation"
+            ],
+            "description": "Consider adhering to the following rules when allocating and managing an application's memory: Double check that the buffer is as large as specified. When using functions that accept a number of bytes to copy, such as strncpy(), be aware that if the destination buffer size is equal to the source buffer size, it may not NULL-terminate the string. Check buffer boundaries if accessing the buffer in a loop and make sure there is no danger of writing past the allocated space. If necessary, truncate all input strings to a reasonable length before passing them to the copy and concatenation functions."
+        },
+        {
+            "phase": [
+                "Operation Build and Compilation"
+            ],
+            "strategy": "Environment Hardening",
+            "description": "Run or compile the software using features or extensions that randomly arrange the positions of a program's executable and libraries in memory. Because this makes the addresses unpredictable, it can prevent an attacker from reliably jumping to exploitable code. Examples include Address Space Layout Randomization (ASLR) [REF-58] [REF-60] and Position-Independent Executables (PIE) [REF-64]. Imported modules may be similarly realigned if their default memory addresses conflict with other modules, in a process known as rebasing (for Windows) and prelinking (for Linux) [REF-1332] using randomly generated addresses. ASLR for libraries cannot be used in conjunction with prelink since it would require relocating the libraries at run-time, defeating the whole purpose of prelinking. For more information on these techniques see D3-SAOR (Segment Address Offset Randomization) from D3FEND [REF-1335].",
+            "effectiveness": "Defense in Depth"
+        },
+        {
+            "phase": [
+                "Operation"
+            ],
+            "strategy": "Environment Hardening",
+            "description": "Use a CPU and operating system that offers Data Execution Protection (using hardware NX or XD bits) or the equivalent techniques that simulate this feature in software, such as PaX [REF-60] [REF-61]. These techniques ensure that any instruction executed is exclusively at a memory address that is part of the code segment. For more information on these techniques see D3-PSEP (Process Segment Execution Prevention) from D3FEND [REF-1336].",
+            "effectiveness": "Defense in Depth"
+        },
+        {
+            "phase": [
+                "Implementation"
+            ],
+            "description": "Replace unbounded copy functions with analogous functions that support length arguments, such as strcpy with strncpy. Create these if they are not available.",
+            "effectiveness": "Moderate"
+        }
+    ],
+    "consequences": [
+        {
+            "note": "If the memory accessible by the attacker can be effectively controlled, it may be possible to execute arbitrary code, as with a standard buffer overflow. If the attacker can overwrite a pointer's worth of memory (usually 32 or 64 bits), they can alter the intended control flow by redirecting a function pointer to their own malicious code. Even when the attacker can only modify a single byte arbitrary code execution can be possible. Sometimes this is because the same problem can be exploited repeatedly to the same effect. Other times it is because the attacker can overwrite security-critical application-specific data -- such as a flag indicating whether the user is an administrator.",
+            "scope": [
+                "Integrity",
+                "Confidentiality",
+                "Availability"
+            ],
+            "impact": [
+                "Execute Unauthorized Code or Commands",
+                "Modify Memory"
+            ]
+        },
+        {
+            "note": "Out of bounds memory access will very likely result in the corruption of relevant memory, and perhaps instructions, possibly leading to a crash. Other attacks leading to lack of availability are possible, including putting the program into an infinite loop.",
+            "scope": [
+                "Availability",
+                "Confidentiality"
+            ],
+            "impact": [
+                "Read Memory",
+                "DoS: Crash, Exit, or Restart",
+                "DoS: Resource Consumption (CPU)",
+                "DoS: Resource Consumption (Memory)"
+            ]
+        },
+        {
+            "note": "In the case of an out-of-bounds read, the attacker may have access to sensitive information. If the sensitive information contains system details, such as the current buffer's position in memory, this knowledge can be used to craft further attacks, possibly with more severe consequences.",
+            "scope": [
+                "Confidentiality"
+            ],
+            "impact": [
+                "Read Memory"
+            ]
+        }
+    ],
+    "ai_written_on": "2026-10-02",
+    "alternate_terms": [
+        {
+            "term": "Buffer Overflow",
+            "description": "This term has many different meanings to different audiences. From a CWE mapping perspective, this term should be avoided where possible. Some researchers, developers, and tools intend for it to mean write past the end of a buffer, whereas others use the same term to mean any read or write outside the boundaries of a buffer, whether before the beginning of the buffer or after the end of the buffer. Others could mean any action after the end of a buffer, whether it is a read or write. Since the term is commonly used for exploitation and for vulnerabilities, it further confuses things."
+        },
+        {
+            "term": "buffer overrun",
+            "description": "Some prominent vendors and researchers use the term buffer overrun, but most people use buffer overflow. See the alternate term for buffer overflow for context."
+        },
+        {
+            "term": "memory safety",
+            "description": "Generally used for techniques that avoid weaknesses related to memory access, such as those identified by CWE-119 and its descendants. However, the term is not formal, and there is likely disagreement between practitioners as to which weaknesses are implicitly covered by the memory safety term."
+        }
+    ],
+    "refresh_every_days": 1,
+    "extended_description": ""
+}

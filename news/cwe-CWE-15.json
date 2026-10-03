@@ -1,0 +1,71 @@
+{
+    "kev": 0,
+    "num": 15,
+    "uid": "a819595d",
+    "cves": [
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-66065",
+            "product": "plugin",
+            "summary": "Ouroboros is a local-first runtime for AI coding agents that records their actions and applies user-defined policies to constrain behavior. Versions prior to 0.42.1 have an incomplete denylist. Several execution-routing ",
+            "headline": "Ouroboros before 0.42.1 lets a cloned repo run commands via .env",
+            "published": "2026-08-03",
+            "cvss_score": 8.4,
+            "cvss_severity": "HIGH"
+        }
+    ],
+    "high": 1,
+    "name": "External Control of System or Configuration Setting",
+    "count": 1,
+    "shape": "cwe",
+    "title": "CWE-15: External Control of System or Configuration Setting",
+    "cwe_id": "CWE-15",
+    "latest": "2026-08-03",
+    "status": "Incomplete",
+    "ai_text": "In AI software this weakness shows up in agent frameworks and the tooling around them, where a project's own configuration files are trusted to set how the system runs. CVE-2026-66065 is the example here, affecting Ouroboros, an agent framework, before version 0.42.1. The issue sits in a .env file inside a cloned repository, which the product reads as configuration rather than as untrusted input. Because that file is externally controlled by whoever authored the repo, an attacker can shape the settings the framework loads and, through them, get commands to run. It is a supply chain style path, reached by cloning and running a project, and it lets an attacker execute code in the environment where the agent operates.",
+    "ai_model": "ollama:deepseek-v4.1-flash",
+    "built_at": "2026-10-02T22:34:20-05",
+    "critical": 0,
+    "page_uid": "a819595d",
+    "generated": "2026-10-02",
+    "mitre_url": "https://cwe.mitre.org/data/definitions/15.html",
+    "likelihood": "",
+    "abstraction": "Base",
+    "description": "One or more system settings or configuration elements can be externally controlled by a user.",
+    "mitigations": [
+        {
+            "phase": [
+                "Architecture and Design"
+            ],
+            "strategy": "Separation of Privilege",
+            "description": "Compartmentalize the system to have safe areas where trust boundaries can be unambiguously drawn. Do not allow sensitive data to go outside of the trust boundary and always be careful when interfacing with a compartment outside of the safe area. Ensure that appropriate compartmentalization is built into the system design, and the compartmentalization allows for and reinforces privilege separation functionality. Architects and designers should rely on the principle of least privilege to decide the appropriate time to use privileges and the time to drop privileges."
+        },
+        {
+            "phase": [
+                "Implementation Architecture and Design"
+            ],
+            "description": "Because setting manipulation covers a diverse set of functions, any attempt at illustrating it will inevitably be incomplete. Rather than searching for a tight-knit relationship between the functions addressed in the setting manipulation category, take a step back and consider the sorts of system values that an attacker should not be allowed to control."
+        },
+        {
+            "phase": [
+                "Implementation Architecture and Design"
+            ],
+            "description": "In general, do not allow user-provided or otherwise untrusted data to control sensitive values. The leverage that an attacker gains by controlling these values is not always immediately obvious, but do not underestimate the creativity of the attacker."
+        }
+    ],
+    "consequences": [
+        {
+            "scope": [
+                "Other"
+            ],
+            "impact": [
+                "Varies by Context"
+            ]
+        }
+    ],
+    "ai_written_on": "2026-10-02",
+    "alternate_terms": [
+    ],
+    "refresh_every_days": 1,
+    "extended_description": "Allowing external control of system settings can disrupt service or cause an application to behave in unexpected, and potentially malicious ways."
+}

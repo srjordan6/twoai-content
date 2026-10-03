@@ -1,0 +1,61 @@
+{
+    "kev": 0,
+    "num": 326,
+    "uid": "8ba1e53b",
+    "cves": [
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-9201",
+            "product": "Langflow",
+            "summary": "IBM Langflow OSS 1.0.0 through 1.10.3 could allow an authenticated attacker to execute arbitrary code due to a cryptographic weakness in the custom component validation mechanism. When the optional hardening mode that re",
+            "headline": "Langflow 1.0.0 to 1.10.3 lets an authenticated user run code via a hash collision",
+            "published": "2026-08-05",
+            "cvss_score": 8.8,
+            "cvss_severity": "HIGH"
+        }
+    ],
+    "high": 1,
+    "name": "Inadequate Encryption Strength",
+    "count": 1,
+    "shape": "cwe",
+    "title": "CWE-326: Inadequate Encryption Strength",
+    "cwe_id": "CWE-326",
+    "latest": "2026-08-05",
+    "status": "Draft",
+    "ai_text": "In AI software this weakness shows up in LLM application builders, as the single CVE here shows. CVE-2026-9201 affects Langflow, the visual framework for building LLM applications and agents, across versions 1.0.0 to 1.10.3. The weak encryption is reached through normal authenticated use of the product, so a logged in user is enough. The inadequate strength of the scheme lets that user cause a hash collision and then run code through it. The result is code execution inside the Langflow environment, which can expose the flows, credentials and connected model services the application holds.",
+    "ai_model": "ollama:deepseek-v4.1-flash",
+    "built_at": "2026-10-02T22:34:20-05",
+    "critical": 0,
+    "page_uid": "8ba1e53b",
+    "generated": "2026-10-02",
+    "mitre_url": "https://cwe.mitre.org/data/definitions/326.html",
+    "likelihood": "",
+    "abstraction": "Class",
+    "description": "The product stores or transmits sensitive data using an encryption scheme that is theoretically sound, but is not strong enough for the level of protection required.",
+    "mitigations": [
+        {
+            "phase": [
+                "Architecture and Design"
+            ],
+            "description": "Use an encryption scheme that is currently considered to be strong by experts in the field."
+        }
+    ],
+    "consequences": [
+        {
+            "note": "An attacker may be able to decrypt the data using brute force attacks.",
+            "scope": [
+                "Access Control",
+                "Confidentiality"
+            ],
+            "impact": [
+                "Bypass Protection Mechanism",
+                "Read Application Data"
+            ]
+        }
+    ],
+    "ai_written_on": "2026-10-02",
+    "alternate_terms": [
+    ],
+    "refresh_every_days": 1,
+    "extended_description": "A weak encryption scheme can be subjected to brute force attacks that have a reasonable chance of succeeding using current attack methods and resources."
+}

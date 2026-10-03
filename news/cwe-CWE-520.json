@@ -1,0 +1,68 @@
+{
+    "kev": 0,
+    "num": 520,
+    "uid": "b4096f24",
+    "cves": [
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-13444",
+            "product": "Langflow",
+            "summary": "IBM Langflow OSS 1.0.0 through 1.10.1 can allow an attacker to access another user's private vector documents by creating their own flow with matching Chroma persist_directory and collection_name values. The attacker rec",
+            "headline": "Langflow 1.0.0 to 1.10.1 lets a user read another user's private vector documents",
+            "published": "2026-07-30",
+            "cvss_score": 8.1,
+            "cvss_severity": "HIGH"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-13442",
+            "product": "Langflow",
+            "summary": "IBM Langflow OSS 1.0.0 through 1.10.1 can allow an attacker to reuse another user's FAISS namespace to access owner-only vector content and influence later query results. This causes cross-user information disclosure and",
+            "headline": "Langflow 1.0.0 to 1.10.1 lets one user read another user's FAISS vector data",
+            "published": "2026-07-28",
+            "cvss_score": 7.1,
+            "cvss_severity": "HIGH"
+        }
+    ],
+    "high": 2,
+    "name": ".NET Misconfiguration: Use of Impersonation",
+    "count": 2,
+    "shape": "cwe",
+    "title": "CWE-520: .NET Misconfiguration: Use of Impersonation",
+    "cwe_id": "CWE-520",
+    "latest": "2026-07-30",
+    "status": "Incomplete",
+    "ai_text": "In AI software this weakness shows up in LLM application builders, where the platform runs with more access to files and data stores than the person using it should have. The two CVEs here are both in Langflow, a visual tool for building LLM flows, across versions 1.0.0 to 1.10.1. One lets a user read another user's private vector documents, the other exposes another user's FAISS vector data. The usual way it is reached is through the shared vector store the application keeps for all users, which the running process can reach at its own elevated level rather than the caller's. What it lets an attacker do is read embeddings and documents belonging to other tenants, which can leak proprietary text and prompts.",
+    "ai_model": "ollama:deepseek-v4.1-flash",
+    "built_at": "2026-10-02T22:34:20-05",
+    "critical": 0,
+    "page_uid": "b4096f24",
+    "generated": "2026-10-02",
+    "mitre_url": "https://cwe.mitre.org/data/definitions/520.html",
+    "likelihood": "",
+    "abstraction": "Variant",
+    "description": "Allowing a .NET application to run at potentially escalated levels of access to the underlying operating and file systems can be dangerous and result in various forms of attacks.",
+    "mitigations": [
+        {
+            "phase": [
+                "Operation"
+            ],
+            "description": "Run the application with limited privilege to the underlying operating and file system."
+        }
+    ],
+    "consequences": [
+        {
+            "scope": [
+                "Access Control"
+            ],
+            "impact": [
+                "Gain Privileges or Assume Identity"
+            ]
+        }
+    ],
+    "ai_written_on": "2026-10-02",
+    "alternate_terms": [
+    ],
+    "refresh_every_days": 1,
+    "extended_description": ".NET server applications can optionally execute using the identity of the user authenticated to the client. The intention of this functionality is to bypass authentication and access control checks within the .NET application code. Authentication is done by the underlying web server (Microsoft Internet Information Service IIS), which passes the authenticated token, or unauthenticated anonymous token, to the .NET application. Using the token to impersonate the client, the application then relies on the settings within the NTFS directories and files to control access. Impersonation enables the application, on the server running the .NET application, to both execute code and access resources in the context of the authenticated and authorized user."
+}

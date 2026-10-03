@@ -1,0 +1,58 @@
+{
+    "kev": 0,
+    "num": 538,
+    "uid": "79777520",
+    "cves": [
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-15574",
+            "product": "vLLM",
+            "summary": "A flaw was found in the vllm-orchestrator-gateway component. The system's production binary logs all incoming authorization headers and full chat payloads, which may contain personally identifiable information (PII) and ",
+            "headline": "vLLM orchestrator gateway logs bearer tokens and chat content",
+            "published": "2026-07-13",
+            "cvss_score": 7.5,
+            "cvss_severity": "HIGH"
+        }
+    ],
+    "high": 1,
+    "name": "Insertion of Sensitive Information into Externally-Accessible File or Directory",
+    "count": 1,
+    "shape": "cwe",
+    "title": "CWE-538: Insertion of Sensitive Information into Externally-Accessible File or Directory",
+    "cwe_id": "CWE-538",
+    "latest": "2026-07-13",
+    "status": "Draft",
+    "ai_text": "In AI software this weakness shows up in model serving and gateway layers, where operational logs and files are written for debugging and monitoring. CVE-2026-15574 is the example here, in vLLM, an LLM serving and orchestration product. Its orchestrator gateway writes bearer tokens and chat content into logs. Anyone who can read those logs, such as an operator or another service with log access, gains credentials and conversation data they were never meant to see. The sensitive material is placed in an externally accessible location by the product itself, not through any clever attack. The result is exposed authentication secrets and private user prompts, which can enable account takeover and further access to the model infrastructure.",
+    "ai_model": "ollama:deepseek-v4.1-flash",
+    "built_at": "2026-10-02T22:34:20-05",
+    "critical": 0,
+    "page_uid": "79777520",
+    "generated": "2026-10-02",
+    "mitre_url": "https://cwe.mitre.org/data/definitions/538.html",
+    "likelihood": "",
+    "abstraction": "Base",
+    "description": "The product places sensitive information into files or directories that are accessible to actors who are allowed to have access to the files, but not to the sensitive information.",
+    "mitigations": [
+        {
+            "phase": [
+                "Architecture and Design Operation System Configuration"
+            ],
+            "description": "Do not expose file and directory information to the user."
+        }
+    ],
+    "consequences": [
+        {
+            "scope": [
+                "Confidentiality"
+            ],
+            "impact": [
+                "Read Files or Directories"
+            ]
+        }
+    ],
+    "ai_written_on": "2026-10-02",
+    "alternate_terms": [
+    ],
+    "refresh_every_days": 1,
+    "extended_description": ""
+}

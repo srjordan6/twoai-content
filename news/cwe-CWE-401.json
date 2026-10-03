@@ -1,0 +1,118 @@
+{
+    "kev": 0,
+    "num": 401,
+    "uid": "93468fa1",
+    "cves": [
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-94627",
+            "product": "vLLM",
+            "summary": "vLLM Mooncake connector through 0.29.0 fails to properly manage GPU KV cache block ownership when concurrent child requests share a single transfer ID in prefill/decode disaggregated deployments. Attackers can trigger GP",
+            "headline": "vLLM through 0.29.0 lets crafted requests exhaust GPU memory",
+            "published": "2026-09-21",
+            "cvss_score": 8.7,
+            "cvss_severity": "HIGH"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-93436",
+            "product": "vLLM",
+            "summary": "vLLM through 0.29.0 fails to properly clean up decode-side metadata for rejected inference requests in prefill/decode disaggregated deployments. Remote attackers can submit requests with max_tokens=0 to exhaust decode-wo",
+            "headline": "vLLM through 0.29.0 lets remote requests exhaust decode-worker memory",
+            "published": "2026-09-17",
+            "cvss_score": 8.7,
+            "cvss_severity": "HIGH"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-67430",
+            "product": "MCP",
+            "summary": "MCP Ruby SDK is the official Ruby SDK for Model Context Protocol servers and clients. Prior to 0.23.0, MCP::Server::Transports::StreamableHTTPTransport in the mcp gem does not expire sessions by default, so repeated init",
+            "headline": "MCP Ruby SDK before 0.23.0 keeps sessions forever and can run out of memory",
+            "published": "2026-07-29",
+            "cvss_score": 5.3,
+            "cvss_severity": "MEDIUM"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-47482",
+            "product": "Triton Inference Server",
+            "summary": "NVIDIA Triton Inference Server for Linux contains a vulnerability where an attacker can cause missing release of memory after effective lifetime. A successful exploit of this vulnerability might lead to denial of service",
+            "headline": "Triton Inference Server on Linux lets a remote request leak memory and stall the service",
+            "published": "2026-07-14",
+            "cvss_score": 7.5,
+            "cvss_severity": "HIGH"
+        }
+    ],
+    "high": 3,
+    "name": "Missing Release of Memory after Effective Lifetime",
+    "count": 4,
+    "shape": "cwe",
+    "title": "CWE-401: Missing Release of Memory after Effective Lifetime",
+    "cwe_id": "CWE-401",
+    "latest": "2026-09-21",
+    "status": "Draft",
+    "ai_text": "In AI software this weakness shows up in model serving and agent tooling, where long-running processes hold memory for requests, sessions or workers. The CVEs here sit in vLLM, the MCP Ruby SDK and Triton Inference Server. In vLLM, crafted requests exhaust GPU memory and decode-worker memory. In the MCP Ruby SDK before 0.23.0, sessions are kept forever and the process can run out of memory. In Triton Inference Server on Linux, a remote request leaks memory and stalls the service. The usual path is a remote or crafted request that the server handles without releasing what it allocated. The result is memory exhaustion or a stalled service, which degrades or denies inference for other users.",
+    "ai_model": "ollama:deepseek-v4.1-flash",
+    "built_at": "2026-10-02T22:34:20-05",
+    "critical": 0,
+    "page_uid": "93468fa1",
+    "generated": "2026-10-02",
+    "mitre_url": "https://cwe.mitre.org/data/definitions/401.html",
+    "likelihood": "",
+    "abstraction": "Variant",
+    "description": "The product does not sufficiently track and release allocated memory after it has been used, making the memory unavailable for reallocation and reuse.",
+    "mitigations": [
+        {
+            "phase": [
+                "Implementation"
+            ],
+            "strategy": "Libraries or Frameworks",
+            "description": "Choose a language or tool that provides automatic memory management, or makes manual memory management less error-prone. For example, glibc in Linux provides protection against free of invalid pointers. When using Xcode to target OS X or iOS, enable automatic reference counting (ARC) [REF-391]. To help correctly and consistently manage memory when programming in C++, consider using a smart pointer class such as std::auto_ptr (defined by ISO/IEC ISO/IEC 14882:2003), std::shared_ptr and std::unique_ptr (specified by an upcoming revision of the C++ standard, informally referred to as C++ 1x), or equivalent solutions such as Boost."
+        },
+        {
+            "phase": [
+                "Architecture and Design"
+            ],
+            "description": "Use an abstraction library to abstract away risky APIs. Not a complete solution."
+        },
+        {
+            "phase": [
+                "Architecture and Design Build and Compilation"
+            ],
+            "description": "Consider using the Boehm-Demers-Weiser garbage collector (bdwgc), which can help avoid leaks.",
+            "effectiveness": "Moderate"
+        }
+    ],
+    "consequences": [
+        {
+            "note": "Most memory leaks result in general product reliability problems, but if an attacker can intentionally trigger a memory leak, the attacker might be able to launch a denial of service attack (by crashing or hanging the program) or take advantage of other unexpected program behavior resulting from a low memory condition.",
+            "scope": [
+                "Availability"
+            ],
+            "impact": [
+                "DoS: Crash, Exit, or Restart",
+                "DoS: Instability",
+                "DoS: Resource Consumption (CPU)",
+                "DoS: Resource Consumption (Memory)"
+            ]
+        },
+        {
+            "scope": [
+                "Other"
+            ],
+            "impact": [
+                "Reduce Performance"
+            ]
+        }
+    ],
+    "ai_written_on": "2026-10-02",
+    "alternate_terms": [
+        {
+            "term": "Memory Leak",
+            "description": "a common term for not releasing memory; however, the same term is also used for disclosure of sensitive information from memory, so use of this term is discouraged."
+        }
+    ],
+    "refresh_every_days": 1,
+    "extended_description": ""
+}

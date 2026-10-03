@@ -1,0 +1,52 @@
+{
+    "kev": 0,
+    "num": 791,
+    "uid": "f3b0494f",
+    "cves": [
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-18632",
+            "product": "Dify",
+            "summary": "A security flaw has been discovered in langgenius dify up to 1.14.2. This issue affects the function jinja2.Template of the file api/core/helper/code_executor/jinja2/jinja2_transformer.py of the component Jinja2 Handler.",
+            "headline": "Dify up to 1.14.2 Jinja2 handler allows template injection from a remote request",
+            "published": "2026-08-03",
+            "cvss_score": 2.1,
+            "cvss_severity": "LOW"
+        }
+    ],
+    "high": 0,
+    "name": "Incomplete Filtering of Special Elements",
+    "count": 1,
+    "shape": "cwe",
+    "title": "CWE-791: Incomplete Filtering of Special Elements",
+    "cwe_id": "CWE-791",
+    "latest": "2026-08-03",
+    "status": "Incomplete",
+    "ai_text": "In AI software this weakness shows up in LLM application platforms, where user input passes through a templating layer before the model or a tool sees it. CVE-2026-18632 is the example here, filed against Dify, an open source LLM app builder, up to version 1.14.2. Its Jinja2 handler takes data from a remote request and does not fully filter the special elements that templating languages treat as instructions, so crafted input is carried into the downstream template engine instead of being neutralised. An attacker reaching that handler remotely can get the platform to process their own template content, which can expose data the application holds or run code in the service's context. The pattern is common wherever AI products mix user text with template or prompt rendering.",
+    "ai_model": "ollama:deepseek-v4.1-flash",
+    "built_at": "2026-10-02T22:34:20-05",
+    "critical": 0,
+    "page_uid": "f3b0494f",
+    "generated": "2026-10-02",
+    "mitre_url": "https://cwe.mitre.org/data/definitions/791.html",
+    "likelihood": "",
+    "abstraction": "Base",
+    "description": "The product receives data from an upstream component, but does not completely filter special elements before sending it to a downstream component.",
+    "mitigations": [
+    ],
+    "consequences": [
+        {
+            "scope": [
+                "Integrity"
+            ],
+            "impact": [
+                "Unexpected State"
+            ]
+        }
+    ],
+    "ai_written_on": "2026-10-02",
+    "alternate_terms": [
+    ],
+    "refresh_every_days": 1,
+    "extended_description": ""
+}

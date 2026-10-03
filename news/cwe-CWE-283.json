@@ -1,0 +1,66 @@
+{
+    "kev": 0,
+    "num": 283,
+    "uid": "e42c52c0",
+    "cves": [
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-87913",
+            "product": "MCP",
+            "summary": "A missing S3 bucket ownership verification in the AWS Security Agent MCP server before 0.2.0 version might allow remote attackers to obtain the private source archive of a scanned workspace, including credentials and inf",
+            "headline": "AWS Security Agent MCP server before 0.2.0 can leak scanned workspace source archives",
+            "published": "2026-09-10",
+            "cvss_score": 5.1,
+            "cvss_severity": "MEDIUM"
+        }
+    ],
+    "high": 0,
+    "name": "Unverified Ownership",
+    "count": 1,
+    "shape": "cwe",
+    "title": "CWE-283: Unverified Ownership",
+    "cwe_id": "CWE-283",
+    "latest": "2026-09-10",
+    "status": "Draft",
+    "ai_text": "In AI software this weakness shows up in MCP servers, the connector layer that AI agents use to reach tools and data. The one CVE here is in the AWS Security Agent MCP server before version 0.2.0, where scanned workspace source archives can leak. The server does not properly check that the caller asking for a resource is the entity that owns it, so a request for a scanned archive can be served to the wrong party. That lets an attacker pull source archives belonging to another workspace, exposing private code and scan results. The product named in the CVE is the AWS Security Agent MCP server.",
+    "ai_model": "ollama:deepseek-v4.1-flash",
+    "built_at": "2026-10-02T22:34:20-05",
+    "critical": 0,
+    "page_uid": "e42c52c0",
+    "generated": "2026-10-02",
+    "mitre_url": "https://cwe.mitre.org/data/definitions/283.html",
+    "likelihood": "",
+    "abstraction": "Base",
+    "description": "The product does not properly verify that a critical resource is owned by the proper entity.",
+    "mitigations": [
+        {
+            "phase": [
+                "Architecture and Design Operation"
+            ],
+            "description": "Very carefully manage the setting, management, and handling of privileges. Explicitly manage trust zones in the software."
+        },
+        {
+            "phase": [
+                "Architecture and Design"
+            ],
+            "strategy": "Separation of Privilege",
+            "description": "Consider following the principle of separation of privilege. Require multiple conditions to be met before permitting access to a system resource."
+        }
+    ],
+    "consequences": [
+        {
+            "note": "An attacker could gain unauthorized access to system resources.",
+            "scope": [
+                "Access Control"
+            ],
+            "impact": [
+                "Gain Privileges or Assume Identity"
+            ]
+        }
+    ],
+    "ai_written_on": "2026-10-02",
+    "alternate_terms": [
+    ],
+    "refresh_every_days": 1,
+    "extended_description": ""
+}
