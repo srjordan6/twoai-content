@@ -24,7 +24,7 @@
     "status": "Incomplete",
     "ai_text": "In AI software this weakness shows up in model serving, where a long running process holds open files for models, weights or client connections. The one CVE here is in Triton Inference Server, a model serving product, and it is reached when a file descriptor is used after it has already been closed, which on Linux can happen under load or during cleanup. The result is a denial of service, so the server can stop responding to inference requests. Only one CVE is listed, so the pattern is thin, but it fits serving stacks that keep many descriptors open at once.",
     "ai_model": "ollama:deepseek-v4.1-flash",
-    "built_at": "2026-10-03T15:58:37-05",
+    "built_at": "2026-10-03T17:53:23-05",
     "critical": 0,
     "page_uid": "0460e6d3",
     "generated": "2026-10-03",
@@ -60,6 +60,5 @@
             "term": "Stale file descriptor"
         }
     ],
-    "refresh_every_days": 1,
     "extended_description": "After a file descriptor for a particular file or device has been released, it can be reused. The code might not write to the original file, since the reused file descriptor might reference a different file or device."
 }

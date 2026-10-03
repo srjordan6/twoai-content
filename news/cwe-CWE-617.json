@@ -84,7 +84,7 @@
     "status": "Draft",
     "ai_text": "In AI software this weakness shows up in model serving and inference stacks, where a reachable assertion turns a normal request into a process exit. The CVEs sit in vLLM, llama.cpp, whisper.cpp and TensorRT-LLM, reached through crafted prompts, GGUF model files, Jinja templates, RPC calls or a single API request. An attacker who can send that input crashes the decode worker, sampler thread or server, taking the service down for everyone else. vLLM, llama.cpp and TensorRT-LLM are the named examples here. The impact is denial of service rather than code execution, but a single request is often enough.",
     "ai_model": "ollama:deepseek-v4.1-flash",
-    "built_at": "2026-10-03T15:58:37-05",
+    "built_at": "2026-10-03T17:53:23-05",
     "critical": 0,
     "page_uid": "9d551e87",
     "generated": "2026-10-03",
@@ -124,6 +124,5 @@
             "term": "assertion failure"
         }
     ],
-    "refresh_every_days": 1,
     "extended_description": "While assertion is good for catching logic errors and reducing the chances of reaching more serious vulnerability conditions, it can still lead to a denial of service. For example, if a server handles multiple simultaneous connections, and an assert() occurs in one single connection that causes all other connections to be dropped, this is a reachable assertion that leads to a denial of service."
 }

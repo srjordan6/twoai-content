@@ -24,7 +24,7 @@
     "status": "Stable",
     "ai_text": "In AI software this weakness shows up in model serving and inference code, where audio and tensor buffers are handled directly. The one CVE here sits in llama.cpp, the runtime behind whisper.cpp 1.8.4-58, a local speech transcription tool. The flaw is an out-of-bounds read in log_mel_spectrogram, the step that turns raw audio into mel spectrogram input for the model. It is reached by feeding the tool crafted audio, so the parsing of that input runs past the buffer it was given. An attacker who can supply audio to a local whisper.cpp user can cause the process to read memory outside the intended region, which may expose adjacent program data or crash the service.",
     "ai_model": "ollama:deepseek-v4.1-flash",
-    "built_at": "2026-10-03T15:58:37-05",
+    "built_at": "2026-10-03T17:53:23-05",
     "critical": 0,
     "page_uid": "77e99393",
     "generated": "2026-10-03",
@@ -136,6 +136,5 @@
             "description": "Generally used for techniques that avoid weaknesses related to memory access, such as those identified by CWE-119 and its descendants. However, the term is not formal, and there is likely disagreement between practitioners as to which weaknesses are implicitly covered by the memory safety term."
         }
     ],
-    "refresh_every_days": 1,
     "extended_description": ""
 }
