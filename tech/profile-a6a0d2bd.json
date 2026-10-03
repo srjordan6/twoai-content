@@ -1,0 +1,314 @@
+{
+    "tax": "lang-profile",
+    "uid": "a6a0d2bd",
+    "name": "pydantic-ai",
+    "slug": "pydantic-ai",
+    "facts": {
+        "repo": "pydantic/pydantic-ai",
+        "stars": 20384,
+        "licence": "MIT",
+        "archived": false,
+        "language": "Python",
+        "repo_url": "https://github.com/pydantic/pydantic-ai",
+        "last_push": "2026-10-03T14:18:00Z",
+        "description": "How Python does AI. Agents, realtime voice, image generation, embeddings. Every model, every interface, typed end to end.",
+        "official_site": "https://pydantic.dev/pydantic-ai"
+    },
+    "model": "ollama:deepseek-v4.1-flash",
+    "shape": "lang-profile",
+    "title": "Pydantic AI: A Typed Python Framework for Building AI Agents",
+    "answer": "Pydantic AI is an MIT-licensed Python framework from the team behind Pydantic, providing a typed, extensible agent loop where every model is a string swap away. It sits in the harness layer, the loop around the model, and covers agents, realtime voice, image generation, embeddings, and durable execution. The one thing to know before adopting it is that its strongest guarantees, typed outputs and validated tool arguments, come from Python type hints, so teams already comfortable with Pydantic get the most from it quickly.",
+    "built_at": "2026-10-03T11:27:25-05:00",
+    "category": "technology-and-core-infrastructure",
+    "hub_name": "Programming Languages and Frameworks",
+    "page_uid": "a6a0d2bd",
+    "sections": [
+        {
+            "body": "Pydantic AI is made by the Pydantic team and is a Python AI SDK, described on its official site as a typed, extensible agent loop with every model a string swap away. It is MIT licensed, lives at github.com/pydantic/pydantic-ai, and had its most recent push on 3 October 2026, with just over twenty thousand stars at the time of writing. In the stack it occupies the harness layer, the loop around the model that defines tools, dependencies, instructions, structured outputs, retries and streaming, as one Pydantic article on the runtime layer sets out. It is not a model, a runtime or a platform, though it connects to all three.",
+            "heading": "What it is and where it sits in AI work"
+        },
+        {
+            "body": "The framework covers agents, realtime voice, image generation and embeddings in the same box, and the same agent can run behind a web frontend, in the terminal, on a voice call, on a durable background queue, in GitHub Actions, or as a plain object you call run() on. Voice is supported on OpenAI Realtime, Gemini Live, Azure and xAI Grok Voice, with the model calling your tools mid-conversation while it keeps talking. Image generation comes through a dedicated image model or through provider-native generation with output_type=BinaryImage, and the ImageGeneration capability supplies fallbacks for models that generate no images of their own. It is strongest where typed outputs, validated tool arguments and provider portability matter, which is why Tiger Data chose it for a production Slack bot handling thousands of concurrent conversations and for the text-to-SQL work in its pgai library.",
+            "heading": "What it is used for and where it is strongest"
+        },
+        {
+            "body": "The learning curve is shallow for anyone who already writes Python and knows Pydantic, because the @agent.tool decorator turns a function signature and docstring into the tool schema, arguments are validated before your code runs, and a run is guaranteed to return the declared type. No mathematics beyond ordinary programming is required, and no systems knowledge beyond being able to run a Python process, though durable execution, realtime voice and sandboxed code execution each bring their own concepts. The official site offers an overview page with runnable examples, a command to try the exported coder agent with clai via uvx, and separate documentation for Pydantic Graph, Pydantic Evals and the Harness, so a beginner has a clear path from a single agent to a full coding agent.",
+            "heading": "How hard it is to learn and what you need first"
+        },
+        {
+            "body": "Around the core sit Pydantic Graph for typed control flow and Pydantic Evals for testing agent behavior the way pytest tests code, both separate packages. Pydantic AI Harness adds memory, guardrails, sub-agents, planning, context management and persistence, up to a complete coding agent, and the Coder capability is described as a regular combined capability rather than a black box, equivalent to composing FileSystem, Shell, RepoContext, SubAgents, ClearToolResults, WarnNearLimits, ToolOutputLimits and RepairToolArguments directly. Pydantic Logfire provides observability, the Pydantic AI Gateway gives one key for every model with cost monitoring and budget control and self-hosts, genai-prices keeps model pricing current, and Monty is a sandboxed Python interpreter for model-written code. Instrumentation is plain OpenTelemetry, so any backend you already run works, and integrations include Temporal, DBOS, Prefect, Restate, AWS Lambda, Kitaru, Airflow and Absurd. The community is active, with over twenty thousand stars on the repository.",
+            "heading": "Ecosystem and community"
+        },
+        {
+            "body": "The framework is built for both, and the site presents the same agent moving from a plain run() call to a web frontend, a terminal, a voice session, a durable background queue or a GitHub Action without a rewrite. Prototyping is fast because a model is a string swap away and provider translation is automatic, which is how Tiger Data moved from a Claude model to GPT-4o and back to Claude 4.5 Sonnet by changing one environment variable. Production control comes from typed outputs, validated arguments, default tool retries, and attachments such as TemporalDurability that turn every model and tool call into a durable activity so a run survives restarts, failures and long waits. The cost of that range is conceptual surface area, since durable execution, realtime voice and sandboxing each add moving parts, and the site does not publish benchmarks comparing its overhead against lighter agent loops.",
+            "heading": "Prototyping speed against production performance"
+        },
+        {
+            "body": "The clearest published adoption is Tiger Data, which assessed quite a few options including building its own LLM library, then picked Pydantic AI for LLM abstraction and Logfire for observability, and within six weeks had more than half the company using its Slack bot daily. The framework is current rather than legacy, with a recent push date and an active release line, and it is positioned as the Python AI SDK by a team whose Pydantic library is already widely used in Python services. For someone choosing what to learn or what to standardize on, that means skills transfer into ordinary Python work and into teams already using Pydantic, while the site does not name other large adopters, so claims about broad enterprise penetration would go beyond what the material supports.",
+            "heading": "Industry adoption and careers"
+        },
+        {
+            "body": "Pydantic AI is a Python framework, and its natural companions are the Pydantic validation library, FastAPI-style web services, and the OpenTelemetry ecosystem for tracing. It is typically used with model providers rather than instead of them, since every model is a string swap away and the framework translates between provider APIs, and it sits above runtimes such as Temporal, DBOS, Prefect, Restate, Kitaru, Airflow and AWS Lambda, which attach first-party and co-maintained. It also works alongside other agent frameworks in observability, since Logfire is documented as working with Pydantic AI, LangGraph, the Vercel AI SDK and other supported frameworks. The polyglot pattern is a Python harness with typed boundaries, calling out to any model, any runtime and any observability backend that speaks OpenTelemetry.",
+            "heading": "How it fits beside the others"
+        },
+        {
+            "body": "The framework is Python only, so teams outside that language cannot use it directly, and its strongest guarantees depend on type hints, which means dynamically typed code gets less from it. Several pieces are young or moving, including the Harness, the Gateway, Monty and the realtime voice path, and the site does not state stability guarantees or versioning policy for them. The official material does not publish performance benchmarks, memory footprints or comparisons against other agent loops, and it does not say how many organizations run it in production beyond the Tiger Data case study. Pricing for Logfire telemetry is given as two dollars per million additional records with no separate charge for scores, but the site does not settle what the free tier includes or how costs behave at very high trace volumes.",
+            "heading": "Limits and open questions"
+        }
+    ],
+    "siblings": [
+        {
+            "kind": "framework",
+            "name": "ai",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/4c80ad91/"
+        },
+        {
+            "kind": "framework",
+            "name": "autogen",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/60f558b0/"
+        },
+        {
+            "kind": "framework",
+            "name": "crewAI",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/52f2d4fc/"
+        },
+        {
+            "kind": "framework",
+            "name": "haystack",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/244d606e/"
+        },
+        {
+            "kind": "framework",
+            "name": "jax",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/1722316f/"
+        },
+        {
+            "kind": "framework",
+            "name": "keras",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/079f2091/"
+        },
+        {
+            "kind": "framework",
+            "name": "langchain",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/10376bfa/"
+        },
+        {
+            "kind": "framework",
+            "name": "litellm",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/b9fc5220/"
+        },
+        {
+            "kind": "framework",
+            "name": "llama_index",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/07b3602c/"
+        },
+        {
+            "kind": "framework",
+            "name": "pytorch",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/c4d0a8c3/"
+        },
+        {
+            "kind": "framework",
+            "name": "semantic-kernel",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/7a5bc5c6/"
+        },
+        {
+            "kind": "framework",
+            "name": "tensorflow",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/367fc8ea/"
+        },
+        {
+            "kind": "framework",
+            "name": "unsloth",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/9aab6db8/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "CTranslate2",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/9436dfa2/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "llama.cpp",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/32458451/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "llamafile",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/8f2f922d/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "lmdeploy",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/e24aae0d/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "mlc-llm",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/bcce36c4/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "ollama",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/8e9c04c4/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "onnxruntime",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/7ab24352/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "sglang",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/711194f2/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "TensorRT-LLM",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/6e41175d/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "vllm",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/44ebb5e4/"
+        },
+        {
+            "kind": "language",
+            "name": "C++",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/b393c4f6/"
+        },
+        {
+            "kind": "language",
+            "name": "Go",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/a218afb2/"
+        },
+        {
+            "kind": "language",
+            "name": "Julia",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/3719f5ac/"
+        },
+        {
+            "kind": "language",
+            "name": "Mojo",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/b5a22ab0/"
+        },
+        {
+            "kind": "language",
+            "name": "Python",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/7aa3e6c4/"
+        },
+        {
+            "kind": "language",
+            "name": "TypeScript",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/8d5b4f9f/"
+        }
+    ],
+    "generated": "2026-10-03",
+    "site_pages": [
+        {
+            "url": "https://pydantic.dev/articles/best-ai-observability-platform",
+            "date": ""
+        },
+        {
+            "url": "https://pydantic.dev/docs/ai/overview/?utm_source=llm_judge_blogpost",
+            "date": ""
+        },
+        {
+            "url": "https://pydantic.dev/docs/ai/overview/",
+            "date": ""
+        },
+        {
+            "url": "https://pydantic.dev/articles/best-ai-platform-agents-kubernetes",
+            "date": ""
+        },
+        {
+            "url": "https://pydantic.dev/articles/tiger-data-ai-slack-bot-pydantic-logfire",
+            "date": ""
+        },
+        {
+            "url": "https://pydantic.dev/articles/runtime-layer-pydantic-ai-kitaru",
+            "date": ""
+        },
+        {
+            "url": "https://pydantic.dev/docs/ai/capabilities/overview/",
+            "date": ""
+        },
+        {
+            "url": "https://pydantic.dev/docs/ai/harness/",
+            "date": ""
+        },
+        {
+            "url": "https://pydantic.dev/docs/ai/integrations/ui/vercel-ai/",
+            "date": ""
+        },
+        {
+            "url": "https://pydantic.dev/docs/logfire/instrument/typescript/frameworks/vercel-ai/",
+            "date": ""
+        },
+        {
+            "url": "https://pydantic.dev/logfire/llm-observability",
+            "date": ""
+        },
+        {
+            "url": "https://pydantic.dev/articles/vercel-ai-sdk-logfire-otel",
+            "date": ""
+        },
+        {
+            "url": "https://pydantic.dev/articles/pydantic-ai-dbos",
+            "date": ""
+        },
+        {
+            "url": "https://pydantic.dev/articles/llm-as-a-judge",
+            "date": ""
+        },
+        {
+            "url": "https://pydantic.dev/articles/crusoe-pydantic-ai-model-provider",
+            "date": ""
+        },
+        {
+            "url": "https://pydantic.dev/logfire/ai-gateway",
+            "date": ""
+        },
+        {
+            "url": "https://pydantic.dev/articles/full-stack-ai-agent-template-pydantic-ai",
+            "date": ""
+        },
+        {
+            "url": "https://pydantic.dev/articles/best-llm-evaluation-tools",
+            "date": "September 12, 2026"
+        },
+        {
+            "url": "https://pydantic.dev/articles/best-ai-agent-optimization-platforms-2026",
+            "date": ""
+        },
+        {
+            "url": "https://pydantic.dev/articles/feature-flags-for-production-ai",
+            "date": ""
+        },
+        {
+            "url": "https://pydantic.dev/articles/building-agentic-application",
+            "date": ""
+        },
+        {
+            "url": "https://pydantic.dev/articles/snowflake-cortex-pydantic-ai",
+            "date": ""
+        },
+        {
+            "url": "https://pydantic.dev/pydantic-ai",
+            "date": ""
+        },
+        {
+            "url": "https://pydantic.dev/articles/ai-observability-pricing-comparison",
+            "date": ""
+        }
+    ],
+    "source_url": "https://pydantic.dev/pydantic-ai",
+    "parent_name": "AI Frameworks",
+    "parent_path": "/ai-ecosystem/technology-and-core-infrastructure/2eb54277/",
+    "site_domain": "pydantic.dev",
+    "subject_key": "framework:pydantic/pydantic-ai",
+    "subject_kind": "framework",
+    "source_read_on": "2026-10-02",
+    "site_pages_read": 60,
+    "refresh_every_days": 30
+}

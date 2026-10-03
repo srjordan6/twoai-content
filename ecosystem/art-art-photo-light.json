@@ -4,7 +4,7 @@
     "slug": "art-photo-light",
     "shape": "art-topic",
     "title": "Lighting Rigs and Relighting",
-    "answer": "Lighting rigs and relighting in AI photography and hyper-realism cover the placement, intensity, color, and shape of virtual light sources in a scene, and the process of changing how an existing image is lit without rebuilding the scene. This includes studio-style key, fill, rim, and practical lights, environment maps for reflections, and relighting a portrait or product shot from a single photograph. The goal is to make synthetic or edited images match the physical behavior of light on skin, fabric, glass, and metal.",
+    "answer": "Lighting rigs and relighting cover the setup and control of light in a photograph or a rendered image, and the later adjustment of that light after the fact. In AI image work the term spans two related jobs: describing a lighting setup in a prompt so a model reproduces it, and taking an existing image and changing its illumination without reshooting. It sits between studio craft and image generation, and it is one of the main levers for making synthetic images read as photographic rather than flat.",
     "crumbs": [
         {
             "name": "The Art of AI",
@@ -16,7 +16,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-10-03T09:40:31-05",
+    "built_at": "2026-10-03T12:41:36-05",
     "category": "ecosystem-entities-market-and-operations",
     "expanded": true,
     "hub_name": "The Art of AI",
@@ -24,23 +24,23 @@
     "page_uid": "40d22f57",
     "sections": [
         {
-            "body": "Lighting rigs and relighting in AI photography and hyper-realism cover the placement, intensity, color, and shape of virtual light sources in a scene, and the process of changing how an existing image is lit without rebuilding the scene. This includes studio-style key, fill, rim, and practical lights, environment maps for reflections, and relighting a portrait or product shot from a single photograph. The goal is to make synthetic or edited images match the physical behavior of light on skin, fabric, glass, and metal.",
+            "body": "Lighting rigs and relighting cover the setup and control of light in a photograph or a rendered image, and the later adjustment of that light after the fact. In AI image work the term spans two related jobs: describing a lighting setup in a prompt so a model reproduces it, and taking an existing image and changing its illumination without reshooting. It sits between studio craft and image generation, and it is one of the main levers for making synthetic images read as photographic rather than flat.",
             "heading": "Scope"
         },
         {
-            "body": "The work runs on standard GPU workstations and cloud render farms, with most interactive relighting tools using a game engine or a neural network running in a browser or desktop app. A typical pipeline stores a base color image, a depth map, a normal map, and a material or roughness map, then computes new lighting from those channels. Training and inference for learned relighting models require the same class of hardware used for image generation, often a single high-memory consumer or data-center GPU for interactive work.",
+            "body": "The work runs on image generation and editing models, which this site tracks at around 1000 live image generation models, alongside conventional editing software and, in some pipelines, 3D or rendering tools that supply a physically plausible light setup. Relighting specifically leans on models that accept a depth map, a normal map or a reference light direction, so the system needs some estimate of the scene's geometry, not just its pixels. Practitioners typically work on a desktop with a GPU, or through a hosted service, and keep the original capture or render as the reference point.",
             "heading": "What it runs on"
         },
         {
-            "body": "A common approach is to decompose an image into albedo, normals, and lighting, then recombine them under a new light rig. Neural relighting models are trained on pairs of images of the same subject under many known lighting conditions, often captured in a light stage. For synthetic scenes, artists place virtual lights in a 3D viewport and the renderer or neural shader updates the image in real time. The work is iterative: an artist adjusts light angle, color temperature, softness, and falloff until the highlights and shadows match the intended look.",
+            "body": "A typical pass starts by reading the light in the source image: direction, hardness, colour temperature, and how many sources are implied by the shadows and highlights. From there the practitioner either writes that description into a prompt, or feeds the image into a relighting model with a target direction or reference frame. Results are judged on whether shadows, specular highlights and contact shadows stay consistent with one another, since mismatched cues are what make a relit image look wrong. Iteration is normal, and the accepted output is usually composited back over the original rather than used whole.",
             "heading": "How the work is done"
         },
         {
-            "body": "Relighting raises provenance questions because a single photograph can be altered to suggest a different time of day, location, or studio setup, which matters for journalism, evidence, and advertising. Rights issues arise when a model is trained on copyrighted photographs or when a relit image is used without disclosing the edit. The site tracks 92 active intellectual property lawsuits, and while most are not specific to relighting, the same questions about training data and derivative works apply. A working professional should keep the original plate and the lighting metadata so an edit can be reviewed.",
+            "body": "Rights questions here are mostly about the source image, not the light: a relit portrait is still a derivative of the photograph it came from, so the licence on that photograph governs what can be done with it. Where a model was trained on photographs, the output can carry the same unresolved questions that sit behind the 92 active intellectual property lawsuits this site tracks. Provenance matters for the same reason, and practitioners generally keep the original file, the prompt or light parameters, and a record of which model produced the change. Likeness and publicity rights apply when the subject is a real person, and disclosure norms vary by publisher and client.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The direction is toward fully controllable relighting from a single phone photo, with sliders for sun position, softbox size, and colored gels that update in real time. Video relighting is becoming practical, allowing a moving subject to be relit consistently across frames. As models improve, the distinction between a physical light rig and a neural one will blur, and photographers may treat a lighting setup as a reusable preset that can be applied to any subject after the shoot.",
+            "body": "Relighting is moving toward models that infer scene geometry well enough to place a new light without a depth pass, which would remove most of the manual setup. The practical near term is likely tighter integration between generation and editing tools, so a light change is one step in a normal retouching workflow rather than a separate pipeline. The open questions are consistency across a set of images and honest provenance, since a convincing relight is hard to detect and easy to misrepresent.",
             "heading": "Where it is going"
         }
     ],

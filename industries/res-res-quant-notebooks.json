@@ -4,7 +4,7 @@
     "slug": "res-quant-notebooks",
     "shape": "art-topic",
     "title": "Reproducible Notebooks and Pipelines",
-    "answer": "Reproducible notebooks and pipelines cover the practices and tools that let another person rerun a quantitative analysis and get the same results, from data loading through to final figures and tables. They apply to exploratory work in notebooks, to scheduled batch jobs, and to machine learning experiments where small changes in code, data, or environment can shift outcomes. The scope includes the analysis code itself, the environment that runs it, the data versions, and the records that tie a result to a specific run. In a research setting, this is what separates a one-off result from a claim that can be checked, extended, or reused.",
+    "answer": "Reproducible notebooks and pipelines cover the practice of packaging an analysis so that another person, or the same person months later, can rerun it and get the same result. The scope runs from a single Jupyter notebook that loads a dataset and fits a model, up to multi stage pipelines that chain data extraction, cleaning, training and reporting. It sits inside quantitative analysis and reproducible work, and it touches anyone who publishes a number that someone else may need to check. The unit of concern is not the finding but the path taken to reach it.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-10-03T09:40:31-05",
+    "built_at": "2026-10-03T12:41:36-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Researcher",
@@ -28,23 +28,23 @@
     "page_uid": "dd00d94d",
     "sections": [
         {
-            "body": "Reproducible notebooks and pipelines cover the practices and tools that let another person rerun a quantitative analysis and get the same results, from data loading through to final figures and tables. They apply to exploratory work in notebooks, to scheduled batch jobs, and to machine learning experiments where small changes in code, data, or environment can shift outcomes. The scope includes the analysis code itself, the environment that runs it, the data versions, and the records that tie a result to a specific run. In a research setting, this is what separates a one-off result from a claim that can be checked, extended, or reused.",
+            "body": "Reproducible notebooks and pipelines cover the practice of packaging an analysis so that another person, or the same person months later, can rerun it and get the same result. The scope runs from a single Jupyter notebook that loads a dataset and fits a model, up to multi stage pipelines that chain data extraction, cleaning, training and reporting. It sits inside quantitative analysis and reproducible work, and it touches anyone who publishes a number that someone else may need to check. The unit of concern is not the finding but the path taken to reach it.",
             "heading": "Scope"
         },
         {
-            "body": "The infrastructure is usually a mix of local machines, shared servers, and cloud compute, with notebooks served by Jupyter or similar environments and pipelines run by workflow managers. Dependencies are pinned with tools such as conda, pip, or container images, so the same Python or R versions and libraries are available each time. Data may live in versioned object storage, a database, or a data versioning system, and compute may be a laptop, a cluster, or a managed cloud service. The aim is to make the runtime environment explicit and portable rather than relying on whatever happens to be installed on one person's machine.",
+            "body": "The base layer is a notebook environment such as Jupyter, often paired with a pipeline tool like Snakemake, Nextflow, DVC or a workflow scheduler. Underneath sit version control for code and data, container images such as Docker for the runtime, and a package manager that pins library versions. Compute may be a laptop, a shared cluster or a cloud instance, and the pipeline has to behave the same on all three. Storage and environment definitions are part of the artifact, not an afterthought.",
             "heading": "What it runs on"
         },
         {
-            "body": "The work is done by writing analysis code in small, testable steps, keeping notebooks for exploration and moving stable logic into scripts or modules. Pipelines are defined as directed acyclic graphs of tasks, with tools like Make, Snakemake, or Nextflow handling dependencies, retries, and partial reruns. Parameters, random seeds, and input data versions are recorded, and outputs are written to predictable locations with logs and metadata. Version control with Git tracks code changes, while data and model artifacts are tracked separately when they are too large for ordinary repositories. The result is a run that can be repeated from a clean checkout with a single command or a small number of documented steps.",
+            "body": "The work starts by fixing inputs: raw data is hashed or versioned, and every transformation is written as code rather than done by hand in a spreadsheet. Notebooks are kept thin, with logic moved into importable modules that can be tested, and execution order is made explicit so cells do not depend on hidden state. Pipelines declare their steps and dependencies, so a rerun knows what is stale and what can be skipped. Outputs are regenerated from source rather than edited, and a run is considered done only when it reproduces from a clean checkout.",
             "heading": "How the work is done"
         },
         {
-            "body": "Rights and risk and provenance cover who owns the data and code, what licences apply, and whether the analysis can be shared or published. Provenance records link each output to the code commit, environment, data snapshot, and parameters that produced it, which supports review, debugging, and audit. Sensitive or personal data needs access controls, de-identification, and clear rules about where it may be copied or processed. For published research, the site links to the original paper rather than a search tool, and reproducibility depends on authors providing enough detail for others to verify the claim. The site's library of 288 research papers and 13608 extracted claims illustrates why provenance matters when results are aggregated and reused.",
+            "body": "Rights and risk centre on provenance: where the data came from, what licence covers it, and whether it can be redistributed with the code. Credentials and personal data must stay out of the repository, which usually means environment variables and access controls rather than committed files. A reproducible record also supports review, because a reviewer can inspect the exact code and data version behind a claim. On this site, content links to the original paper rather than to a search tool, which keeps the chain from claim back to source visible.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The direction is toward more automated capture of provenance, tighter integration between notebooks and pipeline runners, and standards for describing environments and data versions. Expect more use of container images, workflow engines, and metadata schemas that make a run self-describing, along with checks that compare new results against a reference. Notebooks are likely to remain the front end for exploration, while production pipelines take over for repeated or large-scale runs. The open question is how much of the record can be captured automatically without slowing down the analyst, and how to keep that record useful years later.",
+            "body": "The direction of travel is toward treating the whole environment as part of the publication, with containers, lock files and data versioning shipped alongside the paper. Automated reruns and continuous checks are becoming more common, so a pipeline can flag when an upstream dependency changes and a result no longer holds. Standards for citing software and data are maturing, which makes credit and provenance easier to track. The open question is how much of this machinery becomes routine rather than a specialist skill.",
             "heading": "Where it is going"
         }
     ],

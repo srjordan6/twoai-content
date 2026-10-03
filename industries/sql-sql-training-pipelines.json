@@ -4,7 +4,7 @@
     "slug": "sql-training-pipelines",
     "shape": "art-topic",
     "title": "SQL and AI Training Data Pipelines",
-    "answer": "Training and fine tuning data inside an organisation is usually assembled by pipelines that extract rows from operational databases, clean and join them with SQL, and load them where training jobs can read them. Mistakes in those queries become mistakes in the model. This page covers the SQL layer of that work, from source tables to the feature and label tables that training jobs consume. It sits in the AI and SQL field, alongside data engineering and model evaluation.",
+    "answer": "SQL and AI training data pipelines cover the work of turning rows held in operational databases into datasets that training and fine tuning jobs can read. The usual shape is an extract from a source system, a set of cleaning and joining steps written in SQL, and a load into storage the training job can reach. Because the queries decide what the model sees, an error in a join or a filter becomes an error the model learns from. The topic sits at the meeting point of data engineering and machine learning practice rather than inside either one alone.",
     "crumbs": [
         {
             "name": "AI and SQL",
@@ -12,7 +12,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-10-03T09:40:31-05",
+    "built_at": "2026-10-03T12:41:37-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "AI and SQL",
@@ -20,23 +20,23 @@
     "page_uid": "49220ce5",
     "sections": [
         {
-            "body": "Training and fine tuning data inside an organisation is usually assembled by pipelines that extract rows from operational databases, clean and join them with SQL, and load them where training jobs can read them. Mistakes in those queries become mistakes in the model. This page covers the SQL layer of that work, from source tables to the feature and label tables that training jobs consume. It sits in the AI and SQL field, alongside data engineering and model evaluation.",
+            "body": "SQL and AI training data pipelines cover the work of turning rows held in operational databases into datasets that training and fine tuning jobs can read. The usual shape is an extract from a source system, a set of cleaning and joining steps written in SQL, and a load into storage the training job can reach. Because the queries decide what the model sees, an error in a join or a filter becomes an error the model learns from. The topic sits at the meeting point of data engineering and machine learning practice rather than inside either one alone.",
             "heading": "Scope"
         },
         {
-            "body": "Pipelines run on the database engines that hold the source data, commonly PostgreSQL, MySQL, or a warehouse such as Snowflake, BigQuery, or Redshift. Orchestration is handled by schedulers like Airflow or dbt, and increasingly by Model Context Protocol servers that let AI agents query SQL systems directly; this site tracks 263 such servers for SQL databases and warehouses. Storage for intermediate tables may sit in the warehouse, in object storage, or in a feature store. The choice of engine shapes what SQL the pipeline can use and how expensive each run is.",
+            "body": "The work runs on the databases an organisation already operates, most often PostgreSQL, MySQL, or a warehouse such as Snowflake, BigQuery, or Redshift, with object storage holding the finished dataset. Orchestration is commonly handled by tools like Airflow or dbt, which schedule the SQL and track what each run produced. Model Context Protocol servers are increasingly used to let AI assistants query these systems directly, and this site tracks 2526 active MCP servers, 263 of them for SQL databases and warehouses. Every page on this site is itself built from a PostgreSQL database, which is a fair illustration of how ordinary relational storage sits under AI work.",
             "heading": "What it runs on"
         },
         {
-            "body": "The work is mostly SQL: SELECT statements that join operational tables, filter bad rows, deduplicate records, and compute labels or features. Engineers write these queries as versioned files, often with dbt or a similar tool, and run tests for nulls, duplicates, and unexpected row counts before the data is promoted. Time based splits and point in time joins are used to keep the training set from leaking information that would not be available at prediction time. The output is a table or set of files that a training job reads, and the query that produced it is part of the model's provenance.",
+            "body": "A pipeline typically starts with a snapshot or change data capture from the source, then applies SQL to deduplicate, normalise types, resolve entities, and join in labels or features. The result is written out in a columnar format such as Parquet, often split into train, validation, and test sets, with a manifest recording which query version produced which file. Practitioners check row counts, null rates, and label distributions before a run, and compare a new dataset against the previous one to see what changed. Version control for the SQL matters as much as version control for the model, since a silent change in a filter can shift the training distribution.",
             "heading": "How the work is done"
         },
         {
-            "body": "Because training data often contains personal or licensed information, pipelines need access controls, column level masking, and a record of which rows were used for which model. Provenance is kept by versioning both the SQL and the resulting dataset, so a model can be traced back to the queries and source tables that produced it. Teams commonly review data rights before extraction, check for consent or contractual limits, and document any filtering of sensitive fields. Poorly governed pipelines can leak personal data into a model or train on data the organisation has no right to use, and the query log is often the first place an audit looks.",
+            "body": "The main concerns are provenance, consent, and the rights attached to the rows being reused. A pipeline that copies personal data into a training set inherits the obligations that applied to the source, including retention limits, deletion requests, and any contractual restriction on secondary use. Teams therefore keep lineage from each training record back to its source table and query, and record who approved the extract. Access controls on the training store, masking of direct identifiers, and a documented process for removing a record from a dataset are common practice. None of this is legal advice, and the specific rules depend on jurisdiction and on the data involved.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The direction is toward more automated pipeline construction, with language models drafting SQL and agents using MCP servers to inspect schemas and propose joins. Data contracts and declarative transformations are gaining ground, so that the same query logic can run across engines without rewriting. Provenance and data quality checks are moving earlier in the pipeline, before training starts, rather than being patched after a model fails. The site's library of 288 research papers and 732 AI tools reflects how quickly this area is changing, though the core work remains SQL that has to be correct.",
+            "body": "The direction of travel is toward treating training data as a managed product with its own tests, contracts, and release notes, rather than as a one off export. More of the transformation logic is moving into versioned SQL models that can be reviewed and rerun, and AI assistants are being given read access to warehouses so that dataset questions can be answered in place. Expect tighter coupling between the query layer and the training job, with lineage captured automatically at run time. The open question is how quickly deletion and consent workflows catch up with the pace at which datasets are rebuilt.",
             "heading": "Where it is going"
         }
     ],

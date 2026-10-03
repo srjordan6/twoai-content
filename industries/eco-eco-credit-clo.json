@@ -4,7 +4,7 @@
     "slug": "eco-credit-clo",
     "shape": "art-topic",
     "title": "Stress Testing Structured Credit",
-    "answer": "Stress testing structured credit covers securitized products such as RMBS, CMBS, ABS, CLOs and CDOs, and the tranches that sit on top of underlying pools. It asks how losses from defaults, delinquencies, recoveries and prepayments flow through the waterfall to each rated or unrated note. The work spans issuer-level deal models, investor portfolio views, and regulatory exercises that test capital and liquidity under adverse scenarios. It also includes reverse stress tests that ask what conditions would exhaust a given tranche.",
+    "answer": "Stress testing structured credit means asking how a pool of securitised assets, and the tranches issued against it, behave when conditions turn worse than the base case. The work covers residential and commercial mortgage backed securities, collateralised loan obligations, auto and card receivables, and other asset backed deals. It sits inside fixed income and credit risk because the questions are about default timing, recovery, correlation between borrowers, and how losses travel up and down the capital structure. The output is a set of loss estimates per tranche under named scenarios, not a single number.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-10-03T09:40:31-05",
+    "built_at": "2026-10-03T12:41:36-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Economist",
@@ -28,23 +28,23 @@
     "page_uid": "75ec9976",
     "sections": [
         {
-            "body": "Stress testing structured credit covers securitized products such as RMBS, CMBS, ABS, CLOs and CDOs, and the tranches that sit on top of underlying pools. It asks how losses from defaults, delinquencies, recoveries and prepayments flow through the waterfall to each rated or unrated note. The work spans issuer-level deal models, investor portfolio views, and regulatory exercises that test capital and liquidity under adverse scenarios. It also includes reverse stress tests that ask what conditions would exhaust a given tranche.",
+            "body": "Stress testing structured credit means asking how a pool of securitised assets, and the tranches issued against it, behave when conditions turn worse than the base case. The work covers residential and commercial mortgage backed securities, collateralised loan obligations, auto and card receivables, and other asset backed deals. It sits inside fixed income and credit risk because the questions are about default timing, recovery, correlation between borrowers, and how losses travel up and down the capital structure. The output is a set of loss estimates per tranche under named scenarios, not a single number.",
             "heading": "Scope"
         },
         {
-            "body": "It runs on loan-level tapes, trustee reports, remittance files, and cash flow waterfalls, often held in relational databases or data warehouses. Teams use Python, R, SQL, and spreadsheet models, with vendor platforms for structured finance analytics and market data. Compute ranges from a laptop for a single deal to grid or cloud clusters for thousands of Monte Carlo paths across many deals. Version control and data lineage matter because a stress test is only as good as the pool and waterfall inputs.",
+            "body": "The inputs are loan level tapes, deal documents and waterfall rules, historical default and recovery series, and a scenario set that supplies paths for unemployment, house prices, interest rates and spreads. Teams run this on grid or cloud compute because a full cash flow model has to be projected month by month across thousands of paths and many deals. Common tools are Python with pandas and NumPy, R, SQL warehouses holding the loan data, and vendor platforms for cash flow and waterfall modelling. Results land in reporting layers that risk committees and regulators can read.",
             "heading": "What it runs on"
         },
         {
-            "body": "The usual method defines macroeconomic and market scenarios, maps them to default, delinquency, loss severity, recovery lag, and prepayment assumptions, then runs those assumptions through the deal waterfall. Cash flow engines allocate interest and principal by tranche, and the outputs are tranche-level losses, impairment, yield, and rating migration. Sensitivity analysis and Monte Carlo simulation vary the key drivers, while backtesting checks how prior scenarios would have performed. Model risk review compares assumptions with observed performance and with independent benchmarks.",
+            "body": "The core is a cash flow engine that applies the deal waterfall to projected collections, so interest and principal are allocated to tranches in the documented order. Defaults and recoveries are generated from a model, often a logistic or hazard model at loan level, then correlated across the pool using a factor structure or copula. Scenarios are either historical replays, such as a severe house price decline, or hypothetical shocks agreed with the risk function. Sensitivity runs vary one assumption at a time, and backtests check whether past stress losses would have been predicted by the same setup.",
             "heading": "How the work is done"
         },
         {
-            "body": "Structured credit stress testing sits inside risk management, regulatory reporting, and investor due diligence, so documentation, audit trails, and model validation are part of the work. Provenance covers where loan-level data came from, how it was cleaned, which waterfall version was used, and who approved each scenario. Legal and compliance teams care about representations and warranties, disclosure, and the use of licensed data, ratings, and indices. The output is a scenario result, not a forecast or a guarantee, and it is not investment, legal, or accounting advice.",
+            "body": "Model risk management applies: documentation of assumptions, independent validation, version control, and periodic review when the portfolio or the market changes. Loan level data has privacy and contractual limits, so access is restricted and use is tied to the deal agreements. Regulators in several jurisdictions require securitisations to be stress tested and to hold capital against the results, and retention rules mean the originator usually keeps skin in the game. Provenance matters because a stress number is only as good as the tape, the scenario definition and the waterfall logic behind it, and all three need an audit trail.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The direction is toward more frequent, more granular, and more automated stress testing, with climate, liquidity, and contagion scenarios added to traditional credit cycles. Machine learning is being used for prepayment and loss forecasting, though explainability and model risk controls remain a constraint. Supervisors and investors increasingly ask for deal-level transparency and for scenarios that combine structured credit with broader market and funding stress. The field is likely to keep moving from static annual exercises toward continuous monitoring of pool performance and tranche resilience.",
+            "body": "Expect more granular loan level modelling as data availability improves, and more use of machine learning for default and prepayment estimation alongside the traditional econometric models. Climate related shocks and transition risk are being folded into scenario sets for property backed deals. Faster compute and vectorised cash flow engines are shortening run times, which allows wider scenario grids and more frequent re runs. The direction is toward stress testing that is continuous rather than annual, with results feeding directly into limits, pricing and capital planning.",
             "heading": "Where it is going"
         }
     ],

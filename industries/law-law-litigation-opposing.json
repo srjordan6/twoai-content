@@ -4,7 +4,7 @@
     "slug": "law-litigation-opposing",
     "shape": "art-topic",
     "title": "Opposing Counsel and Docket Patterns",
-    "answer": "Opposing counsel and docket patterns is the study of how lawyers and courts behave across the life of a case, using public filings to see what each side tends to file, when, and with what result. It sits inside litigation prediction and judicial analytics, where the goal is not certainty but a clearer picture of likely next steps and pressure points. In the AI context, this includes the 148 active AI lawsuits the site tracks, 92 of them intellectual property, because those dockets show how counsel frame disputes over training data, model outputs, and trade secrets. The work covers motion practice, scheduling orders, discovery disputes, and settlement signals, all tied to the specific judge and opposing firm. It is a practical lens for a litigator who wants to prepare for an adversary's habits rather than guess at them.",
+    "answer": "Opposing Counsel and Docket Patterns is the branch of litigation prediction that studies who is on the other side and how a case moves through the court, rather than what the law says. It covers attorney and firm histories, motion and continuance habits, settlement timing, judge assignment, and the pace of docket events in the relevant court. In practice it sits alongside judicial analytics, where the same case data is used to model outcomes and scheduling. The work is descriptive: it maps patterns that already exist in public filings, it does not predict what any particular lawyer will do next.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-10-03T09:40:31-05",
+    "built_at": "2026-10-03T12:41:36-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Lawyer",
@@ -28,23 +28,23 @@
     "page_uid": "981ec578",
     "sections": [
         {
-            "body": "Opposing counsel and docket patterns is the study of how lawyers and courts behave across the life of a case, using public filings to see what each side tends to file, when, and with what result. It sits inside litigation prediction and judicial analytics, where the goal is not certainty but a clearer picture of likely next steps and pressure points. In the AI context, this includes the 148 active AI lawsuits the site tracks, 92 of them intellectual property, because those dockets show how counsel frame disputes over training data, model outputs, and trade secrets. The work covers motion practice, scheduling orders, discovery disputes, and settlement signals, all tied to the specific judge and opposing firm. It is a practical lens for a litigator who wants to prepare for an adversary's habits rather than guess at them.",
+            "body": "Opposing Counsel and Docket Patterns is the branch of litigation prediction that studies who is on the other side and how a case moves through the court, rather than what the law says. It covers attorney and firm histories, motion and continuance habits, settlement timing, judge assignment, and the pace of docket events in the relevant court. In practice it sits alongside judicial analytics, where the same case data is used to model outcomes and scheduling. The work is descriptive: it maps patterns that already exist in public filings, it does not predict what any particular lawyer will do next.",
             "heading": "Scope"
         },
         {
-            "body": "The work runs on docket data, court filings, and counsel records, usually pulled from public systems such as PACER and state court portals. A typical stack includes a database of docket entries, a document store for briefs and orders, and a pipeline that extracts parties, counsel, judges, and motion types. The site's 29 AI case law precedents can act as a curated reference layer for how courts have handled similar AI issues. Analysts also need judge profiles, local rules, and scheduling histories to compare one courtroom with another. Because docket feeds arrive in different formats, normalization and entity resolution are constant chores.",
+            "body": "The raw material is court records, mainly PACER and the state court systems, plus docket feeds and the parties and counsel fields attached to each filing. Teams typically pull these into a warehouse, resolve attorney and firm names across courts, and link related cases such as consolidated actions or parallel suits. Commercial litigation analytics platforms and general purpose data tools sit on top of that store. Because the source is public record, the main infrastructure cost is cleaning and matching, not acquisition.",
             "heading": "What it runs on"
         },
         {
-            "body": "Analysts start by collecting every docket entry for a case and tagging each event, such as a motion to dismiss, a discovery request, or a scheduling conference. They then build features from timing, sequence, and outcome, for example how long an opposing counsel typically takes to respond or how often a judge grants a particular motion. Statistical models and, increasingly, machine learning rank likely next filings or estimate the chance of a motion succeeding. The same approach can profile an opposing firm across many cases, revealing patterns that a single docket would hide. Human review remains essential because docket text is messy and context changes the meaning of a filing.",
+            "body": "Analysts start by defining a cohort, for example all motions to dismiss filed in a district over several years, then extract event dates and outcomes from the docket text. Attorney and firm identities are normalized so that the same person is not counted twice under different spellings. From there the work is mostly counting and comparison: time to ruling, win rates on motion types, how often a firm settles before trial, how a judge handles extensions. Some teams add text models to classify motion types or to flag language in briefs, but the backbone is structured event data. Results are reported as distributions and base rates, not as a single confident forecast.",
             "heading": "How the work is done"
         },
         {
-            "body": "Provenance is a first concern because docket data can be incomplete, sealed, or mislabeled, and any prediction inherits those flaws. Privacy and access rules matter, especially when filings contain personal information or when a court restricts public view. Counsel analytics also carries risk of bias if historical patterns reflect systemic disparities rather than the merits of a case. Professional conduct rules in many jurisdictions require lawyers to supervise AI tools and verify outputs, and unauthorized practice of law rules limit who may give legal advice. The site's 219 compliance and regulation pages offer a map of these constraints, but they are reference material, not a substitute for checking local rules.",
+            "body": "The data is public, but the people in it are not abstractions, and profiles of named attorneys and judges carry reputational risk if the underlying sample is thin or the matching is wrong. Firms that use these tools generally keep an audit trail of how a figure was produced, so a number can be defended if it is challenged. Some courts restrict bulk scraping or charge for access, and the terms of the data source govern reuse. Where a model informs strategy, the working assumption is that it supports a human judgment rather than replacing it. Nothing here is legal advice, and a pattern in past dockets is not a prediction about a live matter.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "As AI litigation grows, the 148 active AI lawsuits tracked here will keep adding docket data, and the 92 intellectual property cases will likely drive much of the analysis. Expect more granular counsel-level metrics, real-time docket alerts, and models that combine judge history with opposing firm behavior. Courts are slowly opening more data through e-filing standards, which will improve coverage but also raise new privacy questions. The field is moving toward transparency about model limits, because a prediction that cannot be explained is hard to defend in a professional setting. Over time, opposing counsel and docket patterns may become a standard part of case strategy, not a specialist curiosity.",
+            "body": "The direction of travel is toward finer granularity: not just win rates by judge, but event level timing by courtroom, by motion type, and by the pair of firms involved. Better entity resolution across state and federal systems would let the same analysis follow a dispute as it moves between courts. Language models are likely to take over more of the docket reading, which shifts effort from extraction to validation. The open question is how much of this becomes standard in case strategy and how much stays a specialist input. Growth in AI litigation itself, with 150 active AI lawsuits tracked on this site, gives the field more matters to study.",
             "heading": "Where it is going"
         }
     ],

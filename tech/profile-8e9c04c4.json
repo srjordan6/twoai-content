@@ -1,0 +1,314 @@
+{
+    "tax": "lang-profile",
+    "uid": "8e9c04c4",
+    "name": "ollama",
+    "slug": "ollama",
+    "facts": {
+        "repo": "ollama/ollama",
+        "stars": 182092,
+        "licence": "MIT",
+        "archived": false,
+        "language": "Go",
+        "repo_url": "https://github.com/ollama/ollama",
+        "last_push": "2026-10-03T04:09:34Z",
+        "description": "Get up and running with Kimi, GLM, MiniMax, DeepSeek, gpt-oss, Qwen, Gemma and other models.",
+        "official_site": "https://ollama.com"
+    },
+    "model": "ollama:deepseek-v4.1-flash",
+    "shape": "lang-profile",
+    "title": "Ollama: A Local AI Inference Engine and Model Serving Runtime",
+    "answer": "Ollama is an open source runtime, written in Go and released under the MIT licence, for downloading and running large language and multimodal models on your own machine or on a server. It sits at the inference and serving layer of the AI stack, wrapping model weights behind a simple command line and API. The one thing to know before adopting it is that it trades some fine grained control for convenience, so teams needing custom kernels or unusual serving topologies may outgrow it.",
+    "built_at": "2026-10-03T11:27:34-05:00",
+    "category": "technology-and-core-infrastructure",
+    "hub_name": "Programming Languages and Frameworks",
+    "page_uid": "8e9c04c4",
+    "sections": [
+        {
+            "body": "Ollama is a model serving runtime maintained by Ollama, the company behind the ollama.com site and the ollama/ollama repository on GitHub. It is written in Go and distributed under the MIT licence, and the repository shows a last push in October 2026 with roughly 182,000 stars, which indicates a large and active user base. It appeared as a way to get open models running locally without assembling a serving stack by hand, and it occupies the inference and serving layer of the AI stack, sitting between model weights and the applications, agents and coding tools that call them. It is not a training framework and not a data processing library. The site describes it as serving 8.9 million developers and notes that the company has raised 88 million dollars from investors including Benchmark, Theory Ventures, 8VC and Y Combinator.",
+            "heading": "What it is and where it sits in AI work"
+        },
+        {
+            "body": "Ollama is used to run inference on open models, both locally and through its cloud service. The library page lists a broad catalogue: Llama 3.1, Llama 3.2 Vision, Llama 3.3, DeepSeek-R1 and DeepSeek Coder, Qwen2.5 and Qwen 1.5, Google Gemma and Gemma 2, Mistral models including Mistral Small 3, Microsoft Phi-3 and Phi-4, LLaVA, BGE-M3 embeddings, TinyLlama, SmolLM2, OLMo 2, CodeGemma, IBM Granite and Snowflake embedding models. Beyond plain chat, the blog describes decision models for yes-or-no questions and scored choices, a web search API, subagents and web search inside Claude Code, and a launch command that sets up coding tools such as Claude Code, OpenCode and Codex against local or cloud models. It is strongest where a developer wants a capable open model running on a laptop, a workstation or a small server with minimal setup, and where privacy or offline operation matters. It is also used as a backend for coding assistants, with Continue documented as running entirely on a laptop or against an Ollama server, and for personal agents such as OpenJarvis and OpenClaw. On Apple silicon the site describes an MLX engine, with Gemma 4 reported as up to 90 percent faster in Ollama 0.31 through multi-token prediction, and Ollama 0.30 adding GGUF compatibility through llama.cpp. It is not positioned as the best choice for large scale multi-tenant training or for bespoke serving architectures.",
+            "heading": "What it is used for and where it is strongest"
+        },
+        {
+            "body": "The learning curve is gentle for basic use. A developer with command line familiarity can install Ollama, pull a model and start a chat without knowing linear algebra or GPU programming, and the site's library entries give plain descriptions of each model's size and purpose. Going further does assume some systems knowledge: understanding VRAM limits, quantization, context length and multi-GPU scheduling helps when choosing between a 7B and a 70B model or when diagnosing out of memory failures. The blog notes a significantly improved model scheduling system that reduces crashes from out of memory and improves GPU utilization, especially on multi-GPU systems, which suggests these are real operational concerns. The official site offers a model library, a blog with setup guides, and integration notes for tools such as Continue, Claude Code and Codex CLI. It does not present a structured course or mathematics primer, so a beginner looking for theory will need other sources.",
+            "heading": "How hard it is to learn and what you need first"
+        },
+        {
+            "body": "The ecosystem around Ollama is broad and mostly integration driven. The library covers models from Meta, Alibaba, Google DeepMind, Microsoft, Mistral AI, DeepSeek, BAAI, IBM, Snowflake and others, and the blog documents partnerships with OpenAI, NVIDIA and Stanford's Hazy Research lab. It is compatible with the Anthropic Messages API, which lets tools such as Claude Code use open models, and it works with OpenAI's Codex CLI using models such as gpt-oss:20b and gpt-oss:120b. Claude Desktop can be configured to use Ollama as a third party gateway provider. Continue, an open source coding assistant for Visual Studio Code and JetBrains, documents using Ollama with Codestral, DeepSeek Coder, Llama 3 and nomic-embed-text embeddings alongside LanceDB. OpenJarvis and OpenClaw both build on it. Documentation lives on ollama.com, and the GitHub repository, with its very large star count and recent activity, is the main community hub. The site also describes cloud hosting for larger models, with data hosted in the United States and Europe and zero data retention under Ollama's privacy policy.",
+            "heading": "Ecosystem and community"
+        },
+        {
+            "body": "Ollama is built for both quick experiments and serious local serving, though the balance leans toward convenience. Pulling a model and running it takes minutes, which makes it a natural first stop for prototyping, and the same runtime is used in production by developers running coding assistants and agents on their own hardware. Performance work is visible in the release notes: MLX on Apple silicon, GGUF compatibility through llama.cpp, multi-token prediction, a new engine for faster tool calling, and a scheduling system aimed at maximizing GPU utilization. Cloud models in preview let users reach larger models on datacenter grade hardware. The cost of this convenience is control. The site does not describe mechanisms for custom kernels, fine grained batching policies or unusual deployment topologies, so teams with specialized serving requirements may need to look at lower level runtimes. Memory control is partly addressed through scheduling and quantization choices rather than through deep configuration.",
+            "heading": "Prototyping speed against production performance"
+        },
+        {
+            "body": "Adoption is wide among individual developers and small teams. The site states that Ollama serves 8.9 million developers, and the repository's star count and recent commits support the picture of a current, actively developed project rather than a legacy one. It is used in coding assistants, personal agents, local privacy sensitive workloads and, through the cloud offering, larger hosted models. Partnerships with OpenAI, NVIDIA and Stanford's Hazy Research lab, plus support for the Anthropic Messages API and OpenAI's Codex CLI, place it inside mainstream tooling rather than at the fringe. For someone choosing what to learn, familiarity with Ollama is useful because it appears in tutorials and integrations across the open model ecosystem, and it is a practical way to gain hands on experience with inference, quantization and model selection. The site does not publish customer case studies or job market data, so claims about enterprise deployment at scale should be treated cautiously.",
+            "heading": "Industry adoption and careers"
+        },
+        {
+            "body": "Ollama is typically used alongside Python and JavaScript or TypeScript applications, and it exposes an HTTP API that other languages can call. It is written in Go, which matters mainly to contributors rather than users. In practice it sits under frameworks and tools rather than replacing them: Continue for code assistance, LangChain style pipelines for retrieval augmented generation, Claude Code and Codex CLI for agentic coding, and OpenJarvis or OpenClaw for personal agents. The guest post on building LLM powered web apps describes a client side pattern using local models, Transformers.js for embeddings, Voy as a WebAssembly vector store and LangChain for document loading and splitting, with Ollama as the model runtime. The polyglot pattern is therefore a Go runtime serving models over a network API, consumed by Python, JavaScript and command line clients, with model weights and embeddings handled by separate libraries. It complements rather than competes with training frameworks and vector databases.",
+            "heading": "How it fits beside the others"
+        },
+        {
+            "body": "Ollama's weaknesses follow from its design goals. It prioritizes ease of use, so fine grained control over batching, scheduling and custom kernels is limited compared with lower level serving runtimes, and the site does not document such controls. Performance depends heavily on the user's hardware, and the guest post on browser based apps notes that client side inference can be slower because of hardware limitations. Some models in the library carry restrictions: Codestral 22B is described as having a non-production license and being usable only for research and testing. Cloud models were still in preview at the time of reading, and per token pricing on Pro, Max and Team plans is recent, so cost and availability may change. The official material does not state benchmark methodology for most library models, does not give detailed security guidance beyond the privacy policy and the Secure Minions protocol, and does not say how the runtime will evolve relative to llama.cpp and MLX. Questions about long term support for specific models, and about behavior under very high concurrency, are left open.",
+            "heading": "Limits and open questions"
+        }
+    ],
+    "siblings": [
+        {
+            "kind": "framework",
+            "name": "ai",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/4c80ad91/"
+        },
+        {
+            "kind": "framework",
+            "name": "autogen",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/60f558b0/"
+        },
+        {
+            "kind": "framework",
+            "name": "crewAI",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/52f2d4fc/"
+        },
+        {
+            "kind": "framework",
+            "name": "haystack",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/244d606e/"
+        },
+        {
+            "kind": "framework",
+            "name": "jax",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/1722316f/"
+        },
+        {
+            "kind": "framework",
+            "name": "keras",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/079f2091/"
+        },
+        {
+            "kind": "framework",
+            "name": "langchain",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/10376bfa/"
+        },
+        {
+            "kind": "framework",
+            "name": "litellm",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/b9fc5220/"
+        },
+        {
+            "kind": "framework",
+            "name": "llama_index",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/07b3602c/"
+        },
+        {
+            "kind": "framework",
+            "name": "pydantic-ai",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/a6a0d2bd/"
+        },
+        {
+            "kind": "framework",
+            "name": "pytorch",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/c4d0a8c3/"
+        },
+        {
+            "kind": "framework",
+            "name": "semantic-kernel",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/7a5bc5c6/"
+        },
+        {
+            "kind": "framework",
+            "name": "tensorflow",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/367fc8ea/"
+        },
+        {
+            "kind": "framework",
+            "name": "unsloth",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/9aab6db8/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "CTranslate2",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/9436dfa2/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "llama.cpp",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/32458451/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "llamafile",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/8f2f922d/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "lmdeploy",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/e24aae0d/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "mlc-llm",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/bcce36c4/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "onnxruntime",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/7ab24352/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "sglang",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/711194f2/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "TensorRT-LLM",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/6e41175d/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "vllm",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/44ebb5e4/"
+        },
+        {
+            "kind": "language",
+            "name": "C++",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/b393c4f6/"
+        },
+        {
+            "kind": "language",
+            "name": "Go",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/a218afb2/"
+        },
+        {
+            "kind": "language",
+            "name": "Julia",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/3719f5ac/"
+        },
+        {
+            "kind": "language",
+            "name": "Mojo",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/b5a22ab0/"
+        },
+        {
+            "kind": "language",
+            "name": "Python",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/7aa3e6c4/"
+        },
+        {
+            "kind": "language",
+            "name": "TypeScript",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/8d5b4f9f/"
+        }
+    ],
+    "generated": "2026-10-03",
+    "site_pages": [
+        {
+            "url": "https://ollama.com/library",
+            "date": ""
+        },
+        {
+            "url": "https://ollama.com/blog",
+            "date": ""
+        },
+        {
+            "url": "https://ollama.com/library/glm-5.3-flash",
+            "date": ""
+        },
+        {
+            "url": "https://ollama.com/blog/continue-code-assistant",
+            "date": ""
+        },
+        {
+            "url": "https://ollama.com/blog/building-llm-powered-web-apps",
+            "date": ""
+        },
+        {
+            "url": "https://ollama.com/library/glm-5.3",
+            "date": ""
+        },
+        {
+            "url": "https://ollama.com/blog/llms-in-obsidian",
+            "date": ""
+        },
+        {
+            "url": "https://ollama.com/blog/run-llama2-uncensored-locally",
+            "date": ""
+        },
+        {
+            "url": "https://ollama.com/library/granite4.2",
+            "date": ""
+        },
+        {
+            "url": "https://ollama.com/library/muse-glimmer",
+            "date": ""
+        },
+        {
+            "url": "https://ollama.com/blog/thinking",
+            "date": ""
+        },
+        {
+            "url": "https://ollama.com/library/tev1",
+            "date": ""
+        },
+        {
+            "url": "https://ollama.com/library/nemotron3",
+            "date": ""
+        },
+        {
+            "url": "https://ollama.com/blog/openjarvis",
+            "date": ""
+        },
+        {
+            "url": "https://ollama.com/blog/minions",
+            "date": ""
+        },
+        {
+            "url": "https://ollama.com:443/library/bespoke-minicheck",
+            "date": ""
+        },
+        {
+            "url": "https://ollama.com/library/nimble",
+            "date": ""
+        },
+        {
+            "url": "https://ollama.com/blog/mlx",
+            "date": ""
+        },
+        {
+            "url": "https://ollama.com/library/clef-flash",
+            "date": ""
+        },
+        {
+            "url": "https://ollama.com/library/glm-5.2",
+            "date": ""
+        },
+        {
+            "url": "https://ollama.com/blog/improved-performance-and-model-support-with-gguf",
+            "date": ""
+        },
+        {
+            "url": "https://ollama.com/library/granite4.1",
+            "date": ""
+        },
+        {
+            "url": "https://ollama.com/blog/nemotron-3-5-lightning",
+            "date": ""
+        },
+        {
+            "url": "https://ollama.com/blog/reduce-hallucinations-with-bespoke-minicheck",
+            "date": ""
+        }
+    ],
+    "source_url": "https://ollama.com",
+    "parent_name": "Inference Engines",
+    "parent_path": "/ai-ecosystem/technology-and-core-infrastructure/775e8c0a/",
+    "site_domain": "ollama.com",
+    "subject_key": "engine:ollama/ollama",
+    "subject_kind": "inference engine",
+    "source_read_on": "2026-10-02",
+    "site_pages_read": 60,
+    "refresh_every_days": 30
+}

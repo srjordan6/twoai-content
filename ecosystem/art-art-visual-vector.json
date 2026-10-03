@@ -4,7 +4,7 @@
     "slug": "art-visual-vector",
     "shape": "art-topic",
     "title": "Vector Graphics and Interface Assets",
-    "answer": "Vector graphics and interface assets cover anything drawn as paths, curves, strokes and fills rather than pixels: icons, logos, pictograms, diagrams, maps, type, and the illustration and component art that sits inside a product interface. The work spans a family of outputs, from a single SVG glyph to a full icon set, an empty-state illustration, or a design system's worth of shapes that must stay consistent at many sizes. It sits in the visual arts because composition, weight and legibility still matter, and in engineering because the same file often ships as code. Practitioners here are usually designers who think in grids and layers, not machine learning engineers.",
+    "answer": "Vector graphics and interface assets cover the artwork that stays sharp at any size and the small pieces that make software usable: icons, logos, buttons, illustration systems, and design tokens. The work sits between visual design and production, because a file has to look right and also survive being scaled, recolored, and shipped inside an app. In an AI context the interest is in generating or converting this artwork, then handing it to designers and developers in a form they can actually use. It is distinct from raster image generation, where the output is pixels rather than editable paths and shapes.",
     "crumbs": [
         {
             "name": "The Art of AI",
@@ -16,7 +16,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-10-03T09:40:31-05",
+    "built_at": "2026-10-03T12:41:36-05",
     "category": "ecosystem-entities-market-and-operations",
     "expanded": true,
     "hub_name": "The Art of AI",
@@ -24,23 +24,23 @@
     "page_uid": "3338c133",
     "sections": [
         {
-            "body": "Vector graphics and interface assets cover anything drawn as paths, curves, strokes and fills rather than pixels: icons, logos, pictograms, diagrams, maps, type, and the illustration and component art that sits inside a product interface. The work spans a family of outputs, from a single SVG glyph to a full icon set, an empty-state illustration, or a design system's worth of shapes that must stay consistent at many sizes. It sits in the visual arts because composition, weight and legibility still matter, and in engineering because the same file often ships as code. Practitioners here are usually designers who think in grids and layers, not machine learning engineers.",
+            "body": "Vector graphics and interface assets cover the artwork that stays sharp at any size and the small pieces that make software usable: icons, logos, buttons, illustration systems, and design tokens. The work sits between visual design and production, because a file has to look right and also survive being scaled, recolored, and shipped inside an app. In an AI context the interest is in generating or converting this artwork, then handing it to designers and developers in a form they can actually use. It is distinct from raster image generation, where the output is pixels rather than editable paths and shapes.",
             "heading": "Scope"
         },
         {
-            "body": "The toolchain is a mix of editors and code. Figma, Adobe Illustrator, Inkscape and Affinity Designer are the common drawing environments, and SVG is the format most of this work travels in, rendered by browsers and rasterized by GPUs at display time. On the generative side, most current systems produce a raster image first and then trace it into paths, while a smaller set of models emit path commands or markup directly. Because vector files are text, they diff, merge and version well, which makes them a natural fit for repositories, build pipelines and component libraries. Optimization passes such as SVGO and sprite or symbol assembly are routine steps before anything ships.",
+            "body": "The core formats are SVG for web and app interfaces and PDF or EPS for print and interchange, with Figma and Adobe Illustrator as the common working tools. Generation usually runs through a model that outputs SVG path data directly, or through a raster model whose output is traced into paths by a vectorizer. Rendering and preview happen in a browser or a design canvas, and version control for the source files often sits in the same repository as the code. Because SVG is text, these assets are small, diffable, and easy to move through an automated build.",
             "heading": "What it runs on"
         },
         {
-            "body": "A typical generative workflow starts with a prompt, a sketch or an existing reference, produces a raster candidate, then converts it to paths with a tracing step and cleans the result by hand or with simplification tools. The cleanup is where most of the craft lives: reducing node count, aligning to a pixel grid, normalizing stroke widths, unifying corner radii, and checking that the shape still reads at small sizes. Other routes skip tracing entirely, using language models that write SVG markup, parametric systems driven by templates and variables, or symbol libraries where a generator only chooses and arranges prebuilt parts. Whatever the route, the deliverable is usually reviewed in an editor, named and layered for the people who will maintain it, and exported in the formats the product needs.",
+            "body": "A designer or developer starts with a prompt, a sketch, or an existing raster image, and the model proposes paths, shapes, and color fills. The result is almost never final: strokes get cleaned, anchor points are reduced, and the geometry is snapped to a grid so the icon reads at small sizes. Naming, grouping, and layer structure are then normalized so the asset fits the rest of the system. For interface work the last step is usually export into the component library, where the asset is tested against real states such as hover, disabled, and dark mode.",
             "heading": "How the work is done"
         },
         {
-            "body": "Rights questions cluster around training data, style and marks. A model trained on scraped icon sets, fonts or illustration portfolios can reproduce distinctive shapes, and the line between influence and copying is part of what the broader wave of intellectual property litigation around generative models is testing, a wave this site currently tracks at 92 active suits. Trademark and logo similarity is a separate risk from copyright, and font licensing, open source licences and attribution requirements all attach to assets that look trivial to copy. Provenance practice is still thin: keeping records of prompts, source references, model versions and human edits helps a team answer questions later. Accessibility also belongs here, since contrast, labelling and scalable hit targets are part of whether an asset is usable.",
+            "body": "Rights here turn on two separate questions: who owns the generated paths, and whether the training data or the source image carried restrictions. Tracing a photograph or a third party logo into vector form does not remove the underlying rights, and open licenses such as those from icon sets carry attribution terms that survive conversion. Provenance is helped by the fact that SVG is plain text, so a file can be diffed and its edit history kept, though a model's contribution is rarely recorded in the file itself. Teams commonly keep a record of the prompt, the model, and the source material alongside the asset, and check trademarks before an icon ships in a product.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The direction of travel is toward vector output that arrives already structured, with named layers, editable paths and tokens that match a design system rather than a flat traced blob. Models that emit markup directly are improving, and the interesting work is less about drawing a single icon than about generating a coherent family that stays consistent across sizes, states and themes. Closer coupling between design tools and code seems likely, so that an asset and its component definition are produced and versioned together. Evaluation is the open problem, because judging a vector asset means judging editability and system fit, not just how the picture looks. With 1000 live image generation models tracked on this site, the bottleneck is shifting from generation to selection, review and maintenance.",
+            "body": "The direction of travel is toward assets that are generated as structured, parameterized components rather than as one off drawings. That means a model proposes a shape system, and the theme, size, and color come from tokens, so one source produces a whole family of icons. Expect tighter coupling between design tools and code, with generation happening inside the design file and the export handled automatically. The open questions are less about capability and more about consistency, licensing, and whether a generated icon set can be maintained over years the way a hand drawn one can.",
             "heading": "Where it is going"
         }
     ],

@@ -4,7 +4,7 @@
     "slug": "art-film-physics",
     "shape": "art-topic",
     "title": "Text to Video, Physics and Continuity",
-    "answer": "Text to video with physics and continuity concerns generating moving images from natural language prompts where objects obey plausible physical rules and remain consistent across frames. This includes rigid body motion, fluid and cloth behavior, lighting consistency, object permanence, and character identity. The field sits within cinematography and video synthesis, distinct from pure image generation because temporal coherence and causal sequence matter. The site tracks 1000 video models, which indicates the breadth of current activity in this area.",
+    "answer": "Text to video covers systems that take a written prompt and produce a moving image sequence, and the craft question of whether that sequence holds together as a film would. Physics and continuity are the two tests most often applied: does a dropped object fall at a believable rate, does a character keep the same face, clothing and position from shot to shot. The field sits inside cinematography and video synthesis, and it borrows its vocabulary from editing, animation and visual effects rather than from machine learning. Work here ranges from a few seconds of generated b-roll to multi-shot sequences assembled with traditional cutting.",
     "crumbs": [
         {
             "name": "The Art of AI",
@@ -16,7 +16,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-10-03T09:40:31-05",
+    "built_at": "2026-10-03T12:41:36-05",
     "category": "ecosystem-entities-market-and-operations",
     "expanded": true,
     "hub_name": "The Art of AI",
@@ -24,23 +24,23 @@
     "page_uid": "b42cc99a",
     "sections": [
         {
-            "body": "Text to video with physics and continuity concerns generating moving images from natural language prompts where objects obey plausible physical rules and remain consistent across frames. This includes rigid body motion, fluid and cloth behavior, lighting consistency, object permanence, and character identity. The field sits within cinematography and video synthesis, distinct from pure image generation because temporal coherence and causal sequence matter. The site tracks 1000 video models, which indicates the breadth of current activity in this area.",
+            "body": "Text to video covers systems that take a written prompt and produce a moving image sequence, and the craft question of whether that sequence holds together as a film would. Physics and continuity are the two tests most often applied: does a dropped object fall at a believable rate, does a character keep the same face, clothing and position from shot to shot. The field sits inside cinematography and video synthesis, and it borrows its vocabulary from editing, animation and visual effects rather than from machine learning. Work here ranges from a few seconds of generated b-roll to multi-shot sequences assembled with traditional cutting.",
             "heading": "Scope"
         },
         {
-            "body": "Text to video models are typically large diffusion or autoregressive transformers trained on paired text and video datasets. Training requires clusters of high memory GPUs or TPUs, often with weeks of compute. Inference for short clips can run on a single datacenter GPU, but longer or higher resolution outputs need multiple accelerators or cloud orchestration. Video decoding and frame interpolation add further load.",
+            "body": "These systems run on large diffusion or transformer video models hosted on GPU clusters, with inference cost scaling steeply with resolution, frame count and frame rate. A practitioner typically works through a hosted interface or an API rather than local hardware, and the site currently tracks 1000 video models alongside 1000 image generation models, which is a fair picture of how crowded the model layer has become. Supporting infrastructure includes frame interpolation, upscaling, motion tracking and compositing tools that sit downstream of generation. Storage and review pipelines matter more than they do for still images, because a single usable clip may require dozens of attempts.",
             "heading": "What it runs on"
         },
         {
-            "body": "Models learn motion priors from video data, but explicit physics constraints are often added through differentiable simulators or energy functions. Continuity is addressed with temporal layers, memory modules, or post hoc frame interpolation. Prompt engineering and camera control help specify physical behavior. The work is done by balancing learned appearance with rules that keep objects from passing through each other or changing identity between frames.",
+            "body": "The usual workflow is iterative: write a prompt, generate a short clip, inspect it for physical plausibility and continuity errors, then adjust the prompt, the seed, the reference image or the motion settings and try again. Many practitioners generate keyframes as stills first and then animate between them, which gives more control over composition and character consistency than prompting motion directly. Continuity across shots is often handled outside the model, by reusing a reference image, locking a character description, or cutting around the moments where the model breaks. Physics is rarely simulated; it is approximated, so hands, liquids, cloth and collisions remain the common failure points and are usually fixed in post or avoided in framing.",
             "heading": "How the work is done"
         },
         {
-            "body": "Rights and risk center on training data provenance, likeness, and the potential for generated clips to misrepresent events. Watermarking and content credentials are emerging practices for marking synthetic video. The site tracks 92 active intellectual property lawsuits, though not all involve video, and that number shows the legal pressure across generative media. Practitioners commonly document training sources and output provenance as part of responsible release.",
+            "body": "Rights questions around text to video are unsettled and actively litigated, and the site tracks 92 active intellectual property lawsuits across AI, 18 of which involve AI music services. For video, the live issues are training data provenance, the use of actor likenesses and voices, and whether a generated clip can be registered or licensed as original work. Studios and platforms increasingly ask for disclosure of AI generated footage, and some distributors require documentation of the model, prompt and source assets used. Provenance tooling such as content credentials and watermarking is being adopted unevenly, so a working professional should expect to keep their own records of what went into a shot.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The field is moving toward longer coherent sequences, real time generation, and tighter integration with game engines and robotics. Hybrid approaches combining neural synthesis with classical simulation will likely improve physical plausibility and continuity. Expect models to progress from short clips to minutes long scenes with stable characters and consistent physics. The site tracking 1000 video models suggests the field is still in rapid iteration rather than consolidation.",
+            "body": "The near term direction is longer, more coherent sequences with better physical grounding, either through explicit simulation or through models trained on more structured motion data. Continuity is likely to be handled by persistent character and scene representations rather than by prompt repetition, which would make multi-shot work far more practical. Expect tighter integration with editing and effects software, so generated footage becomes another source in the timeline rather than a separate experiment. The unresolved part is legal and commercial: until the training data and likeness questions settle, adoption in broadcast and feature work will stay cautious and heavily documented.",
             "heading": "Where it is going"
         }
     ],

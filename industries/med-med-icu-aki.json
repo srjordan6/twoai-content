@@ -4,7 +4,7 @@
     "slug": "med-icu-aki",
     "shape": "art-topic",
     "title": "Acute Kidney Injury Prediction",
-    "answer": "Acute kidney injury prediction is the use of patient data to estimate whether a hospitalized person, especially in intensive care, will develop a sudden loss of kidney function. It covers risk scores, alerts, and continuous monitoring that flag rising creatinine or falling urine output before a formal diagnosis. The work sits in predictive patient analytics and intensive care, where it supports clinicians rather than replacing their judgment. It applies to adults and children in different settings, though ICU patients are the most studied group.",
+    "answer": "Acute kidney injury prediction covers models that estimate whether a hospital patient's kidney function is about to decline, usually before creatinine rises far enough to meet the standard diagnostic criteria. It sits inside predictive patient analytics and intensive care, where the output is a risk score attached to a patient record rather than a diagnosis. The work spans the whole admission: triage in the emergency department, hourly monitoring in the intensive care unit, and ward patients receiving nephrotoxic drugs or contrast. It also covers the related tasks of staging severity, flagging who may need dialysis, and tracking recovery after an episode.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-10-03T09:40:31-05",
+    "built_at": "2026-10-03T12:41:36-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Physician",
@@ -28,23 +28,23 @@
     "page_uid": "fb8ed6c1",
     "sections": [
         {
-            "body": "Acute kidney injury prediction is the use of patient data to estimate whether a hospitalized person, especially in intensive care, will develop a sudden loss of kidney function. It covers risk scores, alerts, and continuous monitoring that flag rising creatinine or falling urine output before a formal diagnosis. The work sits in predictive patient analytics and intensive care, where it supports clinicians rather than replacing their judgment. It applies to adults and children in different settings, though ICU patients are the most studied group.",
+            "body": "Acute kidney injury prediction covers models that estimate whether a hospital patient's kidney function is about to decline, usually before creatinine rises far enough to meet the standard diagnostic criteria. It sits inside predictive patient analytics and intensive care, where the output is a risk score attached to a patient record rather than a diagnosis. The work spans the whole admission: triage in the emergency department, hourly monitoring in the intensive care unit, and ward patients receiving nephrotoxic drugs or contrast. It also covers the related tasks of staging severity, flagging who may need dialysis, and tracking recovery after an episode.",
             "heading": "Scope"
         },
         {
-            "body": "These systems run on electronic health record data, ICU charting systems, laboratory feeds, and medication records. They need timely streams of creatinine, urine output, vital signs, demographics, and sometimes clinical notes or nursing observations. Deployment may be on hospital servers, private cloud, or vendor platforms, with interfaces to clinical dashboards and alerting tools. Data latency, missing values, and differences in units across sites are practical constraints.",
+            "body": "These models run on the same electronic health record data that hospitals already collect: serum creatinine, urine output, age, comorbidities, medications, vital signs and laboratory results. Most are trained on retrospective intensive care databases such as MIMIC, then validated on local hospital data before any bedside use. Deployment is typically a scoring service inside the clinical data pipeline, pushing a risk number into the electronic record or a paging dashboard. Some sites run the model on a schedule, others on every new lab result, and a few embed it in the bedside monitor or clinical decision support system.",
             "heading": "What it runs on"
         },
         {
-            "body": "Most models are trained on retrospective cohorts using supervised learning, with labels from KDIGO creatinine or urine output criteria. Common approaches include logistic regression, gradient boosting, and recurrent neural networks for time series. Features are built from labs, vitals, medications, and comorbidities, and performance is checked with discrimination, calibration, and alert burden. External validation and prospective silent trials are used to test whether a model travels to new hospitals.",
+            "body": "The common approach is supervised learning on labeled historical admissions, where the label is a creatinine rise or a urine output fall within a fixed window. Gradient boosted trees and recurrent neural networks are both widely used, and many published models combine static variables with time series features. Performance is reported as area under the receiver operating characteristic curve, often between 0.75 and 0.85 in the original papers, with calibration and alert burden reported less often. Validation is usually retrospective and single center, and prospective randomized trials of the scores remain uncommon. Feature engineering matters as much as model choice, since urine output is charted irregularly and creatinine is measured at varying intervals.",
             "heading": "How the work is done"
         },
         {
-            "body": "Rights and risk center on patient privacy, data use agreements, and whether a prediction counts as clinical decision support or a regulated device. Provenance matters, and documentation typically covers training data, cohort definition, label timing, and any model updates. Bias can arise from differences in baseline kidney function, access to care, and documentation across patient groups. Liability questions are active in clinical AI generally, and this atlas tracks six product liability and wrongful death lawsuits against AI companies.",
+            "body": "A risk score is not a diagnosis, and clinicians remain responsible for the decision to hold a drug, order imaging or call nephrology. The main risks are alert fatigue, missed cases in patients the model under-scores, and bias when training data under-represents groups by age, sex, race or baseline kidney function. Provenance matters: teams need to document the training cohort, the label definition, the version deployed and the date of any retraining. In the United States, a predictive tool used in care can fall under clinical decision support rules, and the site tracks 229 compliance and regulation pages plus 6 active product liability and wrongful death lawsuits against AI companies, which shows how quickly a model's output can become part of a legal record. Data use agreements, de-identification and audit logs are standard parts of the deployment file.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The field is moving toward earlier detection, continuous risk updates, and integration into ICU workflows. Research is testing whether alerts change treatment, fluid management, or medication dosing, and whether they improve outcomes rather than just prediction. Fairness, drift monitoring, and clear escalation paths are becoming part of deployment. Future work may combine kidney signals with other organ systems and use federated learning to share models without moving patient data.",
+            "body": "The direction of travel is toward earlier and more continuous detection, using streaming laboratory and urine output data rather than once-daily scores. More work is going into calibration and subgroup performance, because a score that is accurate on average can still mislead at the bedside. Some groups are testing whether acting on the alert changes outcomes such as dialysis use or length of stay, which is the question that matters most and the one least often answered. Integration with medication ordering and fluid management tools is likely to grow, along with periodic retraining as practice patterns shift. The field is also watching how regulators treat these tools, since the site tracks 1000 medical AI models and 804 scientific models, and the gap between what is published and what is cleared for use remains wide.",
             "heading": "Where it is going"
         }
     ],

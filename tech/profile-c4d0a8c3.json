@@ -5,54 +5,54 @@
     "slug": "pytorch",
     "facts": {
         "repo": "pytorch/pytorch",
-        "stars": 103643,
+        "stars": 103645,
         "licence": "custom",
         "archived": false,
         "language": "Python",
         "repo_url": "https://github.com/pytorch/pytorch",
-        "last_push": "2026-10-03T10:47:14Z",
+        "last_push": "2026-10-03T13:59:06Z",
         "description": "Tensors and Dynamic neural networks in Python with strong GPU acceleration",
         "official_site": "https://pytorch.org"
     },
     "model": "ollama:deepseek-v4.1-flash",
     "shape": "lang-profile",
     "title": "PyTorch: The Python Framework for Tensors and Dynamic Neural Networks",
-    "answer": "PyTorch is an open source Python framework for tensors and dynamic neural networks with strong GPU acceleration, maintained under the PyTorch Foundation. It sits at the core of AI work, covering training, fine-tuning, inference and serving, and is used by teams such as Amazon Ads and IBM Research. A reader deciding whether to use it should know that its Pythonic design and broad ecosystem make it fast to prototype, while native tools like torch.compile and TorchServe carry the same code toward production.",
-    "built_at": "2026-10-03T09:21:08-05:00",
+    "answer": "PyTorch is an open source Python framework for tensors and dynamic neural networks with strong GPU acceleration, maintained under the PyTorch Foundation. It sits at the core of AI work, covering training, inference, data handling and deployment, and it is used from research prototypes through large scale production systems. The one thing to know before choosing it is that its flexibility and Pythonic design make it quick to learn and debug, while production performance depends on tools such as torch.compile, quantization and serving runtimes rather than on the framework alone.",
+    "built_at": "2026-10-03T11:20:20-05:00",
     "category": "technology-and-core-infrastructure",
     "hub_name": "Programming Languages and Frameworks",
     "page_uid": "c4d0a8c3",
     "sections": [
         {
-            "body": "PyTorch is a framework for tensors and dynamic neural networks in Python with strong GPU acceleration, hosted in the pytorch/pytorch repository and licensed under a custom licence. The site facts record more than 103,000 stars and a last push in October 2026, so it is actively maintained rather than archived. It occupies the foundational layer of the AI stack: the library in which models are defined, trained and run, with the surrounding ecosystem, including TorchServe, PyTorch Hub and vLLM, built on top of it. The official site presents it as the base for work that ranges from research notebooks to large scale serving.",
+            "body": "PyTorch is a Python library for tensors and dynamic neural networks with strong GPU acceleration, developed as an open source project and hosted on GitHub under the pytorch/pytorch repository, which had accumulated 103,645 stars by the time of this reading. Its official site is pytorch.org, and the project is now associated with the PyTorch Foundation, which the site describes as giving hosted projects a long term, vendor neutral open standard. It occupies the foundational layer of the AI stack, the part that handles numerical computation, automatic differentiation and neural network building blocks, on top of which higher level libraries for training, fine tuning and serving are built. The site does not give a single first release date in the pages read, so the exact origin year is not settled here.",
             "heading": "What it is and where it sits in AI work"
         },
         {
-            "body": "The site shows PyTorch used for computer vision and natural language processing, for fine-tuning large language models, and for inference at scale. Amazon Ads built CV and NLP models in PyTorch to flag non-compliant ads, then deployed them on AWS Inferentia, cutting inference latency by 30 percent and costs by 71 percent. A PyTorch blog post fine-tunes a 7B parameter model on a single 16GB consumer GPU using LoRA and Hugging Face tools. IBM Research runs vLLM, a PyTorch Foundation project, as the serving runtime for more than 100 models. It is strongest where Pythonic model code, GPU acceleration and a wide deployment path matter together.",
+            "body": "The site shows PyTorch used across the main AI jobs. Amazon Ads built computer vision and natural language processing models in PyTorch to flag potentially non compliant ads, then served them with TorchServe on AWS Inferentia, cutting inference latency by 30 percent and inference costs by 71 percent. Nuance used PyTorch based NLP for ambient clinical documentation, combining automatic speech recognition with automatic text summarization. The blog also demonstrates fine tuning a 7 billion parameter model on a single consumer GPU using LoRA and the Hugging Face ecosystem, and shows pure native PyTorch optimizations such as GPU quantization, speculative decoding and tensor parallelism accelerating a from scratch LLM almost ten times over baseline without loss of accuracy. It is strongest where Pythonic, flexible model development matters, and where the same code can move from experiment to optimized inference.",
             "heading": "What it is used for and where it is strongest"
         },
         {
-            "body": "The site does not state a formal learning curve, but its material assumes working Python and some familiarity with tensors, gradients and neural network training. The fine-tuning post walks through memory arithmetic for a 7B model, LoRA update matrices and mixed precision, which presumes comfort with model internals rather than only high level APIs. Beginners are served by runnable examples: a complete reproducible Google Colab notebook accompanies the LoRA fine-tuning post, and PyTorch Hub offers one-line model loading. Mathematics for optimisation and linear algebra helps, but the official pages lead with code and benchmarks rather than theory, so a developer can start from examples and fill in the mathematics as needed.",
+            "body": "PyTorch is widely described on the site as Pythonic, and an applied scientist at Amazon Ads called it the clear winner over other frameworks on that basis, which suggests the basic API is approachable for anyone who already writes Python. Going further requires some mathematics, particularly linear algebra and the calculus behind gradients, and some systems awareness, because memory, GPU utilization and inference latency become central once models grow. The official site offers a substantial body of material for beginners and practitioners, including tutorials, blog posts with reproducible notebooks such as the LoRA fine tuning walkthrough, and documentation for APIs like torch.hub. The pages read do not quantify the learning curve or compare it with alternatives, so how steep it feels in practice is not something the official material settles.",
             "heading": "How hard it is to learn and what you need first"
         },
         {
-            "body": "PyTorch Hub is a pre-trained model repository and API with built-in Colab support and integration with Papers With Code, covering classification, segmentation, generative and transformer models. Publishers add a hubconf.py file listing supported models and dependencies, and users load them with torch.hub.load, list them with torch.hub.list and inspect them with torch.hub.help. The site also documents TorchServe for serving, vLLM for high throughput inference, Helion as a domain-specific language for performance portable kernels, and gpt-fast as a native PyTorch LLM implementation. vLLM is a hosted project under the PyTorch Foundation, which the site describes as guaranteeing a long-term, vendor-neutral open standard.",
+            "body": "The ecosystem around PyTorch is broad and visible throughout the site. PyTorch Hub provides a pre trained model repository and API for reproducibility, with built in Colab support and integration with Papers With Code, and it hosts classification, segmentation, generative and transformer models. Publishing a model requires only a hubconf.py file listing entry points and dependencies, as seen in torchvision, huggingface-bert and gan-model-zoo. Hugging Face appears repeatedly, both in Hub models and in the LoRA fine tuning post. On the serving side, vLLM is a hosted project under the PyTorch Foundation, and IBM Research uses it as the runtime for its RITS platform, which serves over 100 models to more than 1300 active users. Helion, PyTorch's domain specific language for performance portable kernels, shows the ecosystem extending into kernel autotuning.",
             "heading": "Ecosystem and community"
         },
         {
-            "body": "PyTorch serves both ends. Its Pythonic, dynamic design and Hub one-liners make experiments quick, and the same code can be pushed toward production with native tools. A PyTorch team post describes a from-scratch LLM almost 10x faster than baseline with no loss of accuracy, using GPU quantization, speculative decoding and tensor parallelism in under 1000 lines of native PyTorch. torch.compile with mode='reduce-overhead' and a static kv-cache raised throughput to 107 tokens per second on an A100. The cost is that production performance work, such as graph capture, quantization and parallelism, remains a specialist task, and the site presents it through benchmarks rather than as a turnkey path.",
+            "body": "PyTorch serves both ends of this spectrum, though the site presents them as different modes of work. The dynamic, Pythonic design supports quick experiments, and PyTorch Hub makes loading a pre trained model a single command without installing a wheel. For production, the site documents a path of deliberate optimization. torch.compile with mode='reduce-overhead' and a static kv-cache raised throughput to 107 tokens per second in the gpt-fast example, and the same post combines quantization, speculative decoding and tensor parallelism for roughly ten times the baseline speed. Serving runtimes such as vLLM add PagedAttention, continuous batching and quantization support. The cost is that these gains require engineering effort and, in some cases, rewriting or constraining model code, so the framework does not deliver production performance for free.",
             "heading": "Prototyping speed against production performance"
         },
         {
-            "body": "The site documents adoption at Amazon Ads, IBM Research, Nuance and Red Hat, alongside the PyTorch Foundation's stewardship of vLLM. Amazon Ads chose PyTorch over other frameworks it considered Pythonic, and builds its text models entirely in PyTorch. IBM Research's RITS platform, with more than 1300 active users and over 100 hosted models, uses vLLM as its serving runtime. These are current production systems rather than legacy references, so PyTorch skills transfer to real deployment work. The facts and the site do not give market share figures or salary data, so claims about relative popularity or pay should be treated as outside what this material settles.",
+            "body": "The site documents adoption at large organizations. Amazon Ads uses PyTorch for text models and for computer vision and NLP compliance models, deployed on AWS Inferentia. IBM Research built its RITS platform on vLLM, a PyTorch Foundation project, serving more than 1300 active users. Nuance built clinical documentation features on PyTorch based NLP. The PyTorch Foundation hosting of vLLM is described as guaranteeing a long term, vendor neutral open standard, which points to continuing institutional backing rather than decline. The pages read do not present PyTorch as a legacy choice, nor do they offer employment statistics or salary data, so claims about the job market beyond these adoption examples would go beyond what the official material supports.",
             "heading": "Industry adoption and careers"
         },
         {
-            "body": "PyTorch is a Python framework, and the site shows it used with Hugging Face for models and tokenizers, with TorchServe for serving, with vLLM for high throughput inference, and with AWS Inferentia and NVIDIA GPUs for acceleration. It also appears inside Red Hat OpenShift AI, where KServe orchestrates serving runtimes and vLLM versions can be registered as custom runtimes. This is the polyglot pattern common in AI work: Python for model definition and training, compiled kernels and serving runtimes underneath, and cloud or Kubernetes infrastructure around it. The site does not present PyTorch as replacing those layers, but as the layer they integrate with.",
+            "body": "PyTorch is a Python framework, and the site consistently shows it working inside a polyglot pattern rather than alone. Hugging Face supplies models and fine tuning utilities, as in the LoRA walkthrough. vLLM provides the serving runtime, integrated with Red Hat OpenShift AI and KServe, and exposes metrics to Prometheus. TorchServe handles deployment in the Amazon Ads case. Helion provides a domain specific language for kernels, and the LLM guided autotuner for Helion kernels shows PyTorch code being tuned with the help of external language models. The pattern is one where PyTorch owns model definition and training, while adjacent projects own data, serving, orchestration and observability. The pages read do not describe interoperability with non Python frameworks in detail.",
             "heading": "How it fits beside the others"
         },
         {
-            "body": "The site is candid about some limits. Full fine-tuning of a 7B model needs 112GB excluding intermediate hidden states, beyond the 80GB largest available GPU, which is why parameter efficient methods such as LoRA exist. Production speedups depend on specialist techniques like quantization, speculative decoding and tensor parallelism. Helion's LLM-guided autotuner still trails LFBO by more than 5 percent on some kernels, where a hybrid strategy is needed. The official material does not state a formal learning curve, market share, salary data or a comparison against other frameworks, so those questions remain open rather than answered by what the site provides.",
+            "body": "The site is candid about several constraints. Full fine tuning of a 7 billion parameter model needs 112GB excluding intermediate hidden states, more than the 80GB available on the largest GPUs, which is why parameter efficient methods such as LoRA exist. Production speedups depend on optimizations like torch.compile, static kv-caches and quantization rather than arriving by default. Helion's LLM guided autotuner still trails the default LFBO search by more than 5 percent on some kernels, requiring a hybrid strategy to close the gap. The pages read do not state the exact release history, the full licence terms beyond a custom licence, or detailed comparisons with other frameworks, so those questions remain open in this material.",
             "heading": "Limits and open questions"
         }
     ],
@@ -104,6 +104,11 @@
         },
         {
             "kind": "framework",
+            "name": "pydantic-ai",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/a6a0d2bd/"
+        },
+        {
+            "kind": "framework",
             "name": "semantic-kernel",
             "path": "/ai-ecosystem/technology-and-core-infrastructure/7a5bc5c6/"
         },
@@ -116,6 +121,56 @@
             "kind": "framework",
             "name": "unsloth",
             "path": "/ai-ecosystem/technology-and-core-infrastructure/9aab6db8/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "CTranslate2",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/9436dfa2/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "llama.cpp",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/32458451/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "llamafile",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/8f2f922d/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "lmdeploy",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/e24aae0d/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "mlc-llm",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/bcce36c4/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "ollama",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/8e9c04c4/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "onnxruntime",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/7ab24352/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "sglang",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/711194f2/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "TensorRT-LLM",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/6e41175d/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "vllm",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/44ebb5e4/"
         },
         {
             "kind": "language",

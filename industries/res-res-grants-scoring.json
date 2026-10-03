@@ -4,7 +4,7 @@
     "slug": "res-grants-scoring",
     "shape": "art-topic",
     "title": "Predicting Proposal Success",
-    "answer": "Predicting proposal success is the use of data and models to estimate whether a grant application will be funded, often before or during review. It sits in grant proposals and funding, where program officers, research development staff, and principal investigators want to triage effort and understand reviewer priorities. The topic overlaps with bibliometrics, peer review studies, and science of science research. The World of AI library holds 135 research papers and 13109 claims extracted from research works, which can support a structured review of what is known.",
+    "answer": "Predicting proposal success is the use of statistical and machine learning models to estimate how likely a grant application is to be funded, or how it will score in review, before or alongside the actual review. It covers funder-specific prediction, such as forecasting panel outcomes for a given call, and cross-funder work that looks for general signals of a strong proposal. The unit of prediction is usually a single submitted proposal, though some work predicts at the level of a research team, a portfolio or a programme. It sits between bibliometrics, science of science research and the practical work of research development offices.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-10-03T09:40:31-05",
+    "built_at": "2026-10-03T12:41:37-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Researcher",
@@ -28,23 +28,23 @@
     "page_uid": "839a8222",
     "sections": [
         {
-            "body": "Predicting proposal success is the use of data and models to estimate whether a grant application will be funded, often before or during review. It sits in grant proposals and funding, where program officers, research development staff, and principal investigators want to triage effort and understand reviewer priorities. The topic overlaps with bibliometrics, peer review studies, and science of science research. The World of AI library holds 135 research papers and 13109 claims extracted from research works, which can support a structured review of what is known.",
+            "body": "Predicting proposal success is the use of statistical and machine learning models to estimate how likely a grant application is to be funded, or how it will score in review, before or alongside the actual review. It covers funder-specific prediction, such as forecasting panel outcomes for a given call, and cross-funder work that looks for general signals of a strong proposal. The unit of prediction is usually a single submitted proposal, though some work predicts at the level of a research team, a portfolio or a programme. It sits between bibliometrics, science of science research and the practical work of research development offices.",
             "heading": "Scope"
         },
         {
-            "body": "The work runs on historical grant records, award abstracts, reviewer comments, and administrative data, joined with publication and citation histories where available. Most pipelines use Python or R for tabular modeling and natural language processing, with SQL databases for storage and querying. Training large language models may need GPUs, but simpler logistic regression and gradient boosted trees run on ordinary CPUs. Data access is often the limiting factor, because funders and institutions control proposal text and review scores.",
+            "body": "The raw material is proposal text, reviewer comments, panel scores, funding decisions and the metadata that surrounds them, such as applicant history, institution and prior award record. Much of this data is confidential, so work often runs on internal funder or university systems rather than open corpora, and public datasets tend to be small, redacted or limited to outcomes without full text. Models range from logistic regression and gradient boosting on structured features to transformer language models fine-tuned on abstracts and review text. Compute needs are modest compared with large language model training, and the harder constraint is data access and linkage rather than hardware.",
             "heading": "What it runs on"
         },
         {
-            "body": "A common approach defines a binary or ordinal outcome, such as funded or not funded, reviewer score, or funding percentile. Features are drawn from the proposal text, the applicant's publication and funding history, the institution, the team, the budget, and the fit to the funder's stated priorities. Models range from logistic regression and gradient boosted trees to transformer based text classifiers, and they are validated on later grant cycles to avoid leaking future information. Evaluation looks at discrimination, calibration, and whether the model identifies proposals that reviewers would also rank highly. Because peer review is noisy and funding decisions depend on panel dynamics and budgets, predictions are best treated as uncertain signals rather than verdicts.",
+            "body": "A typical study defines an outcome, such as fund, reject or a numeric priority score, then assembles features from the proposal, the applicant and the context. Text features come from titles, abstracts, aims pages and sometimes full narratives, while structured features capture track record, team composition, prior submissions and fit to the call. Models are trained and validated with care because funding decisions are imbalanced and clustered by panel, discipline and year, so random splits can overstate accuracy. Evaluation usually reports discrimination and calibration, and some work compares model predictions against human reviewer agreement to see whether the signal is new or merely a restatement of reviewer consensus.",
             "heading": "How the work is done"
         },
         {
-            "body": "Proposal text, reviewer comments, and administrative records are often confidential, so use requires clear rights, consent, or a legal basis, and provenance must be documented from source to model. Risks include reproducing historical funding disparities by institution, career stage, discipline, or demographic group, and creating feedback loops that favor proposals similar to past winners. Models can also be gamed if applicants learn what features score well, which may penalize unconventional ideas. Good practice includes data minimization, access controls, versioned datasets, model cards, and human review before any funding decision. This page describes practice and is not legal advice.",
+            "body": "Proposal text and reviews are sensitive, often containing unpublished ideas and personal information, so consent, confidentiality and data minimisation are central. Reviewers and applicants may not know that their material is being used to train a model, which raises questions about transparency and the terms under which submissions were made. There is a real risk that a model learns past bias, for example against certain institutions, career stages or topic areas, and then reproduces it at scale. Provenance matters too, since a prediction is only as good as the data behind it, and claims about accuracy should be traceable to the specific dataset, call and period rather than presented as general. Any use in a live funding process also needs a human decision point, because a model score is not a funding decision.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "Future work is likely to combine text models with structured data from funder systems, so predictions update as a proposal moves through review. Retrieval and summarization tools may help program staff find relevant expertise and check fit, while portfolio level models could estimate the effect of funding decisions across a field. Progress will depend on access to linked, longitudinal data and on shared benchmarks that respect confidentiality. The topic will remain contested because peer review is a social process, and a model that predicts current outcomes may not predict what a funder should support.",
+            "body": "Work is moving from predicting a binary outcome toward richer targets, such as expected review scores, likely reviewer concerns and the fit between a proposal and a specific panel. Larger language models make it easier to summarise and compare proposals, which raises the prospect of automated triage, and with it sharper questions about fairness and appeal. There is growing interest in using predictions formatively, to help applicants and research development staff improve a draft rather than to filter submissions. Progress will depend less on new architectures than on better data agreements, shared benchmarks and honest reporting of how these models behave across disciplines and funders.",
             "heading": "Where it is going"
         }
     ],

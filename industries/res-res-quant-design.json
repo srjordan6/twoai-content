@@ -4,7 +4,7 @@
     "slug": "res-quant-design",
     "shape": "art-topic",
     "title": "Testing a Study Design Before Data Collection",
-    "answer": "Testing a study design before data collection means checking whether a planned quantitative study can answer its question with the data it expects to gather. It covers the estimand, the sampling frame, the measurement instruments, the analysis code, and the decision rules that will be used once real data arrive. The work often includes a dry run on mock or simulated data, a small pilot, or a formal simulation study of operating characteristics such as bias, coverage, and power. The aim is to expose ambiguity and failure modes early, while changes are still cheap and before any primary data are collected. This is a core part of reproducible work because it fixes the link between the design, the analysis, and the claims that can be made.",
+    "answer": "Testing a study design before data collection means checking that a planned analysis can actually answer the question it claims to answer, using simulated or pilot data rather than the real dataset. It covers the choice of outcome, the sample size, the comparison groups, and the handling of missing values, all settled in advance. The aim is to catch design faults while they are still cheap to fix, rather than after months of collection.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-10-03T09:40:31-05",
+    "built_at": "2026-10-03T12:41:37-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Researcher",
@@ -28,23 +28,23 @@
     "page_uid": "a343378e",
     "sections": [
         {
-            "body": "Testing a study design before data collection means checking whether a planned quantitative study can answer its question with the data it expects to gather. It covers the estimand, the sampling frame, the measurement instruments, the analysis code, and the decision rules that will be used once real data arrive. The work often includes a dry run on mock or simulated data, a small pilot, or a formal simulation study of operating characteristics such as bias, coverage, and power. The aim is to expose ambiguity and failure modes early, while changes are still cheap and before any primary data are collected. This is a core part of reproducible work because it fixes the link between the design, the analysis, and the claims that can be made.",
+            "body": "Testing a study design before data collection means checking that a planned analysis can actually answer the question it claims to answer, using simulated or pilot data rather than the real dataset. It covers the choice of outcome, the sample size, the comparison groups, and the handling of missing values, all settled in advance. The aim is to catch design faults while they are still cheap to fix, rather than after months of collection.",
             "heading": "Scope"
         },
         {
-            "body": "The work runs on the same computing environment that will later handle the real analysis, so that code, package versions, and random seeds are controlled. Common foundations include version control for code and documents, container images or environment files for dependencies, and workflow tools that record each step from data generation to model fitting. Simulated or mock datasets are produced by scripts, not by hand, and they are stored alongside the analysis code. For pilot work, secure storage and access controls are set up before any human data are touched. Logs and intermediate outputs are kept so that a reviewer can rerun the entire dry run from a clean checkout.",
+            "body": "The work runs on ordinary analysis environments: R, Python, or Stata, plus a version control system such as Git to track every change to the plan. Simulation code, random seeds, and package versions are recorded so a colleague can rerun the whole exercise. Where the study will use a shared or restricted dataset, the same pipeline is rehearsed on a synthetic stand-in with the same structure.",
             "heading": "What it runs on"
         },
         {
-            "body": "A typical sequence starts by writing the analysis plan in enough detail that another analyst could execute it, including the target quantity, the model, the missing data handling, and the stopping rules. The team then generates synthetic data under a range of plausible assumptions, runs the planned analysis, and records how often the method recovers the truth or produces misleading answers. Sensitivity checks vary the assumptions one at a time, such as effect size, correlation structure, measurement error, and missingness, to see where the design breaks down. A small pilot with real but limited data can test recruitment, measurement, and data flow, though it is usually kept separate from the primary analysis. Code review and automated tests are used to catch errors in the pipeline before the main data collection begins.",
+            "body": "A typical cycle writes the analysis script first, generates data under known assumptions, and runs the script against it to see whether the estimates recover the truth. Sensitivity checks vary the assumptions one at a time, for example the rate of dropout or the strength of a confounder, and record how the conclusions move. The design is revised until the results are stable, and the final script is frozen before any real data arrives.",
             "heading": "How the work is done"
         },
         {
-            "body": "Rights and risk come into focus when pilot or mock data involve human subjects, because consent, privacy, and data protection rules still apply even if the data are not used for the final estimate. Provenance matters: every dataset, script, and decision rule needs a traceable source, and any change to the design after seeing results must be documented. Preregistration or a dated analysis plan helps separate confirmatory tests from exploratory ones and reduces the risk of undisclosed flexibility. Licensing and authorship agreements for code and synthetic data are settled early, especially when multiple institutions are involved. The governance goal is to make the study auditable, not to guarantee a particular result.",
+            "body": "The pre-data phase is where provenance is easiest to secure, because nothing has been observed yet and the plan can be registered, dated, and shared without disclosing results. Any later deviation from the registered plan should be logged with a reason, so readers can tell a planned test from a post hoc one. Where pilot data are used, their source, permissions, and limits on reuse belong in the same record.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The direction of travel is toward more automated and more standardized pre-data testing, with simulation pipelines that can be rerun as assumptions change. Reproducibility checks, such as independent reruns of the analysis on simulated data, are becoming a normal part of review in quantitative fields. AI-assisted tools may help generate synthetic data, suggest sensitivity scenarios, or flag inconsistencies between a plan and its code, but the judgment about what counts as a valid design remains with the research team. As the site's library grows, comparisons across papers may make it easier to see which design checks are common and which are missing. The likely result is that testing a study design before data collection becomes less of a special step and more of a routine part of the research workflow.",
+            "body": "Practice is moving toward treating the design test as a reusable artefact, published alongside the paper so others can rerun it on their own data. Automated checks for common faults, such as underpowered comparisons or undisclosed flexibility in the analysis, are becoming part of review workflows. The direction is a study whose plan, code, and simulated evidence are all inspectable before a single participant is enrolled.",
             "heading": "Where it is going"
         }
     ],

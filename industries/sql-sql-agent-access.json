@@ -4,7 +4,7 @@
     "slug": "sql-agent-access",
     "shape": "art-topic",
     "title": "Agent Database Access and Permissions",
-    "answer": "When an AI agent queries a database on behalf of a user, it should see only what that user may see. Row level security, scoped credentials, read only roles and audit logging are the controls that keep an agent from becoming a way around existing permissions. The scope covers the whole path from the agent's tool call to the SQL that reaches the database, including the identity the connection carries. It also covers what the agent is allowed to do, not just what it can read.",
+    "answer": "Agent database access and permissions covers the question of what an AI agent is allowed to read or change when it queries a database on someone's behalf. When an agent queries a database for a user, it should see only what that user may see. Row level security, scoped credentials, read only roles and audit logging are the controls that keep an agent from becoming a way around existing permissions. The topic sits at the join of AI and SQL, and it matters most wherever an agent is wired to a live production database rather than a copy.",
     "crumbs": [
         {
             "name": "AI and SQL",
@@ -12,7 +12,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-10-03T09:40:31-05",
+    "built_at": "2026-10-03T12:41:37-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "AI and SQL",
@@ -20,23 +20,23 @@
     "page_uid": "247e6dbd",
     "sections": [
         {
-            "body": "When an AI agent queries a database on behalf of a user, it should see only what that user may see. Row level security, scoped credentials, read only roles and audit logging are the controls that keep an agent from becoming a way around existing permissions. The scope covers the whole path from the agent's tool call to the SQL that reaches the database, including the identity the connection carries. It also covers what the agent is allowed to do, not just what it can read.",
+            "body": "Agent database access and permissions covers the question of what an AI agent is allowed to read or change when it queries a database on someone's behalf. When an agent queries a database for a user, it should see only what that user may see. Row level security, scoped credentials, read only roles and audit logging are the controls that keep an agent from becoming a way around existing permissions. The topic sits at the join of AI and SQL, and it matters most wherever an agent is wired to a live production database rather than a copy.",
             "heading": "Scope"
         },
         {
-            "body": "The agent usually reaches the database through a tool layer, often a Model Context Protocol server, which holds the connection and exposes a small set of query functions. This site tracks 2504 active MCP servers, 263 of them for SQL databases and warehouses, so that tool layer is a real and growing surface. Underneath, the controls live in the database itself: roles, grants, row level security policies, views, and connection pooling that can carry a per user identity. Audit logs may sit in the database, in the tool layer, or in a separate store.",
+            "body": "The plumbing is usually a database connection exposed to the agent through a tool interface, most often a Model Context Protocol server. This site currently tracks 2526 active Model Context Protocol servers, 263 of them for SQL databases and warehouses, which shows how common that pattern has become. Underneath, the agent holds some credential, whether a shared service account, a per user token, or a short lived session, and that choice decides almost everything about what it can reach. The database itself does the rest of the work through roles, views and policies.",
             "heading": "What it runs on"
         },
         {
-            "body": "A common pattern is to give the agent a credential that maps to the requesting user, either by passing a token through to the database or by having the tool layer assume a role. Read only roles and restricted schemas limit what a mistaken or manipulated query can reach, and row level security policies filter rows by the user's attributes. Query rewriting, allow lists of tables and columns, and statement timeouts keep generated SQL inside bounds. Audit logging records the prompt, the SQL, the identity and the rows returned.",
+            "body": "In practice the work is done by pushing the permission decision down into the database rather than trusting the agent to filter results. Row level security policies keyed to the acting user, read only roles for anything exploratory, and views that expose only approved columns are the usual building blocks. The agent's queries are then generated against that constrained surface, and every statement is written to an audit log with the user, the session and the SQL text. Teams test the setup by replaying queries as different users and checking that the rows returned match what those users could see directly.",
             "heading": "How the work is done"
         },
         {
-            "body": "The main risk is privilege escalation by proxy, where an agent with broad credentials returns data the user could not fetch directly. Provenance matters because a generated query can be hard to attribute, so logs should tie each statement to a user, a session and a tool call. Access reviews, least privilege, and separation between the agent's service account and the user identity are common controls. Data access duties from regulation and contract still apply, and the agent does not change who is entitled to what.",
+            "body": "The rights and risk side turns on provenance and accountability. If an agent reads data through a shared credential, the audit trail shows the agent and not the person, which breaks the link between access and identity that most policies assume. Scoped credentials, per user sessions and logging that records both the requesting user and the agent preserve that link. Data protection rules, contractual limits on the data, and internal access reviews all still apply, and an agent does not create an exemption from any of them. This page describes practice only and is not legal advice.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "Expect more databases to expose native agent facing interfaces and finer grained policy that travels with the user identity. The 263 MCP servers for SQL databases and warehouses tracked here suggest the tool layer will keep expanding, and with it the need for standard ways to pass identity and scope. Work on policy as code, query attestation and per row audit is likely to mature. The direction is toward treating the agent as another client of the same permission system, not a special case.",
+            "body": "The direction of travel is toward identity that follows the user all the way through the agent, with short lived tokens, policy expressed once and enforced at the database, and logs that can answer who saw what. As more SQL servers appear in the Model Context Protocol ecosystem, the interesting work is less about connecting an agent to a database and more about proving that the connection respects the permissions already in place. Expect the controls to consolidate around the database engine rather than around each agent framework.",
             "heading": "Where it is going"
         }
     ],

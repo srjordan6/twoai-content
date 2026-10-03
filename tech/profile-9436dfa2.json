@@ -1,0 +1,286 @@
+{
+    "tax": "lang-profile",
+    "uid": "9436dfa2",
+    "name": "CTranslate2",
+    "slug": "ctranslate2",
+    "facts": {
+        "repo": "OpenNMT/CTranslate2",
+        "stars": 4694,
+        "licence": "MIT",
+        "archived": false,
+        "language": "C++",
+        "repo_url": "https://github.com/OpenNMT/CTranslate2",
+        "last_push": "2026-09-26T06:26:50Z",
+        "description": "Fast inference engine for Transformer models",
+        "official_site": "https://opennmt.net/CTranslate2/"
+    },
+    "model": "ollama:deepseek-v4.1-flash",
+    "shape": "lang-profile",
+    "title": "CTranslate2: A Fast Inference Engine for Transformer Models",
+    "answer": "CTranslate2 is an MIT-licensed C++ inference engine for Transformer models, maintained by OpenNMT. It converts models from frameworks such as PyTorch, TensorFlow and Hugging Face Transformers into an optimized binary format, then serves them on CPU or GPU with quantization options like int8 and float16. A reader deciding whether to use it should know that it is built for efficient production inference rather than training, and that converted models are backward compatible but not forward compatible, so the runtime version must not be older than the converter that produced the model.",
+    "built_at": "2026-10-03T11:31:30-05:00",
+    "category": "technology-and-core-infrastructure",
+    "hub_name": "Programming Languages and Frameworks",
+    "page_uid": "9436dfa2",
+    "sections": [
+        {
+            "body": "CTranslate2 is an inference engine for Transformer models, made by the OpenNMT project and released under the MIT licence. The core implementation is written in C++ and is framework agnostic, with framework-specific logic moved into a conversion step that loads supported models into a unified representation. It sits in the serving layer of the AI stack, below application code and above the hardware, taking a trained model and running it efficiently on CPU or GPU. The repository has around 4,694 stars and was last pushed in September 2026, so it is actively maintained. Its official site is opennmt.net/CTranslate2.",
+            "heading": "What it is and where it sits in AI work"
+        },
+        {
+            "body": "CTranslate2 is used for inference, not training. It runs translation, summarization, text generation and encoder style tasks, and it supports selected Hugging Face Transformers models including BART, BERT, DistilBERT, BLOOM, Falcon, Gemma 3 and M2M100. Conversion is done with scripts such as ct2-transformers-converter, and the resulting model directory holds a binary model file, a JSON configuration and vocabulary files. It is strongest where latency, memory and throughput matter, because quantization can shrink models and accelerate execution with little to no accuracy loss, and because the runtime picks an efficient computation type for the machine it runs on.",
+            "heading": "What it is used for and where it is strongest"
+        },
+        {
+            "body": "The learning curve is moderate for a developer who already understands Transformer models and Python packaging. You need to know what a tokenizer does, because special tokens are not added implicitly for Transformers models, and you need some familiarity with model conversion and quantization concepts such as int8 and float16. Systems knowledge helps when tuning threads, devices and compute types. The official site offers practical guides, conversion examples and API references, including the Generator class, which is enough for a beginner to convert and run a first model, though the material assumes comfort with command line tools and Python.",
+            "heading": "How hard it is to learn and what you need first"
+        },
+        {
+            "body": "CTranslate2 lives inside the OpenNMT ecosystem and integrates with Hugging Face Transformers through its converter and tokenizer examples. It supports models from PyTorch and TensorFlow style frameworks, and its Python module exposes a conversion API, a contains_model check and runtime helpers such as get_supported_compute_types. Documentation covers conversion, quantization, supported models and the Python API, and the project is developed in the open on GitHub under OpenNMT/CTranslate2. The site does not describe a large third party plugin market, so the practical ecosystem is the model hubs and the OpenNMT tooling around it.",
+            "heading": "Ecosystem and community"
+        },
+        {
+            "body": "CTranslate2 is built primarily for production performance rather than quick experimentation. Conversion is a deliberate step, and the runtime offers control over device, compute type, thread count, batch queueing and flash attention, which is what you want when serving at scale. That control costs some convenience, because you must convert models before use and manage version compatibility. It can still be used for prototyping, since conversion commands are short and the Python API is direct, but its design center is efficient execution and memory control, not interactive exploration.",
+            "heading": "Prototyping speed against production performance"
+        },
+        {
+            "body": "CTranslate2 is a current, maintained choice rather than a legacy one, with an active repository and a documented release history. It is used in translation and serving work where OpenNMT and Hugging Face models need to run efficiently, and its MIT licence makes it easy to adopt commercially. For someone choosing what to learn, it is a useful specialization in inference optimization and model serving, though the official material does not name specific companies or quantify adoption, so claims about industry wide use should be treated carefully.",
+            "heading": "Industry adoption and careers"
+        },
+        {
+            "body": "CTranslate2 is typically used with Python for conversion and serving, and with C++ at its core. It works alongside PyTorch and TensorFlow, which hold the original trained weights, and alongside Hugging Face Transformers, which supplies models and tokenizers. The common polyglot pattern is to train or fine tune in Python, convert to the CTranslate2 binary format, then serve from Python or C++ on CPU or GPU. It does not replace training frameworks, it complements them at the inference layer.",
+            "heading": "How it fits beside the others"
+        },
+        {
+            "body": "CTranslate2 only implements selected model classes, for example BertModel and DistilBertModel, so task specific layers must still run in PyTorch. AWQ quantization currently supports only GEMM and GEMV kernels. Backward compatibility is strong, but forward compatibility is not guaranteed, so an older runtime may fail on a newer converted model. Converted models are portable across operating systems and CPU architectures only when endianness matches. The official material does not state benchmark numbers, supported hardware beyond the noted NVIDIA compute capabilities, or a roadmap, so those questions remain open.",
+            "heading": "Limits and open questions"
+        }
+    ],
+    "siblings": [
+        {
+            "kind": "framework",
+            "name": "ai",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/4c80ad91/"
+        },
+        {
+            "kind": "framework",
+            "name": "autogen",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/60f558b0/"
+        },
+        {
+            "kind": "framework",
+            "name": "crewAI",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/52f2d4fc/"
+        },
+        {
+            "kind": "framework",
+            "name": "haystack",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/244d606e/"
+        },
+        {
+            "kind": "framework",
+            "name": "jax",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/1722316f/"
+        },
+        {
+            "kind": "framework",
+            "name": "keras",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/079f2091/"
+        },
+        {
+            "kind": "framework",
+            "name": "langchain",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/10376bfa/"
+        },
+        {
+            "kind": "framework",
+            "name": "litellm",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/b9fc5220/"
+        },
+        {
+            "kind": "framework",
+            "name": "llama_index",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/07b3602c/"
+        },
+        {
+            "kind": "framework",
+            "name": "pydantic-ai",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/a6a0d2bd/"
+        },
+        {
+            "kind": "framework",
+            "name": "pytorch",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/c4d0a8c3/"
+        },
+        {
+            "kind": "framework",
+            "name": "semantic-kernel",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/7a5bc5c6/"
+        },
+        {
+            "kind": "framework",
+            "name": "tensorflow",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/367fc8ea/"
+        },
+        {
+            "kind": "framework",
+            "name": "unsloth",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/9aab6db8/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "llama.cpp",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/32458451/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "llamafile",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/8f2f922d/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "lmdeploy",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/e24aae0d/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "mlc-llm",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/bcce36c4/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "ollama",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/8e9c04c4/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "onnxruntime",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/7ab24352/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "sglang",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/711194f2/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "TensorRT-LLM",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/6e41175d/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "vllm",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/44ebb5e4/"
+        },
+        {
+            "kind": "language",
+            "name": "C++",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/b393c4f6/"
+        },
+        {
+            "kind": "language",
+            "name": "Go",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/a218afb2/"
+        },
+        {
+            "kind": "language",
+            "name": "Julia",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/3719f5ac/"
+        },
+        {
+            "kind": "language",
+            "name": "Mojo",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/b5a22ab0/"
+        },
+        {
+            "kind": "language",
+            "name": "Python",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/7aa3e6c4/"
+        },
+        {
+            "kind": "language",
+            "name": "TypeScript",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/8d5b4f9f/"
+        }
+    ],
+    "generated": "2026-10-03",
+    "site_pages": [
+        {
+            "url": "https://opennmt.net/CTranslate2/guides/transformers.html",
+            "date": ""
+        },
+        {
+            "url": "https://opennmt.net/CTranslate2/quantization.html",
+            "date": ""
+        },
+        {
+            "url": "https://opennmt.net/CTranslate2/conversion.html",
+            "date": ""
+        },
+        {
+            "url": "https://opennmt.net/CTranslate2/python/ctranslate2.Generator.html",
+            "date": ""
+        },
+        {
+            "url": "https://opennmt.net/OpenNMT-tf/package/opennmt.models.Model.html",
+            "date": ""
+        },
+        {
+            "url": "https://opennmt.net/CTranslate2/guides/fairseq.html",
+            "date": ""
+        },
+        {
+            "url": "https://opennmt.net/CTranslate2/generation.html",
+            "date": ""
+        },
+        {
+            "url": "https://opennmt.net/CTranslate2/python/ctranslate2.Translator.html",
+            "date": ""
+        },
+        {
+            "url": "https://opennmt.net/OpenNMT-tf/model.html",
+            "date": ""
+        },
+        {
+            "url": "https://opennmt.net/CTranslate2/python/ctranslate2.Encoder.html",
+            "date": ""
+        },
+        {
+            "url": "https://opennmt.net/CTranslate2/python/ctranslate2.models.Whisper.html",
+            "date": ""
+        },
+        {
+            "url": "https://opennmt.net/OpenNMT-py/examples/wiki_103/LanguageModelGeneration.html",
+            "date": ""
+        },
+        {
+            "url": "https://opennmt.net/CTranslate2/decoding.html",
+            "date": ""
+        },
+        {
+            "url": "https://opennmt.net/CTranslate2/parallel.html",
+            "date": ""
+        },
+        {
+            "url": "https://opennmt.net/CTranslate2/quickstart.html",
+            "date": ""
+        },
+        {
+            "url": "https://opennmt.net/CTranslate2/translation.html",
+            "date": ""
+        },
+        {
+            "url": "https://opennmt.net/FAQ/",
+            "date": ""
+        }
+    ],
+    "source_url": "https://opennmt.net/CTranslate2/",
+    "parent_name": "Inference Engines",
+    "parent_path": "/ai-ecosystem/technology-and-core-infrastructure/775e8c0a/",
+    "site_domain": "opennmt.net",
+    "subject_key": "engine:OpenNMT/CTranslate2",
+    "subject_kind": "inference engine",
+    "source_read_on": "2026-10-02",
+    "site_pages_read": 60,
+    "refresh_every_days": 30
+}

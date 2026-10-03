@@ -4,7 +4,7 @@
     "slug": "res-quant-compute",
     "shape": "art-topic",
     "title": "Large-Scale Compute on Institutional Data",
-    "answer": "Large-scale compute on institutional data covers the systems and practices used to run heavy analytical and machine learning workloads over datasets that an organization holds under its own rules, such as university research archives, hospital records, government registers, and corporate transaction logs. The work sits in quantitative analysis and reproducible work because the results must be traceable, repeatable, and defensible, not just fast. It includes data preparation, model training, simulation, and statistical inference at sizes that exceed a single laptop or a single server. The scope also covers the boundary between the compute environment and the data governance regime that controls access.",
+    "answer": "Large-scale compute on institutional data covers the practice of running heavy analytical workloads, such as model training, simulation, and statistical estimation, against datasets that an organisation holds under its own control rather than against public or scraped sources. The data is typically licensed, proprietary, or sensitive, which means the compute cannot simply be rented from a public cloud without contractual and technical safeguards. The scope spans the pipeline from data access and storage through scheduling and execution to the capture of results and their provenance. It sits at the meeting point of quantitative analysis, research reproducibility, and research computing infrastructure.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-10-03T09:40:31-05",
+    "built_at": "2026-10-03T12:41:36-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Researcher",
@@ -28,23 +28,23 @@
     "page_uid": "cc9bb16c",
     "sections": [
         {
-            "body": "Large-scale compute on institutional data covers the systems and practices used to run heavy analytical and machine learning workloads over datasets that an organization holds under its own rules, such as university research archives, hospital records, government registers, and corporate transaction logs. The work sits in quantitative analysis and reproducible work because the results must be traceable, repeatable, and defensible, not just fast. It includes data preparation, model training, simulation, and statistical inference at sizes that exceed a single laptop or a single server. The scope also covers the boundary between the compute environment and the data governance regime that controls access.",
+            "body": "Large-scale compute on institutional data covers the practice of running heavy analytical workloads, such as model training, simulation, and statistical estimation, against datasets that an organisation holds under its own control rather than against public or scraped sources. The data is typically licensed, proprietary, or sensitive, which means the compute cannot simply be rented from a public cloud without contractual and technical safeguards. The scope spans the pipeline from data access and storage through scheduling and execution to the capture of results and their provenance. It sits at the meeting point of quantitative analysis, research reproducibility, and research computing infrastructure.",
             "heading": "Scope"
         },
         {
-            "body": "The compute usually runs on a mix of on-premises high performance computing clusters, private cloud regions, and secure enclaves, with GPUs or specialized accelerators for model training and large matrix operations. Job schedulers such as Slurm and container orchestrators such as Kubernetes manage queues, quotas, and isolation across many nodes. Storage layers include parallel file systems, object stores, and tiered caches, because institutional datasets are often too large to copy freely. Networking, identity, and secrets management are part of the platform, since a fast cluster without controlled access is not usable for regulated data.",
+            "body": "The work runs on clusters of CPUs and GPUs, often managed by a scheduler such as Slurm, with shared storage for datasets and scratch space for intermediate results. Institutional data usually stays inside a controlled network boundary, so compute is placed in an on-premises data centre, a private cloud, or a governed enclave rather than a general-purpose public service. Container images and environment files pin the software stack so that a run can be repeated months later. Access is mediated by identity and role, and jobs are queued rather than run interactively when the workload is large.",
             "heading": "What it runs on"
         },
         {
-            "body": "Teams typically bring compute to the data rather than moving sensitive records to arbitrary machines, using container images, environment files, and workflow managers to pin software versions. A run is described as a directed set of steps, with inputs, parameters, code revisions, and outputs recorded so another analyst can repeat it. Common tools include Python and R for analysis, SQL for extraction, Git for version control, and workflow engines such as Nextflow, Snakemake, or Airflow for orchestration. Checkpointing, logging, and validation steps are built in because long jobs on shared clusters can fail or be preempted. The result is a pipeline that can be audited, rerun, and compared across data releases.",
+            "body": "Practitioners begin by profiling the data and the computation to decide what must be parallelised and what can be batched. They write jobs as scripts or workflow definitions, submit them to the scheduler, and track runs through logs, metrics, and versioned configuration. Intermediate artefacts are written to durable storage so that a failed run can resume rather than restart. Results are tied back to the exact code commit, data snapshot, and parameter set that produced them, which is what makes the analysis reproducible. Review and handover depend on those records being readable by someone who did not run the job.",
             "heading": "How the work is done"
         },
         {
-            "body": "Rights and risk start with the data use agreement, ethics approval, and institutional policy that define who may access which records and for what purpose. Provenance records link every output to the exact data version, code commit, container digest, and compute environment that produced it. Access controls, encryption, audit logs, and de-identification or aggregation methods reduce the chance of re-identification or unauthorized disclosure. Risk also includes model leakage, where a trained model memorizes sensitive values, and cost overruns, where large jobs consume shared allocations without clear return. Governance practice therefore treats compute as part of the data protection boundary, not as a separate technical concern.",
+            "body": "Institutional data carries obligations that follow it into every compute environment, including consent terms, data protection rules, and contractual limits on where processing may occur. Provenance records must show which dataset version was used, who authorised access, and what transformations were applied. Outputs derived from sensitive inputs may themselves be restricted, so release decisions are made deliberately rather than by default. Audit trails, retention schedules, and access reviews are part of normal operation, and the site links to original papers rather than to a search tool when citing the underlying research.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The direction of travel is toward federated and confidential computing, where analysis runs across institutions without centralizing raw records. Trusted execution environments, secure multi-party computation, and homomorphic encryption are moving from research prototypes into limited production for specific workloads. Reproducibility standards are converging on compute capsules, signed provenance graphs, and persistent identifiers for datasets and environments. Energy use and allocation fairness are becoming first-class concerns as clusters grow and demand outpaces supply. The likely result is a tighter coupling of quantitative analysis, platform engineering, and data governance in the same workflow.",
+            "body": "The direction of travel is toward finer-grained control over where computation happens, with confidential computing, federated approaches, and policy-aware schedulers allowing analysis to move closer to the data instead of the reverse. Reproducibility tooling is becoming more standard, so that a published result can be re-executed against the same governed inputs under the same conditions. Energy use and cost per run are increasingly reported alongside accuracy, because large workloads are judged on more than their output. Institutions are also building shared internal platforms so that teams do not each rebuild the same access, storage, and scheduling layers.",
             "heading": "Where it is going"
         }
     ],

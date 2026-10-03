@@ -4,7 +4,7 @@
     "slug": "med-telemedicine-triage",
     "shape": "art-topic",
     "title": "Symptom Triage and Routing",
-    "answer": "Symptom triage and routing covers the front door of care: the questions a patient answers about symptoms, the urgency level the system assigns, and the destination it recommends, such as emergency care, urgent care, a telehealth visit, a primary care appointment, or self care at home. It includes nurse triage support, patient portals, call centers, and mobile intake tools, and it overlaps with acuity scoring, red flag detection, and scheduling. The site tracks 1000 medical AI models, and triage and routing systems are one part of that larger medical AI map. The work is not diagnosis, though the boundary can blur when a system suggests a likely condition.",
+    "answer": "Symptom triage and routing covers the software that takes a patient's described complaints, asks follow up questions, and decides how urgent the problem is and who should see it. It sits between the patient and the clinician, handling the first contact that used to happen at a front desk or phone line. In telemedicine it decides whether a case becomes a video visit, a nurse call, an emergency referral, or self care advice. The scope runs from simple rule based questionnaires to models that read free text and voice.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-10-03T09:40:31-05",
+    "built_at": "2026-10-03T12:41:36-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Physician",
@@ -28,23 +28,23 @@
     "page_uid": "aa60266a",
     "sections": [
         {
-            "body": "Symptom triage and routing covers the front door of care: the questions a patient answers about symptoms, the urgency level the system assigns, and the destination it recommends, such as emergency care, urgent care, a telehealth visit, a primary care appointment, or self care at home. It includes nurse triage support, patient portals, call centers, and mobile intake tools, and it overlaps with acuity scoring, red flag detection, and scheduling. The site tracks 1000 medical AI models, and triage and routing systems are one part of that larger medical AI map. The work is not diagnosis, though the boundary can blur when a system suggests a likely condition.",
+            "body": "Symptom triage and routing covers the software that takes a patient's described complaints, asks follow up questions, and decides how urgent the problem is and who should see it. It sits between the patient and the clinician, handling the first contact that used to happen at a front desk or phone line. In telemedicine it decides whether a case becomes a video visit, a nurse call, an emergency referral, or self care advice. The scope runs from simple rule based questionnaires to models that read free text and voice.",
             "heading": "Scope"
         },
         {
-            "body": "These systems run on cloud services, telehealth platforms, electronic health records, patient portals, and call center software, with mobile apps as the common patient facing entry point. They depend on secure APIs, identity checks, and integration with scheduling, messaging, and clinical documentation. Many use FHIR and terminology standards such as SNOMED CT and LOINC to move symptom data and route decisions between systems. Some are standalone symptom checkers, while others are embedded in an existing virtual care workflow. Reliability depends on uptime, latency, and fallback paths when the model or network is unavailable.",
+            "body": "These systems run on ordinary cloud infrastructure, usually a web or app front end talking to a triage engine and a clinical rules database. Many products combine a language model for understanding the patient's words with a deterministic protocol such as Schmitt Thompson or Manchester triage behind it, so the final urgency level comes from fixed rules rather than free generation. Integration with electronic health records, scheduling systems, and call centre software is where most deployment effort goes. Voice input adds speech recognition, and some deployments run on premises where data residency rules demand it.",
             "heading": "What it runs on"
         },
         {
-            "body": "The work is done with structured questionnaires, adaptive question trees, rule based protocols, statistical models, and increasingly large language models that read free text descriptions of symptoms. A typical system asks a sequence of questions, updates a differential or urgency score, checks for red flags, and then routes the patient to a care setting or a human clinician. Many products combine a deterministic rules engine for safety with a machine learning model for language understanding and personalization. Clinician review, override, and escalation paths are part of the method, not an afterthought. Validation usually includes retrospective chart review, simulated patients, and prospective studies in the intended population.",
+            "body": "The work starts with structured intake: age, sex, duration, severity, and a short description of the problem. The system extracts symptoms and red flags, then walks a decision tree or scores the case against a protocol to assign an urgency band and a destination. Clinicians write and review the protocols, and model outputs are usually constrained to the options the protocol allows. Evaluation looks at under triage of serious cases, over triage that wastes capacity, and agreement with nurse led telephone triage as a reference. Ongoing monitoring checks for drift and for complaints that were routed too low.",
             "heading": "How the work is done"
         },
         {
-            "body": "Governance covers regulatory status, clinical safety, privacy, bias, transparency, and liability. In the United States, a triage tool may be regulated as a medical device or as clinical decision support, depending on its claims and how a clinician uses it, and privacy rules such as HIPAA and GDPR apply to the symptom data it handles. The site tracks 215 compliance and regulation pages and six active product liability and wrongful death lawsuits against AI companies, which shows why audit logs, version control, and clear provenance of training data matter. State licensure, informed consent, and malpractice coverage also shape where a routed patient can be seen. Programs typically document who reviewed the model, what data trained it, how it performs across age, language, and disease groups, and how a patient or clinician can challenge a routing decision.",
+            "body": "Triage sits close to diagnosis, so regulators treat it as a medical device in many markets, and this site tracks 229 compliance and regulation pages covering that ground. The 6 active product liability and wrongful death lawsuits against AI companies show what happens when a routing decision is disputed after harm. Provenance matters: which protocol version ran, what the patient said, what the model returned, and which clinician reviewed it all need to be logged and retained. Liability usually rests with the deploying health system and the supervising clinician, not the model vendor alone, and consent and privacy rules apply to every symptom description collected.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The direction of travel is toward tighter integration with electronic health records, remote monitoring, and continuous care, so that triage is not a one time questionnaire but part of an ongoing record. Expect more multimodal input, including text, voice, images, and data from wearables, and more multilingual support for patients who do not speak the dominant language of the health system. Regulation and reimbursement will shape which tools reach routine practice, and prospective validation will matter more than a good demo. The hardest open problems are equity, calibration across different populations, safe escalation when the model is uncertain, and keeping a human clinician accountable for the final routing decision. The site's 732 AI tools and 686 glossary terms reflect how quickly this area is expanding, but the clinical bar remains evidence, oversight, and reproducibility.",
+            "body": "Expect tighter validation requirements, clearer labelling of AI triage as decision support rather than autonomous advice, and more audit trails built into products from the start. Multimodal intake using voice and images will expand what can be assessed before a human joins, which raises the bar for red flag detection. Health systems will likely keep a nurse or clinician in the loop for anything above the lowest urgency band for some time. The open questions are how to measure safety across diverse populations and how to route fairly when capacity is scarce.",
             "heading": "Where it is going"
         }
     ],

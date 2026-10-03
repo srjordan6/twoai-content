@@ -1,0 +1,306 @@
+{
+    "tax": "lang-profile",
+    "uid": "7ab24352",
+    "name": "onnxruntime",
+    "slug": "onnxruntime",
+    "facts": {
+        "repo": "microsoft/onnxruntime",
+        "stars": 21995,
+        "licence": "MIT",
+        "archived": false,
+        "language": "C++",
+        "repo_url": "https://github.com/microsoft/onnxruntime",
+        "last_push": "2026-10-03T07:09:53Z",
+        "description": "ONNX Runtime: cross-platform, high performance ML inferencing and training accelerator",
+        "official_site": "https://onnxruntime.ai"
+    },
+    "model": "ollama:deepseek-v4.1-flash",
+    "shape": "lang-profile",
+    "title": "ONNX Runtime: Cross-Platform Inference and Training Engine for AI Models",
+    "answer": "ONNX Runtime is Microsoft's open source engine for running and accelerating machine learning models, written in C++ under the MIT licence. It sits at the inference and serving layer of the AI stack, executing models in the ONNX format across CPUs, GPUs and NPUs on Windows, Linux, Android, iOS and the web. The one thing to know before adopting it is that its performance comes from execution providers, hardware-specific backends you select and configure per target, so the same model can behave very differently across devices.",
+    "built_at": "2026-10-03T11:31:14-05:00",
+    "category": "technology-and-core-infrastructure",
+    "hub_name": "Programming Languages and Frameworks",
+    "page_uid": "7ab24352",
+    "sections": [
+        {
+            "body": "ONNX Runtime is made by Microsoft and lives in the microsoft/onnxruntime repository on GitHub, where it has gathered roughly twenty two thousand stars and is still actively developed, with the last push recorded in October 2026. It is written primarily in C++ and released under the MIT licence, which makes it permissive for commercial use. It is not a model authoring framework and not a training-first library in the way PyTorch is. It is a runtime, the layer that takes a trained model and executes it efficiently on whatever hardware you have. The official site describes it as a cross-platform, high performance machine learning inferencing and training accelerator. In the AI stack it sits below your application code and above the operating system and silicon, translating a portable model file into optimised kernels for a specific processor. It appeared in the late 2010s alongside the ONNX model interchange format, and the ORT format documentation notes that ORT format models have been supported since version 1.5.2, which places the project's early releases in that period. Its central role is portability with acceleration: one model, many targets, without rewriting the model for each one.",
+            "heading": "What it is and where it sits in AI work"
+        },
+        {
+            "body": "The concrete jobs ONNX Runtime does are inference and serving, with a training accelerator as a secondary role. On the inference side it runs large language models, vision models, speech and classical machine learning, and the blog index reports acceleration of over 130,000 open source models from Hugging Face. It is strongest where a model must run on many kinds of hardware or on constrained devices. The Goodnotes case is a clear example: an in-house LSTM scribble detection model shipped to Windows, Web and Android through a Progressive Web Application, running on-device with no internet connection, chosen because integration was simple, ONNX is portable, execution providers give hardware-specific acceleration and web technologies are supported. It is also strong for generative AI serving. The Phi-2 post reports ONNX Runtime with float16 averaging 6.6 times faster than torch.compile and up to 18.55 times faster, and int4 quantization up to 20.48 times faster than PyTorch, with the caveat that int4 typically performs best at batch size one. Browser and mobile work is another strength, with WebGPU and WebAssembly reported at 20 times faster than multi-threaded and 550 times faster than single-threaded CPU for background removal. Training is supported through the ORTModule API, part of the PyTorch ecosystem via the torch-ort package, and is composable with DeepSpeed and Megatron. It is the best choice when you need one deployment path across heterogeneous hardware, or when you need to squeeze latency and memory on device.",
+            "heading": "What it is used for and where it is strongest"
+        },
+        {
+            "body": "The learning curve is moderate and depends heavily on which part you touch. Running a model is approachable: you load an ONNX file into an inference session and call it, and the Goodnotes team described the prototype as demonstrating simple integration. The harder material is performance work. Choosing and configuring execution providers, quantizing to int8, bf16 or int4, converting models to the reduced ORT format for mobile and web, and understanding when to use Fixed versus Runtime optimisation styles all require some systems knowledge, including familiarity with model graphs, operators, memory layout and the target hardware. The Vitis AI documentation shows the depth involved: models are compiled into a micro-coded executable when the session starts, compilation can take several minutes, and the result is cached under a directory keyed by a cache key. Prerequisites are therefore Python for the tooling, comfort with at least one model authoring framework such as PyTorch, and enough hardware awareness to know what an NPU or GPU execution provider implies. The official site offers substantial documentation, including execution provider pages, model optimisation guides and a steady blog, but it is written for practitioners rather than absolute beginners, and the site does not present a structured introductory course.",
+            "heading": "How hard it is to learn and what you need first"
+        },
+        {
+            "body": "The ecosystem around ONNX Runtime is broad and mostly documented on the official site. Execution providers are the core integration surface, and the pages read cover AMD Vitis AI for Ryzen AI, AMD Adaptable SoCs and Alveo cards, alongside WSAM for CPU, WebNN and WebGPU for browser acceleration, and NNAPI and CoreML for mobile. Quantization tooling includes AMD Quark, the Vitis AI Quantizer and Olive, with Olive described as a state-of-the-art model optimisation toolkit for ONNX Runtime and integrated with the Vitis AI Quantizer as a plugin. Olive also offers a shared cache backed by Azure Storage so teams can store and reuse intermediate models and avoid redundant computation. Model support spans Hugging Face, with over 130,000 models accelerated, and specific work on Phi-2, Mistral, CodeLlama, Orca-2, LLaMA-2, DeepSeek, SD Turbo and SDXL Turbo. Training integrates with the PyTorch ecosystem through torch-ort and the Azure Container for PyTorch. Documentation is extensive and versioned, and the blog is active. The repository itself is a large open source project with a substantial star count, so community support exists through the usual GitHub channels, though the site does not quantify forum or chat activity.",
+            "heading": "Ecosystem and community"
+        },
+        {
+            "body": "ONNX Runtime serves both ends but leans toward production. For quick experiments, the path is short: export or obtain an ONNX model, open a session, run it, and the Goodnotes account supports the claim that prototyping is straightforward. For production, the project is explicitly built for speed and memory control. Quantization to int8, bf16, float16 and int4 reduces model size and speeds computation, which the Olive post frames as useful for devices with limited resources such as phones and embedded systems. The ORT format exists specifically for size-constrained environments like mobile and web, and reduced size builds trim the runtime itself. Execution providers let you target a specific accelerator, and the Vitis AI path compiles the graph ahead of first inference and caches the executable. The cost of this control is configuration complexity and some platform-specific behaviour. Optimisation styles differ by target, with Runtime style advised for NNAPI and CoreML and Fixed style otherwise, and the documentation warns that supported arguments and defaults differ slightly across versions. In short, you can start simply, but getting the last measure of performance means engaging with the provider, quantization and format details.",
+            "heading": "Prototyping speed against production performance"
+        },
+        {
+            "body": "Adoption evidence on the site is concrete rather than promotional. Goodnotes, a consumer notetaking product, shipped its first AI feature across Windows, Web and Android on ONNX Runtime, and the blog index also names NimbleEdge for mobile personalisation and Arm KleidiAI for Windows and Android acceleration. Microsoft itself develops the runtime and uses it in its own model work, including Phi-2. The breadth of execution providers from AMD, Arm, NVIDIA through TensorRT and browser standards like WebGPU and WebNN indicates that hardware vendors treat it as a supported deployment target, which is a reasonable signal of current relevance rather than legacy status. For someone choosing what to learn, this matters: ONNX Runtime is a live standard for cross-platform inference, and skills in execution providers, quantization and model conversion map directly onto deployment and MLOps roles. The site does not publish adoption statistics, salary data or a list of enterprise customers, so claims about market share beyond these named cases would not be supported by the material read.",
+            "heading": "Industry adoption and careers"
+        },
+        {
+            "body": "ONNX Runtime is typically used with Python for tooling and conversion, C++ at its core, and JavaScript or TypeScript in the browser through ONNX Runtime Web. It sits beside, not instead of, authoring frameworks. PyTorch and TensorFlow produce models, ONNX provides the interchange format, and ONNX Runtime executes them, which is why the ORT training work is delivered as part of the PyTorch ecosystem through torch-ort. The polyglot pattern is common: train in Python with PyTorch, export to ONNX, optimise with Olive or a vendor quantizer, convert to ORT format for constrained targets, then serve from a C++ service, a mobile app or a web page. Comparisons on the site are made against PyTorch, torch.compile and Llama.cpp, positioning ONNX Runtime as the deployment counterpart to those training and local inference tools. It also composes with acceleration libraries such as DeepSpeed and Megatron for training, and with hardware stacks like TensorRT, Vitis AI and Arm KleidiAI for inference.",
+            "heading": "How it fits beside the others"
+        },
+        {
+            "body": "The material is candid about several weaknesses. Quantization to int4 performs best at batch size one because of a special GemV kernel, which limits its usefulness for high-throughput batched serving. The Vitis AI provider compiles models at session start and that compilation may take a few minutes before the first inference, a real cost for cold starts, though the executable is cached afterwards. Optimisation arguments and defaults vary across versions, and the ORT format conversion requires matching the Python package version to the repository branch, which is easy to get wrong. The site does not say how ONNX Runtime compares to every alternative, does not publish a full support matrix for all execution providers, and does not quantify community size or enterprise adoption. It also does not address licensing or support terms for commercial deployment beyond the MIT licence on the repository. Whether a given model will run on a given NPU depends on operator coverage that the pages read do not enumerate, so that question remains open and should be tested per target.",
+            "heading": "Limits and open questions"
+        }
+    ],
+    "siblings": [
+        {
+            "kind": "framework",
+            "name": "ai",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/4c80ad91/"
+        },
+        {
+            "kind": "framework",
+            "name": "autogen",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/60f558b0/"
+        },
+        {
+            "kind": "framework",
+            "name": "crewAI",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/52f2d4fc/"
+        },
+        {
+            "kind": "framework",
+            "name": "haystack",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/244d606e/"
+        },
+        {
+            "kind": "framework",
+            "name": "jax",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/1722316f/"
+        },
+        {
+            "kind": "framework",
+            "name": "keras",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/079f2091/"
+        },
+        {
+            "kind": "framework",
+            "name": "langchain",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/10376bfa/"
+        },
+        {
+            "kind": "framework",
+            "name": "litellm",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/b9fc5220/"
+        },
+        {
+            "kind": "framework",
+            "name": "llama_index",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/07b3602c/"
+        },
+        {
+            "kind": "framework",
+            "name": "pydantic-ai",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/a6a0d2bd/"
+        },
+        {
+            "kind": "framework",
+            "name": "pytorch",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/c4d0a8c3/"
+        },
+        {
+            "kind": "framework",
+            "name": "semantic-kernel",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/7a5bc5c6/"
+        },
+        {
+            "kind": "framework",
+            "name": "tensorflow",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/367fc8ea/"
+        },
+        {
+            "kind": "framework",
+            "name": "unsloth",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/9aab6db8/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "CTranslate2",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/9436dfa2/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "llama.cpp",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/32458451/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "llamafile",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/8f2f922d/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "lmdeploy",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/e24aae0d/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "mlc-llm",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/bcce36c4/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "ollama",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/8e9c04c4/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "sglang",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/711194f2/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "TensorRT-LLM",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/6e41175d/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "vllm",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/44ebb5e4/"
+        },
+        {
+            "kind": "language",
+            "name": "C++",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/b393c4f6/"
+        },
+        {
+            "kind": "language",
+            "name": "Go",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/a218afb2/"
+        },
+        {
+            "kind": "language",
+            "name": "Julia",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/3719f5ac/"
+        },
+        {
+            "kind": "language",
+            "name": "Mojo",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/b5a22ab0/"
+        },
+        {
+            "kind": "language",
+            "name": "Python",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/7aa3e6c4/"
+        },
+        {
+            "kind": "language",
+            "name": "TypeScript",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/8d5b4f9f/"
+        }
+    ],
+    "generated": "2026-10-03",
+    "site_pages": [
+        {
+            "url": "https://onnxruntime.ai/blogs",
+            "date": ""
+        },
+        {
+            "url": "https://onnxruntime.ai/docs/execution-providers/Vitis-AI-ExecutionProvider.html",
+            "date": ""
+        },
+        {
+            "url": "https://onnxruntime.ai/blogs/goodnotes-scribble-to-erase",
+            "date": ""
+        },
+        {
+            "url": "https://onnxruntime.ai/docs/performance/model-optimizations/ort-format-models.html",
+            "date": ""
+        },
+        {
+            "url": "https://onnxruntime.ai/blogs/accelerating-phi-2",
+            "date": ""
+        },
+        {
+            "url": "https://onnxruntime.ai/blogs/olive-quant-ft",
+            "date": ""
+        },
+        {
+            "url": "https://onnxruntime.ai/blogs/olive-shared-cache",
+            "date": ""
+        },
+        {
+            "url": "https://onnxruntime.ai/blogs/arm-microsoft-kleidiai",
+            "date": ""
+        },
+        {
+            "url": "https://onnxruntime.ai/blogs/olive-cli",
+            "date": ""
+        },
+        {
+            "url": "https://onnxruntime.ai/docs/tutorials/mobile/helpers/",
+            "date": ""
+        },
+        {
+            "url": "https://onnxruntime.ai/blogs/ort-1-17-release",
+            "date": ""
+        },
+        {
+            "url": "https://onnxruntime.ai/docs/get-started/with-python",
+            "date": ""
+        },
+        {
+            "url": "https://onnxruntime.ai/docs/get-started/with-python.html",
+            "date": ""
+        },
+        {
+            "url": "https://onnxruntime.ai/blogs/deepseek-r1-on-device",
+            "date": ""
+        },
+        {
+            "url": "https://onnxruntime.ai/docs/performance/model-optimizations/ort-format-model-runtime-optimization.html",
+            "date": ""
+        },
+        {
+            "url": "https://onnxruntime.ai/blogs/multilora",
+            "date": ""
+        },
+        {
+            "url": "https://onnxruntime.ai/docs/genai/tutorials/deepseek-python.html",
+            "date": ""
+        },
+        {
+            "url": "https://onnxruntime.ai/docs/genai/tutorials/finetune.html",
+            "date": ""
+        },
+        {
+            "url": "https://onnxruntime.ai/docs/genai/reference/config.html",
+            "date": ""
+        },
+        {
+            "url": "https://onnxruntime.ai/docs/genai/api/python.html",
+            "date": ""
+        },
+        {
+            "url": "https://onnxruntime.ai/training",
+            "date": ""
+        },
+        {
+            "url": "https://onnxruntime.ai/docs/genai/tutorials/phi3-python.html",
+            "date": ""
+        }
+    ],
+    "source_url": "https://onnxruntime.ai",
+    "parent_name": "Inference Engines",
+    "parent_path": "/ai-ecosystem/technology-and-core-infrastructure/775e8c0a/",
+    "site_domain": "onnxruntime.ai",
+    "subject_key": "engine:microsoft/onnxruntime",
+    "subject_kind": "inference engine",
+    "source_read_on": "2026-10-02",
+    "site_pages_read": 60,
+    "refresh_every_days": 30
+}

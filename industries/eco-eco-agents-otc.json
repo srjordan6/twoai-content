@@ -4,7 +4,7 @@
     "slug": "eco-agents-otc",
     "shape": "art-topic",
     "title": "Agent Negotiation in Over-the-Counter Markets",
-    "answer": "Agent negotiation in over the counter markets covers software agents that represent buyers, sellers, dealers, or clients in bilateral and voice or chat based trading of instruments not listed on exchanges, such as swaps, bonds, FX forwards, and structured notes. It sits within agent workflows in finance because the agent must quote, counterquote, check credit and inventory, and reach a tradeable agreement rather than simply route an order. The scope includes request for quote workflows, streaming prices, and multi dealer negotiation, and it overlaps with electronic trading, market making, and post trade processing. It does not cover exchange traded order books or retail brokerage apps except where they connect to over the counter liquidity.",
+    "answer": "Agent Negotiation in Over-the-Counter Markets covers software agents that quote, counter-quote and agree terms for instruments traded bilaterally rather than on an exchange. The scope includes request-for-quote workflows, streaming prices, inventory and hedging constraints, and the credit and collateral terms that sit alongside price. It sits inside Agent Workflows in Finance, where the unit of work is a negotiation between two parties rather than a single order sent to a matching engine. The instruments in view are bonds, swaps, repos, foreign exchange and other contracts whose terms are agreed privately.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-10-03T09:40:31-05",
+    "built_at": "2026-10-03T12:41:36-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Economist",
@@ -28,23 +28,23 @@
     "page_uid": "37cf86b0",
     "sections": [
         {
-            "body": "Agent negotiation in over the counter markets covers software agents that represent buyers, sellers, dealers, or clients in bilateral and voice or chat based trading of instruments not listed on exchanges, such as swaps, bonds, FX forwards, and structured notes. It sits within agent workflows in finance because the agent must quote, counterquote, check credit and inventory, and reach a tradeable agreement rather than simply route an order. The scope includes request for quote workflows, streaming prices, and multi dealer negotiation, and it overlaps with electronic trading, market making, and post trade processing. It does not cover exchange traded order books or retail brokerage apps except where they connect to over the counter liquidity.",
+            "body": "Agent Negotiation in Over-the-Counter Markets covers software agents that quote, counter-quote and agree terms for instruments traded bilaterally rather than on an exchange. The scope includes request-for-quote workflows, streaming prices, inventory and hedging constraints, and the credit and collateral terms that sit alongside price. It sits inside Agent Workflows in Finance, where the unit of work is a negotiation between two parties rather than a single order sent to a matching engine. The instruments in view are bonds, swaps, repos, foreign exchange and other contracts whose terms are agreed privately.",
             "heading": "Scope"
         },
         {
-            "body": "The agents run on trading desks and dealer platforms, connected to pricing engines, risk systems, order management systems, and chat or voice gateways. They need low latency market data, credit limits, inventory positions, and legal entity identifiers, plus audit logs that record every quote and message. Common building blocks include FIX and other messaging protocols, application programming interfaces to electronic venues, and natural language models for parsing chat or email negotiations. Because over the counter markets are bilateral, the infrastructure often spans multiple firms, so identity, permissions, and data sharing agreements matter as much as compute.",
+            "body": "These agents run on top of electronic trading venues, dealer platforms and internal pricing engines, with market data, reference data and counterparty records feeding the same loop. A typical stack pairs a quoting or pricing model with a policy layer that decides when to hold, improve or walk away, plus a messaging layer that speaks the venue's protocol. Latency budgets are looser than in listed markets because negotiation takes turns, so the harder constraint is consistency between the agent's quotes and the firm's live risk. Audit logging of every message and decision is part of the infrastructure, not an add-on.",
             "heading": "What it runs on"
         },
         {
-            "body": "A negotiation agent typically starts from a client request or a dealer quote, then uses a policy to propose price and size, respond to counteroffers, and decide when to accept, reject, or escalate to a human. The policy may combine game theoretic bargaining, reinforcement learning from historical trades, and rules that enforce credit, regulatory, and inventory constraints. Natural language models can read unstructured messages and draft replies, while a separate execution layer checks the final terms against limits before sending. Human traders often set guardrails, review exceptions, and handle relationship sensitive or complex trades.",
+            "body": "The work is usually framed as a sequential game: each side observes the other's quotes and responds under its own limits. Practitioners combine rule-based quoting with learned policies trained in simulation, then constrain the output with hard bounds on price, size and exposure. Evaluation leans on replaying historical request-for-quote sessions and on counterfactual tests against recorded counterparty behaviour. Because counterparties adapt, a policy that looks strong in backtest can degrade once it is live, so teams monitor for shifts in how others respond.",
             "heading": "How the work is done"
         },
         {
-            "body": "Firms need clear records of who authorized an agent, what data trained it, and which messages led to a trade, because over the counter negotiations can create binding obligations and disputes. Risk controls include pre trade credit checks, kill switches, message surveillance, and reconciliation with legal confirmations, and compliance teams map agent behavior to market conduct rules. Provenance covers the source of pricing data, the version of the model, and the chain of custody for chat and voice transcripts. The site tracks 219 compliance and regulation pages, a sign of how much attention these controls receive, though specific obligations depend on jurisdiction and instrument. This is a description of practice, not legal advice.",
+            "body": "Firms treat agent negotiation as a regulated activity, so conduct rules, best execution duties and market abuse controls apply to the messages an agent sends. Records must show who authorised a quote, what limits applied and why a trade was agreed, which puts pressure on explainability for learned policies. Counterparty onboarding, credit lines and collateral terms are checked before an agent can trade, and pre-trade risk checks sit in the path. The site tracks 229 compliance and regulation pages and 150 active AI lawsuits, a reminder that disputes over automated conduct are already being litigated.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "Expect more agents that negotiate across multiple dealers and asset classes, with humans moving to oversight of exceptions and relationship management. Standardization of negotiation protocols, audit trails, and model documentation will likely matter more than raw model capability, because over the counter markets reward trust and enforceable terms. Adoption may be fastest in liquid, electronic segments such as FX and rates, and slower in bespoke credit and structured products where terms are unique. The direction is toward hybrid desks where agents handle routine quotes and humans own complex, relationship driven, or disputed negotiations.",
+            "body": "Expect more negotiation to move from chat and voice into structured agent-to-agent protocols, with standard schemas for quotes, terms and settlement instructions. That shift raises the value of interoperability and of shared ways to prove what an agent did and under whose authority. Smaller dealers may gain access to liquidity that was previously relationship-bound, while venues and regulators push for common audit formats. The open questions are how to keep learned policies inside conduct rules and how liability is split when two agents agree on terms a human would have questioned.",
             "heading": "Where it is going"
         }
     ],

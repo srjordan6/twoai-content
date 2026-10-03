@@ -4,7 +4,7 @@
     "slug": "eco-credit-covenants",
     "shape": "art-topic",
     "title": "Covenant Extraction",
-    "answer": "Covenant extraction is the work of turning the terms of credit agreements, indentures, and loan documents into structured data that a credit team can query and monitor. It covers financial covenants such as leverage and interest coverage, incurrence tests, baskets, carve-outs, and reporting obligations. The output is usually a set of fields tied to the source clause, with the exact language and location preserved. It sits between legal document review and portfolio surveillance, and it feeds early warning systems and compliance checks.",
+    "answer": "Covenant extraction is the work of pulling the specific terms and conditions out of loan and bond documentation and turning them into structured data. In fixed income and credit risk it covers maintenance and incurrence covenants, baskets, carve-outs, definitions of EBITDA, leverage ratios, restricted payments, liens and change of control triggers. The output feeds covenant monitoring, compliance checks, credit models and portfolio surveillance rather than replacing the analyst who reads the document. It sits between legal document review and credit analytics, and the unit of work is usually one credit agreement or indenture at a time.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-10-03T09:40:31-05",
+    "built_at": "2026-10-03T12:41:36-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Economist",
@@ -28,23 +28,23 @@
     "page_uid": "d597cb6f",
     "sections": [
         {
-            "body": "Covenant extraction is the work of turning the terms of credit agreements, indentures, and loan documents into structured data that a credit team can query and monitor. It covers financial covenants such as leverage and interest coverage, incurrence tests, baskets, carve-outs, and reporting obligations. The output is usually a set of fields tied to the source clause, with the exact language and location preserved. It sits between legal document review and portfolio surveillance, and it feeds early warning systems and compliance checks.",
+            "body": "Covenant extraction is the work of pulling the specific terms and conditions out of loan and bond documentation and turning them into structured data. In fixed income and credit risk it covers maintenance and incurrence covenants, baskets, carve-outs, definitions of EBITDA, leverage ratios, restricted payments, liens and change of control triggers. The output feeds covenant monitoring, compliance checks, credit models and portfolio surveillance rather than replacing the analyst who reads the document. It sits between legal document review and credit analytics, and the unit of work is usually one credit agreement or indenture at a time.",
             "heading": "Scope"
         },
         {
-            "body": "The work runs on a document pipeline that ingests PDFs and other formats, often from a data room or a document management system. Optical character recognition and layout parsing handle scanned or complex files, and a store of extracted clauses and their metadata supports search and audit. Models may be hosted in the cloud or on premises, depending on data sensitivity, and the pipeline connects to credit monitoring and reporting tools. Version control and access controls are part of the infrastructure because the same agreement can be amended over time.",
+            "body": "The raw material is the document itself, typically a PDF or a scanned credit agreement, indenture or amendment, often hundreds of pages with cross-references and defined terms. Extraction runs on document parsing and layout tools, optical character recognition where scans are poor, and a store of the parsed text with section and page anchors so every extracted term can be traced back. Large language models handle the reading and classification, usually with a retrieval layer over the document and a schema that fixes the fields to be filled. Output lands in a database or spreadsheet that credit and portfolio teams already use, with the source clause kept alongside each value.",
             "heading": "What it runs on"
         },
         {
-            "body": "The typical method combines rule-based parsing for known templates with machine learning models for classification and extraction. An analyst or a legal reviewer validates the output, especially for unusual clauses or ambiguous language. The process often starts with identifying the document type and the relevant sections, then extracting defined terms and covenant mechanics. Results are linked back to the page and paragraph so that a reviewer can check the context. Continuous evaluation against a labeled set helps track precision and recall.",
+            "body": "The work starts with identifying the document type and the sections that matter, then locating each covenant and its definitions. Models extract the clause text, the threshold, the test date, the basket size and the exceptions, and a reviewer checks the result against the source. Because defined terms carry most of the meaning, the pipeline resolves references such as Consolidated EBITDA or Permitted Liens before a value is recorded. Quality is measured by field-level accuracy against a human-coded sample, and disagreements are fed back to improve prompts, schemas and parsing rules.",
             "heading": "How the work is done"
         },
         {
-            "body": "Rights and risk turn on the fact that credit agreements are contracts, and an extraction error can affect a lending decision or a compliance test. Provenance matters: each extracted value should carry a pointer to the source document, the version, and the model or rule that produced it. Access to the underlying documents is often restricted by confidentiality and licensing terms, so the pipeline must respect those limits. Audit trails and human sign-off are common controls, and the system should distinguish between a draft extraction and a verified one. This is not legal advice, and the final interpretation of a covenant remains with counsel.",
+            "body": "Covenant terms are contractual and can affect pricing, waivers and default decisions, so provenance matters: each extracted value should point to the exact clause and page it came from. Access to the underlying documents is usually restricted by licence and confidentiality, and extracted data may be shared only within the permitted scope. Errors can misstate leverage or headroom, so a named reviewer signs off before the data is used in reporting or monitoring. Audit trails, versioning of the document and of the extraction run, and a clear record of model and prompt changes are the usual controls.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The direction is toward more complete automation, with large language models handling longer contexts and more varied document layouts. Expect tighter integration with portfolio monitoring, where covenant headroom and compliance status update automatically as new financials arrive. Agentic workflows may draft summaries or flag potential breaches for human review, but the review step is likely to remain. Standardization of covenant data models could make it easier to compare terms across a portfolio. The field is also likely to see more attention to model explainability and to the provenance of extracted terms.",
+            "body": "Coverage is widening from a handful of standard covenant types to the full set of baskets, carve-outs and definitional chains that appear in real agreements. Expect tighter links between extracted terms and live monitoring, so a breach signal can be traced to the clause that produced it. Benchmarks and shared schemas are likely to standardise how covenant fields are named and compared across deals. The open questions are how much review remains necessary and how to keep extraction accurate as documents and market practice change.",
             "heading": "Where it is going"
         }
     ],

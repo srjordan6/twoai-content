@@ -5,7 +5,7 @@
     "slug": "semantic-kernel",
     "facts": {
         "repo": "microsoft/semantic-kernel",
-        "stars": 28623,
+        "stars": 28620,
         "licence": "MIT",
         "archived": false,
         "language": "C#",
@@ -16,43 +16,43 @@
     },
     "model": "ollama:deepseek-v4.1-flash",
     "shape": "lang-profile",
-    "title": "Semantic Kernel: Microsoft's SDK for Building LLM-Powered Apps",
-    "answer": "Semantic Kernel is an open source SDK from Microsoft that lets developers integrate large language models into applications using C#, Python, or Java. It sits between your code and AI services such as OpenAI, Azure OpenAI, Google, Mistral, Ollama, and Hugging Face, handling chat completion, function calling, plugins, and vector store connectors. The one thing to know before adopting it: the core is stable, but many connectors and vector store features are still marked experimental or preview, so production use requires tracking version changes carefully.",
-    "built_at": "2026-10-02T15:32:39-05:00",
+    "title": "Semantic Kernel: Microsoft's SDK for Building LLM-Powered AI Applications",
+    "answer": "Semantic Kernel is Microsoft's open source SDK, written in C# with an MIT licence, for integrating large language models into applications. It sits between your code and AI services such as OpenAI, Azure OpenAI, Google, Mistral, Ollama and Hugging Face, handling chat completion, function calling, plugins and vector store connectors. The one thing to know before adopting it is that several connectors, including Mistral, Google, Hugging Face, Ollama and Bedrock, are still marked experimental and require suppressing experimental warnings.",
+    "built_at": "2026-10-03T11:24:08-05:00",
     "category": "technology-and-core-infrastructure",
     "hub_name": "Programming Languages and Frameworks",
     "page_uid": "7a5bc5c6",
     "sections": [
         {
-            "body": "Semantic Kernel is an open source framework maintained by Microsoft, released under the MIT licence, with its repository at github.com/microsoft/semantic-kernel. It is written primarily in C# and also ships Python and Java versions. It occupies the orchestration layer of the AI stack, sitting between your application code and the underlying model providers. Rather than calling a model API directly, you register AI services with a Kernel object, define plugins, and let Semantic Kernel manage the conversation, function calling, and service plumbing. The official documentation lives on Microsoft Learn and describes it as a way to integrate cutting edge LLM technology quickly into apps.",
+            "body": "Semantic Kernel is an open source framework from Microsoft, released under the MIT licence and hosted in the microsoft/semantic-kernel repository, which had roughly 28,600 stars at the time of writing. Its stated purpose is to integrate cutting edge LLM technology quickly and easily into applications. It is primarily a C# codebase, though the official documentation also describes Python equivalents for several concepts, such as the kernel_function decorator and the NoneInvoke function choice behavior. It occupies the orchestration layer of the AI stack, sitting above raw model APIs and below your application logic. It does not train models. Instead it connects your code to chat completion services, wraps your own functions as plugins, and manages the back and forth between model and code.",
             "heading": "What it is and where it sits in AI work"
         },
         {
-            "body": "The framework is used for chat completion, autonomous agents, retrieval augmented generation, and task automation through plugins. Chat completion is the most common service added to a Semantic Kernel project, and the documentation notes it is useful for chat bots and autonomous agents. Plugins encapsulate existing APIs so a model can call them, and they come in three forms: native code, OpenAPI specifications, or MCP servers. The strongest ground is function calling. Semantic Kernel serializes available functions and their parameters using JSON schema, sends them with the chat history, invokes whatever the model selects, and feeds results back until a final message is produced. It also covers vector store connectors for data work, though those pages are marked preview.",
+            "body": "The framework's core job is chat completion, which the documentation describes as the most common AI service added to Semantic Kernel projects and as useful for chat bots and autonomous agents. Its most powerful feature is function calling, where the model can request that your code run. Semantic Kernel serializes available functions and their parameters using JSON schema, sends them with the chat history, invokes whichever functions the model chooses, and feeds the results back until the model returns a message or the maximum iteration count is reached. Plugins extend this to real work, either retrieving data for retrieval augmented generation or automating tasks, and they can be imported from native code, an OpenAPI specification, or an MCP server. Vector store connectors handle serialization of data models to and from database schemas, a feature still marked as preview. It is strongest where you want a model to call your existing APIs and services in a controlled way.",
             "heading": "What it is used for and where it is strongest"
         },
         {
-            "body": "The learning curve is moderate. You need working knowledge of C#, Python, or Java, plus familiarity with async programming and dependency injection, since plugins support constructor injection of services such as database connections and HTTP clients. No deep mathematics is required to start, because the framework abstracts the model interaction. The official site offers concept pages, quickstarts, and code samples covering chat completion, plugins, function calling, and vector stores. Beginners are advised to start with native code plugins and move to OpenAPI specifications as an application matures and needs to share plugins across languages and platforms.",
+            "body": "The learning curve depends heavily on your starting point. If you already write C# or Python and understand how to call a chat completion API, the basic path is short: add a connector package, register the service on the kernel, and annotate methods with the KernelFunction attribute or kernel_function decorator to expose them. The documentation recommends starting with native code plugins and moving to OpenAPI specifications as an application matures. No mathematics beyond general programming literacy is implied by the material read. The harder parts are conceptual rather than mathematical, particularly the distinction between auto function choice behavior, where the model picks functions, and auto function invocation, where Semantic Kernel runs them, and the reserved parameter names that receive special handling. The official site offers conceptual overviews, code examples, and package installation instructions, which is a reasonable starting point for a beginner but assumes familiarity with the host language.",
             "heading": "How hard it is to learn and what you need first"
         },
         {
-            "body": "Semantic Kernel connects to a wide range of model providers through connector packages, including Azure OpenAI, OpenAI, Mistral, Google, Hugging Face, Azure AI Inference, Ollama, Amazon Bedrock, and ONNX. Anthropic models are reachable through Amazon Bedrock. Providers that expose an OpenAI compatible chat completion API, such as LLM Studio, can use the OpenAI connector. Several connectors, including Mistral, Google, Hugging Face, Azure AI Inference, Ollama, and Bedrock, are experimental and require suppressing the SKEXP0070 warning. The project has a substantial community, with more than twenty eight thousand stars on GitHub and active development as of late 2026. Documentation is hosted on Microsoft Learn and covers concepts, samples, and migration guidance.",
+            "body": "The ecosystem is broad on the model side. Chat completion connectors exist for OpenAI, Azure OpenAI, Google, Mistral, Hugging Face, Azure AI Inference, Ollama, Amazon Bedrock, and ONNX, with Anthropic models reachable through the Amazon Bedrock platform. Any provider that supports the OpenAI chat completion API, such as LLM Studio, can be used through the OpenAI connector. Plugins can be sourced from native code, OpenAPI documents at versions 2.0 and 3.0 with an attempt to accommodate 3.1 by downgrading, or MCP servers. Plugins work with dependency injection, so database connections and HTTP clients can be injected through a plugin's constructor, and a plugin can be created once and reused across multiple kernel instances or agents. Documentation lives on Microsoft Learn and is detailed, covering function choice behaviors, invocation modes, plugin authoring, and vector store serialization. The repository shows active development, with a last push in October 2026.",
             "heading": "Ecosystem and community"
         },
         {
-            "body": "The framework serves both ends. Auto function calling is the default, which means a developer can register plugins and get a working agent with very little code, and that makes prototyping fast. For production, the documentation exposes controls that matter: function choice behaviors of Auto, Required, and None decide whether the model may, must, or may not select functions, filters limit which plugins are advertised, and parallel function calling can run sequentially by default or concurrently when AllowConcurrentInvocation is enabled. Manual invocation returns chosen functions to the caller instead of executing them, which supports human in the loop approval. The cost of this flexibility is configuration surface area and the need to understand the distinction between auto function choice and auto function invocation.",
+            "body": "Semantic Kernel leans toward both, but with different mechanisms for each. For prototyping, auto function calling is the default, so a developer can register plugins and let the model choose and invoke functions without writing orchestration code. For production control, the framework exposes function choice behaviors Auto, Required, and None, filters over included and excluded plugins and functions, manual invocation where chosen functions are returned to the caller rather than run, and a choice between sequential and concurrent invocation of parallel function calls. Direct serialization for vector stores is described as the best way to ensure full control and optimize performance, at the cost of being specific to one data store. The cost of this flexibility is configuration surface: the documentation notes that specifying both excluded and included plugins, or both excluded and included functions, is not allowed, and that an empty include list has no effect, so disabling function calling requires setting the behavior to None or NoneInvoke.",
             "heading": "Prototyping speed against production performance"
         },
         {
-            "body": "Semantic Kernel is a current, actively maintained Microsoft project rather than a legacy choice, with its last repository push in October 2026 and a stable documentation set on Microsoft Learn. It is used by teams building chat bots, agents, and RAG systems, particularly in the .NET ecosystem where Microsoft tooling is already standard. For someone choosing what to learn, it is a reasonable bet for enterprise AI work, especially alongside Azure services. The facts available do not include named enterprise customers or adoption statistics, so any claim about market share beyond the repository activity and documentation would be speculation.",
+            "body": "The facts available show a Microsoft-maintained project with a substantial star count and an active repository, and the documentation is published on Microsoft Learn, which indicates first party investment. The material read does not name specific adopters or describe hiring demand, so claims about which companies run it in production cannot be grounded here. What can be said is that it is a current, maintained choice rather than a legacy one, and that its C# origin makes it a natural fit for .NET shops. For someone choosing what to learn, the transferable skills are the concepts rather than the API: function calling, plugin design, retrieval augmented generation, and the separation between model choice and code invocation. Those concepts appear across other frameworks, even where the terminology differs.",
             "heading": "Industry adoption and careers"
         },
         {
-            "body": "Semantic Kernel is typically used with C#, Python, or Java, and it is designed to coexist with other libraries rather than replace them. It integrates with vector databases through vector store connectors, with HTTP APIs through OpenAPI plugins, and with MCP servers for tool access. The polyglot pattern it belongs to is the orchestration SDK: LangChain and LlamaIndex play a similar role in the Python world, while Semantic Kernel is the Microsoft aligned option that spans .NET, Python, and Java. A team can define a plugin once and reuse it across kernel instances or agents, and OpenAPI specifications let plugins move between languages and platforms.",
+            "body": "Semantic Kernel is typically used with C# and .NET, and the documentation also covers Python, so it belongs to the polyglot pattern where a framework offers parallel APIs in more than one language. It is designed to sit alongside model providers rather than replace them, so a project commonly combines it with an OpenAI or Azure OpenAI connector, a vector database through a vector store connector, and existing HTTP APIs exposed as OpenAPI plugins. The documentation notes that not all AI SDKs have an analogous concept to plugins, with most offering only functions or tools, and that Semantic Kernel uses the term functions because they are typically defined as native functions in the codebase. That naming difference matters when reading other frameworks, since tools, actions, and functions often describe the same idea.",
             "heading": "How it fits beside the others"
         },
         {
-            "body": "Several parts of the framework are explicitly experimental or in preview, including the Mistral, Google, Hugging Face, Azure AI Inference, Ollama, and Bedrock connectors, and the vector store serialization pages. Function calling itself is supported by only a few AI connectors, and support among small language models remains limited. OpenAPI plugins with non unique parameter names are skipped with a warning, which can silently remove functionality. The documentation does not state performance benchmarks, memory characteristics, or a formal support timeline for the experimental connectors, so those questions remain open. Anyone planning production use should verify the current status of each connector against the official site.",
+            "body": "Function calling is only supported by a few AI connectors, and support from small language models is described as still limited, which constrains what the framework can do with cheaper or local models. Several connectors, including Mistral, Google, Hugging Face, Azure AI Inference, Ollama, and Bedrock for Anthropic, are experimental and require suppressing the SKEXP0070 warning, so they should be treated as subject to change. Vector store serialization is marked as preview. OpenAPI plugins with non-unique parameter names are skipped with a warning, and the documentation offers a workaround rather than a full fix. The material read does not state performance benchmarks, memory characteristics, or a formal support policy for the experimental connectors, and it does not describe production deployments by named organisations, so those questions remain open.",
             "heading": "Limits and open questions"
         }
     ],
@@ -104,6 +104,11 @@
         },
         {
             "kind": "framework",
+            "name": "pydantic-ai",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/a6a0d2bd/"
+        },
+        {
+            "kind": "framework",
             "name": "pytorch",
             "path": "/ai-ecosystem/technology-and-core-infrastructure/c4d0a8c3/"
         },
@@ -116,6 +121,56 @@
             "kind": "framework",
             "name": "unsloth",
             "path": "/ai-ecosystem/technology-and-core-infrastructure/9aab6db8/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "CTranslate2",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/9436dfa2/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "llama.cpp",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/32458451/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "llamafile",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/8f2f922d/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "lmdeploy",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/e24aae0d/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "mlc-llm",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/bcce36c4/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "ollama",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/8e9c04c4/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "onnxruntime",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/7ab24352/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "sglang",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/711194f2/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "TensorRT-LLM",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/6e41175d/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "vllm",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/44ebb5e4/"
         },
         {
             "kind": "language",
@@ -148,7 +203,7 @@
             "path": "/ai-ecosystem/technology-and-core-infrastructure/8d5b4f9f/"
         }
     ],
-    "generated": "2026-10-02",
+    "generated": "2026-10-03",
     "site_pages": [
         {
             "url": "https://learn.microsoft.com/en-us/semantic-kernel/concepts/ai-services/chat-completion/function-calling/function-choice-behaviors",

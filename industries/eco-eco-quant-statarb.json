@@ -4,7 +4,7 @@
     "slug": "eco-quant-statarb",
     "shape": "art-topic",
     "title": "Statistical Arbitrage",
-    "answer": "Statistical arbitrage is a quantitative trading approach that looks for relative value between related securities, often using statistical models to identify temporary mispricings. It typically involves a large number of positions, short holding periods, and a market-neutral stance, though neutrality is a target rather than a guarantee. In the context of AI-related markets, the universe can include the 117 listed AI-related instruments with daily prices that this site tracks, alongside broader equities, ETFs, and derivatives. The strategy sits within quantitative trading and relies on data, computation, and execution rather than on company fundamentals alone.",
+    "answer": "Statistical arbitrage is a family of quantitative trading strategies that look for small, repeatable price relationships between related instruments and trade on the expectation that those relationships revert. In practice it covers pairs trading, index arbitrage, basket trading and mean reversion across equities, futures, exchange traded funds and, increasingly, crypto assets. The holding periods are usually short, from intraday to a few weeks, and the edge comes from breadth, meaning many small positions rather than a few large bets. It sits inside quantitative trading and overlaps with market making and high frequency trading, though it does not require the fastest connections to work.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-10-03T09:40:31-05",
+    "built_at": "2026-10-03T12:41:36-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Economist",
@@ -28,23 +28,23 @@
     "page_uid": "77148ad1",
     "sections": [
         {
-            "body": "Statistical arbitrage is a quantitative trading approach that looks for relative value between related securities, often using statistical models to identify temporary mispricings. It typically involves a large number of positions, short holding periods, and a market-neutral stance, though neutrality is a target rather than a guarantee. In the context of AI-related markets, the universe can include the 117 listed AI-related instruments with daily prices that this site tracks, alongside broader equities, ETFs, and derivatives. The strategy sits within quantitative trading and relies on data, computation, and execution rather than on company fundamentals alone.",
+            "body": "Statistical arbitrage is a family of quantitative trading strategies that look for small, repeatable price relationships between related instruments and trade on the expectation that those relationships revert. In practice it covers pairs trading, index arbitrage, basket trading and mean reversion across equities, futures, exchange traded funds and, increasingly, crypto assets. The holding periods are usually short, from intraday to a few weeks, and the edge comes from breadth, meaning many small positions rather than a few large bets. It sits inside quantitative trading and overlaps with market making and high frequency trading, though it does not require the fastest connections to work.",
             "heading": "Scope"
         },
         {
-            "body": "The work runs on a data and execution stack that includes historical and real-time market data, a research environment for backtesting, and a low-latency connection to brokers or exchanges. Storage and compute are often cloud-based, with time-series databases and distributed processing for large datasets. Risk systems monitor exposures, leverage, and drawdown in real time, and they can automatically reduce positions when limits are breached. For AI-related instruments, daily prices and corporate actions feed the research pipeline, while intraday data and order book feeds are common for live trading.",
+            "body": "The work runs on a research stack that ingests historical and live market data, cleans it, and stores it in a time series database or columnar store. Computation happens on CPUs for most signal generation and on GPUs where large scale model fitting or deep learning is used. Execution is typically automated through broker or exchange APIs, with order management and risk systems sitting between the strategy and the venue. Latency matters more for some variants than others, so infrastructure ranges from cloud instances to colocated servers depending on the strategy's speed.",
             "heading": "What it runs on"
         },
         {
-            "body": "The process starts with data cleaning and feature construction, then moves to signal generation using techniques such as cointegration, principal component analysis, or machine learning models. Portfolios are built to be dollar neutral or beta neutral, with position sizing based on volatility and correlation estimates. Execution algorithms slice orders to reduce market impact, and the strategy is monitored for decay in predictive power. Backtests must account for transaction costs, borrow costs, and survivorship bias, because these can turn an apparently profitable signal into a losing one.",
+            "body": "A typical workflow starts with data collection and cleaning, then the construction of features such as spreads, residuals from a regression, or cointegration relationships between instruments. Researchers test candidate signals on historical data, being careful to avoid look ahead bias and to account for transaction costs and slippage. Once a signal passes backtesting, it moves to paper trading and then to small live allocation, where performance is monitored against expectations. Machine learning is used in some shops for return prediction or regime detection, but many classic statistical arbitrage strategies remain linear and rely on careful econometrics rather than deep models.",
             "heading": "How the work is done"
         },
         {
-            "body": "Rights and risk and provenance cover market data licensing, model documentation, and the audit trail for every trade. Firms need to know where data comes from, whether it was legally obtained, and how it is permitted to be used, especially for alternative data. Model risk management includes validation, ongoing monitoring, and a clear process for retiring a model that stops working. Regulatory obligations touch on market conduct, short selling rules, and reporting, and they vary by jurisdiction and instrument type.",
+            "body": "Statistical arbitrage sits under the same regulatory umbrella as other proprietary trading, which means record keeping, trade reporting and, in some jurisdictions, market conduct rules apply. Firms need to manage risks such as model decay, crowded trades, leverage and liquidity, and they usually document the logic behind each strategy for internal review. Data provenance matters because signals depend on accurate prices, corporate actions and reference data, and errors there can produce false signals. Where personal or licensed data is used, contracts and privacy rules constrain how it can be stored and reused. This page describes practice and is not legal, financial or investment advice.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The field is moving toward more machine learning, alternative data, and automated feature discovery, which raises the bar for infrastructure and governance. Competition has compressed returns in simple pairs trading, so firms look to faster execution, more instruments, and better risk models. Capacity constraints mean that successful strategies tend to be scaled carefully, and crowded trades can unwind quickly. Regulatory attention to algorithmic trading and data use is likely to keep growing, shaping what can be built and how it is documented.",
+            "body": "The field is being reshaped by cheaper compute, alternative data and machine learning methods that can find weaker but more numerous relationships. At the same time, competition has compressed many classic edges, so firms are looking at new markets, higher frequencies and more complex instruments. Regulation of automated trading continues to evolve, and firms are investing in explainability and monitoring as much as in raw signal discovery. The direction is toward more automation, more data and tighter risk controls rather than a single dominant technique.",
             "heading": "Where it is going"
         }
     ],

@@ -4,7 +4,7 @@
     "slug": "med-drugs-toxicity",
     "shape": "art-topic",
     "title": "Toxicity Forecasting",
-    "answer": "Toxicity forecasting in drug discovery predicts whether a candidate molecule or biologic will cause harm in humans, covering endpoints such as liver injury, heart rhythm effects, kidney damage, skin sensitization, and genotoxicity. It supports go or no go decisions before expensive animal studies and clinical trials, and it also helps with dose selection and safety monitoring. It draws on chemistry, biology, pharmacology, and computational modeling, and it is part of the broader ADMET and safety assessment workflow. In The AI Physician, it belongs to drug discovery and molecular simulation because the output is a prediction about a molecule or biological system rather than a diagnosis for a patient.",
+    "answer": "Toxicity forecasting is the use of computational models to predict whether a chemical or drug candidate will cause harm to the liver, heart, kidney, or other organs before it is tested in animals or people. It sits inside drug discovery and molecular simulation, where it screens large libraries of compounds and flags likely problems early. The work covers endpoints such as hepatotoxicity, cardiotoxicity, mutagenicity, and general cytotoxicity, and it draws on assay data, chemical structure, and increasingly on gene expression and imaging readouts.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-10-03T09:40:31-05",
+    "built_at": "2026-10-03T12:41:36-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Physician",
@@ -28,23 +28,23 @@
     "page_uid": "4f4c79df",
     "sections": [
         {
-            "body": "Toxicity forecasting in drug discovery predicts whether a candidate molecule or biologic will cause harm in humans, covering endpoints such as liver injury, heart rhythm effects, kidney damage, skin sensitization, and genotoxicity. It supports go or no go decisions before expensive animal studies and clinical trials, and it also helps with dose selection and safety monitoring. It draws on chemistry, biology, pharmacology, and computational modeling, and it is part of the broader ADMET and safety assessment workflow. In The AI Physician, it belongs to drug discovery and molecular simulation because the output is a prediction about a molecule or biological system rather than a diagnosis for a patient.",
+            "body": "Toxicity forecasting is the use of computational models to predict whether a chemical or drug candidate will cause harm to the liver, heart, kidney, or other organs before it is tested in animals or people. It sits inside drug discovery and molecular simulation, where it screens large libraries of compounds and flags likely problems early. The work covers endpoints such as hepatotoxicity, cardiotoxicity, mutagenicity, and general cytotoxicity, and it draws on assay data, chemical structure, and increasingly on gene expression and imaging readouts.",
             "heading": "Scope"
         },
         {
-            "body": "Toxicity forecasting runs on curated toxicity databases, assay results, chemical structures, omics data, and sometimes electronic health records or postmarket reports. Compute ranges from laptops running classical QSAR models to GPU clusters training deep neural networks and graph neural networks. Common data sources include public toxicology databases such as Tox21 and ToxCast, chemical databases such as ChEMBL and PubChem, plus internal pharmaceutical company data. The site tracks 797 scientific models, and toxicity forecasting models are a subset of that scientific modeling landscape.",
+            "body": "These models run on standard research computing, typically Linux servers with graphics processing units for the deep learning parts and ordinary clusters for the rest. The data comes from public sources such as Tox21, ToxCast, and ChEMBL, from internal pharmaceutical assay archives, and from chemical databases that supply molecular structures. Common toolkits include RDKit for handling molecules, PyTorch or TensorFlow for the models, and graph neural network libraries for structure based prediction. Cloud compute is often used when a screen covers millions of compounds.",
             "heading": "What it runs on"
         },
         {
-            "body": "Teams represent molecules as fingerprints, descriptors, graphs, or learned embeddings, then train statistical or machine learning models to map those representations to toxicity labels. Validation uses held out test sets, cross validation, and external validation on compounds from different chemical series, with attention to applicability domain and class imbalance. For some endpoints, mechanistic models and physiologically based pharmacokinetic models complement statistical predictions by simulating exposure at the target tissue. Results are reviewed alongside assay data and expert toxicology judgment, because a prediction is evidence, not a verdict.",
+            "body": "A typical project starts by assembling a labelled set of compounds with known toxicity outcomes, then featurising each molecule as fingerprints, descriptors, or a molecular graph. Models range from simple regression and random forests to graph neural networks and, more recently, pretrained chemical language models. Because toxic outcomes are rare, class imbalance, scaffold splits, and applicability domain checks matter more than raw accuracy. Predictions are validated against held out chemical series and, where possible, against experimental assays before they influence a project decision.",
             "heading": "How the work is done"
         },
         {
-            "body": "Provenance matters because toxicity labels come from different assays, species, doses, and reporting standards, and mixing them without documentation can produce misleading models. Rights and risk include data licensing, patient and proprietary compound confidentiality, model bias against underrepresented chemical classes, and the possibility that a false negative could contribute to patient harm. Regulators expect model documentation, validation evidence, and human oversight, and the site's 219 compliance and regulation pages reflect that documentation burden. A toxicity forecast is usually one input to a regulated development program, not a standalone decision.",
+            "body": "Toxicity predictions inform safety decisions but do not replace regulatory toxicology studies, and agencies such as the FDA and EMA expect documented validation and defined domains of use. Provenance of training data, model version, and the exact endpoint predicted all need to be recorded so a result can be reproduced and defended. Where a model contributes to a regulatory submission, guidance such as OECD principles for validated QSAR models and ICH safety guidelines shape what evidence is acceptable. This site tracks 229 compliance and regulation pages and 6 active product liability and wrongful death lawsuits against AI companies, which is a reminder that safety claims carry legal weight. Nothing here is legal or medical advice.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The field is moving toward multimodal models that combine chemical structure, transcriptomics, imaging, and real world evidence to predict toxicity earlier and with better mechanistic explanations. Human relevant systems such as organ on a chip and induced pluripotent stem cell assays are generating new data that may reduce reliance on animal studies and improve translation. Regulatory science is evolving toward qualification of new approach methodologies, so computational toxicity forecasts may become more accepted as part of a weight of evidence approach. The main open problems are data scarcity for rare toxicities, uncertainty quantification, and proving that a model works across diverse populations and chemical spaces.",
+            "body": "The field is moving toward models that combine structure, assay, and omics data, and toward foundation models pretrained on large chemical and biological corpora and then fine tuned for specific toxicity endpoints. Organ on a chip and human cell based assays are generating new training data that may reduce reliance on animal studies. Regulators are also exploring how to accept computational evidence more formally, which would raise the bar on validation and documentation. Expect more emphasis on uncertainty estimates and on models that explain which part of a molecule drives a predicted risk.",
             "heading": "Where it is going"
         }
     ],

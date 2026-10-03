@@ -4,7 +4,7 @@
     "slug": "eco-altdata-web",
     "shape": "art-topic",
     "title": "Web Data Collection",
-    "answer": "Web data collection is the practice of gathering information from public websites and web services for use as alternative data. It covers prices, product listings, job postings, reviews, app rankings, shipping notices, and other signals that are not available in standard market or economic datasets. The output is usually a structured time series or panel that can be joined to company, sector, or geographic identifiers. It sits in alternative data because it offers a real time or high frequency view that traditional sources may lag.",
+    "answer": "Web data collection is the practice of gathering information from public websites and web services at scale, usually by automated means, to build datasets that feed research, analytics and machine learning. In alternative data it covers everything from scraping product prices and job postings to pulling filings, reviews and shipping records. The output is typically a structured table or feed that can be joined to financial or operational data. It sits between data engineering and market research, and it is one of the most common ways alternative data firms build a raw signal.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-10-03T09:40:31-05",
+    "built_at": "2026-10-03T12:41:36-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Economist",
@@ -28,23 +28,23 @@
     "page_uid": "90fd3828",
     "sections": [
         {
-            "body": "Web data collection is the practice of gathering information from public websites and web services for use as alternative data. It covers prices, product listings, job postings, reviews, app rankings, shipping notices, and other signals that are not available in standard market or economic datasets. The output is usually a structured time series or panel that can be joined to company, sector, or geographic identifiers. It sits in alternative data because it offers a real time or high frequency view that traditional sources may lag.",
+            "body": "Web data collection is the practice of gathering information from public websites and web services at scale, usually by automated means, to build datasets that feed research, analytics and machine learning. In alternative data it covers everything from scraping product prices and job postings to pulling filings, reviews and shipping records. The output is typically a structured table or feed that can be joined to financial or operational data. It sits between data engineering and market research, and it is one of the most common ways alternative data firms build a raw signal.",
             "heading": "Scope"
         },
         {
-            "body": "The work runs on a stack of crawlers, headless browsers, and scheduled jobs that fetch pages or call APIs. Proxies, rotating IP addresses, and rate limiting help manage load and reduce blocking. Storage and processing often sit in cloud object stores and databases, with queues for retries and monitoring for failures. Some teams use open source frameworks and commercial scraping services, while others build custom pipelines.",
+            "body": "The work runs on a stack of crawlers, schedulers and storage. Common tools include Python libraries such as Scrapy, BeautifulSoup and Playwright, headless browsers for pages that render with JavaScript, and proxy pools or rotating IPs to spread request load. Collected pages land in object storage or a database, then move through parsing and normalisation jobs. Larger operations add queueing systems, retry logic and monitoring so that a broken selector or a blocked route is noticed quickly.",
             "heading": "What it runs on"
         },
         {
-            "body": "A typical pipeline starts with target selection and a crawl plan, then fetches pages, parses the relevant fields, and normalizes values into a common schema. Deduplication and entity resolution link records to the right company, product, or location. Quality checks compare samples against source pages, track coverage over time, and flag gaps or sudden changes. The result is a documented dataset with timestamps and source URLs for each observation.",
+            "body": "A typical pipeline starts with a target list of sites and the fields wanted from each. Crawlers fetch pages, parsers extract the fields, and validation checks catch missing or malformed records. Because sites change, teams maintain selector maps, version their parsers and keep raw snapshots so a parse can be rerun without refetching. Deduplication, entity matching and timestamping turn the raw captures into a usable panel. Quality control usually compares a sample of scraped values against the live page by hand.",
             "heading": "How the work is done"
         },
         {
-            "body": "Rights and risk around web data collection turn on terms of service, robots.txt, copyright, database rights, and personal data rules such as GDPR and CCPA. Provenance matters because a dataset is only as defensible as its audit trail, which records what was collected, when, from where, and under what basis. The site tracks 148 active AI lawsuits and 219 compliance and regulation pages, a sign that legal questions around data sourcing remain active. Teams often separate public, nonpersonal data from any personal data and apply retention limits and access controls. Contracts with data vendors commonly spell out permitted use, resale, and indemnity, though this page does not give legal advice.",
+            "body": "The legal and ethical picture is layered. Terms of service, robots.txt, copyright, database rights, computer misuse statutes and data protection law such as the GDPR all bear on what may be collected and kept, and the answers differ by jurisdiction and by whether the data is personal. Public availability does not by itself settle the question. Good practice includes recording provenance for every record, honouring rate limits, avoiding personal data where it is not needed, and keeping an audit trail of what was fetched, when and from where. This page describes practice and is not legal advice.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The direction is toward more API first access, licensed feeds, and partnerships that reduce reliance on raw scraping. Browser automation and anti bot measures will keep evolving, so collection teams invest in resilience and legal review. Demand is growing for provenance metadata, consent records, and reproducible pipelines that can be audited. Some collection may shift to synthetic or aggregated sources where direct web data is too costly or too risky to obtain.",
+            "body": "Collection is shifting toward APIs, licensed feeds and partnerships as sites harden against scraping and courts test the boundaries. Browser automation and residential proxy networks are becoming more common, which raises the cost and the compliance burden. Buyers increasingly ask for provenance and consent documentation alongside the data itself. Expect more emphasis on first party and permissioned sources, and on tooling that can prove where a number came from.",
             "heading": "Where it is going"
         }
     ],

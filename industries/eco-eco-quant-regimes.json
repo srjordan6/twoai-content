@@ -4,7 +4,7 @@
     "slug": "eco-quant-regimes",
     "shape": "art-topic",
     "title": "Detecting Market Regime Shifts",
-    "answer": "Detecting market regime shifts is the practice of identifying when the statistical character of a market changes, for example from calm and trending to volatile and mean reverting, or from broad correlation to dispersion. In quantitative trading it covers equities, rates, credit, currencies, commodities and crypto, and for an AI focused desk it can include the 117 listed AI related instruments tracked on this site. The work sits between market microstructure, macroeconomics and time series statistics, and it feeds position sizing, risk limits, execution style and strategy selection. A regime is not a single number but a probability over states, so the scope includes defining states, estimating their persistence and deciding when a shift is real rather than noise.",
+    "answer": "Detecting market regime shifts is the practice of identifying when the statistical character of a market changes, for example from calm trending conditions to volatile mean-reverting ones. In quantitative trading it sits alongside signal generation and risk management, because a model that works in one regime often fails in another. The work covers equities, rates, currencies and commodities, and increasingly the AI-related instruments that this site tracks. The goal is not to predict the next move but to recognise that the rules governing price behaviour have changed.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-10-03T09:40:31-05",
+    "built_at": "2026-10-03T12:41:36-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Economist",
@@ -28,23 +28,23 @@
     "page_uid": "79ef696a",
     "sections": [
         {
-            "body": "Detecting market regime shifts is the practice of identifying when the statistical character of a market changes, for example from calm and trending to volatile and mean reverting, or from broad correlation to dispersion. In quantitative trading it covers equities, rates, credit, currencies, commodities and crypto, and for an AI focused desk it can include the 117 listed AI related instruments tracked on this site. The work sits between market microstructure, macroeconomics and time series statistics, and it feeds position sizing, risk limits, execution style and strategy selection. A regime is not a single number but a probability over states, so the scope includes defining states, estimating their persistence and deciding when a shift is real rather than noise.",
+            "body": "Detecting market regime shifts is the practice of identifying when the statistical character of a market changes, for example from calm trending conditions to volatile mean-reverting ones. In quantitative trading it sits alongside signal generation and risk management, because a model that works in one regime often fails in another. The work covers equities, rates, currencies and commodities, and increasingly the AI-related instruments that this site tracks. The goal is not to predict the next move but to recognise that the rules governing price behaviour have changed.",
             "heading": "Scope"
         },
         {
-            "body": "The infrastructure runs on a data pipeline that ingests daily and intraday prices, volumes, order book snapshots, volatility surfaces, credit spreads, yield curves and macro releases, with careful time stamping and point in time storage. Computation typically happens in Python or R for research, with C++ or Rust for latency sensitive production signals, and with GPUs for deep learning models that process high dimensional features. Storage may be a cloud data lake or an on premise warehouse, and a feature store keeps training and live features consistent. Monitoring dashboards track data quality, model drift, latency and the health of upstream feeds, because a regime detector is only as good as its inputs.",
+            "body": "Practitioners run this work on time series of prices, returns, volumes and volatility measures, often supplemented by macro indicators and order book data. Computation ranges from a laptop running Python with pandas and scikit-learn to cloud clusters handling tick data across thousands of instruments. Hidden Markov models, change point detection libraries and rolling statistical tests are common building blocks. Data quality matters more than model sophistication, since a regime detector fed bad timestamps or stale quotes will flag shifts that never happened.",
             "heading": "What it runs on"
         },
         {
-            "body": "The work usually starts with feature engineering, turning raw prices into realized volatility, rolling correlations, drawdowns, breadth, dispersion, term structure slopes and liquidity measures. Common models include Markov switching models, hidden Markov models, Bayesian change point detection, Gaussian mixture models, clustering and online learning algorithms, sometimes combined with tree ensembles or neural networks. Researchers label historical regimes with a mix of rules, unsupervised segmentation and expert review, then test whether the detector adds value out of sample and after transaction costs. Validation uses walk forward analysis, purged cross validation and stress tests, and the output is a probability that feeds a rule for de risking, hedging or switching strategy weights.",
+            "body": "The typical approach estimates a statistical model over a rolling window and tests whether recent observations still fit it. Hidden Markov models assign each period a hidden state and infer transitions, while change point methods look for structural breaks in mean, variance or correlation. Some desks use clustering on volatility and drawdown features, others use Bayesian online detection that updates beliefs as each new bar arrives. Validation is done by checking whether detected shifts line up with known episodes and whether acting on them would have improved risk-adjusted returns after costs.",
             "heading": "How the work is done"
         },
         {
-            "body": "Rights and risk and provenance matter because regime models consume licensed market data, alternative data and sometimes personal or sensitive information, so the desk must respect vendor terms, data use limits and internal entitlements. Provenance requires an audit trail from raw feed to feature to signal, with versioned code, documented assumptions and reproducible backtests. Risk includes false positives that cause unnecessary trading, false negatives that leave the book exposed, overfitting to a short history and hidden leverage in crowded strategies. Governance also covers model risk review, explainability for risk committees and compliance with market conduct rules, and it should define who can change a regime threshold and how quickly a model can be retired.",
+            "body": "Regime detection sits inside a firm's model risk and trading controls, so the logic, data sources and parameter choices need documentation that a reviewer can follow. If the output feeds automated position sizing, it usually falls under the same change management and kill switch procedures as any production signal. Provenance of input data, including vendor and revision history, is part of the audit trail. This site's compliance and regulation pages and its AI lawsuits coverage show how often trading technology ends up in disputes over disclosure and market conduct, which is why firms keep records of what a model saw and when.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The field is moving toward online, probabilistic and multi scale detectors that update with every tick while remaining stable enough to avoid whipsaw. More work combines market data with text, news and alternative data, and uses deep learning and Bayesian methods to capture nonlinear state changes. Practitioners are also paying more attention to explainability, model risk and the cost of trading, because a regime signal that cannot be trusted or executed is not useful. The likely direction is hybrid systems, where simple robust rules guard against tail events and learned models refine the timing of shifts, all under continuous monitoring and periodic revalidation.",
+            "body": "The direction of travel is toward models that combine statistical detection with text and alternative data, so a shift in news tone or filing language can be flagged before it shows up in prices. Faster detection is not automatically better, since reacting to noise creates turnover and cost. Expect more emphasis on explaining why a regime was declared, on stress testing detectors against historical crises, and on treating regime labels as uncertain probabilities rather than hard switches. The field will keep borrowing from econometrics and machine learning without settling on a single standard method.",
             "heading": "Where it is going"
         }
     ],

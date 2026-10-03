@@ -4,7 +4,7 @@
     "slug": "sql-text-to-sql",
     "shape": "art-topic",
     "title": "Text to SQL",
-    "answer": "Text to SQL is the task of translating a natural language question into a SQL query that runs against a real schema and returns the answer; it is how business users query data without an analyst in between. The input is a question in ordinary language, the output is executable SQL, and the hard part is that the query must match the actual tables, columns, joins and dialects of a live database. It sits inside AI and SQL, alongside schema understanding, query repair and result interpretation, and it is usually the first place a company tries a language model on its own data.",
+    "answer": "Text to SQL is the task of translating a natural language question into a SQL query that runs against a real schema and returns the answer. It is how business users query data without an analyst in between. The work sits between a question and a database, and the query it produces has to be valid for the tables and columns that actually exist. A good system returns the right rows, not just a query that parses.",
     "crumbs": [
         {
             "name": "AI and SQL",
@@ -12,7 +12,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-10-03T09:40:31-05",
+    "built_at": "2026-10-03T12:41:37-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "AI and SQL",
@@ -20,23 +20,23 @@
     "page_uid": "1c4f6caa",
     "sections": [
         {
-            "body": "Text to SQL is the task of translating a natural language question into a SQL query that runs against a real schema and returns the answer; it is how business users query data without an analyst in between. The input is a question in ordinary language, the output is executable SQL, and the hard part is that the query must match the actual tables, columns, joins and dialects of a live database. It sits inside AI and SQL, alongside schema understanding, query repair and result interpretation, and it is usually the first place a company tries a language model on its own data.",
+            "body": "Text to SQL is the task of translating a natural language question into a SQL query that runs against a real schema and returns the answer. It is how business users query data without an analyst in between. The work sits between a question and a database, and the query it produces has to be valid for the tables and columns that actually exist. A good system returns the right rows, not just a query that parses.",
             "heading": "Scope"
         },
         {
-            "body": "A text to SQL system runs on a database connection plus a model, and the database is the part that decides whether the answer is real. The model needs the schema, which is often supplied as data definition statements, column descriptions, sample rows or a retrieved subset of tables, because full schemas for large warehouses do not fit in a prompt. Execution happens on the database itself, so the system needs read access, a query timeout, row limits and a sandbox to keep a generated statement from touching anything it should not. This site tracks 263 Model Context Protocol servers for SQL databases and warehouses, which is one sign of how common it has become to expose a database to a model through a standard interface rather than a bespoke connector.",
+            "body": "A text to SQL system needs three things: a language model, a connection to the database, and a description of the schema. The schema description is usually supplied as data definition language, sample rows, or a curated semantic layer that names tables and columns in business terms. Model Context Protocol servers are one common way to expose a database to a model, and this site tracks 263 of its 2526 active servers for SQL databases and warehouses. Execution happens against the live database, so the system also needs a way to run the query and return results.",
             "heading": "What it runs on"
         },
         {
-            "body": "The common pattern is retrieval first, then generation, then execution and repair. The system retrieves the tables and columns that look relevant to the question, writes a candidate query, runs it, reads the error or the empty result, and tries again, sometimes with a second model checking the first. Accuracy is measured by execution match, meaning the generated query returns the same rows as a human written query, and by exact match against a reference query, which is stricter and less forgiving of harmless differences in style. Benchmarks such as Spider and BIRD are widely used for this, and the gap between them and a real warehouse is mostly about messy schemas, ambiguous column names and questions that need business context no schema contains.",
+            "body": "The common pattern is schema retrieval followed by generation. The system selects the tables and columns likely to matter, puts their definitions in the prompt, and asks the model to write SQL. More reliable setups add a validation step that parses the query, checks it against the catalog, and runs it in a sandbox before returning anything. Accuracy is measured by execution, meaning whether the query runs and whether the result matches the expected answer, not by string similarity to a reference query. Hard cases include ambiguous column names, joins across many tables, and questions that need business definitions the schema does not carry.",
             "heading": "How the work is done"
         },
         {
-            "body": "The risks are wrong answers that look right, queries that read data the asker should not see, and expensive statements that scan a whole warehouse. Row level and column level permissions have to be enforced by the database or a governed layer, not by the prompt, because a model can be talked past a prompt. Provenance matters too, since a number in a dashboard should be traceable to the question asked, the SQL generated and the model version that produced it, and many teams keep that log for audit. Text to SQL output is not legal, financial or medical advice, and in regulated settings a human still reviews queries that feed official reporting.",
+            "body": "A generated query can read, and in some configurations write, real data, so permissions matter more than the model choice. The safe pattern is to run the model under a read only role with row and column limits, and to keep write access out of the loop entirely. Provenance matters too: teams need to know which schema version, which prompt, and which model produced a query that returned a number someone acted on. Query logs, schema snapshots, and the generated SQL should be retained together so a result can be reproduced or explained later. Where personal or regulated data is involved, the same access rules that apply to an analyst apply to the model.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The direction of travel is toward agents that plan several queries, check their own results and explain the answer rather than emit a single statement. Semantic layers and governed metrics are being used to give the model a smaller, better described target than raw tables, which reduces both errors and risk. Evaluation is shifting from benchmark scores to task success on a company's own questions, with the database in the loop. The open question is how much of the analyst's judgement can be encoded in the schema and the tooling around the model, and how much still has to come from a person.",
+            "body": "The direction of travel is toward systems that check their own work: generate, execute, inspect the error or the result, and revise. Semantic layers and curated metric definitions are becoming the main lever on accuracy, because most failures come from the model not knowing what a column means rather than from SQL syntax. Benchmarks continue to push on realistic schemas with many tables and on questions that require reasoning about joins. The unresolved question is trust: how much of a warehouse should a model be allowed to touch, and who signs off when the answer is wrong.",
             "heading": "Where it is going"
         }
     ],

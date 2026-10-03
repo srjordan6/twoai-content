@@ -1,0 +1,314 @@
+{
+    "tax": "lang-profile",
+    "uid": "6e41175d",
+    "name": "TensorRT-LLM",
+    "slug": "tensorrt-llm",
+    "facts": {
+        "repo": "NVIDIA/TensorRT-LLM",
+        "stars": 14761,
+        "licence": "custom",
+        "archived": false,
+        "language": "Python",
+        "repo_url": "https://github.com/NVIDIA/TensorRT-LLM",
+        "last_push": "2026-10-03T11:36:48Z",
+        "description": "TensorRT LLM provides users with an easy-to-use Python API to define Large Language Models (LLMs) and supports state-of-the-art optimizations to perform inference efficiently on NVIDIA GPUs. TensorRT LLM also contains components to create Python and C++ runtimes that orchestrate the inference execution in a performant way.",
+        "official_site": "https://nvidia.github.io/TensorRT-LLM/"
+    },
+    "model": "ollama:deepseek-v4.1-flash",
+    "shape": "lang-profile",
+    "title": "TensorRT-LLM: NVIDIA's Inference Engine for Serving Large Language Models",
+    "answer": "TensorRT-LLM is NVIDIA's open source runtime for running large language models efficiently on NVIDIA GPUs. It sits at the serving layer of the AI stack, taking trained checkpoints and turning them into fast, memory-conscious inference through a Python LLM API, C++ runtimes and a trtllm-serve server. The one thing to know before adopting it is that its best performance depends on NVIDIA hardware and on model-specific support, so a model that is not yet implemented may need custom work.",
+    "built_at": "2026-10-03T11:31:20-05:00",
+    "category": "technology-and-core-infrastructure",
+    "hub_name": "Programming Languages and Frameworks",
+    "page_uid": "6e41175d",
+    "sections": [
+        {
+            "body": "TensorRT-LLM is made by NVIDIA and published on GitHub as the NVIDIA/TensorRT-LLM repository, with a custom licence and Python as its primary language. It is an inference engine and model serving runtime rather than a training framework, so it sits at the deployment layer of the AI stack, between a trained model checkpoint and the applications or agents that call it. Its stated purpose is to let users define large language models through an easy to use Python API and then apply state of the art optimizations for efficient inference on NVIDIA GPUs. It also contains components for building Python and C++ runtimes that orchestrate execution in a performant way. The repository remains active, with a last push in October 2026 and roughly 14,761 stars, and the official documentation lives at nvidia.github.io/TensorRT-LLM.",
+            "heading": "What it is and where it sits in AI work"
+        },
+        {
+            "body": "The concrete job is inference, not training. TensorRT-LLM loads a model, usually from a Hugging Face model ID or a local path, and serves it for text generation, with the LLM API supporting everything from a single GPU to multi-GPU and multi-node deployments. It is strongest when throughput and latency on NVIDIA hardware matter most, which is why the documentation includes a packaged trtllm-bench utility for reproducing published performance figures, with in-flight batching used for all benchmarks. It also carries model-specific work for demanding architectures, such as a dedicated PyTorch backend implementation for DeepSeek-V4 on Blackwell GPUs and a deployment path for MiniMax-M3 with block-sparse attention and mixture of experts. Quantized checkpoints in formats such as FP4, FP8 and MXFP8 are supported, and MXFP8 weights are recommended for throughput-oriented deployments. It is not positioned for data work, training or general agent orchestration, though the LLM API integrates with NVIDIA Dynamo.",
+            "heading": "What it is used for and where it is strongest"
+        },
+        {
+            "body": "The learning curve is moderate for basic use and steep for serious deployment work. A beginner can follow the documented TinyLlama example, construct an LLM object with a Hugging Face model ID and pass SamplingParams such as temperature 0.8 and top_p 0.95, which requires only Python familiarity. Beyond that, the material assumes systems knowledge: parallelism strategies, tensor and expert parallelism, CUDA graphs, KV cache configuration, quantization formats and multi-node launching. The MiniMax-M3 guide expects Slurm with the pyxis or enroot container plugin, a high speed inter-node interconnect such as InfiniBand and a shared filesystem, which is infrastructure work rather than model work. The official site offers a quick start, an LLM API introduction, deployment guides and performance benchmarking pages, but it does not present a structured course for newcomers, and the DeepSeek-V4 blog assumes familiarity with attention variants and kernel-level concepts.",
+            "heading": "How hard it is to learn and what you need first"
+        },
+        {
+            "body": "The ecosystem is built around NVIDIA's own stack and around Hugging Face as the model source. The LLM API accepts Hugging Face model IDs or local paths, trtllm-bench can download models from the Hugging Face Model Hub automatically, and NVIDIA publishes quantized checkpoints of popular models in FP4 and FP8. The LLM API integrates with NVIDIA Dynamo, and the documentation covers serving through trtllm-serve, which exposes the same startup metrics payload as the Python API. Model coverage is broad but curated, with dedicated architectures such as DeepseekV4ForCausalLM, MiniMaxM3SparseForConditionalGeneration and MiniMaxM3SparseForCausalLM. Community support is visible through the GitHub repository, which has around 14,761 stars, and through a documentation site with roughly 60 pages covering benchmarking, deployment and technical blogs. The site does not describe a third party plugin ecosystem or a package index of community extensions.",
+            "heading": "Ecosystem and community"
+        },
+        {
+            "body": "TensorRT-LLM leans toward production performance, though the Python LLM API keeps simple experiments reasonably quick. A single GPU example with TinyLlama is short, and the PyTorch-native modular backend means a benchmark engine build is not required for the PyTorch flow. The heavier machinery appears when you want the numbers the project publishes: trtllm-bench builds TRT-LLM engines for max throughput, recommends persistence mode, reset GPU clocks, maximum power limits and boost levels, and its tuning heuristic uses high level dataset statistics. The cost of that control is configuration. Deployment guides specify curated YAML files, parallelism sizes, capped sequence lengths for CUDA graphs and features that must be turned off, such as KV cache reuse on the MiniMax-M3 sparse attention path. In short, it can be used for quick experiments, but its real value appears when you are willing to tune memory, batching and parallelism for production.",
+            "heading": "Prototyping speed against production performance"
+        },
+        {
+            "body": "The facts and the official site show adoption inside NVIDIA's own platform story and among teams deploying large models on NVIDIA GPUs. The documentation cites performance verified by Artificial Analysis for GB300 agentic configurations, and the DeepSeek-V4 blog reports measured throughput improvements on GB300, which indicates use in serious serving benchmarks rather than hobby projects. The repository's 14,761 stars and active development through October 2026 suggest it is a current choice, not a legacy one, for GPU inference. For someone choosing what to learn, the practical signal is that TensorRT-LLM skills map to roles involving model serving, inference optimization and GPU infrastructure, especially where NVIDIA hardware is already the standard. The site does not list named enterprise customers or job market data, so claims about adoption beyond these documented benchmarks and integrations would go further than the material supports.",
+            "heading": "Industry adoption and careers"
+        },
+        {
+            "body": "TensorRT-LLM is a Python-first project with C++ runtime components, and it is typically used alongside PyTorch, since the LLM API runs on a PyTorch-native and modular backend. It also relies on mpi4py, which is why the documentation warns that the LLM class must be placed appropriately and why Slurm users may need an mpirun prefix. In a polyglot serving pattern, TensorRT-LLM occupies the GPU execution and serving layer, taking checkpoints from the Hugging Face ecosystem, exposing an OpenAI-style server through trtllm-serve, and integrating with NVIDIA Dynamo for orchestration. It is not a replacement for a training framework or a general application framework. The site shows it working with container tooling such as enroot and pyxis, with Slurm scheduling and with high speed interconnects, which places it in the infrastructure half of a modern AI stack rather than the experimentation half.",
+            "heading": "How it fits beside the others"
+        },
+        {
+            "body": "The clearest limits are hardware and model specificity. Performance work assumes NVIDIA GPUs, and the newest optimizations target Blackwell, with DeepSeek-V4 support described for SM100 and above. Model support is implemented per architecture, so a model without a dedicated path may not benefit from the same optimizations. Some features are explicitly immature or unavailable: the MiniMax-M3 block-sparse attention path does not currently support KV cache reuse or Multi-Token Prediction, only BF16 and MXFP8 precisions are supported there, and trtllm-bench currently configures only a subset of the quantization modes TensorRT-LLM supports. The startup metrics property is described as beta. The official material does not say how quickly new model architectures are added, how support requests are prioritized, or what the custom licence means for commercial redistribution, so those questions remain open.",
+            "heading": "Limits and open questions"
+        }
+    ],
+    "siblings": [
+        {
+            "kind": "framework",
+            "name": "ai",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/4c80ad91/"
+        },
+        {
+            "kind": "framework",
+            "name": "autogen",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/60f558b0/"
+        },
+        {
+            "kind": "framework",
+            "name": "crewAI",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/52f2d4fc/"
+        },
+        {
+            "kind": "framework",
+            "name": "haystack",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/244d606e/"
+        },
+        {
+            "kind": "framework",
+            "name": "jax",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/1722316f/"
+        },
+        {
+            "kind": "framework",
+            "name": "keras",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/079f2091/"
+        },
+        {
+            "kind": "framework",
+            "name": "langchain",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/10376bfa/"
+        },
+        {
+            "kind": "framework",
+            "name": "litellm",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/b9fc5220/"
+        },
+        {
+            "kind": "framework",
+            "name": "llama_index",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/07b3602c/"
+        },
+        {
+            "kind": "framework",
+            "name": "pydantic-ai",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/a6a0d2bd/"
+        },
+        {
+            "kind": "framework",
+            "name": "pytorch",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/c4d0a8c3/"
+        },
+        {
+            "kind": "framework",
+            "name": "semantic-kernel",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/7a5bc5c6/"
+        },
+        {
+            "kind": "framework",
+            "name": "tensorflow",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/367fc8ea/"
+        },
+        {
+            "kind": "framework",
+            "name": "unsloth",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/9aab6db8/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "CTranslate2",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/9436dfa2/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "llama.cpp",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/32458451/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "llamafile",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/8f2f922d/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "lmdeploy",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/e24aae0d/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "mlc-llm",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/bcce36c4/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "ollama",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/8e9c04c4/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "onnxruntime",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/7ab24352/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "sglang",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/711194f2/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "vllm",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/44ebb5e4/"
+        },
+        {
+            "kind": "language",
+            "name": "C++",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/b393c4f6/"
+        },
+        {
+            "kind": "language",
+            "name": "Go",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/a218afb2/"
+        },
+        {
+            "kind": "language",
+            "name": "Julia",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/3719f5ac/"
+        },
+        {
+            "kind": "language",
+            "name": "Mojo",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/b5a22ab0/"
+        },
+        {
+            "kind": "language",
+            "name": "Python",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/7aa3e6c4/"
+        },
+        {
+            "kind": "language",
+            "name": "TypeScript",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/8d5b4f9f/"
+        }
+    ],
+    "generated": "2026-10-03",
+    "site_pages": [
+        {
+            "url": "https://nvidia.github.io/TensorRT-LLM/performance/perf-benchmarking.html",
+            "date": ""
+        },
+        {
+            "url": "https://nvidia.github.io/TensorRT-LLM/llm-api/index.html",
+            "date": ""
+        },
+        {
+            "url": "https://nvidia.github.io/TensorRT-LLM/blogs/tech_blog/blog26_DeepSeek_V4_on_NVIDIA_Blackwell_Model_Specific_and_Agentic_Workload_Optimizations_in_TensorRT-LLM.html",
+            "date": ""
+        },
+        {
+            "url": "https://nvidia.github.io/TensorRT-LLM/deployment-guide/deployment-guide-for-minimax-m3-on-trtllm.html",
+            "date": ""
+        },
+        {
+            "url": "https://nvidia.github.io/TensorRT-LLM/latest/deployment-guide/deployment-guide-for-minimax-m3-on-trtllm.html",
+            "date": ""
+        },
+        {
+            "url": "https://nvidia.github.io/TensorRT-LLM/blogs/tech_blog/blog17_Sparse_Attention_in_TensorRT-LLM.html",
+            "date": ""
+        },
+        {
+            "url": "https://nvidia.github.io/TensorRT-LLM/deployment-guide/deployment-guide-for-qwen3.8-flash-next-on-trtllm.html",
+            "date": ""
+        },
+        {
+            "url": "https://nvidia.github.io/TensorRT-LLM/latest/deployment-guide/deployment-guide-for-qwen3.8-flash-next-on-trtllm.html",
+            "date": ""
+        },
+        {
+            "url": "https://nvidia.github.io/TensorRT-LLM/deployment-guide/deployment-guide-for-gpt-oss-on-trtllm.html",
+            "date": ""
+        },
+        {
+            "url": "https://nvidia.github.io/TensorRT-LLM/latest/deployment-guide/deployment-guide-for-gpt-oss-on-trtllm.html",
+            "date": ""
+        },
+        {
+            "url": "https://nvidia.github.io/TensorRT-LLM/blogs/tech_blog/blog05_Disaggregated_Serving_in_TensorRT-LLM.html",
+            "date": ""
+        },
+        {
+            "url": "https://nvidia.github.io/TensorRT-LLM/installation/build-from-source-linux.html",
+            "date": ""
+        },
+        {
+            "url": "https://nvidia.github.io/TensorRT-LLM/latest/deployment-guide/deployment-guide-for-nemotron-3-on-trtllm.html",
+            "date": ""
+        },
+        {
+            "url": "https://nvidia.github.io/TensorRT-LLM/deployment-guide/deployment-guide-for-nemotron-3-on-trtllm.html",
+            "date": ""
+        },
+        {
+            "url": "https://nvidia.github.io/TensorRT-LLM/deployment-guide/deployment-guide-for-glm-5-on-trtllm.html",
+            "date": ""
+        },
+        {
+            "url": "https://nvidia.github.io/TensorRT-LLM/latest/deployment-guide/deployment-guide-for-glm-5-on-trtllm.html",
+            "date": ""
+        },
+        {
+            "url": "https://nvidia.github.io/TensorRT-LLM/blogs/tech_blog/blog23_Joint_Optimization_of_Agent_Applications_and_TensorRT-LLM.html",
+            "date": ""
+        },
+        {
+            "url": "https://nvidia.github.io/TensorRT-LLM/blogs/tech_blog/blog13_Inference_Time_Compute_Implementation_in_TensorRT-LLM.html",
+            "date": ""
+        },
+        {
+            "url": "https://nvidia.github.io/TensorRT-LLM/deployment-guide/deployment-guide-for-kimi-k3-on-trtllm.html",
+            "date": ""
+        },
+        {
+            "url": "https://nvidia.github.io/TensorRT-LLM/latest/deployment-guide/deployment-guide-for-kimi-k3-on-trtllm.html",
+            "date": ""
+        },
+        {
+            "url": "https://nvidia.github.io/TensorRT-LLM/latest/deployment-guide/deployment-guide-for-qwen3.8-qwen3.5-on-trtllm.html",
+            "date": ""
+        },
+        {
+            "url": "https://nvidia.github.io/TensorRT-LLM/deployment-guide/deployment-guide-for-qwen3.8-qwen3.5-on-trtllm.html",
+            "date": ""
+        },
+        {
+            "url": "https://nvidia.github.io/TensorRT-LLM/models/adding-new-model.html",
+            "date": ""
+        },
+        {
+            "url": "https://nvidia.github.io/TensorRT-LLM/blogs/tech_blog/blog09_Deploying_GPT_OSS_on_TRTLLM.html",
+            "date": ""
+        }
+    ],
+    "source_url": "https://nvidia.github.io/TensorRT-LLM/",
+    "parent_name": "Inference Engines",
+    "parent_path": "/ai-ecosystem/technology-and-core-infrastructure/775e8c0a/",
+    "site_domain": "nvidia.github.io",
+    "subject_key": "engine:NVIDIA/TensorRT-LLM",
+    "subject_kind": "inference engine",
+    "source_read_on": "2026-10-02",
+    "site_pages_read": 60,
+    "refresh_every_days": 30
+}

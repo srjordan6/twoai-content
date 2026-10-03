@@ -4,7 +4,7 @@
     "slug": "sql-mcp-servers",
     "shape": "art-topic",
     "title": "MCP Database Servers",
-    "answer": "Model Context Protocol servers expose a database to an AI assistant as a set of tools, such as listing tables, describing a schema and running a query. This site's MCP directory tracks active servers, including many for PostgreSQL, MySQL, SQLite and cloud warehouses. The directory currently lists 2511 active MCP servers, of which 263 are for SQL databases and warehouses. That makes database access one of the larger single purposes a server is built for.",
+    "answer": "Model Context Protocol servers expose a database to an AI assistant as a set of tools, such as listing tables, describing a schema and running a query. This site's MCP directory tracks active servers, including many for PostgreSQL, MySQL, SQLite and cloud warehouses. Of the 2526 active Model Context Protocol servers tracked here, 263 are for SQL databases and warehouses. The category sits inside the wider field of AI and SQL, where a language model is given structured access to data rather than being asked to guess at it.",
     "crumbs": [
         {
             "name": "AI and SQL",
@@ -12,7 +12,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-10-03T09:40:31-05",
+    "built_at": "2026-10-03T12:41:37-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "AI and SQL",
@@ -20,23 +20,23 @@
     "page_uid": "20be2010",
     "sections": [
         {
-            "body": "Model Context Protocol servers expose a database to an AI assistant as a set of tools, such as listing tables, describing a schema and running a query. This site's MCP directory tracks active servers, including many for PostgreSQL, MySQL, SQLite and cloud warehouses. The directory currently lists 2511 active MCP servers, of which 263 are for SQL databases and warehouses. That makes database access one of the larger single purposes a server is built for.",
+            "body": "Model Context Protocol servers expose a database to an AI assistant as a set of tools, such as listing tables, describing a schema and running a query. This site's MCP directory tracks active servers, including many for PostgreSQL, MySQL, SQLite and cloud warehouses. Of the 2526 active Model Context Protocol servers tracked here, 263 are for SQL databases and warehouses. The category sits inside the wider field of AI and SQL, where a language model is given structured access to data rather than being asked to guess at it.",
             "heading": "Scope"
         },
         {
-            "body": "A database server runs either as a local process on the analyst's machine or as a remote service, and it speaks JSON-RPC over standard input and output or over HTTP. It holds a connection to the database through the vendor's driver, for example psycopg for PostgreSQL, and reads its credentials from environment variables or a configuration file supplied by the assistant host. Some teams run the server in a container next to the database, others keep it on the workstation. This site's own pages are built from a PostgreSQL database, the same kind of source these servers are pointed at.",
+            "body": "An MCP database server is a small process that sits between the assistant and the database, speaking the Model Context Protocol on one side and a native driver or client library on the other. It typically holds a connection string or credentials for one target system, such as PostgreSQL, MySQL, SQLite or a cloud warehouse, and translates each tool call into ordinary SQL or a warehouse API request. Most implementations run locally alongside the assistant, though remote and hosted variants exist. The server itself is usually stateless between calls, so the database remains the system of record.",
             "heading": "What it runs on"
         },
         {
-            "body": "The server publishes a small set of tools, typically listing tables, describing a table and running a query. The assistant chooses a tool, fills in the arguments, and the server executes the call and returns rows as text or JSON. Many servers restrict execution to SELECT statements or apply a row limit, and some cache the schema so the model does not rediscover tables on every turn. Write access, where a server offers it, is usually a separate tool that is disabled by default.",
+            "body": "The work starts with discovery: the assistant calls tools to list schemas, tables and columns, then reads descriptions and sample values to understand what the data means. From there it composes a query, often a SELECT, and the server executes it and returns rows, usually as structured JSON. Many servers restrict the toolset to read only operations, or expose a separate write path that a human must approve. Iteration is common, since a first query often returns an error or an unexpected shape and the assistant revises it. Some servers also return query plans or row counts to help the assistant judge cost before running something heavy.",
             "heading": "How the work is done"
         },
         {
-            "body": "The main risks are credentials that are broader than the task needs, prompt injection through data the model reads, and queries that scan or lock more than intended. Provenance matters because a result the assistant reports may come from a query the user never saw, so servers that log the SQL they run make review easier. In practice, access follows the database's own roles, with a read-only account for exploration and a narrower grant for anything that writes. The server's own license and maintenance record vary by project, so the repository is the place to check them.",
+            "body": "The main risks are credential handling, over broad access and prompt injection through data. A server that holds a powerful database account turns any assistant mistake into a production incident, so scoped roles and read only replicas are common practice. Returned rows can themselves contain instructions that steer the assistant, which is why some teams treat query output as untrusted input. Provenance matters too: an answer derived from a query should be traceable to the statement that produced it, and audit logs of tool calls are the usual mechanism. Where personal or regulated data is involved, row limits, column masking and query review are typical controls, and the applicable rules depend on the jurisdiction and the data.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "Growth in the directory points to more servers for warehouses and analytical engines, not only transactional databases. Closer integration with schema metadata is likely, so a server can hand the model column descriptions and relationships rather than bare table names. Query review and audit logging are moving into the server itself, since that is the point where the SQL is visible. Common tool names and result shapes would let an assistant move between servers without relearning each one.",
+            "body": "The directory keeps growing, and the 263 SQL entries are a snapshot rather than a fixed set. Expect more servers to ship with built in guardrails, such as read only defaults, cost estimates and approval steps for writes, rather than leaving those to the operator. Schema aware retrieval and semantic layers are likely to move into the server so the assistant needs fewer exploratory calls. Standardisation of authentication and permissions across servers would remove much of the current per server setup work. The open question is how much query authority a model should hold by default, and that is being settled in practice, one deployment at a time.",
             "heading": "Where it is going"
         }
     ],

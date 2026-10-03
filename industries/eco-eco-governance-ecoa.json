@@ -4,7 +4,7 @@
     "slug": "eco-governance-ecoa",
     "shape": "art-topic",
     "title": "Fair Lending and Bias Testing",
-    "answer": "Fair lending and bias testing is the practice of checking whether credit decisions, pricing, marketing, and servicing treat applicants and borrowers fairly regardless of protected characteristics such as race, ethnicity, sex, age, or national origin. It covers the entire credit lifecycle, from application and underwriting to account management and collections. The work sits at the intersection of compliance, model risk management, and data science, and it applies to banks, credit unions, fintech lenders, and mortgage servicers. Bias testing looks for both disparate treatment, where similar applicants are treated differently, and disparate impact, where a neutral policy or model produces unequal outcomes. The scope also includes third-party models and data sources that lenders rely on.",
+    "answer": "Fair lending and bias testing covers the review of credit decisions, pricing, underwriting and marketing for unlawful disparities by race, sex, age, national origin and other protected classes. It sits inside model risk management and compliance, and it draws on the Equal Credit Opportunity Act, the Fair Housing Act and the disparate impact standard rather than on any single technical method. The work applies to banks, credit unions, fintech lenders, mortgage servicers and the vendors that supply scoring and decisioning software to them.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-10-03T09:40:31-05",
+    "built_at": "2026-10-03T12:41:36-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Economist",
@@ -28,23 +28,23 @@
     "page_uid": "b5a2956d",
     "sections": [
         {
-            "body": "Fair lending and bias testing is the practice of checking whether credit decisions, pricing, marketing, and servicing treat applicants and borrowers fairly regardless of protected characteristics such as race, ethnicity, sex, age, or national origin. It covers the entire credit lifecycle, from application and underwriting to account management and collections. The work sits at the intersection of compliance, model risk management, and data science, and it applies to banks, credit unions, fintech lenders, and mortgage servicers. Bias testing looks for both disparate treatment, where similar applicants are treated differently, and disparate impact, where a neutral policy or model produces unequal outcomes. The scope also includes third-party models and data sources that lenders rely on.",
+            "body": "Fair lending and bias testing covers the review of credit decisions, pricing, underwriting and marketing for unlawful disparities by race, sex, age, national origin and other protected classes. It sits inside model risk management and compliance, and it draws on the Equal Credit Opportunity Act, the Fair Housing Act and the disparate impact standard rather than on any single technical method. The work applies to banks, credit unions, fintech lenders, mortgage servicers and the vendors that supply scoring and decisioning software to them.",
             "heading": "Scope"
         },
         {
-            "body": "The work runs on loan-level data, including application records, credit bureau attributes, decision outcomes, and pricing terms, often supplemented by demographic data collected under the Home Mortgage Disclosure Act. Teams use model risk management platforms, data lineage tools, and bias testing libraries to run statistical tests and document results. Production systems such as loan origination platforms and decision engines provide the logs and model outputs that feed the analysis. Cloud or on-premise computing environments host the data pipelines and the testing notebooks. Access controls and audit trails are part of the infrastructure because fair lending evidence must be reproducible.",
+            "body": "The practice runs on the lender's own loan application and servicing data, joined to geocoded census and HMDA-style public records that supply proxy variables where protected class is not collected. Teams work in a statistical environment such as R, Python or SAS, with model documentation and version history kept in a governed repository. Findings are usually reported through the same committee structure that handles model validation, with legal counsel and the fair lending officer reviewing results before anything is finalized.",
             "heading": "What it runs on"
         },
         {
-            "body": "Practitioners start by defining the protected classes and the credit product, then assemble a dataset that includes approved, denied, and priced loans. They calculate metrics such as adverse impact ratios, standardized mean differences, and denial rate disparities across groups. They also test for proxy discrimination by checking whether variables like zip code or education level correlate with protected characteristics. Model interpretability techniques help identify which features drive decisions, and matched pair testing or mystery shopping can reveal disparate treatment. Findings are documented in validation reports, and ongoing monitoring tracks whether disparities persist after model changes.",
+            "body": "Analysts compare approval rates, pricing and exception rates across groups, then run regression or matched-pair analysis that holds creditworthiness constant so that a gap can be attributed to a protected characteristic rather than to risk. Proxy methods such as Bayesian Improved Surname Geocoding are used to estimate race and ethnicity where the data is incomplete, and the results are checked against the lender's own fair lending history. Testing is repeated when a model is retrained, when a threshold changes, or when a new data source is added, because a disparity can appear without any change to the model itself.",
             "heading": "How the work is done"
         },
         {
-            "body": "Fair lending is governed by laws such as the Equal Credit Opportunity Act, the Fair Housing Act, and Regulation B, which give applicants the right to be free from discrimination and to receive notice of adverse action. Regulators including the Consumer Financial Protection Bureau and the Department of Justice enforce these rules, and violations can lead to enforcement actions, fines, and reputational harm. Provenance matters because lenders must show where data came from, how models were built, and why a decision was made. The site's 219 compliance and regulation pages track these rules and related guidance. Internal governance typically includes fair lending risk assessments, independent model validation, and board-level reporting.",
+            "body": "The governing obligations come from the Equal Credit Opportunity Act, the Fair Housing Act, the Community Reinvestment Act and state-level fair lending statutes, enforced by agencies including the Consumer Financial Protection Bureau and the Department of Justice. Documentation has to show what was tested, on which population, with which method, and what was done about any disparity found, since examiners and plaintiffs both read the record. Adverse action notices, model cards and vendor contracts are part of the same file, and a lender remains accountable for a disparity produced by a third-party score even when it did not build the model.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "Expect more regulatory attention on artificial intelligence in credit, with supervisors asking for documented bias testing and explainability as a routine part of model risk management. Lenders are moving toward continuous monitoring rather than annual reviews, using automated tests that run whenever a model or data source changes. Alternative data and machine learning models will keep raising questions about proxy discrimination and the limits of current fairness metrics. State-level laws and international standards may add new requirements, while industry groups work on common definitions and testing protocols. The direction is toward embedding fair lending checks into the model development lifecycle rather than treating them as a separate audit.",
+            "body": "Supervisory attention is moving toward continuous monitoring rather than an annual review, with disparity metrics tracked alongside model performance in production. Lenders are also being asked to explain automated decisions in plain terms to applicants and to show that alternative data sources such as cash flow records do not introduce new gaps. The open questions are how to test generative and large language models used in servicing and collections, and how to keep a defensible record when the underlying model changes faster than the review cycle.",
             "heading": "Where it is going"
         }
     ],

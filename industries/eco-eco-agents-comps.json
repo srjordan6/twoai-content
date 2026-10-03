@@ -4,7 +4,7 @@
     "slug": "eco-agents-comps",
     "shape": "art-topic",
     "title": "Keeping Comparable Company Sets Current",
-    "answer": "Keeping comparable company sets current means maintaining a peer group used for valuation, relative performance, and sector benchmarking as the underlying companies change. In finance, a comparable set is only useful if it reflects the current business mix, size, and listing status of each member. The work covers adding new listings, removing acquired or delisted companies, and reclassifying firms when their revenue mix shifts. It also covers documenting why each change was made so that historical analysis remains reproducible.",
+    "answer": "Keeping comparable company sets current is the work of maintaining the peer groups that valuation, benchmarking and screening depend on. In an AI-focused finance workflow the set drifts constantly, because companies enter the space through acquisitions, spin-outs and reclassification, and because a peer that was a pure software name two years ago may now earn most of its revenue from model serving. The task covers listed instruments, private rounds that change the listed comparables, and the filings that record the change. It sits between research and data operations, and it is usually owned by whoever publishes the multiples.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-10-03T09:40:31-05",
+    "built_at": "2026-10-03T12:41:36-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Economist",
@@ -28,23 +28,23 @@
     "page_uid": "3d1e9eb0",
     "sections": [
         {
-            "body": "Keeping comparable company sets current means maintaining a peer group used for valuation, relative performance, and sector benchmarking as the underlying companies change. In finance, a comparable set is only useful if it reflects the current business mix, size, and listing status of each member. The work covers adding new listings, removing acquired or delisted companies, and reclassifying firms when their revenue mix shifts. It also covers documenting why each change was made so that historical analysis remains reproducible.",
+            "body": "Keeping comparable company sets current is the work of maintaining the peer groups that valuation, benchmarking and screening depend on. In an AI-focused finance workflow the set drifts constantly, because companies enter the space through acquisitions, spin-outs and reclassification, and because a peer that was a pure software name two years ago may now earn most of its revenue from model serving. The task covers listed instruments, private rounds that change the listed comparables, and the filings that record the change. It sits between research and data operations, and it is usually owned by whoever publishes the multiples.",
             "heading": "Scope"
         },
         {
-            "body": "The work runs on a combination of market data feeds, regulatory filings, and a maintained company master. This site tracks 117 listed AI-related instruments with daily prices and 355 merger and acquisition filings, which are the kinds of inputs an agent workflow would monitor. Agents need scheduled access to those sources, a place to store the current peer set, and a version history. A typical setup uses a database for the set, a queue for incoming events, and a dashboard for human review.",
+            "body": "The work runs on a company master with stable identifiers, a mapping from each company to one or more peer sets, and a dated history of every membership change. Prices and fundamentals arrive from market data feeds, while corporate actions and ownership changes arrive from filings and exchange notices. This site tracks 117 listed AI-related instruments with daily prices and 514 company pages, which is the scale at which manual review stops being reliable. A scheduler runs the refresh, a queue holds the exceptions, and a review interface lets an analyst accept or reject each proposed change.",
             "heading": "What it runs on"
         },
         {
-            "body": "The method starts with a rule set that defines what makes a company comparable, such as sector, size, revenue model, and geography. Agents then watch for events that break those rules, including acquisitions, index changes, and new filings. When an event arrives, the agent proposes an update, such as removing a target or adding an acquirer, and attaches the source document. A human analyst reviews the proposal, and the change is committed with a timestamp and a reason code. Periodic full reviews catch slow drift that event triggers miss.",
+            "body": "An agent workflow typically watches for triggers, such as a merger filing, a ticker change, a segment reclassification or a sharp shift in revenue mix, and proposes a membership edit with the evidence attached. Rules handle the mechanical cases, and a model handles the ambiguous ones by reading filing text and comparing business descriptions. Every proposal carries a confidence and a reason, and a human signs off before the peer set is republished. The output is a versioned set with an audit trail, so any multiple can be traced back to the membership that produced it.",
             "heading": "How the work is done"
         },
         {
-            "body": "Provenance means every change to the peer set should point back to a filing, a price record, or a documented analyst decision. Rights matter because market data and filings carry license terms that limit redistribution and automated use. Risk includes stale sets that mislead valuation, survivorship bias when failed companies are dropped without a trace, and look-ahead bias when a set is updated with information not available at the time. An audit trail that records who changed what and when is the main control. The site's 148 active AI lawsuits show why legal status can itself be a reason to reclassify a peer.",
+            "body": "The main risks are stale membership, silent edits and peer sets that quietly flatter a valuation. Controls include dated versions, a named approver for each change, and a rule that no company enters or leaves a set without a cited source. Provenance matters because a benchmark number is only as good as the group behind it, and this site already tracks 401 merger and acquisition filings and 150 active AI lawsuits, both of which can move a company out of a peer group. Licensing and redistribution terms for the underlying data also constrain what can be shown. Nothing here is investment advice, and the peer set is a research input rather than a recommendation.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "Agent workflows for peer sets are moving from nightly batch updates to event-driven updates that react within minutes of a filing. Language models are being used to read filings and extract the facts that trigger a reclassification, though human review remains the norm for material changes. Expect tighter integration between the peer set, the valuation model, and the compliance record so that a change in one propagates with a full audit trail. The growth of AI-related litigation and regulation will likely make legal status a standard field in peer definitions. The goal is a set that is current, sourced, and explainable.",
+            "body": "Expect more of the refresh to be automated, with agents drafting the change, citing the filing and routing it for approval, and with humans handling only contested cases. Peer sets will likely become more granular and more temporary, assembled for a question rather than maintained as a fixed list. The harder problem is not detection but definition, since what counts as an AI comparable keeps moving. Teams that keep a clean, dated history of membership changes will be able to answer that question later, and teams that overwrite their sets will not.",
             "heading": "Where it is going"
         }
     ],

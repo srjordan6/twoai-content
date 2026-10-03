@@ -4,7 +4,7 @@
     "slug": "sql-lakehouse",
     "shape": "art-topic",
     "title": "Warehouses and Lakehouses for AI",
-    "answer": "Data warehouses and lakehouses store an organisation's analytical history in tables queried with SQL, and the major platforms now offer AI functions and model serving inside the platform, so data does not have to leave governed storage to be used by a model. This site tracks 263 Model Context Protocol servers for SQL databases and warehouses, a sign of how many tools now sit between a model and a query engine. The boundary between the two is practical rather than strict: a warehouse is usually schema-first and optimised for SQL, while a lakehouse adds open file formats and a catalog over object storage. Both are used for reporting, feature engineering, and increasingly for retrieval and model inference close to the data.",
+    "answer": "Data warehouses and lakehouses store an organisation's analytical history in tables queried with SQL. The major platforms now offer AI functions and model serving inside the platform, so data does not have to leave governed storage to be used by a model. This page covers the storage and query layer itself, the AI features vendors have added to it, and the ways analysts and data teams reach both through SQL. It sits alongside the wider AI and SQL field, where the same tables are also read by agents and applications.",
     "crumbs": [
         {
             "name": "AI and SQL",
@@ -12,7 +12,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-10-03T09:40:31-05",
+    "built_at": "2026-10-03T12:41:37-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "AI and SQL",
@@ -20,23 +20,23 @@
     "page_uid": "678f8878",
     "sections": [
         {
-            "body": "Data warehouses and lakehouses store an organisation's analytical history in tables queried with SQL, and the major platforms now offer AI functions and model serving inside the platform, so data does not have to leave governed storage to be used by a model. This site tracks 263 Model Context Protocol servers for SQL databases and warehouses, a sign of how many tools now sit between a model and a query engine. The boundary between the two is practical rather than strict: a warehouse is usually schema-first and optimised for SQL, while a lakehouse adds open file formats and a catalog over object storage. Both are used for reporting, feature engineering, and increasingly for retrieval and model inference close to the data.",
+            "body": "Data warehouses and lakehouses store an organisation's analytical history in tables queried with SQL. The major platforms now offer AI functions and model serving inside the platform, so data does not have to leave governed storage to be used by a model. This page covers the storage and query layer itself, the AI features vendors have added to it, and the ways analysts and data teams reach both through SQL. It sits alongside the wider AI and SQL field, where the same tables are also read by agents and applications.",
             "heading": "Scope"
         },
         {
-            "body": "A warehouse or lakehouse runs on three layers: cheap object storage for the data files, a distributed compute engine for SQL and model workloads, and a metadata catalog that tracks tables, schemas, and permissions. Open table formats such as Parquet, Iceberg, and Delta Lake let the same files be read by different engines without copying. Models connect through APIs or protocols such as MCP, and this site tracks 263 MCP servers for SQL databases and warehouses. The platform may be fully managed, self-hosted, or a mix, but the pattern is the same: separate storage from compute so each can scale and be governed on its own.",
+            "body": "A warehouse runs on managed compute over columnar storage, with separate clusters or warehouses sized for each workload. A lakehouse keeps files in cheap object storage, typically Parquet or similar open formats, and puts a table format and a query engine over them so the files behave like tables. Vendors sell these as hosted services, and open engines such as Spark and Trino can query the same files on your own machines. Model endpoints, vector indexes and feature stores are increasingly deployed next to the data rather than in a separate stack.",
             "heading": "What it runs on"
         },
         {
-            "body": "Work starts with ingestion from operational databases, logs, and files into bronze, silver, and gold layers or similar staging zones. SQL does the heavy lifting for cleaning, joining, and aggregating, and version-controlled transformations keep the pipeline reproducible. AI work adds steps: generating embeddings, storing them in a vector index, and calling a model through a SQL function or a served endpoint. Evaluation and monitoring happen alongside the pipeline, because a model that reads from a warehouse needs the same tests and lineage as a report.",
+            "body": "The work starts with ingestion and modelling: raw files and change streams land in staging tables, then get cleaned, joined and shaped into facts and dimensions or wide analytical tables. Analysts and applications query those tables in SQL, and increasingly call AI functions from the same statement, for example to classify text, generate an embedding or score a row with a hosted model. Retrieval patterns add a vector column and a similarity search beside ordinary filters, so a query can mix exact conditions with semantic ones. Pipelines are scheduled or triggered, tested, and versioned like other code, and results are materialised when a query is too slow to run live.",
             "heading": "How the work is done"
         },
         {
-            "body": "Governance in a warehouse or lakehouse rests on access control, lineage, and audit. Row-level security, column masking, and role-based permissions decide who can query which rows and columns, and every query can be logged. Provenance matters more when a model consumes the data, because a prediction inherits the rights and quality of its training or retrieval source. Teams track where data came from, what transformations ran, and which model version used it, so a result can be explained and reproduced. Risks include leaking sensitive data through model outputs, training on data without the right to use it, and drifting away from the original consent or contract terms.",
+            "body": "Because the data stays in governed storage, existing controls still apply: role based access, row and column level policies, masking, and audit logs of who queried what. Provenance matters when a model writes back into a table, so teams record which model, prompt or feature set produced a value and keep the source rows traceable. Cost and quota controls matter too, since a careless AI function over a large table can consume far more compute than a plain select. Where personal or regulated data is involved, the platform's residency, retention and deletion rules govern the model calls as much as the tables. Nothing here is legal advice, and specific obligations depend on your jurisdiction and sector.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The direction is toward fewer copies and more direct model access inside the governed platform. Expect more SQL-native AI functions, better vector support in table formats, and catalogs that track models as first-class assets alongside tables. Open table formats and protocols such as MCP will keep pushing interoperability, so a model can query a warehouse without a bespoke connector. The open questions are cost, latency, and how to keep governance meaningful when models, not people, are the main consumers of the data.",
+            "body": "The direction of travel is toward one governed store that serves both classical analytics and model workloads, with SQL as the common interface. Expect more pushdown of model inference into the query engine, tighter coupling between tables and vector indexes, and catalogues that describe models and features as first class assets. Agent access is the newer pressure: this site currently tracks 2526 active Model Context Protocol servers, 263 of them for SQL databases and warehouses, which suggests assistants will query these systems directly rather than through hand built dashboards. The open question is whether lakehouse formats and warehouse engines converge on one standard or keep competing on performance and governance.",
             "heading": "Where it is going"
         }
     ],

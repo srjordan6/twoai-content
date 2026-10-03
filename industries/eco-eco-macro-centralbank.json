@@ -4,7 +4,7 @@
     "slug": "eco-macro-centralbank",
     "shape": "art-topic",
     "title": "Reading Central Bank Communication",
-    "answer": "Reading central bank communication is the systematic study of what monetary policy makers say and write, from rate decisions and statements to minutes, speeches, interviews and press conferences. In macroeconomic econometrics it turns that language into variables that can be used in models of inflation, output, interest rates and expectations. The work covers both the content of the message, such as the policy stance and forward guidance, and its tone, uncertainty and emphasis. It also covers how those signals differ across central banks and over time. This topic sits within The AI Economist, where text analysis meets macro modelling.",
+    "answer": "Reading central bank communication is the quantitative study of what monetary policy statements, minutes, speeches and press conferences reveal about the path of interest rates and the economic outlook. It sits inside macroeconomic econometrics and overlaps with natural language processing, because the raw material is text rather than a tidy time series. The work covers sentiment scoring, topic detection, uncertainty measurement and the mapping of wording changes to market expectations. Researchers use it to test whether guidance moves asset prices, and to build early indicators of a policy shift.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-10-03T09:40:31-05",
+    "built_at": "2026-10-03T12:41:36-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Economist",
@@ -28,23 +28,23 @@
     "page_uid": "29af880d",
     "sections": [
         {
-            "body": "Reading central bank communication is the systematic study of what monetary policy makers say and write, from rate decisions and statements to minutes, speeches, interviews and press conferences. In macroeconomic econometrics it turns that language into variables that can be used in models of inflation, output, interest rates and expectations. The work covers both the content of the message, such as the policy stance and forward guidance, and its tone, uncertainty and emphasis. It also covers how those signals differ across central banks and over time. This topic sits within The AI Economist, where text analysis meets macro modelling.",
+            "body": "Reading central bank communication is the quantitative study of what monetary policy statements, minutes, speeches and press conferences reveal about the path of interest rates and the economic outlook. It sits inside macroeconomic econometrics and overlaps with natural language processing, because the raw material is text rather than a tidy time series. The work covers sentiment scoring, topic detection, uncertainty measurement and the mapping of wording changes to market expectations. Researchers use it to test whether guidance moves asset prices, and to build early indicators of a policy shift.",
             "heading": "Scope"
         },
         {
-            "body": "The work runs on document collections gathered from central bank websites, official archives and press offices, together with metadata such as speaker, date and meeting. Processing typically uses Python or R, natural language processing libraries, and increasingly large language models for summarisation, classification and question answering. Storage and compute range from a laptop for small studies to cloud clusters and GPUs for large transformer models. Version control and databases keep track of documents, annotations and model outputs. Human coders remain part of the pipeline for validation and for cases where judgement matters.",
+            "body": "The inputs are official documents from central banks, transcripts, and market data such as overnight index swaps and futures prices that carry rate expectations. Text is collected through public feeds and archives, then stored in a database alongside release timestamps so that every document can be aligned to the minute it became public. Computation runs on standard statistical software and, for the language models, on GPU clusters or hosted APIs. The main constraint is not storage but careful timestamping, since a document read before or after its release changes the entire result.",
             "heading": "What it runs on"
         },
         {
-            "body": "A common approach starts with a clear question, such as whether a statement shifted the expected path of policy, then builds a corpus and a coding scheme. Dictionary methods count words from predefined lists, supervised models learn from human labelled examples, and topic models or embeddings find recurring themes without labels. Transformer based models and prompted large language models can classify sentences, extract forward guidance and summarise paragraphs, but their outputs need checking against human reading. The resulting text measures are then used in regressions, event studies, vector autoregressions or local projections to relate communication to asset prices, forecasts or macroeconomic outcomes. Careful work separates the signal from the noise and tests whether results hold across speakers, meetings and policy regimes.",
+            "body": "The usual pipeline starts with cleaning and sectioning the text, separating the decision paragraph from the risk assessment and the forward guidance. Dictionaries and supervised classifiers then score tone, hawkish or dovish, while topic models and embeddings capture what the statement is about. A common trick is to measure the change in language between consecutive meetings rather than the level, because markets price surprises. The scores are regressed on rate expectations or bond yields, with controls for the economic data released in the same window. Validation relies on out of sample tests and on checking that the measure behaves sensibly around known policy shifts.",
             "heading": "How the work is done"
         },
         {
-            "body": "Central bank documents are usually public, but their reuse can still be governed by copyright, terms of use and attribution requirements, and some research relies on licensed or paywalled sources. Provenance matters, so each text should carry its source, date, speaker, meeting and version, because a later revision can change the meaning. Risks include look ahead bias when a model uses information that was not available at the time, overfitting to one policy era, and spurious correlations between words and market moves. Large language models add risks of hallucination, unstable outputs and opaque training data, so documentation and reproducibility are essential. Governance usually means clear data handling rules, audit trails, human review and disclosure of model limitations.",
+            "body": "Central bank text is public, but the surrounding data often is not, and market feeds carry licensing terms that restrict redistribution. Researchers should record the exact document version and retrieval date, since statements are sometimes revised and archives are reorganised. Model choices matter for reproducibility, and a dictionary tuned on one central bank rarely transfers cleanly to another. Any trading or investment conclusion drawn from these measures is the reader's own decision, not something the analysis supplies. Where the work touches on regulated entities, the compliance pages tracked on this site give a sense of how crowded that space has become.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The field is moving toward real time analysis of speeches and press conferences, including voice and video, rather than only archived text. Multilingual and cross country comparisons are becoming more common as researchers seek common measures of policy tone and uncertainty. Large language models are likely to handle more of the extraction and summarisation, with human economists focusing on validation and interpretation. Central banks themselves are also using text analysis to monitor their own communication and public expectations. The open questions are how to measure uncertainty reliably, how to compare signals across regimes, and how to keep models transparent enough for policy work.",
+            "body": "The direction of travel is toward models that read whole documents rather than word lists, and toward real time scoring of press conferences as they are delivered. Multilingual work is expanding, since several major central banks publish in more than one language and the translations are not always identical. There is growing interest in linking communication to the dispersion of forecaster expectations, not just the average. The open questions are causal, whether guidance changes behaviour or merely reflects what policymakers already see. Progress will depend as much on better identification as on better language models.",
             "heading": "Where it is going"
         }
     ],

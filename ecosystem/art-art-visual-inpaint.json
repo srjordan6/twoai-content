@@ -4,7 +4,7 @@
     "slug": "art-visual-inpaint",
     "shape": "art-topic",
     "title": "Inpainting and Canvas Expansion",
-    "answer": "Inpainting is the process of filling a masked or missing region of an image with generated content that matches its surroundings. Canvas expansion, often called outpainting, extends an image beyond its original borders by generating new pixels that continue the existing composition. Both sit inside generative illustration, where artists use them to repair, recompose, or enlarge a picture without repainting it by hand. The work ranges from small touch ups to building a wider scene from a narrow crop.",
+    "answer": "Inpainting is the practice of regenerating a selected region of an existing image while leaving the rest untouched, and canvas expansion, sometimes called outpainting, extends an image beyond its original borders. Both sit inside generative illustration workflows, where an artist treats the image as a surface that can be edited in parts rather than only produced whole. The work covers retouching, removing unwanted objects, repairing damaged scans, changing a subject's clothing or expression, and turning a cropped composition into a wider one. It applies to photographs, paintings, concept art and product mockups alike.",
     "crumbs": [
         {
             "name": "The Art of AI",
@@ -16,7 +16,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-10-03T09:40:31-05",
+    "built_at": "2026-10-03T12:41:36-05",
     "category": "ecosystem-entities-market-and-operations",
     "expanded": true,
     "hub_name": "The Art of AI",
@@ -24,23 +24,23 @@
     "page_uid": "72e4658e",
     "sections": [
         {
-            "body": "Inpainting is the process of filling a masked or missing region of an image with generated content that matches its surroundings. Canvas expansion, often called outpainting, extends an image beyond its original borders by generating new pixels that continue the existing composition. Both sit inside generative illustration, where artists use them to repair, recompose, or enlarge a picture without repainting it by hand. The work ranges from small touch ups to building a wider scene from a narrow crop.",
+            "body": "Inpainting is the practice of regenerating a selected region of an existing image while leaving the rest untouched, and canvas expansion, sometimes called outpainting, extends an image beyond its original borders. Both sit inside generative illustration workflows, where an artist treats the image as a surface that can be edited in parts rather than only produced whole. The work covers retouching, removing unwanted objects, repairing damaged scans, changing a subject's clothing or expression, and turning a cropped composition into a wider one. It applies to photographs, paintings, concept art and product mockups alike.",
             "heading": "Scope"
         },
         {
-            "body": "These operations run on the same hardware as other image generation: GPUs, either local or cloud, with enough video memory to hold the model and the image at the working resolution. Latent diffusion models are common, because they operate in a compressed space that makes large canvases more tractable. Tiling and patch based methods let a system expand an image in steps, so memory use stays bounded. The site tracks 1000 live image generation models, and inpainting or outpainting is a standard mode in that class of system.",
+            "body": "The task runs on diffusion models trained to fill masked areas, with the mask telling the model which pixels to replace and the surrounding pixels acting as context. Common interfaces include Adobe Photoshop's Generative Fill, Stable Diffusion's inpainting mode, and hosted services built on similar checkpoints. Canvas expansion usually needs a model that can accept a larger output size than its training resolution, so the software tiles or scales the work. Hardware ranges from a laptop with a consumer GPU to rented cloud compute, and the site currently tracks 1000 live image generation models, many of which offer an inpainting or expansion mode.",
             "heading": "What it runs on"
         },
         {
-            "body": "The usual workflow starts with a mask that marks the area to be filled or the new region to be added. A model then generates content conditioned on the unmasked pixels, often with a text prompt or reference image to guide style and subject. For canvas expansion, the system may generate in overlapping tiles and blend the seams, or use a model trained to continue edges and textures. Artists iterate by adjusting the mask, the prompt, and the blend, then retouch the result in a standard image editor. Some pipelines use a separate refinement pass to improve coherence at the boundary.",
+            "body": "A typical pass starts with a mask, drawn by hand or generated from a selection, a depth map or a segmentation model. The artist writes a prompt for the masked area alone, sets a strength or denoise value that controls how far the result may drift from the original pixels, and generates several candidates. Expansion adds a step: the canvas is enlarged, the new border is masked, and the prompt describes what should continue into it, often with a reference to the existing edge. The artist then composites, blends seams, and repeats at higher resolution until the join is not visible.",
             "heading": "How the work is done"
         },
         {
-            "body": "Rights and provenance are central because inpainting can alter an existing work and canvas expansion can create new content that may resemble training data. The site tracks 92 active intellectual property lawsuits, a reminder that generated or extended imagery can become part of a dispute over ownership or infringement. Provenance tools, such as signed metadata or watermarks, are sometimes used to record that a region was generated. Artists and studios often keep records of source images, masks, prompts, and model versions to show how a final image was made.",
+            "body": "Rights questions turn on what the model was trained on and what the artist supplies as input. Inpainting a client's photograph can raise questions about the photographer's copyright and the subject's likeness rights, and expanding a known artwork into new territory can raise moral rights issues even where copyright has expired. Provenance tools such as C2PA content credentials and watermarking schemes are increasingly attached to generated output, though adoption is uneven. The site tracks 92 active intellectual property lawsuits, and any studio using these tools should expect the legal picture to keep moving.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The direction is toward more controllable and higher resolution expansion, with models that understand perspective, lighting, and object continuity across a larger canvas. Interactive tools are becoming faster, so artists can expand a canvas in real time and see the result before committing. There is also work on consistency across multiple expansions, so a scene can grow in several directions without drifting in style. As these methods improve, the line between editing an existing image and generating a new one continues to blur.",
+            "body": "The direction of travel is toward models that hold consistency across a whole canvas, so an expanded image keeps the same lighting, perspective and style as the original. Reference based methods, where the artist supplies a second image to guide the fill, are becoming standard, and interactive tools are moving closer to real time. Expect tighter integration with 3D and video pipelines, where the same fill logic extends a frame or a texture. The practical effect for illustrators is that the boundary between editing and generating keeps thinning.",
             "heading": "Where it is going"
         }
     ],

@@ -4,7 +4,7 @@
     "slug": "med-surgery-haptic",
     "shape": "art-topic",
     "title": "Haptic Feedback in Robotic Surgery",
-    "answer": "Haptic feedback in robotic surgery covers the sensing and display of force, vibration, and texture between a surgical instrument and tissue. It includes force feedback that resists the surgeon's hand at the master console, tactile feedback that conveys contact and slip, and proprioceptive cues that help with instrument placement. The field spans teleoperated robots, handheld instruments with sensors, and training simulators that teach tissue handling. It also touches on shared control, where the robot filters or scales forces to protect tissue.",
+    "answer": "Haptic feedback in robotic surgery is the deliberate return of touch sensation to a surgeon who is operating through a machine rather than with their hands directly. It covers force sensing at the instrument tip, vibration and texture cues, and the translation of those signals into something the surgeon can feel at the console. The field sits inside surgical robotics and navigation, alongside imaging, instrument tracking and motion scaling, and it applies to soft tissue procedures where force matters, such as suturing, retraction and dissection near delicate structures. It is distinct from passive ergonomics and from visual force overlays, though the two are often compared.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-10-03T09:40:31-05",
+    "built_at": "2026-10-03T12:41:36-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Physician",
@@ -28,23 +28,23 @@
     "page_uid": "d2a67599",
     "sections": [
         {
-            "body": "Haptic feedback in robotic surgery covers the sensing and display of force, vibration, and texture between a surgical instrument and tissue. It includes force feedback that resists the surgeon's hand at the master console, tactile feedback that conveys contact and slip, and proprioceptive cues that help with instrument placement. The field spans teleoperated robots, handheld instruments with sensors, and training simulators that teach tissue handling. It also touches on shared control, where the robot filters or scales forces to protect tissue.",
+            "body": "Haptic feedback in robotic surgery is the deliberate return of touch sensation to a surgeon who is operating through a machine rather than with their hands directly. It covers force sensing at the instrument tip, vibration and texture cues, and the translation of those signals into something the surgeon can feel at the console. The field sits inside surgical robotics and navigation, alongside imaging, instrument tracking and motion scaling, and it applies to soft tissue procedures where force matters, such as suturing, retraction and dissection near delicate structures. It is distinct from passive ergonomics and from visual force overlays, though the two are often compared.",
             "heading": "Scope"
         },
         {
-            "body": "The hardware runs on surgical robot arms with force and torque sensors at the wrist or instrument tip, tactile arrays on the grasper, and strain gauges or accelerometers along the shaft. Master controllers use motors or brakes to generate resistance, and haptic gloves or handles may add vibration and shape cues. Real-time control loops run on embedded processors, FPGAs, or GPUs, often with a real-time operating system and a low-latency network between master and slave. Software frameworks such as ROS can handle sensor streams, but safety-critical loops are usually separate and deterministic.",
+            "body": "The physical layer is a sensing chain: strain gauges, fibre optic sensors or capacitive elements at or near the instrument jaws, wiring or wireless links down the arm, and actuators at the console that press, vibrate or resist the surgeon's fingers. Because the sensing point sits inside a sterile instrument that is repeatedly reprocessed, the hardware must survive sterilisation and stay small enough not to compromise the wrist articulation. On the computing side, the system needs low latency signal conditioning and a control loop fast enough that the felt force tracks the real force without perceptible lag. Most deployed surgical platforms remain teleoperated master slave systems, and the haptic channel is an added loop on top of that architecture.",
             "heading": "What it runs on"
         },
         {
-            "body": "The work begins with sensor calibration and signal conditioning to remove noise, drift, and temperature effects. Algorithms estimate contact forces and tissue stiffness, then map those estimates to haptic commands that a surgeon can feel. Machine learning can classify tissue type or detect slip from force and vibration patterns, though many deployed systems use model-based control. Validation happens in phantoms, ex vivo tissue, animal studies, and then clinical trials, with latency and transparency measured at each stage.",
+            "body": "Work begins with characterising the forces involved in the target procedure, since tissue forces are small and vary by task and patient. Engineers then calibrate sensors against known loads, model how the instrument and tissue interact, and design a rendering law that maps measured force to console output without amplifying tremor or noise. Evaluation is typically bench testing with phantoms and force gauges, then cadaver or animal work, then human studies that measure task time, applied force, tissue damage and surgeon workload. Because feel is subjective, studies often pair instrumented measurements with surgeon ratings, and the two do not always agree.",
             "heading": "How the work is done"
         },
         {
-            "body": "Regulatory clearance for a surgical robot with haptic feedback typically requires evidence of safety and effectiveness, and the site maintains 215 compliance and regulation pages that cover device rules. Risk includes sensor failure, loss of force feedback, cybersecurity gaps in the control link, and the chance that a surgeon over-trusts a haptic cue. Provenance matters for any surgical data used to train models, including consent, de-identification, and traceability of sensor recordings. The site tracks 6 active product liability and wrongful death lawsuits against AI companies, which shows the legal exposure when automated features contribute to harm.",
+            "body": "A haptic instrument is a regulated medical device, so it carries the same obligations as the rest of the surgical system: design controls, verification and validation, biocompatibility and sterilisation evidence, and post market surveillance. If the sensing or rendering involves learned components, those add questions about training data, failure modes and change control, and the site's 229 compliance and regulation pages reflect how much of this material now sits alongside the technical record. Liability follows the device into the operating room, and the site tracks 6 active product liability and wrongful death lawsuits against AI companies, a reminder that claims can attach to the software layer as well as the hardware. Provenance matters too: which sensor, which firmware version, which calibration record, and what the surgeon was actually shown or felt at the moment of a complication.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "Future work aims at smaller, flexible sensors that can fit inside articulated instruments and at AI that renders haptic cues from camera and force data when direct sensing is limited. Remote surgery and telesurgery over 5G or dedicated links could benefit from haptic feedback, but latency remains a hard constraint. Training simulators will likely use haptics to teach force limits and tissue handling without risking patients. Wider adoption depends on proving that haptic feedback improves outcomes and on integrating it with navigation and augmented reality displays.",
+            "body": "The near term is likely to be incremental, with force sensing used to warn, limit or log rather than to fully recreate the feel of open surgery. Better sensing materials and smaller actuators may allow haptics on instruments that currently have none, and recorded force traces could feed training, skill assessment and automated safety limits. The harder questions are perceptual and clinical: whether added feel measurably improves outcomes, how to validate a sensation, and how to keep a learned rendering layer explainable when a case goes wrong. Expect the field to move slowly, because the evidence bar for changing what a surgeon feels during an operation is high.",
             "heading": "Where it is going"
         }
     ],

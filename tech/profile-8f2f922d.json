@@ -1,0 +1,306 @@
+{
+    "tax": "lang-profile",
+    "uid": "8f2f922d",
+    "name": "llamafile",
+    "slug": "llamafile",
+    "facts": {
+        "repo": "Mozilla-Ocho/llamafile",
+        "stars": 26162,
+        "licence": "custom",
+        "archived": false,
+        "language": "C++",
+        "repo_url": "https://github.com/mozilla-ai/llamafile",
+        "last_push": "2026-10-01T15:52:47Z",
+        "description": "Distribute and run LLMs with a single file.",
+        "official_site": "https://docs.mozilla.ai/llamafile"
+    },
+    "model": "ollama:deepseek-v4.1-flash",
+    "shape": "lang-profile",
+    "title": "llamafile: A Single-File Runtime for Running LLMs Locally",
+    "answer": "llamafile is a Mozilla.ai project that packages an open LLM and everything needed to run it into one executable file, built on llama.cpp and Cosmopolitan Libc. It sits at the inference and local serving layer of the AI stack, letting you run models on your own machine with no installation. The one thing to know before adopting it is that versions from 0.10.0 use a new build system tracking recent llama.cpp, which may drop some features older releases had.",
+    "built_at": "2026-10-03T11:31:01-05:00",
+    "category": "technology-and-core-infrastructure",
+    "hub_name": "Programming Languages and Frameworks",
+    "page_uid": "8f2f922d",
+    "sections": [
+        {
+            "body": "llamafile is made by Mozilla, started as a Mozilla Builders project and now revamped by Mozilla.ai. It is a single-file executable for distributing and running large language models locally, combining llama.cpp with Cosmopolitan Libc into one framework. A llamafile contains the weights for a given open LLM plus everything needed to run that model on your computer, with nothing to install or configure aside from a few caveats. It serves the inference and local serving layer of the AI stack, and the same Cosmopolitan packaging also produces whisperfile, a single-file speech-to-text tool built on whisper.cpp. The documentation index describes versions from 0.10.0 onward as using a new build system aimed at keeping code aligned with the latest llama.cpp, supporting more recent models and functionality but possibly missing some previously available features, with previous versions still accessible from the releases page.",
+            "heading": "What it is and where it sits in AI work"
+        },
+        {
+            "body": "The concrete job llamafile does is local inference: you download one file, run it, and get an LLM with an API on your own machine. The quickstart uses an example Qwen3.5 llamafile under Apache 2.0, a recent model that can also accept uploaded images and answer questions about them, and it stresses that everything happens locally so no data ever leaves the computer. Qwen3.5 was chosen as the smallest model they had built a llamafile for, so it is the most likely to work out of the box. whisperfile extends the same idea to transcription and translation of audio files across the same platforms with no installation. It is strongest where you want a self-contained, portable artifact for local or offline inference, and where distribution simplicity matters more than squeezing out maximum throughput.",
+            "heading": "What it is used for and where it is strongest"
+        },
+        {
+            "body": "The learning curve is deliberately shallow. The quickstart walks through downloading an example llamafile, running it, and using its API, and the main friction is a one-time permission grant to execute the new file on macOS, Linux, or BSD. No mathematics or systems knowledge is required to run a prebuilt llamafile, since the weights and runtime are already inside the file. Building your own llamafile is a different matter: the documentation describes building code once with a Linux-style toolchain, where the provided GCC-based compiler is itself an Actually Portable Executable, and it describes concatenating AMD64 and ARM64 builds with a shell script that launches the appropriate one. The official site offers a beginner a quickstart and an index page, but the material read does not present a structured tutorial path beyond that.",
+            "heading": "How hard it is to learn and what you need first"
+        },
+        {
+            "body": "llamafile sits inside the llama.cpp ecosystem and inherits its model support, with the documentation index stating that versions from 0.10.0 track the latest llama.cpp so more recent models and functionality are supported. The site lists badges showing the build is based on llama.cpp commit 7f5ee54 and whisper.cpp commit 2eeeba5, and prebuilt llamafiles show which server version they were bundled with, with 0.9.* and 0.10.* examples given. The repository is Mozilla-Ocho/llamafile on GitHub with roughly 26,000 stars and a last push in October 2026, and the licence is listed as custom even though the documentation page badges state Apache 2.0, a discrepancy the material does not resolve. The documentation is published with GitBook and can be queried dynamically with an HTTP GET request using ask and optional goal parameters.",
+            "heading": "Ecosystem and community"
+        },
+        {
+            "body": "llamafile is built primarily for quick experiments and easy distribution rather than for maximum production throughput. The single-file model means you can try a model in minutes with no installation, which is a prototyping advantage, and the runtime does include performance work: runtime dispatching was added to llama.cpp so new Intel systems can use modern CPU features without losing support for older computers, and PKZIP support was added to the GGML library so uncompressed weights can be mapped directly into memory. It runs on six operating systems, macOS, Windows, Linux, FreeBSD, OpenBSD and NetBSD, and on multiple CPU architectures. What the material does not provide is any benchmark or throughput comparison against dedicated serving runtimes, so claims about production performance cannot be grounded here.",
+            "heading": "Prototyping speed against production performance"
+        },
+        {
+            "body": "The facts and the site support a picture of a well known but specialised tool rather than a universal standard. It carries a substantial GitHub star count and a Mozilla affiliation, and it is positioned as a way to distribute and run LLMs locally, which appeals to developers who need portable, offline or privacy-preserving inference. The documentation does not name specific companies or production deployments, so any statement about who uses it in industry would go beyond what is recorded. For someone choosing what to learn, the transferable skills are the llama.cpp model format and local inference concepts rather than llamafile-specific APIs, and the 0.10.0 build system change means older tutorials may not match current behaviour.",
+            "heading": "Industry adoption and careers"
+        },
+        {
+            "body": "llamafile is written in C++ and is typically used as a standalone executable rather than as a library inside a larger application. It belongs to the polyglot pattern where a compiled runtime handles inference and a higher-level language drives it: the quickstart shows using its API after launching the file, and the broader Mozilla.ai documentation shows Python tooling such as any-llm providing a single interface across LLM providers, with cookbooks wiring that library into browser-use through a small adapter around any_llm.acompletion. The two are complementary rather than competing, with llamafile supplying a local model endpoint and Python libraries supplying provider-agnostic orchestration on top. The material read does not describe a direct integration between llamafile and any-llm.",
+            "heading": "How it fits beside the others"
+        },
+        {
+            "body": "The clearest limit is version churn. The documentation index states that versions from 0.10.0 use a new build system that supports more recent models and functionality but may be missing some previously available features, so behaviour can differ between releases and older llamafiles remain on the releases page. The licence is another open question: the repository facts list a custom licence while the documentation page badges state Apache 2.0, and the material does not reconcile the two. The site also does not publish benchmarks, does not describe production deployment guidance, and does not say how llamafile compares with other serving runtimes. Whether it is the right choice for a given workload therefore depends on details the official material leaves unstated.",
+            "heading": "Limits and open questions"
+        }
+    ],
+    "siblings": [
+        {
+            "kind": "framework",
+            "name": "ai",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/4c80ad91/"
+        },
+        {
+            "kind": "framework",
+            "name": "autogen",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/60f558b0/"
+        },
+        {
+            "kind": "framework",
+            "name": "crewAI",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/52f2d4fc/"
+        },
+        {
+            "kind": "framework",
+            "name": "haystack",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/244d606e/"
+        },
+        {
+            "kind": "framework",
+            "name": "jax",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/1722316f/"
+        },
+        {
+            "kind": "framework",
+            "name": "keras",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/079f2091/"
+        },
+        {
+            "kind": "framework",
+            "name": "langchain",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/10376bfa/"
+        },
+        {
+            "kind": "framework",
+            "name": "litellm",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/b9fc5220/"
+        },
+        {
+            "kind": "framework",
+            "name": "llama_index",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/07b3602c/"
+        },
+        {
+            "kind": "framework",
+            "name": "pydantic-ai",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/a6a0d2bd/"
+        },
+        {
+            "kind": "framework",
+            "name": "pytorch",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/c4d0a8c3/"
+        },
+        {
+            "kind": "framework",
+            "name": "semantic-kernel",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/7a5bc5c6/"
+        },
+        {
+            "kind": "framework",
+            "name": "tensorflow",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/367fc8ea/"
+        },
+        {
+            "kind": "framework",
+            "name": "unsloth",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/9aab6db8/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "CTranslate2",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/9436dfa2/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "llama.cpp",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/32458451/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "lmdeploy",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/e24aae0d/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "mlc-llm",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/bcce36c4/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "ollama",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/8e9c04c4/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "onnxruntime",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/7ab24352/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "sglang",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/711194f2/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "TensorRT-LLM",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/6e41175d/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "vllm",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/44ebb5e4/"
+        },
+        {
+            "kind": "language",
+            "name": "C++",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/b393c4f6/"
+        },
+        {
+            "kind": "language",
+            "name": "Go",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/a218afb2/"
+        },
+        {
+            "kind": "language",
+            "name": "Julia",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/3719f5ac/"
+        },
+        {
+            "kind": "language",
+            "name": "Mojo",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/b5a22ab0/"
+        },
+        {
+            "kind": "language",
+            "name": "Python",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/7aa3e6c4/"
+        },
+        {
+            "kind": "language",
+            "name": "TypeScript",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/8d5b4f9f/"
+        }
+    ],
+    "generated": "2026-10-03",
+    "site_pages": [
+        {
+            "url": "https://docs.mozilla.ai/llms-full.txt",
+            "date": ""
+        },
+        {
+            "url": "https://docs.mozilla.ai/cookbooks/browser-use-with-any-llm.md",
+            "date": ""
+        },
+        {
+            "url": "https://docs.mozilla.ai/any-guardrail/api-reference/index/general-judge/any-llm.md",
+            "date": ""
+        },
+        {
+            "url": "https://docs.mozilla.ai/llamafile/index.md",
+            "date": ""
+        },
+        {
+            "url": "https://docs.mozilla.ai/cookbooks/browser-use-with-any-llm",
+            "date": ""
+        },
+        {
+            "url": "https://docs.mozilla.ai/index.md",
+            "date": ""
+        },
+        {
+            "url": "https://docs.mozilla.ai/llamafile/getting-started/quickstart",
+            "date": ""
+        },
+        {
+            "url": "https://docs.mozilla.ai/api-reference/any-llm.md",
+            "date": ""
+        },
+        {
+            "url": "https://docs.mozilla.ai/llamafile/reference/cli_arguments",
+            "date": ""
+        },
+        {
+            "url": "https://docs.mozilla.ai/cookbooks/any-llm-getting-started.md",
+            "date": ""
+        },
+        {
+            "url": "https://docs.mozilla.ai/quickstart",
+            "date": ""
+        },
+        {
+            "url": "https://docs.mozilla.ai/any-guardrail/api-reference/index/general-judge/any-llm",
+            "date": ""
+        },
+        {
+            "url": "https://docs.mozilla.ai/api-reference/responses",
+            "date": ""
+        },
+        {
+            "url": "https://docs.mozilla.ai/llamafile/using-llamafile/api",
+            "date": ""
+        },
+        {
+            "url": "https://docs.mozilla.ai/llamafile/using-llamafile/running_llamafile",
+            "date": ""
+        },
+        {
+            "url": "https://docs.mozilla.ai/llamafile/using-llamafile/creating_llamafiles",
+            "date": ""
+        },
+        {
+            "url": "https://docs.mozilla.ai/files",
+            "date": ""
+        },
+        {
+            "url": "https://docs.mozilla.ai/any-guardrail/cookbook/customer_service_policy_guardrail",
+            "date": ""
+        },
+        {
+            "url": "https://docs.mozilla.ai/api-reference/exceptions",
+            "date": ""
+        },
+        {
+            "url": "https://docs.mozilla.ai/llamafile/reference/security",
+            "date": ""
+        },
+        {
+            "url": "https://docs.mozilla.ai/any-guardrail/cookbook/any_llm_as_a_guardrail.md",
+            "date": ""
+        },
+        {
+            "url": "https://docs.mozilla.ai/",
+            "date": ""
+        }
+    ],
+    "source_url": "https://docs.mozilla.ai/llamafile",
+    "parent_name": "Inference Engines",
+    "parent_path": "/ai-ecosystem/technology-and-core-infrastructure/775e8c0a/",
+    "site_domain": "docs.mozilla.ai",
+    "subject_key": "engine:Mozilla-Ocho/llamafile",
+    "subject_kind": "inference engine",
+    "source_read_on": "2026-10-02",
+    "site_pages_read": 60,
+    "refresh_every_days": 30
+}

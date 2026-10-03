@@ -1,0 +1,242 @@
+{
+    "tax": "lang-profile",
+    "uid": "711194f2",
+    "name": "sglang",
+    "slug": "sglang",
+    "facts": {
+        "repo": "sgl-project/sglang",
+        "stars": 36744,
+        "licence": "Apache-2.0",
+        "archived": false,
+        "language": "Python",
+        "repo_url": "https://github.com/sgl-project/sglang",
+        "last_push": "2026-10-03T13:50:11Z",
+        "description": "SGLang is a high-performance serving framework for large language models and multimodal models.",
+        "official_site": "https://www.sglang.io/"
+    },
+    "model": "ollama:deepseek-v4.1-flash",
+    "shape": "lang-profile",
+    "title": "SGLang: A High-Performance Serving Runtime for LLMs and Multimodal Models",
+    "answer": "SGLang is an open-source serving framework for large language and multimodal models, maintained by the SGLang project under Apache-2.0 and written primarily in Python. It sits at the inference and deployment layer of the AI stack, handling how trained models are run efficiently from a single GPU up to distributed clusters. A reader deciding whether to use it should know that it is built for production-grade throughput and memory control, with features such as disaggregated prefill and decode, speculative decoding, and optimized GPU kernels, rather than for training or data preparation.",
+    "built_at": "2026-10-03T11:27:55-05:00",
+    "category": "technology-and-core-infrastructure",
+    "hub_name": "Programming Languages and Frameworks",
+    "page_uid": "711194f2",
+    "sections": [
+        {
+            "body": "SGLang is a high-performance serving framework for large language models and multimodal models, made by the SGLang project and distributed under the Apache-2.0 licence. Its repository is sgl-project/sglang, its official site is sglang.io, and its primary language is Python. The site describes it as supporting deployment from a single GPU to distributed clusters. It occupies the inference and model serving layer of the AI stack, meaning it takes models that have already been trained and runs them efficiently for real requests. It is not a training framework, a dataset tool, or a model itself, though the site maintains a catalogue of supported models. The project is active, with a last push recorded in October 2026, and the first SGLang Summit is announced for November 12 to 13, 2026 in San Francisco.",
+            "heading": "What it is and where it sits in AI work"
+        },
+        {
+            "body": "SGLang is used to serve large language and multimodal models in production, covering text generation, reasoning, coding, vision, speech, and video generation workloads. Its model catalogue lists everything from compact vision-language dense models with 27B parameters to trillion-parameter reasoning models, including mixture-of-experts architectures, long-context models with 1M-token windows, OCR models, text-to-speech, text-to-video, and real-time speech-to-speech systems. The site shows it being used as an inference backend for reinforcement learning pipelines, for example in the RLinf integration of NVIDIA's Cosmos 3 world action model, where SGLang-Diffusion served as the backend and lifted evaluation throughput to 3.33 times that of a straightforward integration. It is strongest where throughput, memory efficiency, and long-context serving matter, and where operators need control over prefill and decode behaviour, quantization, and parallelism. The site does not present it as a training framework, and the training work described in its blog posts runs on separate backends such as FSDP2.",
+            "heading": "What it is used for and where it is strongest"
+        },
+        {
+            "body": "SGLang is a systems-level serving framework, so the learning curve is steeper than for a simple model API. A working developer will need comfort with Python, with command-line deployment, and with the concepts behind GPU inference, including batching, KV caches, tensor and expert parallelism, quantization formats such as FP8 and FP4, and speculative decoding. The official site is written for practitioners rather than beginners: its homepage lists release notes and flags such as --enable-layernorm-sp and --moe-a2a-backend deepep_v2, and its blog posts go deep into kernel optimization, CUDA graph capture, and attention architectures. A student choosing what to learn should expect to need prior exposure to deep learning systems and to transformer inference before the material becomes readable. The site does not appear to offer a structured beginner tutorial, and the facts available do not describe one.",
+            "heading": "How hard it is to learn and what you need first"
+        },
+        {
+            "body": "The ecosystem around SGLang is visible in its model catalogue, which lists dozens of supported models across many families, including mixture-of-experts, hybrid linear attention, multimodal, OCR, speech, and video generation architectures. The site documents integrations with NVIDIA tooling such as Cosmos 3, DeepEP's ElasticBuffer engine, FlashInfer, and the RLinf reinforcement learning framework, and it references transfer mechanisms such as NIXL and Mooncake. Documentation takes the form of a homepage with release notes, a models page, and technical blog posts covering kernel optimization, day-0 model support, and CUDA graph features. The repository has 36,744 stars, which indicates substantial community attention. The facts and the site do not give a fuller picture of community forums, governance, or contributor counts, so those questions are left open here.",
+            "heading": "Ecosystem and community"
+        },
+        {
+            "body": "SGLang is clearly built for production performance rather than quick experiments. Its homepage describes disaggregated prefill and decode, speculative decoding, parallelisms, a zero-overhead scheduler, and optimized GPU kernels, and the blog posts document throughput work in detail, including a DeepSeek-V4.1 Flash decode optimization that moved batch-size-one throughput from 35 to 873 tokens per second on 4x GB300. It also offers a CPU-only simulator that runs the real scheduler, radix cache, and hierarchical cache with a latency predictor in place of the model forward, predicting time to first token within about 6 percent on most traces and up to 10 percent on the longest 32K to 128K traces. That simulator is a planning tool rather than a prototyping environment. The cost of this production focus is configuration complexity: many behaviours are opt-in through flags, and some defaults changed over time, such as response storage requiring --enable-response-store. The site does not claim to be a fast path for casual experimentation.",
+            "heading": "Prototyping speed against production performance"
+        },
+        {
+            "body": "The evidence on the site points to serious production use. SGLang is the inference backend in an NVIDIA Cosmos 3 integration through RLinf, it provides day-0 support for large models such as Kimi K3, a 2.8T-parameter mixture-of-experts model with 104B active parameters, and its optimization posts target hardware such as B200, GB300, H100, and B300. The model catalogue spans frontier and open-source models from many families, which suggests it is used wherever those models are deployed. The first SGLang Summit in San Francisco in November 2026 indicates an organised community. The facts and the site do not name specific adopting companies or describe hiring demand, so any claim about careers beyond this would go further than the material supports. What can be said is that the project is current and actively developed rather than legacy.",
+            "heading": "Industry adoption and careers"
+        },
+        {
+            "body": "SGLang is written primarily in Python and is typically used alongside the Python deep learning ecosystem, including PyTorch-style training backends such as FSDP2, Hugging Face model formats, and NVIDIA libraries such as FlashInfer and DeepEP. Its blog posts describe bringing models in as external Hugging Face models through an adapter layer, and running training on a separate backend while SGLang handles inference serving. It belongs to the polyglot pattern common in AI infrastructure, where Python orchestrates the system while performance-critical work happens in optimized GPU kernels and CUDA graphs. The site also describes a compiler-free approach to CUDA graph capture, the Breakable CUDA Graph, which uses roughly a quarter of the code of a torch.compile-based approach, 521 versus 1,771 lines. The facts do not list other serving runtimes by name, so comparisons to specific alternatives are not made here.",
+            "heading": "How it fits beside the others"
+        },
+        {
+            "body": "SGLang is a serving framework, so it is not the right tool for training, data preparation, or model development, and the site's own training examples run on other backends. Its configuration surface is large and some features are opt-in or have changed defaults, which raises the risk of misconfiguration, as with response storage requiring an explicit flag. Some documented behaviour is version-sensitive, for example the MXFP4 expert path requiring FlashInfer 0.6.18. The site does not state supported hardware limits beyond the GPUs mentioned in posts, does not describe a formal support policy or release cadence, and does not give a beginner-oriented learning path. Questions about long-term governance, security posture, and comparative benchmarks against other runtimes are not settled by the facts or the official material, and are left open rather than answered.",
+            "heading": "Limits and open questions"
+        }
+    ],
+    "siblings": [
+        {
+            "kind": "framework",
+            "name": "ai",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/4c80ad91/"
+        },
+        {
+            "kind": "framework",
+            "name": "autogen",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/60f558b0/"
+        },
+        {
+            "kind": "framework",
+            "name": "crewAI",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/52f2d4fc/"
+        },
+        {
+            "kind": "framework",
+            "name": "haystack",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/244d606e/"
+        },
+        {
+            "kind": "framework",
+            "name": "jax",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/1722316f/"
+        },
+        {
+            "kind": "framework",
+            "name": "keras",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/079f2091/"
+        },
+        {
+            "kind": "framework",
+            "name": "langchain",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/10376bfa/"
+        },
+        {
+            "kind": "framework",
+            "name": "litellm",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/b9fc5220/"
+        },
+        {
+            "kind": "framework",
+            "name": "llama_index",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/07b3602c/"
+        },
+        {
+            "kind": "framework",
+            "name": "pydantic-ai",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/a6a0d2bd/"
+        },
+        {
+            "kind": "framework",
+            "name": "pytorch",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/c4d0a8c3/"
+        },
+        {
+            "kind": "framework",
+            "name": "semantic-kernel",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/7a5bc5c6/"
+        },
+        {
+            "kind": "framework",
+            "name": "tensorflow",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/367fc8ea/"
+        },
+        {
+            "kind": "framework",
+            "name": "unsloth",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/9aab6db8/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "CTranslate2",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/9436dfa2/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "llama.cpp",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/32458451/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "llamafile",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/8f2f922d/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "lmdeploy",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/e24aae0d/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "mlc-llm",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/bcce36c4/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "ollama",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/8e9c04c4/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "onnxruntime",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/7ab24352/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "TensorRT-LLM",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/6e41175d/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "vllm",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/44ebb5e4/"
+        },
+        {
+            "kind": "language",
+            "name": "C++",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/b393c4f6/"
+        },
+        {
+            "kind": "language",
+            "name": "Go",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/a218afb2/"
+        },
+        {
+            "kind": "language",
+            "name": "Julia",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/3719f5ac/"
+        },
+        {
+            "kind": "language",
+            "name": "Mojo",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/b5a22ab0/"
+        },
+        {
+            "kind": "language",
+            "name": "Python",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/7aa3e6c4/"
+        },
+        {
+            "kind": "language",
+            "name": "TypeScript",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/8d5b4f9f/"
+        }
+    ],
+    "generated": "2026-10-03",
+    "site_pages": [
+        {
+            "url": "https://www.sglang.io/models",
+            "date": ""
+        },
+        {
+            "url": "https://www.sglang.io/blog/rlinf-sglang-cosmos3",
+            "date": ""
+        },
+        {
+            "url": "https://www.sglang.io/",
+            "date": ""
+        },
+        {
+            "url": "https://www.sglang.io/blog/deepseek-v4.1-flash-kernel-optimization",
+            "date": ""
+        },
+        {
+            "url": "https://www.sglang.io/blog/kimi-k3-day0-support",
+            "date": ""
+        },
+        {
+            "url": "https://www.sglang.io/blog/breakable-cuda-graph",
+            "date": ""
+        }
+    ],
+    "source_url": "https://www.sglang.io/",
+    "parent_name": "Inference Engines",
+    "parent_path": "/ai-ecosystem/technology-and-core-infrastructure/775e8c0a/",
+    "site_domain": "sglang.io",
+    "subject_key": "engine:sgl-project/sglang",
+    "subject_kind": "inference engine",
+    "source_read_on": "2026-10-02",
+    "site_pages_read": 17,
+    "refresh_every_days": 30
+}

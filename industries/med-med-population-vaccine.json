@@ -4,7 +4,7 @@
     "slug": "med-population-vaccine",
     "shape": "art-topic",
     "title": "Vaccine Waning Models",
-    "answer": "Vaccine waning models estimate how protection from vaccination declines over time for infections, severe disease, and other outcomes. They sit in epidemiology and population health, within The AI Physician, and they support public health decisions such as booster timing and outbreak planning. These models are population-level tools, not individual clinical predictions. Among the 1000 medical AI models tracked on this site, they form a specialized group that blends immunology, infectious disease epidemiology, and statistical inference.",
+    "answer": "Vaccine waning models estimate how protection from a vaccine declines over time, both against infection and against severe outcomes such as hospitalisation and death. They sit within epidemiology and population health, and they feed directly into decisions about booster timing, priority groups and outbreak forecasting. The models range from simple decay curves fitted to observed rates to multi parameter systems that separate the effect of waning from the effect of new variants and changing contact patterns. Their central output is usually a time varying estimate of vaccine effectiveness rather than a single fixed number.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-10-03T09:40:31-05",
+    "built_at": "2026-10-03T12:41:36-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Physician",
@@ -28,23 +28,23 @@
     "page_uid": "2c158b91",
     "sections": [
         {
-            "body": "Vaccine waning models estimate how protection from vaccination declines over time for infections, severe disease, and other outcomes. They sit in epidemiology and population health, within The AI Physician, and they support public health decisions such as booster timing and outbreak planning. These models are population-level tools, not individual clinical predictions. Among the 1000 medical AI models tracked on this site, they form a specialized group that blends immunology, infectious disease epidemiology, and statistical inference.",
+            "body": "Vaccine waning models estimate how protection from a vaccine declines over time, both against infection and against severe outcomes such as hospitalisation and death. They sit within epidemiology and population health, and they feed directly into decisions about booster timing, priority groups and outbreak forecasting. The models range from simple decay curves fitted to observed rates to multi parameter systems that separate the effect of waning from the effect of new variants and changing contact patterns. Their central output is usually a time varying estimate of vaccine effectiveness rather than a single fixed number.",
             "heading": "Scope"
         },
         {
-            "body": "The work runs on observational data from surveillance systems, cohort studies, test-negative designs, administrative claims, and serological surveys. Analysts typically use statistical software such as R or Python, with Bayesian inference packages for hierarchical models. Large fits may need more memory or compute, but most vaccine waning models do not require specialized hardware. Data linkage and cleaning often take more effort than the modeling itself.",
+            "body": "The work runs on routine surveillance data, linked immunisation registers, hospital admission records and, where available, serological survey results. In many settings the computation happens in statistical environments such as R or Python, with Bayesian inference packages used to fit the models, and on shared research computing rather than specialised hardware. Data linkage and cleaning usually consume more effort than the modelling itself, because records must be matched across systems that were not designed to talk to each other. Where individual level data cannot be shared, aggregate counts by age band and week are used instead.",
             "heading": "What it runs on"
         },
         {
-            "body": "The core task is to estimate a waning curve, which describes how vaccine effectiveness changes with time since vaccination. Common approaches include exponential decay, piecewise functions, splines, and Bayesian hierarchical models that pool information across regions or age groups. Analysts adjust for confounding by calendar time, variant, prior infection, and testing behavior. They validate models with held-out data and sensitivity analyses, then report uncertainty intervals around each estimate.",
+            "body": "Analysts typically compare vaccinated and unvaccinated groups over calendar time, adjusting for age, prior infection, variant period and time since vaccination. Test negative designs, in which the vaccination status of people who test positive is compared with that of people who test negative, are common because they reduce some forms of bias. Waning is then estimated as a change in effectiveness across intervals since the last dose, often with smoothing or random effects to avoid unstable week to week estimates. Sensitivity analyses test how much the conclusions move when assumptions about prior exposure, reporting delays or waning of immunity from infection are changed.",
             "heading": "How the work is done"
         },
         {
-            "body": "Provenance matters because these models rely on sensitive health data, so teams document data sources, permissions, and transformations. Reproducibility requires sharing code, model specifications, and assumptions, which helps others audit results. Risks include misreading waning as vaccine failure, which can erode public trust, and overinterpreting sparse data for rare outcomes. The site's 215 compliance and regulation pages reflect the broader attention to privacy, reporting, and oversight in medical AI.",
+            "body": "These models inform public health policy, so their provenance matters as much as their output, and the underlying data are usually held under strict access agreements. Personal health data used in linkage are governed by national privacy law and by ethics approval, and published estimates are normally released as aggregates. Model code and assumptions should be documented so that other groups can reproduce the result, and uncertainty should be reported rather than hidden behind a single point estimate. Where a model is used to justify a change in vaccination policy, the reasoning and its limits belong in the public record.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "Future work is likely to focus on variant-specific waning, hybrid models that combine trial and real-world data, and better uncertainty quantification. More automated pipelines may speed up updates as new variants emerge, but they will still need careful epidemiological review. Equity in data coverage remains a concern, because some populations are underrepresented in surveillance and cohort studies. As the field matures, vaccine waning models will likely become more integrated with other infectious disease forecasting tools.",
+            "body": "The direction of travel is toward models that update as new data arrive, rather than being refitted months later, and toward combining waning estimates with genomic surveillance of circulating variants. There is growing interest in separating the effects of waning immunity, immune escape and changes in exposure, since these have different policy consequences. Wider use of linked national datasets and standardised reporting of time since vaccination would make estimates more comparable across countries. The main constraint is not modelling technique but the quality, timeliness and legal availability of the data that feed it.",
             "heading": "Where it is going"
         }
     ],

@@ -4,7 +4,7 @@
     "slug": "art-dance-mocap",
     "shape": "art-topic",
     "title": "Motion Capture and Retargeting",
-    "answer": "Motion capture and retargeting covers the recording of human or object movement and the transfer of that movement onto a digital skeleton or character. It is used in film and game animation, dance documentation, live performance, biomechanics, and virtual production. Retargeting is the specific step of mapping motion from one body or rig to another, often with different proportions or joint structures. In choreography and motion mapping, the focus is on preserving the expressive qualities of a dancer's movement while making it usable on a digital avatar or a different performer.",
+    "answer": "Motion capture and retargeting covers the pipeline that turns a performer's movement into a digital skeleton and then maps that skeleton onto a different character, rig, or body. Capture itself ranges from optical marker systems and inertial suits to markerless video pose estimation, and retargeting is the step that makes a jump recorded from one body read correctly on another. In choreography and motion mapping, the field is used to archive dances, previsualise staging, drive game and film characters, and study how movement style survives the transfer between bodies.",
     "crumbs": [
         {
             "name": "The Art of AI",
@@ -16,7 +16,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-10-03T09:40:31-05",
+    "built_at": "2026-10-03T12:41:36-05",
     "category": "ecosystem-entities-market-and-operations",
     "expanded": true,
     "hub_name": "The Art of AI",
@@ -24,23 +24,23 @@
     "page_uid": "12042c65",
     "sections": [
         {
-            "body": "Motion capture and retargeting covers the recording of human or object movement and the transfer of that movement onto a digital skeleton or character. It is used in film and game animation, dance documentation, live performance, biomechanics, and virtual production. Retargeting is the specific step of mapping motion from one body or rig to another, often with different proportions or joint structures. In choreography and motion mapping, the focus is on preserving the expressive qualities of a dancer's movement while making it usable on a digital avatar or a different performer.",
+            "body": "Motion capture and retargeting covers the pipeline that turns a performer's movement into a digital skeleton and then maps that skeleton onto a different character, rig, or body. Capture itself ranges from optical marker systems and inertial suits to markerless video pose estimation, and retargeting is the step that makes a jump recorded from one body read correctly on another. In choreography and motion mapping, the field is used to archive dances, previsualise staging, drive game and film characters, and study how movement style survives the transfer between bodies.",
             "heading": "Scope"
         },
         {
-            "body": "The work runs on a mix of capture hardware and animation software. Optical systems such as Vicon and OptiTrack use multiple cameras and reflective markers, while inertial suits from Xsens and Rokoko use accelerometers and gyroscopes. Markerless approaches use ordinary video cameras and pose estimation models. On the software side, MotionBuilder, Blender, Unreal Engine, Unity, and Maya are common for solving, cleaning, and retargeting motion. Data is typically stored in formats like BVH, FBX, or C3D.",
+            "body": "The stack usually starts with capture hardware or video, then a solver that fits a skeleton to the data, then a retargeting layer that resolves differences in limb length, joint limits, and rest pose. Engines such as Unity and Unreal, and formats such as BVH and FBX, are common places for that skeleton to live, with motion editing tools handling cleanup, looping, and blending. Markerless pipelines lean on pose estimation models, which trade precision for cost and setup time, and the choice between them shapes everything downstream.",
             "heading": "What it runs on"
         },
         {
-            "body": "A typical pipeline starts with calibration and a capture session, where a performer wears markers or a suit and acts out the movement. The system then solves the data into joint positions or rotations, which are cleaned to remove noise and gaps. Retargeting maps that solved motion onto a target rig, adjusting for limb length, joint limits, and foot contact. Animators then refine the result, adding corrections and secondary motion, or use AI models to automate parts of the retargeting and style transfer.",
+            "body": "Practitioners begin with a clean take, then solve and label the skeleton, fix occlusion and foot sliding, and define a source and target rig before retargeting. The hard part is preserving intent: a gesture that reads as weighty on a tall performer can look weightless on a short one, so scale, timing, and contact points are adjusted by hand or by constraint. Retargeting is rarely a single button press, and most work is iteration between the solver, the animation software, and review with the choreographer or director.",
             "heading": "How the work is done"
         },
         {
-            "body": "Rights and risk around motion capture center on consent, ownership, and provenance. A performer's motion can be personal data, and contracts or union agreements often govern how it may be reused. Choreography may be protected by copyright, and retargeting a recorded performance onto a new character can raise questions about derivative works. Provenance matters because it is hard to tell where a motion clip came from once it is retargeted, so studios increasingly track source, consent, and license terms. There is also risk of bias in pose estimation for different body types, clothing, or skin tones.",
+            "body": "Rights questions cluster around the performer, the choreographer, and the studio, since a captured body is both personal data and a creative work. Consent and contracts need to cover reuse, re-performance by a digital double, and the training of models on captured motion, and biometric privacy rules can apply to the raw data even when the final animation is not identifiable. Provenance matters too: a take should carry a record of who performed it, when, and under what terms, because retargeted motion is easy to detach from its source. This site tracks 92 active intellectual property lawsuits, which shows how live these questions are across creative AI.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The field is moving toward real-time markerless capture and AI-driven retargeting that can preserve an individual's movement style. Generative motion models are beginning to create new motion from text prompts or short examples, which could change how choreography is authored and reused. Virtual production and live performance are likely to adopt these tools as they become more reliable. The main open questions are ethical and economic: how performers are credited and compensated when their motion is retargeted, and how provenance is maintained across automated pipelines.",
+            "body": "Markerless capture keeps improving, which lowers the barrier for small studios and independent choreographers, and generative motion models are beginning to produce or complete movement without a performer. That pushes the field toward hybrid workflows where captured takes seed a model that adapts them to new characters and styles. The open questions are attribution and consent for synthetic motion, and whether retargeting tools will standardise around shared rigs and metadata so that a performance can travel between pipelines without losing its provenance.",
             "heading": "Where it is going"
         }
     ],

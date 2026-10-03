@@ -1,0 +1,314 @@
+{
+    "tax": "lang-profile",
+    "uid": "e24aae0d",
+    "name": "lmdeploy",
+    "slug": "lmdeploy",
+    "facts": {
+        "repo": "InternLM/lmdeploy",
+        "stars": 8106,
+        "licence": "Apache-2.0",
+        "archived": false,
+        "language": "Python",
+        "repo_url": "https://github.com/InternLM/lmdeploy",
+        "last_push": "2026-09-28T07:04:58Z",
+        "description": "LMDeploy is a toolkit for compressing, deploying, and serving LLMs.",
+        "official_site": "https://lmdeploy.readthedocs.io/en/latest/"
+    },
+    "model": "ollama:deepseek-v4.1-flash",
+    "shape": "lang-profile",
+    "title": "LMDeploy: An Inference Engine and Serving Runtime for Large Language Models",
+    "answer": "LMDeploy is an Apache-2.0 Python toolkit from InternLM for compressing, deploying and serving large language models. It sits at the inference and serving layer of the AI stack, offering two engines, TurboMind and lmdeploy.pytorch, plus AWQ and GPTQ quantization, an OpenAI-compatible api_server on port 23333, and support for vision-language models and LoRA adapters. The one thing to know before choosing it is that it is built for GPU serving throughput and memory control rather than for training, and its documentation is candid about quantization accuracy trade-offs on long-output tasks.",
+    "built_at": "2026-10-03T11:31:26-05:00",
+    "category": "technology-and-core-infrastructure",
+    "hub_name": "Programming Languages and Frameworks",
+    "page_uid": "e24aae0d",
+    "sections": [
+        {
+            "body": "LMDeploy is a toolkit for compressing, deploying and serving large language models, maintained under the InternLM organisation on GitHub and licensed under Apache-2.0. It is written in Python and its repository shows more than eight thousand stars, with the last recorded push in September 2026, so it is an actively maintained project rather than an abandoned one. It occupies the inference and serving layer of the AI stack, the part that takes a trained model and turns it into something that answers requests quickly and predictably. It is not a training framework and it does not build models. Instead it provides two inference engines, TurboMind and lmdeploy.pytorch, which share service interfaces, and around them a set of tools for quantization, offline batch inference, command line chat and an HTTP service. The official documentation lives at lmdeploy.readthedocs.io and was read page by page for this reference.",
+            "heading": "What it is and where it sits in AI work"
+        },
+        {
+            "body": "The concrete jobs LMDeploy does are inference and serving. It runs quantized models produced by its own AWQ tooling or by the vllm-project/llm-compressor tool, it performs offline batched inference through a pipeline API, and it packages a model as a service with a single command whose RESTful endpoints are compatible with OpenAI interfaces on port 23333 by default. It supports vision-language models such as InternLM-XComposer-2.5 in the TurboMind engine, tool calling for InternLM2, InternLM2.5, llama3.1 and Qwen2.5 models, and S-LoRA for serving multiple LoRA adapters on limited memory in lmdeploy.pytorch. It is strongest where GPU memory is the constraint and throughput matters, since its Scheduler allocates key and value cache in blocks and evicts unused blocks to support larger batches and longer sessions, a design the documentation compares to vLLM's paging strategy. It is not positioned for training or data work.",
+            "heading": "What it is used for and where it is strongest"
+        },
+        {
+            "body": "The learning curve is moderate and mostly operational. A developer needs comfort with Python, a working knowledge of transformer inference concepts such as key and value caching, batching and tensor parallelism, and access to suitable NVIDIA GPUs, since the documented quantization and inference paths assume them. The quick start guide is genuinely beginner-friendly: it walks through constructing a pipeline, choosing between the TurboMind and PyTorch engines, running vision-language inference, launching a server and using command line tools. It explains practical knobs such as cache_max_entry_count, which defaults to 0.8 and controls the share of free GPU memory used by the K/V cache, and notes that lowering it can resolve out-of-memory errors. Deeper material, such as adding a new model to lmdeploy.pytorch, assumes more systems knowledge, including configuration parsing, module registration and custom module maps.",
+            "heading": "How hard it is to learn and what you need first"
+        },
+        {
+            "body": "The ecosystem around LMDeploy is documented in some depth. It integrates with Hugging Face Hub models, including AWQ quantized checkpoints from the lmdeploy and TheBloke spaces, with OpenCompass for evaluation, and with the vllm-project/llm-compressor quantization tool. Its api_server exposes OpenAI-compatible RESTful APIs, a swagger UI on the service port and an api_client for terminal use, which makes it interchangeable with other OpenAI-style backends in existing code. Tool calling is supported for several model families through a --tool-call-parser flag. The documentation covers quantization, multi-modal inference, serving, tool use and engine internals across dozens of pages, and the project carries a substantial GitHub star count, though the facts available here do not include community forum size, release cadence or contributor counts, so the breadth of day-to-day community support cannot be stated precisely.",
+            "heading": "Ecosystem and community"
+        },
+        {
+            "body": "LMDeploy leans toward production performance rather than quick experimentation, though it does not ignore the early stages. Quantization is a single command, and offline batch processing with a quantized model takes a few lines of code through the pipeline API, so a first result is not far away. But the design decisions are clearly about serving at scale: continuous batching concatenates sequences to avoid padding, tensor parallelism spreads a model across devices, the Scheduler manages paged cache blocks, and S-LoRA pages and swaps adapters with special kernels for unmerged adapters. The cost of that control is configuration. Users must reason about cache_max_entry_count, tensor parallel sizes, quantization calibration settings such as --calib-seqlen and --batch-size, and the accuracy consequences of quantization, which the documentation reports can be significant on long-output datasets even when medium and short-output results look as expected.",
+            "heading": "Prototyping speed against production performance"
+        },
+        {
+            "body": "The facts and the official site support a narrower claim than a general adoption survey would. LMDeploy is the serving stack associated with the InternLM model family, and its documentation is written around InternLM, Qwen, Llama and InternLM-XComposer models, which indicates real use in those communities. Its OpenAI-compatible API and Hugging Face integration mean it can slot into existing serving infrastructure, and its active repository suggests it is a current choice rather than a legacy one. What the available material does not provide is deployment numbers, named enterprise users or hiring data, so anyone weighing it for a career should treat it as a credible, actively developed serving runtime in the same space as vLLM and similar engines, without assuming a market share figure that the sources do not give.",
+            "heading": "Industry adoption and careers"
+        },
+        {
+            "body": "LMDeploy is a Python project and is typically used from Python, either through its pipeline API or its command line tools. It sits beside, rather than inside, the training frameworks: models are trained elsewhere and then quantized and served here. It interoperates with the Hugging Face model ecosystem, with OpenCompass for evaluation and with llm-compressor for quantization, and its OpenAI-compatible server means it can stand in for other OpenAI-style endpoints behind existing clients. The polyglot pattern it belongs to is the common one in modern AI systems, where Python handles model loading, quantization and serving while the surrounding application may be written in any language that can make HTTP calls. The documentation does not describe bindings for other languages, so the practical integration surface is Python plus the REST API.",
+            "heading": "How it fits beside the others"
+        },
+        {
+            "body": "Several limits are stated plainly in the documentation. TurboMind does not support beam search, so generated results differ from transformers with beam search, and the guidance is to turn off top_k or use a larger top_k, and to turn off repetition_penalty when using LMDeploy for inference. The TurboMind backend does not support S-LoRA, so only one LoRA model can be deployed at a time and LoRA weights must be merged, which is why a conversion script exists for InternLM-XComposer-2.5 tasks. Quantization accuracy is not free: compared with BF16, the documentation reports significant drops on long-output datasets such as aime2025 and LCB, while medium and short-output datasets behave as expected, and asymmetric quantization helps Qwen3-8B more than the MoE model. The official material does not settle questions of community size, release cadence, hardware support beyond NVIDIA GPUs, or how it compares in benchmarks against other serving runtimes, and those gaps should be treated as open rather than answered.",
+            "heading": "Limits and open questions"
+        }
+    ],
+    "siblings": [
+        {
+            "kind": "framework",
+            "name": "ai",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/4c80ad91/"
+        },
+        {
+            "kind": "framework",
+            "name": "autogen",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/60f558b0/"
+        },
+        {
+            "kind": "framework",
+            "name": "crewAI",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/52f2d4fc/"
+        },
+        {
+            "kind": "framework",
+            "name": "haystack",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/244d606e/"
+        },
+        {
+            "kind": "framework",
+            "name": "jax",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/1722316f/"
+        },
+        {
+            "kind": "framework",
+            "name": "keras",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/079f2091/"
+        },
+        {
+            "kind": "framework",
+            "name": "langchain",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/10376bfa/"
+        },
+        {
+            "kind": "framework",
+            "name": "litellm",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/b9fc5220/"
+        },
+        {
+            "kind": "framework",
+            "name": "llama_index",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/07b3602c/"
+        },
+        {
+            "kind": "framework",
+            "name": "pydantic-ai",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/a6a0d2bd/"
+        },
+        {
+            "kind": "framework",
+            "name": "pytorch",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/c4d0a8c3/"
+        },
+        {
+            "kind": "framework",
+            "name": "semantic-kernel",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/7a5bc5c6/"
+        },
+        {
+            "kind": "framework",
+            "name": "tensorflow",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/367fc8ea/"
+        },
+        {
+            "kind": "framework",
+            "name": "unsloth",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/9aab6db8/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "CTranslate2",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/9436dfa2/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "llama.cpp",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/32458451/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "llamafile",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/8f2f922d/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "mlc-llm",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/bcce36c4/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "ollama",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/8e9c04c4/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "onnxruntime",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/7ab24352/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "sglang",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/711194f2/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "TensorRT-LLM",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/6e41175d/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "vllm",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/44ebb5e4/"
+        },
+        {
+            "kind": "language",
+            "name": "C++",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/b393c4f6/"
+        },
+        {
+            "kind": "language",
+            "name": "Go",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/a218afb2/"
+        },
+        {
+            "kind": "language",
+            "name": "Julia",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/3719f5ac/"
+        },
+        {
+            "kind": "language",
+            "name": "Mojo",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/b5a22ab0/"
+        },
+        {
+            "kind": "language",
+            "name": "Python",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/7aa3e6c4/"
+        },
+        {
+            "kind": "language",
+            "name": "TypeScript",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/8d5b4f9f/"
+        }
+    ],
+    "generated": "2026-10-03",
+    "site_pages": [
+        {
+            "url": "https://lmdeploy.readthedocs.io/en/latest/_sources/quantization/llm_compressor.md",
+            "date": ""
+        },
+        {
+            "url": "https://lmdeploy.readthedocs.io/en/latest/inference/pytorch.html",
+            "date": ""
+        },
+        {
+            "url": "https://lmdeploy.readthedocs.io/en/latest/quantization/llm_compressor.html",
+            "date": ""
+        },
+        {
+            "url": "https://lmdeploy.readthedocs.io/en/latest/quantization/w4a16.html",
+            "date": ""
+        },
+        {
+            "url": "https://lmdeploy.readthedocs.io/en/latest/multi_modal/xcomposer2d5.html",
+            "date": ""
+        },
+        {
+            "url": "https://lmdeploy.readthedocs.io/en/latest/advance/pytorch_new_model.html",
+            "date": ""
+        },
+        {
+            "url": "https://lmdeploy.readthedocs.io/en/latest/_sources/llm/api_server_tools.md",
+            "date": ""
+        },
+        {
+            "url": "https://lmdeploy.readthedocs.io/en/latest/get_started/get_started.html",
+            "date": ""
+        },
+        {
+            "url": "https://lmdeploy.readthedocs.io/en/latest/llm/api_server_tools.html",
+            "date": ""
+        },
+        {
+            "url": "https://lmdeploy.readthedocs.io/en/latest/quantization/kv_quant.html",
+            "date": ""
+        },
+        {
+            "url": "https://lmdeploy.readthedocs.io/en/latest/_sources/llm/api_server.md",
+            "date": ""
+        },
+        {
+            "url": "https://lmdeploy.readthedocs.io/en/latest/multi_modal/vl_pipeline.html",
+            "date": ""
+        },
+        {
+            "url": "https://lmdeploy.readthedocs.io/en/latest/multi_modal/cogvlm.html",
+            "date": ""
+        },
+        {
+            "url": "https://lmdeploy.readthedocs.io/en/latest/llm/api_server.html",
+            "date": ""
+        },
+        {
+            "url": "https://lmdeploy.readthedocs.io/en/latest/_sources/llm/api_server_lora.md",
+            "date": ""
+        },
+        {
+            "url": "https://lmdeploy.readthedocs.io/en/latest/multi_modal/api_server_vl.html",
+            "date": ""
+        },
+        {
+            "url": "https://lmdeploy.readthedocs.io/en/latest/quantization/w8a8.html",
+            "date": ""
+        },
+        {
+            "url": "https://lmdeploy.readthedocs.io/en/latest/inference/turbomind.html",
+            "date": ""
+        },
+        {
+            "url": "https://lmdeploy.readthedocs.io/en/latest/llm/api_server_lora.html",
+            "date": ""
+        },
+        {
+            "url": "https://lmdeploy.readthedocs.io/en/latest/benchmark/evaluate_with_opencompass.html",
+            "date": ""
+        },
+        {
+            "url": "https://lmdeploy.readthedocs.io/en/latest/advance/update_weights.html",
+            "date": ""
+        },
+        {
+            "url": "https://lmdeploy.readthedocs.io/en/latest/_sources/llm/api_server_reasoning.md",
+            "date": ""
+        },
+        {
+            "url": "https://lmdeploy.readthedocs.io/en/latest/llm/api_server_reasoning.html",
+            "date": ""
+        },
+        {
+            "url": "https://lmdeploy.readthedocs.io/en/latest/advance/pytorch_multinodes.html",
+            "date": ""
+        }
+    ],
+    "source_url": "https://lmdeploy.readthedocs.io/en/latest/",
+    "parent_name": "Inference Engines",
+    "parent_path": "/ai-ecosystem/technology-and-core-infrastructure/775e8c0a/",
+    "site_domain": "lmdeploy.readthedocs.io",
+    "subject_key": "engine:InternLM/lmdeploy",
+    "subject_kind": "inference engine",
+    "source_read_on": "2026-10-02",
+    "site_pages_read": 60,
+    "refresh_every_days": 30
+}

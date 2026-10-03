@@ -1,0 +1,306 @@
+{
+    "tax": "lang-profile",
+    "uid": "44ebb5e4",
+    "name": "vllm",
+    "slug": "vllm",
+    "facts": {
+        "repo": "vllm-project/vllm",
+        "stars": 93104,
+        "licence": "Apache-2.0",
+        "archived": false,
+        "language": "Python",
+        "repo_url": "https://github.com/vllm-project/vllm",
+        "last_push": "2026-10-03T14:17:10Z",
+        "description": "A high-throughput and memory-efficient inference and serving engine for LLMs",
+        "official_site": "https://vllm.ai"
+    },
+    "model": "ollama:deepseek-v4.1-flash",
+    "shape": "lang-profile",
+    "title": "vLLM: A High-Throughput Inference and Serving Engine for LLMs",
+    "answer": "vLLM is an open source Python inference and serving engine for large language models, maintained by the vLLM project under Apache-2.0. It sits at the serving layer of the AI stack, turning trained model weights into an OpenAI-compatible HTTP endpoint that applications and agents call. The one thing to know before adopting it is that its value is throughput and memory efficiency at scale, so it rewards teams with GPU hardware and deployment work, not someone who only wants a quick local chat.",
+    "built_at": "2026-10-03T11:27:47-05:00",
+    "category": "technology-and-core-infrastructure",
+    "hub_name": "Programming Languages and Frameworks",
+    "page_uid": "44ebb5e4",
+    "sections": [
+        {
+            "body": "vLLM is made by the vLLM project, hosted at github.com/vllm-project/vllm, written in Python and released under the Apache-2.0 licence. Its own description calls it a high-throughput and memory-efficient inference and serving engine for LLMs, and its official site is vllm.ai. The repository shows 93,104 stars and a last push on 3 October 2026, so it is actively developed rather than frozen. In the AI stack it occupies the serving layer: models are trained elsewhere, and vLLM takes the resulting weights and exposes them as an inference service. The site's DGX Spark page describes an official OpenAI-compatible server image, which is the clearest statement of where it sits, between a model artifact and the applications that call it. It is not a training framework and not a data processing tool.",
+            "heading": "What it is and where it sits in AI work"
+        },
+        {
+            "body": "The concrete job is inference and serving. The site shows vLLM running large models locally on an NVIDIA DGX Spark desk-side GB10 system, with runtime flags for memory utilisation, maximum sequence count and maximum model length, plus paged KV cache. It is strongest where memory is tight and batches are small, and the site notes that DGX Spark is better suited to small-batch inference than high-concurrency serving, with mixture-of-experts models in NVFP4 at roughly 10 to 15 billion active parameters described as a strong fit. Beyond raw serving, the vLLM Semantic Router project extends the same ecosystem into routing, where signals are extracted before a request reaches a model and composed into decisions. That work covers keyword, domain, embedding, factuality, PII, jailbreak and semantic cache signals, model selection across multiple models, and Fusion, which runs a panel of models with a judge and synthesises one answer. The site is explicit that Fusion benchmark numbers came from OpenRouter, not from a vLLM-SR benchmark, so those particular figures should not be read as vLLM's own results.",
+            "heading": "What it is used for and where it is strongest"
+        },
+        {
+            "body": "The learning curve depends on which part you touch. Running the server is approachable for a developer who knows Python and basic command line work, because the official image is OpenAI-compatible and the site frames deployment around container image tags and runtime settings. Getting good performance is harder. The DGX Spark page asks readers to use builds and settings validated specifically for sm_121, to leave headroom in a unified memory pool shared by the CPU, GPU, operating system, container runtime, weights and KV cache, and to keep maximum sequence counts low. That is systems knowledge, not mathematics. The Semantic Router side is heavier still, with a Signal and Decision architecture, ONNX and Flash Attention acceleration paths, and a classifier layer rebuilt around modular models, shared LoRA computation, Rust and Candle inference and Go integration. The official site offers blog posts, release notes and a white paper rather than a structured beginner course, so a newcomer should expect to learn from documentation and source rather than a guided tutorial.",
+            "heading": "How hard it is to learn and what you need first"
+        },
+        {
+            "body": "The ecosystem around vLLM is substantial. The main repository has 93,104 stars, and the site reports that vLLM Semantic Router reached 5,000 stars, more than 150 contributors and over 300,000 cumulative downloads across its Hugging Face model family in less than a year. That model family includes mmbert-embed-32k-2d-matryoshka, a long-context multilingual base with 32K context and 1800 or more languages, multi-modal-embed-small, which places text, images and audio in one shared 384-dimensional space, and the mom-multilingual-class collection covering five routing and safety tasks in merged and LoRA form. Integrations named on the site include Envoy through ext_proc, an OpenAI-compatible server, Prometheus telemetry, ONNX, Flash Attention, AMD ROCm, NVIDIA CUDA, Intel OpenVINO and CPU paths, plus a Response API and semantic cache for shared state across instances. Documentation lives on vllm.ai and in the repository, and the project publishes a white paper on signal driven decision routing.",
+            "heading": "Ecosystem and community"
+        },
+        {
+            "body": "vLLM is built for production performance first, and the site's material is about throughput, memory control and latency rather than quick experiments. The DGX Spark page lists controls such as gpu memory utilisation, maximum model length, maximum sequence count and paged KV cache, and notes that tuned settings can improve throughput through newer FP4 kernels, async scheduling and MTP speculative decoding, while warning that kernel choices are model and release specific. The Semantic Router benchmarks on AMD Instinct MI300X show the same orientation, with ONNX plus GPU running domain extraction at 10.2 milliseconds on about 500 tokens against 630.4 milliseconds on ONNX plus CPU, and PII extraction at 8.4 milliseconds against 729.5 milliseconds. The cost of that performance is configuration work and hardware dependence. A developer can start a server quickly, but reaching the numbers the site reports means matching builds, flags and kernels to a specific deployment, and the site itself says current builds should use CUDA graphs by default unless a deployment has a reason to disable them.",
+            "heading": "Prototyping speed against production performance"
+        },
+        {
+            "body": "The facts and the site support a picture of a current, actively developed project rather than a legacy choice. The repository was pushed on 3 October 2026, the licence is permissive, and the site documents collaboration with AMD to bring vLLM Semantic Router to AMD GPUs, describing AMD as a long-term technology partner that has worked on accelerating the vLLM inference engine on AMD GPUs and ROCm software. The site also documents deployment paths across AMD ROCm, NVIDIA CUDA, Intel OpenVINO and CPU environments, and names NVIDIA DGX Spark as a target for local inference. What the material does not provide is a list of named enterprise customers or hiring data, so any claim about how many companies run vLLM in production, or what it means for salaries, is not settled here. For someone choosing what to learn, the reasonable reading is that serving and routing skills around vLLM map onto work that vendors and hardware partners are actively investing in, while the exact size of the job market is not something these pages establish.",
+            "heading": "Industry adoption and careers"
+        },
+        {
+            "body": "vLLM is a Python project, and the site shows it used alongside a wider set of languages and runtimes rather than in isolation. The Semantic Router classifier layer was rebuilt around Rust and Candle inference with Go integration, and the routing runtime is exercised through Envoy on port 8801 using ext_proc to reach the router on port 50051. Deployment paths span AMD ROCm, NVIDIA CUDA, Intel OpenVINO and CPU, and the server is OpenAI-compatible, which is the interface most application frameworks expect. The polyglot pattern is therefore a Python serving core, a Rust and Go routing and control layer, and standard HTTP and OpenAI-style APIs at the boundary, with ONNX and Flash Attention as acceleration paths underneath. A team already using an OpenAI-compatible client can point it at vLLM without rewriting application code, which is the main reason it fits beside existing frameworks rather than replacing them.",
+            "heading": "How it fits beside the others"
+        },
+        {
+            "body": "The site is candid about several weaknesses. On DGX Spark, vLLM is described as better suited to small-batch inference than high-concurrency serving, and decode speed is still shaped by active parameter count and the kernel path in the current build. Kernel choices are model and release specific, so tuning does not transfer cleanly. The vision encoder hardening post reports a serious deployed problem: on an 11-image probe across three verticals and 21 candidate labels, the multi-modal-embed-small path ranked the wrong vertical highest on 9 of 11 images, an 82 percent inversion rate, because the Rust and Candle path did not match the PyTorch reference. That is presented as a parity issue that was being addressed, not as a permanent property. The Fusion post states its benchmark numbers are OpenRouter's, not vLLM-SR's, so Fusion's real-world advantage is not established by the site. The material also does not say how stable the Semantic Router APIs are, what the support policy is for older releases, or how the project is governed, and it gives no independent production adoption figures.",
+            "heading": "Limits and open questions"
+        }
+    ],
+    "siblings": [
+        {
+            "kind": "framework",
+            "name": "ai",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/4c80ad91/"
+        },
+        {
+            "kind": "framework",
+            "name": "autogen",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/60f558b0/"
+        },
+        {
+            "kind": "framework",
+            "name": "crewAI",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/52f2d4fc/"
+        },
+        {
+            "kind": "framework",
+            "name": "haystack",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/244d606e/"
+        },
+        {
+            "kind": "framework",
+            "name": "jax",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/1722316f/"
+        },
+        {
+            "kind": "framework",
+            "name": "keras",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/079f2091/"
+        },
+        {
+            "kind": "framework",
+            "name": "langchain",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/10376bfa/"
+        },
+        {
+            "kind": "framework",
+            "name": "litellm",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/b9fc5220/"
+        },
+        {
+            "kind": "framework",
+            "name": "llama_index",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/07b3602c/"
+        },
+        {
+            "kind": "framework",
+            "name": "pydantic-ai",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/a6a0d2bd/"
+        },
+        {
+            "kind": "framework",
+            "name": "pytorch",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/c4d0a8c3/"
+        },
+        {
+            "kind": "framework",
+            "name": "semantic-kernel",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/7a5bc5c6/"
+        },
+        {
+            "kind": "framework",
+            "name": "tensorflow",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/367fc8ea/"
+        },
+        {
+            "kind": "framework",
+            "name": "unsloth",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/9aab6db8/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "CTranslate2",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/9436dfa2/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "llama.cpp",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/32458451/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "llamafile",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/8f2f922d/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "lmdeploy",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/e24aae0d/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "mlc-llm",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/bcce36c4/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "ollama",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/8e9c04c4/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "onnxruntime",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/7ab24352/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "sglang",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/711194f2/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "TensorRT-LLM",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/6e41175d/"
+        },
+        {
+            "kind": "language",
+            "name": "C++",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/b393c4f6/"
+        },
+        {
+            "kind": "language",
+            "name": "Go",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/a218afb2/"
+        },
+        {
+            "kind": "language",
+            "name": "Julia",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/3719f5ac/"
+        },
+        {
+            "kind": "language",
+            "name": "Mojo",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/b5a22ab0/"
+        },
+        {
+            "kind": "language",
+            "name": "Python",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/7aa3e6c4/"
+        },
+        {
+            "kind": "language",
+            "name": "TypeScript",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/8d5b4f9f/"
+        }
+    ],
+    "generated": "2026-10-03",
+    "site_pages": [
+        {
+            "url": "https://vllm.ai/blog/2026-06-02-session-aware-agentic-routing",
+            "date": "2026-06-02"
+        },
+        {
+            "url": "https://vllm.ai/blog/2026-07-21-vllm-sr-new-chapter-mom",
+            "date": "2026-07-21"
+        },
+        {
+            "url": "https://vllm.ai/blog/2026-06-16-vllm-sr-fusion-api",
+            "date": "2026-06-16"
+        },
+        {
+            "url": "https://vllm.ai/blog/2026-06-01-vllm-dgx-spark",
+            "date": "2026-06-01"
+        },
+        {
+            "url": "https://vllm.ai/blog/2026-03-10-v0.2-vllm-sr-athena-release",
+            "date": "2026-03-10"
+        },
+        {
+            "url": "https://vllm.ai/blog/2025-12-16-vllm-sr-amd",
+            "date": "2025-12-16"
+        },
+        {
+            "url": "https://vllm.ai/blog/2026-05-28-vllm-sr-vision-encoder-hardening",
+            "date": "2026-05-28"
+        },
+        {
+            "url": "https://vllm.ai/blog/2026-06-05-v0.3-vllm-sr-themis-release",
+            "date": "2026-06-05"
+        },
+        {
+            "url": "https://vllm.ai/blog/2025-11-19-docker-model-runner-vllm",
+            "date": "2025-11-19"
+        },
+        {
+            "url": "https://vllm.ai/blog/2026-06-12-minimax-m3-vllm",
+            "date": "2026-06-12"
+        },
+        {
+            "url": "https://vllm.ai/blog/2026-08-10-nemotron-3-5-lightning-vllm",
+            "date": "2026-08-10"
+        },
+        {
+            "url": "https://vllm.ai/blog/2026-04-14-vllm-korea-meetup-2026",
+            "date": "2026-04-14"
+        },
+        {
+            "url": "https://vllm.ai/blog/2025-01-10-vllm-2024-wrapped-2025-vision",
+            "date": "2025-01-10"
+        },
+        {
+            "url": "https://vllm.ai/blog/2024-10-23-vllm-serving-amd",
+            "date": "2024-10-23"
+        },
+        {
+            "url": "https://vllm.ai/blog/2026-06-03-deeplearning-ai-vllm-course",
+            "date": "2026-06-03"
+        },
+        {
+            "url": "https://vllm.ai/blog/2025-01-27-intro-to-llama-stack-with-vllm",
+            "date": "2025-01-27"
+        },
+        {
+            "url": "https://vllm.ai/blog/2026-01-05-vllm-sr-iris",
+            "date": "2026-01-05"
+        },
+        {
+            "url": "https://vllm.ai/blog/2025-09-05-anatomy-of-vllm",
+            "date": "2025-09-05"
+        },
+        {
+            "url": "https://vllm.ai/blog/2025-12-09-intel-autoround-llmc",
+            "date": "2025-12-09"
+        },
+        {
+            "url": "https://vllm.ai/blog/2025-10-16-vllm-tpu",
+            "date": "2025-10-16"
+        },
+        {
+            "url": "https://vllm.ai/blog/2023-06-20-vllm",
+            "date": "2023-06-20"
+        },
+        {
+            "url": "https://vllm.ai/blog/2026-09-22-vllm-metal-v0-28-0",
+            "date": "2026-09-22"
+        }
+    ],
+    "source_url": "https://vllm.ai",
+    "parent_name": "Inference Engines",
+    "parent_path": "/ai-ecosystem/technology-and-core-infrastructure/775e8c0a/",
+    "site_domain": "vllm.ai",
+    "subject_key": "engine:vllm-project/vllm",
+    "subject_kind": "inference engine",
+    "source_read_on": "2026-10-03",
+    "site_pages_read": 60,
+    "refresh_every_days": 30
+}

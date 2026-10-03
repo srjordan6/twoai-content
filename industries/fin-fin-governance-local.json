@@ -4,7 +4,7 @@
     "slug": "fin-governance-local",
     "shape": "art-topic",
     "title": "Local and Air-Gapped Deployment",
-    "answer": "Local and air-gapped deployment covers running AI models, data pipelines, and supporting services on hardware the organization controls, either inside its own network or on a physically isolated network with no route to the public internet. In accounting and financial data security, the appeal is control over where sensitive records, ledgers, and client data reside, and over which software can reach them. The scope includes inference, fine-tuning, retrieval over internal documents, logging, backup, and the update process, not just the model itself. It also includes the boundary between local systems and any external service, because a single outbound call can change the risk profile. The site tracks 732 AI tools, and deployment mode is one practical filter when comparing them.",
+    "answer": "Local and air-gapped deployment covers AI systems that run on hardware the organisation controls, with no dependency on an outside network. In an air-gapped setup the machine is physically isolated, so no traffic reaches the public internet at all, while a local deployment may still sit on an internal network. The topic sits inside governance, risk and financial data security because it changes who can touch the data, the model and the logs. It applies to model inference, training runs, document processing and the surrounding storage and identity layers.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-10-03T09:40:31-05",
+    "built_at": "2026-10-03T12:41:36-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Accountant",
@@ -28,23 +28,23 @@
     "page_uid": "5b86a294",
     "sections": [
         {
-            "body": "Local and air-gapped deployment covers running AI models, data pipelines, and supporting services on hardware the organization controls, either inside its own network or on a physically isolated network with no route to the public internet. In accounting and financial data security, the appeal is control over where sensitive records, ledgers, and client data reside, and over which software can reach them. The scope includes inference, fine-tuning, retrieval over internal documents, logging, backup, and the update process, not just the model itself. It also includes the boundary between local systems and any external service, because a single outbound call can change the risk profile. The site tracks 732 AI tools, and deployment mode is one practical filter when comparing them.",
+            "body": "Local and air-gapped deployment covers AI systems that run on hardware the organisation controls, with no dependency on an outside network. In an air-gapped setup the machine is physically isolated, so no traffic reaches the public internet at all, while a local deployment may still sit on an internal network. The topic sits inside governance, risk and financial data security because it changes who can touch the data, the model and the logs. It applies to model inference, training runs, document processing and the surrounding storage and identity layers.",
             "heading": "Scope"
         },
         {
-            "body": "Local deployment typically runs on on-premises servers, private cloud tenancies, or dedicated appliances with GPUs or CPUs sized to the model and workload. Air-gapped systems run on the same kinds of hardware but sit on an isolated network, often with separate power, cooling, and physical access controls. Storage must hold model weights, vector indexes, source documents, and audit logs, with capacity for snapshots and retention. Network design matters, because even an isolated environment needs controlled paths for administration, backup, and patch transfer. Some organizations use removable media or a data diode for one-way transfers, while others maintain a staging network that is never connected to production.",
+            "body": "The stack is ordinary data centre or workstation hardware: servers with sufficient GPU or CPU capacity, local storage, and a private network for anything that is not fully isolated. Models arrive as downloaded weights or as files carried across on approved media, and serving is handled by runtimes such as vLLM, Ollama or llama.cpp. Because there is no cloud control plane, patching, monitoring, backup and licence management all become internal responsibilities. Power, cooling and physical access controls matter as much as the software.",
             "heading": "What it runs on"
         },
         {
-            "body": "Work begins with a deployment plan that maps data flows, model dependencies, and the exact points where external connectivity would otherwise occur. Teams then package models, libraries, and configuration into reproducible artifacts, test them in a staging environment, and move them across the boundary through a controlled process. Inference and retrieval run locally, with prompts, outputs, and access events written to logs that can be reviewed. Updates and patches follow a defined cadence, because an air-gapped system cannot pull changes on demand. Evaluation and monitoring are also local, using held-out internal data and checks for drift, leakage, and unauthorized access.",
+            "body": "Teams typically start by classifying which data cannot leave the perimeter, then choose the smallest model that meets the task. Weights are transferred through a controlled process, checksummed, scanned and versioned, and the serving environment is built from a hardened image. Evaluation happens offline against a held-out set, and prompts, outputs and model versions are logged locally for later review. Updates follow a change process rather than a continuous pull, which slows release cadence but keeps the environment knowable.",
             "heading": "How the work is done"
         },
         {
-            "body": "Governance covers data classification, access control, retention, and the provenance of models and training data, because an isolated system still creates records that may be subject to audit, discovery, or regulatory review. The main risks are stale software, unpatched vulnerabilities, shadow copies of sensitive data, and weak separation between development and production. Provenance records typically show where model weights came from, what data was used for fine-tuning, and who approved each transfer into the environment. The site's 219 compliance and regulation pages reflect how often isolation, residency, and recordkeeping requirements appear in oversight material. Legal and regulatory duties vary by jurisdiction and by the nature of the data, so the practical work is to document controls and evidence rather than assume isolation alone settles the question.",
+            "body": "The main obligations are data residency, access control and auditability, and an air gap is one way to evidence that data never left the estate. That isolation also removes the vendor telemetry and cloud logging that many assurance teams rely on, so monitoring, incident response and retention have to be rebuilt in house. Model provenance still needs documenting: where the weights came from, what licence applies, and what data was used. Regulated firms should expect to show the same records for an isolated system as for a hosted one, and nothing here is legal advice.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The direction is toward smaller and more efficient models that can run on modest local hardware, plus better tooling for packaging, signing, and moving artifacts across isolated boundaries. Vendors and open source projects are adding offline installation paths, local model registries, and audit-friendly logging, though support varies widely. As regulation and litigation around AI data handling continue, more finance teams are likely to treat deployment mode as a first-class control rather than an infrastructure detail. Air-gapped deployment will remain a niche for the most sensitive workloads, while local deployment becomes more common as hardware improves. The practical test is whether an organization can update, monitor, and evidence the system without opening a path to the outside.",
+            "body": "Smaller open weight models and better quantisation keep widening what can run on modest hardware, which makes isolation practical for more workloads. Expect more tooling for offline model registries, signed weight distribution and local evaluation harnesses. The trade-off is that isolated systems age: they miss upstream safety fixes and drift from the vendor baseline. The likely direction is hybrid, with sensitive data and inference kept inside and only non-sensitive coordination crossing the boundary.",
             "heading": "Where it is going"
         }
     ],

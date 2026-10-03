@@ -4,7 +4,7 @@
     "slug": "med-neuro-fmri",
     "shape": "art-topic",
     "title": "Functional MRI Interpretation",
-    "answer": "Functional MRI interpretation is the reading of blood oxygen level dependent signals to infer brain activity, connectivity, or network organization. It spans clinical uses such as presurgical mapping and research uses such as cognitive neuroscience and biomarker discovery. The work sits in neuroinformatics and the brain, part of a broader atlas of medical AI. Interpretation combines visual inspection of activation maps with statistical models and, increasingly, machine learning classifiers.",
+    "answer": "Functional MRI interpretation covers the reading of blood oxygen level dependent signals to infer regional brain activity during tasks or at rest. It sits within neuroinformatics because the raw output is a time series of volumes that must be corrected, registered and modelled before any clinical or research claim is made. The work spans clinical presurgical mapping, cognitive neuroscience and, increasingly, automated pipelines that flag abnormal connectivity. Interpretation is not the same as acquisition, and a reader should treat the scanner protocol and the analysis choices as part of the evidence.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-10-03T09:40:31-05",
+    "built_at": "2026-10-03T12:41:36-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Physician",
@@ -28,23 +28,23 @@
     "page_uid": "88ffd8b2",
     "sections": [
         {
-            "body": "Functional MRI interpretation is the reading of blood oxygen level dependent signals to infer brain activity, connectivity, or network organization. It spans clinical uses such as presurgical mapping and research uses such as cognitive neuroscience and biomarker discovery. The work sits in neuroinformatics and the brain, part of a broader atlas of medical AI. Interpretation combines visual inspection of activation maps with statistical models and, increasingly, machine learning classifiers.",
+            "body": "Functional MRI interpretation covers the reading of blood oxygen level dependent signals to infer regional brain activity during tasks or at rest. It sits within neuroinformatics because the raw output is a time series of volumes that must be corrected, registered and modelled before any clinical or research claim is made. The work spans clinical presurgical mapping, cognitive neuroscience and, increasingly, automated pipelines that flag abnormal connectivity. Interpretation is not the same as acquisition, and a reader should treat the scanner protocol and the analysis choices as part of the evidence.",
             "heading": "Scope"
         },
         {
-            "body": "Functional MRI interpretation runs on MRI scanners that produce time series of volumes, plus computing infrastructure for reconstruction and analysis. Typical setups include a workstation or cluster with neuroimaging software such as SPM, FSL, or AFNI, and storage for large four-dimensional datasets. Graphics processing units are often used for preprocessing steps like motion correction and for deep learning models. Data may live in a picture archiving and communication system, a research data lake, or a cloud environment with appropriate privacy controls.",
+            "body": "The stack begins with the scanner and its sequence parameters, then moves to storage and compute for large four dimensional datasets. Standard toolchains include SPM, FSL and AFNI for preprocessing, with Python libraries such as Nilearn and nibabel for scripting, and containers or workflow engines to keep runs reproducible. Statistical parametric mapping and general linear models remain the backbone, while newer graph and deep learning approaches sit alongside them. Compute is usually a mix of local workstations and shared clusters, and the site tracks 804 scientific models that reflect how much of this work is now model driven.",
             "heading": "What it runs on"
         },
         {
-            "body": "A standard pipeline starts with slice timing correction, motion correction, spatial smoothing, and registration to a structural or standard space. Then a general linear model or a connectivity analysis produces statistical maps, which are thresholded and corrected for multiple comparisons. AI methods add supervised classifiers, autoencoders, or graph neural networks to decode cognitive states or predict clinical labels from the same preprocessed data. Interpretation still requires checking motion artifacts, physiological noise, and the mismatch between statistical significance and biological meaning.",
+            "body": "A typical analysis starts with slice timing and motion correction, then spatial smoothing, registration to a structural or standard space, and confound regression for motion, physiology and drift. Task designs use a general linear model with contrasts, while resting state work uses seed based correlation, independent component analysis or parcellated connectomes. Group level inference applies mixed effects models and cluster or voxel wise correction for multiple comparisons. Interpretation then depends on thresholds, atlas choice and the assumptions baked into each step, so a result is only as strong as its preprocessing and its stated hypotheses.",
             "heading": "How the work is done"
         },
         {
-            "body": "Functional MRI data are sensitive because they can reveal brain states, cognitive traits, and incidental findings, so consent, de-identification, and data use agreements matter. Provenance covers scanner parameters, preprocessing choices, software versions, and model weights, because small pipeline changes can shift results. Regulatory frameworks for clinical fMRI interpretation vary, and AI components may fall under device rules or research exemptions. The site tracks 215 compliance and regulation pages, which reflect the growing oversight of clinical AI.",
+            "body": "Functional MRI data are sensitive because they can carry identifiable anatomy and, in some cases, inferences about cognition or health. Consent, de identification and data sharing agreements govern most cohorts, and frameworks such as BIDS and the GDPR shape how datasets are labelled and moved. Reproducibility depends on publishing preprocessing parameters, code and version numbers, since small pipeline changes can shift results. The site tracks 229 compliance and regulation pages and 6 active product liability and wrongful death lawsuits against AI companies, which is a reminder that automated interpretation tools carry their own accountability. Nothing here is legal or medical advice, and readers should consult their own ethics board and counsel.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "Functional MRI interpretation is moving toward more automated pipelines, real-time analysis, and models that generalize across scanners and populations. Open datasets and benchmarking efforts aim to make results reproducible, while privacy-preserving methods like federated learning allow multi-site training without moving raw data. Clinical adoption will depend on validation against outcomes, clear labeling of AI-assisted findings, and integration into radiology workflows. The field also faces a tension between rich, high-dimensional brain data and the need for interpretable, clinically actionable summaries.",
+            "body": "The direction of travel is toward standardised, shareable pipelines and foundation style models trained on large aggregated datasets. Better motion correction, harmonisation across sites and uncertainty quantification are active areas, as is the use of functional connectivity as a marker in psychiatric and neurological research. Clinical translation remains slow because of validation, regulatory and liability questions, and because a scan is only one part of a patient picture. Expect more automated quality control and more emphasis on provenance, with the human reader still accountable for the final interpretation.",
             "heading": "Where it is going"
         }
     ],

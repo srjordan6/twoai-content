@@ -4,7 +4,7 @@
     "slug": "sql-injection-ai",
     "shape": "art-topic",
     "title": "SQL Injection Through AI",
-    "answer": "SQL injection is the insertion of malicious query text into a database command. When an AI system generates SQL from user or document input, prompt injection can produce harmful queries. Generated SQL therefore needs the same controls as any untrusted input, including least privilege, read only access where possible, and query review. The scope covers text to SQL features, AI agents that call database tools, and any pipeline where model output becomes executable SQL.",
+    "answer": "SQL injection is the insertion of malicious query text into a database command, and it has a newer cousin in AI systems that generate SQL from user or document input. When a model turns natural language into a query, prompt injection can steer that generation toward harmful statements such as dropped tables, broad reads, or stacked commands. The generated SQL therefore needs the same controls as any untrusted input: least privilege, read only access where possible, and query review. This topic covers both the classic injection path and the model mediated path that produces it.",
     "crumbs": [
         {
             "name": "AI and SQL",
@@ -12,7 +12,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-10-03T09:40:31-05",
+    "built_at": "2026-10-03T12:41:37-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "AI and SQL",
@@ -20,23 +20,23 @@
     "page_uid": "ab2a7e43",
     "sections": [
         {
-            "body": "SQL injection is the insertion of malicious query text into a database command. When an AI system generates SQL from user or document input, prompt injection can produce harmful queries. Generated SQL therefore needs the same controls as any untrusted input, including least privilege, read only access where possible, and query review. The scope covers text to SQL features, AI agents that call database tools, and any pipeline where model output becomes executable SQL.",
+            "body": "SQL injection is the insertion of malicious query text into a database command, and it has a newer cousin in AI systems that generate SQL from user or document input. When a model turns natural language into a query, prompt injection can steer that generation toward harmful statements such as dropped tables, broad reads, or stacked commands. The generated SQL therefore needs the same controls as any untrusted input: least privilege, read only access where possible, and query review. This topic covers both the classic injection path and the model mediated path that produces it.",
             "heading": "Scope"
         },
         {
-            "body": "The work runs on large language models, agent frameworks, and tool calling layers that connect to relational databases and warehouses. This site tracks 263 Model Context Protocol servers for SQL databases and warehouses, which is one sign of how common that connection has become. The databases themselves are often PostgreSQL, MySQL, or cloud warehouses, and the site's own pages are built from a PostgreSQL database. Execution usually happens through a database driver or API with a service account, so the model never touches the database directly.",
+            "body": "The stack usually starts with a model or agent that receives a request, a schema description, and sometimes retrieved documents, then emits SQL that a driver executes against a database such as PostgreSQL. Tooling in this space includes Model Context Protocol servers, which expose database access to AI clients, and this site tracks 2526 active MCP servers, 263 of them for SQL databases and warehouses. The database itself, its driver, and the connection credentials are the last line before a query runs. Every page on this site is itself built from a PostgreSQL database, so the pattern is common rather than exotic.",
             "heading": "What it runs on"
         },
         {
-            "body": "A typical flow starts with a user prompt, a document, or a chat message that is combined into a model request. The model returns SQL text, which an application extracts, sometimes with a parser or a regular expression, and then sends to the database. Prompt injection can change that SQL by adding conditions, unions, stacked statements, or calls to sensitive functions. Teams test for this with red team prompts, fuzzing, and static checks on generated queries, then compare the result against an expected query shape.",
+            "body": "Work begins by mapping where untrusted text can reach a query: chat prompts, uploaded files, web pages, and retrieved context all count. Teams then test generation paths with adversarial inputs, checking whether a model can be talked into unions, subqueries, comment tricks, or multiple statements. Defenses are layered, including parameterized queries, allow lists of tables and columns, read only roles, statement timeouts, and a review step before execution. Logging the generated SQL alongside the prompt that produced it makes failures reproducible.",
             "heading": "How the work is done"
         },
         {
-            "body": "Provenance matters because generated SQL can be traced back to a prompt, a model version, a tool call, and a database role. Logs often record the original input, the generated query, the user or service identity, and the rows or objects affected. Risk includes data exfiltration, unintended writes, privilege escalation, and compliance exposure when sensitive tables are reachable. Access reviews, read only roles, and audit trails are common controls, and data protection rules may limit what can be sent to a model in the first place.",
+            "body": "Ownership of generated SQL sits with the team that operates the database, not with the model provider, so access reviews and role design matter more than model choice. Provenance should record which prompt, document, or agent produced a query, and which credentials it used. Regulatory and audit expectations for data access apply the same way whether a human or a model wrote the statement. This is a description of practice, not legal advice, and any specific compliance question belongs with counsel.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "More AI agents are gaining database access through tool protocols, so the boundary between prompt injection and SQL injection will keep blurring. Expect more SQL aware guardrails, policy engines, and query firewalls that inspect generated statements before execution. Provenance standards and evaluation suites for text to SQL security are likely to mature, alongside research on detecting harmful queries. The long term direction is to treat model output as untrusted input at every step, from prompt to row.",
+            "body": "Expect more agents holding database credentials, which widens the surface for prompt driven injection. Work is moving toward sandboxed query execution, schema aware validation, and policy engines that inspect generated SQL before it runs. The 319 research papers and 850 AI tools tracked on this site suggest the tooling layer will keep growing faster than the controls around it. The practical direction is to treat model output as untrusted input by default.",
             "heading": "Where it is going"
         }
     ],

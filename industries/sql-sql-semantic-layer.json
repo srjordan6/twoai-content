@@ -4,7 +4,7 @@
     "slug": "sql-semantic-layer",
     "shape": "art-topic",
     "title": "Semantic Layers",
-    "answer": "A semantic layer defines business terms, metrics and relationships on top of raw tables, so that revenue or active customer means one agreed thing. It sits between the warehouse and the people or systems that query it, naming dimensions, measures, hierarchies and the joins that connect them. Text to SQL systems that use one produce far more consistent answers than systems reading raw column names, because the model chooses from a known vocabulary instead of guessing at schema. The layer is not a database itself, it is a definition layer that translates a request into SQL against the underlying tables.",
+    "answer": "A semantic layer defines business terms, metrics and relationships on top of raw tables, so that revenue or active customer means one agreed thing. Text to SQL systems that use one produce far more consistent answers than systems reading raw column names. It sits between the warehouse and the people or models asking questions, and it is the difference between a query tool that guesses at schema and one that speaks the organisation's own vocabulary.",
     "crumbs": [
         {
             "name": "AI and SQL",
@@ -12,7 +12,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-10-03T09:40:31-05",
+    "built_at": "2026-10-03T12:41:37-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "AI and SQL",
@@ -20,23 +20,23 @@
     "page_uid": "552cb1a1",
     "sections": [
         {
-            "body": "A semantic layer defines business terms, metrics and relationships on top of raw tables, so that revenue or active customer means one agreed thing. It sits between the warehouse and the people or systems that query it, naming dimensions, measures, hierarchies and the joins that connect them. Text to SQL systems that use one produce far more consistent answers than systems reading raw column names, because the model chooses from a known vocabulary instead of guessing at schema. The layer is not a database itself, it is a definition layer that translates a request into SQL against the underlying tables.",
+            "body": "A semantic layer defines business terms, metrics and relationships on top of raw tables, so that revenue or active customer means one agreed thing. Text to SQL systems that use one produce far more consistent answers than systems reading raw column names. It sits between the warehouse and the people or models asking questions, and it is the difference between a query tool that guesses at schema and one that speaks the organisation's own vocabulary.",
             "heading": "Scope"
         },
         {
-            "body": "Semantic layers usually run alongside a data warehouse or lakehouse, such as PostgreSQL, Snowflake, BigQuery or Databricks, and rely on that system's compute to execute the SQL they generate. Definitions live in metadata stores, YAML files, or a modeling service, and they are served to business intelligence tools, notebooks and AI agents through APIs. The site currently tracks 2504 active Model Context Protocol servers, 263 of them for SQL databases and warehouses, which shows how often semantic layers are being exposed as tools for agents.",
+            "body": "A semantic layer is usually a metadata service rather than a store of data. It holds definitions, joins, hierarchies and metric formulas, and it compiles those into SQL that runs against the underlying warehouse, most often PostgreSQL, Snowflake, BigQuery or Databricks. Model context protocol servers are one common way to expose those definitions to an assistant, and this site currently tracks 263 of them for SQL databases and warehouses out of 2526 active servers.",
             "heading": "What it runs on"
         },
         {
-            "body": "Building a semantic layer starts with modeling the business domain, defining entities, dimensions, measures, metrics and the relationships between them, often in a version controlled repository. Each metric has a single SQL definition, and the layer compiles a request into the correct query, handling joins, filters and aggregations consistently. For text to SQL, the layer acts as a constrained interface, so a language model maps a question to a known metric rather than inventing column names. Teams test definitions, document them, and review changes the same way they review code.",
+            "body": "The work starts with modelling: naming entities, agreeing grain, writing metric definitions once and mapping them to physical columns. Those definitions are then served through an API or a query interface, and a text to SQL system retrieves the relevant terms before generating SQL rather than reading raw column names. Practitioners spend most of their time on curation and testing, checking that a question about active customers resolves to the same calculation every time, and on keeping the model in step with schema changes.",
             "heading": "How the work is done"
         },
         {
-            "body": "Semantic layer definitions are an artifact with owners, access rules and lineage, so it matters who can change a metric and who can see the underlying data. A layer can enforce row and column level security, which means a text to SQL agent inherits those permissions rather than bypassing them. Provenance records show when a definition changed, by whom, and what queries depended on it, which helps when a number is disputed. Risks include stale definitions, conflicting metrics across teams, and a false sense of safety if the layer is not kept in sync with the warehouse.",
+            "body": "Because a semantic layer concentrates meaning in one place, it also concentrates responsibility. Ownership of each metric needs to be clear, changes need review, and access rules should follow the definitions rather than being reimplemented in every downstream tool. Provenance matters too: a generated answer should be traceable to the metric version and the tables it drew on, so that an audit can reconstruct how a number was produced.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "Semantic layers are becoming the interface between large language models and data, with agents calling them through protocols like Model Context Protocol to answer questions in natural language. The site's library holds 288 research papers, and work on semantic layers for text to SQL is an active area of study. Standardization of metric definitions and interchange formats is likely to continue, as is the use of semantic layers to ground AI answers in governed business logic. The direction is toward fewer raw schema prompts and more curated, reusable definitions that both people and machines can trust.",
+            "body": "The direction of travel is toward semantic layers that assistants can read directly, so that definitions travel with the question instead of being rediscovered each time. Expect more standard ways to publish metrics and relationships to agents, and more emphasis on versioning and lineage as generated SQL becomes routine. The open question is not whether models can write SQL but whether the organisation can keep one agreed meaning for the words it asks about.",
             "heading": "Where it is going"
         }
     ],

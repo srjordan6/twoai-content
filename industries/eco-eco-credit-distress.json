@@ -4,7 +4,7 @@
     "slug": "eco-credit-distress",
     "shape": "art-topic",
     "title": "Predicting Distress and Default",
-    "answer": "Predicting distress and default covers the estimation of a borrower's or issuer's likelihood of failing to meet debt obligations over horizons set by the portfolio or regulatory context. It includes probability of default, loss given default, exposure at default, credit migration, covenant breach, bankruptcy, and recovery outcomes. The work spans corporate bonds, bank loans, sovereign debt, municipal issuers, and structured credit, and it draws on accounting statements, market prices, payment histories, and macroeconomic conditions. The site's 117 listed AI-related instruments with daily prices are an example of the market data that can inform these estimates.",
+    "answer": "Predicting distress and default covers the models and data used to estimate whether a borrower, issuer or counterparty will fail to meet its obligations. In fixed income it sits behind credit spread analysis, ratings surveillance, loan loss provisioning and early warning systems for corporate and sovereign debt. The work spans public firms, private borrowers and structured pools, and it draws on accounting statements, market prices, macro data and contract terms.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-10-03T09:40:31-05",
+    "built_at": "2026-10-03T12:41:36-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Economist",
@@ -28,23 +28,23 @@
     "page_uid": "73b84feb",
     "sections": [
         {
-            "body": "Predicting distress and default covers the estimation of a borrower's or issuer's likelihood of failing to meet debt obligations over horizons set by the portfolio or regulatory context. It includes probability of default, loss given default, exposure at default, credit migration, covenant breach, bankruptcy, and recovery outcomes. The work spans corporate bonds, bank loans, sovereign debt, municipal issuers, and structured credit, and it draws on accounting statements, market prices, payment histories, and macroeconomic conditions. The site's 117 listed AI-related instruments with daily prices are an example of the market data that can inform these estimates.",
+            "body": "Predicting distress and default covers the models and data used to estimate whether a borrower, issuer or counterparty will fail to meet its obligations. In fixed income it sits behind credit spread analysis, ratings surveillance, loan loss provisioning and early warning systems for corporate and sovereign debt. The work spans public firms, private borrowers and structured pools, and it draws on accounting statements, market prices, macro data and contract terms.",
             "heading": "Scope"
         },
         {
-            "body": "The infrastructure for this work is a data pipeline that ingests financial statements, loan tapes, bond and credit default swap prices, ratings actions, news, and regulatory filings. It usually runs on relational databases, data warehouses, and cloud compute, with versioned feature stores so that the same inputs can be reproduced for training and scoring. Model training may use Python libraries such as scikit-learn, XGBoost, or PyTorch, while production scoring runs as batch jobs or real-time services behind an API. Monitoring dashboards track data drift, score distributions, and overdue model reviews.",
+            "body": "Practitioners run these models on a mix of relational databases holding financial statements and loan tapes, market data feeds for spreads and equity prices, and cloud compute for training and backtesting. Common tooling includes Python with pandas and scikit learn, gradient boosting libraries such as XGBoost and LightGBM, and survival analysis packages. Production scoring often sits inside a bank's risk platform or a vendor system, with results pushed to dashboards and limit monitoring tools.",
             "heading": "What it runs on"
         },
         {
-            "body": "The work begins with defining the event and the horizon, for example a missed payment, a bankruptcy filing, or a downgrade within a set period. Analysts build features from leverage, coverage, liquidity, profitability, payment behavior, market-implied spreads, and macro variables, then train models such as logistic regression, survival models, gradient boosted trees, or neural networks. Validation uses out-of-time and vintage-based splits, backtesting, calibration checks, and discrimination metrics like AUC and Gini, because a model that ranks well may still misstate absolute default rates. Stress testing and scenario analysis then examine how predictions change under recessions, rate shocks, or sector downturns.",
+            "body": "The core task is classification or time to event estimation: will this obligor default within a horizon, and when. Analysts combine logistic regression and survival models with tree ensembles and, more recently, neural networks, using features such as leverage, interest coverage, liquidity, Altman style ratios, distance to default and spread levels. Validation uses out of time and out of sample splits, vintage analysis and backtesting against realised defaults, with attention to class imbalance and regime change.",
             "heading": "How the work is done"
         },
         {
-            "body": "Rights and risk and provenance matter because default models use sensitive financial and personal data, often under licensing agreements that restrict use and redistribution. Teams must document data lineage, model assumptions, validation results, and known limitations, and they must show that protected characteristics are not used improperly or proxied by other variables. Model risk management frameworks require independent review, ongoing monitoring, and clear ownership, while fair lending and consumer credit rules add specific constraints in some jurisdictions. The site's 219 compliance and regulation pages reflect how much of this work sits under supervisory expectations and how often it intersects with AI governance.",
+            "body": "Model risk management applies: documentation, independent validation, monitoring for drift and clear ownership. Data provenance matters because defaults are rare events and labels are often revised, so audit trails for restatements and recovery assumptions are needed. Fair lending and conduct rules constrain use in consumer credit, while prudential rules govern capital and provisioning models. Vendors and internal teams must show that features and outputs can be explained to regulators and auditors.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The field is moving toward more frequent scoring, alternative data such as supply chain signals and satellite imagery, and models that combine text from filings and news with traditional financial ratios. Generative AI is being tested for document review and scenario drafting, though its outputs still need human validation and clear provenance. Climate risk, transition risk, and interconnected counterparty exposure are becoming part of distress analysis, especially for long dated debt. Market based signals will keep feeding into early warning systems, alongside regulatory pressure for explainable and auditable models.",
+            "body": "Attention is moving toward earlier warning signals from alternative data such as payment behaviour, supply chain links and news text, and toward models that update as conditions change rather than on an annual cycle. Explainability and stress testing remain central as supervisors ask how a model behaves in a downturn. The open questions are how to combine structured and unstructured evidence without losing auditability, and how to keep validation honest when the next default wave looks unlike the last.",
             "heading": "Where it is going"
         }
     ],

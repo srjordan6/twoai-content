@@ -4,7 +4,7 @@
     "slug": "res-citations-graphs",
     "shape": "art-topic",
     "title": "Citation Graphs Over Time",
-    "answer": "Citation graphs over time are maps of scholarly works where nodes are papers and directed edges are citations, with a time axis attached to each node and edge. They show how ideas spread, how fields cluster, and how the importance of a paper changes as later work cites it. The scope includes static snapshots and dynamic sequences, from a single paper's citation tree to whole-field networks. It also covers derived measures such as citation counts, co-citation, bibliographic coupling, and temporal bursts. A small library such as this site's 288 research papers can be drawn as one such graph, though most studies use much larger corpora.",
+    "answer": "Citation graphs over time are the record of which research works cite which others, arranged so that the order of publication and the direction of influence are both visible. The unit is the paper and the edge is a citation, and the interesting object is how that structure changes as new work arrives. A static citation graph answers who cites whom, while a temporal one answers when a link appeared, which papers gained attention after a delay, and which lines of work went quiet. This matters for literature review, for tracing the origin of an idea, and for judging whether a claim rests on a single thread or on many independent ones.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-10-03T09:40:31-05",
+    "built_at": "2026-10-03T12:41:36-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Researcher",
@@ -28,23 +28,23 @@
     "page_uid": "07549d7b",
     "sections": [
         {
-            "body": "Citation graphs over time are maps of scholarly works where nodes are papers and directed edges are citations, with a time axis attached to each node and edge. They show how ideas spread, how fields cluster, and how the importance of a paper changes as later work cites it. The scope includes static snapshots and dynamic sequences, from a single paper's citation tree to whole-field networks. It also covers derived measures such as citation counts, co-citation, bibliographic coupling, and temporal bursts. A small library such as this site's 288 research papers can be drawn as one such graph, though most studies use much larger corpora.",
+            "body": "Citation graphs over time are the record of which research works cite which others, arranged so that the order of publication and the direction of influence are both visible. The unit is the paper and the edge is a citation, and the interesting object is how that structure changes as new work arrives. A static citation graph answers who cites whom, while a temporal one answers when a link appeared, which papers gained attention after a delay, and which lines of work went quiet. This matters for literature review, for tracing the origin of an idea, and for judging whether a claim rests on a single thread or on many independent ones.",
             "heading": "Scope"
         },
         {
-            "body": "Citation graphs over time run on bibliographic databases and persistent identifiers. Sources include publisher metadata, DOI records, preprint servers, and open citation indexes. Storage needs graph databases or columnar tables that can hold nodes, edges, timestamps, and version history. Compute can range from a laptop for a few thousand papers to distributed systems for hundreds of millions of records. The site's own library is small enough for a single machine, but the same pipeline scales.",
+            "body": "The raw material is bibliographic metadata: titles, authors, venues, years, and reference lists, usually pulled from services such as Crossref, OpenAlex, Semantic Scholar, or PubMed. Storage is typically a graph database or a columnar store, because citation edges are numerous and queries often walk several hops. Snapshotting matters, since a graph rebuilt today will not match one built last year, and versioned snapshots let a study compare the two. This site holds 319 research papers in its library and 14104 claims extracted from research works, and links out to original papers rather than to a search tool, so a graph built here would resolve to source documents.",
             "heading": "What it runs on"
         },
         {
-            "body": "The work starts with resolving each paper to a stable identifier and extracting its reference list. Then edges are created from citing paper to cited paper, with a timestamp from the publication date or the citation date if available. Analysts clean duplicates, merge author and venue names, and handle missing or ambiguous references. They then compute temporal metrics such as citation lag, burst detection, and network growth curves. Visual layouts often use force-directed or timeline-based views to show clusters and change over time.",
+            "body": "Work begins with entity resolution, matching author names and paper records that differ across sources, then with parsing reference strings into clean edges. From there the common operations are traversal, such as finding all works that cite a given paper, and ranking, such as counting citations within a window or weighting by venue. Temporal analysis adds time slices, so the graph can be cut at a year and compared with the slice before it, which exposes bursts, decay, and the lag between publication and recognition. Community detection and path finding are used to group related work and to trace how one result reached another, and the outputs are usually read as maps rather than as verdicts on quality.",
             "heading": "How the work is done"
         },
         {
-            "body": "Provenance matters because a citation graph is only as reliable as its source metadata. Rights issues arise from licensing of bibliographic records, full text, and any derived data that is redistributed. Risks include coverage bias, citation cartels, self-citation loops, and the mistaken treatment of citation counts as a direct measure of quality. A responsible practice records the data source, the extraction date, and the matching rules so that results can be audited. On this site, links go to the original paper rather than to a search tool, which keeps the chain of provenance visible.",
+            "body": "Citation data carries attribution obligations, and reuse terms differ between sources, so a project needs to know what each provider permits and how to credit it. Author disambiguation is a known source of error, and a misattributed paper can follow a researcher for years, so corrections need a route back into the record. Citation counts are also easy to misread as measures of merit when they mostly measure visibility and age, and self citation and citation cartels distort them further. Any derived claim should point to the original paper, which is the practice followed here, and the graph should be treated as a finding aid rather than as evidence about a person.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "Citation graphs over time are moving toward richer, more frequent updates and toward linking papers with datasets, models, and software. Temporal graph learning and dynamic network embeddings are being used to predict emerging topics and to trace the spread of methods. Open citation data and better identifier coverage are reducing gaps, though coverage remains uneven across languages and regions. The next step is likely to be interactive maps that let a reader move through time and see how a claim, method, or dataset travels. For a site that holds research papers, the same graph could connect papers to the artifacts they introduce.",
+            "body": "The direction of travel is toward graphs that update continuously rather than in annual dumps, with provenance attached to each edge so a reader can see where a link came from. Full text linking, rather than reference string matching, would let a graph distinguish a paper cited for its method from one cited for its data. Better handling of preprints and of non English venues would reduce the bias toward well indexed English language journals. The open question is whether richer graphs improve discovery or simply make existing attention patterns more efficient to reproduce.",
             "heading": "Where it is going"
         }
     ],
