@@ -5,54 +5,54 @@
     "slug": "litellm",
     "facts": {
         "repo": "BerriAI/litellm",
-        "stars": 60063,
+        "stars": 60068,
         "licence": "custom",
         "archived": false,
         "language": "Python",
         "repo_url": "https://github.com/BerriAI/litellm",
-        "last_push": "2026-10-03T03:19:36Z",
+        "last_push": "2026-10-03T06:47:20Z",
         "description": "The fastest, litest AI Gateway. Rust core with Python SDK. Call 100+ LLM APIs in OpenAI (or native) format with cost tracking, guardrails, load balancing, and logging [Bedrock, Azure, OpenAI, Anthropic, OpenAI, VertexAI, vLLM, Nvidia NIM]",
         "official_site": "https://docs.litellm.ai/docs/"
     },
     "model": "ollama:deepseek-v4.1-flash",
     "shape": "lang-profile",
-    "title": "LiteLLM: An AI Gateway and Python SDK for Routing LLM Traffic",
-    "answer": "LiteLLM is an AI gateway and Python SDK from BerriAI that lets you call over 100 LLM APIs in OpenAI or native format, with cost tracking, guardrails, load balancing and logging. It sits between your application and providers such as Bedrock, Azure, OpenAI, Anthropic, VertexAI, vLLM and Nvidia NIM. The one thing to know before adopting it is that the project is mid-migration from a Python proxy to a Rust core, so performance and stability differ sharply between versions.",
-    "built_at": "2026-10-02T23:44:12-05:00",
+    "title": "LiteLLM: An AI Gateway for Routing and Governing LLM Traffic",
+    "answer": "LiteLLM is an AI gateway from BerriAI that calls over 100 LLM APIs in OpenAI or native format, adding cost tracking, guardrails, load balancing and logging. It sits between your application and model providers, so it is infrastructure rather than a model or training library. The one thing to know before adopting it is that the project is mid-migration from a Python proxy to a Rust core, and its own incident reports document production outages and silent cost regressions tied to specific versions.",
+    "built_at": "2026-10-03T03:21:06-05:00",
     "category": "technology-and-core-infrastructure",
     "hub_name": "Programming Languages and Frameworks",
     "page_uid": "b9fc5220",
     "sections": [
         {
-            "body": "LiteLLM is made by BerriAI and published at github.com/BerriAI/litellm under a custom licence, with a Python SDK and a proxy server that the site describes as the fastest, litest AI Gateway. It sits in the gateway layer of the AI stack, between application code and model providers, translating requests into OpenAI or native formats and returning responses. The repository shows a last push in October 2026 and roughly 60,000 stars. The official documentation is at docs.litellm.ai. The site says the project is moving its core to Rust, with a pure Rust server planned that can serve all AI traffic, including auth and rate limiting, on the hot path.",
+            "body": "LiteLLM is made by BerriAI and published at github.com/BerriAI/litellm under a custom licence, with its official documentation at docs.litellm.ai. It is a gateway and SDK rather than a model or a training framework. The site describes it as the fastest, litest AI Gateway, with a Rust core and a Python SDK, and the repository lists Python as its language. It sits in the serving and routing layer of the AI stack, between application code and providers such as Bedrock, Azure, OpenAI, Anthropic, VertexAI, vLLM and Nvidia NIM. The repository shows roughly 60,000 stars and a last push in October 2026, so it is actively maintained.",
             "heading": "What it is and where it sits in AI work"
         },
         {
-            "body": "The gateway routes LLM traffic and applies budgets and rate limits, while the Agent Gateway authenticates callers, controls which users and teams can invoke each agent, and records request, response, latency and cost data. An MCP Gateway centralizes tool access and upstream authentication, including per-user OAuth with PKCE sign-in. The site documents reliability testing across providers, load testing, spend tracking, guardrails, SSO and SAML, audit logs and multi-team management. It is strongest where many providers, teams and budgets must be governed through one control plane, and where per-user and per-agent cost attribution matters. The Rust gateway is presented as the fastest option for coding agents and high-throughput serving.",
+            "body": "The gateway's concrete jobs are calling over 100 LLM APIs in OpenAI or native format, tracking cost, applying guardrails, load balancing across providers and logging traffic. The documentation shows reliability testing across providers with batch_completion_models_all_responses, which sends one conversation to every model in parallel and returns only the responses that succeeded, dropping models that raise rather than surfacing them as errors. It also documents load testing with load_test_model, which sends concurrent requests but always reports calls_made as 100 regardless of num_calls, and has no interval or duration options, so you loop over it yourself. Beyond routing, the site describes an Agent Gateway, a Model Gateway and an MCP Gateway under one control plane, with budgets at key, team, agent and customer levels. It is strongest where a team needs one endpoint in front of many providers with spend visibility and access control.",
             "heading": "What it is used for and where it is strongest"
         },
         {
-            "body": "The Python SDK is approachable for developers who already know Python and HTTP APIs, since calls follow OpenAI-style conventions. The gateway side assumes more: you need to understand proxies, Redis, rate limiting, authentication and deployment, because the documented incidents involve Redis outages, retry behaviour and Kubernetes OOM kills. The site offers tutorials, including one on testing multiple providers, and notes quirks such as load_test_model always returning calls_made of 100 regardless of num_calls, and having no interval or duration options. No formal prerequisites in mathematics or systems work are stated, and the documentation does not describe a structured beginner curriculum.",
+            "body": "The Python SDK is the gentlest entry point, since the documented examples are ordinary Python calls against familiar model names. The gateway side assumes more: you need to understand HTTP proxying, API keys and provider authentication, Redis for caching and rate limiting, and deployment in containers or Kubernetes, because the incident reports describe proxy fleets, worker processes and OOM kills. No mathematics or model training background is required, since this is infrastructure rather than modelling. The official site offers tutorials, a blog, incident reports and reference documentation, but the material read here does not include a structured beginner course, so a newcomer should expect to learn from the docs and examples rather than a guided curriculum.",
             "heading": "How hard it is to learn and what you need first"
         },
         {
-            "body": "The site lists integrations with Bedrock, Azure, OpenAI, Anthropic, VertexAI, vLLM and Nvidia NIM, and the SDK speaks OpenAI or native formats across more than 100 LLM APIs. The blog covers an Agent Gateway, a Model Gateway and an MCP Gateway, an A2A JSON-RPC interface for invoking shared agents, LiteAdmin MCP for management through an agent, and a Slack admin agent built on the same connector. Documentation is extensive, with tutorials, incident reports and benchmark write-ups. Community scale is suggested by the star count, though the facts here do not describe forums, chat channels or contributor numbers.",
+            "body": "The site documents integrations with Bedrock, Azure, OpenAI, Anthropic, VertexAI, vLLM and Nvidia NIM, and the gateway speaks the A2A JSON-RPC interface for agents, with OIDC and OAuth2 support for identity, including authorization_code flows with PKCE for per-user MCP credentials. It exposes headers such as X-LiteLLM-User-Id and X-LiteLLM-Team-Id so downstream agents can attribute spend correctly. Documentation is extensive, covering tutorials, gateway identity and FinOps, and a blog with tags for ai-gateway and incident-report. Community scale is suggested by the repository's roughly 60,000 stars, and the project publishes dev, release candidate and stable releases on a regular cadence, which the blog describes in detail.",
             "heading": "Ecosystem and community"
         },
         {
-            "body": "LiteLLM serves both ends. The Python SDK and proxy make quick experiments easy, and the site shows batch completion across many models in parallel for reliability testing. Production use is the larger story: the Python proxy peaks around 359MB of memory under load, and the site reports pods being OOM-killed at the worst time. The Rust gateway is claimed to serve about 15 times the throughput, 453 to 6,782 requests per second, on about 11 times less memory, 359MB to 32MB, cutting per-request overhead from about 7.5ms to about 0.05ms. Those figures come from the project's own benchmark, so treat them as vendor measurements rather than independent results.",
+            "body": "LiteLLM serves both ends but is clearly aimed at production. The Python SDK makes quick experiments easy, and the batch and load testing helpers are built for evaluating providers before committing. In production the site reports that the Python proxy peaks around 359MB of memory under load, with CPU and memory climbing with concurrency and pods being OOM-killed at the worst time. The Rust gateway is presented as the answer, serving about 15x the throughput, 453 to 6,782 requests per second, on about 11x less memory, 359MB to 32MB, and cutting per-request overhead from about 7.5ms to about 0.05ms. The site commits to sub-1ms overhead and a sub-100MB binary. The cost of that control is operational complexity and a migration that is still in early beta.",
             "heading": "Prototyping speed against production performance"
         },
         {
-            "body": "The site describes enterprise customers running the proxy behind nginx, enterprise plans with SSO and SAML, audit logs and multi-team management, and teams sharing agents across business units. It reports an enterprise customer outage with thousands of HTTP 502s and tens of thousands of HTTP 499s, which indicates real production dependence. The project is a current standard in the LLM gateway category rather than a legacy choice, and it is actively changing, with a Rust migration under way. For someone choosing what to learn, gateway and routing skills transfer across providers, but the facts here do not give adoption numbers, customer names or job market data.",
+            "body": "The site describes enterprise features including SSO and SAML, audit logs, spend tracking, multi-team management and guardrails, built for production, and its incident reports reference an enterprise customer running the database image behind nginx with a proxy fleet. That indicates real production use at scale, though the material read here does not name specific companies or give adoption numbers. LiteLLM is a current choice rather than a legacy one, given the active Rust migration and frequent releases. For someone choosing what to learn, gateway and LLMOps skills transfer across providers, but the project's own incident reports show that version discipline matters, since defects in v1.100.0 and v1.91.0 and v1.91.1 caused outages and cost regressions before fixes shipped.",
             "heading": "Industry adoption and careers"
         },
         {
-            "body": "LiteLLM is written in Python with a Rust core being introduced, and it is typically used alongside provider SDKs and HTTP clients rather than replacing them. The site says it calls Mistral's API directly over HTTP via httpx and does not import the mistralai Python SDK anywhere, which is the pattern it follows for providers generally. It sits beside frameworks that build agents and applications, handling routing, budgets, guardrails and logging for them, and it exposes an A2A JSON-RPC interface so agents can call each other through the gateway. This is the polyglot gateway pattern: application code in one language, gateway in another, providers behind a common format.",
+            "body": "LiteLLM is written in Python with a Rust core, and the documented examples are Python, so it sits naturally beside Python application code and frameworks that call models. It is provider-agnostic by design, calling Mistral's API directly over HTTP via httpx rather than importing the mistralai SDK, and it fronts Bedrock, Azure, OpenAI, Anthropic, VertexAI, vLLM and Nvidia NIM. In a polyglot stack it typically acts as the shared gateway that any language can call over HTTP, while the SDK serves Python services directly. The site also positions it beside other gateways, benchmarking the Rust gateway against Portkey, Bifrost and its own Python proxy, so it belongs to the emerging category of AI gateway infrastructure rather than to model training or agent frameworks.",
             "heading": "How it fits beside the others"
         },
         {
-            "body": "The documented incidents are the clearest limits. A one-line change caused retry breadcrumbs to double in size with every retry, and with Redis unreachable a single allocation reached 27GB, causing kernel OOM kills and a production outage for one customer. A separate regression silently broke Anthropic prompt caching for Claude Code on Bedrock, dropping cache hit rates from roughly 90% to 25-45% and raising daily spend two to three times, with no error surfaced. The site also notes that server-side Claude Code auto mode depends on a contract some gateways, LiteLLM included, did not preserve. The Rust gateway is an early beta, the licence is custom rather than a standard open source licence, and the official material does not state independent benchmark results, long-term support commitments or the full scope of the Rust migration timeline.",
+            "body": "The documented weaknesses are operational. The Python proxy uses substantial memory under load and has been OOM-killed in production, and the Rust gateway that addresses this is in early beta, so its long-term stability is not yet established. The incident reports describe a Medium severity outage requiring an unreachable Redis plus failing providers, a silent cost regression that broke Anthropic prompt caching and raised spend 2-3x with no error signal, and a High severity set of incidents surfacing as full proxy outages in Kubernetes. The site's own benchmark of its classifier is explicitly caveated, with synthetic prompts, no independent review, and no claim of general accuracy. The material read here does not say how the custom licence restricts commercial use, nor when the Rust migration will be complete.",
             "heading": "Limits and open questions"
         }
     ],
@@ -111,6 +111,11 @@
             "kind": "framework",
             "name": "tensorflow",
             "path": "/ai-ecosystem/technology-and-core-infrastructure/367fc8ea/"
+        },
+        {
+            "kind": "framework",
+            "name": "unsloth",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/9aab6db8/"
         },
         {
             "kind": "language",

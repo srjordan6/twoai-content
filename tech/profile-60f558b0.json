@@ -5,7 +5,7 @@
     "slug": "autogen",
     "facts": {
         "repo": "microsoft/autogen",
-        "stars": 61249,
+        "stars": 61248,
         "licence": "CC-BY-4.0",
         "archived": false,
         "language": "Python",
@@ -17,42 +17,42 @@
     "model": "ollama:deepseek-v4.1-flash",
     "shape": "lang-profile",
     "title": "AutoGen: A Python Framework for Agentic AI",
-    "answer": "AutoGen is a Python framework from Microsoft for building multi-agent AI applications, where agents converse, use tools, and execute code. It sits above model APIs, orchestrating LLM calls, and is strongest for research prototypes and complex agent workflows. The one thing to know: version 0.4 changed the API, so new projects should start there while older code follows the 0.2 migration guide.",
-    "built_at": "2026-10-02T23:44:07-05:00",
+    "answer": "AutoGen is a Python programming framework for agentic AI, created by Microsoft. It lets you build applications where multiple LLM-backed agents converse, use tools, and execute code to solve tasks. It sits at the orchestration layer, above raw model APIs and below your application. The one thing to know: it is powerful for multi-agent workflows but requires careful configuration, and its 0.2 to 0.4 migration means older examples may not run unchanged.",
+    "built_at": "2026-10-03T03:20:56-05:00",
     "category": "technology-and-core-infrastructure",
     "hub_name": "Programming Languages and Frameworks",
     "page_uid": "60f558b0",
     "sections": [
         {
-            "body": "AutoGen is a programming framework for agentic AI, made by Microsoft and distributed as an open source Python package under a CC-BY-4.0 licence. The repository has existed for some years and remains active, with a last push in April 2026 and more than sixty thousand stars. It sits in the orchestration layer of the AI stack, above raw model APIs and below the application. Rather than calling a model once and returning text, AutoGen lets you define agents that hold conversations, call tools, run code, and hand work to one another. The official site describes it as the official project and states it is not affiliated with any forks or startups, which matters because several similarly named projects exist.",
+            "body": "AutoGen is a programming framework for agentic AI, made by Microsoft and distributed as an open-source Python package under the CC-BY-4.0 licence. The repository is microsoft/autogen, and the official site is microsoft.github.io/autogen. It first appeared publicly in 2023, and by April 2026 the repository had accumulated over 61,000 stars. It occupies the orchestration layer of the AI stack: it does not train models or serve them at scale, but coordinates calls to large language models, manages conversation state, executes generated code, and lets multiple agents collaborate on a task. In practice it sits between a model provider such as OpenAI or a local endpoint and the application logic you write.",
             "heading": "What it is and where it sits in AI work"
         },
         {
-            "body": "The documented uses are broad. AutoGen handles enhanced inference, wrapping OpenAI-compatible endpoints with caching, error handling, multi-config fallback, result filtering, and templating. It supports local models through FastChat and open weights such as ChatGLM2-6B, so a team can swap a hosted API for a local drop-in replacement. It is used for multi-agent research, including MathChat for advanced mathematics and AutoDefense, a multi-agent jailbreak defense that filters harmful model responses. It is also used for code generation and execution, with helper modules for evaluating generated code and math answers. It is strongest where a task benefits from several specialized agents, tool use, and iterative conversation rather than a single prompt.",
+            "body": "The framework is used for multi-agent conversation, tool use, code execution, and enhanced inference. Documented use cases include MathChat, a conversational pattern for advanced mathematics where a user proxy agent and an LLM assistant collaborate, and AutoDefense, a multi-agent defense that filters harmful model responses using intention analysis, prompt inferring, and a final judgment. It also supports local inference through OpenAI-compatible endpoints such as FastChat with ChatGLM2-6B, and enhanced inference features including caching, error handling, multi-config inference, result filtering, and templating. It is strongest when a task benefits from several specialized agents, each with a focused role, rather than a single prompt.",
             "heading": "What it is used for and where it is strongest"
         },
         {
-            "body": "The learning curve is moderate. You need working Python, a basic understanding of how LLM APIs behave, and enough familiarity with prompts and token costs to reason about what agents will do. No advanced mathematics is required for ordinary use, though the research examples assume comfort with evaluation methodology. The official site offers a large documentation set, a blog with worked examples, and a migration guide from 0.2 to 0.4. A beginner can follow the configuration pages to connect a model and run a first conversation, but the framework's flexibility means there is no single obvious path, and the 0.4 release changed APIs enough that older tutorials may not run unchanged.",
+            "body": "AutoGen assumes working Python knowledge, and the official material is written for developers rather than absolute beginners. You need to understand how to call an LLM API, how to configure model endpoints, and how to handle asynchronous or multi-step programs. Some examples, such as MathChat, involve mathematical problem solving, but the framework itself does not demand advanced mathematics. The official site offers a blog, documentation pages, and migration guides, including a guide for moving from 0.2 to 0.4. The learning curve is moderate: simple two-agent conversations are quick to build, while production patterns with custom agents, tool use, and observability take longer to master.",
             "heading": "How hard it is to learn and what you need first"
         },
         {
-            "body": "AutoGen connects to OpenAI and Azure OpenAI endpoints, to any OpenAI-compatible server, and to local model workers through FastChat. It has an official observability partnership with AgentOps, which tracks LLM calls, costs, latency, agent failures, multi-agent interactions, and tool usage from one dashboard, and is configured for multi-agent compatibility when used with AutoGen. Documentation covers LLM configuration, enhanced inference, and use cases, and the blog carries research write-ups on MathChat and AutoDefense. Community support is visible in the repository's star count and activity, though the site does not publish contributor numbers or a support policy, so the size of the active maintainer group is not something these facts settle.",
+            "body": "AutoGen has a substantial ecosystem. The official site documents integrations with AgentOps, described as its official agent observability tool, which provides monitoring of LLM calls, costs, latency, agent failures, multi-agent interactions, and tool usage from one dashboard, and which can be enabled with an API key and a call to agentops.init(). The framework works with OpenAI and Azure OpenAI endpoints, with custom endpoints such as llama-7B, and with local models served through FastChat. It offers autogen.OpenAIWrapper for openai>=1 and autogen.Completion as a drop-in replacement for older OpenAI clients. The project states it is the official project and is not affiliated with any forks or startups. Community support is visible through the repository, blog posts, and research examples such as AutoDefense.",
             "heading": "Ecosystem and community"
         },
         {
-            "body": "AutoGen is built for both, but with different emphases. Prototyping is fast because agents are defined in a few lines and the configuration list lets you point at a model and start a conversation. Production concerns are addressed through caching, error handling, retries across multiple model configurations, result filtering, and cost tracking through AgentOps. The documentation notes that agents use the first model in the configuration list and fall back to the next on failure, which gives resilience without hidden model selection logic. The cost is that this flexibility adds configuration surface, and the deepcopy behaviour of the LLM config means custom objects must support copying or raise errors.",
+            "body": "AutoGen is built for both quick experiments and production use, though the balance depends on how you configure it. A basic two-agent conversation can be written in a few lines, which makes prototyping fast. For production, the framework offers caching, error handling, multi-config inference with fallback across models, result filtering, and observability through AgentOps. The cost is configuration complexity: llm_config must be set correctly, deepcopy behaviour can cause errors with objects that do not support it, and the 0.2 to 0.4 migration means older code may need changes. The official material does not claim that AutoGen itself optimizes model speed or memory; those remain properties of the underlying model and serving stack.",
             "heading": "Prototyping speed against production performance"
         },
         {
-            "body": "The facts show a widely starred, actively maintained Microsoft project with an official observability partner and enterprise monitoring story, which suggests real production interest. The site frames observability as a requirement for enterprise-grade agents, and AgentOps describes enterprises trusting AutoGen in production. Beyond that, the material does not name specific adopters, publish download figures, or state whether AutoGen is a de facto standard. For someone choosing what to learn, it is a credible current framework in the agent space, and the 0.4 migration guide indicates the project is still evolving rather than frozen, so skills transfer but version awareness matters.",
+            "body": "AutoGen is a current and widely used framework, not a legacy choice. Its repository has over 61,000 stars, it is maintained by Microsoft, and the official site documents enterprise-oriented features such as AgentOps monitoring and compliance. The blog notes that Bloomberg declared 2024 the year of AI agents, and AutoGen positions itself as a tool for building enterprise-grade agents. For someone choosing what to learn, AutoGen is a reasonable investment for roles involving agent orchestration, multi-agent systems, and LLM application development. The facts and the site do not name specific companies using it in production beyond Microsoft and the AgentOps partnership, so claims about broad industry deployment should be treated cautiously.",
             "heading": "Industry adoption and careers"
         },
         {
-            "body": "AutoGen is a Python framework, and its documented integrations are with Python tooling: the openai-python library, FastChat for local serving, and its own code and math utility modules. It works with any OpenAI-compatible endpoint, so it can sit in front of hosted or self-hosted models without changing application code. The polyglot pattern it belongs to is the common one where Python handles orchestration, experimentation, and agent logic, while serving and infrastructure may be handled elsewhere. The site does not document bindings for other languages, so teams outside Python would need to call it as a service or reimplement the pattern.",
+            "body": "AutoGen is a Python framework, and it is typically used alongside the OpenAI Python client, FastChat for local model serving, and HuggingFace Hub for downloading model checkpoints. It can call models through OpenAI-compatible APIs, which makes it a drop-in replacement in some setups, and it supports Azure OpenAI with deployment names and API versions. It belongs to the polyglot pattern where Python handles orchestration and model interaction while other languages or services handle data storage, web serving, or user interfaces. The official site does not document first-class bindings for other languages, so teams working in Java, Go, or JavaScript would typically call AutoGen-based services over a network rather than embed the framework directly.",
             "heading": "How it fits beside the others"
         },
         {
-            "body": "The documentation is candid about some weaknesses. GPT-4 still struggles with very challenging mathematics even under good prompting, and the MathChat results show only modest gains overall. AutoDefense reduces jailbreak success but is evaluated on curated prompt sets, so real-world robustness is not established. The 0.4 release and migration guide mean older examples and APIs are already legacy, and the site warns that some FastChat code needs modification to work. The official material does not state a support policy, a release cadence, benchmark comparisons against other agent frameworks, or performance numbers for production workloads, so those questions remain open.",
+            "body": "AutoGen is not a model training or serving framework, and it does not manage GPU memory or inference speed. Its multi-agent patterns can be harder to debug than single-agent code, which is why observability tools such as AgentOps are promoted. The 0.2 to 0.4 transition is a real cost, since examples and APIs differ between versions. The official material does not specify benchmark performance against other agent frameworks, does not give a detailed security model beyond the AutoDefense research example, and does not state how many production deployments exist. Questions about long-term API stability, the exact scope of the CC-BY-4.0 licence for code versus documentation, and support for non-Python environments remain unsettled by the pages read.",
             "heading": "Limits and open questions"
         }
     ],
@@ -111,6 +111,11 @@
             "kind": "framework",
             "name": "tensorflow",
             "path": "/ai-ecosystem/technology-and-core-infrastructure/367fc8ea/"
+        },
+        {
+            "kind": "framework",
+            "name": "unsloth",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/9aab6db8/"
         },
         {
             "kind": "language",

@@ -212,7 +212,7 @@
             "meet": [
                 {
                     "uid": "",
-                    "fact": "2,520 servers from the official Model Context Protocol registry, the standard way agents are given tools.",
+                    "fact": "2,521 servers from the official Model Context Protocol registry, the standard way agents are given tools.",
                     "href": "/mcp/",
                     "name": "MCP Server tracker"
                 },
@@ -306,11 +306,11 @@
         "assumption_source": "https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them"
     },
     "reading": {
-        "body": "A 40 page contract costs about 1.3 cents to read and summarize at today's median API prices, so cost is rarely the barrier at this size. The binding constraint is the context window: 442 of the 460 API models tracked can hold the roughly 27,700 tokens involved, and 18 cannot, which means the contract would have to be split for those.\n\nThe pattern is that capability and price have separated. The largest context window among the tracked models is 2,000,000 tokens, far above what a single contract needs, and the median price of $0.42 per million input tokens and $1.89 per million output tokens makes a one-off read trivial. What limits a deployment is whether the document fits at all, not what it costs once it does.\n\nFor a library of contracts rather than one, the whole set will not fit and retrieval becomes the method: embed each contract once, then hand the model only the passages that match the question. That is the same embedding step that makes semantic search work, and it keeps knowledge updatable without retraining.\n\nThe data does not cover accuracy. A summary can state a clause the contract does not contain, and nothing here measures how often that happens. For anything with legal weight, the summary is a map to the pages to read, not a substitute for them.",
+        "body": "A 40 page contract costs about 1.3 cents to read and summarize, and 442 of the 460 tracked API models can hold it in one pass.\n\nThe pattern is that document work at this scale is settled on both axes. Capability is nearly universal, since only 18 of 460 models cannot fit roughly 27,700 tokens. Cost is negligible, at a median of $0.42 per million input tokens and $1.89 per million output tokens. The binding constraints on AI document work are therefore not context or price.\n\nWhat changes the picture is volume. One contract fits, a library does not, and the answer is retrieval: embed every document once, then hand the model only the passages that match the question. That shifts the cost from reading to indexing and the risk from capacity to match quality. It also moves the compute burden, since embedding a corpus is a one-time job while serving queries is ongoing.\n\nThe data does not say how often retrieval returns the wrong passage, nor how often a summary states a clause the contract does not contain. It covers one worked example and the context limits and prices of 460 models. It says nothing about accuracy on legal text, and the warning that a summary is a map to the pages rather than a substitute for them is a caution, not a measured rate.",
         "model": "ollama:deepseek-v4.1-flash",
         "generated_on": "2026-10-03"
     },
-    "built_at": "2026-10-03T01:35:10-05",
+    "built_at": "2026-10-03T03:21:19-05",
     "category": "research-knowledge-and-learning",
     "page_uid": "d2390ba3",
     "verified": "2026-10-03",
