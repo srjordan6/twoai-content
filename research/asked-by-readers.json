@@ -3,7 +3,7 @@
     "name": "Asked by Readers",
     "slug": "asked-by-readers",
     "topic": "asked-by-readers",
-    "total": 1,
+    "total": 3,
     "papers": [
         {
             "doi": "10.18653/v1/p19-1355",
@@ -23,6 +23,48 @@
             "explain_beginner": "Training a language model, the kind of AI that learns to understand and write text, takes far more electricity than most people realize. This 2019 paper asked a simple question nobody had measured carefully before, how much energy and money does it actually cost to train the popular language AI systems of the time. The authors tracked power draw on the hardware used to train several well known models and converted that into pounds of carbon dioxide and dollars. The standout number came from a technique called neural architecture search, which automatically tests thousands of model variants to find a good design. That single process produced about 626,000 pounds of CO2, an amount later widely reported as roughly five times the lifetime emissions of an average car including its manufacture. The paper does not prove every future AI model will be this costly. It measured a snapshot of methods from 2019, and it does not settle whether newer training techniques have since closed that gap.",
             "explain_business": "For anyone budgeting AI infrastructure, this paper is the origin of the now common practice of asking what a model costs to train before asking how well it performs. It puts real numbers on the gap between a modest fine-tuning run and a full architecture search, a difference of roughly three orders of magnitude in both dollars and emissions. That gap matters for procurement because two teams claiming to have trained a strong model can have wildly different cost and carbon footprints depending on whether they searched over architectures or reused an existing one. The paper's recommendations, report training cost and hyperparameter sensitivity, favor efficient algorithms over brute force search, and give smaller labs access to shared compute, are now echoed in some funding agency and conference reporting requirements. Companies evaluating AI vendors can reasonably ask for training compute disclosures as part of cost and environmental diligence today.",
             "explain_practitioner": "The authors measured GPU power draw and training time for several models, including a standard Transformer, ELMo, BERT base, and a Transformer found through neural architecture search (NAS), then converted watts into kilowatt hours using typical grid carbon intensity to estimate cost and emissions for each. Results ranged from about 192 lbs CO2e and roughly $300 to $1,000 for the plain Transformer up to 626,155 lbs CO2e and $942,973 to $3.2 million for the NAS run, which searches over many candidate architectures rather than training one model once. A separate case study of an academic research project logged 9,998 cumulative GPU days, about 27 years of compute, spent over 172 calendar days developing one published result. The paper's own stated limitation is that its dollar figures depend on local electricity price and cloud provider rate, so the cost estimates are rough approximations that vary by region rather than fixed universal constants."
+        },
+        {
+            "doi": "10.1109/spw63631.2024.00014",
+            "uid": "qac435c2",
+            "url": "https://doi.org/10.1109/spw63631.2024.00014",
+            "note": "Added because a reader's question on this site drew on it (1 time so far). The page exists so the next reader finds it in the answer.",
+            "slug": "asked-by-readers",
+            "year": 2024,
+            "added": "2026-10-02",
+            "title": "Just another copy and paste? Comparing the security vulnerabilities of ChatGPT generated code and StackOverflow answers",
+            "topic": "asked-by-readers",
+            "authors": "Sivana Hamer, Marcelo d’Amorim, Laurie Williams",
+            "abstract": "Sonatype’s 2023 report found that 97% of developers and security leads integrate generative Artificial Intelligence (AI), particularly Large Language Models (LLMs), into their development process. Concerns about the security implications of this trend have been raised. Developers are now weighing the benefits and risks of LLMs against other relied-upon information sources, such as StackOverflow (SO), requiring empirical data to inform their choice. In this work, our goal is to raise software developers’ awareness of the security implications when selecting code snippets by empirically comparing the vulnerabilities of ChatGPT and StackOverflow. To achieve this, we used an existing Java dataset from SO with security-related questions and answers. Then, we asked ChatGPT the same SO questions, gathering the generated code for comparison. After curating the dataset, we analyzed the number and types of Common Weakness Enumeration (CWE) vulnerabilities of 108 snippets from each platform using CodeQL. ChatGPT-generated code contained 248 vulnerabilities compared to the 302 vulnerabilities found in SO snippets, producing 20% fewer vulnerabilities with a statistically significant difference. Additionally, ChatGPT generated 19 types of CWE, fewer than the 22 found in SO. Our findings suggest developers are undereducated on insecure code propagation from both platforms, as we found 274 unique vulnerabilities and 25 types of CWE. Any code copied and pasted, created by AI or humans, cannot be trusted blindly, requiring good software engineering practices to reduce risk. Future work can help minimize insecure code propagation from any platform.",
+            "page_url": "/research/paper/qac435c2/",
+            "citations": 29,
+            "paper_type": "conference-paper",
+            "topic_name": "Asked by Readers",
+            "abstract_source": "openalex",
+            "explain_beginner": "This paper compares code that people copy from two places: answers on StackOverflow and code written by ChatGPT. The researchers took 108 Java code snippets from each source and checked them for known security weaknesses. ChatGPT's code had 248 weaknesses, while StackOverflow's had 302, so ChatGPT did somewhat better, about 20 percent fewer. But both had many problems, and together they showed 274 unique weaknesses of 25 different kinds. The lesson is simple: code copied from anywhere, whether written by a person or an AI, should not be trusted without checking, and good development habits are needed to reduce risk.",
+            "explain_business": "Most developers now use generative AI in their workflow, and many still copy code from sites like StackOverflow. This study checked Java snippets from both sources and found security weaknesses in each: ChatGPT code had 248, StackOverflow had 302, so AI did modestly better but was far from clean. The practical takeaway is that no copied code, human or AI written, can be trusted as is. Decisions this informs include investing in code review, static analysis, and secure coding training rather than assuming AI tools remove risk, and treating AI assistance as one input among several that still needs verification.",
+            "explain_practitioner": "The authors reused a Java dataset of security-related StackOverflow questions and answers, posed the same questions to ChatGPT, and collected the generated code. After curating, they analyzed 108 snippets per platform with CodeQL, counting Common Weakness Enumeration (CWE) instances and types. ChatGPT code contained 248 vulnerabilities versus 302 in StackOverflow snippets, a statistically significant 20 percent reduction. ChatGPT also produced 19 CWE types against StackOverflow's 22. Across both sources, 274 unique vulnerabilities and 25 CWE types appeared. The authors conclude that copied code from either platform requires standard secure engineering practices, and that future work should target reducing insecure code propagation."
+        },
+        {
+            "doi": "10.14722/bar.2018.23019",
+            "uid": "q772de6c",
+            "url": "https://doi.org/10.14722/bar.2018.23019",
+            "note": "Added because a reader's question on this site drew on it (1 time so far). The page exists so the next reader finds it in the answer.",
+            "slug": "asked-by-readers",
+            "year": 2018,
+            "added": "2026-10-02",
+            "title": "Saluki: Finding Taint-style Vulnerabilities with Static Property Checking",
+            "topic": "asked-by-readers",
+            "authors": "Ivan Gotovchits, Rijnard van Tonder, David Brumley",
+            "abstract": "We present Saluki, a new tool for checking taintstyle (data dependence) security properties in binary code. Saluki provides a domain specific language for expressing taint-based policies. Saluki can find vulnerabilities in real programs for a number of CWE types, including those for command injection, weak PRNG seeds, and missing sanitization checks such as SQL escape routines or checks on buffer lengths. Saluki includes two new ideas in binary program analysis. First, Saluki uses flux, a new static analysis technique for path-sensitive, contextsensitive recovery of data dependence facts in binaries. Second, Saluki introduces a sound logic system for reasoning over data dependence facts. We develop a domain-specific language on top of our logic system to express security properties as formal specifications. Saluki includes a decidable solver procedure to prove (based on the underlying logic) whether a set of data dependence facts satisfy a security property. Our evaluation shows that Saluki is capable of finding vulnerabilities in COTS x86, x86-64, and ARM software, including 0-days",
+            "page_url": "/research/paper/q772de6c/",
+            "citations": 27,
+            "paper_type": "conference-paper",
+            "topic_name": "Asked by Readers",
+            "abstract_source": "openalex",
+            "explain_beginner": "This paper introduces a tool called Saluki that examines software even when the original source code is not available, only the compiled binary. It looks for a common kind of security flaw where unsafe data flows into a dangerous operation, such as a command or a database query. Saluki lets experts describe these unsafe flows in a simple language, then automatically checks whether a program has them. The authors tested it on real software for common processors and found previously unknown security holes. This matters because it can catch serious bugs in everyday programs before attackers do.",
+            "explain_business": "This research shows that a tool can scan compiled software for dangerous data flows without needing source code, which is common with third-party or legacy systems. It found real, previously unknown vulnerabilities in commercial software across major processor types. For an executive, this means security reviews can extend to binaries you cannot inspect directly, reducing blind spots in supply chains and inherited code. The decision it informs is whether to invest in binary-level static analysis as part of due diligence, procurement, or ongoing vulnerability management, especially where source access is limited.",
+            "explain_practitioner": "The authors built Saluki to check taint-style data dependence properties directly in binaries. It offers a domain-specific language for specifying taint policies. Two technical contributions stand out: flux, a static analysis that recovers path-sensitive and context-sensitive data dependence facts, and a sound logic for reasoning over those facts. A decidable solver then proves whether the recovered facts satisfy a given security property. The evaluation found vulnerabilities in commercial off-the-shelf x86, x86-64, and ARM software, including zero-days, covering command injection, weak PRNG seeds, and missing sanitization checks."
         }
     ],
     "reading": {
@@ -30,10 +72,10 @@
         "model": "ollama:deepseek-v4-pro",
         "generated_on": "2026-09-25"
     },
-    "built_at": "2026-10-02T21:52:01-05:00",
+    "built_at": "2026-10-02T23:38:13-05:00",
     "page_uid": "20ead320",
     "area_note": "This shelf collects papers a reader's question on this site actually drew on. Each one earned its place by answering something asked here, not by fitting a category in advance, so the shelf grows one reader at a time rather than by a fixed research programme.",
     "generated": "2026-10-03",
-    "last_added": "2026-10-01",
+    "last_added": "2026-10-02",
     "refresh_every_days": 30
 }

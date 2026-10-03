@@ -1,0 +1,250 @@
+{
+    "tax": "lang-profile",
+    "uid": "367fc8ea",
+    "name": "tensorflow",
+    "slug": "tensorflow",
+    "facts": {
+        "repo": "tensorflow/tensorflow",
+        "stars": 200668,
+        "licence": "Apache-2.0",
+        "archived": false,
+        "language": "C++",
+        "repo_url": "https://github.com/tensorflow/tensorflow",
+        "last_push": "2026-10-03T03:14:48Z",
+        "description": "An Open Source Machine Learning Framework for Everyone",
+        "official_site": "https://www.tensorflow.org/"
+    },
+    "model": "ollama:deepseek-v4.1-flash",
+    "shape": "lang-profile",
+    "title": "TensorFlow: An Open Source Machine Learning Framework for AI",
+    "answer": "TensorFlow is an open source machine learning framework from Google, released in 2015 and maintained on GitHub with over 200,000 stars. It sits across the AI stack, from data pipelines and training to serving and edge deployment, with Keras as its high level API. A reader deciding whether to use it should know that it is production ready and widely adopted, but its breadth means a real learning curve, and the official site offers extensive tutorials to help.",
+    "built_at": "2026-10-02T23:43:49-05:00",
+    "category": "technology-and-core-infrastructure",
+    "hub_name": "Programming Languages and Frameworks",
+    "page_uid": "367fc8ea",
+    "sections": [
+        {
+            "body": "TensorFlow is an open source machine learning framework created by Google, first released in 2015 and now developed by a broad community. It is written primarily in C++ with a Python front end, licensed under Apache-2.0, and hosted at github.com/tensorflow/tensorflow, where it has accumulated more than 200,000 stars. The official site describes it as an open source machine learning framework for everyone. In the AI stack it serves the core layer: it provides the numerical computation, automatic differentiation, and hardware acceleration that training and inference run on, and it extends upward into data pipelines, model analysis, and deployment through projects such as TFX and TensorFlow Serving. It is not a single tool but a family of libraries, with Keras as the recommended high level API for building models.",
+            "heading": "What it is and where it sits in AI work"
+        },
+        {
+            "body": "TensorFlow covers the concrete jobs of AI work. For training, the tf.keras.Model class groups layers into an object with training and inference features, configured with compile, fit, and evaluate, and it supports distribution strategies such as MirroredStrategy when a GPU is available. For data work, TensorFlow Datasets loads and prepares data, as in the CelebA case study where images are resized and fed to a classifier. For serving, model.export produces a lightweight SavedModel containing only the forward pass that can be served via TF-Serving without the original code. For pipelines, TFX components such as CsvExampleGen, Trainer, Evaluator, and Pusher handle ingestion, training, evaluation, and deployment, and the site shows a GPT-2 fine-tuning codelab built on Keras 3, KerasNLP, and TFX. For edge and memory limited clients, TensorFlow Compression compresses model weights while retaining accuracy, and the site notes applications in federated learning and inference on constrained devices. It is strongest where a team needs an end to end path from experimentation to production, with reproducibility and lineage tracking, rather than a single narrow task.",
+            "heading": "What it is used for and where it is strongest"
+        },
+        {
+            "body": "The learning curve is moderate to steep depending on how far you go. The official learn page states that a strong foundation in four areas is needed: coding, math, ML theory, and how to build your own project from start to finish. Coding skills are required for data management, parameter tuning, and parsing results; math and statistics matter if you plan to modify models or build new ones from scratch; and ML theory helps when something goes wrong. For beginners, the site offers a Machine Learning Crash Course with TensorFlow APIs, described as a self study guide for aspiring practitioners, plus guided curriculums, books such as Hands-on Machine Learning with Scikit-Learn, Keras, and TensorFlow, and courses including a TensorFlow Developer Specialization developed with the TensorFlow team. The Sequential model guide and the many notebook tutorials lower the entry point, but production topics such as TFX pipelines and distribution strategies assume more systems knowledge.",
+            "heading": "How hard it is to learn and what you need first"
+        },
+        {
+            "body": "The ecosystem is large and officially documented. Keras is the high level API, with tf.keras.Model and keras.Sequential covering model building, and KerasNLP and KerasCV extending it to language and vision, as shown by the GPT-2 fine-tuning codelab and the KerasCV Stable Diffusion guide. TFX provides pipeline components and orchestration, with tutorials for Vertex AI and for TensorFlow Model Analysis, which adds an Evaluator component producing ModelEvaluation and ModelBlessing artifacts. TensorFlow Datasets supplies data, TensorFlow Serving handles deployment, TensorFlow Compression handles model size, and the Model Card Toolkit and Fairness Indicators support responsible AI documentation and fairness evaluation. The repository has over 200,000 stars and an active push history, and the official site offers tutorials, API docs, and codelabs. Community support beyond the site is not detailed in the facts provided.",
+            "heading": "Ecosystem and community"
+        },
+        {
+            "body": "TensorFlow is built for both quick experiments and production control, though the two come with different costs. Prototyping is fast through Keras: a Sequential model can be created from a list of layers, and the Stable Diffusion guide notes that the Keras implementation fits in four files under 500 lines of code. Production performance is addressed through explicit controls, including mixed precision policies such as mixed_float16, which automatically wraps the optimizer in a LossScaleOptimizer, and the note that running multiple batches inside a single compiled function call can greatly improve performance on TPUs or small models with large Python overhead. The cost is complexity: the same framework that lets you train in a notebook also asks you to understand distribution strategies, export formats, and pipeline orchestration when you move to serving, and the site warns that the InteractiveContext style of TFX development is only useful for developing pipeline code and cannot currently be used to deploy a working pipeline to production.",
+            "heading": "Prototyping speed against production performance"
+        },
+        {
+            "body": "TensorFlow is a current standard rather than a legacy choice. The facts show an active repository with a last push in October 2026 and more than 200,000 stars, and the official site presents it as a framework for everyone with ongoing investment in Keras 3, TFX, and responsible AI tooling. The tutorials reference Google Cloud Vertex AI, TensorFlow Serving, and TPU performance, which indicates use in production and cloud environments. For someone choosing it for work, that means skills transfer to roles involving model training, pipeline engineering, and deployment, and the site's own learning resources, including a TensorFlow Developer Specialization, point to a recognized path. The facts do not name specific employers or adoption percentages, so claims about which companies use it should be treated as outside what this material settles.",
+            "heading": "Industry adoption and careers"
+        },
+        {
+            "body": "TensorFlow is typically used with Python, which is the language of its tutorials and APIs, while its core is written in C++ for performance. It is commonly paired with Keras for model definition, KerasNLP and KerasCV for pretrained language and vision models, TensorFlow Datasets for data loading, and TFX for pipelines, with orchestration options such as Apache Airflow, Kubeflow, or the notebook based InteractiveContext. It also connects to cloud services, as the Vertex AI tutorial shows, and to serving through TF-Serving. The polyglot pattern is a Python surface over a C++ engine, with deployment artifacts that no longer require the original code, which lets teams prototype in Python and serve in a lighter runtime. The facts do not describe integrations with non Google frameworks in detail, so comparisons there are not settled by this material.",
+            "heading": "How it fits beside the others"
+        },
+        {
+            "body": "TensorFlow is weak where simplicity is the priority. The breadth that makes it capable also makes it heavy: TFX pipelines require orchestration knowledge, the InteractiveContext cannot deploy to production, and the GPT-2 codelab notes that the LocalDagRunner needs more GPU memory than free Colab provides. The compression tutorial is strictly concerned with compressed model size, not computational complexity, so it does not reduce compute cost. The CelebA case study itself warns that the dataset's categorizations do not reflect real human diversity of attributes, a limit of the data rather than the framework. The official material does not say how TensorFlow compares to other frameworks, does not give adoption numbers, and does not detail community support outside the site, so those questions remain open.",
+            "heading": "Limits and open questions"
+        }
+    ],
+    "siblings": [
+        {
+            "kind": "framework",
+            "name": "ai",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/4c80ad91/"
+        },
+        {
+            "kind": "framework",
+            "name": "autogen",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/60f558b0/"
+        },
+        {
+            "kind": "framework",
+            "name": "crewAI",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/52f2d4fc/"
+        },
+        {
+            "kind": "framework",
+            "name": "haystack",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/244d606e/"
+        },
+        {
+            "kind": "framework",
+            "name": "jax",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/1722316f/"
+        },
+        {
+            "kind": "framework",
+            "name": "keras",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/079f2091/"
+        },
+        {
+            "kind": "framework",
+            "name": "langchain",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/10376bfa/"
+        },
+        {
+            "kind": "framework",
+            "name": "litellm",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/b9fc5220/"
+        },
+        {
+            "kind": "framework",
+            "name": "llama_index",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/07b3602c/"
+        },
+        {
+            "kind": "framework",
+            "name": "pytorch",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/c4d0a8c3/"
+        },
+        {
+            "kind": "framework",
+            "name": "semantic-kernel",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/7a5bc5c6/"
+        },
+        {
+            "kind": "language",
+            "name": "C++",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/b393c4f6/"
+        },
+        {
+            "kind": "language",
+            "name": "Go",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/a218afb2/"
+        },
+        {
+            "kind": "language",
+            "name": "Julia",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/3719f5ac/"
+        },
+        {
+            "kind": "language",
+            "name": "Mojo",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/b5a22ab0/"
+        },
+        {
+            "kind": "language",
+            "name": "Python",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/7aa3e6c4/"
+        },
+        {
+            "kind": "language",
+            "name": "TypeScript",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/8d5b4f9f/"
+        }
+    ],
+    "generated": "2026-10-03",
+    "site_pages": [
+        {
+            "url": "https://www.tensorflow.org/tutorials/optimization/compression",
+            "date": ""
+        },
+        {
+            "url": "https://www.tensorflow.org/tfx/tutorials/tfx/gcp/vertex_pipelines_vertex_training",
+            "date": ""
+        },
+        {
+            "url": "https://www.tensorflow.org/tfx/tutorials/tfx/penguin_tfma",
+            "date": ""
+        },
+        {
+            "url": "https://www.tensorflow.org/responsible_ai/model_card_toolkit/examples/Standalone_Model_Card_Toolkit_Demo",
+            "date": ""
+        },
+        {
+            "url": "https://www.tensorflow.org/responsible_ai/fairness_indicators/tutorials/Fairness_Indicators_TFCO_CelebA_Case_Study",
+            "date": ""
+        },
+        {
+            "url": "https://www.tensorflow.org/api_docs/python/tf/keras/Model",
+            "date": ""
+        },
+        {
+            "url": "https://www.tensorflow.org/tfx/tutorials/tfx/gpt2_finetuning_and_conversion",
+            "date": ""
+        },
+        {
+            "url": "https://www.tensorflow.org/resources/learn-ml",
+            "date": ""
+        },
+        {
+            "url": "https://www.tensorflow.org/tutorials/generative/generate_images_with_stable_diffusion",
+            "date": ""
+        },
+        {
+            "url": "https://www.tensorflow.org/guide/keras/sequential_model",
+            "date": ""
+        },
+        {
+            "url": "https://www.tensorflow.org/responsible_ai/fairness_indicators/tutorials/Fairness_Indicators_TFCO_Wiki_Case_Study",
+            "date": ""
+        },
+        {
+            "url": "https://www.tensorflow.org/tfx/tutorials/tfx/cloud-ai-platform-pipelines",
+            "date": ""
+        },
+        {
+            "url": "https://www.tensorflow.org/guide/jax2tf",
+            "date": ""
+        },
+        {
+            "url": "https://www.tensorflow.org/tfx/serving/serving_config",
+            "date": ""
+        },
+        {
+            "url": "https://www.tensorflow.org/guide/model_garden",
+            "date": "2022-08-13"
+        },
+        {
+            "url": "https://www.tensorflow.org/responsible_ai",
+            "date": ""
+        },
+        {
+            "url": "https://www.tensorflow.org/guide/keras/making_new_layers_and_models_via_subclassing",
+            "date": ""
+        },
+        {
+            "url": "https://www.tensorflow.org/tutorials/generative/data_compression",
+            "date": ""
+        },
+        {
+            "url": "https://www.tensorflow.org/about/case-studies",
+            "date": ""
+        },
+        {
+            "url": "https://www.tensorflow.org/responsible_ai/fairness_indicators/guide/guidance",
+            "date": ""
+        },
+        {
+            "url": "https://www.tensorflow.org/responsible_ai/fairness_indicators/tutorials/Fairness_Indicators_Pandas_Case_Study",
+            "date": ""
+        },
+        {
+            "url": "https://www.tensorflow.org/tutorials/estimator/linear",
+            "date": ""
+        },
+        {
+            "url": "https://www.tensorflow.org/tfx/serving/serving_basic",
+            "date": ""
+        }
+    ],
+    "source_url": "https://www.tensorflow.org/",
+    "parent_name": "AI Frameworks",
+    "parent_path": "/ai-ecosystem/technology-and-core-infrastructure/2eb54277/",
+    "site_domain": "tensorflow.org",
+    "subject_key": "framework:tensorflow/tensorflow",
+    "subject_kind": "framework",
+    "source_read_on": "2026-10-02",
+    "site_pages_read": 60,
+    "refresh_every_days": 30
+}
