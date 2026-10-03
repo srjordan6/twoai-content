@@ -4,7 +4,7 @@
     "slug": "sql-text-to-sql",
     "shape": "art-topic",
     "title": "Text to SQL",
-    "answer": "Text to SQL is the task of translating a natural language question into a SQL query that runs against a real schema and returns the answer; it is how business users query data without an analyst in between. The hard part is rarely the SQL syntax, it is the schema, the joins, the ambiguity in the question, and the grain of the result. A question like how did sales do last quarter hides choices about which table, which date column, which currency, and which definition of sales. So the work sits between language understanding and database semantics, and a correct looking query can still return the wrong answer.",
+    "answer": "Text to SQL is the task of translating a natural language question into a SQL query that runs against a real schema and returns the answer; it is how business users query data without an analyst in between. The input is a question in ordinary language, the output is executable SQL, and the hard part is that the query must match the actual tables, columns, joins and dialects of a live database. It sits inside AI and SQL, alongside schema understanding, query repair and result interpretation, and it is usually the first place a company tries a language model on its own data.",
     "crumbs": [
         {
             "name": "AI and SQL",
@@ -12,7 +12,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-10-03T06:41:23-05",
+    "built_at": "2026-10-03T09:40:31-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "AI and SQL",
@@ -20,23 +20,23 @@
     "page_uid": "1c4f6caa",
     "sections": [
         {
-            "body": "Text to SQL is the task of translating a natural language question into a SQL query that runs against a real schema and returns the answer; it is how business users query data without an analyst in between. The hard part is rarely the SQL syntax, it is the schema, the joins, the ambiguity in the question, and the grain of the result. A question like how did sales do last quarter hides choices about which table, which date column, which currency, and which definition of sales. So the work sits between language understanding and database semantics, and a correct looking query can still return the wrong answer.",
+            "body": "Text to SQL is the task of translating a natural language question into a SQL query that runs against a real schema and returns the answer; it is how business users query data without an analyst in between. The input is a question in ordinary language, the output is executable SQL, and the hard part is that the query must match the actual tables, columns, joins and dialects of a live database. It sits inside AI and SQL, alongside schema understanding, query repair and result interpretation, and it is usually the first place a company tries a language model on its own data.",
             "heading": "Scope"
         },
         {
-            "body": "Text to SQL systems run on a database engine, most often PostgreSQL, MySQL, or a cloud warehouse such as Snowflake or BigQuery, plus a language model that reads the schema and writes the query. The schema is usually supplied as DDL, sometimes with sample rows, column descriptions, and a retrieval step that picks the relevant tables. This site tracks 2502 active Model Context Protocol servers, 263 of them for SQL databases and warehouses, which shows how much of the plumbing is now about connecting models to live data rather than training a new model. Execution happens in the database, so the system needs read access, a query timeout, and a way to return errors to the model for a retry.",
+            "body": "A text to SQL system runs on a database connection plus a model, and the database is the part that decides whether the answer is real. The model needs the schema, which is often supplied as data definition statements, column descriptions, sample rows or a retrieved subset of tables, because full schemas for large warehouses do not fit in a prompt. Execution happens on the database itself, so the system needs read access, a query timeout, row limits and a sandbox to keep a generated statement from touching anything it should not. This site tracks 263 Model Context Protocol servers for SQL databases and warehouses, which is one sign of how common it has become to expose a database to a model through a standard interface rather than a bespoke connector.",
             "heading": "What it runs on"
         },
         {
-            "body": "The common pattern is a prompt that includes the schema, the question, and a few examples, then the model emits SQL that is parsed and run. More careful systems add a retrieval step over table and column metadata, a decomposition step for multi part questions, and a self correction loop that feeds execution errors or empty results back to the model. Evaluation uses benchmarks with paired questions and gold queries, and execution accuracy, meaning whether the returned rows match, matters more than string match against a reference query. The site library holds 288 research papers, and a good share of them are about schema linking, join paths, and handling questions the schema cannot answer.",
+            "body": "The common pattern is retrieval first, then generation, then execution and repair. The system retrieves the tables and columns that look relevant to the question, writes a candidate query, runs it, reads the error or the empty result, and tries again, sometimes with a second model checking the first. Accuracy is measured by execution match, meaning the generated query returns the same rows as a human written query, and by exact match against a reference query, which is stricter and less forgiving of harmless differences in style. Benchmarks such as Spider and BIRD are widely used for this, and the gap between them and a real warehouse is mostly about messy schemas, ambiguous column names and questions that need business context no schema contains.",
             "heading": "How the work is done"
         },
         {
-            "body": "A text to SQL system inherits the access rules of the database it queries, so row level security, column masking, and role based grants must be enforced in the database, not in the prompt. Risks include hallucinated columns, queries that scan far more data than intended, prompt injection through table contents, and answers that look authoritative but rest on a wrong join. Provenance matters, so a good system returns the SQL it ran, the tables and columns it used, and the row count, and it logs the question and the result for audit. Where the data is personal or regulated, the generated query can expose records that the asker was never meant to see, so the same review that governs direct SQL access should govern the generated query.",
+            "body": "The risks are wrong answers that look right, queries that read data the asker should not see, and expensive statements that scan a whole warehouse. Row level and column level permissions have to be enforced by the database or a governed layer, not by the prompt, because a model can be talked past a prompt. Provenance matters too, since a number in a dashboard should be traceable to the question asked, the SQL generated and the model version that produced it, and many teams keep that log for audit. Text to SQL output is not legal, financial or medical advice, and in regulated settings a human still reviews queries that feed official reporting.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The direction is toward agents that plan, run, inspect, and repair queries over many steps, and toward semantic layers that give the model vetted metrics and dimensions instead of raw tables. Model Context Protocol servers are becoming a common way to expose a database to a model with a defined tool surface, which is why the count of SQL oriented servers is worth watching. Benchmarks are moving from single questions on small schemas to enterprise schemas with hundreds of tables, ambiguous terms, and follow up questions. The open question is whether accuracy comes from bigger models, better retrieval, or a governed semantic layer, and the answer is likely all three.",
+            "body": "The direction of travel is toward agents that plan several queries, check their own results and explain the answer rather than emit a single statement. Semantic layers and governed metrics are being used to give the model a smaller, better described target than raw tables, which reduces both errors and risk. Evaluation is shifting from benchmark scores to task success on a company's own questions, with the database in the loop. The open question is how much of the analyst's judgement can be encoded in the schema and the tooling around the model, and how much still has to come from a person.",
             "heading": "Where it is going"
         }
     ],

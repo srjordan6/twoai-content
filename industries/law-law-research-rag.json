@@ -4,7 +4,7 @@
     "slug": "law-research-rag",
     "shape": "art-topic",
     "title": "Retrieval-Grounded Legal Research",
-    "answer": "Retrieval-grounded legal research is the practice of answering a legal question by first pulling relevant authorities and documents from a defined corpus, then using a language model to summarize or draft from those sources with citations attached. It covers case law, statutes, regulations, court rules, secondary sources, internal memos, contracts, and factual records, and it supports tasks such as issue spotting, case strategy, motion drafting, and due diligence. For questions about AI law, a corpus might include the site's 29 AI case law precedents alongside broader materials. The aim is not to replace legal judgment but to make the source base explicit and checkable.",
+    "answer": "Retrieval-grounded legal research is the practice of having a language model answer legal questions only from documents that have been fetched and cited, rather than from whatever the model absorbed during training. In case strategy it covers finding controlling authority, checking that a cited case still says what it is claimed to say, tracing how a rule has been applied across jurisdictions, and assembling a record of sources a supervising lawyer can review. It sits alongside traditional database search rather than replacing it, and it is most useful where the volume of material is large and the cost of a missed or misstated authority is high.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-10-03T06:41:23-05",
+    "built_at": "2026-10-03T09:40:31-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Lawyer",
@@ -28,23 +28,23 @@
     "page_uid": "1bbfe89c",
     "sections": [
         {
-            "body": "Retrieval-grounded legal research is the practice of answering a legal question by first pulling relevant authorities and documents from a defined corpus, then using a language model to summarize or draft from those sources with citations attached. It covers case law, statutes, regulations, court rules, secondary sources, internal memos, contracts, and factual records, and it supports tasks such as issue spotting, case strategy, motion drafting, and due diligence. For questions about AI law, a corpus might include the site's 29 AI case law precedents alongside broader materials. The aim is not to replace legal judgment but to make the source base explicit and checkable.",
+            "body": "Retrieval-grounded legal research is the practice of having a language model answer legal questions only from documents that have been fetched and cited, rather than from whatever the model absorbed during training. In case strategy it covers finding controlling authority, checking that a cited case still says what it is claimed to say, tracing how a rule has been applied across jurisdictions, and assembling a record of sources a supervising lawyer can review. It sits alongside traditional database search rather than replacing it, and it is most useful where the volume of material is large and the cost of a missed or misstated authority is high.",
             "heading": "Scope"
         },
         {
-            "body": "The system runs on a document pipeline that ingests sources, extracts text, splits it into passages, and stores those passages in a searchable index. That index may combine keyword search with vector embeddings, so a query can match both exact citations and paraphrased concepts. A language model then receives the retrieved passages as context, either through a hosted API or a locally hosted model, depending on confidentiality needs. Access controls, audit logs, and connections to citators or docket feeds are common supporting parts.",
+            "body": "The system runs on a retrieval layer and a generation layer that are kept separate. The retrieval layer indexes the firm's own matter files, licensed case law and statute databases, and public sources, usually through a vector store for semantic matching plus keyword search for exact citations and docket numbers. The generation layer is a hosted or self-hosted language model that receives the retrieved passages as context and is instructed to answer only from them. Access control, audit logging, and a snapshot of the index at the time of the query are part of the infrastructure, because a citation that cannot be reproduced later is of little use in a filing.",
             "heading": "What it runs on"
         },
         {
-            "body": "The work usually starts with a research question and a set of filters, such as jurisdiction, date range, court, or practice area. The system retrieves candidate passages, reranks them for relevance, and passes the top results to the model with instructions to answer only from those sources. A lawyer or researcher then checks each citation against the original document, looks for contrary authority, and revises the draft. The loop repeats as the question sharpens, and the final product records which sources were used and which were rejected.",
+            "body": "The work starts by turning a legal question into a set of retrievable queries, which often means decomposing it into jurisdiction, cause of action, procedural posture, and date range. Retrieved passages are ranked and filtered, then passed to the model with instructions to quote and cite, and the output is checked back against the source text before anyone relies on it. A competent workflow treats every generated citation as unverified until a human or a separate verification step confirms the case exists, is still good law, and supports the proposition. Where the corpus is thin or the question is novel, the honest output is a statement that the retrieved material does not answer it.",
             "heading": "How the work is done"
         },
         {
-            "body": "Rights and risk center on confidentiality, privilege, licensing, and accuracy. Sending client material to a third-party model can raise waiver and data retention concerns, so firms often restrict what leaves their environment and keep audit trails of prompts, retrieved sources, and model versions. Legal publishers have their own terms for text and metadata, and court rules increasingly require disclosure when AI assists a filing. Provenance means being able to show where each statement came from, when it was retrieved, and who reviewed it, which is also how teams catch hallucinated citations before they reach a court.",
+            "body": "The main risks are fabricated or misattributed authority, outdated law, privileged material leaking into a third-party model, and confidentiality obligations that follow the documents wherever they go. Provenance is the control: each answer should carry the source, the version retrieved, the date, and the person who reviewed it, so that a later challenge can be met with a record rather than a recollection. Courts have begun to treat unverified AI-assisted filings as a professional responsibility problem, and the site's tracking of 150 active AI lawsuits and 29 AI case law precedents reflects how quickly that body of practice is forming. Licensing terms for the underlying databases also constrain what can be indexed, stored, or shown to a client.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The direction is toward tighter integration between retrieval, citation validation, and drafting tools, so that a research memo can be traced back to each source passage. Domain-specific embeddings and hybrid search are likely to improve recall for legal language, while agentic workflows may handle multi-step research across dockets, statutes, and internal files. Evaluation is maturing, with benchmarks that test citation accuracy and refusal to answer when sources are thin. Court rules and professional guidance are also becoming more specific about disclosure and verification.",
+            "body": "Expect retrieval grounding to become the default posture for any legal AI tool that touches authority, with verification moving from a manual afterthought to an enforced step in the pipeline. Citation-level checks against official reporters, jurisdiction-aware routing, and audit trails that survive a motion to strike are the likely areas of refinement. The harder problems are not technical: they are who bears responsibility when a grounded system still returns a bad source, and how firms document that a human read the result. As state and federal rules continue to accumulate, the practical dividing line will be between tools that can show their work and tools that cannot.",
             "heading": "Where it is going"
         }
     ],

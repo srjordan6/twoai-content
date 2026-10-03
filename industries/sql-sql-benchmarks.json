@@ -4,7 +4,7 @@
     "slug": "sql-benchmarks",
     "shape": "art-topic",
     "title": "Text to SQL Benchmarks",
-    "answer": "Public benchmarks such as Spider and BIRD score text to SQL systems by running the generated query and comparing its result with a known correct answer. They provide pairs of natural language questions, database schemas, and gold SQL queries, and they measure how well a model generalizes to unseen databases. Enterprise schemas are larger and less tidy than the benchmarks, so real accuracy is usually lower. The gap comes from ambiguous column names, missing documentation, and joins across many tables.",
+    "answer": "Text to SQL benchmarks are standard test sets that measure how well a system turns a plain language question into a working SQL query. Public benchmarks such as Spider and BIRD score text to SQL systems by running the generated query and comparing its result with a known correct answer. They matter because they give teams a common yardstick for comparing models, prompts and retrieval setups on the same questions. Enterprise schemas are larger and less tidy than the benchmarks, so real accuracy is usually lower. The gap between a leaderboard score and a working query against a production warehouse is the central fact of this topic.",
     "crumbs": [
         {
             "name": "AI and SQL",
@@ -12,7 +12,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-10-03T06:41:23-05",
+    "built_at": "2026-10-03T09:40:31-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "AI and SQL",
@@ -20,23 +20,23 @@
     "page_uid": "b32896c8",
     "sections": [
         {
-            "body": "Public benchmarks such as Spider and BIRD score text to SQL systems by running the generated query and comparing its result with a known correct answer. They provide pairs of natural language questions, database schemas, and gold SQL queries, and they measure how well a model generalizes to unseen databases. Enterprise schemas are larger and less tidy than the benchmarks, so real accuracy is usually lower. The gap comes from ambiguous column names, missing documentation, and joins across many tables.",
+            "body": "Text to SQL benchmarks are standard test sets that measure how well a system turns a plain language question into a working SQL query. Public benchmarks such as Spider and BIRD score text to SQL systems by running the generated query and comparing its result with a known correct answer. They matter because they give teams a common yardstick for comparing models, prompts and retrieval setups on the same questions. Enterprise schemas are larger and less tidy than the benchmarks, so real accuracy is usually lower. The gap between a leaderboard score and a working query against a production warehouse is the central fact of this topic.",
             "heading": "Scope"
         },
         {
-            "body": "Text to SQL benchmarks run on database engines, most commonly SQLite for public sets because it is portable and file based. Enterprise evaluation runs against the production warehouse, such as PostgreSQL, Snowflake, or BigQuery, using the same drivers and permissions as other applications. This site itself is built from a PostgreSQL database, and it tracks 263 Model Context Protocol servers for SQL databases and warehouses out of 2502 active servers. Those servers are one way a model reaches a database, alongside direct connectors and query APIs.",
+            "body": "Running a benchmark means standing up a database per example, loading the schema and seed rows, then executing whatever SQL the system produces. That usually happens in a container or a throwaway cloud instance so a bad query cannot touch anything real. The harness needs a SQL engine, a driver, a way to capture result sets and errors, and a store for the questions, gold queries and gold answers. Because every page on this site is itself built from a PostgreSQL database, the same engine that serves the site can serve as the execution target for benchmark runs. Larger suites add scheduling and parallelism so thousands of questions finish in reasonable time.",
             "heading": "What it runs on"
         },
         {
-            "body": "Building a benchmark starts with collecting databases, writing questions in plain language, and having experts write the correct SQL. Evaluation then feeds the schema and question to a model, executes the returned SQL, and compares the result set to the gold result, which is called execution accuracy. Some benchmarks also check the SQL string itself or measure how efficiently the query runs. The work is iterative, with error analysis on failed cases to see whether the model misunderstood the schema, the question, or the join logic. The site's library holds 288 research papers, many of which describe these methods.",
+            "body": "The core method is execution accuracy: run the generated query, compare its result set with the result of the reference query, and count a match. Some suites also report exact match against the gold SQL string, which is stricter and punishes correct queries written differently. Harder variants test robustness to paraphrased questions, unseen schemas, and cross database transfer, where a system is trained on one set of schemas and evaluated on another. Error analysis usually separates syntax failures, wrong joins, wrong filters and right answer by luck. Teams read the per question breakdown more than the headline number, because it shows which failure mode to fix next.",
             "heading": "How the work is done"
         },
         {
-            "body": "Benchmarks are usually released under open licenses, but the underlying databases may carry their own terms, so provenance matters. Questions and gold SQL are often written by crowdsourced workers or domain experts, and the quality of that annotation affects the score. Risks include benchmark contamination, where test questions leak into training data, and overfitting to a small set of schemas. When teams evaluate on private enterprise data, access controls, data masking, and audit logs become part of the process. Generated SQL that includes writes or deletes needs separate review before it touches a production system.",
+            "body": "Benchmark data carries its own provenance questions. Spider and BIRD are research artifacts with their own licences and citation expectations, and redistributing them inside a commercial evaluation pipeline is a decision someone has to make deliberately. Enterprise evaluation is harder still, because the schemas, column names and sample rows may be confidential, so teams often build private question sets and keep the gold queries internal. Any evaluation that touches real data needs the same access controls as the warehouse itself, including masking and audit logging. A benchmark score is evidence about a system, not a guarantee about a deployment, and it should never be presented as one.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The direction is toward larger, messier, and more realistic benchmarks that reflect enterprise schemas, multi turn conversations, and cross database queries. Researchers are exploring automatic benchmark generation and execution guided decoding to close the gap between public scores and production accuracy. Tooling is also expanding, with the site tracking 2502 active Model Context Protocol servers, 263 of them for SQL databases and warehouses, which shows growing integration between models and data systems. The 732 AI tools and 686 glossary terms on the site reflect a field that is still defining its shared vocabulary.",
+            "body": "The direction of travel is away from single clean questions and toward messy, multi table, multi step tasks that look more like real analyst work. Expect more benchmarks that grade the whole interaction, including clarification questions, follow up corrections and the ability to say a question cannot be answered from the available schema. Agentic setups that inspect a schema, draft a query, run it, read the error and revise are already changing what a good score means. As text to SQL moves into production reporting, the interesting metrics will shift from exact match toward whether a human reviewer accepts the answer and how often the query needs repair.",
             "heading": "Where it is going"
         }
     ],
