@@ -14,11 +14,11 @@
         "name": "Data Centers"
     },
     "reading": {
-        "body": "For distributed AI training, network latency, packet loss, and bandwidth are measured as uptime metrics because a lossy fabric wastes GPU-hours before it causes an outage.\n\nThe metric sits in the uptime and redundancy category alongside UPS battery health and SLA compliance. That placement treats the internal fabric and external transit as reliability infrastructure, not just performance plumbing. In AI data centers, degraded network conditions can waste GPU-hours even when every server stays powered and nominally online.\n\nThe data does not specify acceptable thresholds for latency, loss, or utilization, nor does it quantify how many GPU-hours are lost to a given level of degradation. It also does not distinguish between internal fabric and external transit in the reported measurements, so the reader cannot tell which segment is the binding constraint.",
-        "model": "ollama:deepseek-v4-pro",
-        "generated_on": "2026-09-25"
+        "body": "Network latency, packet loss, and bandwidth are operational metrics for AI data centers, not just networking details, because distributed training wastes GPU-hours before it causes an outage.\n\nThe data places this metric in the uptime and redundancy category, alongside UPS battery health, generator runtime, and SLA uptime compliance. That grouping is the point. A facility can hold power continuously and still fail its workload if the internal fabric or external transit degrades. For distributed AI training, the network is part of the uptime surface, not a layer above it.\n\nThe stated reason is intolerance: lossy fabric shows up as wasted GPU-hours before it shows up as an outage. That makes network measurement a leading indicator rather than a lagging one. Power failures are visible. A rising loss rate is not, until the training run has already burned compute it cannot recover.\n\nWhat this does not cover is any actual measurement. There are no latency figures, no loss rates, no bandwidth numbers, and no comparison across facilities. It defines the metric and its rationale, and nothing about how any specific data center performs against it.",
+        "model": "ollama:deepseek-v4.1-flash",
+        "generated_on": "2026-10-04"
     },
-    "built_at": "2026-10-03T16:29:38-05",
+    "built_at": "2026-10-04T06:29:16-05",
     "page_uid": "5ae3bb07",
     "siblings": [
         {
@@ -32,6 +32,5 @@
             "category": "Uptime and redundancy"
         }
     ],
-    "generated": "2026-10-03",
-    "refresh_every_days": 30
+    "generated": "2026-10-04"
 }

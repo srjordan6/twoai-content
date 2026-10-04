@@ -10,6 +10,11 @@
     "volume": "",
     "authors": "Tri Dao et al.",
     "journal": "ArXiv",
+    "reading": {
+        "body": "Swapping attention for a state space backbone did not improve zero-day detection, but it cut parameters to 57% and made streaming constant-memory.\n\nThe two architectures tested here are closely related, and the paper's own framing is that a Transformer can be expressed as a structured state space model. That relationship is why the detection numbers land so near each other: 15.0% of zero-day windows for the Transformer at 0.038% false positives, 14.1% for Mamba-2 at 0.1%. If the designs were genuinely different families, a backbone swap would be expected to move recall. It did not.\n\nWhat moved deployed behaviour was the alert threshold. EVT thresholds fitted on the benign tail stayed invariant across labelled attack families, while Youden did not. For anyone operating a detector, that is the lever worth attention, not the choice of backbone. The efficiency case for the state space model is real and architectural: fewer parameters, linear scaling in sequence length, constant memory while streaming. Those are properties of the design, not of the training run.\n\nThe limits are as important as the results. Recall is low in absolute terms, the detector is blind to encrypted payloads, and everything rests on one training corpus. The data covers one comparison on one dataset and does not establish that these architectures behave the same way on other tasks, other traffic, or at other scales. The transferability claim is about the relationship between the two families, not a general result about detection quality.",
+        "model": "ollama:deepseek-v4.1-flash",
+        "generated_on": "2026-10-04"
+    },
     "built_at": "2026-10-03T21:55:40-05:00",
     "page_uid": "r0000168",
     "citations": 1938,

@@ -10,6 +10,11 @@
     "volume": "",
     "authors": "Saroj K. Ghimire et al.",
     "journal": "",
+    "reading": {
+        "body": "Prompt injection is being treated as a deployment problem with a known mitigation pattern, not an unsolved research question. The paper proposes adversarial training combined with input sanitisation, and reports that models resisted both direct and indirect injection better while still performing normally.\n\nThe pattern matters because it is defensive work aimed at the layer where models meet untrusted text. Adversarial training changes the model, sanitisation changes what reaches it, and the paper pairs the two rather than choosing. That pairing is what an audit would look for when asking whether a deployment has documented how it handles hostile input.\n\nFor AI specifically, the exposure is structural. A chatbot that follows instructions will follow instructions hidden in the content it reads, so the attack surface grows with every tool, document, and user message the system is given. Mitigations at the input and training layers are the ones that do not depend on the model being correct about intent.\n\nWhat the data does not cover is substantial. There are no numbers here, no benchmark names, no measured attack success rates, and no comparison against alternative defences. The citation count is zero and the year is unrecorded, so nothing can be said about how this work was received or how it sits against other approaches. The entry records that a defence of this shape exists and is documented, which is a claim about coverage rather than about effectiveness.",
+        "model": "ollama:deepseek-v4.1-flash",
+        "generated_on": "2026-10-04"
+    },
     "built_at": "2026-10-03T21:55:40-05:00",
     "page_uid": "r0000209",
     "citations": 0,

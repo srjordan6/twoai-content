@@ -10,6 +10,11 @@
     "volume": "",
     "authors": "Si-Zhe Chen et al.",
     "journal": "Proceedings of the 2025 ACM SIGSAC Conference on Computer and Communications Security",
+    "reading": {
+        "body": "SecAlign reports prompt injection success below 10 percent after preference training, including against attacks stronger than those seen in training.\n\nThe method treats prompt injection as a preference problem. Training examples pair a safe answer that follows the user's request with an unsafe answer that follows an attacker's hidden instruction, and preference optimization teaches the model to rank the safe one higher. The reported result is that attack success falls below 10 percent across multiple attacks, including unseen and more advanced ones, while usefulness stays close to the original model. Generalization to attacks not in the training set is the claim that matters most, because injection techniques change faster than defenses are retrained.\n\nFor AI systems that read documents, web pages, or API results, this is a defense at the model layer rather than the perimeter. It does not require filtering the outside data before the model sees it. That matters for deployments where the model must consume untrusted content by design, and it is the kind of claim a buyer can put in a contract: ask the vendor to reproduce the under 10 percent figure on your own workload.\n\nThe data covers one paper, its reported numbers, and 222 citations. It does not include independent replication, the size or identity of the models tested, the cost of the preference training, or how the defense holds when the attacker knows it is in place. Below 10 percent is not zero, and the residual rate is what determines whether a given deployment needs additional controls.",
+        "model": "ollama:deepseek-v4.1-flash",
+        "generated_on": "2026-10-04"
+    },
     "built_at": "2026-10-03T21:55:40-05:00",
     "page_uid": "r0000220",
     "citations": 222,

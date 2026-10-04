@@ -10,6 +10,11 @@
     "volume": "",
     "authors": "Ivan Gotovchits, Rijnard van Tonder, David Brumley",
     "journal": "",
+    "reading": {
+        "body": "A 2018 static analysis tool found previously unknown security flaws in commercial software by inspecting compiled binaries rather than source code.\n\nThe pattern is binary-level taint checking. Saluki lets an analyst describe an unsafe data flow in a small language, recovers path-sensitive and context-sensitive data dependence facts from the compiled program, and uses a decidable solver to prove whether the property holds. The evaluation found real vulnerabilities in commercial off-the-shelf software across x86, x86-64, and ARM, including command injection, weak PRNG seeds, and missing sanitization checks.\n\nThis matters for AI because the software stack that AI runs on is largely inherited and opaque. Compiled dependencies, vendor binaries, and legacy components often arrive without source access, and those are exactly the artifacts this approach targets. A flaw in a binary that sits under a training or serving pipeline is a flaw in the pipeline, regardless of how well the AI code itself was written.\n\nThe data does not say how many vulnerabilities were found, how long the analysis took, or whether the approach scales to the size of modern AI systems. It also does not connect to compute, buildings, or power, and nothing here should be read as a claim about data center operations. The paper is a security result from 2018 with 27 citations, and its relevance to AI is through the general problem of trusting code you cannot read.",
+        "model": "ollama:deepseek-v4.1-flash",
+        "generated_on": "2026-10-04"
+    },
     "built_at": "2026-10-03T21:55:40-05:00",
     "page_uid": "q772de6c",
     "citations": 27,

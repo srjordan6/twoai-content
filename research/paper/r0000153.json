@@ -10,6 +10,11 @@
     "volume": "",
     "authors": "Xuezhi Wang et al.",
     "journal": "ArXiv",
+    "reading": {
+        "body": "Self-consistency buys reasoning accuracy at inference time by sampling many reasoning paths and taking the majority answer, with reported gains of 17.9 percent on GSM8K and 11.0 percent on SVAMP over standard step-by-step prompting.\n\nThe pattern is that reliability comes from redundancy rather than from a better model. The same weights are queried repeatedly, and the answer that most traces converge on is selected. Gains scale with the difficulty of the task: 17.9 percent on GSM8K and 12.2 percent on AQuA, against 6.4 percent on StrategyQA and 3.9 percent on ARC challenge.\n\nFor AI specifically, this shifts part of the cost of trustworthy answers from training to serving. Every additional sampled path is another forward pass through the model, so the accuracy gain is paid for in compute at the moment of the query. That makes the method cheap relative to retraining and expensive relative to a single greedy decode, and it puts the tradeoff squarely on the inference fleet and the power behind it.\n\nWhat the data does not cover is how far the gains hold. The results are five benchmark numbers from a 2022 preprint, with no measurement of how many samples were needed, what that cost, or whether the effect persists on larger models or longer reasoning chains. The citation count of 7,689 shows the method was widely taken up, not that its reported margins were reproduced.",
+        "model": "ollama:deepseek-v4.1-flash",
+        "generated_on": "2026-10-04"
+    },
     "built_at": "2026-10-03T21:55:40-05:00",
     "page_uid": "r0000153",
     "citations": 7689,

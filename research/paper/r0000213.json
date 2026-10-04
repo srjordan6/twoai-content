@@ -10,6 +10,11 @@
     "volume": "",
     "authors": "Xiang Fang et al.",
     "journal": "",
+    "reading": {
+        "body": "A semantic-graph defense claims to cut harmful LLM output by more than 85 percent while keeping normal performance nearly unchanged, a figure the record itself says should be audited rather than accepted.\n\nThe method is a preprocessing layer, not a change to the model. It splits a prompt into adversarial and benign parts using mutual information, looks for malicious intent through spectral analysis of a meaning graph, and runs a small transformer classifier trained on toxic and jailbreaking prompts. The claim is that this happens fast enough for real time use.\n\nFor AI deployment this matters because prompt-level attacks are a risk control problem, and a layer that sits in front of a model is easier to swap or remove than a retrained model. The paper reports negligible impact on normal performance, which is the property that decides whether such a filter is usable in production.\n\nWhat the data does not cover is the audit. There is no independent replication here, no detail on which adversarial datasets were used, and no latency number, only the assertion of real time suitability. The 85 percent figure is the authors' result, and the record flags it as a claim to test.",
+        "model": "ollama:deepseek-v4.1-flash",
+        "generated_on": "2026-10-04"
+    },
     "built_at": "2026-10-03T21:55:40-05:00",
     "page_uid": "r0000213",
     "citations": 28,

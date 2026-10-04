@@ -10,6 +10,11 @@
     "volume": "",
     "authors": "Aditya Chattopadhyay et al.",
     "journal": "ArXiv",
+    "reading": {
+        "body": "Converting a pre-trained Transformer into a hybrid state-space model costs under 0.5% of the original pre-training token budget, and the converted 32B model beat its source by 3.8 reasoning points while decoding up to 2.3 times faster.\n\nThe pattern is that architecture conversion is now cheap relative to training from scratch. The authors take an existing Transformer, run short alignment and post-training phases, and recover downstream quality. The method holds across Transformer families, across dense and Mixture-of-Experts classes, and across sizes. Because the conversion is cheap, it also makes controlled comparison possible: the same conditions were used to rank three state-space layer types, Gated KalmaNet over Gated DeltaNet over Mamba-2, and that ranking predicted long-context reasoning performance.\n\nFor AI specifically, the constraint this relaxes is inference cost, not training cost. A 32B hybrid stayed within 1% of a Transformer post-trained on the same data, so the efficiency gain does not come at a measured quality loss at that scale. Cheaper decoding per token changes how much serving capacity a given deployment needs, which is a power and hardware question as much as a modeling one. The data does not cover training compute for the original models, so it cannot say whether the savings matter at the scale of the largest runs.\n\nThe governance point is stated in the source material and is not derived from the benchmark numbers: converting a model is a substantial modification, which raises re-assessment questions under the AI Act. The data does not say what re-assessment would require, who would perform it, or whether any regulator has addressed conversion specifically. It also does not report results below 32B, so the throughput and reasoning figures should not be generalized to smaller models.",
+        "model": "ollama:deepseek-v4.1-flash",
+        "generated_on": "2026-10-04"
+    },
     "built_at": "2026-10-03T21:55:40-05:00",
     "page_uid": "r0000163",
     "citations": 4,

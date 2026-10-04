@@ -10,6 +10,11 @@
     "volume": "",
     "authors": "Noam Shazeer et al.",
     "journal": "ArXiv",
+    "reading": {
+        "body": "Sparse expert routing let a 2017 model reach 137 billion parameters while using less computation than smaller dense systems, which is the design choice most large language models now inherit.\n\nThe pattern is capacity and compute pulled apart. A trainable gate sends each input through only a few of thousands of expert subnetworks, so parameter count grows without a matching growth in work per input. The authors report over a thousand times more capacity with only minor efficiency losses on graphics processor clusters, and better results than prior best systems on language prediction and translation.\n\nThat decoupling is why the paper matters for AI scaling. If quality tracks capacity and cost tracks active computation, then the binding constraint shifts from how much arithmetic a model performs to how much memory and interconnect a cluster must supply to hold experts that sit idle on any given token. The compute saved per input is real, but the parameters still have to be stored and the routing still has to move activations across devices.\n\nWhat the data does not cover is the decade between this preprint and current practice. It records one citation count, 5,635, and no measurement of how routing behaves at production scale, no failure modes, no cost figures beyond the authors' own efficiency claim. The 137 billion parameter result was demonstrated on stacked LSTM layers, not on the transformer architectures that later adopted the same idea. Treat this as the origin point for a design choice, not as evidence about how that choice performs today.",
+        "model": "ollama:deepseek-v4.1-flash",
+        "generated_on": "2026-10-04"
+    },
     "built_at": "2026-10-03T21:55:40-05:00",
     "page_uid": "r0000162",
     "citations": 5635,

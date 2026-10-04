@@ -10,6 +10,11 @@
     "volume": "",
     "authors": "R. Thomas McCoy et al.",
     "journal": "Proceedings of the National Academy of Sciences of the United States of America",
+    "reading": {
+        "body": "Accuracy on deterministic tasks collapses when the input or answer is improbable, so model evaluation must test edge cases rather than averages.\n\nThe pattern is consistent across five models and eleven tasks. GPT-3.5, GPT-4, Claude 3, Llama 3, and Gemini 1.0 all lose accuracy as the task, the answer, or the input becomes less likely. The sharpest illustration is GPT-4 decoding a simple cipher: 51 percent correct when the output sentence was likely, 13 percent when it was unlikely, on a task with one right answer. The authors trace this to the training objective itself, guessing the next word in web text, which biases the model toward probable outputs regardless of what the task requires.\n\nFor AI systems generally, this is a reliability problem that scales with deployment. Rare inputs are exactly what production traffic contains, and a model that degrades on them fails precisely where it is hardest to notice. The practical consequence is that audits and pilots built on representative or average examples will overstate performance. Edge cases belong in the test set, not outside it.\n\nWhat the data does not cover is the compute or power side of the story. Nothing here speaks to training scale, data center capacity, or grid constraints, and the paper's finding is about the training objective rather than the resources behind it. The result also does not establish how these failures compound in multi-step or agentic use, which the eleven tasks do not test.",
+        "model": "ollama:deepseek-v4.1-flash",
+        "generated_on": "2026-10-04"
+    },
     "built_at": "2026-10-03T21:55:40-05:00",
     "page_uid": "r0000137",
     "citations": 192,
