@@ -5,6 +5,16 @@
     "cves": [
         {
             "kev": false,
+            "cve_id": "CVE-2026-89039",
+            "product": "MCP",
+            "summary": "The convert_playwright_script prompt in the k6 MCP server accepts a file path as its playwright_script argument. Paths given in the documented '@'-prefixed form are restricted to the server's current working directory, b",
+            "headline": "k6 MCP server prompt lets a caller read files outside the working directory",
+            "published": "2026-10-05",
+            "cvss_score": 6.5,
+            "cvss_severity": "MEDIUM"
+        },
+        {
+            "kev": false,
             "cve_id": "CVE-2026-77269",
             "product": "MCP",
             "summary": "MCP Atlassian is a Model Context Protocol (MCP) server for Atlassian products (Confluence and Jira). Prior to 0.22.0, the remediation for CVE-2026-27825 protects download destinations but does not constrain source paths ",
@@ -636,15 +646,15 @@
     ],
     "high": 35,
     "name": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')",
-    "count": 63,
+    "count": 64,
     "shape": "cwe",
     "title": "CWE-22: Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')",
     "cwe_id": "CWE-22",
-    "latest": "2026-09-22",
+    "latest": "2026-10-05",
     "status": "Stable",
     "ai_text": "In AI software this weakness shows up mostly in MCP servers and agent tooling, where a tool that handles files trusts the path it is given. The CVEs sit in MCP Atlassian, NotebookLM MCP, MCP GitLab, MCPVault, MCP Memory Keeper, Flowise, Langflow, ComfyUI, Weights & Biases and Tract. The usual route is a tool call or crafted workflow that passes a path pointing outside the intended folder, often through attachment upload or file read helpers. Attackers then read server files, write files outside the workspace or output directory, and in some cases reach tokens such as the GitLab token.",
     "ai_model": "ollama:deepseek-v4.1-flash",
-    "built_at": "2026-10-05T06:03:22-05",
+    "built_at": "2026-10-05T13:33:44-05",
     "critical": 4,
     "page_uid": "b3e3169e",
     "generated": "2026-10-05",
@@ -785,5 +795,6 @@
             "description": "an alternate phrasing of path traversal"
         }
     ],
+    "refresh_every_days": 1,
     "extended_description": "Many file operations are intended to take place within a restricted directory. By using special elements such as .. and / separators, attackers can escape outside of the restricted location to access files or directories that are elsewhere on the system. One of the most common special elements is the ../ sequence, which in most modern operating systems is interpreted as the parent directory of the current location. This is referred to as relative path traversal. Path traversal also covers the use of absolute pathnames such as /usr/local/bin to access unexpected files. This is referred to as absolute path traversal."
 }

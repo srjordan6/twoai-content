@@ -1,0 +1,48 @@
+{
+    "shape": "incident",
+    "title": "Alibaba to ban employees from using Anthropic's coding tool, source says",
+    "reading": {
+        "body": "This is a covert instrumentation failure inside a shipped developer tool. Code in Claude Code altered the system prompt's date string when a custom API base URL was set, encoding a signal in Unicode apostrophes and date separators that is invisible in normal fonts. The trigger was the ANTHROPIC_BASE_URL environment variable, checked against an obfuscated list of domains and AI lab keywords. The mechanism is a fingerprint, not a model error: the tool marked requests so that the operator could later identify where they came from.\n\nThe placement matters. The marker sat in the system prompt, the part of the request the user does not write and generally does not inspect, and it activated only for users pointing the tool at a non-default endpoint. Catching it required reading the client's source and noticing that a date string changed shape under specific conditions. Nothing in normal use would surface it, and the reporting describes the change as invisible in ordinary rendering.\n\nWhat is not established is intent. The reporting attributes the code to Anthropic and describes an explanation that it was an experiment, and the outlets differ on what it was for. Whether the markers were meant to detect resellers, gateways or distillation pipelines is offered as a possibility, not a finding, and no consequence beyond Alibaba's reported ban is documented here.",
+        "model": "claude-haiku-4-5",
+        "generated_on": "2026-10-05"
+    },
+    "reports": [
+        {
+            "url": "https://thereallo.dev/blog/claude-code-prompt-steganography",
+            "title": "Claude Code Is Steganographically Marking Requests",
+            "domain": "thereallo.dev",
+            "published": "2026-10-03"
+        },
+        {
+            "url": "https://www.theregister.com/ai-and-ml/2026/07/01/anthropic-is-removing-its-covert-code-for-catching-chinese-competitors/5265366",
+            "title": "Anthropic is removing its covert code for catching Chinese competitors",
+            "domain": "theregister.com",
+            "published": "2026-10-03"
+        },
+        {
+            "url": "https://www.malwarebytes.com/blog/news/2026/07/claude-codes-hidden-tracker-was-an-experiment-says-anthropic",
+            "title": "Claude Code’s hidden tracker was an “experiment,” says Anthropic",
+            "domain": "malwarebytes.com",
+            "published": "2026-10-03"
+        },
+        {
+            "url": "https://www.reuters.com/world/china/alibaba-ban-claude-code-workplace-over-alleged-backdoor-risks-source-says-2026-07-03/",
+            "title": "Alibaba to ban employees from using Anthropic's coding tool, source says",
+            "domain": "reuters.com",
+            "published": "2026-10-03"
+        }
+    ],
+    "summary": "A developer inspecting Claude Code version 2.1.196 found hidden markers embedded in the system prompt. The code alters the date string based on the API base URL and timezone, swapping the apostrophe in \"Today's\" for different Unicode characters and changing date separators from hyphens to slashes. The trigger is the ANTHROPIC_BASE_URL environment variable, which is checked against an obfuscated list of domains and AI lab keywords, including deepseek, moonshot, and zhipu, stored in base64 and XOR-encoded form.\n\nFor most users the feature stays inactive, since it only activates when a custom API base URL is set. The author notes the change is invisible in normal fonts and could be meant to detect resellers, unauthorized gateways, and distillation pipelines, but argues it should have been disclosed openly instead of hidden. The article does not say what Anthropic will do next.",
+    "built_at": "2026-10-05T13:16:53-05",
+    "cite_url": "https://incidentdatabase.ai/cite/1723",
+    "page_uid": "704be468",
+    "title_en": "Alibaba to ban employees from using Anthropic's coding tool, source says",
+    "generated": "2026-10-05",
+    "published": "2026-10-03",
+    "title_lang": "",
+    "incident_id": 1723,
+    "summary_url": "https://thereallo.dev/blog/claude-code-prompt-steganography",
+    "outlet_count": 4,
+    "summary_domain": "thereallo.dev",
+    "refresh_every_days": 1
+}

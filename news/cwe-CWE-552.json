@@ -1,0 +1,60 @@
+{
+    "kev": 0,
+    "num": 552,
+    "uid": "bda321b6",
+    "cves": [
+        {
+            "kev": false,
+            "cve_id": "CVE-2025-66389",
+            "product": "Copilot",
+            "summary": "GitHub Copilot 1.372.0 allows filesystem access outside of a workspace folder (without user approval) via a file-handler URI parameter to fetch_webpage. Therefore, exfiltration could occur if there is indirect prompt inj",
+            "headline": "GitHub Copilot 1.372.0 reads files outside the workspace via fetch_webpage",
+            "published": "2026-06-22",
+            "cvss_score": 7.5,
+            "cvss_severity": "HIGH"
+        }
+    ],
+    "high": 1,
+    "name": "Files or Directories Accessible to External Parties",
+    "count": 1,
+    "shape": "cwe",
+    "title": "CWE-552: Files or Directories Accessible to External Parties",
+    "cwe_id": "CWE-552",
+    "latest": "2026-06-22",
+    "status": "Draft",
+    "ai_text": "In AI software this weakness shows up in coding assistants that reach out to the web on the user's behalf. CVE-2025-66389 is the one example here, filed against GitHub Copilot 1.372.0. The flaw sits in the fetch_webpage capability, which is meant to pull in a page for the assistant to read. Instead it can reach files outside the workspace, so content that should stay local becomes readable to an outside party. That means a user's own machine or project files can be exposed through a feature the assistant offers as ordinary help. The pattern is a tool with broader reach than its stated job, and the exposure follows from that gap.",
+    "ai_model": "ollama:deepseek-v4.1-flash",
+    "built_at": "2026-10-05T13:33:44-05",
+    "critical": 0,
+    "page_uid": "bda321b6",
+    "generated": "2026-10-05",
+    "mitre_url": "https://cwe.mitre.org/data/definitions/552.html",
+    "likelihood": "",
+    "abstraction": "Base",
+    "description": "The product makes files or directories accessible to unauthorized actors, even though they should not be.",
+    "mitigations": [
+        {
+            "phase": [
+                "Implementation System Configuration Operation"
+            ],
+            "description": "When storing data in the cloud (e.g., S3 buckets, Azure blobs, Google Cloud Storage, etc.), use the provider's controls to disable public access."
+        }
+    ],
+    "consequences": [
+        {
+            "scope": [
+                "Confidentiality",
+                "Integrity"
+            ],
+            "impact": [
+                "Read Files or Directories",
+                "Modify Files or Directories"
+            ]
+        }
+    ],
+    "ai_written_on": "2026-10-05",
+    "alternate_terms": [
+    ],
+    "refresh_every_days": 1,
+    "extended_description": "Web servers, FTP servers, and similar servers may store a set of files underneath a root directory that is accessible to the server's users. Applications may store sensitive files underneath this root without also using access control to limit which users may request those files, if any. Alternately, an application might package multiple files or directories into an archive file (e.g., ZIP or tar), but the application might not exclude sensitive files that are underneath those directories. In cloud technologies and containers, this weakness might present itself in the form of misconfigured storage accounts that can be read or written by a public or anonymous user."
+}

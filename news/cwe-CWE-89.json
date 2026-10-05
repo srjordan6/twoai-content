@@ -22,11 +22,21 @@
             "published": "2026-07-10",
             "cvss_score": 8.7,
             "cvss_severity": "HIGH"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2025-29189",
+            "product": "Flowise",
+            "summary": "Flowise <= 2.2.3 is vulnerable to SQL Injection. via tableName parameter at Postgres_VectorStores.",
+            "headline": "Flowise up to 2.2.3 SQL injection through the tableName parameter",
+            "published": "2025-04-09",
+            "cvss_score": 7.6,
+            "cvss_severity": "HIGH"
         }
     ],
-    "high": 1,
+    "high": 2,
     "name": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')",
-    "count": 2,
+    "count": 3,
     "shape": "cwe",
     "title": "CWE-89: Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')",
     "cwe_id": "CWE-89",
@@ -34,7 +44,7 @@
     "status": "Stable",
     "ai_text": "In AI software this weakness shows up in tools that turn plain language into database queries. The two CVEs sit in an agent framework and an LLM application platform, not in model serving or notebooks. CrewAI's crewai-tools 1.10.2rc1 ships an NL2SQLTool that lets a remote attacker run arbitrary SQL, and Dify before 1.16.0 lets a search request run SQL in the MyScale backend. In both cases the input arrives through a normal user-facing request, such as a search box or an agent tool call, and the generated query is sent to the database without the special characters being neutralized. That lets an attacker read or change data the query was never meant to touch.",
     "ai_model": "ollama:deepseek-v4.1-flash",
-    "built_at": "2026-10-05T06:03:22-05",
+    "built_at": "2026-10-05T13:33:44-05",
     "critical": 0,
     "page_uid": "9dd03c75",
     "generated": "2026-10-05",
@@ -174,5 +184,6 @@
             "description": "a common abbreviation for SQL injection"
         }
     ],
+    "refresh_every_days": 1,
     "extended_description": ""
 }
