@@ -1,4 +1,14 @@
 {
+    "faq": [
+        {
+            "a": "For validated safety processing, companies typically use models tested and tuned on their own data within controlled systems, not consumer chatbots.",
+            "q": "Are general chatbots good enough?"
+        },
+        {
+            "a": "By comparing model output with expert annotations on a held out set of real cases.",
+            "q": "How is extraction quality measured?"
+        }
+    ],
     "uid": "46e0b961",
     "name": "Extracting Adverse Events with Language Models",
     "slug": "sp-lsc-pv-llm-extraction",
@@ -27,7 +37,47 @@
         "model": "ollama:deepseek-v4.1-flash",
         "generated_on": "2026-10-05"
     },
-    "built_at": "2026-10-04T22:47:50-05",
+    "related": {
+        "terms": [
+            {
+                "line": "The field covering machine understanding and generation of human language. Its problems, translation, sentiment, summarization, were separate research tracks until large language models absorbed most of them into one capability.",
+                "path": "/ai-glossary/natural-language-processing-nlp/",
+                "term": "Natural Language Processing (NLP)"
+            },
+            {
+                "line": "A parameter-efficient fine-tuning technique that freezes base weights and trains small low-rank matrices instead, cutting tunable parameters by orders of magnitude.",
+                "path": "/ai-glossary/lora-low-rank-adaptation/",
+                "term": "LoRA (Low-Rank Adaptation)"
+            }
+        ],
+        "papers": [
+            {
+                "url": "https://doi.org/10.48550/arxiv.2307.06439",
+                "year": 2023,
+                "title": "Distilling Large Language Models for Biomedical Knowledge Extraction: A Case Study on Adverse Drug Events",
+                "cited_by": 16
+            },
+            {
+                "url": "https://doi.org/10.48550/arxiv.2406.18049",
+                "year": 2024,
+                "title": "Improving Entity Recognition Using Ensembles of Deep Learning and Fine-tuned Large Language Models: A Case Study on Adverse Event Extraction from Multiple Sources",
+                "cited_by": 4
+            },
+            {
+                "url": "https://doi.org/10.64898/2026.04.28.26351782",
+                "year": 2026,
+                "title": "Extracting adverse event nature, severity, timelines and resulting interventions from clinical notes of patients receiving CAR-T therapy using large language models",
+                "cited_by": 0
+            },
+            {
+                "url": "https://doi.org/10.1371/journal.pdig.0001426",
+                "year": 2026,
+                "title": "Extracting adverse event nature, severity, timelines and resulting interventions from clinical notes of patients receiving CAR-T cell therapy using large language models",
+                "cited_by": 0
+            }
+        ]
+    },
+    "built_at": "2026-10-05T14:12:50-05",
     "category": "enterprise-applications-governance-and-tools",
     "children": null,
     "expanded": true,
@@ -78,6 +128,7 @@
             "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/6913cdb6/"
         }
     ],
+    "explainer": "Adverse events are often described in messy free text: a patient's email, a call centre note, a clinic letter or a published case report. Extracting them means finding each event, the medicine involved, timing, outcome and patient details, then coding them correctly. Earlier natural language processing used rules or narrow trained models; large language models handle varied phrasing and context much better.\n\nFine tuned open models can now reach accuracy close to human reviewers on structured extraction tasks in published tests, though they need significant computing resources and performance varies with language, terminology and how events are described. In practice companies combine model extraction with confidence scores and human review of uncertain or serious cases, and validate the system on their own case types before relying on it.",
     "generated": "2026-10-04",
     "child_count": 0,
     "parent_name": "Safety and Pharmacovigilance",
