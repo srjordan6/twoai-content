@@ -212,7 +212,7 @@
             "meet": [
                 {
                     "uid": "",
-                    "fact": "2,547 servers from the official Model Context Protocol registry, the standard way agents are given tools.",
+                    "fact": "2,557 servers from the official Model Context Protocol registry, the standard way agents are given tools.",
                     "href": "/mcp/",
                     "name": "MCP Server tracker"
                 },
@@ -306,14 +306,14 @@
         "assumption_source": "https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them"
     },
     "reading": {
-        "body": "A 40 page contract costs about 1.3 cents to read and summarize at today's median API prices, so cost is rarely what blocks this work. The binding constraint is the context window: 442 of the 460 API models tracked can hold the roughly 27,700 tokens involved, and 18 cannot, which means for those the contract must be split before anything else can happen.\n\nThat split is the real decision point. A document that fits is a single pass, and a document that does not fit becomes a retrieval problem, where contracts are embedded once and only matching passages are handed to the model. The two paths have different failure modes, and the choice is made by the size of the input against the window, not by the price per token.\n\nThe data covers one worked example and the counts behind it, not accuracy. It says nothing about how often a summary states a clause the contract does not contain, only that this is possible and that a summary of a legal document is a map to the pages rather than a replacement for them. Nothing here measures whether retrieval finds the right passage, which is where a contract library would actually succeed or fail.",
+        "body": "A 40 page contract costs about 1.3 cents to read and summarize, and 442 of the 460 tracked API models can hold it in one pass.\n\nThe pattern is that document work at this scale is settled on both axes. Capability is nearly universal, since only 18 of 460 models cannot fit roughly 27,700 tokens, and price is trivial at the median rates of $0.42 per million input tokens and $1.91 per million output tokens. The binding constraint has moved elsewhere.\n\nWhat remains is not size but truthfulness. A summary can assert a clause the contract does not contain, and the data offers no measure of how often that happens. For anything with legal weight the summary is an index to the pages, not a replacement for them.\n\nThe data covers one contract and one summary. It says nothing about a library of contracts, where the whole set will not fit and retrieval becomes the architecture, embedding each document once and passing only matching passages to the model. It also gives no accuracy figure, so the cost of checking the output is not counted here.",
         "model": "ollama:deepseek-v4.1-flash",
-        "generated_on": "2026-10-04"
+        "generated_on": "2026-10-05"
     },
-    "built_at": "2026-10-04T13:36:20-05",
+    "built_at": "2026-10-05T06:16:49-05",
     "category": "research-knowledge-and-learning",
     "page_uid": "d2390ba3",
-    "verified": "2026-10-04",
-    "generated": "2026-10-04",
+    "verified": "2026-10-05",
+    "generated": "2026-10-05",
     "refresh_every_days": 1
 }

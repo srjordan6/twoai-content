@@ -22,7 +22,7 @@
     ],
     "title": "Who Makes the Memory on an AI Accelerator",
     "total": 0,
-    "answer": "Three companies supply essentially all high bandwidth memory: SK hynix, Samsung Electronics and Micron. HBM is the memory stacked beside the logic die on an AI accelerator, and it is the part of the supply chain with the fewest suppliers, fewer than the accelerators themselves. There is no public price for it. HBM is sold on multi-year contracts negotiated between those three and a handful of buyers, frequently sold out a year or more ahead, so no spot market exists and no index tracks it. Anything presented as a VRAM price index is measuring commodity DRAM instead.",
+    "answer": "Three companies supply essentially all high bandwidth memory: SK hynix, Samsung Electronics and Micron. HBM is the memory stacked beside the logic die on an AI accelerator, and it is the part of the supply chain with the fewest suppliers, fewer than the accelerators themselves. There is no public price for it: HBM is sold on private multi-year contracts, often sold out years ahead, so no spot market exists and no index tracks it. The squeeze spills over into ordinary PC and server memory, because HBM and DDR5 come off the same wafer lines and HBM uses about three times the wafer capacity per gigabyte. And with HBM4 the base of each stack becomes an advanced logic chip, made at foundries such as TSMC, which pulls memory and foundry supply into one chain.",
     "points": [
         {
             "name": "Why there is no price to quote",
@@ -53,17 +53,74 @@
             "name": "The closest thing to an index of the producers",
             "detail": "No index prices HBM, but one fund now tracks the companies that make it. The Roundhill Memory ETF, ticker DRAM on Cboe BZX, launched on 2 April 2026 and is described by its issuer as the first memory-stock ETF: an actively managed basket of HBM, DRAM and NAND producers rather than a broad semiconductor fund. Its basket is therefore the nearest public proxy for a VRAM producer index, and its published exposures are a usable read on which suppliers the market is weighting. Two caveats a reader should carry: it is active, so the basket is a manager's judgement rather than a rules-based index, and the disclosed weights combine stock positions with exposure held through total return swaps, so a weight is not a direct shareholding.",
             "source": "https://www.roundhillinvestments.com/etf/dram/"
+        },
+        {
+            "name": "How HBM pushes up the price of ordinary PC memory",
+            "detail": "HBM and the DDR5 in desktops, laptops and servers are made on the same DRAM wafer lines. A gigabyte of HBM takes roughly three times the wafer capacity of a gigabyte of standard DRAM, because of the stacking, extra processing and testing involved, so every line a maker moves to HBM removes far more ordinary memory from the market. With AI buyers paying large premiums, the makers have done exactly that, and consumer memory prices rose steeply through 2026; retail trackers reported 32GB DDR5 kits that sold for under about $90 in early 2025 listed at several hundred dollars. New fabs take two to three years to build, so analysts expect tight supply to last through at least 2027.",
+            "source": "https://spectrum.ieee.org/dram-shortage"
+        },
+        {
+            "name": "Memory is now most of what an accelerator costs to build",
+            "detail": "As HBM prices climbed and stacks grew taller, memory overtook the logic die as the largest component cost of an AI accelerator: an industry estimate reported at the end of September 2026 put it at about 63 percent of the bill of materials. That is why memory supply, not just GPU supply, sets how many accelerators can be built.",
+            "source": "https://www.techtimes.com/articles/328293/20260930/all-four-major-memory-makers-join-applied-materials-epic-center-kioxia-completes-coalition.htm"
+        },
+        {
+            "name": "Capacity is contracted years ahead",
+            "detail": "The largest buyers, chip designers such as NVIDIA and cloud companies such as Microsoft, Meta, Alphabet and Amazon, sign long-term agreements directly with the three suppliers, some reaching out to 2028 and beyond; one report in August 2026 said Samsung had committed most of its HBM capacity through 2031. Contract prices stay private, which is the practical reason no public HBM price exists.",
+            "source": "https://www.jpmorgan.com/insights/global-research/artificial-intelligence/dram-memory-shortage-from-ai"
+        },
+        {
+            "name": "HBM, GDDR and DDR compared",
+            "detail": "DDR5 sits on removable modules with a 64-bit path per module and delivers roughly 64 to 70 GB/s each, built for capacity rather than speed. GDDR6 and GDDR6X are chips soldered around a graphics processor, run at very high clock speeds over buses up to 384 bits wide, and reach about 1 TB/s across a whole card. HBM stacks DRAM dies vertically beside the processor and runs slower clocks over a 1,024-bit bus per stack, so a single HBM3 or HBM3E stack moves more than 800 GB/s and a full accelerator several terabytes a second. Width, not clock speed, is what makes it suited to AI.",
+            "source": "https://en.wikipedia.org/wiki/High_Bandwidth_Memory"
+        },
+        {
+            "name": "HBM4 turns the base of the stack into a logic chip",
+            "detail": "Through HBM3E the memory makers built the whole stack themselves, including the simple base die at the bottom. HBM4 doubles the interface to 2,048 bits, and handling that width pushes the base die onto advanced logic processes in the 5 and 3 nanometre class. The memory makers do not run such fabs, so SK hynix and Micron source HBM4 base dies from TSMC, and SK hynix has been reported to be exploring Intel Foundry as a second source; Samsung plans to use its own foundry. Because the base die is now a logic chip, large customers can design their own features into it before the memory layers go on top, so HBM4 is partly custom silicon rather than a standard part.",
+            "source": "https://www.thelec.net/news/articleView.html?idxno=14372"
+        },
+        {
+            "name": "Packaging is a second bottleneck after memory",
+            "detail": "Even with enough processors and HBM, an accelerator is not finished until the two are joined on a silicon interposer through advanced packaging, which for most leading AI chips means TSMC's CoWoS. That step needs extreme precision and dedicated capacity, and it has repeatedly been sold out, so packaging, not just memory, caps how many accelerators can ship. TSMC and outside packaging firms such as ASE and Amkor have been expanding capacity as fast as they can.",
+            "source": "https://en.wikipedia.org/wiki/High_Bandwidth_Memory"
+        },
+        {
+            "name": "CXL works around the memory wall from the other side",
+            "detail": "HBM makes memory faster beside the processor; Compute Express Link makes more memory available to it. CXL runs over the same physical slots as PCIe and lets a server add memory beyond its own slots or draw on a shared pool across a rack, as if it were local. Operators use it for memory-hungry work such as retrieval and vector databases, and it lets them reuse older, cheaper DDR4 rather than buying the maximum for every machine.",
+            "source": "https://computeexpresslink.org/"
+        },
+        {
+            "name": "What HBM4 looks like in a shipping accelerator",
+            "detail": "NVIDIA's Rubin GPU, the first of its generation built around HBM4, carries 288 GB of HBM4 per GPU with about 22 TB/s of memory bandwidth, according to NVIDIA. Every HBM4 stack in it rests on a logic base die, which is why the base die shift described above now matters to every memory supplier competing for this business.",
+            "source": "https://nvidianews.nvidia.com/"
+        },
+        {
+            "name": "HBM generations at a glance",
+            "detail": "HBM first shipped in 2015 on AMD's Radeon Fury X, built by SK hynix with AMD. HBM2 followed in 2016, and the HBM2E update raised speeds to 3.2 Gb/s per pin and about 410 GB/s per stack, with stacks up to 12 dies and 24 GB. HBM3 (JEDEC JESD238, 2022) reached about 819 GB/s per stack and went into NVIDIA's H100 and AMD's MI300. HBM3E is a vendor designation rather than a separate standard: Micron's parts run above 9.2 Gb/s per pin and 1.2 TB/s per stack in 24 GB eight-high and 36 GB twelve-high versions, first shipping in NVIDIA's H200 in 2024. JEDEC published HBM4 (JESD270-4) in April 2025 with a 2,048-bit interface, and HBM4E with customer-designed base dies is expected around 2027 to 2028.",
+            "source": "https://www.jedec.org/standards-documents/docs/jesd270-4"
+        },
+        {
+            "name": "How much memory today's accelerators carry",
+            "detail": "NVIDIA: A100 about 1.6 TB/s; H100 80 GB of HBM3 at 3.35 TB/s; H200 141 GB of HBM3E at 4.8 TB/s; B200 180 GB at up to 8 TB/s; the two-GPU GB200 superchip up to 372 GB and 16 TB/s. AMD: MI300X 192 GB of HBM3 at 5.3 TB/s over an 8,192-bit interface; MI300A 128 GB at 5.3 TB/s; MI325X 256 GB of HBM3E at 6 TB/s; MI355X 288 GB at 8 TB/s. Intel's Xeon CPU Max Series puts 64 GB of HBM2e on a server processor. For comparison, an eight-channel DDR5 server delivers roughly 400 GB/s, and a consumer RTX 4090 about 1 TB/s from 24 GB of GDDR6X.",
+            "source": "https://intuitionlabs.ai/articles/hbm-vs-ddr-memory-comparison"
+        },
+        {
+            "name": "What HBM gives up",
+            "detail": "HBM is still DRAM, so it keeps DRAM's limits, including refresh and sensitivity to heat, and moving it beside the processor makes the heat problem worse. A stack holds tens of gigabytes, while a single DDR5 server module now ships at 128 GB, Micron is sampling 256 GB modules and expects 512 GB modules in volume in the second half of 2027, so DDR keeps the capacity role and HBM the bandwidth role. HBM also costs far more to make because of its through-silicon vias, stacking and interposer. The emerging pattern is tiered memory: a fast HBM tier close to the processor and a large DDR tier behind it, as Intel's HBM-equipped Xeons already do.",
+            "source": "https://semiengineering.com/hbm-issues-in-ai-systems/"
         }
     ],
     "reading": {
-        "body": "High bandwidth memory has three suppliers, no spot market, and no public price, which makes it the tightest link in the AI supply chain.\n\nSK hynix, Samsung Electronics and Micron supply essentially all HBM. Nanya, Winbond and CXMT make commodity DRAM, compete for the same wafers and equipment, and ship no HBM at volume. That is a narrower field than the accelerators HBM is stacked beside, and the parts are qualified to specific accelerators rather than interchangeable. Contracts are private and often struck a year or more before delivery, so there is no market in which a price can be observed.\n\nThe practical consequence is that no VRAM price index exists. TrendForce's DRAMeXchange and the DXI track DDR4, DDR5 and NAND modules, which is a direction signal rather than a VRAM price, because commodity DRAM and HBM draw on the same wafers and advanced packaging capacity. For an actual figure, Micron is the only one of the three that files with the SEC, on a fixed calendar, in English, reporting DRAM revenue, bit shipments and average selling price direction each quarter. SK hynix and Samsung file with Korea's Financial Supervisory Service through DART, public and free but in Korean and outside EDGAR, which is why English coverage tends to quote analysts instead of documents.\n\nThe data covers suppliers, disclosure venues and one fund, and it does not cover volumes, contract terms, capacity figures or prices, none of which are public. The Roundhill Memory ETF, ticker DRAM on Cboe BZX, launched 2 April 2026 and is described by its issuer as the first memory-stock ETF, an actively managed basket of HBM, DRAM and NAND producers. It is the nearest public proxy for a producer index, with two limits: it is active, so the basket reflects a manager's judgement rather than rules, and disclosed weights combine stock positions with exposure held through total return swaps, so a weight is not a direct shareholding.",
+        "body": "High bandwidth memory has three suppliers, no public price, and capacity sold out years ahead, which makes it a tighter constraint on AI scaling than accelerators themselves.\n\nThe supply chain narrows at the memory layer. Accelerators have more vendors than the HBM stacks that sit beside their logic dies, and the three that matter, SK hynix, Samsung and Micron, sell on private multi-year contracts rather than a spot market. No index can price a good with three sellers and parts qualified to specific accelerators, so the commodity DRAM indexes track DDR4, DDR5 and NAND as a direction signal only. Micron is the one supplier whose quarterly SEC filings give an actual figure.\n\nThe squeeze reaches ordinary memory because HBM and DDR5 come off the same wafer lines, and a gigabyte of HBM consumes roughly three times the wafer capacity of standard DRAM. Makers moved capacity toward HBM, and consumer DDR5 prices rose steeply through 2026. New fabs take two to three years, so tight supply is expected through at least 2027. Memory has also become the largest single cost in an accelerator, estimated at about 63 percent of the bill of materials at the end of September 2026, which means memory supply rather than GPU supply sets how many accelerators can be built.\n\nTwo further dependencies compound this. HBM4 doubles the interface to 2,048 bits and pushes the base die onto 5 and 3 nanometre logic processes, so SK hynix and Micron source base dies from TSMC and Samsung uses its own foundry, pulling memory and foundry into one chain. Advanced packaging, mostly TSMC's CoWoS, joins memory to logic and has repeatedly sold out. The data covers suppliers, contract structure, generation specifications and cost shares. It does not give a current HBM price, a unit volume, or a delivery schedule, because none of those are public.",
         "model": "ollama:deepseek-v4.1-flash",
-        "generated_on": "2026-10-04"
+        "generated_on": "2026-10-05"
     },
     "built_at": "2026-09-20T13:42:05-05",
     "category": "technology-and-core-infrastructure",
     "page_uid": "a7940382",
-    "verified": "2026-09-20",
-    "generated": "2026-09-20",
-    "refresh_every_days": 7
+    "verified": "2026-10-04",
+    "generated": "2026-10-04",
+    "last_reviewed": "2026-10-04",
+    "refresh_every_days": 30,
+    "review_interval_days": 30
 }

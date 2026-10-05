@@ -1,0 +1,76 @@
+{
+    "faq": [
+        {
+            "a": "There are 7 environments in the set released today.",
+            "q": "How many environments are in RE-Bench?"
+        },
+        {
+            "a": "The agent is given access to a computer (often with several GPUs), a scoring function, and any other necessary resources, and is instructed to score as high as possible within a fixed time limit.",
+            "q": "What resources are agents given in each environment?"
+        },
+        {
+            "a": "AI agents perform better than humans at AI research engineering tasks when both are given 2 hours, but they perform worse at higher time budgets.",
+            "q": "How do AI agents compare to humans on these tasks?"
+        }
+    ],
+    "how": "The seven environments were selected in consultation with ML researchers in academia and top industry labs for realism and coverage. In each environment, the agent, whether human or model, is given the same resources and information, including a scoring function such as maximizing accuracy or making a training loop run faster, and is instructed to score as high as possible within a fixed time limit. Tasks were tested extensively with humans to minimize ambiguities, incorrect scoring, and missing resources.",
+    "url": "https://metr.org/blog/2024-11-22-evaluating-r-d-capabilities-of-llms/",
+    "name": "RE-Bench",
+    "note": "AI agents perform better than humans at 2 hours but worse at higher time budgets, and the high-budget results are the most important for real-world ML research.",
+    "slug": "re-bench",
+    "sort": 7,
+    "related": [
+    ],
+    "results": {
+        "note": "From the paper, no public leaderboard. METR has not published a running RE-Bench leaderboard. These are the paper's headline results, and the per-model scores at each time budget appear only in its figures.",
+        "rows": [
+            {
+                "score": "4× the score of human experts",
+                "detail": "Both given a total time budget of 2 hours per environment (abstract)",
+                "system": "Best AI agents, 2 hour budget"
+            },
+            {
+                "score": "Narrowly ahead of the top AI agent",
+                "detail": "Humans show better returns to more time (abstract)",
+                "system": "Human experts, 8 hour budget"
+            },
+            {
+                "score": "2× the score of the top AI agent",
+                "detail": "32 total hours across different attempts (abstract)",
+                "system": "Human experts, 32 hour budget"
+            },
+            {
+                "score": "36th and 37th percentile of human experts",
+                "detail": "The highest-scoring agents overall (section 4.2)",
+                "family": {
+                    "href": "/ai-ecosystem/technology-and-core-infrastructure/c7f3ce05/",
+                    "name": "Anthropic Claude"
+                },
+                "system": "o1-preview (AIDE) and Claude 3.5 Sonnet (Modular)"
+            },
+            {
+                "score": "0.64 normalized score",
+                "detail": "71 eight-hour runs by 61 experts (table 5)",
+                "system": "Human experts, average"
+            }
+        ],
+        "as_of": "2025-05-27",
+        "metric": "Normalized score: 0 for the starting solution and 1 for the reference solution in each of the 7 environments, averaged across them",
+        "source": "From the paper, no public leaderboard: Wijk et al., RE-Bench, arXiv 2411.15114 (version 2, 27 May 2025)",
+        "retrieved": "2026-10-04",
+        "paper_only": true,
+        "source_url": "https://arxiv.org/abs/2411.15114"
+    },
+    "section": "bench-agents",
+    "built_at": "2026-10-04T19:33:53-05:00",
+    "measures": "RE-Bench measures the performance of humans and frontier model agents on ML research engineering tasks. It uses seven environments, each centered on a task such as fitting a scaling law or optimizing a GPU kernel, where agents are given a computer, often with GPUs, a scoring function, and a fixed time limit to score as high as possible. The tasks are designed to require ML research skills such as conducting experiments, implementing solutions, and allocating compute sensibly.",
+    "page_uid": "094cb678",
+    "generated": "2026-10-04",
+    "maintainer": "METR",
+    "not_measured": "It does not capture real-world ML research that involves much larger projects using more compute over longer periods, with slower feedback loops and less clearly-defined goals. Results should not be overgeneralized because the benchmark has only seven environments and the AI agent setup was a relatively limited effort.",
+    "section_name": "Agent Benchmarks",
+    "last_reviewed": "2026-10-04",
+    "interpretation": "A reader should pay attention to the time budget: AI agents perform better than humans at 2 hours but worse at higher time budgets, and the high-budget results are the most important for real-world ML research. Current results come from a limited setup and only seven environments, so they should be treated as a lower bound on what better elicitation could achieve.",
+    "refresh_every_days": null,
+    "review_interval_days": 90
+}

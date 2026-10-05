@@ -5,7 +5,7 @@
     "slug": "keras",
     "facts": {
         "repo": "keras-team/keras",
-        "stars": 64347,
+        "stars": 64351,
         "licence": "Apache-2.0",
         "archived": false,
         "language": "Python",
@@ -16,43 +16,43 @@
     },
     "model": "ollama:deepseek-v4.1-flash",
     "shape": "lang-profile",
-    "title": "Keras: A Multi-Backend Deep Learning Library for AI",
-    "answer": "Keras is an open-source Python deep learning library, now at version 3, that runs on top of JAX, TensorFlow, PyTorch, or OpenVINO. It provides high-level building blocks for neural networks, including layers, models, optimizers, and training loops, and is used for tasks from image classification to text generation. The key thing to know is that Keras 3 lets you write one codebase and switch backends, so you can prototype quickly and then deploy with the performance characteristics you need.",
-    "built_at": "2026-10-03T11:20:31-05:00",
+    "title": "Keras: A Multi-Backend Deep Learning Framework for AI",
+    "answer": "Keras is an open-source Python library for building and training deep learning models, now in its 3.0 release with support for JAX, TensorFlow, PyTorch, and OpenVINO backends. It sits at the model-definition and training layer of the AI stack, offering high-level APIs like Sequential, Functional, and subclassing. The one thing to know: Keras 3 lets you write one model and run it across multiple frameworks, but performance varies by backend and model.",
+    "built_at": "2026-10-05T06:16:22-05:00",
     "category": "technology-and-core-infrastructure",
     "hub_name": "Programming Languages and Frameworks",
     "page_uid": "079f2091",
     "sections": [
         {
-            "body": "Keras is an open-source deep learning library for Python, created by François Chollet and now maintained by the Keras team. It sits at the high-level API layer of the AI stack, offering a user-friendly interface for building and training neural networks. Since Keras 3.0, it is multi-backend, meaning it can run on top of JAX, TensorFlow, PyTorch, or OpenVINO for inference. It provides over a hundred layers, dozens of metrics, loss functions, optimizers, callbacks, and training loops. The library is licensed under Apache-2.0 and has a large community, with over 64,000 stars on GitHub and adoption by more than 2.5 million developers.",
+            "body": "Keras is an open-source deep learning library written in Python, maintained by the Keras team and released under the Apache 2.0 license. It first appeared in 2015 as a high-level interface for neural networks and has since evolved into a multi-backend framework. With Keras 3.0, officially released and documented on keras.io, it can run on top of JAX, TensorFlow, PyTorch, or OpenVINO for inference. It occupies the model-building and training layer of the AI stack, providing abstractions for layers, models, metrics, losses, optimizers, and training loops. It is not a low-level tensor library or a data processing engine, but a cross-framework language for defining and training models.",
             "heading": "What it is and where it sits in AI work"
         },
         {
-            "body": "Keras is used for the full range of deep learning jobs: training, evaluation, inference, data preprocessing, and model serving. It excels in rapid prototyping and research, thanks to its simple, consistent APIs like Sequential, Functional, and subclassing. It is strong for standard architectures such as convolutional networks for image classification, transformers for text, and autoencoders. With Keras 3, it is also a cross-framework language for custom components that work across backends. It is particularly well-suited for developers who want to experiment quickly and then scale to production, as it supports distributed training and can export models to TensorFlow SavedModel or PyTorch. However, for highly specialized low-level control, other frameworks may be preferred.",
+            "body": "Keras is used for the full range of deep learning tasks: training, evaluation, inference, and data preprocessing. Its built-in methods like fit(), evaluate(), and predict() work uniformly across Sequential models, Functional API models, and subclassed models. It supports image classification, text generation, autoencoders, transfer learning, and more, as shown in official examples such as a mini-GPT for text generation and a sample size estimation recipe for medical imaging. It is strongest when you want a clean, high-level API that works across backends, and when you need to move between experimentation and production without rewriting code. It is also well suited for custom components like layers and metrics that can be shared across JAX, TensorFlow, and PyTorch.",
             "heading": "What it is used for and where it is strongest"
         },
         {
-            "body": "Keras is designed to be approachable, with a gentle learning curve compared to lower-level frameworks. Prerequisites include basic Python programming and a understanding of fundamental machine learning concepts such as layers, loss functions, and optimizers. Some mathematics, like linear algebra and calculus, helps for custom components, but the official guides start with simple examples like MNIST classification. The official website offers extensive documentation, guides, and examples, including a getting started section, functional API guide, and training with built-in methods. A beginner can follow along and build models within hours, though mastering advanced features like custom training loops or multi-backend distribution may require more systems knowledge.",
+            "body": "Keras is designed to be approachable for beginners, with a consistent API and extensive guides on keras.io covering Sequential models, the Functional API, and built-in training methods. However, to use it effectively you need a basic understanding of neural network concepts such as layers, loss functions, optimizers, and metrics, as well as familiarity with Python and NumPy arrays. For advanced use, such as custom training loops or distribution, you may need deeper knowledge of the chosen backend, for example JAX or TensorFlow. The official site offers step-by-step examples, API references, and guides that start from loading data and building a simple model, making it accessible for students and developers new to deep learning.",
             "heading": "How hard it is to learn and what you need first"
         },
         {
-            "body": "Keras has a rich ecosystem. It integrates with KerasHub for pretrained models and components, and supports data loading from NumPy arrays, tf.data.Dataset, PyTorch DataLoader, and Pandas dataframes. The official site provides comprehensive documentation, API references, and a large collection of examples, from image classification to text generation with GPT. The community is active, with contributions on GitHub and discussions on forums. Keras 3's multi-backend design means it works with the JAX, TensorFlow, and PyTorch ecosystems, and custom layers using keras.ops are portable across backends. The site also mentions that Keras powers systems like Waymo's self-driving fleet and YouTube's recommendation engine, indicating strong industry trust.",
+            "body": "Keras has a large ecosystem, with over 64,000 stars on GitHub and adoption by more than 2.5 million developers according to the Keras 3 announcement. It integrates with KerasHub for pretrained models and layers, and supports data pipelines from NumPy arrays, tf.data.Dataset, PyTorch DataLoader, and Pandas dataframes. The keras.ops namespace provides a backend-agnostic set of operations, and the keras.distribution API (currently for JAX) enables model and data parallelism. Documentation on keras.io includes guides, examples, and API references. The community is active, with contributions to the core repository and a wide range of third-party tutorials and projects.",
             "heading": "Ecosystem and community"
         },
         {
-            "body": "Keras is built for both quick experiments and production deployment. Its high-level APIs like Sequential and Functional make prototyping fast, with built-in training loops that handle batching, validation, and metrics. For production, Keras 3 allows you to switch backends to optimize performance: JAX typically delivers the best training and inference performance on GPU, TPU, and CPU, though non-XLA TensorFlow is occasionally faster on GPU. The library also supports model parallelism and data parallelism through the keras.distribution API, currently implemented for JAX. The cost is that using the high-level API may abstract away some low-level control, but you can drop down to custom layers and training loops when needed, and the same code can run across backends.",
+            "body": "Keras is built for both quick experiments and production deployment. Its high-level APIs like Sequential and Functional allow rapid prototyping, while the ability to switch backends means you can train on JAX for speed and deploy on TensorFlow or PyTorch for integration. Benchmarks cited in the Keras 3 announcement show JAX typically delivers the best training and inference performance on GPU, TPU, and CPU, though results vary by model, and non-XLA TensorFlow is occasionally faster on GPU. The cost is that you may need to tune backend-specific settings for optimal performance, and some advanced features like the distribution API are not yet available on all backends. For most users, the trade-off is a consistent API and portability against the need to understand backend nuances.",
             "heading": "Prototyping speed against production performance"
         },
         {
-            "body": "Keras is widely adopted in industry and academia. The official site states it has been chosen by over 2.5 million developers and powers systems such as the Waymo self-driving fleet and the YouTube recommendation engine. It is a current standard, not a legacy choice, especially with Keras 3's multi-backend support. For someone choosing it for work, Keras skills are valuable for roles in machine learning engineering, data science, and AI research, as it is used for rapid prototyping and production. However, the facts do not specify exact job market data or salary trends, so those considering careers should research current demand. The library's integration with TensorFlow, JAX, and PyTorch means it complements rather than replaces those frameworks.",
+            "body": "Keras is used by a wide range of organizations, including Waymo for its self-driving fleet and YouTube for its recommendation engine, as stated on the Keras 3 page. It is a current standard for deep learning development, especially in teams that value flexibility across backends. For someone choosing it for work, Keras skills are transferable because the same code can run on JAX, TensorFlow, and PyTorch, making it a valuable addition to a resume. However, the official material does not provide detailed adoption statistics beyond the 2.5 million developers figure, so it is not possible to say precisely how it compares to other frameworks in every industry. It is not a legacy choice; it is actively developed, with the last push to the repository in October 2026.",
             "heading": "Industry adoption and careers"
         },
         {
-            "body": "Keras is typically used with Python and sits alongside lower-level frameworks like TensorFlow, JAX, and PyTorch. In a polyglot pattern, Keras acts as the high-level API that can run on any of these backends, allowing developers to write one codebase and switch backends for performance or deployment needs. It is often used with TensorFlow as tf.keras, but Keras 3 makes it backend-agnostic. It also integrates with KerasHub for pretrained models and supports data pipelines from NumPy, Pandas, tf.data, and PyTorch DataLoader. This makes Keras a central piece in a multi-framework workflow, where custom components written with keras.ops can be shared across JAX, TensorFlow, and PyTorch.",
+            "body": "Keras is typically used with Python and integrates with JAX, TensorFlow, and PyTorch as backends. It can be used as a low-level cross-framework language to develop custom components that work in native workflows in those frameworks. The polyglot pattern it belongs to is one where a high-level API abstracts over multiple lower-level engines, allowing developers to write once and run anywhere. It also works with OpenVINO for inference-only deployments. In practice, you might use Keras for model definition and training, then export to TensorFlow SavedModel or instantiate as a PyTorch Module for serving. This makes it a central piece in a multi-framework AI stack, rather than a replacement for the backends themselves.",
             "heading": "How it fits beside the others"
         },
         {
-            "body": "Keras is not ideal for every scenario. Its high-level abstractions can limit fine-grained control over computations, which may be necessary for novel research or highly optimized systems. The distribution API is currently only implemented for the JAX backend, with TensorFlow and PyTorch support coming soon, so distributed training on those backends may be less mature. The official site does not specify performance benchmarks for all model types, and results vary. Also, while Keras 3 supports OpenVINO for inference, it is not a training backend. The site does not detail memory management or edge deployment specifics, so those considering embedded or mobile use should investigate further. Finally, the facts do not cover community size beyond GitHub stars, so the breadth of third-party tutorials and support is not fully quantified.",
+            "body": "Keras is not ideal for every scenario. The Sequential model is only appropriate for plain stacks of layers with one input and one output tensor, and is not suitable for non-linear topology like residual connections or multi-branch models. The distribution API is currently implemented only for the JAX backend, with TensorFlow and PyTorch support coming soon, so distributed training on those backends may require other tools. The official material does not specify the exact performance overhead of the multi-backend abstraction, nor does it detail memory management or low-level optimization capabilities compared to using a backend directly. It also does not provide a clear comparison of Keras against other high-level APIs in terms of features or community size. These are open questions for a developer evaluating it for a specific production constraint.",
             "heading": "Limits and open questions"
         }
     ],
@@ -116,6 +116,11 @@
             "kind": "framework",
             "name": "tensorflow",
             "path": "/ai-ecosystem/technology-and-core-infrastructure/367fc8ea/"
+        },
+        {
+            "kind": "framework",
+            "name": "transformers",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/cbbb357d/"
         },
         {
             "kind": "framework",
@@ -203,7 +208,7 @@
             "path": "/ai-ecosystem/technology-and-core-infrastructure/8d5b4f9f/"
         }
     ],
-    "generated": "2026-10-03",
+    "generated": "2026-10-05",
     "site_pages": [
         {
             "url": "https://keras.io/guides/functional_api/",

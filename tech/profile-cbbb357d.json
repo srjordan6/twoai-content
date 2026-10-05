@@ -1,0 +1,315 @@
+{
+    "tax": "lang-profile",
+    "uid": "cbbb357d",
+    "name": "transformers",
+    "slug": "transformers",
+    "facts": {
+        "repo": "huggingface/transformers",
+        "stars": 166951,
+        "licence": "Apache-2.0",
+        "archived": false,
+        "language": "Python",
+        "repo_url": "https://github.com/huggingface/transformers",
+        "last_push": "2026-10-04T17:34:06Z",
+        "description": "🤗 Transformers: the model-definition framework for state-of-the-art machine learning models in text, vision, audio, and multimodal models, for both inference and training. ",
+        "official_site": "https://huggingface.co/docs/transformers/index"
+    },
+    "model": "ollama:deepseek-v4.1-flash",
+    "shape": "lang-profile",
+    "title": "Transformers: Hugging Face's Model-Definition Framework for AI",
+    "answer": "Transformers is Hugging Face's open source Python library for defining, loading and running state of the art machine learning models across text, vision, audio and multimodal tasks, for both inference and training. It sits at the model-definition layer of the AI stack, giving one consistent interface to thousands of pretrained checkpoints on the Hugging Face Hub. The one thing to know before adopting it is that its convenience is deliberate: the library favours readable, self-contained model code over minimal abstraction, which shapes both how quickly you can start and how you extend it.",
+    "built_at": "2026-10-05T06:15:51-05:00",
+    "category": "technology-and-core-infrastructure",
+    "hub_name": "Programming Languages and Frameworks",
+    "page_uid": "cbbb357d",
+    "sections": [
+        {
+            "body": "Transformers is made by Hugging Face and distributed under the Apache-2.0 licence, with its source at github.com/huggingface/transformers and documentation at huggingface.co/docs/transformers. It is written in Python and describes itself as the model-definition framework for state of the art machine learning models in text, vision, audio and multimodal work, covering both inference and training. It occupies the model-definition layer of the stack: it is not a training loop, a data pipeline or a serving system, but the place where architectures, configurations and pretrained weights are expressed and loaded. The repository shows sustained activity, with a last push recorded in October 2026 and roughly 167,000 stars, which indicates a widely used and actively maintained project rather than a frozen one. Models are loaded through classes such as AutoModel and the from_pretrained method, which download weights and configuration from the Hugging Face Hub, so the library is tightly coupled to that distribution channel by design.",
+            "heading": "What it is and where it sits in AI work"
+        },
+        {
+            "body": "The library covers the concrete jobs developers actually run: loading pretrained checkpoints for inference, fine-tuning them for training, extracting features, and running task-specific work through its pipelines API. Pipelines abstract most of the complex code and expose tasks including named entity recognition, masked language modelling, sentiment analysis, feature extraction, question answering, automatic speech recognition, image classification, object detection, depth estimation and image-text-to-text, among others. A pipeline can be called on a single item or a list, and for full datasets the documentation recommends iterating over a dataset directly so the whole thing is not allocated at once. The library is strongest when you want a pretrained model for a standard task without writing architecture code, and when you want one interface that spans text, vision, audio and multimodal models. It is also the natural place to fine-tune, since PreTrainedModel handles loading, saving and pushing to the Hub, and can enable gradients for input embeddings so adapter weights can be trained while the base model stays frozen.",
+            "heading": "What it is used for and where it is strongest"
+        },
+        {
+            "body": "The entry cost is low for inference and moderate for anything deeper. A single line such as AutoModel.from_pretrained(\"google-bert/bert-base-cased\") is enough to load a model, and the Auto classes pick the right architecture from the configuration, so a beginner does not need to know the model's internals to start. The official site offers a glossary that defines terms such as attention mask, backbone, causal language modelling, CTC and data parallelism, which is a reasonable on-ramp for readers new to the field. Going further assumes Python fluency and some familiarity with tensors and neural network layers, since the documentation talks in terms of hidden states, heads, embeddings and forward passes. Contributing a model is a separate and more demanding exercise: the guide walks through adding an example model, requires a configuration class, a modeling file and inheritance from PreTrainedModel and PreTrainedConfig, and asks contributors to read the model's research paper for practical design details. The library is explicitly opinionated, so learning its conventions matters as much as learning the mathematics.",
+            "heading": "How hard it is to learn and what you need first"
+        },
+        {
+            "body": "The ecosystem is the library's main asset. Pretrained models are distributed through the Hugging Face Hub and loaded by name or path, and the Auto classes resolve the correct configuration and model class automatically, with model_type mappings covering a long list of architectures. Models are saved as safetensors files alongside a config.json, and safetensors is described as more secure and faster to load than PyTorch pickle serialization. save_pretrained shards checkpoints larger than 50GB automatically, and PreTrainedModel.push_to_hub uploads a model to a personal namespace or an organisation, with options for commit messages, revisions, pull requests and tags. The pipelines API spans audio, computer vision, natural language processing and multimodal tasks. Community contribution is built into the process: many models are contributed by developers and researchers, and GitHub issues labelled as new model requests are the place to view and add requests. Documentation is extensive and page by page, covering auto classes, the base model class, pipelines, model loading, the glossary and individual model cards.",
+            "heading": "Ecosystem and community"
+        },
+        {
+            "body": "Transformers is built for both, but the trade is explicit. For prototyping, the pipelines API and the Auto classes remove almost all setup, and a task can be running in a few lines. For production, the library offers memory and performance controls: fast initialization, sharded checkpoints, Accelerate's Big Model Inference feature and support for lower bit data types, which matter because loading a large pretrained model needs enough memory to hold two copies of the weights, the random initialization and the pretrained one. PreTrainedModel can dequantize a model that was quantized by a supported method, and device_map and dtype parameters let you place and cast models deliberately. The cost is that the library is opinionated and favours readable, self-contained model files over aggressive abstraction, with no more than two levels of abstraction for any model. That makes code easier to read and debug but can mean more duplication and less room for exotic optimisations than a hand-written implementation.",
+            "heading": "Prototyping speed against production performance"
+        },
+        {
+            "body": "The facts show a project with roughly 167,000 stars, an active repository and a documentation set that covers a very large catalogue of models, which is consistent with it being a current standard rather than a legacy choice. Its model cards include recent work such as Youtu-LLM from Tencent's Youtu team, contributed in January 2026, which suggests new architectures continue to arrive. For someone choosing what to learn, the library is a reasonable default because it is the common interface to pretrained models across modalities, and familiarity with its loading, saving and pipeline conventions transfers across projects. What the facts do not establish is how widely it is used in any particular industry, how it compares with alternatives on benchmarks, or what employers specifically ask for, so claims about adoption in a given sector or about hiring demand should not be read into this page. The safe reading is that it is a widely used, actively maintained standard for model definition and inference, and that knowing it is useful, without treating that as a guarantee about any single job market.",
+            "heading": "Industry adoption and careers"
+        },
+        {
+            "body": "Transformers is a Python library, and the documentation assumes a Python workflow throughout, with examples using PyTorch tensors and the torch.float32 type. It sits alongside rather than replaces the rest of the stack: PyTorch provides the tensor and module machinery, Accelerate provides Big Model Inference for large models, and the Hub provides distribution of weights and configurations. The pipelines API is the high-level entry point, the Auto classes and PreTrainedModel are the middle layer, and the modeling files are where architecture-specific code lives. This is the polyglot pattern common in AI work, where Python handles model definition and training while other languages and systems handle data engineering, serving and application logic around it. The library's own design keeps model files self-contained, so a model can be read and modified without chasing abstractions across the codebase, which makes it easier to move between the library and a custom implementation when a project outgrows the standard path.",
+            "heading": "How it fits beside the others"
+        },
+        {
+            "body": "The library is opinionated, and the documentation says so directly, which means some design choices will not suit every project. Its preference for explicit, readable code over minimal abstraction can lead to duplicated code, and the guide states that duplicate code is not always bad if it improves readability and accessibility, so readers who want a lean framework may find it heavier than expected. Loading large models is memory-hungry, needing room for two copies of the weights, and the mitigations listed are features of the library and its surrounding tools rather than guarantees about any given machine. The official material does not settle several questions a reader might have: it does not compare performance against other frameworks, does not state which tasks or model sizes are impractical, does not give a clear picture of how much of the catalogue is maintained versus contributed once, and does not say how the library relates to serving systems or deployment targets. Those gaps are worth noting rather than filling in from assumption.",
+            "heading": "Limits and open questions"
+        }
+    ],
+    "siblings": [
+        {
+            "kind": "framework",
+            "name": "ai",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/4c80ad91/"
+        },
+        {
+            "kind": "framework",
+            "name": "autogen",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/60f558b0/"
+        },
+        {
+            "kind": "framework",
+            "name": "crewAI",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/52f2d4fc/"
+        },
+        {
+            "kind": "framework",
+            "name": "haystack",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/244d606e/"
+        },
+        {
+            "kind": "framework",
+            "name": "jax",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/1722316f/"
+        },
+        {
+            "kind": "framework",
+            "name": "keras",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/079f2091/"
+        },
+        {
+            "kind": "framework",
+            "name": "langchain",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/10376bfa/"
+        },
+        {
+            "kind": "framework",
+            "name": "litellm",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/b9fc5220/"
+        },
+        {
+            "kind": "framework",
+            "name": "llama_index",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/07b3602c/"
+        },
+        {
+            "kind": "framework",
+            "name": "pydantic-ai",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/a6a0d2bd/"
+        },
+        {
+            "kind": "framework",
+            "name": "pytorch",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/c4d0a8c3/"
+        },
+        {
+            "kind": "framework",
+            "name": "semantic-kernel",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/7a5bc5c6/"
+        },
+        {
+            "kind": "framework",
+            "name": "tensorflow",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/367fc8ea/"
+        },
+        {
+            "kind": "framework",
+            "name": "unsloth",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/9aab6db8/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "CTranslate2",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/9436dfa2/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "llama.cpp",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/32458451/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "llamafile",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/8f2f922d/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "lmdeploy",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/e24aae0d/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "mlc-llm",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/bcce36c4/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "ollama",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/8e9c04c4/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "onnxruntime",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/7ab24352/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "sglang",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/711194f2/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "TensorRT-LLM",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/6e41175d/"
+        },
+        {
+            "kind": "inference engine",
+            "name": "vllm",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/44ebb5e4/"
+        },
+        {
+            "kind": "language",
+            "name": "C++",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/b393c4f6/"
+        },
+        {
+            "kind": "language",
+            "name": "Go",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/a218afb2/"
+        },
+        {
+            "kind": "language",
+            "name": "Julia",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/3719f5ac/"
+        },
+        {
+            "kind": "language",
+            "name": "Mojo",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/b5a22ab0/"
+        },
+        {
+            "kind": "language",
+            "name": "Python",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/7aa3e6c4/"
+        },
+        {
+            "kind": "language",
+            "name": "TypeScript",
+            "path": "/ai-ecosystem/technology-and-core-infrastructure/8d5b4f9f/"
+        }
+    ],
+    "generated": "2026-10-05",
+    "site_pages": [
+        {
+            "url": "https://huggingface.co/docs/transformers/model_doc/auto",
+            "date": ""
+        },
+        {
+            "url": "https://huggingface.co/docs/transformers/main_classes/model",
+            "date": ""
+        },
+        {
+            "url": "https://huggingface.co/docs/transformers/en/add_new_model",
+            "date": ""
+        },
+        {
+            "url": "https://huggingface.co/docs/transformers/glossary",
+            "date": ""
+        },
+        {
+            "url": "https://huggingface.co/docs/transformers/main_classes/pipelines",
+            "date": ""
+        },
+        {
+            "url": "https://huggingface.co/docs/transformers/models",
+            "date": ""
+        },
+        {
+            "url": "https://huggingface.co/docs/transformers/model_doc/youtu",
+            "date": ""
+        },
+        {
+            "url": "https://huggingface.co/docs/transformers/generation_strategies",
+            "date": ""
+        },
+        {
+            "url": "https://huggingface.co/docs/transformers/main/en/serving",
+            "date": ""
+        },
+        {
+            "url": "https://huggingface.co/docs/transformers/main_classes/tokenizer",
+            "date": ""
+        },
+        {
+            "url": "https://huggingface.co/docs/transformers/main_classes/configuration",
+            "date": ""
+        },
+        {
+            "url": "https://huggingface.co/docs/transformers/quicktour",
+            "date": ""
+        },
+        {
+            "url": "https://huggingface.co/docs/transformers/model_doc/gemma2",
+            "date": ""
+        },
+        {
+            "url": "https://huggingface.co/docs/transformers/model_doc/smollm3",
+            "date": ""
+        },
+        {
+            "url": "https://huggingface.co/docs/transformers/tasks/prompting",
+            "date": ""
+        },
+        {
+            "url": "https://huggingface.co/docs/transformers/en/modeling_rules",
+            "date": ""
+        },
+        {
+            "url": "https://huggingface.co/docs/transformers/en/testing",
+            "date": ""
+        },
+        {
+            "url": "https://huggingface.co/docs/transformers/en/main_classes/output",
+            "date": ""
+        },
+        {
+            "url": "https://huggingface.co/docs/transformers/llm_tutorial",
+            "date": ""
+        },
+        {
+            "url": "https://huggingface.co/docs/transformers/main_classes/output",
+            "date": ""
+        },
+        {
+            "url": "https://huggingface.co/docs/transformers/peft",
+            "date": ""
+        },
+        {
+            "url": "https://huggingface.co/docs/transformers/en/modular_transformers",
+            "date": ""
+        },
+        {
+            "url": "https://huggingface.co/docs/transformers/pipeline_tutorial",
+            "date": ""
+        }
+    ],
+    "source_url": "https://huggingface.co/docs/transformers/index",
+    "parent_name": "AI Frameworks",
+    "parent_path": "/ai-ecosystem/technology-and-core-infrastructure/2eb54277/",
+    "site_domain": "huggingface.co/docs/transformers",
+    "subject_key": "framework:huggingface/transformers",
+    "subject_kind": "framework",
+    "source_read_on": "2026-10-05",
+    "site_pages_read": 60,
+    "refresh_every_days": 90
+}

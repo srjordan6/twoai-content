@@ -25,25 +25,28 @@
         "llmperf"
     ],
     "results": {
-        "note": "Results are per-round tables across datacenter and edge suites, closed and open divisions, and very different system configurations, so a single headline number would misrepresent the benchmark. Compare within a round, scenario, and division at the source tables.",
+        "note": "Current round: MLPerf Inference v6.1, published by MLCommons on 16 September 2026. It drew a record 30 submitting organizations, about 120 systems and 486 datacenter and edge results. It added two tests, an end to end retrieval augmented generation pipeline for datacenters and an edge agentic inference test aimed at coding assistants on workstations, and added support for speculative decoding. MLCommons reports the best per accelerator DeepSeek-R1 server result is 5.7 times the v5.1 result of a year earlier, and the best vision language model result 2.99 times v6.0. New hardware included AMD Instinct MI350P and Ryzen AI Max+ 395, Intel Arc Pro B70, and NVIDIA Rubin and Vera Rubin NVL72 in the preview category; the largest system ever submitted, 512 AMD Instinct MI355X GPUs run by Crusoe, also appeared. gpt-oss-120b drew 112 submissions, the most of any workload. Results are per scenario tables across datacenter and edge suites, closed and open divisions and very different system sizes, so no single headline number is shown; compare within a round, scenario and division at the source tables.",
         "rows": [
         ],
-        "as_of": "2026-08-10",
-        "metric": "Throughput and latency per scenario (server, offline), per system",
-        "source": "MLCommons published results",
-        "source_url": "https://mlcommons.org/benchmarks/inference-datacenter/"
+        "as_of": "2026-09-16",
+        "round": "v6.1",
+        "metric": "Throughput and latency per scenario (server, offline, interactive), per system",
+        "source": "MLCommons published results, MLPerf Inference v6.1",
+        "retrieved": "2026-10-05",
+        "source_url": "https://mlcommons.org/benchmarks/inference-datacenter/",
+        "previous_round": "v6.0"
     },
     "section": "bench-hardware",
-    "built_at": "2026-08-10T14:39:58-05",
+    "built_at": "2026-10-05T05:23:50-05:00",
     "measures": "Serving throughput and latency for datacenter and edge systems on standardized workloads, including LLM scenarios with strict latency constraints.",
     "page_uid": "883cbb24",
     "criticism": "The scenario abstractions, while far better than raw throughput claims, still simplify production serving: real LLM traffic has bursty arrivals, mixed prompt lengths, KV-cache pressure from long conversations, and multi-tenant interference, none fully captured. Accuracy targets permit quantization and other optimizations up to a quality floor, and submissions cluster at that floor, so reported speed can come with quality loss the headline number hides. The showcase-hardware and selective-participation problems carry over from Training intact.",
-    "generated": "2026-08-09",
+    "generated": "2026-10-05",
     "maintainer": "MLCommons",
     "not_measured": "Model quality (accuracy targets are fixed), price-performance, or behavior on your specific model and traffic mix.",
     "section_name": "Hardware Benchmarks",
-    "last_reviewed": "2026-08-09",
+    "last_reviewed": "2026-10-04",
     "interpretation": "Pick the scenario that matches your deployment, server numbers for interactive services, offline for batch, and check the accuracy target the submission hit, not just the throughput. For LLM serving, the latency-constrained results, time to first token and time per output token, are the ones that predict user experience. Then treat the result as an upper bound and budget for the gap between showcase tuning and your stack.",
     "refresh_every_days": 90,
-    "review_interval_days": 90
+    "review_interval_days": 365
 }
