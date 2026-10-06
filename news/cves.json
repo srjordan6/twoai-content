@@ -3,6 +3,66 @@
     "cves": [
         {
             "kev": false,
+            "uid": "3a080f1d",
+            "cve_id": "CVE-2026-104850",
+            "vendor": "",
+            "product": "MCP",
+            "summary": "MCP TypeScript SDK is the official TypeScript SDK for Model Context Protocol servers and clients. Starting in version 1.12.0 and prior to versions 1.31.0 and 2.2.0, the SDK's OAuth client support let the MCP server a...",
+            "entities": [
+            ],
+            "headline": "MCP TypeScript SDK 1.12.0 to 1.31.0 leaks OAuth credentials to a hostile MCP server",
+            "published": "2026-10-06",
+            "cvss_score": 7.5,
+            "cvss_severity": "HIGH"
+        },
+        {
+            "kev": false,
+            "uid": "1c8410a9",
+            "cve_id": "CVE-2026-105922",
+            "vendor": "",
+            "product": "vLLM",
+            "summary": "A security flaw has been discovered in vllm-project vLLM up to 0.31.0. This impacts the function get_token_bin_counts_and_mask of the file vllm/model_executor/layers/utils.py of the component Penalty Handler. Performing...",
+            "entities": [
+            ],
+            "headline": "vLLM up to 0.31.0 denial of service in penalty handler",
+            "published": "2026-10-06",
+            "cvss_score": 2.1,
+            "cvss_severity": "LOW"
+        },
+        {
+            "kev": false,
+            "uid": "a3d1f496",
+            "cve_id": "CVE-2026-105799",
+            "vendor": "LangChain",
+            "product": "LangChain",
+            "summary": "LangChain is a framework for building LLM-powered applications. Prior to 1.1.1, @langchain/redis does not escape attacker-controlled values in structured RediSearch TAG filters and structured RediSearch TEXT filters,...",
+            "entities": [
+                {
+                    "uid": "cfcbf3a5",
+                    "href": "/ai-tools/langchain/",
+                    "kind": "tool",
+                    "name": "LangChain"
+                },
+                {
+                    "uid": "f7a060c7",
+                    "href": "/companies/f7a060c7/",
+                    "kind": "company",
+                    "name": "LangChain"
+                },
+                {
+                    "uid": "2eb54277",
+                    "href": "/ai-ecosystem/technology-and-core-infrastructure/2eb54277/",
+                    "kind": "section_item",
+                    "name": "langchain"
+                }
+            ],
+            "headline": "LangChain @langchain/redis before 1.1.1 lets a filter expose other tenants' documents",
+            "published": "2026-10-06",
+            "cvss_score": 2.3,
+            "cvss_severity": "LOW"
+        },
+        {
+            "kev": false,
             "uid": "5f4daa8f",
             "cve_id": "CVE-2026-105775",
             "vendor": "",
@@ -10,7 +70,7 @@
             "summary": "A security vulnerability has been detected in vllm-project vLLM up to 0.31.0. This impacts the function conv_ssm_forward of the file vllm/model_executor/layers/mamba/mamba_mixer2.py of the component Completions Request...",
             "entities": [
             ],
-            "headline": "vLLM up to 0.31.0 has an out-of-bounds read in the completions handler",
+            "headline": "vLLM up to 0.31.0 has an out-of-bounds read in its completions handler",
             "published": "2026-10-06",
             "cvss_score": 2.1,
             "cvss_severity": "LOW"
@@ -24,7 +84,7 @@
             "summary": "Dify is an open-source LLM app development platform. Prior to 1.13.0, the /console/api/remote-files/upload endpoint in api/controllers/web/remote_files.py accepted an attacker-controlled URL without authentication and...",
             "entities": [
             ],
-            "headline": "Dify before 1.13.0 lets an unauthenticated request make the server fetch internal URLs",
+            "headline": "Dify before 1.13.0 lets an unauthenticated request make the server fetch any URL",
             "published": "2026-10-06",
             "cvss_score": 8.3,
             "cvss_severity": "HIGH"
@@ -66,7 +126,7 @@
             "summary": "vLLM is an inference and serving engine for large language models. Prior to 0.30.0, the Rust frontend's track_http_metrics middleware records the raw HTTP method token as a Prometheus label for requests reaching...",
             "entities": [
             ],
-            "headline": "vLLM before 0.30.0 lets unauthenticated requests exhaust memory",
+            "headline": "vLLM before 0.30.0 allows unauthenticated memory exhaustion",
             "published": "2026-10-05",
             "cvss_score": 5.9,
             "cvss_severity": "MEDIUM"
@@ -80,7 +140,7 @@
             "summary": "vLLM is an inference and serving engine for large language models. From 0.24.0 until 0.30.0, the Qwen2VLVideoBackend and Qwen3VLVideoBackend classes accept request-level values for the media_io_kwargs.video.max_frames...",
             "entities": [
             ],
-            "headline": "vLLM 0.24.0 to 0.30.0 lets an unauthenticated request exhaust frontend memory",
+            "headline": "vLLM 0.24.0-0.30.0 unauthenticated memory exhaustion via video frame limits",
             "published": "2026-10-05",
             "cvss_score": 5.3,
             "cvss_severity": "MEDIUM"
@@ -94,7 +154,7 @@
             "summary": "vLLM is an inference and serving engine for large language models. Prior to 0.30.0, structured-output request failures can escape request-scoped validation and reach the EngineCore fatal-error path. A per-request...",
             "entities": [
             ],
-            "headline": "vLLM before 0.30.0 lets a crafted structured-output request crash the shared engine",
+            "headline": "vLLM before 0.30.0 lets a constrained-generation request crash the shared engine",
             "published": "2026-10-05",
             "cvss_score": 6.5,
             "cvss_severity": "MEDIUM"
@@ -122,7 +182,7 @@
             "summary": "vLLM is an inference and serving engine for large language models. Prior to 0.30.0, flash late-interaction scoring at the /score and /rerank endpoints derives each worker's query_key value from the caller-controlled...",
             "entities": [
             ],
-            "headline": "vLLM before 0.30.0 lets a reused request ID corrupt another user's rerank scores",
+            "headline": "vLLM before 0.30.0 lets a reused request ID swap another user's scoring query",
             "published": "2026-10-05",
             "cvss_score": 4.2,
             "cvss_severity": "MEDIUM"
@@ -136,7 +196,7 @@
             "summary": "vLLM is an inference and serving engine for large language models. Prior to 0.30.0, the /inference/v1/generate endpoint in the disaggregated scale-out path accepts caller-supplied tensors in the features.kwargs_data...",
             "entities": [
             ],
-            "headline": "vLLM before 0.30.0 lets a caller crash the shared EngineCore through the generate endpoint",
+            "headline": "vLLM before 0.30.0 lets a caller crash the shared engine through the generate endpoint",
             "published": "2026-10-05",
             "cvss_score": 6.5,
             "cvss_severity": "MEDIUM"
@@ -150,7 +210,7 @@
             "summary": "vLLM is an inference and serving engine for large language models. Prior to 0.28.0, the default mirrored multimodal LRU cache can commit a media hash in the frontend sender cache during multimodal rendering and before...",
             "entities": [
             ],
-            "headline": "vLLM before 0.28.0 can crash its shared service with a reused media hash",
+            "headline": "vLLM before 0.28.0 can crash its shared service with a repeated media hash",
             "published": "2026-10-05",
             "cvss_score": 6.5,
             "cvss_severity": "MEDIUM"
@@ -164,7 +224,7 @@
             "summary": "vLLM is an inference and serving engine for large language models. Prior to 0.30.0, Harmony tool continuations submitted through \"POST /v1/responses\" requests rebuild the next-turn engine input without preserving the...",
             "entities": [
             ],
-            "headline": "vLLM before 0.30.0 leaks cached prompt prefixes between tenants",
+            "headline": "vLLM before 0.30.0 leaks salted cache prefixes to other tenants",
             "published": "2026-10-05",
             "cvss_score": 3.1,
             "cvss_severity": "LOW"
@@ -178,7 +238,7 @@
             "summary": "Langflow is a tool for building and deploying AI-powered agents and workflows. From 1.5.0 until 1.10.3, an IP spoofing vulnerability in the Model Context Protocol (MCP) configuration installation endpoint (POST...",
             "entities": [
             ],
-            "headline": "Langflow 1.5.0-1.10.3 lets users spoof localhost and overwrite MCP config",
+            "headline": "Langflow 1.5.0 to 1.10.3 lets a logged-in user spoof localhost and write MCP config files",
             "published": "2026-10-05",
             "cvss_score": 7.1,
             "cvss_severity": "HIGH"
@@ -206,7 +266,7 @@
             "summary": "Langflow is a tool for building and deploying AI-powered agents and workflows. From 1.6.8 until 1.9.1, Langflow authenticated access to the project identifier in a project-scoped MCP connection but did not authorize the...",
             "entities": [
             ],
-            "headline": "Langflow 1.6.8 to 1.9.0 lets a project user read another user's flow files",
+            "headline": "Langflow 1.6.8 to 1.9.1 lets a project user read another user's flow files",
             "published": "2026-10-05",
             "cvss_score": 7.1,
             "cvss_severity": "HIGH"
@@ -220,7 +280,7 @@
             "summary": "Langflow is a tool for building and deploying AI-powered agents and workflows. From 1.0.0 until 1.10.1, Langflow did not verify flow ownership in the deprecated POST /api/v1/build/{flow_id}/vertices and POST...",
             "entities": [
             ],
-            "headline": "Langflow before 1.10.1 lets a caller read and run another user's private flow",
+            "headline": "Langflow before 1.10.1 lets a caller run another user's private flow vertices",
             "published": "2026-10-05",
             "cvss_score": 5.4,
             "cvss_severity": "MEDIUM"
@@ -234,7 +294,7 @@
             "summary": "Langflow is a tool for building and deploying AI-powered agents and workflows. Before Langflow 1.10.3, the MCP stdio transport launched whatever command / args a user put in an MCP server configuration, with no...",
             "entities": [
             ],
-            "headline": "Langflow before 1.10.3 runs any OS command set in an MCP server config",
+            "headline": "Langflow before 1.10.3 runs any command set in an MCP server config",
             "published": "2026-10-05",
             "cvss_score": 9.9,
             "cvss_severity": "CRITICAL"
@@ -288,7 +348,7 @@
                     "name": "Weaviate"
                 }
             ],
-            "headline": "Weaviate Verba 2.1.3 endpoint leaks environment data to remote requests",
+            "headline": "Weaviate Verba up to 2.1.3 leaks environment data through generate_stream endpoint",
             "published": "2026-10-04",
             "cvss_score": 5.5,
             "cvss_severity": "MEDIUM"
@@ -308,7 +368,7 @@
                     "name": "sglang"
                 }
             ],
-            "headline": "Mooncake before 0.3.12 lets an unauthenticated frame crash an SGLang server",
+            "headline": "Mooncake before 0.3.12 lets an unauthenticated frame crash SGLang servers",
             "published": "2026-10-03",
             "cvss_score": 8.7,
             "cvss_severity": "HIGH"
@@ -362,10 +422,10 @@
             "summary": "langflow-ai langflow v1.8.4 is affected by: Directory Traversal. The impact is: Arbitrary file write outside the intended workspace or storage boundary.. The component is:...",
             "entities": [
             ],
-            "headline": "Langflow 1.8.4 knowledge base endpoint lets a request write files outside the workspace",
+            "headline": "Langflow 1.8.4 lets a web request write files outside the workspace",
             "published": "2026-10-01",
-            "cvss_score": null,
-            "cvss_severity": ""
+            "cvss_score": 7.5,
+            "cvss_severity": "HIGH"
         },
         {
             "kev": false,
@@ -570,6 +630,25 @@
             "published": "2026-09-30",
             "cvss_score": 2,
             "cvss_severity": "LOW"
+        },
+        {
+            "kev": false,
+            "uid": "42d454cf",
+            "cve_id": "CVE-2026-90915",
+            "vendor": "",
+            "product": "File Storage",
+            "summary": "Joomla! Core - [20260905] - Core - Arbitrary directory deletion via cache purge action in Joomla 4.0.0-5.4.8, 6.0.0-6.1.3 -An improper validation of the cache group name allowed path traverals in the file storage of the...",
+            "entities": [
+                {
+                    "href": "/mcp/ai-b77-file-storage/",
+                    "kind": "mcp_server",
+                    "name": "File Storage"
+                }
+            ],
+            "headline": "Joomla 4.0.0 to 5.4.8 and 6.0.0 to 6.1.3 let a cache purge delete any directory",
+            "published": "2026-09-29",
+            "cvss_score": 7,
+            "cvss_severity": "HIGH"
         },
         {
             "kev": false,
@@ -11013,7 +11092,7 @@
                     "name": "camel"
                 }
             ],
-            "headline": "Undertow before 2.2.39 accepts malformed Host headers, enabling cache poisoning",
+            "headline": "Undertow before 2.2.39 accepts malicious Host headers, enabling cache poisoning",
             "published": "2026-01-07",
             "cvss_score": 9.6,
             "cvss_severity": "CRITICAL"
@@ -11087,7 +11166,7 @@
                     "name": "camel"
                 }
             ],
-            "headline": "Undertow lets malformed requests reset streams and exhaust server resources",
+            "headline": "Undertow lets malformed requests exhaust server resources",
             "published": "2025-09-02",
             "cvss_score": 7.5,
             "cvss_severity": "HIGH"
@@ -11135,13 +11214,13 @@
     ],
     "name": "AI CVE tracker",
     "shape": "cve-list",
-    "total": 647,
+    "total": 651,
     "sources": {
         "kev": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
         "nvd": "https://nvd.nist.gov/",
         "cve_org": "https://www.cve.org/"
     },
-    "built_at": "2026-10-06T05:51:10-05",
+    "built_at": "2026-10-06T13:57:13-05",
     "page_uid": "9a078601",
     "generated": "2026-10-06",
     "pinned_news": [

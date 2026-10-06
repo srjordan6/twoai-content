@@ -18,7 +18,7 @@
             "cve_id": "CVE-2026-105755",
             "product": "vLLM",
             "summary": "vLLM is an inference and serving engine for large language models. Prior to 0.30.0, flash late-interaction scoring at the /score and /rerank endpoints derives each worker's query_key value from the caller-controlled X-Re",
-            "headline": "vLLM before 0.30.0 lets a reused request ID corrupt another user's rerank scores",
+            "headline": "vLLM before 0.30.0 lets a reused request ID swap another user's scoring query",
             "published": "2026-10-05",
             "cvss_score": 4.2,
             "cvss_severity": "MEDIUM"
@@ -28,7 +28,7 @@
             "cve_id": "CVE-2026-105699",
             "product": "Langflow",
             "summary": "Langflow is a tool for building and deploying AI-powered agents and workflows. From 1.6.8 until 1.9.1, Langflow authenticated access to the project identifier in a project-scoped MCP connection but did not authorize the ",
-            "headline": "Langflow 1.6.8 to 1.9.0 lets a project user read another user's flow files",
+            "headline": "Langflow 1.6.8 to 1.9.1 lets a project user read another user's flow files",
             "published": "2026-10-05",
             "cvss_score": 7.1,
             "cvss_severity": "HIGH"
@@ -38,7 +38,7 @@
             "cve_id": "CVE-2026-105698",
             "product": "Langflow",
             "summary": "Langflow is a tool for building and deploying AI-powered agents and workflows. From 1.0.0 until 1.10.1, Langflow did not verify flow ownership in the deprecated POST /api/v1/build/{flow_id}/vertices and POST /api/v1/buil",
-            "headline": "Langflow before 1.10.1 lets a caller read and run another user's private flow",
+            "headline": "Langflow before 1.10.1 lets a caller run another user's private flow vertices",
             "published": "2026-10-05",
             "cvss_score": 5.4,
             "cvss_severity": "MEDIUM"
@@ -304,7 +304,7 @@
     "status": "Incomplete",
     "ai_text": "In AI software this weakness shows up in low-code agent builders, chat front ends and MCP servers, where records are addressed by IDs a user can change. The CVEs land in Flowise, Langflow, Open WebUI, ToolJet, n8n-MCP and the MCP Python SDK. A logged-in user simply swaps a workspace, flow, session or file identifier for someone else's, and the server returns it without checking ownership. Attackers then read or delete other tenants' files, chat history, flows and build jobs, reuse provider API keys and OpenAI credentials, rewrite another member's message, or inject messages into another session. In some Flowise cases no login is needed at all.",
     "ai_model": "ollama:deepseek-v4.1-flash",
-    "built_at": "2026-10-06T05:51:11-05",
+    "built_at": "2026-10-06T13:57:13-05",
     "critical": 1,
     "page_uid": "728b2e50",
     "generated": "2026-10-06",

@@ -5,6 +5,16 @@
     "cves": [
         {
             "kev": false,
+            "cve_id": "CVE-2026-104850",
+            "product": "MCP",
+            "summary": "MCP TypeScript SDK is the official TypeScript SDK for Model Context Protocol servers and clients. Starting in version 1.12.0 and prior to versions 1.31.0 and 2.2.0, the SDK's OAuth client support let the MCP server a cli",
+            "headline": "MCP TypeScript SDK 1.12.0 to 1.31.0 leaks OAuth credentials to a hostile MCP server",
+            "published": "2026-10-06",
+            "cvss_score": 7.5,
+            "cvss_severity": "HIGH"
+        },
+        {
+            "kev": false,
             "cve_id": "CVE-2026-63127",
             "product": "MCP",
             "summary": "RMCP is an official Rust SDK for the Model Context Protocol. Prior to 2.0.0, the rmcp crate's OAuth implementation in crates/rmcp/src/transport/auth.rs omits the RFC 9728 resource field from ResourceServerMetadata and al",
@@ -24,17 +34,17 @@
             "cvss_severity": "MEDIUM"
         }
     ],
-    "high": 1,
+    "high": 2,
     "name": "Insufficient Verification of Data Authenticity",
-    "count": 2,
+    "count": 3,
     "shape": "cwe",
     "title": "CWE-345: Insufficient Verification of Data Authenticity",
     "cwe_id": "CWE-345",
-    "latest": "2026-09-16",
+    "latest": "2026-10-06",
     "status": "Draft",
     "ai_text": "In AI software this weakness shows up in MCP servers and the clients that talk to them, where trust in the other side is assumed rather than checked. Both given CVEs sit in that layer. In rmcp before 2.0.0, a malicious MCP server can take the victim's access token because the client does not properly verify who it is really connected to. In CKAN MCP Server before 0.4.112, crafted queries can poison a shared cache, so other users later receive data that was never genuine. The usual route is a server or query the client accepts at face value. The result is stolen credentials or corrupted shared results, with impact spreading to anyone using the same cache or token.",
     "ai_model": "ollama:deepseek-v4.1-flash",
-    "built_at": "2026-10-06T05:51:11-05",
+    "built_at": "2026-10-06T13:57:13-05",
     "critical": 0,
     "page_uid": "1f67b2bf",
     "generated": "2026-10-06",
