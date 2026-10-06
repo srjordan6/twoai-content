@@ -24,10 +24,10 @@
     "status": "Draft",
     "ai_text": "In AI software this weakness shows up in MCP servers, the connector layer that lets AI assistants reach outside tools and services. The one CVE here is in an MCP GitLab server before version 2.1.30. A malicious web page can reach the server's local HTTP endpoint, and the server trusts a reverse DNS lookup to decide whether a request is safe. Because the IP address is not truly tied to the hostname, that check can pass for the wrong caller. An attacker can then act through the AI assistant's GitLab connection, reaching repositories and actions the server was trusted to perform on the user's behalf.",
     "ai_model": "ollama:deepseek-v4.1-flash",
-    "built_at": "2026-10-05T23:02:42-05",
+    "built_at": "2026-10-06T02:09:53-05",
     "critical": 1,
     "page_uid": "a0231be6",
-    "generated": "2026-10-05",
+    "generated": "2026-10-06",
     "mitre_url": "https://cwe.mitre.org/data/definitions/350.html",
     "likelihood": "",
     "abstraction": "Variant",
@@ -61,5 +61,6 @@
     "ai_written_on": "2026-10-02",
     "alternate_terms": [
     ],
+    "refresh_every_days": 1,
     "extended_description": "Since DNS names can be easily spoofed or misreported, and it may be difficult for the product to detect if a trusted DNS server has been compromised, DNS names do not constitute a valid authentication mechanism. When the product performs a reverse DNS resolution for an IP address, if an attacker controls the DNS server for that IP address, then the attacker can cause the server to return an arbitrary hostname. As a result, the attacker may be able to bypass authentication, cause the wrong hostname to be recorded in log files to hide activities, or perform other attacks. Attackers can spoof DNS names by either (1) compromising a DNS server and modifying its records (sometimes called DNS cache poisoning), or (2) having legitimate control over a DNS server associated with their IP address."
 }

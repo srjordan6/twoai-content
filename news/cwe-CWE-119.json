@@ -5,6 +5,16 @@
     "cves": [
         {
             "kev": false,
+            "cve_id": "CVE-2026-105775",
+            "product": "vLLM",
+            "summary": "A security vulnerability has been detected in vllm-project vLLM up to 0.31.0. This impacts the function conv_ssm_forward of the file vllm/model_executor/layers/mamba/mamba_mixer2.py of the component Completions Request H",
+            "headline": "vLLM up to 0.31.0 has an out-of-bounds read in the completions handler",
+            "published": "2026-10-06",
+            "cvss_score": 2.1,
+            "cvss_severity": "LOW"
+        },
+        {
+            "kev": false,
             "cve_id": "CVE-2026-17512",
             "product": "llama.cpp",
             "summary": "A vulnerability has been found in ggml-org whisper.cpp 1.8.4-58. This impacts the function log_mel_spectrogram of the file src/whisper.cpp. The manipulation leads to out-of-bounds read. The attack needs to be performed l",
@@ -16,18 +26,18 @@
     ],
     "high": 0,
     "name": "Improper Restriction of Operations within the Bounds of a Memory Buffer",
-    "count": 1,
+    "count": 2,
     "shape": "cwe",
     "title": "CWE-119: Improper Restriction of Operations within the Bounds of a Memory Buffer",
     "cwe_id": "CWE-119",
-    "latest": "2026-07-27",
+    "latest": "2026-10-06",
     "status": "Stable",
     "ai_text": "In AI software this weakness shows up in model serving and inference code, where audio and tensor buffers are handled directly. The one CVE here sits in llama.cpp, the runtime behind whisper.cpp 1.8.4-58, a local speech transcription tool. The flaw is an out-of-bounds read in log_mel_spectrogram, the step that turns raw audio into mel spectrogram input for the model. It is reached by feeding the tool crafted audio, so the parsing of that input runs past the buffer it was given. An attacker who can supply audio to a local whisper.cpp user can cause the process to read memory outside the intended region, which may expose adjacent program data or crash the service.",
     "ai_model": "ollama:deepseek-v4.1-flash",
-    "built_at": "2026-10-05T23:02:42-05",
+    "built_at": "2026-10-06T02:09:53-05",
     "critical": 0,
     "page_uid": "77e99393",
-    "generated": "2026-10-05",
+    "generated": "2026-10-06",
     "mitre_url": "https://cwe.mitre.org/data/definitions/119.html",
     "likelihood": "",
     "abstraction": "Class",
@@ -136,5 +146,6 @@
             "description": "Generally used for techniques that avoid weaknesses related to memory access, such as those identified by CWE-119 and its descendants. However, the term is not formal, and there is likely disagreement between practitioners as to which weaknesses are implicitly covered by the memory safety term."
         }
     ],
+    "refresh_every_days": 1,
     "extended_description": ""
 }
