@@ -24,7 +24,7 @@
     "status": "Draft",
     "ai_text": "In AI software this weakness shows up in model serving, where a long running process holds connections, buffers or worker slots that are never given back. The one CVE here is in vLLM, an LLM inference and serving engine, and it involves its Mooncake transfer path. Rejected requests are the way in, since each one still consumes a sender pool slot that is not released once the request is done. Over time those pools are exhausted, so the server can no longer accept or move work and legitimate inference traffic stalls. The result is a denial of service against the serving endpoint rather than any theft of data or code execution.",
     "ai_model": "ollama:deepseek-v4.1-flash",
-    "built_at": "2026-10-05T13:33:44-05",
+    "built_at": "2026-10-05T23:02:42-05",
     "critical": 0,
     "page_uid": "631f91b2",
     "generated": "2026-10-05",
@@ -70,6 +70,5 @@
     "ai_written_on": "2026-10-02",
     "alternate_terms": [
     ],
-    "refresh_every_days": 1,
     "extended_description": ""
 }

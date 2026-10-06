@@ -5,6 +5,26 @@
     "cves": [
         {
             "kev": false,
+            "cve_id": "CVE-2026-105740",
+            "product": "Langflow",
+            "summary": "Langflow is a tool for building and deploying AI-powered agents and workflows. Prior to 1.9.0, any authenticated Langflow user can achieve Remote Code Execution (RCE) on the server by adding an MCP server with the \"Stdio",
+            "headline": "Langflow before 1.9.0 lets any signed-in user run commands on the server",
+            "published": "2026-10-05",
+            "cvss_score": 9.9,
+            "cvss_severity": "CRITICAL"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-105697",
+            "product": "Langflow",
+            "summary": "Langflow is a tool for building and deploying AI-powered agents and workflows. Before Langflow 1.10.3, the MCP stdio transport launched whatever command / args a user put in an MCP server configuration, with no allowlist",
+            "headline": "Langflow before 1.10.3 runs any OS command set in an MCP server config",
+            "published": "2026-10-05",
+            "cvss_score": 9.9,
+            "cvss_severity": "CRITICAL"
+        },
+        {
+            "kev": false,
             "cve_id": "CVE-2026-55157",
             "product": "MCP",
             "summary": "Token Optimizer MCP measures token savings per AI coding agent, optimizes context, and shares a live local knowledge graph across 16 CLI clients. Prior to version 5.1.0, token-optimizer-mcp is vulnerable to OS command in",
@@ -246,16 +266,16 @@
     ],
     "high": 14,
     "name": "Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection')",
-    "count": 24,
+    "count": 26,
     "shape": "cwe",
     "title": "CWE-78: Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection')",
     "cwe_id": "CWE-78",
-    "latest": "2026-09-28",
+    "latest": "2026-10-05",
     "status": "Stable",
     "ai_text": "In AI software this weakness shows up mostly in agent frameworks, MCP servers and LLM application builders, where the product passes model or user input into a shell. The CVEs cover Langflow, Flowise, mcp-shell, MaxKB, Gradio, Claude Code and Copilot, among others. It is reached through MCP tool calls, MCP server configuration, custom nodes, pull request files, web requests or a signed-in workspace member. What it lets an attacker do is run operating system commands as the server user, sometimes as root or a higher privileged account, on the machine hosting the AI tool.",
     "ai_model": "ollama:deepseek-v4.1-flash",
-    "built_at": "2026-10-05T13:33:44-05",
-    "critical": 9,
+    "built_at": "2026-10-05T23:02:42-05",
+    "critical": 11,
     "page_uid": "4a85e30b",
     "generated": "2026-10-05",
     "mitre_url": "https://cwe.mitre.org/data/definitions/78.html",
@@ -413,6 +433,5 @@
             "term": "OS Command Injection"
         }
     ],
-    "refresh_every_days": 1,
     "extended_description": "This weakness can lead to a vulnerability in environments in which the attacker does not have direct access to the operating system, such as in web applications. Alternately, if the weakness occurs in a privileged program, it could allow the attacker to specify commands that normally would not be accessible, or to call alternate commands with privileges that the attacker does not have. The problem is exacerbated if the compromised process does not follow the principle of least privilege, because the attacker-controlled commands may run with special system privileges that increases the amount of damage. There are at least two subtypes of OS command injection: The application intends to execute a single, fixed program that is under its own control. It intends to use externally-supplied inputs as arguments to that program. For example, the program might use system(nslookup [HOSTNAME]) to run nslookup and allow the user to supply a HOSTNAME, which is used as an argument. Attackers cannot prevent nslookup from executing. However, if the program does not remove command separators from the HOSTNAME argument, attackers could place the separators into the arguments, which allows them to execute their own program after nslookup has finished executing. The application accepts an input that it uses to fully select which program to run, as well as which commands to use. The application simply redirects this entire command to the operating system. For example, the program might use exec([COMMAND]) to execute the [COMMAND] that was supplied by the user. If the COMMAND is under attacker control, then the attacker can execute arbitrary commands or programs. If the command is being executed using functions like exec() and CreateProcess(), the attacker might not be able to combine multiple commands together in the same line. From a weakness standpoint, these variants represent distinct programmer errors. In the first variant, the programmer clearly intends that input from untrusted parties will be part of the arguments in the command to be executed. In the second variant, the programmer does not intend for the command to be accessible to any untrusted party, but the programmer probably has not accounted for alternate ways in which malicious attackers can provide input."
 }

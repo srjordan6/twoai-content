@@ -5,6 +5,16 @@
     "cves": [
         {
             "kev": false,
+            "cve_id": "CVE-2026-105753",
+            "product": "vLLM",
+            "summary": "vLLM is an inference and serving engine for large language models. Prior to 0.28.0, the default mirrored multimodal LRU cache can commit a media hash in the frontend sender cache during multimodal rendering and before en",
+            "headline": "vLLM before 0.28.0 can crash its shared service with a reused media hash",
+            "published": "2026-10-05",
+            "cvss_score": 6.5,
+            "cvss_severity": "MEDIUM"
+        },
+        {
+            "kev": false,
             "cve_id": "CVE-2026-94623",
             "product": "vLLM",
             "summary": "vLLM through 0.29.0 contains a denial of service vulnerability in the NIXL connector's prefix caching implementation that fails to properly validate block counts across multi-prompt completion requests in prefill/decode ",
@@ -76,15 +86,15 @@
     ],
     "high": 3,
     "name": "Reachable Assertion",
-    "count": 7,
+    "count": 8,
     "shape": "cwe",
     "title": "CWE-617: Reachable Assertion",
     "cwe_id": "CWE-617",
-    "latest": "2026-09-21",
+    "latest": "2026-10-05",
     "status": "Draft",
     "ai_text": "In AI software this weakness shows up in model serving and inference stacks, where a reachable assertion turns a normal request into a process exit. The CVEs sit in vLLM, llama.cpp, whisper.cpp and TensorRT-LLM, reached through crafted prompts, GGUF model files, Jinja templates, RPC calls or a single API request. An attacker who can send that input crashes the decode worker, sampler thread or server, taking the service down for everyone else. vLLM, llama.cpp and TensorRT-LLM are the named examples here. The impact is denial of service rather than code execution, but a single request is often enough.",
     "ai_model": "ollama:deepseek-v4.1-flash",
-    "built_at": "2026-10-05T13:33:44-05",
+    "built_at": "2026-10-05T23:02:42-05",
     "critical": 0,
     "page_uid": "9d551e87",
     "generated": "2026-10-05",
@@ -124,6 +134,5 @@
             "term": "assertion failure"
         }
     ],
-    "refresh_every_days": 1,
     "extended_description": "While assertion is good for catching logic errors and reducing the chances of reaching more serious vulnerability conditions, it can still lead to a denial of service. For example, if a server handles multiple simultaneous connections, and an assert() occurs in one single connection that causes all other connections to be dropped, this is a reachable assertion that leads to a denial of service."
 }

@@ -5,6 +5,36 @@
     "cves": [
         {
             "kev": false,
+            "cve_id": "CVE-2026-105757",
+            "product": "vLLM",
+            "summary": "vLLM is an inference and serving engine for large language models. Prior to 0.30.0, structured-output request failures can escape request-scoped validation and reach the EngineCore fatal-error path. A per-request backend",
+            "headline": "vLLM before 0.30.0 lets a crafted structured-output request crash the shared engine",
+            "published": "2026-10-05",
+            "cvss_score": 6.5,
+            "cvss_severity": "MEDIUM"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-105756",
+            "product": "vLLM",
+            "summary": "vLLM is an inference and serving engine for large language models. Prior to 0.30.0, OpenAI-compatible request models accept a non-empty cache_salt value without enforcing the character and length restrictions required by",
+            "headline": "vLLM before 0.30.0 lets a bad cache_salt value crash the engine for all users",
+            "published": "2026-10-05",
+            "cvss_score": 6.5,
+            "cvss_severity": "MEDIUM"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-105754",
+            "product": "vLLM",
+            "summary": "vLLM is an inference and serving engine for large language models. Prior to 0.30.0, the /inference/v1/generate endpoint in the disaggregated scale-out path accepts caller-supplied tensors in the features.kwargs_data fiel",
+            "headline": "vLLM before 0.30.0 lets a caller crash the shared EngineCore through the generate endpoint",
+            "published": "2026-10-05",
+            "cvss_score": 6.5,
+            "cvss_severity": "MEDIUM"
+        },
+        {
+            "kev": false,
             "cve_id": "CVE-2026-100652",
             "product": "vLLM",
             "summary": "vLLM versions 0.22.0 through 0.23.0 fail to validate stop_token_ids against vocabulary bounds in Rust HTTP and gRPC frontends, allowing out-of-vocabulary token IDs to reach MinTokensLogitsProcessor. Attackers can submit ",
@@ -132,20 +162,30 @@
             "published": "2026-07-06",
             "cvss_score": 7.5,
             "cvss_severity": "HIGH"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2025-12543",
+            "product": "camel",
+            "summary": "A flaw was found in the Undertow HTTP server core, which is used in WildFly, JBoss EAP, and other Java applications. The Undertow library fails to properly validate the Host header in incoming HTTP requests.As a result, ",
+            "headline": "Undertow before 2.2.39 accepts malformed Host headers, enabling cache poisoning",
+            "published": "2026-01-07",
+            "cvss_score": 9.6,
+            "cvss_severity": "CRITICAL"
         }
     ],
     "high": 5,
     "name": "Improper Input Validation",
-    "count": 13,
+    "count": 17,
     "shape": "cwe",
     "title": "CWE-20: Improper Input Validation",
     "cwe_id": "CWE-20",
-    "latest": "2026-09-26",
+    "latest": "2026-10-05",
     "status": "Stable",
     "ai_text": "In AI software, CWE-20 shows up wherever a model, server or agent takes data from outside and trusts it. The CVEs sit in model serving such as vLLM and Triton Inference Server, in agent and MCP tooling such as Flowise, Langflow and the CKAN MCP Server, and in libraries such as Transformers and PyTorch. The usual route is a request, URL, config file or checkpoint that the product accepts without checking. What it lets an attacker do ranges from crashing the engine or stalling the scheduler, as in vLLM, to running code through MCP settings or loading a malicious checkpoint.",
     "ai_model": "ollama:deepseek-v4.1-flash",
-    "built_at": "2026-10-05T13:33:44-05",
-    "critical": 1,
+    "built_at": "2026-10-05T23:02:42-05",
+    "critical": 2,
     "page_uid": "b0b7f823",
     "generated": "2026-10-05",
     "mitre_url": "https://cwe.mitre.org/data/definitions/20.html",
@@ -257,6 +297,5 @@
     "ai_written_on": "2026-10-02",
     "alternate_terms": [
     ],
-    "refresh_every_days": 1,
     "extended_description": "Input validation is a frequently-used technique for checking potentially dangerous inputs in order to ensure that the inputs are safe for processing within the code, or when communicating with other components. Input can consist of: raw data - strings, numbers, parameters, file contents, etc. metadata - information about the raw data, such as headers or size Data can be simple or structured. Structured data can be composed of many nested layers, composed of combinations of metadata and raw data, with other simple or structured data. Many properties of raw data or metadata may need to be validated upon entry into the code, such as: specified quantities such as size, length, frequency, price, rate, number of operations, time, etc. implied or derived quantities, such as the actual size of a file instead of a specified size indexes, offsets, or positions into more complex data structures symbolic keys or other elements into hash tables, associative arrays, etc. well-formedness, i.e. syntactic correctness - compliance with expected syntax lexical token correctness - compliance with rules for what is treated as a token specified or derived type - the actual type of the input (or what the input appears to be) consistency - between individual data elements, between raw data and metadata, between references, etc. conformance to domain-specific rules, e.g. business logic equivalence - ensuring that equivalent inputs are treated the same authenticity, ownership, or other attestations about the input, e.g. a cryptographic signature to prove the source of the data Implied or derived properties of data must often be calculated or inferred by the code itself. Errors in deriving properties may be considered a contributing factor to improper input validation."
 }

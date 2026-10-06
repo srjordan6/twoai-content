@@ -24,7 +24,7 @@
     "status": "Incomplete",
     "ai_text": "In AI software this weakness shows up in LLM gateway and proxy products, as the single CVE here shows. LiteLLM 1.82.4 and earlier is the example, a tool teams run in front of many model providers to route and log requests. The flaw sits in a template engine that processes externally influenced input, so a request reaching the gateway can be read as a template expression rather than plain text. Because the gateway is often reachable without authentication, an attacker can send crafted input and get operating system commands to run on the host. That turns a shared model access point into a foothold on the server itself.",
     "ai_model": "ollama:deepseek-v4.1-flash",
-    "built_at": "2026-10-05T13:33:44-05",
+    "built_at": "2026-10-05T23:02:42-05",
     "critical": 1,
     "page_uid": "101cd3e7",
     "generated": "2026-10-05",
@@ -67,6 +67,5 @@
             "description": "This term is used for injection into template engines being used by a client."
         }
     ],
-    "refresh_every_days": 1,
     "extended_description": "Many web applications use template engines that allow developers to insert externally-influenced values into free text or messages in order to generate a full web page, document, message, etc. Such engines include Twig, Jinja2, Pug, Java Server Pages, FreeMarker, Velocity, ColdFusion, Smarty, and many others - including PHP itself. Some CMS (Content Management Systems) also use templates. Template engines often have their own custom command or expression language. If an attacker can influence input into a template before it is processed, then the attacker can invoke arbitrary expressions, i.e. perform injection attacks. For example, in some template languages, an attacker could inject the expression {{7*7}} and determine if the output returns 49 instead. The syntax varies depending on the language. In some cases, XSS-style attacks can work, which can obscure the root cause if the developer does not closely investigate the root cause of the error. Template engines can be used on the server or client, so both sides could be affected by injection. The mechanisms of attack or the affected technologies might be different, but the mistake is fundamentally the same."
 }

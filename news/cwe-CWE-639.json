@@ -5,6 +5,46 @@
     "cves": [
         {
             "kev": false,
+            "cve_id": "CVE-2026-105761",
+            "product": "Dify",
+            "summary": "Dify is an open-source LLM app development platform. Prior to 1.16.0, the PUT /console/api/apps/&lt;app_id&gt;/server endpoint in api/controllers/console/app/mcp_server.py used AppMCPServerController.put() to retrieve an",
+            "headline": "Dify before 1.16.0 lets a workspace member alter another app's MCP server",
+            "published": "2026-10-05",
+            "cvss_score": 7.1,
+            "cvss_severity": "HIGH"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-105755",
+            "product": "vLLM",
+            "summary": "vLLM is an inference and serving engine for large language models. Prior to 0.30.0, flash late-interaction scoring at the /score and /rerank endpoints derives each worker's query_key value from the caller-controlled X-Re",
+            "headline": "vLLM before 0.30.0 lets a reused request ID corrupt another user's rerank scores",
+            "published": "2026-10-05",
+            "cvss_score": 4.2,
+            "cvss_severity": "MEDIUM"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-105699",
+            "product": "Langflow",
+            "summary": "Langflow is a tool for building and deploying AI-powered agents and workflows. From 1.6.8 until 1.9.1, Langflow authenticated access to the project identifier in a project-scoped MCP connection but did not authorize the ",
+            "headline": "Langflow 1.6.8 to 1.9.0 lets a project user read another user's flow files",
+            "published": "2026-10-05",
+            "cvss_score": 7.1,
+            "cvss_severity": "HIGH"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-105698",
+            "product": "Langflow",
+            "summary": "Langflow is a tool for building and deploying AI-powered agents and workflows. From 1.0.0 until 1.10.1, Langflow did not verify flow ownership in the deprecated POST /api/v1/build/{flow_id}/vertices and POST /api/v1/buil",
+            "headline": "Langflow before 1.10.1 lets a caller read and run another user's private flow",
+            "published": "2026-10-05",
+            "cvss_score": 5.4,
+            "cvss_severity": "MEDIUM"
+        },
+        {
+            "kev": false,
             "cve_id": "CVE-2026-100610",
             "product": "Flowise",
             "summary": "Flowise through 3.1.4 exposes GET /api/v1/upsert-history/:id and PATCH /api/v1/upsert-history without route-level permission checks, and the backing service performs no workspace or ownership validation. getAllUpsertHist",
@@ -254,17 +294,17 @@
             "cvss_severity": "LOW"
         }
     ],
-    "high": 13,
+    "high": 15,
     "name": "Authorization Bypass Through User-Controlled Key",
-    "count": 25,
+    "count": 29,
     "shape": "cwe",
     "title": "CWE-639: Authorization Bypass Through User-Controlled Key",
     "cwe_id": "CWE-639",
-    "latest": "2026-09-26",
+    "latest": "2026-10-05",
     "status": "Incomplete",
     "ai_text": "In AI software this weakness shows up in low-code agent builders, chat front ends and MCP servers, where records are addressed by IDs a user can change. The CVEs land in Flowise, Langflow, Open WebUI, ToolJet, n8n-MCP and the MCP Python SDK. A logged-in user simply swaps a workspace, flow, session or file identifier for someone else's, and the server returns it without checking ownership. Attackers then read or delete other tenants' files, chat history, flows and build jobs, reuse provider API keys and OpenAI credentials, rewrite another member's message, or inject messages into another session. In some Flowise cases no login is needed at all.",
     "ai_model": "ollama:deepseek-v4.1-flash",
-    "built_at": "2026-10-05T13:33:44-05",
+    "built_at": "2026-10-05T23:02:42-05",
     "critical": 1,
     "page_uid": "728b2e50",
     "generated": "2026-10-05",
@@ -336,6 +376,5 @@
             "description": "Horizontal Authorization is used to describe situations in which two users have the same privilege level, but must be prevented from accessing each other's resources. This is fairly common when using key-based access to resources in a multi-user context."
         }
     ],
-    "refresh_every_days": 1,
     "extended_description": "Retrieval of a user record occurs in the system based on some key value that is under user control. The key would typically identify a user-related record stored in the system and would be used to lookup that record for presentation to the user. It is likely that an attacker would have to be an authenticated user in the system. However, the authorization process would not properly check the data access operation to ensure that the authenticated user performing the operation has sufficient entitlements to perform the requested data access, hence bypassing any other authorization checks present in the system. For example, attackers can look at places where user specific data is retrieved (e.g. search screens) and determine whether the key for the item being looked up is controllable externally. The key may be a hidden field in the HTML form field, might be passed as a URL parameter or as an unencrypted cookie variable, then in each of these cases it will be possible to tamper with the key value. One manifestation of this weakness is when a system uses sequential or otherwise easily-guessable session IDs that would allow one user to easily switch to another user's session and read/modify their data."
 }

@@ -15,15 +15,14 @@
         "model": "ollama:deepseek-v4.1-flash",
         "generated_on": "2026-10-04"
     },
-    "built_at": "2026-10-05T05:53:52-05:00",
+    "built_at": "2026-10-05T22:56:01-05:00",
     "page_uid": "r0000163",
     "citations": 4,
-    "generated": "2026-10-05",
+    "generated": "2026-10-06",
     "paper_type": "Preprint",
     "topic_name": "Architectures",
     "topic_slug": "architectures",
     "explain_beginner": "This paper introduces a way to build a new kind of AI model without starting from zero. Normally, making a hybrid model, which mixes two memory styles, means expensive training from scratch. The authors instead take an already trained Transformer and convert it, using a small amount of extra training. The result keeps quality while running faster and using less memory. They compared three memory layer types and found one clearly best. This matters because it makes powerful, efficient AI models cheaper to create and easier to study.",
     "explain_business": "This research shows you can convert an existing Transformer into a faster, more memory-efficient hybrid model without paying for full pre-training. The conversion uses a tiny fraction of the original training budget and works across model families and sizes. In practice, a 32B hybrid model outperformed its source on reasoning, matched a comparable Transformer, and decoded up to 2.3 times faster. The decision this informs is whether to keep serving standard Transformers or convert them to hybrids for lower inference cost. It also flags a governance point: converting a model is a substantial modification, which raises re-assessment questions under the AI Act.",
-    "refresh_every_days": 30,
     "explain_practitioner": "The authors present Priming, which initializes a Hybrid State-Space model from a pre-trained Transformer rather than training from scratch. Short alignment and post-training phases recover downstream quality using under 0.5% of the source model's pre-training token budget. The method works across Transformer families, dense and Mixture-of-Experts classes, and scales. This enabled a controlled comparison of SSM layer types under identical conditions: Gated KalmaNet, Gated DeltaNet, and Mamba-2. Their expressiveness hierarchy, GKA over GDN over Mamba-2, predicted long-context reasoning performance. A Hybrid GKA 32B beat its Qwen3-32B source by 3.8 average reasoning points, stayed within 1% of a Transformer post-trained on the same data, and delivered up to 2.3x higher decode throughput."
 }

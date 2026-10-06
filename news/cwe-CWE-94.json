@@ -5,6 +5,16 @@
     "cves": [
         {
             "kev": false,
+            "cve_id": "CVE-2026-51886",
+            "product": "Langflow",
+            "summary": "langflow-ai langflow v1.9.3 is affected by: Code Injection. The impact is: execute arbitrary code (remote). The component is: src/backend/base/langflow/api/v1/validate.py:validate-post_validate_code-a-real-authenticated-",
+            "headline": "Langflow 1.9.3 lets an authenticated user run Python code on the server",
+            "published": "2026-10-01",
+            "cvss_score": 9.8,
+            "cvss_severity": "CRITICAL"
+        },
+        {
+            "kev": false,
             "cve_id": "CVE-2026-51858",
             "product": "camel",
             "summary": "In camel-ai camel 0.2.91a1, v0.2.91a2 and v0.2.91a3, TerminalToolkit.shell_exec allows prompt-driven shell command execution without an approval boundary.",
@@ -456,16 +466,16 @@
     ],
     "high": 19,
     "name": "Improper Control of Generation of Code ('Code Injection')",
-    "count": 45,
+    "count": 46,
     "shape": "cwe",
     "title": "CWE-94: Improper Control of Generation of Code ('Code Injection')",
     "cwe_id": "CWE-94",
-    "latest": "2026-09-30",
+    "latest": "2026-10-01",
     "status": "Draft",
     "ai_text": "In AI software this weakness shows up as code that models or prompts write being run directly. The CVEs sit in agent frameworks, MCP servers, LLM application builders, model serving tools and notebooks. Attackers reach it through prompts, flow names, component options, model files, package arguments or notebook commands. Langflow is the clearest example, where signed-in users or remote attackers run code through flow builds, display names and endpoints. Flowise lets prompts and CSV Agent nodes run Python on the host. vLLM runs model code even when trust_remote_code is False, and camel runs model-written Python and shell commands without approval. The result is code execution on the server.",
     "ai_model": "ollama:deepseek-v4.1-flash",
-    "built_at": "2026-10-05T13:33:44-05",
-    "critical": 24,
+    "built_at": "2026-10-05T23:02:42-05",
+    "critical": 25,
     "page_uid": "e08810e8",
     "generated": "2026-10-05",
     "mitre_url": "https://cwe.mitre.org/data/definitions/94.html",
@@ -567,6 +577,5 @@
             "term": "Code Injection"
         }
     ],
-    "refresh_every_days": 1,
     "extended_description": ""
 }

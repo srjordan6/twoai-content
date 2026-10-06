@@ -15,15 +15,14 @@
         "model": "ollama:deepseek-v4.1-flash",
         "generated_on": "2026-10-04"
     },
-    "built_at": "2026-10-05T05:53:52-05:00",
+    "built_at": "2026-10-05T22:56:01-05:00",
     "page_uid": "r0000162",
     "citations": 5635,
-    "generated": "2026-10-05",
+    "generated": "2026-10-06",
     "paper_type": "Preprint",
     "topic_name": "Architectures",
     "topic_slug": "architectures",
     "explain_beginner": "Neural networks can only learn so much because their size limits how much information they hold. This paper shows a way to make a network much larger while keeping the work per input fairly small. It uses many small forward processing parts and a learned gate that picks only a few of them for each example. The authors tested this on language prediction and translation, building models with up to 137 billion parameters placed between stacked LSTM layers. These models beat earlier best results while using less computation. The finding matters because it shows very large models can be practical, not just theoretical.",
     "explain_business": "This paper shows that a model can be made far larger without making every input use the whole model. A learned gate sends each example through only a few small expert subnetworks. In tests on language prediction and translation, models with up to 137 billion parameters gave better results than earlier best systems while using less computation. The authors report over a thousand times more capacity with only minor efficiency losses on graphics processor clusters. For an executive, this supports choosing sparse expert designs when scaling language AI, because it can improve quality while controlling compute cost. It informs decisions about model architecture and infrastructure spending.",
-    "refresh_every_days": 30,
     "explain_practitioner": "The authors built a mixture of experts layer for selective activation at scale. It contains up to thousands of forward processing subnetworks. A trainable gate selects a sparse group of experts for each example, so only part of the layer runs. They inserted this layer between stacked LSTM layers in a convolutional setup for language prediction and translation. The largest model reached 137 billion parameters. On large benchmarks, it outperformed prior best results while costing less computation. They also report over a thousand times more capacity with only small efficiency losses on modern graphics processor clusters. Sparse expert routing can deliver much larger models without proportional compute."
 }

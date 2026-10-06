@@ -6,7 +6,7 @@
             "q": "What should I learn first about AI?"
         },
         {
-            "a": "Today the median API model tracked on this site costs $0.40 per million input tokens and $1.90 per million output tokens. Summarising a 40 page contract comes to about 1.3 cents at those prices.",
+            "a": "Today the median API model tracked on this site costs $0.41 per million input tokens and $1.91 per million output tokens. Summarising a 40 page contract comes to about 1.3 cents at those prices.",
             "q": "How much does it cost to use an AI model?"
         },
         {
@@ -32,7 +32,7 @@
             "meet": [
                 {
                     "uid": "56f96b2b",
-                    "fact": "Today the median model tracked here costs $0.40 per million input tokens and $1.90 per million output tokens, across 460 models from 64 providers.",
+                    "fact": "Today the median model tracked here costs $0.41 per million input tokens and $1.91 per million output tokens, across 458 models from 63 providers.",
                     "href": "/ai-ecosystem/technology-and-core-infrastructure/56f96b2b/",
                     "name": "API Pricing"
                 }
@@ -111,7 +111,7 @@
             "meet": [
                 {
                     "uid": "56f96b2b",
-                    "fact": "The largest context window among the 460 API models tracked here is 2,000,000 tokens.",
+                    "fact": "The largest context window among the 458 API models tracked here is 2,000,000 tokens.",
                     "href": "/ai-ecosystem/technology-and-core-infrastructure/56f96b2b/",
                     "name": "API Pricing"
                 }
@@ -286,11 +286,11 @@
             },
             {
                 "step": "Context window",
-                "text": "The model has to hold all 27,700 tokens at once. 442 of the 460 API models tracked here can, and 18 cannot, so for those the contract would have to be split."
+                "text": "The model has to hold all 27,700 tokens at once. 440 of the 458 API models tracked here can, and 18 cannot, so for those the contract would have to be split."
             },
             {
                 "step": "Inference and cost",
-                "text": "At today's median prices, $0.40 per million in and $1.90 per million out, the read costs about $0.0107 and the summary about $0.0019, together about 1.3 cents. Price, not capability, is rarely the barrier at this size."
+                "text": "At today's median prices, $0.41 per million in and $1.91 per million out, the read costs about $0.0109 and the summary about $0.0019, together about 1.3 cents. Price, not capability, is rarely the barrier at this size."
             },
             {
                 "step": "Retrieval instead",
@@ -306,14 +306,14 @@
         "assumption_source": "https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them"
     },
     "reading": {
-        "body": "A 40 page contract costs about 1.3 cents to read and summarize at today's median API prices, so cost is rarely the barrier at single-document scale. The binding constraint is the context window: 442 of the 460 tracked API models can hold the roughly 27,700 tokens involved, and 18 cannot, which means for those the contract must be split before any question can be asked of it.\n\nThe pattern is that capability and price are separable problems. At $0.40 per million input tokens and $1.90 per million output tokens, the economics of reading one document are trivial, and the largest context window among tracked models reaches 2,000,000 tokens. What fails is not the budget but the fit, and when the document does not fit, the workaround is retrieval: embed each contract once, then hand the model only the passages that match the question.\n\nRetrieval changes the failure mode rather than removing it. A summary can state a clause the contract does not contain, and the fluency of the output gives no signal that it has done so. For anything with legal weight, the summary is a map to the pages to read, not a substitute for them.\n\nThis data covers one worked example, one context-window count across 460 API models, and one median price pair. It does not measure accuracy, latency, or how retrieval performs against long-context reading on real contracts, and it says nothing about the compute or power behind any of it.",
+        "body": "A 40 page contract costs about 1.3 cents to read and summarize, and 440 of the 458 tracked API models can hold it in context at once.\n\nThe pattern is that document work at this size is bounded by the context window, not by price. The contract is roughly 26,700 tokens in and 1,000 out, and the median rates of $0.41 per million input tokens and $1.91 per million output tokens put the whole job near a penny and a third. Eighteen of the tracked models cannot hold 27,700 tokens at once, so for those the contract has to be split. Capability and cost separate cleanly here: the models that fail do so on working memory, not on budget.\n\nScale changes the architecture rather than the price. One contract fits in a context window, but a library of contracts does not, which is why retrieval exists: embed every document once, then hand the model only the passages that match the question. The largest context window among the tracked models is 2,000,000 tokens, so the boundary between fitting and not fitting sits far above a single contract and well below a real document set.\n\nWhat the data does not cover is accuracy. A summary can state a clause the contract does not contain, and nothing in the token counts or the pricing prevents that. For anything with legal weight the summary is a map to the pages to read, not a substitute for them. The figures describe what the work costs and whether it fits, not whether the output is correct.",
         "model": "ollama:deepseek-v4.1-flash",
         "generated_on": "2026-10-05"
     },
-    "built_at": "2026-10-05T13:35:14-05",
+    "built_at": "2026-10-05T23:03:50-05",
     "category": "research-knowledge-and-learning",
     "page_uid": "d2390ba3",
     "verified": "2026-10-05",
     "generated": "2026-10-05",
-    "refresh_every_days": 7
+    "refresh_every_days": 1
 }

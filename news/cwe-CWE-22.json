@@ -15,6 +15,26 @@
         },
         {
             "kev": false,
+            "cve_id": "CVE-2026-51884",
+            "product": "LangChain",
+            "summary": "The /knowledge_base/upload_temp_docs temporary document upload endpoint in Langchain Chatchat 0.3.1 is vulnerable to path traversal. By crafting malicious filenames, an attacker can write files to arbitrary locations on ",
+            "headline": "Langchain Chatchat 0.3.1 upload lets crafted filenames write files anywhere",
+            "published": "2026-10-01",
+            "cvss_score": 9.8,
+            "cvss_severity": "CRITICAL"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-51883",
+            "product": "LangChain",
+            "summary": "The knowledge base creation and document upload interfaces in Langchain-Chatchat 0.3.0;0.3.1 is vulnerable to path traversal. An attacker can inject path traversal sequences (such as `..\\`) into the `knowledge_base_name`",
+            "headline": "Langchain-Chatchat 0.3.0/0.3.1 path traversal via knowledge_base_name",
+            "published": "2026-10-01",
+            "cvss_score": 9.1,
+            "cvss_severity": "CRITICAL"
+        },
+        {
+            "kev": false,
             "cve_id": "CVE-2026-77269",
             "product": "MCP",
             "summary": "MCP Atlassian is a Model Context Protocol (MCP) server for Atlassian products (Confluence and Jira). Prior to 0.22.0, the remediation for CVE-2026-27825 protects download destinations but does not constrain source paths ",
@@ -646,7 +666,7 @@
     ],
     "high": 35,
     "name": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')",
-    "count": 64,
+    "count": 66,
     "shape": "cwe",
     "title": "CWE-22: Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')",
     "cwe_id": "CWE-22",
@@ -654,8 +674,8 @@
     "status": "Stable",
     "ai_text": "In AI software this weakness shows up mostly in MCP servers and agent tooling, where a tool that handles files trusts the path it is given. The CVEs sit in MCP Atlassian, NotebookLM MCP, MCP GitLab, MCPVault, MCP Memory Keeper, Flowise, Langflow, ComfyUI, Weights & Biases and Tract. The usual route is a tool call or crafted workflow that passes a path pointing outside the intended folder, often through attachment upload or file read helpers. Attackers then read server files, write files outside the workspace or output directory, and in some cases reach tokens such as the GitLab token.",
     "ai_model": "ollama:deepseek-v4.1-flash",
-    "built_at": "2026-10-05T13:33:44-05",
-    "critical": 4,
+    "built_at": "2026-10-05T23:02:42-05",
+    "critical": 6,
     "page_uid": "b3e3169e",
     "generated": "2026-10-05",
     "mitre_url": "https://cwe.mitre.org/data/definitions/22.html",
@@ -795,6 +815,5 @@
             "description": "an alternate phrasing of path traversal"
         }
     ],
-    "refresh_every_days": 1,
     "extended_description": "Many file operations are intended to take place within a restricted directory. By using special elements such as .. and / separators, attackers can escape outside of the restricted location to access files or directories that are elsewhere on the system. One of the most common special elements is the ../ sequence, which in most modern operating systems is interpreted as the parent directory of the current location. This is referred to as relative path traversal. Path traversal also covers the use of absolute pathnames such as /usr/local/bin to access unexpected files. This is referred to as absolute path traversal."
 }
