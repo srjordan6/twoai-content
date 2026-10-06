@@ -2,7 +2,7 @@
     "shape": "incident",
     "title": "Alibaba to ban employees from using Anthropic's coding tool, source says",
     "reading": {
-        "body": "This is a covert instrumentation failure inside a shipped developer tool. Code in Claude Code version 2.1.196 altered the formatting of its own system prompt, changing an apostrophe and swapping dashes for slashes, so that the output carried a signal the user was never told about. The trigger conditions were the user's timezone and the API base URL, with Asia/Shanghai and Asia/Urumqi among the timezones that changed the date sentence and a set of domains and AI lab keywords, stored obfuscated, selecting the apostrophe. The markers activated only when ANTHROPIC_BASE_URL pointed at a custom endpoint, which is the configuration used by proxies, gateways and resellers, so the mechanism sat in a part of the deployment most ordinary users never enter.\n\nThe failure mode is a hidden channel rather than a wrong answer. Nothing in the reporting shows the model asserting anything false, and nothing shows a human check being skipped at the point of output. What it shows is a vendor embedding a detection signal in text the user reads, without disclosure, in a path that only certain deployments traverse. Catching it would have required reading the system prompt closely enough to notice punctuation varying with environment, or comparing outputs across timezones and base URLs, which is exactly the kind of check a normal user has no reason to run.\n\nThe reporting does not establish Anthropic's intent. The author's suggestion that the signal targets unauthorized resellers and distillation pipelines is an inference, and the description of the tracker as an experiment is a company characterization rather than a finding. Whether Anthropic responded or planned changes is not stated in the material summarised here.",
+        "body": "This is a case of a deployed system carrying hidden logic that its users could not see. The markers were embedded in the system prompt of a coding agent and varied according to the user's API base URL and timezone, so the same tool behaved differently depending on where it was run. The mechanism was obfuscated, with domain and keyword lists stored as base64 strings decoded with an XOR key, which places the failure at the point of deployment rather than in any single model output.\n\nThe behaviour was conditional rather than universal. It stayed inactive for users on the official Anthropic endpoint or with no base URL set, and the reporting describes it as aimed at unauthorized gateways and model distillation. Catching it would have required inspecting the shipped prompt and binary rather than testing the tool's visible behaviour, since the markers were designed not to surface in normal use.\n\nWhat is not established is intent. Anthropic has described the tracker as an experiment, and the reporting of a ban by Alibaba over alleged backdoor risks is an allegation and a corporate decision, not a finding of a backdoor.",
         "model": "claude-haiku-4-5",
         "generated_on": "2026-10-06"
     },
@@ -32,11 +32,11 @@
             "published": "2026-10-03"
         }
     ],
-    "summary": "A blog post reported that Claude Code version 2.1.196 contains hidden markers in its system prompt. The code changes the apostrophe in the date sentence and swaps dashes for slashes depending on the user's timezone and the API base URL. Timezones Asia/Shanghai and Asia/Urumqi trigger the date change, while a list of domains and AI lab keywords, stored in obfuscated form, controls which apostrophe appears. The author found their own setup produced normal output because their base URL was unset.\n\nThe markers only activate when ANTHROPIC_BASE_URL points to a custom endpoint, which covers proxies, gateways, and resellers. The author suggests Anthropic likely wants to detect unauthorized resellers and distillation pipelines, but questions why the signal is hidden rather than sent as plain telemetry. The article notes the check is easy to bypass and that most normal users are unaffected. It does not say whether Anthropic responded or plans changes.",
-    "built_at": "2026-10-06T01:04:04-05",
+    "summary": "A blog post reported that Claude Code, Anthropic's coding agent, hides markers in its system prompt based on the user's API base URL and timezone. The code checks the ANTHROPIC_BASE_URL environment variable and the system timezone. If the timezone is Asia/Shanghai or Asia/Urumqi, the date separator changes from a hyphen to a slash. If the hostname matches a hidden list of domains or AI lab keywords, the apostrophe in the date sentence changes to different Unicode characters. The domain and keyword lists are stored as base64 strings decoded with an XOR key.\n\nThe lists include Chinese tech and AI companies plus many proxy and reseller domains. The author says the feature likely targets unauthorized gateways and model distillation, and that it stays inactive for users on the official Anthropic endpoint or with no base URL set. The article says the bypass is trivial, through changing the hostname, timezone, or patching the binary, and argues the behavior should have been documented openly.",
+    "built_at": "2026-10-06T05:14:28-05",
     "cite_url": "https://incidentdatabase.ai/cite/1723",
     "page_uid": "704be468",
-    "title_en": "Alibaba to ban employees from using Anthropic's coding tool, source says",
+    "title_en": "",
     "generated": "2026-10-06",
     "published": "2026-10-03",
     "title_lang": "",
@@ -44,5 +44,6 @@
     "summary_url": "https://thereallo.dev/blog/claude-code-prompt-steganography",
     "outlet_count": 4,
     "summary_domain": "thereallo.dev",
+    "title_original": "",
     "refresh_every_days": 1
 }
