@@ -88,7 +88,7 @@
             "cve_id": "CVE-2026-69147",
             "product": "vLLM",
             "summary": "vLLM is an inference and serving engine for large language models. Prior to 0.28.0, request bodies for Chat Completions and Responses can set media_io_kwargs.video.video_backend to pynvvideocodec, and MediaConnector.fetc",
-            "headline": "vLLM before 0.28.0 lets a video request exhaust shared GPU memory",
+            "headline": "vLLM before 0.28.0 lets video requests exhaust GPU memory and crash workers",
             "published": "2026-09-16",
             "cvss_score": 6.5,
             "cvss_severity": "MEDIUM"
@@ -294,7 +294,7 @@
     "status": "Draft",
     "ai_text": "In AI software this weakness shows up mostly in model serving and agent plumbing, where a single request can eat memory or CPU until the service dies. The CVEs sit in vLLM, MCP servers and SDKs, Triton Inference Server, Open WebUI, Transformers and camel. Attackers reach it through ordinary inputs the product accepts: overlong prompts, oversized audio, video or media URLs, endless bytes from a stdio peer, or a regex in a structured output request. Many need no authentication at all. The result is a crashed or stalled worker, exhausted GPU memory, or a whole instance that stops answering. Examples include vLLM, MKP and Triton Inference Server.",
     "ai_model": "ollama:deepseek-v4.1-flash",
-    "built_at": "2026-10-07T06:33:04-05",
+    "built_at": "2026-10-07T13:57:33-05",
     "critical": 0,
     "page_uid": "dd6822d4",
     "generated": "2026-10-07",

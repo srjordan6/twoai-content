@@ -1,0 +1,108 @@
+{
+    "kev": 0,
+    "num": 416,
+    "uid": "84c2c463",
+    "cves": [
+        {
+            "kev": false,
+            "cve_id": "CVE-2026-107183",
+            "product": "llama.cpp",
+            "summary": "llama.cpp before b11393 contains a use-after-free and double free vulnerability in common_chat_peg_mapper::map that allows unauthenticated remote attackers to corrupt heap memory via a dangling current_tool pointer. Atta",
+            "headline": "llama.cpp before b11393 lets a remote request corrupt heap memory in llama-server",
+            "published": "2026-10-07",
+            "cvss_score": 9.2,
+            "cvss_severity": "CRITICAL"
+        }
+    ],
+    "high": 0,
+    "name": "Use After Free",
+    "count": 1,
+    "shape": "cwe",
+    "title": "CWE-416: Use After Free",
+    "cwe_id": "CWE-416",
+    "latest": "2026-10-07",
+    "status": "Stable",
+    "ai_text": "In AI software this weakness shows up in model serving code, where a remote request can free memory and then keep using the old pointer. The one CVE here is in llama.cpp, the runtime behind llama-server, a common way to host open models. An attacker reaches it by sending a crafted request to the server, which corrupts heap memory during handling. Because the memory is reused after being freed, the server can read or write the wrong data, which may crash the process or let the attacker influence what the server does next. The affected product is llama.cpp before build b11393.",
+    "ai_model": "ollama:deepseek-v4.1-flash",
+    "built_at": "2026-10-07T13:57:33-05",
+    "critical": 1,
+    "page_uid": "84c2c463",
+    "generated": "2026-10-07",
+    "mitre_url": "https://cwe.mitre.org/data/definitions/416.html",
+    "likelihood": "",
+    "abstraction": "Variant",
+    "description": "The product reuses or references memory after it has been freed. At some point afterward, the memory may be allocated again and saved in another pointer, while the original pointer references a location somewhere within the new allocation. Any operations using the original pointer are no longer valid because the memory belongs to the code that operates on the new pointer.",
+    "mitigations": [
+        {
+            "phase": [
+                "Architecture and Design"
+            ],
+            "strategy": "Language Selection",
+            "description": "Choose a language that provides automatic memory management."
+        },
+        {
+            "phase": [
+                "Implementation"
+            ],
+            "strategy": "Attack Surface Reduction",
+            "description": "When freeing pointers, be sure to set them to NULL once they are freed. However, the utilization of multiple or complex data structures may lower the usefulness of this strategy.",
+            "effectiveness": "Defense in Depth"
+        }
+    ],
+    "consequences": [
+        {
+            "note": "The use of previously freed memory may corrupt valid data, if the memory area in question has been allocated and used properly elsewhere.",
+            "scope": [
+                "Integrity"
+            ],
+            "impact": [
+                "Modify Memory"
+            ]
+        },
+        {
+            "note": "If chunk consolidation occurs after the use of previously freed data, the process may crash when invalid data is used as chunk information.",
+            "scope": [
+                "Availability"
+            ],
+            "impact": [
+                "DoS: Crash, Exit, or Restart"
+            ]
+        },
+        {
+            "note": "Read operations on freed memory can sometimes leak sensitive information instead of causing a crash",
+            "scope": [
+                "Confidentiality"
+            ],
+            "impact": [
+                "Read Memory"
+            ]
+        },
+        {
+            "note": "If malicious data is entered before chunk consolidation can take place, it may be possible to take advantage of a write-what-where primitive to execute arbitrary code. If the newly allocated data happens to hold a class, in C++ for example, various function pointers may be scattered within the heap data. If one of these function pointers is overwritten with an address to valid shellcode, execution of arbitrary code can be achieved.",
+            "scope": [
+                "Integrity",
+                "Confidentiality",
+                "Availability"
+            ],
+            "impact": [
+                "Execute Unauthorized Code or Commands"
+            ]
+        }
+    ],
+    "ai_written_on": "2026-10-07",
+    "alternate_terms": [
+        {
+            "term": "Dangling pointer",
+            "description": "a pointer that no longer points to valid memory, often after it has been freed"
+        },
+        {
+            "term": "UAF",
+            "description": "commonly used acronym for Use After Free"
+        },
+        {
+            "term": "Use-After-Free"
+        }
+    ],
+    "refresh_every_days": 1,
+    "extended_description": ""
+}
