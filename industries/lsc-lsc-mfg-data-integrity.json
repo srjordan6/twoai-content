@@ -7,6 +7,14 @@
         {
             "a": "When the model supports GMP decisions, they should be controlled as such.",
             "q": "Are training datasets GMP records?"
+        },
+        {
+            "a": "That every AI decision must be attributable to a specific model version and inputs, recorded at the time, kept in original form, accurate, complete and retrievable, so an investigation can reconstruct it later.",
+            "q": "What does ALCOA plus mean for AI in a plant?"
+        },
+        {
+            "a": "Untracked model versions. If a vendor updates the model or a team retrains it without a recorded change, the plant can no longer show which model made which decision, and the validation no longer applies.",
+            "q": "What is the most common data integrity gap with manufacturing AI?"
         }
     ],
     "uid": "97a09021",
@@ -33,9 +41,9 @@
     "drafted": true,
     "noindex": false,
     "reading": {
-        "body": "Manufacturing AI inherits GMP data integrity rules: the records it trains on and produces must be attributable, legible, contemporaneous, original and accurate.\n\nThe FDA's data integrity guidance, finalized in December 2018, was written for drug CGMP compliance, not for machine learning. The ALCOA principles it codifies are record properties, and they apply to a training set whenever the model built from it supports a quality decision. That reclassification is the whole point. A dataset stops being an engineering artifact and becomes a regulated record, which means version control, audit trails, and retention rules attach to it the way they attach to a batch record.\n\nFor AI specifically, the constraint lands on the data pipeline rather than the model. Attributable and contemporaneous records require knowing who produced each input and when, which is exactly what ad hoc scraping and unlogged preprocessing destroy. Teams that treat training data as disposable will fail an inspection that treats it as evidence.\n\nThe data here covers one guidance and one principle set. It does not say how the FDA has applied the guidance to a specific AI system, what enforcement has looked like, or how validation of the model itself differs from integrity of its inputs. Those are separate questions, and this material does not answer them.",
+        "body": "Manufacturing AI inherits GMP data integrity rules: training data become controlled records when a model supports quality decisions. ALCOA, meaning attributable, legible, contemporaneous, original and accurate, applies to the records AI systems create and use, and the FDA's data integrity guidance covers them.\n\nThe practical consequence is that the data pipeline is now a records system. A model's training set has to be traceable to its origin, its labelling and later changes have to be recorded, and outputs used in decisions have to be stored alongside the model version and the context that produced them. Any transformation inside an AI pipeline must preserve the link back to the original record.\n\nThis matters for AI specifically because the usual failure mode is not a wrong prediction but an untraceable one. A model that supports a GMP decision cannot be defended if the data behind it cannot be reconstructed, and regulators have repeatedly cited data integrity failures in inspections. The governance burden lands on data lineage and versioning rather than on model accuracy.\n\nThe data covers the principle and one dated regulatory action, the FDA's December 2018 final guidance on data integrity and drug CGMP. It does not quantify inspection findings, name specific AI systems, or describe how any manufacturer has implemented this. The ALCOA extension to complete, consistent, enduring and available is mentioned but not applied to AI pipelines here.",
         "model": "ollama:deepseek-v4.1-flash",
-        "generated_on": "2026-10-05"
+        "generated_on": "2026-10-07"
     },
     "related": {
         "news": [
@@ -55,6 +63,16 @@
                 "line": "The 2026 package of targeted amendments to the EU AI Act, deferring high-risk deadlines and restructuring conformity assessment.",
                 "path": "/ai-glossary/digital-omnibus-ai/",
                 "term": "Digital Omnibus (AI)"
+            },
+            {
+                "line": "A verified record of where data came from and what it may be used for.",
+                "path": "/ai-glossary/data-provenance/",
+                "term": "Data Provenance"
+            },
+            {
+                "line": "The internal learned variables, weights and biases, that store what a model knows, counted in billions for modern LLMs. Parameter count is the headline size number, and only one of the three scaling inputs.",
+                "path": "/ai-glossary/parameters/",
+                "term": "Parameters"
             }
         ],
         "papers": [
@@ -72,7 +90,7 @@
             }
         ]
     },
-    "built_at": "2026-10-05T14:13:05-05",
+    "built_at": "2026-10-07T07:02:06-05",
     "category": "enterprise-applications-governance-and-tools",
     "children": null,
     "expanded": true,
@@ -123,8 +141,8 @@
             "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/1e649c1b/"
         }
     ],
-    "explainer": "Data integrity means records are complete, consistent and accurate throughout their life. The common shorthand is ALCOA: attributable to who created them, legible, contemporaneous with the activity, original or a true copy, and accurate, often extended to ALCOA plus with complete, consistent, enduring and available. Regulators have repeatedly cited data integrity failures in inspections.\n\nAI brings data integrity into new places. Training data become records when a model supports GMP decisions, so their origin, labelling and changes must be traceable. Model outputs used in decisions must be stored with the model version and context. And any data transformation in an AI pipeline must preserve the link back to original records.",
-    "generated": "2026-10-04",
+    "explainer": "Data integrity means records are complete, consistent and accurate throughout their life. The common shorthand is ALCOA: attributable to who created them, legible, contemporaneous with the activity, original or a true copy, and accurate, often extended to ALCOA plus with complete, consistent, enduring and available. Regulators have repeatedly cited data integrity failures in inspections.\n\nAI brings data integrity into new places. Training data become records when a model supports GMP decisions, so their origin, labelling and changes must be traceable. Model outputs used in decisions must be stored with the model version and context. And any data transformation in an AI pipeline must preserve the link back to original records.\n\nWhy data integrity is the first question\n\nInspectors have a settled framework for data: it must be attributable, legible, contemporaneous, original and accurate, with the additions of complete, consistent, enduring and available. AI puts pressure on every one of those. A model's output is attributable to a software version, not a person. Training data may have been cleaned or sampled in ways that break the link to the original record. And a model updated silently by a vendor is no longer the version that was validated.\n\nThe specific risks\n\nThree stand out. Training data provenance: if the plant cannot show where the data came from and that it was not edited, the model built on it is suspect. Version control: inputs, model version, parameters and outputs need to be recorded together for every decision, or an investigation later cannot reconstruct what happened. Human overrides: when an operator disagrees with the model, both the model's output and the override need to be captured, because the pattern of overrides is itself evidence about whether the model works.\n\nHow plants handle it\n\nThe practical answer is to treat the model like an instrument. It has an identity, a qualification record, a calibration equivalent in the form of performance monitoring, and a change history. Its data flows through the same validated systems as everything else rather than through a data scientist's laptop. That is less exciting than the model itself, but it is what lets the plant answer an inspector's question in minutes rather than weeks.",
+    "generated": "2026-10-07",
     "child_count": 0,
     "parent_name": "Manufacturing and Supply Chain",
     "parent_path": "/ai-ecosystem/enterprise-applications-governance-and-tools/77ac1e57/",
@@ -140,6 +158,6 @@
             ]
         }
     ],
-    "last_reviewed": "2026-10-04",
+    "last_reviewed": "2026-10-07",
     "refresh_every_days": 30
 }

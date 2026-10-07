@@ -7,6 +7,14 @@
         {
             "a": "Confirm the reference exists, details are correct, and it supports the specific statement.",
             "q": "How should citations be checked?"
+        },
+        {
+            "a": "They generate text that resembles their training data, references included. Without a real source for a claim, a model may produce a reference that looks authentic but does not exist or does not support the statement.",
+            "q": "Why do AI models invent citations?"
+        },
+        {
+            "a": "Restrict the model to a defined document library it must quote from, run automated reference checks against bibliographic databases, and keep a recorded human check of every citation against its source before submission.",
+            "q": "How can companies prevent fabricated citations in AI assisted writing?"
         }
     ],
     "uid": "744f232d",
@@ -33,9 +41,9 @@
     "drafted": true,
     "noindex": false,
     "reading": {
-        "body": "Fabricated citations remain a live risk in AI writing, and the rate varies so widely by model that no reference can be trusted unchecked.\n\nThe measured spread is the point. In 2023, 55 percent of GPT-3.5 citations and 18 percent of GPT-4 citations were fabricated. A later preprint put hallucination rates across 13 models anywhere from about 14 to 95 percent. The newer model in the first study fabricated far fewer references than the older one, but the second study shows that improvement did not generalize into a safe floor. A model that fabricates one reference in seven is still unusable for citation work without verification.\n\nFor medical writing this is a production constraint, not a caution. A fabricated reference in a regulatory submission or an evidence dossier is a traceability failure, and the fix is architectural: generate citations only from a retrieved document set and verify each one against the source. That means retrieval and checking sit in the pipeline, not in a reviewer's good intentions. It also means the compute spent on grounding and verification is part of the cost of using these models at all, not an optional add-on.\n\nThe data covers fabrication rates and the control that follows from them. It does not say which models perform best now, how rates shift with retrieval, or how often fabricated citations survive into published work.",
+        "body": "Every reference in AI assisted writing must be checked against the source, because models still fabricate citations at rates that vary too widely to trust.\n\nThe measured range is the point. A 2023 study found 55 percent of GPT-3.5 citations and 18 percent of GPT-4 citations were fabricated, and a 2026 preprint measured citation hallucination rates from about 14 to 95 percent across 13 models. The spread across models is nearly an order of magnitude, so no default level of trust carries from one model to the next, and a newer or larger model is not automatically a safer one.\n\nThe mechanism explains the persistence. A language model produces a citation by predicting what a reference should look like, not by looking one up, so a plausible author, title and journal can be assembled without any corresponding document. Retrieval reduces this but does not remove it, because a real reference can still be attached to a claim it does not support. That second failure is harder to catch than a reference that does not exist, since the citation resolves and only the claim it is paired with is wrong.\n\nFor medical and regulatory writing the cost is asymmetric. A fabricated citation misleads readers and damages the credibility of the document that carries it, and the fix is procedural rather than technical: retrieve a defined source set first, generate only from it, attach citations programmatically to those documents, then confirm each reference exists, its details are correct, and it supports the specific statement.\n\nWhat this data does not cover is how verification scales. It gives fabrication rates by model and a workflow, not the labor or cost of checking every reference in a long document, and it does not say whether any current model has reached a rate low enough to skip the check.",
         "model": "ollama:deepseek-v4.1-flash",
-        "generated_on": "2026-10-05"
+        "generated_on": "2026-10-07"
     },
     "related": {
         "terms": [
@@ -64,7 +72,7 @@
             }
         ]
     },
-    "built_at": "2026-10-05T14:12:54-05",
+    "built_at": "2026-10-07T07:01:56-05",
     "category": "enterprise-applications-governance-and-tools",
     "children": null,
     "expanded": true,
@@ -99,8 +107,8 @@
             "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/3e8e54d5/"
         }
     ],
-    "explainer": "Language models generate citations by predicting what a reference should look like, not by looking it up, so they can produce references with real looking authors, titles and journals that do not exist, or attach real references to claims they do not support. Studies have measured high fabrication rates in earlier models and wide variation across current ones.\n\nIn medical and regulatory writing, a fabricated or misattributed citation can mislead readers and damage credibility. The reliable approach is to retrieve a defined set of sources first, generate text only from them, attach citations programmatically to the retrieved documents, and verify each citation against its source, including that it supports the specific claim.",
-    "generated": "2026-10-04",
+    "explainer": "Language models generate citations by predicting what a reference should look like, not by looking it up, so they can produce references with real looking authors, titles and journals that do not exist, or attach real references to claims they do not support. Studies have measured high fabrication rates in earlier models and wide variation across current ones.\n\nIn medical and regulatory writing, a fabricated or misattributed citation can mislead readers and damage credibility. The reliable approach is to retrieve a defined set of sources first, generate text only from them, attach citations programmatically to the retrieved documents, and verify each citation against its source, including that it supports the specific claim.\n\nWhat goes wrong with AI citations\n\nLanguage models produce text that resembles the scientific writing they were trained on, and that includes references. When a model lacks a real source for a statement, it may generate a reference that looks right, with plausible authors, a real journal and a convincing title, but that does not exist or does not say what it is cited for. Journals and courts have both documented such cases. In medical writing, where every claim must trace to evidence, a fabricated or misattributed citation is a serious error.\n\nHow the problem is being reduced\n\nTwo approaches dominate. Retrieval based systems restrict the model to a defined library of documents and require it to quote from them, so a citation can only point to something the system actually retrieved. And verification tools check every reference in a draft against bibliographic databases, confirming that the paper exists and, increasingly, that the cited passage supports the claim. Neither is perfect: a real paper can still be cited for the wrong point, and retrieval systems can retrieve the wrong passage.\n\nThe rule that holds\n\nEvery citation in a document that will be submitted or published is checked by a person against the source, and the check is recorded. That was already the standard in good medical writing; AI has made it non negotiable. Companies also train writers to recognise the signs of a fabricated reference, such as an unusually tidy author list or a title that matches the claim too well, and to treat unverifiable references as absent rather than as probably fine.",
+    "generated": "2026-10-07",
     "child_count": 0,
     "parent_name": "Medical Affairs and Medical Writing",
     "parent_path": "/ai-ecosystem/enterprise-applications-governance-and-tools/0b53f6ba/",
@@ -126,6 +134,6 @@
             ]
         }
     ],
-    "last_reviewed": "2026-10-04",
+    "last_reviewed": "2026-10-07",
     "refresh_every_days": 30
 }

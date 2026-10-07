@@ -7,6 +7,14 @@
         {
             "a": "If their outputs feed regulated decisions, yes; for exploratory research, lighter controls may apply.",
             "q": "Do research agents need validation?"
+        },
+        {
+            "a": "An assistant responds to a request and waits. An agent pursues a goal across several steps and uses tools, which means it can take actions in other systems, so it needs explicit limits on what it may do.",
+            "q": "What is the difference between an AI agent and an AI assistant?"
+        },
+        {
+            "a": "Only with the same controls any automated process needs: defined permissions, an audit trail of every action, a documented risk assessment, and a person responsible for its output. The agent does not change the rules; it makes following them more important.",
+            "q": "Can an AI agent work inside a validated GxP system?"
         }
     ],
     "uid": "5f75a293",
@@ -33,9 +41,9 @@
     "drafted": true,
     "noindex": false,
     "reading": {
-        "body": "Drugmakers are co-developing AI agents that sit inside research platforms and assist scientists, with Owkin building such agents under a multiyear collaboration with Sanofi.\n\nThe pattern is partnership rather than procurement. A research organisation does not buy a finished agent and install it. It co-develops the agent with an outside party, which means the agent is shaped around the internal research platform it will live in. That is a different adoption path from a general-purpose model dropped into a workflow.\n\nFor AI specifically, the constraint this exposes is not compute but data rights. An agent that assists scientists learns from the platform it sits in. Who owns what it learns is a question that has to be settled before work starts, not after. The one governance instruction attached to this case is exactly that: agree data rights and ownership of what the agents learn before co-development begins.\n\nThe data covers one announced collaboration and one governance recommendation. It does not say how many agents were built, what they cost, what compute they run on, or whether they worked. It names no other drugmaker and no other vendor. Treat it as a single documented instance of a co-development model, not as evidence about how widespread that model is.",
+        "body": "Drugmakers are co-developing AI agents that sit inside research platforms as scientist assistants, with Owkin building such agents under a multiyear collaboration with Sanofi.\n\nThe pattern is co-development rather than procurement. A research organisation does not buy a finished agent and install it. It builds the agent alongside a specialist AI company, inside its own platform, so the agent works on internal and public data, runs analyses, and suggests next steps to scientists. That arrangement puts the agent close to the science rather than beside it.\n\nThe governance questions follow from that closeness. Who owns the agent and the improvements it learns from company data is a contract term, not a default. Whether the partner can reuse what it learns with other clients is a second term. Where outputs feed regulated decisions, validation applies; exploratory research may carry lighter controls. None of this is settled by the technology itself.\n\nThe data covers one named collaboration and the questions it raises. It does not give costs, timelines, headcount, or measured results, so it cannot show whether these agents work or what they return. It also says nothing about the compute and power behind them, so no claim about infrastructure can be drawn from it.",
         "model": "ollama:deepseek-v4.1-flash",
-        "generated_on": "2026-10-05"
+        "generated_on": "2026-10-07"
     },
     "related": {
         "terms": [
@@ -50,13 +58,28 @@
                 "term": "Digital Omnibus (AI)"
             },
             {
+                "line": "A request to a database to return or change data, written in a query language such as SQL. When an AI system answers a question from company data, it is usually writing and running a query on the user's behalf.",
+                "path": "/ai-glossary/sql-query/",
+                "term": "Query (Database)"
+            },
+            {
+                "line": "A tamper-resistant record of who did what, when, and under what authority. Agent actions belong in it exactly as human actions do; an agent that acts outside the logged record is an agent that cannot be investigated.",
+                "path": "/ai-glossary/audit-trail/",
+                "term": "Audit Trail"
+            },
+            {
+                "line": "An autonomous system powered by an LLM that perceives its environment, plans, uses tools, and executes sequential actions toward a goal.",
+                "path": "/ai-glossary/ai-agent/",
+                "term": "AI Agent"
+            },
+            {
                 "line": "An AI system that takes a goal, breaks it into steps, and carries those steps out using tools, rather than answering a single question and stopping. The defining trait is initiative between instructions: the agent decides what to do next.",
                 "path": "/ai-glossary/agent/",
                 "term": "Agent"
             }
         ]
     },
-    "built_at": "2026-10-05T14:12:54-05",
+    "built_at": "2026-10-07T07:01:55-05",
     "category": "enterprise-applications-governance-and-tools",
     "children": null,
     "expanded": true,
@@ -103,8 +126,8 @@
             "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/1480b4ae/"
         }
     ],
-    "explainer": "Research organisations are building AI agents that work inside their own platforms: searching internal and public data, running analyses, summarising results and suggesting next steps for scientists. Some are developed with specialist AI companies under multiyear collaborations.\n\nCo-development raises questions worth settling first: who owns the agents and the improvements they learn from company data, whether the partner can reuse anything with other clients, how data are protected, and how the agents will be validated where their outputs feed regulated work.",
-    "generated": "2026-10-04",
+    "explainer": "Research organisations are building AI agents that work inside their own platforms: searching internal and public data, running analyses, summarising results and suggesting next steps for scientists. Some are developed with specialist AI companies under multiyear collaborations.\n\nCo-development raises questions worth settling first: who owns the agents and the improvements they learn from company data, whether the partner can reuse anything with other clients, how data are protected, and how the agents will be validated where their outputs feed regulated work.\n\nHow agents differ from assistants\n\nAn assistant answers a question and stops. An agent is given a goal, breaks it into steps, uses tools such as document stores, lab systems or scheduling software, and keeps going until the goal is met or it hits a rule that says stop. In a research organisation that difference matters, because an agent that can read a protocol can also, if allowed, file a change request, book instrument time or send a query to a site. Every one of those actions needs a decision about whether the agent may do it alone, do it with a person approving, or never do it.\n\nWhere agents are being tried first\n\nThe early uses are the ones where the steps are well defined and the cost of a mistake is low or easily reversed: assembling literature packs, drafting first versions of standard documents, reconciling data between two systems, triaging support tickets, and preparing meeting summaries with action items. Lab in the loop work, where an agent proposes the next experiment and a scientist decides, is the most ambitious use and the one with the least settled evidence.\n\nWhat a responsible rollout looks like\n\nStart with a written list of what the agent may touch, which systems it may write to, and which actions always need a named person. Log every action the agent takes in a form a quality auditor can read. Give it a budget of time, money and API calls, and make it stop when the budget runs out rather than improvise. Review the logs weekly for the first months. Treat each new permission as a change that needs its own risk assessment, the same way a new user role would in a validated system.",
+    "generated": "2026-10-07",
     "child_count": 0,
     "parent_name": "AI Adoption and Governance in Life Sciences",
     "parent_path": "/ai-ecosystem/enterprise-applications-governance-and-tools/aa0aa4a4/",
@@ -120,6 +143,6 @@
             ]
         }
     ],
-    "last_reviewed": "2026-10-04",
+    "last_reviewed": "2026-10-07",
     "refresh_every_days": 30
 }

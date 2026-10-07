@@ -7,6 +7,14 @@
         {
             "a": "Early, ideally before the trial starts, for any AI that will generate evidence the agency relies on.",
             "q": "When should I talk to the FDA?"
+        },
+        {
+            "a": "A risk based approach: define the model's question and context of use, assess how much the decision depends on it and how bad a wrong answer would be, and match the evidence gathered to that risk.",
+            "q": "What is the FDA's model credibility framework for AI in trials?"
+        },
+        {
+            "a": "Every tool benefits from one, but the depth scales. A site monitoring aid needs a short record; a model whose output supports a safety or efficacy decision needs a full evidence package.",
+            "q": "Does every AI tool in a trial need a credibility assessment?"
         }
     ],
     "uid": "a9cec2d4",
@@ -33,9 +41,9 @@
     "drafted": true,
     "noindex": false,
     "reading": {
-        "body": "The FDA's draft credibility framework applies to AI that produces data the agency will rely on, not to operational tools like scheduling or document drafting.\n\nThe dividing line is whether an AI output can change a regulatory conclusion. Patient selection, outcome measurement, image analysis, adverse event detection and dose support all shape the evidence a submission rests on, so errors there propagate into the decision. Scheduling visits, translating materials or predicting site enrolment affect how efficiently a trial runs, and ordinary quality controls catch those failures.\n\nFor a clinical team the practical consequence is a sorting exercise at planning stage. Classify each tool as decision supporting or operational, build the full credibility file only for the first group, and raise evidentiary uses with the FDA early, ideally before the trial starts. Sponsors still own the result either way, so operational status is not an exemption from responsibility.\n\nThe data covers one draft guidance and its scope. It does not say what evidence the FDA will accept for a given context of use, how model risk should be scored, or whether the draft will survive to final form.",
+        "body": "The FDA's draft credibility framework applies to AI that produces data the agency will rely on, not to operational tools like scheduling or document drafting.\n\nThe dividing line is whether an AI output can change a regulatory conclusion. Patient selection, outcome measurement, image analysis, adverse event detection and dose support all shape the evidence a submission rests on, so errors there propagate into the decision. Scheduling visits, translating materials or predicting site enrolment affect how efficiently a trial runs, and ordinary quality controls catch those failures.\n\nFor a clinical team the practical consequence is a sorting exercise at planning stage. Classify each tool as decision supporting or operational, build the full credibility file only for the first group, and raise evidentiary uses with the FDA early, ideally before the trial starts. Sponsors still own the result either way, so operational status is not an exemption from responsibility.\n\nThe data covers one draft guidance and its scope. It does not say what evidence the FDA will accept for a given context of use, how model risk should be scored, or whether the draft will survive to final form.\n\nThe framework's trigger is not the technology but the dependency. An AI tool becomes evidentiary the moment a regulatory conclusion rests on its output, which means the same model can sit on either side of the line depending on where it is used. A model that predicts site enrolment is operational, but the same prediction used to decide which sites to open, and therefore which data the trial produces, moves closer to the evidence base.\n\nThat makes classification a per-use decision rather than a per-vendor one. A single platform can carry both an operational module and an evidentiary one, and the credibility file attaches to the use, not the product. Teams that sort by tool name rather than by function will either over-document scheduling software or under-document a patient selection model.\n\nThe timing asymmetry is the part that costs money. Operational tools can be swapped mid-trial with ordinary quality controls, while an evidentiary use that surfaces late forces either a credibility package built under deadline or a change to the analysis. The data places the conversation before the trial starts for exactly this reason.\n\nIs an AI scheduling tool covered?\nGenerally no; it is operational. It still needs ordinary quality controls.\n\nWhen should I talk to the FDA?\nEarly, ideally before the trial starts, for any AI that will generate evidence the agency relies on.\n\nDoes the framework apply to a model that detects adverse events?\nYes. Adverse event detection is listed among the evidentiary uses, because a missed or misclassified event changes the safety picture the agency reviews.\n\nWhat evidence does the FDA accept for a given context of use?\nThe data does not hold this. It names the steps, defining context of use, assessing model risk and building proportionate evidence, without specifying what satisfies them.\n\nHow is model risk scored?\nThe data does not say. It establishes that evidence should be proportionate to model risk but gives no scoring method.\n\nWill the draft survive to final form?\nThe data does not say. It records a draft guidance dated January 2025 and nothing about its final status.\n\nDoes operational status remove the sponsor's responsibility for the result?\nNo. The sponsor owns the result either way, so operational classification changes the documentation burden, not the accountability.",
         "model": "ollama:deepseek-v4.1-flash",
-        "generated_on": "2026-10-06"
+        "generated_on": "2026-10-07"
     },
     "related": {
         "terms": [
@@ -51,7 +59,7 @@
             }
         ]
     },
-    "built_at": "2026-10-05T14:13:01-05",
+    "built_at": "2026-10-07T07:02:02-05",
     "category": "enterprise-applications-governance-and-tools",
     "children": null,
     "expanded": true,
@@ -102,8 +110,8 @@
             "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/4dd90246/"
         }
     ],
-    "explainer": "Not every AI tool in a trial needs the same scrutiny. The useful distinction is between operational and evidentiary uses. Operational uses help run the trial, drafting documents, scheduling visits, translating materials, predicting site enrolment. Errors there cause inefficiency, which ordinary quality processes catch. Evidentiary uses generate or shape data the regulator relies on, selecting patients, assessing an endpoint, analysing images, detecting adverse events or supporting dose choices. Errors there can change the conclusions.\n\nThe FDA's draft credibility framework is aimed at evidentiary uses. For each one the sponsor defines the context of use, assesses model risk, and builds evidence proportionate to that risk. Sorting a trial's AI tools into these two groups at the planning stage saves effort, and discussing evidentiary uses with the FDA early avoids surprises at submission.",
-    "generated": "2026-10-04",
+    "explainer": "Not every AI tool in a trial needs the same scrutiny. The useful distinction is between operational and evidentiary uses. Operational uses help run the trial, drafting documents, scheduling visits, translating materials, predicting site enrolment. Errors there cause inefficiency, which ordinary quality processes catch. Evidentiary uses generate or shape data the regulator relies on, selecting patients, assessing an endpoint, analysing images, detecting adverse events or supporting dose choices. Errors there can change the conclusions.\n\nThe FDA's draft credibility framework is aimed at evidentiary uses. For each one the sponsor defines the context of use, assesses model risk, and builds evidence proportionate to that risk. Sorting a trial's AI tools into these two groups at the planning stage saves effort, and discussing evidentiary uses with the FDA early avoids surprises at submission.\n\nWhat credibility evidence means\n\nThe FDA uses the idea of model credibility, borrowed from its guidance on computational models for devices, to describe how much evidence a sponsor needs that an AI model is trustworthy for a specific use in drug development. The amount depends on the question the model answers and the consequences if it is wrong. A model that suggests which sites to monitor needs little; a model whose output supports a regulatory decision about safety or efficacy needs a full case.\n\nHow the framework works\n\nThe sponsor first defines the question of interest and the context of use: exactly what the model does, for what decision, with what data. Then it assesses model risk from two things: how much the decision depends on the model, and how severe the consequences of a wrong answer would be. That risk sets the credibility activities needed, such as describing the data and the model, testing on data that reflects the context of use, measuring performance and uncertainty, and documenting limitations. Finally, the sponsor decides whether the evidence is adequate and documents the decision. The agency has encouraged sponsors to discuss their plans early.\n\nWhy it helps sponsors\n\nThe framework turns a vague worry, will the agency accept this, into a structured answer the sponsor can prepare before using the model. It also scales: low risk uses can be handled with light documentation, which keeps teams from over engineering trivial tools. Sponsors that write a credibility assessment for each AI use in a trial find inspections and submissions easier, because the questions reviewers ask are the ones the assessment already answers.",
+    "generated": "2026-10-07",
     "child_count": 0,
     "parent_name": "Clinical Development and Trials",
     "parent_path": "/ai-ecosystem/enterprise-applications-governance-and-tools/4d987f14/",
@@ -119,6 +127,6 @@
             ]
         }
     ],
-    "last_reviewed": "2026-10-04",
+    "last_reviewed": "2026-10-07",
     "refresh_every_days": 30
 }

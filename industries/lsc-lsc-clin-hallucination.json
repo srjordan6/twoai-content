@@ -7,6 +7,14 @@
         {
             "a": "Making a model answer from specific retrieved documents rather than from memory, with citations to them.",
             "q": "What is grounding?"
+        },
+        {
+            "a": "When a model is asked for specifics it was not given: exact values, references, or details of a particular trial. Restricting it to supplied sources and checking numbers against data cuts the risk sharply.",
+            "q": "Where is hallucination most likely in clinical documents?"
+        },
+        {
+            "a": "Reduced sharply with retrieval, mandatory citations and automatic number checks, but not eliminated, which is why qualified people review and own every clinical document.",
+            "q": "Can hallucination be eliminated in clinical writing tools?"
         }
     ],
     "uid": "4bfb73b2",
@@ -45,6 +53,11 @@
                 "term": "Large Language Model (LLM)"
             },
             {
+                "line": "A generative model confidently outputting false, fabricated, or unsupported information. The fluency is the danger: fabricated content arrives in the same authoritative voice as fact, which is why verification belongs in every AI workflow.",
+                "path": "/ai-glossary/hallucination/",
+                "term": "Hallucination"
+            },
+            {
                 "line": "Anchoring a model's responses to trusted sources rather than its parametric memory. A grounded answer can cite where it came from; an ungrounded one can only assert.",
                 "path": "/ai-glossary/grounding/",
                 "term": "Grounding"
@@ -56,7 +69,7 @@
             }
         ]
     },
-    "built_at": "2026-10-05T14:13:02-05",
+    "built_at": "2026-10-07T07:02:03-05",
     "category": "enterprise-applications-governance-and-tools",
     "children": null,
     "expanded": true,
@@ -107,8 +120,8 @@
             "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/4dd90246/"
         }
     ],
-    "explainer": "Generative language models produce fluent text by predicting likely words, not by checking facts. When they lack information they can fill gaps with plausible inventions, known as hallucinations: citations that do not exist, numbers that were never measured, or confident summaries that misstate a study. Researchers have shown models can fabricate entire realistic looking datasets on request.\n\nIn clinical development this is a serious risk, because documents and analyses feed regulatory and medical decisions. The defences are well understood: ground generation in retrieved source documents, require citations that point to specific records, constrain models to drafting and summarising rather than computing results, verify every number against validated outputs, and keep qualified reviewers accountable. Data integrity controls also matter, since fabricated data must be distinguishable from real data by design.",
-    "generated": "2026-10-04",
+    "explainer": "Generative language models produce fluent text by predicting likely words, not by checking facts. When they lack information they can fill gaps with plausible inventions, known as hallucinations: citations that do not exist, numbers that were never measured, or confident summaries that misstate a study. Researchers have shown models can fabricate entire realistic looking datasets on request.\n\nIn clinical development this is a serious risk, because documents and analyses feed regulatory and medical decisions. The defences are well understood: ground generation in retrieved source documents, require citations that point to specific records, constrain models to drafting and summarising rather than computing results, verify every number against validated outputs, and keep qualified reviewers accountable. Data integrity controls also matter, since fabricated data must be distinguishable from real data by design.\n\nWhy hallucination is dangerous in clinical content\n\nA language model produces fluent text whether or not it has a source. In clinical documents that fluency hides the error: a dose that is slightly wrong, an adverse event attributed to the wrong drug, a trial result stated with the wrong direction of effect, or an eligibility criterion that was never in the protocol. Each reads naturally and passes a casual review. In a protocol, a consent form, a safety narrative or a study report, such an error can reach a patient or a regulator.\n\nWhere it shows up\n\nThe risk is highest when a model is asked for specifics it was not given: exact values, references, and details of a particular trial. It is lower when the model is restricted to rewriting or summarising text that is supplied to it, and lower again when the output is checked against structured data. Patient facing material carries its own risk: a model simplifying a consent form can remove a nuance that changes what the patient is agreeing to.\n\nWhat clinical teams do about it\n\nThe controls are consistent across the industry. Use retrieval so the model works only from supplied, verified sources. Require citations to those sources for every factual statement. Check every number automatically against the data it came from. Keep clinicians and medical writers reviewing and owning content, with machine written sections marked so review attention goes where it is needed. And train people to expect confident errors, because the failure mode is not nonsense but plausibility. Companies that measure it report hallucination rates falling sharply with retrieval and verification, but never to zero, which is why the human check stays.",
+    "generated": "2026-10-07",
     "child_count": 0,
     "parent_name": "Clinical Development and Trials",
     "parent_path": "/ai-ecosystem/enterprise-applications-governance-and-tools/4d987f14/",
@@ -134,6 +147,6 @@
             ]
         }
     ],
-    "last_reviewed": "2026-10-04",
+    "last_reviewed": "2026-10-07",
     "refresh_every_days": 30
 }

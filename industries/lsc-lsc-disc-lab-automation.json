@@ -7,6 +7,14 @@
         {
             "a": "High volume, standardised assays where consistency and data capture add the most value.",
             "q": "What should be automated first?"
+        },
+        {
+            "a": "A discovery setup where a model proposes experiments, robots run them, the results feed back to the model and it proposes the next round, closing a cycle that takes weeks by hand into hours or days.",
+            "q": "What is a lab in the loop?"
+        },
+        {
+            "a": "Chemistry optimisation and screening, where experiments are repetitive and well defined. Complex biology is harder to standardise for robots and to capture in data a model can use.",
+            "q": "Where does lab automation with AI work best so far?"
         }
     ],
     "uid": "a0469f86",
@@ -33,9 +41,9 @@
     "drafted": true,
     "noindex": false,
     "reading": {
-        "body": "AI discovery depends on fast, consistent experimental data, so automation is the other half of the loop: robots run assays, results retrain the models, and the models choose the next experiments.\n\nThe pattern is a closed cycle rather than a one way pipeline. A model proposes experiments, an automated lab runs them, and the results retrain the model, which then chooses the next round. The published evidence for the payoff is narrow but concrete: a 2018 study of total laboratory automation reported an 86 percent reduction in discrete specimen handling steps and an 82 percent cut in hands on time for add on testing. Vendor consolidation points the same direction, with Hamilton acquiring UK Robotics and Trisonic Discovery to add a lab orchestration platform to its liquid handling range.\n\nFor AI specifically, the constraint is not the model but the supply of experimental data it learns from. Models improve only where a project can generate results at volume and in a consistent format, which is why high volume, standardised assays are the right place to automate first. The stated bottlenecks are assay standardisation, data capture in consistent formats, and integration between instruments, software and models, not the robots themselves. Automation multiplies whatever data quality already exists, so standardising assays and capture before buying robots is the sequence that matters.\n\nWhat this does not cover is equally important. The quantitative evidence is a single 2018 study of clinical specimen handling, not of AI driven discovery, and it measures handling steps and hands on time rather than discovery speed or model quality. No figures are given for how much a closed loop improves a model, how many automated labs operate, or what any of this costs. The consolidation claim is supported by one acquisition, which is a signal about the vendor landscape and not a measurement of the field.",
+        "body": "AI discovery depends on fast, consistent experimental data, so automation is the other half of the loop: robots run assays, results retrain the models, and the models choose the next experiments.\n\nThe pattern is a closed cycle rather than a one way pipeline. A model proposes experiments, an automated lab runs them, and the results retrain the model, which then chooses the next round. The published evidence for the payoff is narrow but concrete: a 2018 study of total laboratory automation reported an 86 percent reduction in discrete specimen handling steps and an 82 percent cut in hands on time for add on testing. Vendor consolidation points the same direction, with Hamilton acquiring UK Robotics and Trisonic Discovery to add a lab orchestration platform to its liquid handling range.\n\nFor AI specifically, the constraint is not the model but the supply of experimental data it learns from. Models improve only where a project can generate results at volume and in a consistent format, which is why high volume, standardised assays are the right place to automate first. The stated bottlenecks are assay standardisation, data capture in consistent formats, and integration between instruments, software and models, not the robots themselves. Automation multiplies whatever data quality already exists, so standardising assays and capture before buying robots is the sequence that matters.\n\nWhat this does not cover is equally important. The quantitative evidence is a single 2018 study of clinical specimen handling, not of AI driven discovery, and it measures handling steps and hands on time rather than discovery speed or model quality. No figures are given for how much a closed loop improves a model, how many automated labs operate, or what any of this costs. The consolidation claim is supported by one acquisition, which is a signal about the vendor landscape and not a measurement of the field.\n\nThe loop only closes if the data coming out of the lab is in a format the model can consume. That is why the stated bottlenecks are assay standardisation, data capture in consistent formats, and integration between instruments, software and models, rather than the robots. A robot that runs an assay faster but writes results into a bespoke spreadsheet has not shortened the cycle at all, because the retraining step still requires manual reconciliation.\n\nThe 2018 study is the only quantitative evidence in the data, and it measures clinical specimen handling, not AI driven discovery. It reports an 86 percent reduction in discrete specimen handling steps and an 82 percent cut in hands on time for add on testing. Those are throughput and labour numbers. Nothing in the data connects them to model quality or to the speed of a discovery programme, so the case for the loop rests on the mechanism rather than on a measured outcome.\n\nThe practical consequence is a sequencing rule. Standardise assays and data capture before buying robots, because automation multiplies whatever data quality already exists. A team that buys the workcell first scales its inconsistencies along with its throughput.\n\nWhat does lab in the loop actually mean?\nA cycle where AI models choose experiments, automated labs run them, and results retrain the models. The model proposes, the lab tests, and the results feed back to pick the next round.\n\nWhat should be automated first?\nHigh volume, standardised assays where consistency and data capture add the most value. Those are the assays where automation compounds rather than just accelerates.\n\nHow much does a closed loop improve a model?\nThe data does not hold this. No figure is given for how much a closed loop improves a model, and the only quantitative result is a 2018 study of clinical specimen handling steps and hands on time.\n\nHow many automated labs are operating?\nThe data does not say. It describes what automated labs do and how the loop works, but gives no count of facilities.\n\nWhat does the Hamilton acquisition tell us about the vendor landscape?\nHamilton acquired UK Robotics and Trisonic Discovery, adding a lab orchestration platform to its liquid handling range. That is one acquisition, so it is a signal about consolidation among liquid handling and workcell vendors rather than a measurement of the field.\n\nWhat does it cost to automate a lab?\nThe data does not cover costs. It names the bottlenecks as assay standardisation, data capture and integration, and gives no pricing for robots, software or integration work.",
         "model": "ollama:deepseek-v4.1-flash",
-        "generated_on": "2026-10-06"
+        "generated_on": "2026-10-07"
     },
     "related": {
         "terms": [
@@ -48,10 +56,15 @@
                 "line": "The 2026 package of targeted amendments to the EU AI Act, deferring high-risk deadlines and restructuring conformity assessment.",
                 "path": "/ai-glossary/digital-omnibus-ai/",
                 "term": "Digital Omnibus (AI)"
+            },
+            {
+                "line": "The number of tokens or requests a serving system processes per unit time. The capacity number that, with latency, defines what a deployment can actually serve.",
+                "path": "/ai-glossary/throughput/",
+                "term": "Throughput"
             }
         ]
     },
-    "built_at": "2026-10-05T14:13:06-05",
+    "built_at": "2026-10-07T07:02:07-05",
     "category": "enterprise-applications-governance-and-tools",
     "children": null,
     "expanded": true,
@@ -102,8 +115,8 @@
             "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/bfda0342/"
         }
     ],
-    "explainer": "Lab automation uses robots and software to run experiments: liquid handlers pipette samples, plate readers measure results, robotic arms move plates between instruments, and scheduling software orchestrates the whole workflow. Automated labs run around the clock with consistent technique, which produces the large, clean datasets AI models need.\n\nThe combination is often called the lab in the loop. A model proposes molecules or experiments, the automated lab tests them, the results flow back to retrain the model, and the next round is chosen. Each cycle improves the model where it matters for the project. The bottlenecks are rarely the robots: they are assay standardisation, data capture in consistent formats, and integration between instruments, software and models. Companies that fix those first get far more from both automation and AI.",
-    "generated": "2026-10-04",
+    "explainer": "Lab automation uses robots and software to run experiments: liquid handlers pipette samples, plate readers measure results, robotic arms move plates between instruments, and scheduling software orchestrates the whole workflow. Automated labs run around the clock with consistent technique, which produces the large, clean datasets AI models need.\n\nThe combination is often called the lab in the loop. A model proposes molecules or experiments, the automated lab tests them, the results flow back to retrain the model, and the next round is chosen. Each cycle improves the model where it matters for the project. The bottlenecks are rarely the robots: they are assay standardisation, data capture in consistent formats, and integration between instruments, software and models. Companies that fix those first get far more from both automation and AI.\n\nWhat the lab in the loop means\n\nIn conventional discovery, scientists design experiments, run them, read the results and design the next round, a cycle that can take weeks. Lab in the loop closes that cycle with automation: a model proposes experiments, robots run them, instruments produce data, the model updates and proposes again. The aim is to explore far more possibilities than a team could by hand, and to learn from every result rather than only the ones a person had time to study.\n\nWhat has been built\n\nAutomated labs now exist at pharmaceutical companies, at AI biotechs and as contract services. They combine liquid handling robots, automated cell culture, high throughput screening, imaging and analysis, with software that schedules work and feeds results to models. Some run continuously. The most ambitious versions let a model choose not just conditions but which experiment to run next, within limits set by scientists. Results so far are strongest in chemistry optimisation and in screening, where experiments are repetitive and well defined.\n\nWhat holds it back\n\nBiology is messy, and robots need experiments standardised in ways that biology sometimes resists. Instruments from different makers do not talk to each other without integration work. Data has to be captured with enough context to be useful to a model, which is harder than it sounds. And a loop that runs unattended needs safeguards against wasting reagents or chasing an artefact. The labs that work treat the model as a very fast junior scientist with excellent record keeping, and keep senior scientists deciding where it should look.",
+    "generated": "2026-10-07",
     "child_count": 0,
     "parent_name": "Drug Discovery and Research",
     "parent_path": "/ai-ecosystem/enterprise-applications-governance-and-tools/ed73bec4/",
@@ -128,6 +141,6 @@
             ]
         }
     ],
-    "last_reviewed": "2026-10-04",
+    "last_reviewed": "2026-10-07",
     "refresh_every_days": 30
 }

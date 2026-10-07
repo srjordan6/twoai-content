@@ -7,6 +7,14 @@
         {
             "a": "Through monitoring metrics, user feedback, complaint trends and periodic evaluations against reference data.",
             "q": "How is field performance measured?"
+        },
+        {
+            "a": "The device can change and drift after approval, so manufacturers monitor performance against defined metrics and thresholds over time, in addition to collecting complaints and adverse events as for any device.",
+            "q": "How is post market surveillance different for AI devices?"
+        },
+        {
+            "a": "Ground truth is often delayed or unavailable, hospitals hold the data, problems can hide in small patient subgroups, and an update can help on average while harming some groups.",
+            "q": "What makes AI device monitoring hard in practice?"
         }
     ],
     "uid": "9323316e",
@@ -33,9 +41,9 @@
     "drafted": true,
     "noindex": false,
     "reading": {
-        "body": "Vigilance for AI medical devices means tracking model performance in the field, not just hardware faults, because a model can degrade with no visible malfunction.\n\nThe mechanism is drift. A hospital changes scanners, or the patient population shifts, and the model's inputs no longer match what it was trained on. Nothing breaks. The device still returns an answer. That is why the guidance points to monitoring metrics, user feedback, complaint trends and periodic evaluation against reference data, and why field performance should be measured by site and by subgroup rather than in aggregate.\n\nThe stakes are documented. WHO published post-market surveillance guidance for medical devices in 2020, and a 2025 study in JAMA Health Forum found that about 6.3 percent of FDA cleared AI devices had been recalled. Recalls are the visible end of a process that starts with performance data nobody collected. The practical instruction for a safety team is to route device complaint and performance data into model monitoring, not only into the complaint system, and to link complaints to model versions so findings can feed risk management and, where needed, updates under change control.\n\nWhat the data does not cover is how often drift actually causes harm, or how many of those recalls trace to model performance rather than to hardware or labeling. It also does not say what threshold of degradation should trigger a report. On the question of whether drift is itself reportable, the answer given is conditional: it depends on whether it led or could lead to serious harm, assessed under the maker's own vigilance procedures. That leaves the judgment with the manufacturer, which is where the monitoring burden sits.",
+        "body": "Vigilance for AI medical devices means tracking model performance in the field, not just hardware faults, because a model can degrade with no visible malfunction.\n\nThe mechanism is drift. A hospital changes scanners, or the patient population shifts, and the model's inputs no longer match what it was trained on. Nothing breaks. The device still returns an answer. That is why the guidance points to monitoring metrics, user feedback, complaint trends and periodic evaluation against reference data, and why field performance should be measured by site and by subgroup rather than in aggregate.\n\nThe stakes are documented. WHO published post-market surveillance guidance for medical devices in 2020, and a 2025 study in JAMA Health Forum found that about 6.3 percent of FDA cleared AI devices had been recalled. Recalls are the visible end of a process that starts with performance data nobody collected. The practical instruction for a safety team is to route device complaint and performance data into model monitoring, not only into the complaint system, and to link complaints to model versions so findings can feed risk management and, where needed, updates under change control.\n\nWhat the data does not cover is how often drift actually causes harm, or how many of those recalls trace to model performance rather than to hardware or labeling. It also does not say what threshold of degradation should trigger a report. On the question of whether drift is itself reportable, the answer given is conditional: it depends on whether it led or could lead to serious harm, assessed under the maker's own vigilance procedures. That leaves the judgment with the manufacturer, which is where the monitoring burden sits.\n\nThe recall figure and the drift mechanism are two ends of the same pipeline, and the data lets you see the gap between them. A recall is a corrective action taken after a device has already reached patients. Drift is a silent change in the relationship between inputs and outputs that produces no alarm on its own. Between those two points sits the only thing that closes the gap: field performance data collected by site and subgroup, linked to model versions, and routed into risk management. The 6.3 percent figure measures the failures that surfaced. It says nothing about the failures that did not, because nothing in the data captures devices that degraded without triggering a complaint.\n\nThe comparison the data supports is between two monitoring targets that behave differently. Hardware faults announce themselves through malfunction. Model degradation does not, which is why the guidance names monitoring metrics, user feedback, complaint trends and periodic evaluation against reference data as separate instruments rather than one. Each catches a different failure mode. Complaint trends catch what users notice. Reference-data evaluation catches what users do not, because a model returning a confident wrong answer generates no complaint until someone independently checks the answer against ground truth.\n\nThe practical consequence is that the reporting decision sits with the manufacturer, and the data is explicit that drift is reportable only when it led or could lead to serious harm, assessed under the maker's own vigilance procedures. That places the judgment, and the monitoring burden that informs it, inside the company rather than at the regulator. A safety team that only feeds complaints into the complaint system has no basis for that judgment. The instruction in the data is to feed the same data into model monitoring and to link complaints to model versions, so that a pattern across sites or subgroups becomes visible before it becomes a recall.\n\nIs model drift a reportable incident?\nIt depends on whether it led or could lead to serious harm, assessed under the maker's vigilance procedures. The data does not set a threshold of degradation that triggers a report.\n\nHow is field performance measured?\nThrough monitoring metrics, user feedback, complaint trends and periodic evaluations against reference data. The data specifies measurement by site and subgroup rather than in aggregate.\n\nHow many of the recalled AI devices were recalled because of model performance rather than hardware or labeling?\nThe data does not hold this. It gives the recall rate, about 6.3 percent of FDA cleared AI devices, without breaking it down by cause.\n\nHow often does drift actually cause harm?\nThe data does not say. It establishes that drift can occur without visible malfunction and that monitoring is required, but it carries no frequency or harm rate.\n\nWhat should trigger a model update under change control?\nThe data says findings from field monitoring should feed risk management and, where needed, model updates under change control. It does not specify the threshold that makes an update necessary.\n\nWhy measure performance by site and subgroup instead of in aggregate?\nBecause a hospital changing scanners or a patient population shifting affects inputs unevenly. Aggregate numbers can look stable while a single site or subgroup degrades, and the data names both as the level at which field performance should be tracked.",
         "model": "ollama:deepseek-v4.1-flash",
-        "generated_on": "2026-10-06"
+        "generated_on": "2026-10-07"
     },
     "related": {
         "terms": [
@@ -50,13 +58,18 @@
                 "term": "Digital Omnibus (AI)"
             },
             {
+                "line": "The verified correct answer used as the reference for scoring. Every real evaluation needs it, and producing it is usually the expensive part: without trusted ground truth, an eval measures agreement, not accuracy.",
+                "path": "/ai-glossary/ground-truth/",
+                "term": "Ground Truth"
+            },
+            {
                 "line": "Performance degradation over time as the world diverges from the training distribution. The reason deployment is a lifecycle, not an event: monitoring and retraining are part of the system.",
                 "path": "/ai-glossary/model-drift/",
                 "term": "Model Drift"
             }
         ]
     },
-    "built_at": "2026-10-05T14:13:06-05",
+    "built_at": "2026-10-07T07:02:08-05",
     "category": "enterprise-applications-governance-and-tools",
     "children": null,
     "expanded": true,
@@ -107,8 +120,8 @@
             "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/6913cdb6/"
         }
     ],
-    "explainer": "Device vigilance is the medical device counterpart of pharmacovigilance: collecting complaints and incident reports, investigating them, reporting serious incidents to regulators, and taking corrective action. Post-market surveillance more broadly includes actively gathering data on how devices perform in use.\n\nFor AI devices this needs to include model performance, not just hardware faults. A model can degrade without any visible malfunction, for example when a hospital changes scanners or a patient population shifts. Makers should track performance metrics in the field, by site and subgroup, link complaint data to model versions, and feed findings into risk management and, where needed, model updates under change control.",
-    "generated": "2026-10-04",
+    "explainer": "Device vigilance is the medical device counterpart of pharmacovigilance: collecting complaints and incident reports, investigating them, reporting serious incidents to regulators, and taking corrective action. Post-market surveillance more broadly includes actively gathering data on how devices perform in use.\n\nFor AI devices this needs to include model performance, not just hardware faults. A model can degrade without any visible malfunction, for example when a hospital changes scanners or a patient population shifts. Makers should track performance metrics in the field, by site and subgroup, link complaint data to model versions, and feed findings into risk management and, where needed, model updates under change control.\n\nWhy vigilance for AI devices is different\n\nAfter a traditional device is approved, its design is fixed and post market surveillance looks for failures of that fixed design. An AI device can change: through planned updates, through retraining on new data, and through drift when the patients or scanners it sees differ from the ones it was trained on. So vigilance has to watch not only for harm but for performance that quietly declines without any failure event being reported.\n\nWhat manufacturers are expected to do\n\nRegulators expect a post market performance plan for AI devices: defined metrics, how often they are measured, on what data, what thresholds trigger action, and how performance across patient groups is checked. Where a device is allowed to update under a predetermined change control plan, each update is checked against that plan and recorded. Complaints and adverse events are still collected in the usual way, but they are joined by performance monitoring that can catch a problem before any complaint arrives.\n\nThe hard parts\n\nMonitoring needs ground truth, and in clinical use the true answer, such as whether a flagged scan really showed disease, may only be known much later or never. Hospitals control the data, and manufacturers need agreements to see it. Bias can appear only in subgroups too small to show up in overall statistics. And when an update improves average performance but worsens it for some patients, the decision is not purely technical. These are the questions regulators and manufacturers are working through, and the answers are being written into guidance as cases arise.",
+    "generated": "2026-10-07",
     "child_count": 0,
     "parent_name": "Safety and Pharmacovigilance",
     "parent_path": "/ai-ecosystem/enterprise-applications-governance-and-tools/4cdc6bd2/",
@@ -134,6 +147,6 @@
             ]
         }
     ],
-    "last_reviewed": "2026-10-04",
+    "last_reviewed": "2026-10-07",
     "refresh_every_days": 30
 }

@@ -1,0 +1,84 @@
+{
+    "kev": 0,
+    "num": 749,
+    "uid": "4897048d",
+    "cves": [
+        {
+            "kev": false,
+            "cve_id": "CVE-2025-53827",
+            "product": "File Storage",
+            "summary": "ownCloud Core is the server-side component of the file storage, synchronization, and sharing application ownCloud Classic. In versions prior to 10.15.3, the Updater on ownCloud 10 before 10.15.3 has an exposed dangerous ",
+            "headline": "ownCloud 10 before 10.15.3 lets an admin run code through the Updater",
+            "published": "2026-07-06",
+            "cvss_score": 9.1,
+            "cvss_severity": "CRITICAL"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2025-9611",
+            "product": "MCP",
+            "summary": "Microsoft Playwright MCP Server versions prior to 0.0.40 fails to validate the Origin header on incoming connections. This allows an attacker to perform a DNS rebinding attack via a victim’s web browser and send unauth",
+            "headline": "",
+            "published": "2026-01-07",
+            "cvss_score": 7.2,
+            "cvss_severity": "HIGH"
+        }
+    ],
+    "high": 1,
+    "name": "Exposed Dangerous Method or Function",
+    "count": 2,
+    "shape": "cwe",
+    "title": "CWE-749: Exposed Dangerous Method or Function",
+    "cwe_id": "CWE-749",
+    "latest": "2026-07-06",
+    "status": "Incomplete",
+    "ai_text": "In AI software this weakness shows up in the interfaces that AI tools expose to other programs. The two CVEs here cover a file storage product, ownCloud 10 before 10.15.3, and an MCP server, Microsoft Playwright MCP Server before 0.0.40. In the MCP case the server accepts incoming connections without checking the Origin header, so a browser can be pointed at it and the attacker reaches the exposed function through the victim's own machine. In the ownCloud case an admin-level function in the Updater is reachable and can run code. The result is that an attacker can invoke a powerful method the product never meant to expose, gaining code execution or control over the AI tooling.",
+    "ai_model": "ollama:deepseek-v4.1-flash",
+    "built_at": "2026-10-07T06:33:04-05",
+    "critical": 1,
+    "page_uid": "4897048d",
+    "generated": "2026-10-07",
+    "mitre_url": "https://cwe.mitre.org/data/definitions/749.html",
+    "likelihood": "",
+    "abstraction": "Base",
+    "description": "The product provides an Applications Programming Interface (API) or similar interface for interaction with external actors, but the interface includes a dangerous method or function that is not properly restricted.",
+    "mitigations": [
+        {
+            "phase": [
+                "Architecture and Design"
+            ],
+            "description": "If you must expose a method, make sure to perform input validation on all arguments, limit access to authorized parties, and protect against all possible vulnerabilities."
+        },
+        {
+            "phase": [
+                "Architecture and Design Implementation"
+            ],
+            "strategy": "Attack Surface Reduction",
+            "description": "Identify all exposed functionality. Explicitly list all functionality that must be exposed to some user or set of users. Identify which functionality may be: accessible to all users restricted to a small set of privileged users prevented from being directly accessible at all Ensure that the implemented code follows these expectations. This includes setting the appropriate access modifiers where applicable (public, private, protected, etc.) or not marking ActiveX controls safe-for-scripting."
+        }
+    ],
+    "consequences": [
+        {
+            "note": "Exposing critical functionality essentially provides an attacker with the privilege level of the exposed functionality. This could result in the modification or exposure of sensitive data or possibly even execution of arbitrary code.",
+            "scope": [
+                "Integrity",
+                "Confidentiality",
+                "Availability",
+                "Access Control",
+                "Other"
+            ],
+            "impact": [
+                "Gain Privileges or Assume Identity",
+                "Read Application Data",
+                "Modify Application Data",
+                "Execute Unauthorized Code or Commands",
+                "Other"
+            ]
+        }
+    ],
+    "ai_written_on": "2026-10-07",
+    "alternate_terms": [
+    ],
+    "refresh_every_days": 1,
+    "extended_description": "This weakness can lead to a wide variety of resultant weaknesses, depending on the behavior of the exposed method. It can apply to any number of technologies and approaches, such as ActiveX controls, Java functions, IOCTLs, and so on. The exposure can occur in a few different ways: The function/method was never intended to be exposed to outside actors. The function/method was only intended to be accessible to a limited set of actors, such as Internet-based access from a single web site."
+}

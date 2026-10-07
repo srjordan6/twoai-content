@@ -5,6 +5,16 @@
     "cves": [
         {
             "kev": false,
+            "cve_id": "CVE-2026-93677",
+            "product": "Langflow",
+            "summary": "IBM Langflow OSS 1.0.0 through 1.12.2 could allow a remote authenticated attacker to obtain sensitive information due to exposure of sensitive information to an unauthorized actor.",
+            "headline": "Langflow 1.0.0 through 1.12.2 leaks sensitive information to a logged in remote attacker",
+            "published": "2026-10-07",
+            "cvss_score": 7.7,
+            "cvss_severity": "HIGH"
+        },
+        {
+            "kev": false,
             "cve_id": "CVE-2026-105752",
             "product": "vLLM",
             "summary": "vLLM is an inference and serving engine for large language models. Prior to 0.30.0, Harmony tool continuations submitted through \"POST /v1/responses\" requests rebuild the next-turn engine input without preserving the cac",
@@ -18,7 +28,7 @@
             "cve_id": "CVE-2026-105145",
             "product": "Weaviate",
             "summary": "A vulnerability has been found in Weaviate Verba up to 2.1.3. Affected by this vulnerability is the function get_environment of the file goldenverba/components/util.py of the component generate_stream Endpoint. The manip",
-            "headline": "Weaviate Verba up to 2.1.3 leaks environment data through generate_stream endpoint",
+            "headline": "Weaviate Verba up to 2.1.3 leaks environment data through its generate_stream endpoint",
             "published": "2026-10-04",
             "cvss_score": 5.5,
             "cvss_severity": "MEDIUM"
@@ -182,22 +192,32 @@
             "published": "2026-03-27",
             "cvss_score": 7.1,
             "cvss_severity": "HIGH"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2025-67732",
+            "product": "Dify",
+            "summary": "Dify is an open-source LLM app development platform. Prior to version 1.11.0, the API key is exposed in plaintext to the frontend, allowing non-administrator users to view and reuse it. This can lead to unauthorized acce",
+            "headline": "",
+            "published": "2026-01-05",
+            "cvss_score": 8.4,
+            "cvss_severity": "HIGH"
         }
     ],
-    "high": 4,
+    "high": 6,
     "name": "Exposure of Sensitive Information to an Unauthorized Actor",
-    "count": 18,
+    "count": 20,
     "shape": "cwe",
     "title": "CWE-200: Exposure of Sensitive Information to an Unauthorized Actor",
     "cwe_id": "CWE-200",
-    "latest": "2026-10-05",
+    "latest": "2026-10-07",
     "status": "Draft",
     "ai_text": "In AI software this weakness shows up across MCP servers, agent and workflow builders, and chat front ends. The CVEs sit in products such as Langflow, Flowise, Open WebUI and several MCP servers, plus GitHub Copilot. The usual way in is an ordinary signed-in or low privilege user, or in some cases any local process or an unauthenticated request, reaching an endpoint or tool call that was never meant to return secrets. What it lets an attacker do is read credentials, OAuth and API keys, environment variables, private knowledge base names, other tenants' workflow backups, and internal file contents, all of which can then be reused to widen access.",
     "ai_model": "ollama:deepseek-v4.1-flash",
-    "built_at": "2026-10-06T13:57:13-05",
+    "built_at": "2026-10-07T06:33:04-05",
     "critical": 1,
     "page_uid": "1615b60f",
-    "generated": "2026-10-06",
+    "generated": "2026-10-07",
     "mitre_url": "https://cwe.mitre.org/data/definitions/200.html",
     "likelihood": "",
     "abstraction": "Class",

@@ -7,6 +7,14 @@
         {
             "a": "For AI devices, yes: they are design inputs, and their provenance and changes should be recorded.",
             "q": "Do training datasets need document control?"
+        },
+        {
+            "a": "No, it needs the same system extended: design controls that cover data and model development, risk management for drift and bias, supplier control over data and cloud services, performance monitoring and model change control.",
+            "q": "Does an AI medical device need a different quality management system?"
+        },
+        {
+            "a": "Through change control. Manufacturers define in advance, ideally agreed with the regulator, which updates are minor and handled under a predetermined plan and which need a new review.",
+            "q": "How is a model update handled in a device quality system?"
         }
     ],
     "uid": "6c387302",
@@ -33,9 +41,9 @@
     "drafted": true,
     "noindex": false,
     "reading": {
-        "body": "AI devices do not get a separate quality system. They run on the existing device system, now aligned with ISO 13485 in the United States since the FDA's Quality Management System Regulation took effect on 2 February 2026.\n\nWhat changes is the record set. Training data becomes a controlled design input with its own records, the same as specifications. Model training records and change control for retraining join the system alongside it. The regulated object is no longer only the shipped device but the data and process that produced its behavior.\n\nThis matters because retraining is the normal state of an AI device, not an exception. A conventional device is validated once and changed deliberately. A model can drift as data, labels, or upstream models change, so the quality system has to hold the link between a given dataset and a given device version. That is a documentation and traceability burden, and it lands on the same teams already carrying the device file.\n\nThe data covers one jurisdiction and one effective date. It does not say how regulators will treat continuous learning, what evidence a retraining change requires, or how any of this interacts with European requirements. It also says nothing about compute, so no claim about infrastructure follows from it.",
+        "body": "AI devices do not get a separate quality system. Since 2 February 2026 the FDA's Quality Management System Regulation aligns US device requirements with ISO 13485, and AI devices run inside that same system.\n\nWhat AI adds is data and models as controlled design elements. Training, validation and test datasets are design inputs, so their sources, labelling and quality need records, and their provenance and changes need document control. Model versions, training runs and evaluation results need traceable records. Retraining is a change, so it goes through design and change control, with post-market performance feeding back into risk management and corrective action.\n\nThe practical shift for a medtech team is treating training data like a specification rather than a side artefact. That is a documentation and process burden, not a compute or power one, and the data here says nothing about how large those datasets are, how often models are retrained, or what any of it costs. It also covers the US alignment only. The related EU AI Act material is referenced but not described, so the European position for these devices is not established by this data.",
         "model": "ollama:deepseek-v4.1-flash",
-        "generated_on": "2026-10-05"
+        "generated_on": "2026-10-07"
     },
     "related": {
         "terms": [
@@ -45,13 +53,23 @@
                 "term": "Artificial Intelligence (AI)"
             },
             {
+                "line": "The subset of AI focused on systems that learn from data and improve with experience rather than following explicitly programmed rules. Nearly everything called AI in production is machine learning underneath.",
+                "path": "/ai-glossary/machine-learning-ml/",
+                "term": "Machine Learning (ML)"
+            },
+            {
                 "line": "The 2026 package of targeted amendments to the EU AI Act, deferring high-risk deadlines and restructuring conformity assessment.",
                 "path": "/ai-glossary/digital-omnibus-ai/",
                 "term": "Digital Omnibus (AI)"
+            },
+            {
+                "line": "A verified record of where data came from and what it may be used for.",
+                "path": "/ai-glossary/data-provenance/",
+                "term": "Data Provenance"
             }
         ]
     },
-    "built_at": "2026-10-05T14:26:22-05",
+    "built_at": "2026-10-07T07:02:09-05",
     "category": "enterprise-applications-governance-and-tools",
     "children": null,
     "expanded": true,
@@ -102,8 +120,8 @@
             "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/a7ecbdcf/"
         }
     ],
-    "explainer": "A quality management system is the set of procedures a device maker uses to control design, production, changes, complaints and corrective actions. In the United States the Quality Management System Regulation, effective February 2026, aligns FDA requirements with the international standard ISO 13485, so one system can serve both markets.\n\nFor AI devices the system needs extensions. Training, validation and test data must be controlled as design inputs, with records of their sources, labelling and quality. Model versions, training runs and evaluation results need traceable records. Changes to data or models go through design and change control, and post-market performance monitoring feeds back into risk management and corrective action. Treating data and models as controlled elements of the design, not as side artefacts, is the core shift.",
-    "generated": "2026-10-04",
+    "explainer": "A quality management system is the set of procedures a device maker uses to control design, production, changes, complaints and corrective actions. In the United States the Quality Management System Regulation, effective February 2026, aligns FDA requirements with the international standard ISO 13485, so one system can serve both markets.\n\nFor AI devices the system needs extensions. Training, validation and test data must be controlled as design inputs, with records of their sources, labelling and quality. Model versions, training runs and evaluation results need traceable records. Changes to data or models go through design and change control, and post-market performance monitoring feeds back into risk management and corrective action. Treating data and models as controlled elements of the design, not as side artefacts, is the core shift.\n\nWhat a quality management system is for\n\nEvery medical device manufacturer must run a quality management system: documented processes for design, risk management, supplier control, production, complaint handling and corrective action, audited by regulators and notified bodies. The international standard most regulators recognise is ISO 13485, and the FDA has aligned its own quality regulation to it. The system exists so that a device is designed, built and maintained the same controlled way every time.\n\nWhat AI adds to the system\n\nAn AI device has components a conventional device does not: training data, a model, and a process for updating it. The quality system has to cover them. Design controls extend to data requirements, data provenance and model development records. Risk management considers failure modes such as drift, bias and performance on unseen inputs. Supplier controls cover the data sources, cloud services and model components bought from others. Post market processes add performance monitoring. And change control defines when a model update is a minor change and when it needs a new review, ideally agreed with the regulator in advance.\n\nStandards catching up\n\nStandards bodies are writing AI specific guidance to sit alongside ISO 13485, and the FDA and international regulators have published good machine learning practice principles that map onto quality system elements. Manufacturers do not wait for the final standards. They document how their existing system addresses each AI specific element, because that is the question an auditor will ask, and a clear mapping answers it.",
+    "generated": "2026-10-07",
     "child_count": 0,
     "parent_name": "Medical Devices and MedTech",
     "parent_path": "/ai-ecosystem/enterprise-applications-governance-and-tools/7e981379/",
@@ -119,6 +137,6 @@
             ]
         }
     ],
-    "last_reviewed": "2026-10-04",
+    "last_reviewed": "2026-10-07",
     "refresh_every_days": 30
 }

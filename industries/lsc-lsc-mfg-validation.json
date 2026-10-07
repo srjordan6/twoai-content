@@ -7,6 +7,14 @@
         {
             "a": "Good Automated Manufacturing Practice, ISPE's widely used framework for computerised system validation.",
             "q": "What is GAMP?"
+        },
+        {
+            "a": "The model's behaviour comes from data, it can meet inputs it was never trained on, and retraining invalidates earlier evidence. Validation adds defined operating ranges, representative test data, ongoing monitoring and change control for every version.",
+            "q": "What is different about validating a machine learning model in a plant?"
+        },
+        {
+            "a": "It scales with the model's influence on product quality. An advisory trend flag needs little; a model that sets a critical parameter or supports release needs the full lifecycle package.",
+            "q": "How much validation evidence does a manufacturing model need?"
         }
     ],
     "uid": "7038f979",
@@ -33,9 +41,9 @@
     "drafted": true,
     "noindex": false,
     "reading": {
-        "body": "AI used in pharmaceutical quality decisions now sits under two frameworks at once: the FDA's draft credibility guidance and existing GMP validation. ISPE's GAMP Guide on AI turns that overlap into practice for computerised systems, focused on data, testing and change control.\n\nThe pattern is that AI is being absorbed into the validation regime that already governs manufacturing software, not treated as a separate category. The FDA draft, issued in January 2025, reaches AI that supports quality decisions. The GAMP guide, published in 2025, addresses computerised systems generally, which is where most plant AI actually runs. The practical consequence is that a model influencing a batch or release decision inherits the same expectations as any validated system: documented data, documented testing, documented change control.\n\nFor AI specifically, this matters because the usual argument for a model is accuracy, and accuracy is not the standard here. A validated system is one whose behaviour is understood, bounded and reproducible, and a model that drifts or cannot explain a decision is hard to fit into that. The data also points to a consolidation benefit: one validation approach built on GAMP and the FDA framework can serve both US and EU inspections, so teams are not maintaining two evidentiary tracks.\n\nWhat this does not cover is the substance of either document. No specific testing method, acceptance criterion, or data requirement is given, and the FDA text is a draft, so its final form is not settled. The dates and the two sources are all the record provides.",
+        "body": "Manufacturing AI that supports a quality decision must satisfy two frameworks at once: the FDA's draft credibility guidance and GMP computerised system validation. ISPE's GAMP guide on AI is the document that translates both into practice.\n\nThe two frameworks answer different questions. GAMP covers the established ground of requirements, risk assessment, supplier assessment, configuration control, testing and documentation. The FDA credibility framework addresses how much evidence is enough, scaled to how much the decision rests on the model and how serious a wrong decision would be. The AI-specific additions sit on top of the GAMP base: fitness of training data, independent test data, predefined performance criteria, explainability where needed, and monitoring after release.\n\nResponsibility does not transfer with the software. A vendor can supply documentation and testing, but the manufacturer remains responsible for validating the system in its intended use. That matters for AI specifically because model behaviour can drift after release, so validation is not a one-time gate. The stated payoff is that one approach built on GAMP and the FDA framework can serve both US and EU inspections, letting a global manufacturer run the same process across sites.\n\nThe data covers two developments, the FDA draft guidance in January 2025 and the ISPE GAMP Guide: Artificial Intelligence in 2025, and it does not say whether either has been finalised. It names draft Annex 22 as a third reference point without describing its contents. It also does not quantify how much validation effort any particular model requires, which is the question a manufacturing team will actually face.",
         "model": "ollama:deepseek-v4.1-flash",
-        "generated_on": "2026-10-05"
+        "generated_on": "2026-10-07"
     },
     "related": {
         "news": [
@@ -50,6 +58,11 @@
                 "line": "The field of computer science dedicated to creating systems that perform tasks typically requiring human intelligence: understanding language, recognizing patterns, making decisions.",
                 "path": "/ai-glossary/artificial-intelligence-ai/",
                 "term": "Artificial Intelligence (AI)"
+            },
+            {
+                "line": "The subset of AI focused on systems that learn from data and improve with experience rather than following explicitly programmed rules. Nearly everything called AI in production is machine learning underneath.",
+                "path": "/ai-glossary/machine-learning-ml/",
+                "term": "Machine Learning (ML)"
             },
             {
                 "line": "The 2026 package of targeted amendments to the EU AI Act, deferring high-risk deadlines and restructuring conformity assessment.",
@@ -78,7 +91,7 @@
             }
         ]
     },
-    "built_at": "2026-10-05T14:26:19-05",
+    "built_at": "2026-10-07T07:02:06-05",
     "category": "enterprise-applications-governance-and-tools",
     "children": null,
     "expanded": true,
@@ -129,8 +142,8 @@
             "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/1e649c1b/"
         }
     ],
-    "explainer": "Validating manufacturing AI combines established computerised system validation with AI specific checks. The established part covers requirements, risk assessment, supplier assessment, configuration control, testing and documentation, typically following GAMP. The AI specific part covers the fitness of training data, independent test data, predefined performance criteria, explainability where needed, and monitoring after release.\n\nWhere a model supports a quality decision, the FDA's draft credibility framework adds a structured way to decide how much evidence is enough, based on how much the decision rests on the model and how serious a wrong decision would be. Using one validation approach that satisfies GAMP, the FDA framework and draft Annex 22 lets a global manufacturer run the same process across sites.",
-    "generated": "2026-10-04",
+    "explainer": "Validating manufacturing AI combines established computerised system validation with AI specific checks. The established part covers requirements, risk assessment, supplier assessment, configuration control, testing and documentation, typically following GAMP. The AI specific part covers the fitness of training data, independent test data, predefined performance criteria, explainability where needed, and monitoring after release.\n\nWhere a model supports a quality decision, the FDA's draft credibility framework adds a structured way to decide how much evidence is enough, based on how much the decision rests on the model and how serious a wrong decision would be. Using one validation approach that satisfies GAMP, the FDA framework and draft Annex 22 lets a global manufacturer run the same process across sites.\n\nWhy ordinary validation does not quite fit\n\nComputer system validation assumes software does the same thing every time and that a test performed once stays valid. A machine learning model does not fit that assumption. Its behaviour comes from data rather than from code a reviewer can read, it can give different outputs for inputs it has never seen, and it can be retrained, after which the old evidence no longer describes the new model. So validation has to add some things.\n\nWhat gets added\n\nFirst, a documented intended use and the operating range of inputs the model was built for, so that out of range inputs are detected rather than silently answered. Second, evidence of performance on held out data that represents real production, including the hard cases and the rare ones. Third, performance monitoring in use, with thresholds that trigger review. Fourth, a change control process that treats retraining as a change, with its own evidence, and that records every model version. Fifth, a defined human role: what the person checks, how often, and what they can override.\n\nWhat regulators have said\n\nAgencies have published principles for AI in drug manufacturing and in devices that point the same way: risk based, lifecycle focused, with the depth of evidence matched to the model's influence on quality. None of this requires novel science. It requires the plant to write down what it would do for a new instrument, apply it to a model, and keep the records current as the model changes.",
+    "generated": "2026-10-07",
     "child_count": 0,
     "parent_name": "Manufacturing and Supply Chain",
     "parent_path": "/ai-ecosystem/enterprise-applications-governance-and-tools/77ac1e57/",
@@ -156,6 +169,6 @@
             ]
         }
     ],
-    "last_reviewed": "2026-10-04",
+    "last_reviewed": "2026-10-07",
     "refresh_every_days": 30
 }

@@ -25,6 +25,26 @@
         },
         {
             "kev": false,
+            "cve_id": "CVE-2025-66336",
+            "product": "MCP",
+            "summary": "Apache Doris MCP Server contains a SQL injection vulnerability in a metadata query path. A user-controlled database name is directly interpolated into a SQL query, and the query is executed without passing the caller's a",
+            "headline": "Apache Doris MCP Server before 0.6.1 lets a database name inject SQL in metadata queries",
+            "published": "2026-06-22",
+            "cvss_score": 8.1,
+            "cvss_severity": "HIGH"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2025-66335",
+            "product": "MCP",
+            "summary": "Apache Doris MCP Server versions earlier than 0.6.1 are affected by an improper neutralization flaw in query context handling that may allow execution of unintended SQL statements and bypass of intended query validation ",
+            "headline": "",
+            "published": "2026-04-20",
+            "cvss_score": 5.3,
+            "cvss_severity": "MEDIUM"
+        },
+        {
+            "kev": false,
             "cve_id": "CVE-2025-29189",
             "product": "Flowise",
             "summary": "Flowise <= 2.2.3 is vulnerable to SQL Injection. via tableName parameter at Postgres_VectorStores.",
@@ -34,9 +54,9 @@
             "cvss_severity": "HIGH"
         }
     ],
-    "high": 2,
+    "high": 3,
     "name": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')",
-    "count": 3,
+    "count": 5,
     "shape": "cwe",
     "title": "CWE-89: Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')",
     "cwe_id": "CWE-89",
@@ -44,10 +64,10 @@
     "status": "Stable",
     "ai_text": "In AI software this weakness shows up in tools that turn plain language into database queries. The two CVEs sit in an agent framework and an LLM application platform, not in model serving or notebooks. CrewAI's crewai-tools 1.10.2rc1 ships an NL2SQLTool that lets a remote attacker run arbitrary SQL, and Dify before 1.16.0 lets a search request run SQL in the MyScale backend. In both cases the input arrives through a normal user-facing request, such as a search box or an agent tool call, and the generated query is sent to the database without the special characters being neutralized. That lets an attacker read or change data the query was never meant to touch.",
     "ai_model": "ollama:deepseek-v4.1-flash",
-    "built_at": "2026-10-06T13:57:13-05",
+    "built_at": "2026-10-07T06:33:04-05",
     "critical": 0,
     "page_uid": "9dd03c75",
-    "generated": "2026-10-06",
+    "generated": "2026-10-07",
     "mitre_url": "https://cwe.mitre.org/data/definitions/89.html",
     "likelihood": "",
     "abstraction": "Base",

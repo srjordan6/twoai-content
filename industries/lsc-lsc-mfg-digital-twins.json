@@ -7,6 +7,14 @@
         {
             "a": "Process models, real time data from the equipment and the software to keep the two in sync.",
             "q": "What is needed to build one?"
+        },
+        {
+            "a": "Only when its output affects product quality, such as releasing a batch or setting a critical parameter. Twins used for development, training and planning are modelling tools and face far less regulatory burden.",
+            "q": "Is a digital twin a validated system?"
+        },
+        {
+            "a": "Process development, scale up from small to commercial batches, operator training on simulated lines, and production scheduling. Direct real time control is the ambition but is still the least common use.",
+            "q": "Where have digital twins paid off in pharma manufacturing?"
         }
     ],
     "uid": "28b8a05a",
@@ -33,9 +41,9 @@
     "drafted": true,
     "noindex": false,
     "reading": {
-        "body": "A digital twin lets a production change be tested in simulation before it is made in the plant, and Roche has built them for production lines using NVIDIA Omniverse.\n\nThe pattern is that the twin sits upstream of the physical change. A process or a whole line is modeled, changes are run against the model, and only then does the plant itself move. Roche's twins are described as part of AI factories that span research and manufacturing, so the same modeling approach is being applied across the two ends of the business rather than in one isolated plant.\n\nFor AI specifically, the constraint is data rather than simulation software. A twin is only as good as the process data behind it, which is why the practical advice is to start with one well instrumented line instead of attempting a site-wide model. That is a compute and instrumentation problem before it is a modeling problem, and it is the step that determines whether the twin reflects the plant or merely approximates it.\n\nThe data covers one named company and one named platform, with no figures on line counts, cost, or measured outcomes. It does not say how far the Roche work has scaled, whether the twins run in production or pilot, or what results they produced.",
+        "body": "A digital twin lets a production change be tested in simulation before it is made in the plant, and its accuracy depends on the process data behind it.\n\nThe pattern here is a model kept in sync with a real line using process models, equipment data, and software. That synchronization is the whole mechanism. A twin built on a poorly instrumented process will not predict what the plant will do, which is why the practical advice is to start with one well instrumented line and prove value before extending.\n\nFor AI specifically, the twin matters as a place to train and test controllers without risking steel. Roche's use of NVIDIA Omniverse for digital twins of production lines sits inside AI factories spanning research and manufacturing, which places the twin alongside the compute and the plant rather than apart from them.\n\nThe data does not say how many lines Roche has twinned, what the twins cost, or what results they produced. It also does not settle when a twin needs full validation: the guidance given is conditional, with GMP decision support requiring it and engineering exploration possibly not.",
         "model": "ollama:deepseek-v4.1-flash",
-        "generated_on": "2026-10-05"
+        "generated_on": "2026-10-07"
     },
     "related": {
         "terms": [
@@ -53,6 +61,11 @@
                 "line": "A live virtual model of a physical asset or process, fed by real data and used for simulation and optimization. It lets an operator test changes in software before risking them in steel.",
                 "path": "/ai-glossary/digital-twin/",
                 "term": "Digital Twin"
+            },
+            {
+                "line": "The number of tokens or requests a serving system processes per unit time. The capacity number that, with latency, defines what a deployment can actually serve.",
+                "path": "/ai-glossary/throughput/",
+                "term": "Throughput"
             }
         ],
         "papers": [
@@ -70,7 +83,7 @@
             }
         ]
     },
-    "built_at": "2026-10-05T14:12:57-05",
+    "built_at": "2026-10-07T07:01:59-05",
     "category": "enterprise-applications-governance-and-tools",
     "children": null,
     "expanded": true,
@@ -121,8 +134,8 @@
             "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/1e649c1b/"
         }
     ],
-    "explainer": "A digital twin is a virtual model of a physical process, piece of equipment or entire facility, kept in sync with real data from sensors and systems. Engineers use it to test changes, such as new settings, layouts or schedules, in simulation before touching the real line, and to train AI controllers safely.\n\nIn pharma, twins help with process development and scale up, capacity planning, operator training, and predicting how changes affect quality. Their accuracy depends on good process understanding and reliable data, so they work best on well instrumented processes. Starting with a single line or unit operation, proving value, then extending is the usual path.",
-    "generated": "2026-10-04",
+    "explainer": "A digital twin is a virtual model of a physical process, piece of equipment or entire facility, kept in sync with real data from sensors and systems. Engineers use it to test changes, such as new settings, layouts or schedules, in simulation before touching the real line, and to train AI controllers safely.\n\nIn pharma, twins help with process development and scale up, capacity planning, operator training, and predicting how changes affect quality. Their accuracy depends on good process understanding and reliable data, so they work best on well instrumented processes. Starting with a single line or unit operation, proving value, then extending is the usual path.\n\nWhat a digital twin is in manufacturing\n\nA digital twin is a living model of a process or a plant, fed with real data from sensors and batch records, that behaves the way the physical system does. For a bioreactor it predicts how cells will grow and produce under given conditions. For a whole line it predicts throughput, bottlenecks and the effect of a schedule change. AI matters because the twin's accuracy depends on learning from history, and because modern twins update themselves as conditions change rather than being rebuilt by engineers.\n\nWhat twins are used for\n\nThe uses that have paid off are process development, where a twin lets engineers test conditions before running expensive batches; scale up, where a twin trained on small scale data predicts behaviour at commercial scale; operator training, where staff practise on a simulated line; and scheduling, where the twin tests production plans before they are committed. Real time control, where the twin drives the process directly, is further off because it puts the model inside the validated control loop.\n\nThe regulatory position\n\nA twin used for development and planning is a modelling tool and faces little regulatory friction. A twin whose predictions replace a measurement, release a batch or set a critical parameter is part of the manufacturing process and needs validation and change control. Regulators have signalled interest in model based approaches, including in continuous manufacturing, and the practical path is the one plants already follow: use the twin in advisory roles, collect evidence, then expand its authority step by step with each step documented.",
+    "generated": "2026-10-07",
     "child_count": 0,
     "parent_name": "Manufacturing and Supply Chain",
     "parent_path": "/ai-ecosystem/enterprise-applications-governance-and-tools/77ac1e57/",
@@ -138,6 +151,6 @@
             ]
         }
     ],
-    "last_reviewed": "2026-10-04",
+    "last_reviewed": "2026-10-07",
     "refresh_every_days": 30
 }

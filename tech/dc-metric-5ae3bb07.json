@@ -14,11 +14,11 @@
         "name": "Data Centers"
     },
     "reading": {
-        "body": "Network latency and packet loss are an operational metric for AI data centers because distributed training turns network degradation into wasted GPU-hours before it becomes an outage.\n\nThe metric sits in the uptime and redundancy category alongside UPS battery health, generator runtime, and SLA uptime compliance. That grouping is the point. Power redundancy keeps a facility running, and network measurement keeps the expensive work inside it from being silently thrown away. A generator failure is visible. A lossy fabric is not, which is why it has to be measured continuously rather than monitored for alarms.\n\nFor AI specifically, the cost of a degraded fabric is paid in compute that was already bought and powered. The data here defines the measurement, round-trip latency, loss rate, and utilization on internal fabric and external transit, but it carries no thresholds, no observed values, and no history. It does not say what loss rate is tolerable, how measurement is instrumented, or how this facility compares to any other. It establishes that the metric exists and why it belongs in an uptime category, nothing about performance.",
+        "body": "Network latency, packet loss, and bandwidth are the operational metrics that catch AI training failures before they become outages. Distributed training is unusually intolerant of network degradation, so a lossy fabric shows up as wasted GPU-hours before it shows up as anything a status page would report.\n\nThat distinction matters because it separates this metric from the other two in its category. UPS battery health and generator runtime measure whether power keeps flowing, and SLA uptime compliance measures whether the facility met its contractual promise. Both are binary in practice: the power held or it did not. Fabric latency and loss are continuous, and a facility can sit fully inside its SLA while silently burning compute on retries and stalled collective operations.\n\nThe measurement is defined as continuous monitoring of round-trip latency, loss rate, and utilization on both the internal fabric and external transit. That covers the two paths where AI workloads actually degrade, the east-west traffic between accelerators and the north-south links to storage, checkpoints, and data. It is an operations track metric, refreshed on a thirty-day cycle, which is a reasonable cadence for a signal that shifts with congestion and configuration rather than with hardware failure.\n\nWhat this does not provide is any threshold, baseline, or observed value. There is no number here for acceptable loss, no target latency, and no indication of how any particular facility performs. The data establishes what should be watched and why it matters for training, not what good looks like.",
         "model": "ollama:deepseek-v4.1-flash",
-        "generated_on": "2026-10-05"
+        "generated_on": "2026-10-07"
     },
-    "built_at": "2026-10-06T14:06:21-05",
+    "built_at": "2026-10-07T07:01:35-05",
     "page_uid": "5ae3bb07",
     "siblings": [
         {
@@ -32,7 +32,7 @@
             "category": "Uptime and redundancy"
         }
     ],
-    "generated": "2026-10-06",
+    "generated": "2026-10-07",
     "category_hub": {
         "uid": "8a9b751f",
         "name": "Uptime and redundancy"

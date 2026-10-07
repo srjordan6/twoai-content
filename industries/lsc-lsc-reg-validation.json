@@ -7,6 +7,14 @@
         {
             "a": "Whenever the model, its data or its intended use changes, and when monitoring shows performance has drifted outside its criteria.",
             "q": "How often should an AI model be revalidated?"
+        },
+        {
+            "a": "The same stages apply, but requirements must define the model's input range and performance, risk assessment must cover drift, bias and confident errors, testing needs independent locked data, operation needs monitoring, and every retraining is a change.",
+            "q": "What is different about validating AI in a GxP system?"
+        },
+        {
+            "a": "Testing on training data, validating once without monitoring, accepting a vendor package that does not reflect the company's own data, allowing silent vendor updates, and oversight written into procedures but not designed into the system.",
+            "q": "What are the most common AI validation mistakes?"
         }
     ],
     "uid": "7f0934e6",
@@ -48,10 +56,15 @@
                 "line": "The 2026 package of targeted amendments to the EU AI Act, deferring high-risk deadlines and restructuring conformity assessment.",
                 "path": "/ai-glossary/digital-omnibus-ai/",
                 "term": "Digital Omnibus (AI)"
+            },
+            {
+                "line": "The requirement that a person can understand, intervene in, and override AI decisions. Mandated for high-risk uses under the EU AI Act, and only real when the human has the time, information, and authority to actually intervene.",
+                "path": "/ai-glossary/human-oversight/",
+                "term": "Human Oversight"
             }
         ]
     },
-    "built_at": "2026-10-05T14:26:15-05",
+    "built_at": "2026-10-07T07:02:02-05",
     "category": "enterprise-applications-governance-and-tools",
     "children": null,
     "expanded": true,
@@ -102,8 +115,8 @@
             "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/da138a2a/"
         }
     ],
-    "explainer": "Computerised system validation proves that a system does what it is supposed to do, consistently, in its intended use. The industry's reference approach is GAMP 5, which scales effort to risk and to how complex or customised a system is. The FDA's computer software assurance guidance pushes in the same direction, asking companies to focus testing on functions that could affect product quality or patient safety and to use lighter, unscripted testing elsewhere.\n\nAI adds problems traditional validation did not face. Performance depends on training data, so the data must be shown fit for purpose and representative. Testing must use data the model never saw, and acceptance criteria must be fixed beforehand to avoid tuning to the test. Behaviour can shift as real world inputs drift, so monitoring after go-live matters more than for conventional software. And models are retrained, so change control must cover data and model versions, not just code. ISPE's GAMP guide on AI brings these points into the existing framework rather than creating a separate one.",
-    "generated": "2026-10-04",
+    "explainer": "Computerised system validation proves that a system does what it is supposed to do, consistently, in its intended use. The industry's reference approach is GAMP 5, which scales effort to risk and to how complex or customised a system is. The FDA's computer software assurance guidance pushes in the same direction, asking companies to focus testing on functions that could affect product quality or patient safety and to use lighter, unscripted testing elsewhere.\n\nAI adds problems traditional validation did not face. Performance depends on training data, so the data must be shown fit for purpose and representative. Testing must use data the model never saw, and acceptance criteria must be fixed beforehand to avoid tuning to the test. Behaviour can shift as real world inputs drift, so monitoring after go-live matters more than for conventional software. And models are retrained, so change control must cover data and model versions, not just code. ISPE's GAMP guide on AI brings these points into the existing framework rather than creating a separate one.\n\nThe parts that carry over\n\nGxP validation has a settled shape: user requirements, risk assessment, supplier assessment, installation and operational qualification, performance qualification against the intended use, and change control for the system's life. All of that still applies to an AI system. What changes is the content of each part, because the thing being validated is a model whose behaviour comes from data rather than a procedure that can be read.\n\nThe parts that change\n\nUser requirements have to state the model's intended use, the input range it is built for and the performance it must achieve, including on rare and difficult cases. Risk assessment has to consider failure modes that ordinary software does not have: drift as inputs change, bias across subgroups, confident wrong outputs, and silent changes from retraining or vendor updates. Performance qualification needs test data independent of training data, representative of real operation and locked before testing, with results reported across subgroups. Operation adds performance monitoring with thresholds that trigger review. And change control treats every retraining and every model version as a change needing its own evidence.\n\nThe common mistakes\n\nTesting on data the model was trained on, which proves nothing. Validating once and never monitoring, so drift goes unseen. Accepting a vendor's validation package without checking it reflects the company's own data and use. Letting a vendor update a model without the company knowing. And writing human oversight into the procedure without designing it into the system, so the review becomes a formality. Avoiding those five covers most of what inspectors have found wrong with AI validation so far.",
+    "generated": "2026-10-07",
     "child_count": 0,
     "parent_name": "Regulatory, Quality and Compliance",
     "parent_path": "/ai-ecosystem/enterprise-applications-governance-and-tools/93ace9ab/",
@@ -139,6 +152,6 @@
             ]
         }
     ],
-    "last_reviewed": "2026-10-04",
+    "last_reviewed": "2026-10-07",
     "refresh_every_days": 30
 }

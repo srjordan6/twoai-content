@@ -7,6 +7,14 @@
         {
             "a": "A model that estimates a quantity that is hard to measure directly from other process measurements.",
             "q": "What is a soft sensor?"
+        },
+        {
+            "a": "Continuous lines already run on real time sensor data and automated control, so a model that learns from history and handles many variables slots into an existing control strategy rather than replacing manual steps.",
+            "q": "Why is AI more useful in continuous manufacturing than in batch?"
+        },
+        {
+            "a": "Confirming a product's quality from measurements taken during the process instead of testing samples afterwards. AI models often provide the predictions it relies on, which is why regulators scrutinise them closely.",
+            "q": "What is real time release testing?"
         }
     ],
     "uid": "85da3a39",
@@ -33,9 +41,9 @@
     "drafted": true,
     "noindex": false,
     "reading": {
-        "body": "ICH Q13, adopted in November 2022, sets the international expectations for continuous manufacturing of drug substances and products, and AI control models used in those processes become part of the control strategy that must be described in the filing.\n\nContinuous manufacturing runs material through without stopping between steps. That removes the batch boundaries where quality was traditionally checked, so control has to happen in real time on the line. Real time monitoring and control is the kind of problem models fit, which is why continuous processes are a natural place for AI in drug manufacturing.\n\nThe regulatory consequence is the part that matters. An AI model in this setting is not a side tool. It is part of the control strategy, and the filing has to describe it. That puts model behavior inside the same documented, reviewed framework as the rest of the process, which shapes how such models are built and maintained.\n\nThe data covers one guideline and one principle. It does not say which companies run continuous lines, how many have filed, what the models predict, or how regulators have responded to specific submissions. It also does not connect this to compute, buildings, or power, and nothing here supports drawing that link.",
+        "body": "Continuous manufacturing depends on real time monitoring and control, which makes it a natural place for AI models. ICH Q13 sets the international expectations for continuous manufacturing of drug substances and products.\n\nThe mechanism is straightforward. Batch manufacturing holds material between steps for testing. Continuous manufacturing feeds raw materials in and product out without stopping, so the process has to be kept in its target state as it runs. That requires measuring quality attributes during manufacturing, which is what process analytical technology does, and estimating quantities that are hard to measure directly from other process measurements, which is what a soft sensor does. AI fits in both roles.\n\nThe regulatory consequence is the part that changes engineering decisions. Because control models become part of the control strategy, they must be described in the filing and validated accordingly. A model that estimates a quality attribute is not an internal convenience in this setting. It is part of the argument that the process produces conforming material, and it carries the documentation and validation burden that follows from that.\n\nWhat the data does not cover is how any of this performs in practice. It names no vendor, no plant, no model architecture, and no measured outcome. The only dated item is ICH's adoption of Q13 in November 2022. The rest is definitional: what continuous manufacturing is, what the two named technologies do, and where the regulatory line falls.",
         "model": "ollama:deepseek-v4.1-flash",
-        "generated_on": "2026-10-05"
+        "generated_on": "2026-10-07"
     },
     "related": {
         "terms": [
@@ -51,7 +59,7 @@
             }
         ]
     },
-    "built_at": "2026-10-05T14:13:00-05",
+    "built_at": "2026-10-07T07:02:01-05",
     "category": "enterprise-applications-governance-and-tools",
     "children": null,
     "expanded": true,
@@ -102,8 +110,8 @@
             "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/1e649c1b/"
         }
     ],
-    "explainer": "Batch manufacturing makes a product in discrete lots, with material held between steps for testing. Continuous manufacturing feeds raw materials in and product out without stopping, which can shrink equipment, cut cycle times and improve consistency. It depends on real time monitoring, often through process analytical technology, and on control systems that keep the process in its target state.\n\nAI fits here as soft sensors that estimate quality attributes from process data, as models that detect disturbances and divert nonconforming material, and as advanced controllers. ICH Q13 sets international expectations for continuous manufacturing, including how to define batches, control strategy and material traceability. Because control models become part of the control strategy, they must be described in the regulatory filing and validated accordingly.",
-    "generated": "2026-10-04",
+    "explainer": "Batch manufacturing makes a product in discrete lots, with material held between steps for testing. Continuous manufacturing feeds raw materials in and product out without stopping, which can shrink equipment, cut cycle times and improve consistency. It depends on real time monitoring, often through process analytical technology, and on control systems that keep the process in its target state.\n\nAI fits here as soft sensors that estimate quality attributes from process data, as models that detect disturbances and divert nonconforming material, and as advanced controllers. ICH Q13 sets international expectations for continuous manufacturing, including how to define batches, control strategy and material traceability. Because control models become part of the control strategy, they must be described in the regulatory filing and validated accordingly.\n\nWhat continuous manufacturing is\n\nMost medicines are still made in batches: a quantity of material moves through each step, stops, is tested, and moves on. Continuous manufacturing runs material through the steps without stopping, with sensors measuring quality as it flows and controls adjusting the process in real time. Regulators have encouraged it because it can be more consistent, more flexible and faster to scale, and several approved medicines are now made this way.\n\nWhere AI fits\n\nContinuous lines depend on advanced process control: models that read sensor data, predict product attributes and adjust settings to keep quality within limits. Classical control uses fixed equations; AI adds the ability to learn from history, to handle many variables at once and to detect subtle drift early. The same models support real time release testing, where quality is confirmed from in process measurements rather than from samples tested afterwards. That is the step with the biggest payoff and the most regulatory scrutiny.\n\nThe regulatory shape\n\nAgencies have issued guidance on continuous manufacturing that expects a defined control strategy, understanding of how disturbances propagate, and rules for diverting material that falls out of limits. AI models inside the control strategy need validation proportionate to their role, and model updates are changes to the process. Because continuous lines are designed with control in mind from the start, they are often the easiest place to bring AI into the control loop properly, with the monitoring and records built in rather than retrofitted.",
+    "generated": "2026-10-07",
     "child_count": 0,
     "parent_name": "Manufacturing and Supply Chain",
     "parent_path": "/ai-ecosystem/enterprise-applications-governance-and-tools/77ac1e57/",
@@ -119,6 +127,6 @@
             ]
         }
     ],
-    "last_reviewed": "2026-10-04",
+    "last_reviewed": "2026-10-07",
     "refresh_every_days": 30
 }

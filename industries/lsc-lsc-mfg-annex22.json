@@ -7,6 +7,14 @@
         {
             "a": "Testing on data the model learned from overstates its performance.",
             "q": "Why keep test data independent?"
+        },
+        {
+            "a": "Annexes are applied directly by inspectors in Europe and in aligned countries, so once in force the annex defines what a plant has to show for AI in critical applications.",
+            "q": "Why does an EU GMP annex on AI matter more than guidance papers?"
+        },
+        {
+            "a": "A defined intended use, independent and representative test data, acceptance criteria set before testing, human oversight, performance monitoring and change control for retraining, with extra caution for generative or adaptive models.",
+            "q": "What does the annex expect for AI in critical manufacturing uses?"
         }
     ],
     "uid": "b760eb9c",
@@ -33,9 +41,9 @@
     "drafted": true,
     "noindex": false,
     "reading": {
-        "body": "Draft Annex 22 asks manufacturers to define an AI model's intended use, keep test data separate from training data, set acceptance criteria before testing, and lock models once in use.\n\nThe pattern is procedural rather than technical. Every requirement concerns how a model is specified, tested and controlled, not what algorithm it uses. Intended use, independent test data, pre-agreed acceptance criteria and change control are the same disciplines manufacturers already apply to validated systems. The new elements are data independence, predefined performance criteria for statistical models, and monitoring for drift.\n\nFor AI specifically, the draft favours models that do not change once in use. That rules out continuous online learning in critical GMP applications and pushes teams toward frozen models with human review where reliability is incomplete. It also ties model performance to the data it was trained on, which makes data provenance a manufacturing concern rather than a data science one.\n\nThe data covers one draft annex, released for consultation on 7 July 2025, and does not say whether it will be finalised, when it would take effect, or how it interacts with the EU AI Act beyond a related reference to the 2026 Digital Omnibus. It also does not describe penalties, timelines, or how a manufacturer would demonstrate compliance to an inspector.",
+        "body": "Draft Annex 22 asks manufacturers to define an AI model's intended use, keep test data separate from training data, set acceptance criteria before testing, and lock models once in use.\n\nThe pattern is procedural rather than technical. Every requirement concerns how a model is specified, tested and controlled, not what algorithm it uses. Intended use, independent test data, pre-agreed acceptance criteria and change control are the same disciplines manufacturers already apply to validated systems. The new elements are data independence, predefined performance criteria for statistical models, and monitoring for drift.\n\nFor AI specifically, the draft favours models that do not change once in use. That rules out continuous online learning in critical GMP applications and pushes teams toward frozen models with human review where reliability is incomplete. It also ties model performance to the data it was trained on, which makes data provenance a manufacturing concern rather than a data science one.\n\nThe data covers one draft annex, released for consultation on 7 July 2025, and does not say whether it will be finalised, when it would take effect, or how it interacts with the EU AI Act beyond a related reference to the 2026 Digital Omnibus. It also does not describe penalties, timelines, or how a manufacturer would demonstrate compliance to an inspector.\n\nThe draft's preference for models that do not change once in use is a constraint on architecture, not just on process. A frozen model cannot adapt to a new raw material supplier, a reformulated excipient, or a drift in incoming assay values without going back through change control. That means the monitoring requirement and the lock requirement pull in opposite directions: the model must be watched closely enough to catch drift, but it cannot correct itself when drift is found. The practical result is a periodic retraining cycle that runs through the same specification, testing and release steps as the original model.\n\nThe data independence requirement is the one element that reaches outside the plant. Test data must represent real production including rare defects and normal variation, which means the test set is a claim about the manufacturing process, not just about the model. A team that cannot show its test set covers rare failure modes cannot satisfy the annex regardless of how the model performs on average. This makes the quality of historical batch records and defect logs a direct input to AI validation.\n\nThe annex also shifts the timing of work. Acceptance criteria are agreed before any testing, so the threshold for minimum detection rates and maximum false rejects is a negotiated number set by process experts, not a result reported after the fact. Teams that test first and set targets later will have to redo the sequence.\n\nWhat does Annex 22 require before a model is built?\nThe intended use must be written down first, covering what the model does, its inputs, its outputs and the decision it supports, with process experts involved. Acceptance criteria such as minimum detection rates and maximum false rejects are agreed before any testing begins.\n\nCan a model keep learning after it is deployed in a critical GMP application?\nThe draft favours models that do not change once in use, which rules out continuous online learning in critical applications. Where the model is not fully reliable, a person reviews its output instead.\n\nWhy does the annex care whether test data is independent?\nTesting on data the model learned from overstates its performance. The test set must also represent real production, including rare defects and normal variation, so it functions as evidence about the process as well as the model.\n\nWhat happens if a locked model drifts in operation?\nThe model is monitored in operation so drift is caught, but the data does not say what a manufacturer must then do. It also does not describe how a retrained model would be re-released, beyond the general reference to change control.\n\nDoes Annex 22 say when it takes effect or what non-compliance costs?\nNo. The data covers a draft released for consultation on 7 July 2025 and does not state whether it will be finalised, when it would apply, or what penalties follow. It also does not describe how a manufacturer would demonstrate compliance to an inspector.\n\nHow does Annex 22 relate to the EU AI Act?\nThe data does not establish the relationship. It references the 2026 Digital Omnibus, the package of amendments deferring high-risk deadlines and restructuring conformity assessment, but does not say how the two instruments interact for a manufacturing site.",
         "model": "ollama:deepseek-v4.1-flash",
-        "generated_on": "2026-10-06"
+        "generated_on": "2026-10-07"
     },
     "related": {
         "terms": [
@@ -48,10 +56,15 @@
                 "line": "The 2026 package of targeted amendments to the EU AI Act, deferring high-risk deadlines and restructuring conformity assessment.",
                 "path": "/ai-glossary/digital-omnibus-ai/",
                 "term": "Digital Omnibus (AI)"
+            },
+            {
+                "line": "The requirement that a person can understand, intervene in, and override AI decisions. Mandated for high-risk uses under the EU AI Act, and only real when the human has the time, information, and authority to actually intervene.",
+                "path": "/ai-glossary/human-oversight/",
+                "term": "Human Oversight"
             }
         ]
     },
-    "built_at": "2026-10-05T14:12:47-05",
+    "built_at": "2026-10-07T07:01:48-05",
     "category": "enterprise-applications-governance-and-tools",
     "children": null,
     "expanded": true,
@@ -102,8 +115,8 @@
             "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/1e649c1b/"
         }
     ],
-    "explainer": "In the plant, Annex 22 changes how an AI project is set up from day one. Before building, the team writes down the model's intended use, the inputs it will receive, the decision it supports and the people who will rely on it, with process experts involved. Acceptance criteria, such as minimum detection rates and maximum false rejects, are agreed before any testing.\n\nTest data are kept separate from training data and chosen to represent real production, including rare defects and normal variation. The model is tested, documented and released under change control, then monitored in operation so drift is caught. Where the model is not fully reliable, a person reviews its output. Critical applications use models that are locked and give consistent outputs. Existing validation teams already know most of this discipline; the new elements are data independence, predefined performance criteria for statistical models, and monitoring.",
-    "generated": "2026-10-04",
+    "explainer": "In the plant, Annex 22 changes how an AI project is set up from day one. Before building, the team writes down the model's intended use, the inputs it will receive, the decision it supports and the people who will rely on it, with process experts involved. Acceptance criteria, such as minimum detection rates and maximum false rejects, are agreed before any testing.\n\nTest data are kept separate from training data and chosen to represent real production, including rare defects and normal variation. The model is tested, documented and released under change control, then monitored in operation so drift is caught. Where the model is not fully reliable, a person reviews its output. Critical applications use models that are locked and give consistent outputs. Existing validation teams already know most of this discipline; the new elements are data independence, predefined performance criteria for statistical models, and monitoring.\n\nWhat an annex does\n\nThe EU's good manufacturing practice guidelines are organised as core chapters plus annexes that deal with specific topics, such as sterile products, computerised systems and investigational medicines. Inspectors across Europe and in countries that align with EU GMP apply them directly. A new annex on artificial intelligence therefore matters more than a reflection paper: once in force, it is what an inspector expects to see met on the plant floor.\n\nWhat the annex approach means in practice\n\nThe direction set out for AI in GMP is consistent with the rest of the guidelines. Models used in critical applications, meaning those that affect product quality or patient safety, need a defined intended use, test data that is independent of training data and representative of production, acceptance criteria set before testing, human oversight, performance monitoring, and change control that treats retraining as a change. The annex approach also distinguishes between deterministic models, whose behaviour can be fully tested, and generative or adaptive models, which are treated with more caution for critical uses.\n\nHow plants are preparing\n\nQuality teams are mapping each AI use in the plant against the annex's structure, writing intended use statements and test plans in its vocabulary, and checking that their vendors can supply the documentation it calls for, especially on training and test data. Because the annex is written to sit alongside the existing annex on computerised systems, plants that already have strong computer system validation find the gap is specific and manageable: it is about data, model versions and monitoring, not about inventing a new quality system.",
+    "generated": "2026-10-07",
     "child_count": 0,
     "parent_name": "Manufacturing and Supply Chain",
     "parent_path": "/ai-ecosystem/enterprise-applications-governance-and-tools/77ac1e57/",
@@ -119,6 +132,6 @@
             ]
         }
     ],
-    "last_reviewed": "2026-10-04",
+    "last_reviewed": "2026-10-07",
     "refresh_every_days": 30
 }

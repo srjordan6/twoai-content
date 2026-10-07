@@ -7,6 +7,14 @@
         {
             "a": "By comparing model output with expert annotations on a held out set of real cases.",
             "q": "How is extraction quality measured?"
+        },
+        {
+            "a": "The structured fields a case needs: patient, drug, event coded to the medical dictionary, dates, outcome, seriousness and reporter, each with a confidence score and a pointer to the source text, for a person to review.",
+            "q": "What does a language model extract from an adverse event report?"
+        },
+        {
+            "a": "On historical cases with known values, measuring accuracy per field, across the real mix of sources including poor scans and other languages, with extra scrutiny on fields that drive reporting deadlines.",
+            "q": "How is extraction accuracy validated?"
         }
     ],
     "uid": "46e0b961",
@@ -71,7 +79,7 @@
             }
         ]
     },
-    "built_at": "2026-10-05T14:26:05-05",
+    "built_at": "2026-10-07T07:01:51-05",
     "category": "enterprise-applications-governance-and-tools",
     "children": null,
     "expanded": true,
@@ -122,8 +130,8 @@
             "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/6913cdb6/"
         }
     ],
-    "explainer": "Adverse events are often described in messy free text: a patient's email, a call centre note, a clinic letter or a published case report. Extracting them means finding each event, the medicine involved, timing, outcome and patient details, then coding them correctly. Earlier natural language processing used rules or narrow trained models; large language models handle varied phrasing and context much better.\n\nFine tuned open models can now reach accuracy close to human reviewers on structured extraction tasks in published tests, though they need significant computing resources and performance varies with language, terminology and how events are described. In practice companies combine model extraction with confidence scores and human review of uncertain or serious cases, and validate the system on their own case types before relying on it.",
-    "generated": "2026-10-04",
+    "explainer": "Adverse events are often described in messy free text: a patient's email, a call centre note, a clinic letter or a published case report. Extracting them means finding each event, the medicine involved, timing, outcome and patient details, then coding them correctly. Earlier natural language processing used rules or narrow trained models; large language models handle varied phrasing and context much better.\n\nFine tuned open models can now reach accuracy close to human reviewers on structured extraction tasks in published tests, though they need significant computing resources and performance varies with language, terminology and how events are described. In practice companies combine model extraction with confidence scores and human review of uncertain or serious cases, and validate the system on their own case types before relying on it.\n\nWhat extraction means in safety\n\nMost adverse event information arrives as unstructured text: emails, call centre notes, letters from physicians, literature articles, social media posts and scanned forms. Before a case can be assessed it has to be turned into structured data: the patient, the drug, the event, the dates, the outcome, the reporter, and dozens of other fields coded to standard dictionaries. This has been manual data entry at scale, and it is the step where language models have found the clearest use.\n\nHow language models are applied\n\nA model reads the source and proposes values for each field, with a confidence score and a pointer to the text it drew from. It codes the event to the medical dictionary, identifies whether the case is serious, checks for duplicates against existing cases, and flags missing information for follow up. A person reviews the proposed case, correcting where needed, and the corrections feed back into monitoring. Reported gains are large reductions in handling time and more consistent coding.\n\nThe validation question\n\nRegulators expect evidence that extraction is accurate across the range of real sources, including poor scans, unusual phrasing and languages other than English. Companies test on sets of historical cases with known correct values, measure field level accuracy, pay special attention to fields that drive reporting deadlines such as seriousness, and keep human review in place for cases the model is unsure about. Models that only process clean, typed text in a demonstration often struggle with the messy reality, so testing on real intake is what matters.",
+    "generated": "2026-10-07",
     "child_count": 0,
     "parent_name": "Safety and Pharmacovigilance",
     "parent_path": "/ai-ecosystem/enterprise-applications-governance-and-tools/4cdc6bd2/",
@@ -149,6 +157,6 @@
             ]
         }
     ],
-    "last_reviewed": "2026-10-04",
+    "last_reviewed": "2026-10-07",
     "refresh_every_days": 30
 }

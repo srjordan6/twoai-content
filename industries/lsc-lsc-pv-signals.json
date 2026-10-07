@@ -7,6 +7,14 @@
         {
             "a": "Qualified safety experts, through the company's signal management process, with regulatory reporting as required.",
             "q": "Who decides if a signal is real?"
+        },
+        {
+            "a": "It adds to it rather than replacing it: reading narrative text, scanning more sources and ranking candidates. Companies keep fixed statistical methods running alongside and check that the model does not suppress signals they would raise.",
+            "q": "Can AI replace statistical signal detection in pharmacovigilance?"
+        },
+        {
+            "a": "A qualified person. AI may find and rank candidates and assemble evidence, but regulators expect the validation of a signal, and the decision to close one, to be made and recorded by people.",
+            "q": "Who decides whether something is a safety signal?"
         }
     ],
     "uid": "7bc34533",
@@ -33,9 +41,9 @@
     "drafted": true,
     "noindex": false,
     "reading": {
-        "body": "AI in signal detection should widen what reviewers see, not decide what counts as a signal, with the human assessment and its rationale kept on record.\n\nThe governance pattern here is that signal detection is treated as a regulated function rather than a modelling exercise. A 2024 review in PMC set out the terms: GxP style validation, ongoing monitoring for data drift, and documentation complete enough that decisions can be explained to regulators. The EMA reflection paper from September 2024 lists signal detection among the uses of AI regulators expect across the medicine lifecycle, which puts the activity inside the same expectations as the rest of the lifecycle rather than in a separate experimental lane.\n\nFor AI specifically, the constraint is not the scale of the spontaneous report database or the real world data. It is that a signal is a judgement with a regulatory consequence, so the tool has to be validated and monitored like any GxP system, and its output has to survive an explanation to an inspector. That is why the human signal assessment stays in the loop and its rationale stays on record.\n\nThe data covers governance positions and regulator expectations, not performance. It gives no measured sensitivity or specificity for any detection method, no count of signals found or missed, and no comparison against existing statistical methods. It also does not say how validation is carried out in practice or who signs it off.",
+        "body": "AI can widen which drug and event pairs reviewers see, but it should not decide what counts as a safety signal. The human assessment and its rationale stay on record.\n\nThe pattern here is a division of labour. Statistical methods such as disproportionality analysis flag pairs reported more often than expected, and AI extends that by combining sources like real world data and literature, reading narratives, and prioritising which alerts deserve attention. The decision itself stays with qualified safety experts working through signal management, with regulatory reporting as required.\n\nGovernance is the reason this is not just a tooling question. Signal decisions carry regulatory weight, so published work argues these systems should be validated like any GxP system, monitored for data drift as reporting patterns change, and documented so decisions can be explained to regulators. The EMA reflection paper lists signal detection among the uses of AI regulators expect across the medicine lifecycle.\n\nWhat the data does not cover is performance. It names no accuracy figures, no false positive rates, no comparison against existing statistical methods, and no named vendor systems. It describes an expected governance posture and a division of responsibility, not evidence that AI detects signals better than what pharmacovigilance already uses.",
         "model": "ollama:deepseek-v4.1-flash",
-        "generated_on": "2026-10-05"
+        "generated_on": "2026-10-07"
     },
     "related": {
         "news": [
@@ -52,13 +60,18 @@
                 "term": "Artificial Intelligence (AI)"
             },
             {
+                "line": "The subset of AI focused on systems that learn from data and improve with experience rather than following explicitly programmed rules. Nearly everything called AI in production is machine learning underneath.",
+                "path": "/ai-glossary/machine-learning-ml/",
+                "term": "Machine Learning (ML)"
+            },
+            {
                 "line": "The 2026 package of targeted amendments to the EU AI Act, deferring high-risk deadlines and restructuring conformity assessment.",
                 "path": "/ai-glossary/digital-omnibus-ai/",
                 "term": "Digital Omnibus (AI)"
             }
         ]
     },
-    "built_at": "2026-10-05T14:12:54-05",
+    "built_at": "2026-10-07T07:01:55-05",
     "category": "enterprise-applications-governance-and-tools",
     "children": null,
     "expanded": true,
@@ -109,8 +122,8 @@
             "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/6913cdb6/"
         }
     ],
-    "explainer": "A safety signal is information suggesting a new possible link between a medicine and an adverse event, or a new aspect of a known one, that warrants investigation. Signal detection traditionally uses statistical methods on spontaneous report databases, looking for drug and event combinations reported more often than expected.\n\nAI adds the ability to combine many data sources, including real world records and literature, to detect patterns in narratives, and to prioritise which statistical alerts deserve attention. The governance challenge is that signal decisions carry regulatory weight. Tools should be validated, monitored for drift as reporting patterns change, and documented so that the reasoning behind each decision can be explained. The final assessment of whether a signal is real, and what action to take, remains with qualified safety physicians and committees.",
-    "generated": "2026-10-04",
+    "explainer": "A safety signal is information suggesting a new possible link between a medicine and an adverse event, or a new aspect of a known one, that warrants investigation. Signal detection traditionally uses statistical methods on spontaneous report databases, looking for drug and event combinations reported more often than expected.\n\nAI adds the ability to combine many data sources, including real world records and literature, to detect patterns in narratives, and to prioritise which statistical alerts deserve attention. The governance challenge is that signal decisions carry regulatory weight. Tools should be validated, monitored for drift as reporting patterns change, and documented so that the reasoning behind each decision can be explained. The final assessment of whether a signal is real, and what action to take, remains with qualified safety physicians and committees.\n\nWhat signal detection is\n\nA safety signal is a hint, from reports or data, that a medicine may cause a harm not yet known or known but changing in frequency or severity. Signal detection means scanning adverse event databases, literature, trial data and increasingly real world data for such hints, then assessing whether they are real. The statistical methods, which compare how often a drug and an event appear together against what chance would predict, are decades old and run routinely at companies and regulators.\n\nWhat AI adds\n\nMachine learning can look at more sources and more combinations than fixed statistical screens, can read free text in case narratives and literature that the structured fields miss, can spot patterns across drugs with similar mechanisms, and can rank candidate signals so assessors spend their time on the ones most likely to matter. Some tools also help with the assessment itself, assembling the evidence for a signal from all available sources into one view. The potential is earlier detection with fewer false alarms.\n\nWhy governance matters more here than almost anywhere\n\nA missed signal can mean patients harmed; a false signal can mean a useful medicine restricted. Both are decisions a regulator will examine. So companies document how the model ranks and filters, keep the human assessment of every signal, and record why a candidate signal was closed. They validate the model's detection against known historical signals, test for blind spots in subgroups, and check that it does not quietly suppress signals that fixed methods would have raised. Regulators have made clear that AI may assist signal detection; the decision that something is a signal remains a human one.",
+    "generated": "2026-10-07",
     "child_count": 0,
     "parent_name": "Safety and Pharmacovigilance",
     "parent_path": "/ai-ecosystem/enterprise-applications-governance-and-tools/4cdc6bd2/",
@@ -136,6 +149,6 @@
             ]
         }
     ],
-    "last_reviewed": "2026-10-04",
+    "last_reviewed": "2026-10-07",
     "refresh_every_days": 30
 }

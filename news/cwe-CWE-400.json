@@ -5,6 +5,16 @@
     "cves": [
         {
             "kev": false,
+            "cve_id": "CVE-2026-93679",
+            "product": "Langflow",
+            "summary": "IBM Langflow OSS 1.0.0 through 1.12.2 could allow a remote authenticated attacker to cause a denial of service due to uncontrolled resource consumption during ZIP file extraction.",
+            "headline": "Langflow 1.0.0 to 1.12.2 lets a signed-in user exhaust server resources with a ZIP file",
+            "published": "2026-10-07",
+            "cvss_score": 4.3,
+            "cvss_severity": "MEDIUM"
+        },
+        {
+            "kev": false,
             "cve_id": "CVE-2026-105760",
             "product": "vLLM",
             "summary": "vLLM is an inference and serving engine for large language models. Prior to 0.30.0, a caller can use the request-level media_io_kwargs field to select the GLMGA video backend and supply large values for the fps and max_f",
@@ -48,7 +58,7 @@
             "cve_id": "CVE-2026-100648",
             "product": "vLLM",
             "summary": "vllm before 0.29.0 fails to enforce VLLM_MAX_AUDIO_CLIP_FILESIZE_MB limit in multimodal chat audio decoding, allowing unauthenticated clients to bypass file size restrictions. Attackers can submit oversized audio files t",
-            "headline": "vLLM before 0.29.0 lets unauthenticated chat audio bypass size limits and exhaust memory",
+            "headline": "vLLM before 0.29.0: unauthenticated clients exhaust server memory via oversized audio",
             "published": "2026-09-26",
             "cvss_score": 6.9,
             "cvss_severity": "MEDIUM"
@@ -255,6 +265,16 @@
         },
         {
             "kev": false,
+            "cve_id": "CVE-2025-32392",
+            "product": "AutoGPT",
+            "summary": "AutoGPT is a workflow automation platform for creating, deploying, and managing continuous artificial intelligence agents. Prior to 0.6.63, AutoGPT's LoopVideoBLock allows users to input a video file and process the vide",
+            "headline": "AutoGPT before 0.6.63 lets a user loop a video until the disk fills",
+            "published": "2026-06-18",
+            "cvss_score": 8.7,
+            "cvss_severity": "HIGH"
+        },
+        {
+            "kev": false,
             "cve_id": "CVE-2024-1635",
             "product": "camel",
             "summary": "A vulnerability was found in Undertow. This vulnerability impacts a server that supports the wildfly-http-client protocol. Whenever a malicious user opens and closes a connection with the HTTP port of the server and then",
@@ -264,20 +284,20 @@
             "cvss_severity": "HIGH"
         }
     ],
-    "high": 10,
+    "high": 11,
     "name": "Uncontrolled Resource Consumption",
-    "count": 26,
+    "count": 28,
     "shape": "cwe",
     "title": "CWE-400: Uncontrolled Resource Consumption",
     "cwe_id": "CWE-400",
-    "latest": "2026-10-05",
+    "latest": "2026-10-07",
     "status": "Draft",
     "ai_text": "In AI software this weakness shows up mostly in model serving and agent plumbing, where a single request can eat memory or CPU until the service dies. The CVEs sit in vLLM, MCP servers and SDKs, Triton Inference Server, Open WebUI, Transformers and camel. Attackers reach it through ordinary inputs the product accepts: overlong prompts, oversized audio, video or media URLs, endless bytes from a stdio peer, or a regex in a structured output request. Many need no authentication at all. The result is a crashed or stalled worker, exhausted GPU memory, or a whole instance that stops answering. Examples include vLLM, MKP and Triton Inference Server.",
     "ai_model": "ollama:deepseek-v4.1-flash",
-    "built_at": "2026-10-06T13:57:13-05",
+    "built_at": "2026-10-07T06:33:04-05",
     "critical": 0,
     "page_uid": "dd6822d4",
-    "generated": "2026-10-06",
+    "generated": "2026-10-07",
     "mitre_url": "https://cwe.mitre.org/data/definitions/400.html",
     "likelihood": "",
     "abstraction": "Class",
