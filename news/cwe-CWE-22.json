@@ -18,7 +18,7 @@
             "cve_id": "CVE-2026-93448",
             "product": "Langflow",
             "summary": "IBM Langflow OSS 1.0.0 through 1.12.2 could allow a remote authenticated attacker to obtain sensitive information due to improper limitation of a pathname to a restricted directory.",
-            "headline": "Langflow 1.0.0 through 1.12.2 lets logged-in users read files outside intended directory",
+            "headline": "Langflow 1.0.0 to 1.12.2 lets a logged in user read files outside the intended directory",
             "published": "2026-10-07",
             "cvss_score": 6.5,
             "cvss_severity": "MEDIUM"
@@ -28,7 +28,7 @@
             "cve_id": "CVE-2026-103360",
             "product": "Langflow",
             "summary": "IBM Langflow OSS 1.0.0 through 1.12.2 could allow a remote authenticated attacker to obtain sensitive information due to improper limitation of a pathname to a restricted directory.",
-            "headline": "Langflow 1.0.0 through 1.12.2 lets a logged in user read files outside its data directory",
+            "headline": "Langflow 1.0.0 to 1.12.2 lets a logged in user read files outside the intended directory",
             "published": "2026-10-07",
             "cvss_score": 8.1,
             "cvss_severity": "HIGH"
@@ -732,11 +732,21 @@
             "published": "2026-06-10",
             "cvss_score": 7.5,
             "cvss_severity": "HIGH"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2025-61913",
+            "product": "Flowise",
+            "summary": "Flowise is a drag & drop user interface to build a customized large language model flow. In versions prior to 3.0.8, WriteFileTool and ReadFileTool in Flowise do not restrict file path access, allowing authenticated atta",
+            "headline": "Flowise before 3.0.8 lets a logged in user read and write any file on the server",
+            "published": "2025-10-08",
+            "cvss_score": 9.9,
+            "cvss_severity": "CRITICAL"
         }
     ],
     "high": 39,
     "name": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')",
-    "count": 73,
+    "count": 74,
     "shape": "cwe",
     "title": "CWE-22: Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')",
     "cwe_id": "CWE-22",
@@ -744,8 +754,8 @@
     "status": "Stable",
     "ai_text": "In AI software this weakness shows up mostly in MCP servers and agent tooling, where a tool that handles files trusts the path it is given. The CVEs sit in MCP Atlassian, NotebookLM MCP, MCP GitLab, MCPVault, MCP Memory Keeper, Flowise, Langflow, ComfyUI, Weights & Biases and Tract. The usual route is a tool call or crafted workflow that passes a path pointing outside the intended folder, often through attachment upload or file read helpers. Attackers then read server files, write files outside the workspace or output directory, and in some cases reach tokens such as the GitLab token.",
     "ai_model": "ollama:deepseek-v4.1-flash",
-    "built_at": "2026-10-08T06:13:46-05",
-    "critical": 7,
+    "built_at": "2026-10-08T13:57:55-05",
+    "critical": 8,
     "page_uid": "b3e3169e",
     "generated": "2026-10-08",
     "mitre_url": "https://cwe.mitre.org/data/definitions/22.html",

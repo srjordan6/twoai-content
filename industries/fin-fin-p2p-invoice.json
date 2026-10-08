@@ -4,7 +4,7 @@
     "slug": "fin-p2p-invoice",
     "shape": "art-topic",
     "title": "Invoice Capture and Coding",
-    "answer": "Invoice capture and coding covers the intake of supplier invoices and the assignment of general ledger codes, cost centres and tax treatments before payment runs. It spans scanned paper, PDF attachments, emailed invoices and structured e-invoice feeds, and it ends where the approved invoice posts to the ledger. The work sits inside accounts payable but touches procurement, tax and master data, because a wrong vendor record or tax code breaks the coding downstream.",
+    "answer": "Invoice capture and coding covers the path a supplier invoice takes from arrival to a posted, coded entry in the accounts payable ledger. It spans intake from email, supplier portals, scan batches and electronic formats, extraction of header and line level data, matching against purchase orders and receipts, and assignment of general ledger codes, cost centres and tax treatment. The work sits between accounts payable operations, procurement and the accounting function, and it is judged on whether the resulting entry is correct and supported rather than on how quickly a document was read.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-10-08T06:41:00-05",
+    "built_at": "2026-10-08T14:12:38-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Accountant",
@@ -28,23 +28,23 @@
     "page_uid": "69c3f977",
     "sections": [
         {
-            "body": "Invoice capture and coding covers the intake of supplier invoices and the assignment of general ledger codes, cost centres and tax treatments before payment runs. It spans scanned paper, PDF attachments, emailed invoices and structured e-invoice feeds, and it ends where the approved invoice posts to the ledger. The work sits inside accounts payable but touches procurement, tax and master data, because a wrong vendor record or tax code breaks the coding downstream.",
+            "body": "Invoice capture and coding covers the path a supplier invoice takes from arrival to a posted, coded entry in the accounts payable ledger. It spans intake from email, supplier portals, scan batches and electronic formats, extraction of header and line level data, matching against purchase orders and receipts, and assignment of general ledger codes, cost centres and tax treatment. The work sits between accounts payable operations, procurement and the accounting function, and it is judged on whether the resulting entry is correct and supported rather than on how quickly a document was read.",
             "heading": "Scope"
         },
         {
-            "body": "Most stacks combine optical character recognition or document AI for text extraction with a matching engine that checks the invoice against purchase orders and goods receipts. Capture tools read the header fields, line items, totals and tax breakdowns, then a rules layer or a learned model proposes the coding. The system usually sits between an email or supplier portal intake channel and an ERP such as SAP, Oracle or NetSuite, with a queue for exceptions that a human reviews.",
+            "body": "The stack usually begins with a capture layer that accepts PDFs, scanned images, email attachments and structured feeds such as EDI or e-invoicing formats. Optical character recognition and document layout models turn pages into text and coordinates, and a classification step decides whether a document is an invoice, a credit note or something else. Extracted fields are held in a queue or staging table, then pushed into an ERP or accounting system through an API or a batch import, with the original document image stored alongside the record so the entry can be traced back to its source.",
             "heading": "What it runs on"
         },
         {
-            "body": "The common pattern is three way matching: invoice, purchase order and receipt must agree within tolerance before the invoice is cleared for payment. Where no purchase order exists, coding falls back to vendor history, prior invoices and keyword rules, and increasingly to a language model that reads the line description and suggests an account. Confidence scores route clean invoices straight through and send the rest to a clerk, who corrects the code and, in a well run setup, that correction feeds back as training data.",
+            "body": "Extraction combines template rules for known suppliers with learned models for unfamiliar layouts, and confidence scores are attached to each field. Coding is often driven by supplier history, purchase order lines, item descriptions and a chart of accounts mapping, with rules for tax codes, currency and cost centre defaults. Most implementations route low confidence documents or mismatched totals to a human reviewer, and the corrections made there are fed back to improve the mapping. Three way matching against purchase order and goods receipt remains the main control before an invoice is approved for payment.",
             "heading": "How the work is done"
         },
         {
-            "body": "The audit trail matters more than the extraction accuracy, because tax authorities and external auditors want to see who approved what and on what evidence. Invoice data carries bank details, so fraud controls against changed remittance accounts are a standard part of the process, and duplicate detection guards against paying the same invoice twice. Retention rules, VAT and sales tax documentation requirements, and access controls over who can alter a vendor record all sit in this layer, and any model that proposes a code should be explainable enough to defend in a review.",
+            "body": "The main risks are duplicate payment, altered bank details, fabricated invoices and mis coded spend that distorts reporting. Controls include duplicate detection on supplier, invoice number and amount, segregation between capture and approval, and validation of supplier master data changes. Audit trails must show what the system extracted, what a person changed and when, because tax authorities and external auditors may ask for the original document and the coding rationale. Data protection rules apply to any personal data on an invoice, and retention schedules determine how long images and extracted records are kept.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The direction of travel is toward fewer human touches on clean invoices and more effort spent on exceptions, supplier onboarding and fraud detection. Mandated e-invoicing regimes are shifting capture from reading documents to receiving structured data, which changes the skill mix from OCR tuning to data mapping and controls. The open questions are how much coding a model should be allowed to commit without review, and how teams evidence that a learned coding decision was correct when an auditor asks.",
+            "body": "Adoption is moving toward continuous, touchless processing for routine, low risk invoices, with human attention concentrated on exceptions and new suppliers. Structured e-invoicing mandates in several jurisdictions are shifting the intake problem from reading paper to validating structured data, which changes where the effort sits. The open questions are how much autonomy to grant coding decisions, how to evidence that autonomy to auditors, and how to keep supplier master data clean enough that automation does not simply scale an existing error.",
             "heading": "Where it is going"
         }
     ],

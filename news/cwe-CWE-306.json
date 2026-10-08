@@ -1,5 +1,5 @@
 {
-    "kev": 0,
+    "kev": 1,
     "num": 306,
     "uid": "4e4e5786",
     "cves": [
@@ -222,11 +222,21 @@
             "published": "2026-07-07",
             "cvss_score": 9.2,
             "cvss_severity": "CRITICAL"
+        },
+        {
+            "kev": true,
+            "cve_id": "CVE-2025-3248",
+            "product": "Langflow",
+            "summary": "Langflow versions prior to 1.3.0 are susceptible to code injection in \nthe /api/v1/validate/code endpoint. A remote and unauthenticated attacker can send crafted HTTP requests to execute arbitrary\ncode.",
+            "headline": "Langflow before 1.3.0 lets an unauthenticated HTTP request run code on the server",
+            "published": "2025-04-07",
+            "cvss_score": 9.8,
+            "cvss_severity": "CRITICAL"
         }
     ],
     "high": 6,
     "name": "Missing Authentication for Critical Function",
-    "count": 22,
+    "count": 23,
     "shape": "cwe",
     "title": "CWE-306: Missing Authentication for Critical Function",
     "cwe_id": "CWE-306",
@@ -234,8 +244,8 @@
     "status": "Draft",
     "ai_text": "In AI software this weakness shows up mostly in MCP servers and agent tooling, where a critical function is exposed with no login at all. The CVEs sit in MCP servers such as MCP Atlassian, MySQL MCP Server and DeepSeek MCP Server, in agent platforms like Langflow and PraisonAI, and in supporting services such as Ollama, Milvus and Open WebUI. The usual way in is a plain network request or a malicious webpage that reaches a local endpoint, with no credential needed. Once inside, an attacker can run tools as the operator, read or delete data, change accounts or stop services.",
     "ai_model": "ollama:deepseek-v4.1-flash",
-    "built_at": "2026-10-08T06:13:45-05",
-    "critical": 11,
+    "built_at": "2026-10-08T13:57:55-05",
+    "critical": 12,
     "page_uid": "4e4e5786",
     "generated": "2026-10-08",
     "mitre_url": "https://cwe.mitre.org/data/definitions/306.html",

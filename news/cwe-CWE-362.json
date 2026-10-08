@@ -42,11 +42,21 @@
             "published": "2026-08-06",
             "cvss_score": 9.2,
             "cvss_severity": "CRITICAL"
+        },
+        {
+            "kev": false,
+            "cve_id": "CVE-2024-7885",
+            "product": "camel",
+            "summary": "A vulnerability was found in Undertow where the ProxyProtocolReadListener reuses the same StringBuilder instance across multiple requests. This issue occurs when the parseProxyProtocolV1 method processes multiple request",
+            "headline": "Undertow reuses a shared buffer across requests, risking data leakage between them",
+            "published": "2024-08-21",
+            "cvss_score": 7.5,
+            "cvss_severity": "HIGH"
         }
     ],
-    "high": 2,
+    "high": 3,
     "name": "Concurrent Execution using Shared Resource with Improper Synchronization ('Race Condition')",
-    "count": 4,
+    "count": 5,
     "shape": "cwe",
     "title": "CWE-362: Concurrent Execution using Shared Resource with Improper Synchronization ('Race Condition')",
     "cwe_id": "CWE-362",
@@ -54,7 +64,7 @@
     "status": "Draft",
     "ai_text": "In AI software this weakness shows up in model serving and inference engines, where many requests share the same memory and state. The CVEs sit in vLLM, a serving engine, and in llama.cpp, both its Android wrapper and its llama-server component. A second request or thread reaches the same shared resource while the first is still using it, so a sparse tensor can slip into a dense conversion, freed memory can be reused, or a remote request can run code in llama-server. The result is memory corruption or code execution on the serving host.",
     "ai_model": "ollama:deepseek-v4.1-flash",
-    "built_at": "2026-10-08T06:13:46-05",
+    "built_at": "2026-10-08T13:57:55-05",
     "critical": 1,
     "page_uid": "5b3c770f",
     "generated": "2026-10-08",

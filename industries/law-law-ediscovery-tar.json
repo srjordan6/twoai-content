@@ -4,7 +4,7 @@
     "slug": "law-ediscovery-tar",
     "shape": "art-topic",
     "title": "Predictive Coding and Technology-Assisted Review",
-    "answer": "Predictive coding and technology-assisted review cover the use of machine learning to rank or classify large document sets for litigation and investigation, most often to separate responsive material from the rest before a review team sees it. The practice sits inside e-discovery, alongside keyword search, deduplication and manual review, and it applies to email, chat, office files and scanned paper alike. It matters because document populations in modern matters routinely run into the millions, and linear review of that volume is slow and expensive.",
+    "answer": "Predictive coding and technology-assisted review cover the use of machine learning to sort large document collections by relevance, most often in litigation, investigations and regulatory responses. The scope runs from simple keyword and rule-based filters through supervised learning on reviewer decisions to more recent approaches that combine sampling, active learning and large language models. It sits inside e-discovery, where the practical question is not whether a model can rank documents but whether the ranking can be defended to a court, an opponent or a regulator. Related work includes privilege review, redaction, deduplication and the production of documents in a reviewable format.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-10-08T06:41:00-05",
+    "built_at": "2026-10-08T14:12:38-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Lawyer",
@@ -28,23 +28,23 @@
     "page_uid": "0646d38d",
     "sections": [
         {
-            "body": "Predictive coding and technology-assisted review cover the use of machine learning to rank or classify large document sets for litigation and investigation, most often to separate responsive material from the rest before a review team sees it. The practice sits inside e-discovery, alongside keyword search, deduplication and manual review, and it applies to email, chat, office files and scanned paper alike. It matters because document populations in modern matters routinely run into the millions, and linear review of that volume is slow and expensive.",
+            "body": "Predictive coding and technology-assisted review cover the use of machine learning to sort large document collections by relevance, most often in litigation, investigations and regulatory responses. The scope runs from simple keyword and rule-based filters through supervised learning on reviewer decisions to more recent approaches that combine sampling, active learning and large language models. It sits inside e-discovery, where the practical question is not whether a model can rank documents but whether the ranking can be defended to a court, an opponent or a regulator. Related work includes privilege review, redaction, deduplication and the production of documents in a reviewable format.",
             "heading": "Scope"
         },
         {
-            "body": "The work runs on a review platform that ingests documents, extracts text and metadata, and hosts the coding interface, with processing engines handling optical character recognition for scans and near-duplicate detection. Underneath sit search and analytics layers, typically Elasticsearch or similar indexing, plus storage for the document set and its extracted text. Model training and scoring may run inside the platform or on separate compute, and the outputs are written back as per-document scores and tags that reviewers and counsel can sort and filter.",
+            "body": "The work runs on document review platforms that ingest files from email, shared drives, chat and case management systems, extract text and metadata, and index everything for search and ranking. These platforms typically combine a database or search engine, a machine learning service for classification and clustering, and a user interface where reviewers code documents and see model scores. Processing pipelines handle optical character recognition, language detection, near-duplicate detection and threading of email conversations. Storage and compute are usually cloud-hosted, with access controls, audit logs and export tooling for productions.",
             "heading": "What it runs on"
         },
         {
-            "body": "A typical workflow starts with a seed set of documents coded by a human reviewer, which trains a classifier to score the remaining population by likely responsiveness. The team then reviews the highest-scoring documents, adds those judgments back into training, and repeats until the ranking stabilises, a loop known as continuous active learning. Recall is estimated against a random or statistically drawn sample, and the resulting metrics are documented so the process can be defended. Simple keyword and Boolean search usually remains in the mix, either to build the seed set or to catch material the model ranks low.",
+            "body": "A typical matter starts with a seed set of documents coded by senior reviewers, which trains a classifier to rank the remaining population. Teams then iterate: review the highest-ranked documents, correct the model, and sample the lower-ranked and excluded regions to estimate how much relevant material is being missed. Statistical sampling and recall estimates are used to decide when the ranking is good enough to stop, and the process is documented so that the method can be explained later. Modern variants add active learning, where the model selects the next documents for review, and transformer-based models that can be prompted rather than trained from scratch. Quality control includes reviewer consistency checks, blinded samples and comparison against keyword searches.",
             "heading": "How the work is done"
         },
         {
-            "body": "Courts have generally accepted predictive coding where the process is transparent, the seed set is sound and the parties agree on validation, and several decisions have addressed how far a producing party must disclose its methodology. Proportionality and reasonableness under the Federal Rules of Civil Procedure shape how much review is enough, and privilege review still requires care because a model that ranks responsiveness does not automatically protect privileged material. Provenance matters throughout: teams keep training logs, seed set records, scoring versions and recall estimates so that opposing counsel and the court can examine how the set was built.",
+            "body": "Courts and regulators increasingly expect the parties to explain how a predictive coding workflow was designed, validated and monitored, not just that it was used. That means keeping records of seed sets, training rounds, sampling plans, recall estimates and the reasoning behind cutoffs, plus a way to show that privileged or protected material was handled correctly. Proportionality, defensibility and transparency are the recurring standards, and the burden usually falls on the party proposing the method to show it is reasonable. Data protection rules add constraints on where documents are stored, who can see them and how long they are kept, and cross-border matters can require local review or transfer safeguards. None of this is legal advice, and the specific obligations depend on the jurisdiction and the matter.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The direction of travel is toward tighter integration of review into case strategy, with active learning as the default rather than a novelty and with generative models increasingly used to summarise documents and draft privilege logs. Expect more attention to validation standards, to the disclosure of model behaviour, and to how review outputs are explained to courts that are still building familiarity with the technique. The site currently tracks 152 active AI lawsuits, 92 of them intellectual property, and 7,265 state AI bills, a reminder that the surrounding law is moving at least as fast as the tooling.",
+            "body": "The direction of travel is toward tighter integration of review platforms with generative models, so that classification, summarisation and privilege flagging happen in one workflow rather than several. Expect more emphasis on validation and explainability, because a model that cannot be described is hard to defend, and on continuous active learning that keeps improving as review proceeds. Smaller matters may benefit most, since the cost of setting up a supervised workflow has fallen and prompt-based methods need less labelled data. The open questions are how to audit model behaviour over time, how to handle multilingual and multimodal material, and how to keep human review meaningful when the model is doing most of the ranking.",
             "heading": "Where it is going"
         }
     ],

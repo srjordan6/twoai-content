@@ -4,7 +4,7 @@
     "slug": "med-icu-sepsis",
     "shape": "art-topic",
     "title": "Sepsis Prediction",
-    "answer": "Sepsis prediction covers models that estimate whether a patient has sepsis or is likely to develop it, usually from electronic health record data such as vital signs, laboratory results, medication orders and nursing notes. It sits inside predictive patient analytics for intensive care, where the output is a risk score or alert rather than a diagnosis. Work spans early warning in the emergency department, ward and ICU, plus deterioration tracking after sepsis is already suspected. The models are decision support for clinicians, not autonomous diagnostic tools.",
+    "answer": "Sepsis prediction covers systems that estimate how likely a patient is to develop sepsis, or to deteriorate from it, using data recorded during a hospital stay. It sits inside predictive patient analytics and intensive care, where the output is a risk score or alert rather than a diagnosis. The subject spans the whole path from data capture at the bedside to the moment a clinician sees a warning, and it includes the quiet parts too, such as how the model was validated and what happens when it is wrong. It is not the same as a sepsis diagnosis, which remains a clinical judgement made from examination, history and laboratory results.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-10-08T06:41:00-05",
+    "built_at": "2026-10-08T14:12:38-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Physician",
@@ -28,23 +28,23 @@
     "page_uid": "2e017c53",
     "sections": [
         {
-            "body": "Sepsis prediction covers models that estimate whether a patient has sepsis or is likely to develop it, usually from electronic health record data such as vital signs, laboratory results, medication orders and nursing notes. It sits inside predictive patient analytics for intensive care, where the output is a risk score or alert rather than a diagnosis. Work spans early warning in the emergency department, ward and ICU, plus deterioration tracking after sepsis is already suspected. The models are decision support for clinicians, not autonomous diagnostic tools.",
+            "body": "Sepsis prediction covers systems that estimate how likely a patient is to develop sepsis, or to deteriorate from it, using data recorded during a hospital stay. It sits inside predictive patient analytics and intensive care, where the output is a risk score or alert rather than a diagnosis. The subject spans the whole path from data capture at the bedside to the moment a clinician sees a warning, and it includes the quiet parts too, such as how the model was validated and what happens when it is wrong. It is not the same as a sepsis diagnosis, which remains a clinical judgement made from examination, history and laboratory results.",
             "heading": "Scope"
         },
         {
-            "body": "These systems run on the hospital's electronic health record and clinical data warehouse, pulling streaming vitals, lab feeds and order data into a feature pipeline. Training and inference typically use standard machine learning stacks, with gradient boosted trees and recurrent or transformer sequence models common for time series. Deployment is usually inside the EHR or a monitoring dashboard, with alerts routed to pagers, phones or the chart. Some sites run models on premises for latency and privacy, others use cloud infrastructure under a business associate agreement.",
+            "body": "These systems run on the electronic health record and the streams attached to it: vital signs from bedside monitors, nursing observations, laboratory results, medication orders, and notes where text is used. Many deployments work through the hospital's own integration engine, pulling data at intervals and writing scores back into the chart or a paging system. Some run on vendor platforms embedded in the record, others on local servers or cloud infrastructure managed by the hospital or its supplier. The practical constraints are unglamorous: data arrive late, fields are missing, units differ between wards, and the monitor feed may be more current than anything the model can see.",
             "heading": "What it runs on"
         },
         {
-            "body": "The work starts with cohort definition, deciding which patients count as septic and when the clock starts, which is the hardest and most contested step. Teams then build features from vitals, labs, demographics and comorbidities, handle missingness, and train models to output a probability over a future window. Validation uses held out data and prospective silent trials before any alert goes live. Performance is judged on sensitivity, specificity, alert burden and time to detection, and sites monitor for drift as practice and coding change.",
+            "body": "Most approaches learn a mapping from a window of recent measurements to a probability of sepsis onset or deterioration within a defined horizon. Common model families include logistic regression on early warning scores, gradient boosted trees on tabular vitals and labs, and recurrent or transformer networks that handle irregular time series. Training labels are usually drawn from retrospective record data using sepsis definitions such as Sepsis-3, which means the target itself is an approximation assembled after the fact. Evaluation looks at discrimination, calibration and alert burden, and increasingly at whether outcomes changed in a prospective or silent trial rather than only on held out data. The hard part is rarely the algorithm; it is aligning the label, the timing and the clinical action the alert is meant to trigger.",
             "heading": "How the work is done"
         },
         {
-            "body": "Sepsis models touch protected health information, so they fall under HIPAA in the United States and equivalent regimes elsewhere, and many are regulated as medical devices. Developers need a clear intended use, labeling, post market surveillance and a plan for updates, and hospitals need local validation, override tracking and a route for clinicians to challenge a score. Liability is live: this site tracks 6 active product liability and wrongful death lawsuits against AI companies, and missed or delayed sepsis alerts are a known source of claims. Provenance matters too, since a model trained on one health system's coding habits may not transfer, and documentation of training data, version and changes is expected.",
+            "body": "Sepsis prediction touches patient safety, so it carries duties around clinical validation, monitoring and accountability. In the United States, software that informs treatment decisions may fall under device regulation depending on its claims and how clinicians are expected to rely on it, and hospitals increasingly ask vendors for documentation of training data, performance across subgroups and update history. Privacy rules govern the use of identifiable health data, and de-identification is imperfect when records are longitudinal and detailed. There is also the risk of alert fatigue, of bias against groups underrepresented in training data, and of automation bias when staff defer to a score. Provenance matters: who built the model, on whose data, with what version, and who is responsible when a missed case follows a suppressed alert.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The direction is toward earlier and more specific detection, using richer signals such as continuous monitoring, nursing text and medication trajectories, and toward models that explain which factors drove a score. Expect more prospective randomized evaluation rather than retrospective area under the curve claims, and more attention to alert fatigue and workflow fit.The open question is whether better prediction changes outcomes, which only bedside trials can answer.",
+            "body": "Work is moving toward earlier and more specific signals, including continuous monitoring from wearables and bedside devices, and toward models that explain themselves enough for a nurse to act on in seconds. Prospective randomised and stepped wedge trials are becoming more common, as are silent deployments that measure alert burden before anyone is paged. There is growing interest in federated learning across hospitals so models can learn from more patients without moving records, and in drift monitoring that flags when a model no longer fits the ward it serves. The unresolved questions are organisational as much as technical: who responds to an alert, how quickly, and how the system is retrained and revalidated once the patient population or the record software changes.",
             "heading": "Where it is going"
         }
     ],

@@ -1,0 +1,59 @@
+{
+    "kev": 0,
+    "num": 420,
+    "uid": "995eaeee",
+    "cves": [
+        {
+            "kev": false,
+            "cve_id": "CVE-2025-53967",
+            "product": "MCP",
+            "summary": "Framelink Figma MCP Server before 0.6.3 allows an unauthenticated remote attacker to execute arbitrary operating system commands via a crafted HTTP POST request with shell metacharacters in input that is used by a fetchW",
+            "headline": "Framelink Figma MCP Server before 0.6.3 lets a crafted HTTP request run OS commands",
+            "published": "2025-10-08",
+            "cvss_score": 8,
+            "cvss_severity": "HIGH"
+        }
+    ],
+    "high": 1,
+    "name": "Unprotected Alternate Channel",
+    "count": 1,
+    "shape": "cwe",
+    "title": "CWE-420: Unprotected Alternate Channel",
+    "cwe_id": "CWE-420",
+    "latest": "2025-10-08",
+    "status": "Draft",
+    "ai_text": "In AI software this weakness shows up in MCP servers, the small connector services that let AI assistants reach outside tools and data. The one CVE here is in Framelink Figma MCP Server before 0.6.3, where the server guards its normal interface but leaves a second path into the same functions with weaker checks. A crafted HTTP request reaches that alternate channel and runs operating system commands on the host. So the product protects the front door and forgets the side door, and an attacker who finds the side door can act with the server's own privileges, in this case running commands on the machine rather than only reading Figma design data.",
+    "ai_model": "ollama:deepseek-v4.1-flash",
+    "built_at": "2026-10-08T13:57:55-05",
+    "critical": 0,
+    "page_uid": "995eaeee",
+    "generated": "2026-10-08",
+    "mitre_url": "https://cwe.mitre.org/data/definitions/420.html",
+    "likelihood": "",
+    "abstraction": "Base",
+    "description": "The product protects a primary channel, but it does not use the same level of protection for an alternate channel.",
+    "mitigations": [
+        {
+            "phase": [
+                "Architecture and Design"
+            ],
+            "description": "Identify all alternate channels and use the same protection mechanisms that are used for the primary channels."
+        }
+    ],
+    "consequences": [
+        {
+            "scope": [
+                "Access Control"
+            ],
+            "impact": [
+                "Gain Privileges or Assume Identity",
+                "Bypass Protection Mechanism"
+            ]
+        }
+    ],
+    "ai_written_on": "2026-10-08",
+    "alternate_terms": [
+    ],
+    "refresh_every_days": 1,
+    "extended_description": ""
+}

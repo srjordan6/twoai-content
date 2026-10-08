@@ -4,7 +4,7 @@
     "slug": "fin-crypto-recon",
     "shape": "art-topic",
     "title": "Blockchain to Ledger Reconciliation",
-    "answer": "Blockchain to ledger reconciliation is the practice of matching on chain transaction records against the balances and entries held in an accounting system. It covers wallets, exchange accounts, custodial holdings, token movements, gas fees, staking rewards and any other activity that leaves a trace on a distributed ledger. The work sits between digital asset accounting and financial reporting, and it exists because a general ledger and a blockchain rarely agree on their own. Scope also includes the cut off point chosen for each period and the treatment of transactions that never settle.",
+    "answer": "Blockchain to ledger reconciliation is the practice of matching on-chain activity against the accounting records a business keeps in its general ledger. It covers wallets, exchange accounts, custody balances, token movements, gas fees, staking rewards and any other transaction that touches a digital asset. The aim is a defensible position on what the entity owns, what it owes and what it earned over a period, expressed in the reporting currency. It sits between bookkeeping and data engineering, because the evidence arrives as raw chain data rather than as a bank statement.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-10-08T06:41:00-05",
+    "built_at": "2026-10-08T14:12:38-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Accountant",
@@ -28,23 +28,23 @@
     "page_uid": "2c372d2c",
     "sections": [
         {
-            "body": "Blockchain to ledger reconciliation is the practice of matching on chain transaction records against the balances and entries held in an accounting system. It covers wallets, exchange accounts, custodial holdings, token movements, gas fees, staking rewards and any other activity that leaves a trace on a distributed ledger. The work sits between digital asset accounting and financial reporting, and it exists because a general ledger and a blockchain rarely agree on their own. Scope also includes the cut off point chosen for each period and the treatment of transactions that never settle.",
+            "body": "Blockchain to ledger reconciliation is the practice of matching on-chain activity against the accounting records a business keeps in its general ledger. It covers wallets, exchange accounts, custody balances, token movements, gas fees, staking rewards and any other transaction that touches a digital asset. The aim is a defensible position on what the entity owns, what it owes and what it earned over a period, expressed in the reporting currency. It sits between bookkeeping and data engineering, because the evidence arrives as raw chain data rather than as a bank statement.",
             "heading": "Scope"
         },
         {
-            "body": "The work runs on a node or indexer that reads the chain, a data pipeline that normalises addresses, timestamps, token decimals and transaction hashes, and an accounting platform that holds the ledger side. Pricing data is joined in to value each movement in the reporting currency at the correct time. Most teams keep a reconciliation workbook or database that stores the matched pairs and the unmatched items. Access controls matter here, because the same pipeline often touches live wallet addresses and posting journals.",
+            "body": "The work runs on a node or a block explorer API for reading chain state, an indexer or subgraph for turning raw blocks into labelled transfers, and a price source for converting token amounts into fiat at the right timestamp. Those feeds land in a warehouse or accounting system, where wallet addresses are mapped to ledger accounts and cost basis methods are applied. Spreadsheets still carry a share of the load in smaller books, but they break down once volume, multiple chains or staking activity enter the picture. The practical constraint is usually the quality of address labelling, not the chain data itself.",
             "heading": "What it runs on"
         },
         {
-            "body": "Practitioners extract on chain activity for each address in scope, convert it into a common transaction schema, and match it line by line against ledger entries using hashes, amounts, dates and counterparties. Unmatched items are investigated as timing differences, missing entries, misclassified fees, internal transfers between owned wallets, or genuine errors. Rules are then written to auto match the recurring patterns, and the residual exceptions are cleared by hand. A reconciliation is considered complete when every on chain movement is either posted or explained, and the closing balance ties to the ledger.",
+            "body": "A reconciliation starts by pulling every transaction for each address in scope, then classifying it as a transfer, a trade, a fee, a reward or an internal movement between owned wallets. Internal movements are netted out so the books do not show phantom gains, and the remainder is matched line by line against ledger entries. Timing differences, unrecorded gas, dust and failed transactions are the usual causes of breaks, and each break is either cleared with an adjusting entry or carried as an unreconciled item with a note. Machine learning helps mainly at the classification and anomaly stage, where patterns in counterparties and memo fields suggest how an unfamiliar transaction should be treated.",
             "heading": "How the work is done"
         },
         {
-            "body": "Controls cover who can move assets, who can post journals and who can approve a reconciliation. Evidence has to be retained, including transaction hashes, address ownership records, exchange statements and the matching logic itself, so an auditor can retrace the conclusion. Address attribution is a sensitive area, since a wrong label can misstate a balance or a gain.",
+            "body": "Provenance matters because an auditor will ask where a number came from and whether it can be reproduced. That means keeping the raw chain extract, the price source and timestamp, the address mapping and the classification rule that was applied, ideally with a hash or immutable log of the dataset used. Access to private keys and signing authority should sit apart from the people who prepare the reconciliation, and wallet ownership records need to be current. Tax and reporting treatment varies by jurisdiction and by entity type, so the classification rules a business adopts should be documented and reviewed rather than assumed. Nothing here is legal, tax or accounting advice.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The direction of travel is toward continuous reconciliation rather than month end batch work, with automated matching handling the routine volume and people focused on exceptions. More chains, more layer two networks and more token standards keep widening the surface that has to be covered. Regulators and auditors are asking for the same traceability that the tools already produce, which pushes standardisation of schemas and evidence formats. The open questions are how to treat wrapped, bridged and restaked assets, and how much of the judgement can be delegated to a model without losing the audit trail.",
+            "body": "The direction of travel is toward continuous reconciliation, where on-chain events post to the ledger close to real time instead of being swept up at month end. Account abstraction, layer two networks and batched transactions make address-based matching harder, which pushes the work toward intent-level and counterparty-level records. Regulators are converging on travel rule style reporting for transfers, so the reconciliation file increasingly doubles as a compliance artefact. The likely split is that routine matching becomes automated and the human effort concentrates on judgement calls, policy and the audit trail.",
             "heading": "Where it is going"
         }
     ],

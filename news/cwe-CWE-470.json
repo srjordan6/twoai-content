@@ -18,7 +18,7 @@
             "cve_id": "CVE-2026-58659",
             "product": "PyTorch",
             "summary": "PyTorch Lightning through 2.6.5, fixed in commit d710d68, contains a remote code execution vulnerability in the _load_state function that imports and executes attacker-controlled module names from checkpoint _instantiato",
-            "headline": "PyTorch Lightning 2.6.5 runs attacker code from a crafted checkpoint file",
+            "headline": "PyTorch Lightning 2.6.5 loads malicious checkpoints that run code",
             "published": "2026-07-15",
             "cvss_score": 8.4,
             "cvss_severity": "HIGH"
@@ -34,7 +34,7 @@
     "status": "Draft",
     "ai_text": "In AI software this weakness shows up in model loading and checkpoint handling, where a file or config names the code to run. The two CVEs sit in Transformers and PyTorch, both widely used libraries for model serving and training. In Transformers, Vocos loads a model config that can run any importable code. In PyTorch, PyTorch Lightning 2.6.5 runs attacker code from a crafted checkpoint file. The usual way in is a downloaded model, config or checkpoint that a user opens or loads. Because the input picks the class or code, an attacker who supplies that file can get their own code to run inside the victim's process, on the victim's machine or server.",
     "ai_model": "ollama:deepseek-v4.1-flash",
-    "built_at": "2026-10-08T06:13:46-05",
+    "built_at": "2026-10-08T13:57:55-05",
     "critical": 0,
     "page_uid": "8299b262",
     "generated": "2026-10-08",
