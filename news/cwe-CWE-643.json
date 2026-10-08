@@ -1,0 +1,74 @@
+{
+    "kev": 0,
+    "num": 643,
+    "uid": "5389c3de",
+    "cves": [
+        {
+            "kev": false,
+            "cve_id": "CVE-2025-11844",
+            "product": "Transformers",
+            "summary": "Hugging Face Smolagents version 1.20.0 contains an XPath injection vulnerability in the search_item_ctrl_f function located in src/smolagents/vision_web_browser.py. The function constructs an XPath query by directly conc",
+            "headline": "Smolagents 1.20.0 XPath injection lets crafted input alter browser search queries",
+            "published": "2025-10-22",
+            "cvss_score": 5.4,
+            "cvss_severity": "MEDIUM"
+        }
+    ],
+    "high": 0,
+    "name": "Improper Neutralization of Data within XPath Expressions ('XPath Injection')",
+    "count": 1,
+    "shape": "cwe",
+    "title": "CWE-643: Improper Neutralization of Data within XPath Expressions ('XPath Injection')",
+    "cwe_id": "CWE-643",
+    "latest": "2025-10-22",
+    "status": "Incomplete",
+    "ai_text": "In AI software this weakness shows up in agent frameworks that let a model drive a browser or query tool. CVE-2025-11844 is the example here, filed against Smolagents 1.20.0 in the Transformers project. The flaw sits in the browser search path, where crafted input reaches an XPath expression that the framework builds from that input instead of treating it as plain data. Because the query structure can be changed, an attacker can steer what the search returns, so the agent may act on results the attacker chose rather than on genuine page content. That matters for any agent that reads a page and then decides its next step, since the poisoned result feeds straight into the model's reasoning.",
+    "ai_model": "ollama:deepseek-v4.1-flash",
+    "built_at": "2026-10-08T06:13:46-05",
+    "critical": 0,
+    "page_uid": "5389c3de",
+    "generated": "2026-10-08",
+    "mitre_url": "https://cwe.mitre.org/data/definitions/643.html",
+    "likelihood": "",
+    "abstraction": "Base",
+    "description": "The product uses external input to dynamically construct an XPath expression used to retrieve data from an XML database, but it does not neutralize or incorrectly neutralizes that input. This allows an attacker to control the structure of the query.",
+    "mitigations": [
+        {
+            "phase": [
+                "Implementation"
+            ],
+            "description": "Use parameterized XPath queries (e.g. using XQuery). This will help ensure separation between data plane and control plane."
+        },
+        {
+            "phase": [
+                "Implementation"
+            ],
+            "description": "Properly validate user input. Reject data where appropriate, filter where appropriate and escape where appropriate. Make sure input that will be used in XPath queries is safe in that context."
+        }
+    ],
+    "consequences": [
+        {
+            "note": "Controlling application flow (e.g. bypassing authentication).",
+            "scope": [
+                "Access Control"
+            ],
+            "impact": [
+                "Bypass Protection Mechanism"
+            ]
+        },
+        {
+            "note": "The attacker could read restricted XML content.",
+            "scope": [
+                "Confidentiality"
+            ],
+            "impact": [
+                "Read Application Data"
+            ]
+        }
+    ],
+    "ai_written_on": "2026-10-08",
+    "alternate_terms": [
+    ],
+    "refresh_every_days": 1,
+    "extended_description": "The net effect is that the attacker will have control over the information selected from the XML database and may use that ability to control application flow, modify logic, retrieve unauthorized data, or bypass important checks (e.g. authentication)."
+}

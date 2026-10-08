@@ -4,7 +4,7 @@
     "slug": "res-citations-graphs",
     "shape": "art-topic",
     "title": "Citation Graphs Over Time",
-    "answer": "Citation graphs over time are the record of which research works cite which others, arranged so that the order of publication and the direction of influence are both visible. The unit is the paper and the edge is a citation, and the interesting object is how that structure changes as new work arrives. A static citation graph answers who cites whom, while a temporal one answers when a link appeared, which papers gained attention after a delay, and which lines of work went quiet. This matters for literature review, for tracing the origin of an idea, and for judging whether a claim rests on a single thread or on many independent ones.",
+    "answer": "Citation graphs over time are the study of how scholarly references accumulate, connect and shift across years, rather than as a single frozen snapshot. The unit of analysis is the directed edge from one paper to another, and the interesting questions concern when that edge appeared, how quickly it was followed, and whether the citing community later abandoned or reinforced it. This sits inside citation mapping and discovery, where the goal is often to trace how an idea, method or dataset moved through a literature. A static graph answers who cites whom, while a temporal one answers when and in what order.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-10-08T00:08:36-05",
+    "built_at": "2026-10-08T06:41:00-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Researcher",
@@ -28,23 +28,23 @@
     "page_uid": "07549d7b",
     "sections": [
         {
-            "body": "Citation graphs over time are the record of which research works cite which others, arranged so that the order of publication and the direction of influence are both visible. The unit is the paper and the edge is a citation, and the interesting object is how that structure changes as new work arrives. A static citation graph answers who cites whom, while a temporal one answers when a link appeared, which papers gained attention after a delay, and which lines of work went quiet. This matters for literature review, for tracing the origin of an idea, and for judging whether a claim rests on a single thread or on many independent ones.",
+            "body": "Citation graphs over time are the study of how scholarly references accumulate, connect and shift across years, rather than as a single frozen snapshot. The unit of analysis is the directed edge from one paper to another, and the interesting questions concern when that edge appeared, how quickly it was followed, and whether the citing community later abandoned or reinforced it. This sits inside citation mapping and discovery, where the goal is often to trace how an idea, method or dataset moved through a literature. A static graph answers who cites whom, while a temporal one answers when and in what order.",
             "heading": "Scope"
         },
         {
-            "body": "The raw material is bibliographic metadata: titles, authors, venues, years, and reference lists, usually pulled from services such as Crossref, OpenAlex, Semantic Scholar, or PubMed. Storage is typically a graph database or a columnar store, because citation edges are numerous and queries often walk several hops. Snapshotting matters, since a graph rebuilt today will not match one built last year, and versioned snapshots let a study compare the two.",
+            "body": "The raw material is bibliographic metadata: titles, authors, venues, years and reference lists, usually drawn from sources such as Crossref, OpenAlex, Semantic Scholar or Web of Science. Storage tends to be a graph database or a columnar store, because the same edge set is queried both as a network and as a time series. Processing pipelines deduplicate author names and venue strings, resolve references to persistent identifiers like DOIs, and attach a timestamp to each edge. Visualisation layers then render the graph at a chosen time window, often with a slider or animation to show growth.",
             "heading": "What it runs on"
         },
         {
-            "body": "Work begins with entity resolution, matching author names and paper records that differ across sources, then with parsing reference strings into clean edges. From there the common operations are traversal, such as finding all works that cite a given paper, and ranking, such as counting citations within a window or weighting by venue. Temporal analysis adds time slices, so the graph can be cut at a year and compared with the slice before it, which exposes bursts, decay, and the lag between publication and recognition. Community detection and path finding are used to group related work and to trace how one result reached another, and the outputs are usually read as maps rather than as verdicts on quality.",
+            "body": "Work usually begins by defining a cohort, such as papers citing a seed work within a date range, then extracting their reference lists and normalising the identifiers. From there, analysts compute time aware measures: citation half life, burst detection, co citation over sliding windows, and the changing position of a node in the network. Community detection is run per period so that clusters can be compared across years rather than assumed stable. Validation matters, because missing or misparsed references can create apparent trends that are really gaps in the source data.",
             "heading": "How the work is done"
         },
         {
-            "body": "Citation data carries attribution obligations, and reuse terms differ between sources, so a project needs to know what each provider permits and how to credit it. Author disambiguation is a known source of error, and a misattributed paper can follow a researcher for years, so corrections need a route back into the record. Citation counts are also easy to misread as measures of merit when they mostly measure visibility and age, and self citation and citation cartels distort them further. Any derived claim should point to the original paper, which is the practice followed here, and the graph should be treated as a finding aid rather than as evidence about a person.",
+            "body": "Provenance is central, since a temporal claim is only as good as the coverage of the underlying index for each year. Analysts should record which database supplied each edge, when it was retrieved, and how references were matched, because coverage and matching rules change over time. Licensing varies by source, and some indexes restrict bulk reuse or redistribution of reference data. Citation counts and graph position are descriptive signals, not measures of quality or impact, and they should not be used to judge individual researchers without context.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The direction of travel is toward graphs that update continuously rather than in annual dumps, with provenance attached to each edge so a reader can see where a link came from. Full text linking, rather than reference string matching, would let a graph distinguish a paper cited for its method from one cited for its data. Better handling of preprints and of non English venues would reduce the bias toward well indexed English language journals. The open question is whether richer graphs improve discovery or simply make existing attention patterns more efficient to reproduce.",
+            "body": "The direction of travel is toward continuously updated graphs that refresh as new papers appear, rather than annual snapshots. Better identifier resolution and open metadata are making it easier to link preprints, datasets and software to the papers that use them, which widens what counts as a citation. Expect more work on detecting emerging topics early and on modelling how citation behaviour itself changes, including shifts in self citation and venue prestige. The open questions are about coverage bias across languages and regions, and about how to keep temporal analyses reproducible when the underlying indexes keep moving.",
             "heading": "Where it is going"
         }
     ],

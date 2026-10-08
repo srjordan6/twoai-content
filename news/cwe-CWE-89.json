@@ -45,6 +45,16 @@
         },
         {
             "kev": false,
+            "cve_id": "CVE-2025-67644",
+            "product": "LangChain",
+            "summary": "LangGraph SQLite Checkpoint is an implementation of LangGraph CheckpointSaver that uses SQLite DB (both sync and async, via aiosqlite). Versions 3.0.0 and below are vulnerable to SQL injection through the checkpoint impl",
+            "headline": "LangGraph SQLite Checkpoint 3.0.0 and below SQL injection via metadata filter keys",
+            "published": "2025-12-11",
+            "cvss_score": 7.3,
+            "cvss_severity": "HIGH"
+        },
+        {
+            "kev": false,
             "cve_id": "CVE-2025-29189",
             "product": "Flowise",
             "summary": "Flowise <= 2.2.3 is vulnerable to SQL Injection. via tableName parameter at Postgres_VectorStores.",
@@ -54,9 +64,9 @@
             "cvss_severity": "HIGH"
         }
     ],
-    "high": 3,
+    "high": 4,
     "name": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')",
-    "count": 5,
+    "count": 6,
     "shape": "cwe",
     "title": "CWE-89: Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')",
     "cwe_id": "CWE-89",
@@ -64,10 +74,10 @@
     "status": "Stable",
     "ai_text": "In AI software this weakness shows up in tools that turn plain language into database queries. The two CVEs sit in an agent framework and an LLM application platform, not in model serving or notebooks. CrewAI's crewai-tools 1.10.2rc1 ships an NL2SQLTool that lets a remote attacker run arbitrary SQL, and Dify before 1.16.0 lets a search request run SQL in the MyScale backend. In both cases the input arrives through a normal user-facing request, such as a search box or an agent tool call, and the generated query is sent to the database without the special characters being neutralized. That lets an attacker read or change data the query was never meant to touch.",
     "ai_model": "ollama:deepseek-v4.1-flash",
-    "built_at": "2026-10-07T23:37:24-05",
+    "built_at": "2026-10-08T06:13:45-05",
     "critical": 0,
     "page_uid": "9dd03c75",
-    "generated": "2026-10-07",
+    "generated": "2026-10-08",
     "mitre_url": "https://cwe.mitre.org/data/definitions/89.html",
     "likelihood": "",
     "abstraction": "Base",

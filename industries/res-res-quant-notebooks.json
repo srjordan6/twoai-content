@@ -4,7 +4,7 @@
     "slug": "res-quant-notebooks",
     "shape": "art-topic",
     "title": "Reproducible Notebooks and Pipelines",
-    "answer": "Reproducible notebooks and pipelines cover the practice of packaging an analysis so that another person, or the same person months later, can rerun it and get the same result. The scope runs from a single Jupyter notebook that loads a dataset and fits a model, up to multi stage pipelines that chain data extraction, cleaning, training and reporting. It sits inside quantitative analysis and reproducible work, and it touches anyone who publishes a number that someone else may need to check. The unit of concern is not the finding but the path taken to reach it.",
+    "answer": "Reproducible notebooks and pipelines cover the practice of making a quantitative analysis run again and produce the same result, whether on the original machine or another one months later. The scope runs from a single exploratory notebook through to a scheduled pipeline that ingests data, transforms it, fits a model and writes a report. It includes the environment the code runs in, the data it reads, the order in which steps execute, and the record of what was actually run. The aim is that a colleague, a reviewer or the original author can rerun the work and get the same numbers.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-10-08T00:08:36-05",
+    "built_at": "2026-10-08T06:41:00-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Researcher",
@@ -28,23 +28,23 @@
     "page_uid": "dd00d94d",
     "sections": [
         {
-            "body": "Reproducible notebooks and pipelines cover the practice of packaging an analysis so that another person, or the same person months later, can rerun it and get the same result. The scope runs from a single Jupyter notebook that loads a dataset and fits a model, up to multi stage pipelines that chain data extraction, cleaning, training and reporting. It sits inside quantitative analysis and reproducible work, and it touches anyone who publishes a number that someone else may need to check. The unit of concern is not the finding but the path taken to reach it.",
+            "body": "Reproducible notebooks and pipelines cover the practice of making a quantitative analysis run again and produce the same result, whether on the original machine or another one months later. The scope runs from a single exploratory notebook through to a scheduled pipeline that ingests data, transforms it, fits a model and writes a report. It includes the environment the code runs in, the data it reads, the order in which steps execute, and the record of what was actually run. The aim is that a colleague, a reviewer or the original author can rerun the work and get the same numbers.",
             "heading": "Scope"
         },
         {
-            "body": "The base layer is a notebook environment such as Jupyter, often paired with a pipeline tool like Snakemake, Nextflow, DVC or a workflow scheduler. Underneath sit version control for code and data, container images such as Docker for the runtime, and a package manager that pins library versions. Compute may be a laptop, a shared cluster or a cloud instance, and the pipeline has to behave the same on all three. Storage and environment definitions are part of the artifact, not an afterthought.",
+            "body": "The work runs on a mix of local machines, shared servers and cloud compute, with notebooks such as Jupyter and pipeline tools such as Airflow, Prefect, Dagster, Snakemake and Make sitting on top. Environment managers like conda, pip with lock files, Docker and similar container tools pin the versions of libraries so a run does not drift when a package updates. Data lives in files, databases or object storage, and version control such as Git tracks the code and sometimes the data or its pointers. Compute may be a laptop, a cluster or a managed service, and the pipeline definition usually has to name which one it expects.",
             "heading": "What it runs on"
         },
         {
-            "body": "The work starts by fixing inputs: raw data is hashed or versioned, and every transformation is written as code rather than done by hand in a spreadsheet. Notebooks are kept thin, with logic moved into importable modules that can be tested, and execution order is made explicit so cells do not depend on hidden state. Pipelines declare their steps and dependencies, so a rerun knows what is stale and what can be skipped. Outputs are regenerated from source rather than edited, and a run is considered done only when it reproduces from a clean checkout.",
+            "body": "A reproducible setup separates the steps of an analysis into units that can be run in order, with inputs and outputs made explicit rather than hidden in a notebook's memory. Parameters are kept in configuration files or environment variables instead of being edited by hand, and random seeds are fixed so sampling and model fitting repeat. Notebooks are often paired with scripts or parameterised templates so the same logic can run over many inputs without copy and paste. Logs, intermediate outputs and a manifest of versions are kept so a failed or surprising result can be traced back to the exact code, data and settings that produced it. Testing and continuous integration check that the pipeline still runs when something upstream changes.",
             "heading": "How the work is done"
         },
         {
-            "body": "Rights and risk centre on provenance: where the data came from, what licence covers it, and whether it can be redistributed with the code. Credentials and personal data must stay out of the repository, which usually means environment variables and access controls rather than committed files. A reproducible record also supports review, because a reviewer can inspect the exact code and data version behind a claim. On this site, content links to the original paper rather than to a search tool, which keeps the chain from claim back to source visible.",
+            "body": "Rights and risk in this area turn on provenance, licensing and the handling of sensitive data. Data sets and code carry licences that govern reuse and redistribution, and a pipeline that pulls from an external source may be bound by terms that change without notice. Personal or confidential data needs access controls, and a reproducible record can itself become a disclosure risk if it captures raw records. Provenance means being able to say where each input came from, who ran what and when, which matters for audit, peer review and internal sign off. Teams often adopt review, retention and access policies so that reproducibility does not conflict with privacy or contractual obligations.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The direction of travel is toward treating the whole environment as part of the publication, with containers, lock files and data versioning shipped alongside the paper. Automated reruns and continuous checks are becoming more common, so a pipeline can flag when an upstream dependency changes and a result no longer holds. Standards for citing software and data are maturing, which makes credit and provenance easier to track. The open question is how much of this machinery becomes routine rather than a specialist skill.",
+            "body": "The direction of travel is toward pipelines that are declared rather than hand run, with environments and data snapshots captured automatically at the moment of execution. Notebook interfaces are converging with pipeline tools, so an exploratory session can be promoted into a scheduled job without a rewrite. Provenance standards and content addressed storage are making it easier to point at an exact version of data and code. The open questions are how much of a run to preserve, how to keep that record usable as tools change, and how to balance reproducibility against the cost of storing every intermediate result.",
             "heading": "Where it is going"
         }
     ],

@@ -4,7 +4,7 @@
     "slug": "sql-vector-search",
     "shape": "art-topic",
     "title": "Vector Search Inside SQL Databases",
-    "answer": "Vector search stores embeddings, lists of numbers that represent meaning, and finds the nearest ones to a query. Extensions such as pgvector let a relational database do this alongside normal tables, so retrieval can respect the same joins, filters and permissions as the rest of the data. In practice this means a product catalogue, a support ticket table and a document store can all be searched by meaning without a separate system holding a copy of the rows. The topic sits inside AI and SQL because it turns an existing database into a retrieval layer for language models and recommendation features.",
+    "answer": "Vector search stores embeddings, lists of numbers that represent meaning, and finds the nearest ones to a query. Extensions such as pgvector let a relational database do this alongside normal tables, so retrieval can respect the same joins, filters and permissions as the rest of the data. The result is one system where a similarity lookup and an ordinary SQL query can be combined in a single statement. This matters most when the rows being searched already live in the database and moving them elsewhere would be costly or risky.",
     "crumbs": [
         {
             "name": "AI and SQL",
@@ -12,7 +12,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-10-08T00:08:36-05",
+    "built_at": "2026-10-08T06:41:00-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "AI and SQL",
@@ -20,23 +20,23 @@
     "page_uid": "bd660f27",
     "sections": [
         {
-            "body": "Vector search stores embeddings, lists of numbers that represent meaning, and finds the nearest ones to a query. Extensions such as pgvector let a relational database do this alongside normal tables, so retrieval can respect the same joins, filters and permissions as the rest of the data. In practice this means a product catalogue, a support ticket table and a document store can all be searched by meaning without a separate system holding a copy of the rows. The topic sits inside AI and SQL because it turns an existing database into a retrieval layer for language models and recommendation features.",
+            "body": "Vector search stores embeddings, lists of numbers that represent meaning, and finds the nearest ones to a query. Extensions such as pgvector let a relational database do this alongside normal tables, so retrieval can respect the same joins, filters and permissions as the rest of the data. The result is one system where a similarity lookup and an ordinary SQL query can be combined in a single statement. This matters most when the rows being searched already live in the database and moving them elsewhere would be costly or risky.",
             "heading": "Scope"
         },
         {
-            "body": "The work runs on the database engine itself, most often PostgreSQL, with an extension that adds a vector column type and an index type built for nearest neighbour search. Embeddings arrive from an external model, either a hosted API or a local model, and are written into ordinary tables as arrays of floats. Because the vectors live beside the relational data, the same server, backup routine and connection pool cover both. This site is itself built from a PostgreSQL database, which is a fair illustration of how much can sit in one engine.",
+            "body": "The work runs inside the database engine itself, on the same server or cluster that holds the relational tables. Embeddings are stored in a column type provided by the extension, and an index such as HNSW or IVFFlat is built over that column to keep nearest neighbour lookups fast. Because the index sits beside the ordinary B-tree and other indexes, the query planner can combine vector ordering with filters, joins and limits. Hardware needs are modest compared with training, though memory matters because vector indexes are typically held in RAM for speed.",
             "heading": "What it runs on"
         },
         {
-            "body": "A typical build adds a vector column, backfills it by calling an embedding model over each row, and creates an approximate nearest neighbour index such as HNSW or IVFFlat. Queries then combine a distance operator with ordinary SQL, so a filter on tenant, date or status runs in the same statement as the similarity ranking. Recall and latency are tuned through index parameters and by choosing between exact and approximate search. Teams usually evaluate retrieval quality with a held out set of queries before trusting the results in production.",
+            "body": "A typical build starts by generating embeddings outside the database with an embedding model, then loading them into a vector column. Queries embed the search text the same way and ask for the rows whose vectors are closest, usually by cosine distance or inner product. The database returns the top matches, and the application can then join those rows to other tables or apply further filters. Tuning involves choosing an index type, setting parameters such as the number of lists or connections, and measuring recall against latency on real query patterns.",
             "heading": "How the work is done"
         },
         {
-            "body": "Embeddings are derived from source records, so access control has to follow the vector column as closely as it follows the original table. Row level security, views and role grants in the database carry over, which is the main argument for keeping retrieval inside the engine rather than exporting a copy. Provenance matters too: teams record which model and which version produced each vector, because a model change invalidates the index and can shift results. Personal data embedded into a vector is still personal data, and deletion requests have to reach the vector row as well as the text.",
+            "body": "Because vectors live in the same tables as the source records, existing access controls, row level security and audit logging can apply to retrieval as well. That is a real advantage over a separate vector store, where permissions often have to be duplicated and kept in sync. The embeddings themselves are derived data and may still carry sensitive information, so retention and deletion rules need to cover the vector column as well as the text. Provenance matters too: teams should record which model produced an embedding and when, because a model change can silently invalidate an index.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The direction of travel is tighter coupling between retrieval and the query planner, with hybrid search that blends keyword and vector scoring in one statement. More of the surrounding work, such as chunking, embedding refresh and evaluation, is moving into database tooling rather than living in separate services. The site currently tracks 2,604 Model Context Protocol servers for SQL databases and warehouses, a sign of how many teams now expect an assistant to reach structured data directly. Expect the boundary between the database and the retrieval stack to keep thinning.",
+            "body": "The direction of travel is toward treating vector search as one more index type rather than a separate product category. Database vendors are adding native vector types and approximate nearest neighbour indexes, and query languages are gaining distance operators and hybrid ranking that blends keyword and semantic scores. Expect more work on filtering during the index scan, on quantisation to cut memory, and on keeping embeddings fresh as source rows change. The open question is how much of the retrieval pipeline, including embedding generation, ends up inside the database.",
             "heading": "Where it is going"
         }
     ],

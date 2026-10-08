@@ -1,0 +1,61 @@
+{
+    "kev": 0,
+    "num": 544,
+    "uid": "1f9cbbf4",
+    "cves": [
+        {
+            "kev": false,
+            "cve_id": "CVE-2025-11750",
+            "product": "Dify",
+            "summary": "In langgenius/dify-web version 1.6.0, the authentication mechanism reveals the existence of user accounts by returning different error messages for non-existent and existing accounts. Specifically, when a login or regist",
+            "headline": "Dify 1.6.0 login errors reveal which user accounts exist",
+            "published": "2025-10-22",
+            "cvss_score": 5.3,
+            "cvss_severity": "MEDIUM"
+        }
+    ],
+    "high": 0,
+    "name": "Missing Standardized Error Handling Mechanism",
+    "count": 1,
+    "shape": "cwe",
+    "title": "CWE-544: Missing Standardized Error Handling Mechanism",
+    "cwe_id": "CWE-544",
+    "latest": "2025-10-22",
+    "status": "Draft",
+    "ai_text": "In AI software this weakness shows up in LLM application platforms, as the single CVE here, CVE-2025-11750 in Dify 1.6.0, shows. The login flow handles errors in its own way rather than through one shared, standardized mechanism, so the failure message differs depending on whether the account exists. An attacker reaches it simply by trying logins and reading the replies, and the inconsistent handling lets them tell valid accounts from invalid ones, which is useful for later targeting. Dify is the only product named in this class, so the pattern is thin, but it sits in the same layer as other LLM application front ends.",
+    "ai_model": "ollama:deepseek-v4.1-flash",
+    "built_at": "2026-10-08T06:13:46-05",
+    "critical": 0,
+    "page_uid": "1f9cbbf4",
+    "generated": "2026-10-08",
+    "mitre_url": "https://cwe.mitre.org/data/definitions/544.html",
+    "likelihood": "",
+    "abstraction": "Base",
+    "description": "The product does not use a standardized method for handling errors throughout the code, which might introduce inconsistent error handling and resultant weaknesses.",
+    "mitigations": [
+        {
+            "phase": [
+                "Architecture and Design"
+            ],
+            "description": "define a strategy for handling errors of different severities, such as fatal errors versus basic log events. Use or create built-in language features, or an external package, that provides an easy-to-use API and define coding standards for the detection and handling of errors."
+        }
+    ],
+    "consequences": [
+        {
+            "scope": [
+                "Integrity",
+                "Other"
+            ],
+            "impact": [
+                "Quality Degradation",
+                "Unexpected State",
+                "Varies by Context"
+            ]
+        }
+    ],
+    "ai_written_on": "2026-10-08",
+    "alternate_terms": [
+    ],
+    "refresh_every_days": 1,
+    "extended_description": "If the product handles error messages individually, on a one-by-one basis, this is likely to result in inconsistent error handling. The causes of errors may be lost. Also, detailed information about the causes of an error may be unintentionally returned to the user."
+}

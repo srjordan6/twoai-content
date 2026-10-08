@@ -4,7 +4,7 @@
     "slug": "sql-training-pipelines",
     "shape": "art-topic",
     "title": "SQL and AI Training Data Pipelines",
-    "answer": "SQL and AI training data pipelines cover the work of turning rows held in operational databases into datasets that training and fine tuning jobs can read. The usual shape is an extract from a source system, a set of cleaning and joining steps written in SQL, and a load into storage the training job can reach. Because the queries decide what the model sees, an error in a join or a filter becomes an error the model learns from. The topic sits at the meeting point of data engineering and machine learning practice rather than inside either one alone.",
+    "answer": "SQL and AI training data pipelines cover the work of turning rows held in operational databases into datasets that a training or fine tuning job can read. The pipeline usually extracts records from source systems, cleans and joins them with SQL, and writes the result to a store the training job can access. Because the queries define what the model sees, an error in a join or a filter becomes an error in the model, and it is often harder to find there than in the database.",
     "crumbs": [
         {
             "name": "AI and SQL",
@@ -12,7 +12,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-10-08T00:08:36-05",
+    "built_at": "2026-10-08T06:41:00-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "AI and SQL",
@@ -20,23 +20,23 @@
     "page_uid": "49220ce5",
     "sections": [
         {
-            "body": "SQL and AI training data pipelines cover the work of turning rows held in operational databases into datasets that training and fine tuning jobs can read. The usual shape is an extract from a source system, a set of cleaning and joining steps written in SQL, and a load into storage the training job can reach. Because the queries decide what the model sees, an error in a join or a filter becomes an error the model learns from. The topic sits at the meeting point of data engineering and machine learning practice rather than inside either one alone.",
+            "body": "SQL and AI training data pipelines cover the work of turning rows held in operational databases into datasets that a training or fine tuning job can read. The pipeline usually extracts records from source systems, cleans and joins them with SQL, and writes the result to a store the training job can access. Because the queries define what the model sees, an error in a join or a filter becomes an error in the model, and it is often harder to find there than in the database.",
             "heading": "Scope"
         },
         {
-            "body": "The work runs on the databases an organisation already operates, most often PostgreSQL, MySQL, or a warehouse such as Snowflake, BigQuery, or Redshift, with object storage holding the finished dataset. Orchestration is commonly handled by tools like Airflow or dbt, which schedule the SQL and track what each run produced.Every page on this site is itself built from a PostgreSQL database, which is a fair illustration of how ordinary relational storage sits under AI work.",
+            "body": "The pipeline runs on the database engine that holds the source data, on a separate analytical warehouse, or on a distributed query engine that reads files in object storage. Orchestration tools schedule the extract and transform steps, and a storage layer holds the finished dataset, commonly as Parquet or another columnar format that training frameworks read in batches. Compute for the training job itself is usually separate from the compute that runs the queries, so the two sides meet at a shared file or table rather than in one system.",
             "heading": "What it runs on"
         },
         {
-            "body": "A pipeline typically starts with a snapshot or change data capture from the source, then applies SQL to deduplicate, normalise types, resolve entities, and join in labels or features. The result is written out in a columnar format such as Parquet, often split into train, validation, and test sets, with a manifest recording which query version produced which file. Practitioners check row counts, null rates, and label distributions before a run, and compare a new dataset against the previous one to see what changed. Version control for the SQL matters as much as version control for the model, since a silent change in a filter can shift the training distribution.",
+            "body": "Work starts with a question about what the model should learn, which is then written as SQL: select the relevant rows, join the tables that carry the labels, filter out records that are incomplete or out of scope, and shape the columns into features. Teams version the queries alongside the code, run them on a schedule or on demand, and compare the output against expectations such as row counts, null rates and value ranges. Sampling, deduplication and train, validation and test splits are handled in the same pipeline, often with a fixed seed so a rerun produces the same split.",
             "heading": "How the work is done"
         },
         {
-            "body": "The main concerns are provenance, consent, and the rights attached to the rows being reused. A pipeline that copies personal data into a training set inherits the obligations that applied to the source, including retention limits, deletion requests, and any contractual restriction on secondary use. Teams therefore keep lineage from each training record back to its source table and query, and record who approved the extract. Access controls on the training store, masking of direct identifiers, and a documented process for removing a record from a dataset are common practice. None of this is legal advice, and the specific rules depend on jurisdiction and on the data involved.",
+            "body": "The rights to use each row, the consent under which it was collected and the retention rules that apply to it all travel with the data into the training set, so the pipeline is where those constraints are enforced or lost. Provenance matters in both directions: teams need to know which query produced a given training file, and which training files a given source row ended up in, which is why lineage records and immutable snapshots are common. Access controls on the source tables, masking of personal fields and documented purpose for each dataset are the usual controls, and they are checked by the same review that covers the model.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The direction of travel is toward treating training data as a managed product with its own tests, contracts, and release notes, rather than as a one off export. More of the transformation logic is moving into versioned SQL models that can be reviewed and rerun, and AI assistants are being given read access to warehouses so that dataset questions can be answered in place. Expect tighter coupling between the query layer and the training job, with lineage captured automatically at run time. The open question is how quickly deletion and consent workflows catch up with the pace at which datasets are rebuilt.",
+            "body": "More of this work is moving toward treating the training set as a managed data product with its own tests, owners and release notes, rather than as a one off export. Query engines that read object storage directly and tools that track lineage across SQL and training code are reducing the gap between the two sides. The open questions are how to keep a dataset reproducible when the source tables keep changing, and how to show, years later, exactly which rows trained which model.",
             "heading": "Where it is going"
         }
     ],

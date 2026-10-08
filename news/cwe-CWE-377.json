@@ -1,0 +1,54 @@
+{
+    "kev": 0,
+    "num": 377,
+    "uid": "7d4043c7",
+    "cves": [
+        {
+            "kev": false,
+            "cve_id": "CVE-2025-7707",
+            "product": "LlamaIndex",
+            "summary": "The llama_index library version 0.12.33 sets the NLTK data directory to a subdirectory of the codebase by default, which is world-writable in multi-user environments. This configuration allows local users to overwrite, d",
+            "headline": "LlamaIndex 0.12.33 lets local users tamper with shared NLTK data files",
+            "published": "2025-10-13",
+            "cvss_score": 7.8,
+            "cvss_severity": "HIGH"
+        }
+    ],
+    "high": 1,
+    "name": "Insecure Temporary File",
+    "count": 1,
+    "shape": "cwe",
+    "title": "CWE-377: Insecure Temporary File",
+    "cwe_id": "CWE-377",
+    "latest": "2025-10-13",
+    "status": "Incomplete",
+    "ai_text": "In AI software this weakness shows up in LLM application frameworks, as the single CVE here, CVE-2025-7707, is in LlamaIndex. The issue is that LlamaIndex 0.12.33 lets local users tamper with shared NLTK data files, which are temporary or cached files used by the framework. The usual way it is reached is through local access to the machine running the application, where those shared files sit in a location other users can write to. Once tampered with, the files can feed altered data into the framework, letting an attacker affect how the application behaves. Only LlamaIndex appears as an example in this class.",
+    "ai_model": "ollama:deepseek-v4.1-flash",
+    "built_at": "2026-10-08T06:13:45-05",
+    "critical": 0,
+    "page_uid": "7d4043c7",
+    "generated": "2026-10-08",
+    "mitre_url": "https://cwe.mitre.org/data/definitions/377.html",
+    "likelihood": "",
+    "abstraction": "Class",
+    "description": "Creating and using insecure temporary files can leave application and system data vulnerable to attack.",
+    "mitigations": [
+    ],
+    "consequences": [
+        {
+            "scope": [
+                "Confidentiality",
+                "Integrity"
+            ],
+            "impact": [
+                "Read Files or Directories",
+                "Modify Files or Directories"
+            ]
+        }
+    ],
+    "ai_written_on": "2026-10-08",
+    "alternate_terms": [
+    ],
+    "refresh_every_days": 1,
+    "extended_description": ""
+}

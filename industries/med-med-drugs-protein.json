@@ -4,7 +4,7 @@
     "slug": "med-drugs-protein",
     "shape": "art-topic",
     "title": "Protein Structure Prediction",
-    "answer": "Protein structure prediction covers the computational task of taking an amino acid sequence and producing a three dimensional model of how that chain folds, including the positions of atoms and the contacts that hold the shape together. It sits inside drug discovery and molecular simulation because a reliable structure is often the starting point for understanding how a protein works, how a mutation changes it, and where a small molecule might bind. The field spans single chain prediction, multi chain complexes, and the modelling of how a protein moves between conformations. It is distinct from experimental structure determination by X-ray crystallography, cryo electron microscopy or nuclear magnetic resonance, though the two are used together.",
+    "answer": "Protein structure prediction is the computational task of taking an amino acid sequence and producing a three dimensional model of how that chain folds. In drug discovery it sits upstream of docking, molecular dynamics and design work, because a structure is often the starting point for asking how a small molecule might bind. The field covers single domains, multi chain complexes, and increasingly the flexibility and alternative conformations that matter for real binding sites. It is distinct from experimental structure determination by X-ray crystallography, cryo electron microscopy or NMR, though the two are used together.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-10-08T00:08:36-05",
+    "built_at": "2026-10-08T06:41:00-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Physician",
@@ -28,23 +28,23 @@
     "page_uid": "12f2109f",
     "sections": [
         {
-            "body": "Protein structure prediction covers the computational task of taking an amino acid sequence and producing a three dimensional model of how that chain folds, including the positions of atoms and the contacts that hold the shape together. It sits inside drug discovery and molecular simulation because a reliable structure is often the starting point for understanding how a protein works, how a mutation changes it, and where a small molecule might bind. The field spans single chain prediction, multi chain complexes, and the modelling of how a protein moves between conformations. It is distinct from experimental structure determination by X-ray crystallography, cryo electron microscopy or nuclear magnetic resonance, though the two are used together.",
+            "body": "Protein structure prediction is the computational task of taking an amino acid sequence and producing a three dimensional model of how that chain folds. In drug discovery it sits upstream of docking, molecular dynamics and design work, because a structure is often the starting point for asking how a small molecule might bind. The field covers single domains, multi chain complexes, and increasingly the flexibility and alternative conformations that matter for real binding sites. It is distinct from experimental structure determination by X-ray crystallography, cryo electron microscopy or NMR, though the two are used together.",
             "heading": "Scope"
         },
         {
-            "body": "The work runs on large neural networks trained on the Protein Data Bank, the public archive of experimentally solved structures, together with sequence databases and multiple sequence alignments that show how a protein family varies across species. Training and inference both need substantial GPU capacity, and the largest models are trained across many accelerators over days or weeks. Inference is lighter, and a single sequence can often be folded on one modern GPU in minutes, which is why web services and downloadable model weights have become common. Downstream work such as molecular dynamics or docking then runs on CPU clusters or GPU nodes with specialised simulation software.",
+            "body": "The work runs on graphics processors, since the dominant models are deep neural networks trained on large sets of known structures and sequences. Training and inference both depend on public repositories such as the Protein Data Bank and sequence databases like UniProt, alongside multiple sequence alignments built from large sequence collections. Tooling is commonly distributed as open source packages, with AlphaFold and RoseTTAFold among the widely used systems, and ColabFold offering a more accessible route to running them. Storage and compute for alignment generation can be as demanding as the model itself.",
             "heading": "What it runs on"
         },
         {
-            "body": "A typical pipeline starts with sequence retrieval and alignment, since evolutionary covariation between positions is a strong signal of which residues sit close in space. A model then predicts distances, angles or atom coordinates, often through a structure module that iteratively refines a set of frames, and the output is scored with confidence estimates per residue and per pair. Predicted structures are checked against known geometry, compared with any experimental data available, and frequently relaxed or refined before use. For drug discovery the structure is then used in binding site analysis, virtual screening or simulation, and predictions are treated as hypotheses to be tested rather than settled facts.",
+            "body": "A typical pipeline starts with a sequence, searches for homologous sequences, and builds a multiple sequence alignment whose covariation patterns hint at which residues are close in space. A neural network then predicts distances, angles or directly coordinates, often using attention over the alignment and, where available, a structural template. The output is a set of candidate models with per residue confidence estimates, which practitioners inspect before using the model for anything downstream. Refinement, energy minimisation and comparison against experimental data are common next steps, and a prediction is treated as a hypothesis rather than a solved structure.",
             "heading": "How the work is done"
         },
         {
-            "body": "Provenance matters because a predicted model is only as good as the sequence, the alignment and the model version that produced it, so labs are expected to record inputs, weights, parameters and confidence scores alongside the output. Licensing of model weights and of training data varies, and some structures carry restrictions from their source databases, which affects whether a model can be used commercially. In a medical or pharmaceutical setting, predicted structures that inform a development programme may fall under quality and documentation expectations similar to other computational evidence.",
+            "body": "Predicted models are not experimental measurements, and the confidence scores attached to them are part of how they should be read and reported. Provenance matters: which sequence, which database release, which model version and which parameters produced a given file all affect reproducibility. Licensing varies across tools and their weights, and some uses, particularly commercial ones, carry terms that differ from the academic setting the models were often developed in. Where a prediction informs a patent filing, a clinical programme or a regulatory submission, the distinction between predicted and experimentally determined structure is usually documented explicitly.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The direction of travel is toward complexes rather than single chains, including protein assemblies, protein nucleic acid systems and interactions with ligands, and toward models that produce ensembles rather than one static shape. Integration with experimental data is deepening, so predictions are used to interpret cryo electron microscopy maps or to guide construct design. There is also growing interest in designing new proteins and binders rather than only predicting existing ones, which pulls the field closer to therapeutic development. As these models reach further into drug programmes, the open questions are less about raw accuracy and more about validation, reproducibility and how a prediction is weighed against experimental evidence.",
+            "body": "The direction of travel is toward complexes, assemblies and conformational ensembles rather than single static chains, and toward models that incorporate experimental restraints and sparse data. Integration with design and simulation is deepening, so a predicted structure increasingly feeds directly into generative molecule design or into molecular dynamics rather than sitting as a separate artefact. Confidence estimation and error detection remain active areas, since knowing when a model is wrong is as useful as the model itself. How these predictions are validated, cited and licensed will keep shaping how far they can be relied on in regulated drug development.",
             "heading": "Where it is going"
         }
     ],
