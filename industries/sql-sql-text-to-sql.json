@@ -4,7 +4,7 @@
     "slug": "sql-text-to-sql",
     "shape": "art-topic",
     "title": "Text to SQL",
-    "answer": "Text to SQL is the task of translating a natural language question into a SQL query that runs against a real schema and returns the answer. It is how business users query data without an analyst in between. The work sits between a question and a database, and the query it produces has to be valid for the tables and columns that actually exist. A good system returns the right rows, not just a query that parses.",
+    "answer": "Text to SQL is the task of translating a natural language question into a SQL query that runs against a real schema and returns the answer, and it is how business users query data without an analyst in between. The question arrives in ordinary language, the system resolves it against tables, columns, keys and joins it has been shown, and the output is a statement the database engine will accept. Success is judged by whether the query runs and whether the rows it returns answer the question that was asked, which are two different tests. A query can execute cleanly and still be wrong, and a query can be right in intent but fail on a type mismatch or an ambiguous column name.",
     "crumbs": [
         {
             "name": "AI and SQL",
@@ -12,7 +12,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-10-07T14:08:57-05",
+    "built_at": "2026-10-08T00:08:36-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "AI and SQL",
@@ -20,23 +20,23 @@
     "page_uid": "1c4f6caa",
     "sections": [
         {
-            "body": "Text to SQL is the task of translating a natural language question into a SQL query that runs against a real schema and returns the answer. It is how business users query data without an analyst in between. The work sits between a question and a database, and the query it produces has to be valid for the tables and columns that actually exist. A good system returns the right rows, not just a query that parses.",
+            "body": "Text to SQL is the task of translating a natural language question into a SQL query that runs against a real schema and returns the answer, and it is how business users query data without an analyst in between. The question arrives in ordinary language, the system resolves it against tables, columns, keys and joins it has been shown, and the output is a statement the database engine will accept. Success is judged by whether the query runs and whether the rows it returns answer the question that was asked, which are two different tests. A query can execute cleanly and still be wrong, and a query can be right in intent but fail on a type mismatch or an ambiguous column name.",
             "heading": "Scope"
         },
         {
-            "body": "A text to SQL system needs three things: a language model, a connection to the database, and a description of the schema. The schema description is usually supplied as data definition language, sample rows, or a curated semantic layer that names tables and columns in business terms. Model Context Protocol servers are one common way to expose a database to a model, and this site tracks 263 of its 2526 active servers for SQL databases and warehouses. Execution happens against the live database, so the system also needs a way to run the query and return results.",
+            "body": "The system needs the schema itself, meaning table and column names, data types, primary and foreign keys, and often a few sample rows or column descriptions so the model can tell a status code from a customer name. Most deployments keep a semantic layer or a curated set of table and column descriptions, because raw schemas are terse and full of abbreviations that mean nothing outside the team that built them. Retrieval is usually part of the stack, selecting the handful of tables relevant to the question before any generation happens, since a large warehouse will not fit in a prompt. The generated SQL then runs against a read replica or a sandboxed copy rather than production, with a row limit and a timeout attached.",
             "heading": "What it runs on"
         },
         {
-            "body": "The common pattern is schema retrieval followed by generation. The system selects the tables and columns likely to matter, puts their definitions in the prompt, and asks the model to write SQL. More reliable setups add a validation step that parses the query, checks it against the catalog, and runs it in a sandbox before returning anything. Accuracy is measured by execution, meaning whether the query runs and whether the result matches the expected answer, not by string similarity to a reference query. Hard cases include ambiguous column names, joins across many tables, and questions that need business definitions the schema does not carry.",
+            "body": "The common pattern is retrieval over schema and past queries, then generation by a language model, then execution, then a check on the result. Teams improve accuracy with a library of verified question and query pairs used as examples, and with feedback from users who mark an answer as right or wrong. Evaluation is done on held out questions with known correct results, and the useful metrics are execution accuracy, meaning the query ran and returned the expected rows, and exact match, meaning the query text matched a reference. Exact match is the weaker signal because two different queries can return the same correct answer. Errors cluster around joins, grouping, date handling and the model inventing a column that does not exist.",
             "heading": "How the work is done"
         },
         {
-            "body": "A generated query can read, and in some configurations write, real data, so permissions matter more than the model choice. The safe pattern is to run the model under a read only role with row and column limits, and to keep write access out of the loop entirely. Provenance matters too: teams need to know which schema version, which prompt, and which model produced a query that returned a number someone acted on. Query logs, schema snapshots, and the generated SQL should be retained together so a result can be reproduced or explained later. Where personal or regulated data is involved, the same access rules that apply to an analyst apply to the model.",
+            "body": "The generated query runs with the permissions of whoever or whatever executes it, so a text to SQL layer can widen access if it is wired to a privileged account. The usual control is to run under the asking user's own credentials, or to restrict the layer to views and columns that user is already entitled to see. Every generated query should be logged with the question, the SQL, the user and the row count, both for debugging and for audit. Sensitive columns such as identifiers, health details or payment data need explicit exclusion rather than a hope that the model will not select them. Where the output feeds a report or a decision, a human review step is common, and the provenance of the answer, meaning which tables and filters produced it, should be visible to the person reading it.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The direction of travel is toward systems that check their own work: generate, execute, inspect the error or the result, and revise. Semantic layers and curated metric definitions are becoming the main lever on accuracy, because most failures come from the model not knowing what a column means rather than from SQL syntax. Benchmarks continue to push on realistic schemas with many tables and on questions that require reasoning about joins. The unresolved question is trust: how much of a warehouse should a model be allowed to touch, and who signs off when the answer is wrong.",
+            "body": "Accuracy on real, messy schemas is the main open problem, and progress is coming from better schema retrieval, from models fine tuned on SQL, and from agent style loops that run a query, read the error and try again. Benchmarks have moved from small single table sets to large multi table warehouses with ambiguous column names and dialect differences, which is closer to what practitioners actually face. The direction of travel is toward the layer sitting inside the warehouse and the BI tool rather than beside them, so the question, the query and the chart stay in one place. The unresolved questions are how much autonomy to grant, how to keep the semantic layer current as schemas change, and how to show a user why an answer is trustworthy without asking them to read SQL.",
             "heading": "Where it is going"
         }
     ],
@@ -86,7 +86,7 @@
             "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/bfd29330/"
         }
     ],
-    "generated": "2026-10-07",
+    "generated": "2026-10-08",
     "parent_name": "AI and SQL",
     "parent_path": "/ai-ecosystem/enterprise-applications-governance-and-tools/3d344eab/",
     "refresh_every_days": 30

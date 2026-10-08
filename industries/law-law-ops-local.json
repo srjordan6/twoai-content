@@ -4,7 +4,7 @@
     "slug": "law-ops-local",
     "shape": "art-topic",
     "title": "Local and Air-Gapped Model Deployment",
-    "answer": "Local and air-gapped model deployment means running a language model on hardware the organisation controls, either on its own network or on a machine with no outside connection at all. In legal operations the driver is usually confidentiality: client matter files, privileged advice and deal documents that cannot be sent to a hosted API. The scope covers the model weights, the inference server that runs them, the hardware they sit on, and the surrounding controls that keep the whole stack inside the firm's boundary. It is a deployment pattern rather than a product, and it can be applied to a single workstation or to a shared cluster.",
+    "answer": "Local and air-gapped model deployment covers running a language model on hardware a legal team controls, either on a private network or on a machine with no outside connection at all. It sits at the meeting point of legal operations, IT infrastructure and information security, and it exists because privileged material, client confidences and matter files often cannot leave the firm's boundary. The scope runs from a single workstation running a small open-weight model to a rack of accelerators inside a data centre, and it includes the surrounding stack of storage, access control and logging. It is not the same as using a hosted assistant under a contract, because the model weights and the data both stay inside the perimeter.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-10-07T14:08:57-05",
+    "built_at": "2026-10-08T00:08:35-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Lawyer",
@@ -28,23 +28,23 @@
     "page_uid": "d22e2b49",
     "sections": [
         {
-            "body": "Local and air-gapped model deployment means running a language model on hardware the organisation controls, either on its own network or on a machine with no outside connection at all. In legal operations the driver is usually confidentiality: client matter files, privileged advice and deal documents that cannot be sent to a hosted API. The scope covers the model weights, the inference server that runs them, the hardware they sit on, and the surrounding controls that keep the whole stack inside the firm's boundary. It is a deployment pattern rather than a product, and it can be applied to a single workstation or to a shared cluster.",
+            "body": "Local and air-gapped model deployment covers running a language model on hardware a legal team controls, either on a private network or on a machine with no outside connection at all. It sits at the meeting point of legal operations, IT infrastructure and information security, and it exists because privileged material, client confidences and matter files often cannot leave the firm's boundary. The scope runs from a single workstation running a small open-weight model to a rack of accelerators inside a data centre, and it includes the surrounding stack of storage, access control and logging. It is not the same as using a hosted assistant under a contract, because the model weights and the data both stay inside the perimeter.",
             "heading": "Scope"
         },
         {
-            "body": "The stack starts with hardware, typically one or more GPUs with enough memory to hold the model weights and the context being processed, plus ordinary server components around them. On top sits an inference runtime that loads the weights and serves requests, with common choices including llama.cpp, Ollama and vLLM. A private model registry or file store holds the weights, and an internal gateway handles authentication, logging and routing so that no request leaves the network. Air-gapped setups add physical separation: no outbound internet, controlled media transfer, and a separate update path for models and patches.",
+            "body": "What it runs on is a machine the firm owns or leases: a workstation with one or more graphics cards, a server with larger accelerators, or a private cluster behind a firewall. Air-gapped setups add a physical or logical break from the public internet, so updates, model downloads and licence checks have to be moved across by hand or through a controlled transfer process. Storage has to hold model weights, which are large files, plus the vector index or document store that retrieval depends on. Power, cooling, rack space and the people who maintain them are part of the picture, and so is the question of who holds the keys to the hardware.",
             "heading": "What it runs on"
         },
         {
-            "body": "Work begins with model selection, weighing parameter count and quantisation against the accuracy a legal task actually needs, since a smaller model that fits the available memory often beats a larger one that does not. The chosen weights are pulled once, verified, and stored internally, then loaded by the inference server and exposed through an internal endpoint. Evaluation comes next: a set of representative tasks, such as summarising a contract or answering questions over a document set, run against the local model and compared with the hosted baseline. Prompting, retrieval over the firm's own document store, and light fine-tuning are the usual levers for closing any quality gap.",
+            "body": "The work is done by choosing an open-weight model that fits the available memory, then serving it with a runtime such as llama.cpp, vLLM or Ollama, and pointing a chat interface or an API at that server. For document work, a retrieval layer indexes the firm's own files and passes relevant passages to the model at query time, which keeps answers grounded in material the team already holds. Evaluation is done on the firm's own tasks rather than on public benchmarks alone, because a model that scores well in general may still mishandle a clause or a citation. Prompts, system instructions and retrieval settings are versioned like any other internal tool, and a small pilot on non-sensitive matters usually comes before wider use.",
             "heading": "How the work is done"
         },
         {
-            "body": "The main obligations are confidentiality, records and accountability. Because prompts and outputs stay on firm hardware, data handling is governed by internal policy and client engagement terms rather than by a vendor's terms of service, and the audit trail has to be built deliberately through logging and access control. Model provenance matters: the licence attached to the weights, the source it came from, and the version in use all need to be recorded, and open-weight licences vary in what they permit. Where a deployment touches personal data, the usual privacy analysis still applies, and any output used in advice or filing remains subject to human review and the applicable rules of professional conduct.",
+            "body": "Rights and risk turn on where the model weights came from, what licence they carry and whether that licence permits the intended commercial use. Provenance matters for the training data behind a model, and for any documents fed into a retrieval index, since those may carry their own confidentiality or contractual limits. Air gaps reduce exposure to outside networks but do not remove the need for access control, audit logging, retention rules and a record of which model version produced which output. Privilege and client confidentiality obligations still apply, and a local deployment does not by itself satisfy them. Firms also weigh vendor support, patching and the risk of running an unmaintained model, and they keep a human review step for anything that leaves the team.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "Two pressures are shaping this area. One is capability: open-weight models keep improving, and quantisation and serving techniques keep lowering the hardware needed to run a useful one, which widens the set of firms for which local deployment is practical. The other is oversight: as regulators and courts pay closer attention to how AI is used in legal work, an on-premises stack with its own logs and version records becomes easier to explain than a chain of external services. Expect more hybrid patterns, where sensitive material stays local and less sensitive work goes to hosted models, with the boundary between the two written down and enforced.",
+            "body": "The direction of travel is toward smaller, more capable open-weight models that run on modest hardware, and toward better tooling for serving, retrieval and evaluation inside a private network. Hardware accelerators with more memory per card make larger models practical on a single machine, which changes what a small team can host. At the same time, the gap between local and hosted systems narrows on capability but not on convenience, so the choice stays a trade between control and effort. Expect more attention to model provenance, licence clarity and audit trails as local deployment moves from experiment to routine infrastructure in legal work.",
             "heading": "Where it is going"
         }
     ],
@@ -66,7 +66,7 @@
             "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/5abf4bd2/"
         }
     ],
-    "generated": "2026-10-07",
+    "generated": "2026-10-08",
     "parent_name": "Legal Operations, Infrastructure and Security",
     "parent_path": "/ai-ecosystem/enterprise-applications-governance-and-tools/2148d228/",
     "refresh_every_days": 30

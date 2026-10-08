@@ -4,7 +4,7 @@
     "slug": "sql-benchmarks",
     "shape": "art-topic",
     "title": "Text to SQL Benchmarks",
-    "answer": "Text to SQL benchmarks are standard test sets that measure how well a system turns a plain language question into a working SQL query. Public benchmarks such as Spider and BIRD score systems by running the generated query and comparing its result with a known correct answer. Enterprise schemas are larger and less tidy than the benchmarks, so real accuracy is usually lower. The topic sits inside AI and SQL, alongside the wider tooling that connects models to databases.",
+    "answer": "Text to SQL benchmarks are test sets that measure how well a system turns a plain language question into a working SQL query. Public benchmarks such as Spider and BIRD score text to SQL systems by running the generated query and comparing its result with a known correct answer. They differ in difficulty, in how many tables and columns the questions touch, and in whether the questions are written for a single database or many. Enterprise schemas are larger and less tidy than the benchmarks, so real accuracy is usually lower. The benchmark result is a signal about a system, not a promise about how it will behave on a particular warehouse.",
     "crumbs": [
         {
             "name": "AI and SQL",
@@ -12,7 +12,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-10-07T14:08:57-05",
+    "built_at": "2026-10-08T00:08:36-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "AI and SQL",
@@ -20,23 +20,23 @@
     "page_uid": "b32896c8",
     "sections": [
         {
-            "body": "Text to SQL benchmarks are standard test sets that measure how well a system turns a plain language question into a working SQL query. Public benchmarks such as Spider and BIRD score systems by running the generated query and comparing its result with a known correct answer. Enterprise schemas are larger and less tidy than the benchmarks, so real accuracy is usually lower. The topic sits inside AI and SQL, alongside the wider tooling that connects models to databases.",
+            "body": "Text to SQL benchmarks are test sets that measure how well a system turns a plain language question into a working SQL query. Public benchmarks such as Spider and BIRD score text to SQL systems by running the generated query and comparing its result with a known correct answer. They differ in difficulty, in how many tables and columns the questions touch, and in whether the questions are written for a single database or many. Enterprise schemas are larger and less tidy than the benchmarks, so real accuracy is usually lower. The benchmark result is a signal about a system, not a promise about how it will behave on a particular warehouse.",
             "heading": "Scope"
         },
         {
-            "body": "Running a benchmark means holding a database, a set of questions, and a set of reference queries or answers, then executing each generated query against the database. The work is mostly ordinary database infrastructure: a PostgreSQL or similar instance, a harness that submits queries and captures results, and a scoring script that compares outcomes. The site itself is built from a PostgreSQL database, which is the same engine many of these benchmarks use. Some harnesses now reach the database through a Model Context Protocol server, and this site tracks 263 such servers for SQL databases and warehouses out of 2526 active ones.",
+            "body": "Running a benchmark means holding a database, a set of questions, and a set of reference queries or answers, then executing candidate queries against the database. The database engine does the heavy lifting, so the benchmark inherits its dialect, its data types, and its quirks. Evaluation harnesses execute each generated query, catch errors and timeouts, and compare the returned rows with the expected rows, often after normalising column order and formatting. Because execution is the scoring step, the environment has to be reproducible: the same schema, the same data, and the same engine version for every run. Larger models and hosted APIs are common, but the benchmark itself is mostly a database and a runner.",
             "heading": "What it runs on"
         },
         {
-            "body": "The usual method is execution accuracy: run the generated query, take its result set, and check it against the result of the reference query, so different but equivalent SQL can still pass. Exact match scoring, which compares query text, is cheaper but punishes valid rewrites. Harder variants add noisy schemas, ambiguous questions, and multi table joins, and BIRD in particular includes external evidence alongside the question. Results are reported per difficulty band, and error analysis usually separates wrong schema linking from wrong joins, wrong filters, and wrong aggregation.",
+            "body": "A typical evaluation takes a question and a schema description, asks a model to produce SQL, executes that SQL, and marks it correct if the result matches the reference. Matching is usually done on the result set rather than on the query text, because many different queries can be right. Some benchmarks also report exact match against a reference query, which is stricter and less forgiving of harmless differences. Systems are often given the schema, sample rows, or retrieved examples from similar questions, and the choice of what context to supply changes the score. Error analysis matters as much as the headline number, since a system can fail on joins, on ambiguous column names, or on questions the schema cannot answer at all.",
             "heading": "How the work is done"
         },
         {
-            "body": "Benchmark data carries its own rights questions, since schemas, questions, and reference queries are published artifacts with licences and citation expectations. Provenance matters for reproducibility: the database version, the split used, and the scoring script all affect the number reported, so a score without that context is hard to trust. When benchmarks are reused for evaluation of commercial systems, teams need to know whether the test set leaked into training data, which inflates results.",
+            "body": "Benchmark questions and reference queries come from somewhere, and their licence and provenance affect whether a system can be trained or tested on them. Some sets are built from public databases, others from contributed or synthetic schemas, and the terms differ. A high score on a public benchmark does not establish that a system is safe to point at production data, where permissions, row level security, and cost limits apply. Generated SQL can read more than intended, so execution is usually confined to a sandbox or a read only replica. Teams also need to record which model, prompt, and schema snapshot produced a score, because results drift when any of those change. None of this is legal advice, and the terms of a given dataset or model should be checked directly.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The direction of travel is toward benchmarks that look more like real deployments: bigger schemas, messier column names, business definitions, and questions that need clarification before any SQL is written. Evaluation is also moving from single queries toward multi step tasks, including query repair and dialogue, and toward agent style setups where a model inspects the schema before answering. As text to SQL moves into production, benchmark scores will matter less on their own and more as one input alongside task specific tests on a team's own data. The field remains a measurement problem as much as a modelling one.",
+            "body": "The direction of the field is toward benchmarks that look more like real work: messier schemas, multi step questions, and evaluation on the actual database rather than a cleaned copy. There is growing interest in measuring whether a system knows when it cannot answer, and in scoring the cost and latency of a query alongside its correctness. Agent style systems that explore a schema, run a query, read the error, and try again are changing what a benchmark needs to capture. As models improve on the public sets, the useful signal shifts to held out and private evaluations that reflect a specific organisation's data. The benchmark remains a rough yardstick, and the gap between it and a given warehouse is where most of the practical work sits.",
             "heading": "Where it is going"
         }
     ],
@@ -86,7 +86,7 @@
             "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/bfd29330/"
         }
     ],
-    "generated": "2026-10-07",
+    "generated": "2026-10-08",
     "parent_name": "AI and SQL",
     "parent_path": "/ai-ecosystem/enterprise-applications-governance-and-tools/3d344eab/",
     "refresh_every_days": 30

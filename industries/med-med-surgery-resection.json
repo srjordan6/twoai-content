@@ -4,7 +4,7 @@
     "slug": "med-surgery-resection",
     "shape": "art-topic",
     "title": "Resection Planning and Margins",
-    "answer": "Resection planning and margins covers the work of deciding, before and during an operation, how much tissue to remove around a tumour and where the safe boundary lies. It sits inside surgical robotics and navigation, where imaging, tracking and robotic instruments meet the operating table. The topic spans preoperative planning from scans, intraoperative guidance that updates that plan as the surgeon works, and the pathology that later confirms whether the margin was clear. It matters most in cancer surgery of the breast, prostate, liver, lung and brain, where too little removed tissue risks leaving disease behind and too much removes function the patient needs.",
+    "answer": "Resection planning and margins covers the work of deciding, before and during an operation, how much tissue to remove and where the cut should run. In surgical robotics and navigation it joins preoperative imaging, tumour or lesion boundaries, and the anatomy that must be spared, so that a surgeon can see a planned volume rather than judge it by eye alone. The subject spans the planning software, the imaging it reads, the navigation hardware that tracks instruments in the room, and the pathology that later reports what the margin actually was. It matters most in cancer surgery, where leaving too little disease behind and taking too much healthy tissue carry different costs.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-10-07T14:08:57-05",
+    "built_at": "2026-10-08T00:08:36-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Physician",
@@ -28,23 +28,23 @@
     "page_uid": "34e338e2",
     "sections": [
         {
-            "body": "Resection planning and margins covers the work of deciding, before and during an operation, how much tissue to remove around a tumour and where the safe boundary lies. It sits inside surgical robotics and navigation, where imaging, tracking and robotic instruments meet the operating table. The topic spans preoperative planning from scans, intraoperative guidance that updates that plan as the surgeon works, and the pathology that later confirms whether the margin was clear. It matters most in cancer surgery of the breast, prostate, liver, lung and brain, where too little removed tissue risks leaving disease behind and too much removes function the patient needs.",
+            "body": "Resection planning and margins covers the work of deciding, before and during an operation, how much tissue to remove and where the cut should run. In surgical robotics and navigation it joins preoperative imaging, tumour or lesion boundaries, and the anatomy that must be spared, so that a surgeon can see a planned volume rather than judge it by eye alone. The subject spans the planning software, the imaging it reads, the navigation hardware that tracks instruments in the room, and the pathology that later reports what the margin actually was. It matters most in cancer surgery, where leaving too little disease behind and taking too much healthy tissue carry different costs.",
             "heading": "Scope"
         },
         {
-            "body": "The work runs on preoperative imaging, most often CT, MRI or ultrasound, plus a navigation system that registers those images to the patient's actual anatomy in the room. Optical or electromagnetic trackers follow instruments and patient position, and a robotic arm or a tracked probe carries the plan to the surgical field. Some systems add a console that overlays the planned margin on a live view, and some bring in intraoperative imaging or a specimen scanner to check the cut surface before the patient leaves. Computing is usually a workstation in the theatre suite rather than a distant data centre, because latency and network failure are not acceptable mid-operation.",
+            "body": "The stack begins with cross sectional imaging such as CT or MRI, often fused with ultrasound or a prior scan, and with the segmentation that marks the target and the structures around it. Planning and navigation systems run on workstation class hardware in or near the operating theatre, sometimes with a cart mounted camera and tracked instruments for optical or electromagnetic localisation. Robotics platforms add arms and controllers, while the display links the planned volume to the patient's actual position through registration. Networks and image archives move studies between radiology, the planning station and the theatre, and latency and sterility constraints shape what can run where.",
             "heading": "What it runs on"
         },
         {
-            "body": "Planning starts with segmentation of the tumour and nearby critical structures, which may be done by hand, by a trained model, or by a model with a human correcting the result. Registration then aligns the scan to the patient, and the surgeon reviews the proposed margin and adjusts it against anatomy, function and the planned approach. During the operation the navigation display shows instrument position relative to the plan, and the surgeon decides whether the margin looks adequate or needs widening. After removal, the specimen goes to pathology, where ink, slicing and microscopy give the definitive margin status, and that result is compared back to what the plan predicted. The loop is deliberately human in the middle, because the model proposes and the surgeon disposes.",
+            "body": "A typical path starts with segmentation of the lesion and adjacent critical structures, either by hand, by a learned model, or by a mix of both, followed by review and correction by a clinician. From that segmentation the team builds a target volume and a planned margin, then registers the plan to the patient using fiducials, surface matching or intraoperative imaging. Navigation then shows instrument position against the plan, and the surgeon may update the plan as tissue moves or as frozen section results arrive. Pathology later measures the true margin on the specimen, and that measurement is what closes the loop between the plan and the outcome.",
             "heading": "How the work is done"
         },
         {
-            "body": "Responsibility for the margin sits with the operating surgeon, not with the software, and the plan is documented as a clinical decision with the imaging and model output that supported it. Devices used here generally need regulatory clearance as medical devices, and changes to a model or its intended use can trigger a new submission. Consent discussions should cover that computer guidance is being used and what happens if it is unavailable. Data governance covers patient imaging, which is identifiable and often shared with vendors for support or improvement, and procurement should settle where that data lives and how long it is kept. If a margin proves inadequate or a structure is injured, the record of what the system displayed becomes evidence, and the site's tracking of product liability litigation shows this is not a hypothetical concern.",
+            "body": "The plan is a clinical document, so accountability sits with the treating clinician, not the software, and the segmentation and margin decisions need to be traceable to the images and settings that produced them. Devices used for planning or navigation generally fall under medical device regulation, which brings requirements for validation, labelling and change control, and the provenance of each scan, model version and edit matters when a case is reviewed. Patient data carries privacy and consent obligations, and shared or cloud based planning raises questions about where images rest and who can reach them. A margin reported by a model is an estimate, and the pathology report remains the reference point.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The direction of travel is toward margins assessed in the room rather than days later, using fresh tissue imaging, rapid molecular methods and probes that sense residual disease on the cavity wall. Navigation is moving from a preoperative plan that ages during the operation to a model that updates as tissue shifts and is removed. Robotics and navigation are converging, so the same system that holds the instrument may also constrain the cut to the planned boundary. The open questions are validation, since a margin tool must be tested against pathology rather than against itself, and workflow, since any added step must earn its place in a busy theatre. Expect adoption to follow evidence and local commissioning rather than novelty.",
+            "body": "Work is moving toward tighter coupling of imaging, navigation and pathology, so that predicted margins can be compared against measured ones and the planning models improved from that feedback. Intraoperative imaging and rapid tissue assessment are being folded into the same workflow, and registration is becoming less dependent on manual steps. Learned segmentation is spreading from research into routine planning, which shifts attention to how these tools are checked and how their uncertainty is shown to a surgeon. The open questions are less about raw capability than about trust, documentation and who carries responsibility when a plan and a specimen disagree.",
             "heading": "Where it is going"
         }
     ],
@@ -66,7 +66,7 @@
             "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/d55d11a2/"
         }
     ],
-    "generated": "2026-10-07",
+    "generated": "2026-10-08",
     "parent_name": "Surgical Robotics and Navigation",
     "parent_path": "/ai-ecosystem/enterprise-applications-governance-and-tools/dc7a130b/",
     "refresh_every_days": 30

@@ -4,7 +4,7 @@
     "slug": "eco-credit-scoring",
     "shape": "art-topic",
     "title": "Credit Scoring with Alternative Data",
-    "answer": "Credit scoring with alternative data means using information beyond the traditional credit bureau file to estimate the likelihood that a borrower repays. The classic inputs are repayment history, outstanding balances, account age and public records such as bankruptcies. Alternative data adds signals like utility and telecom payment records, rent payments, bank account cash flow, and in some consumer contexts device or behavioural data. In fixed income and credit risk the same idea appears at portfolio level, where non traditional signals are used to score small businesses, thin file borrowers and whole loan pools.",
+    "answer": "Credit scoring with alternative data means estimating the likelihood that a borrower will repay by drawing on information beyond the traditional credit bureau file, such as utility and telecom payment records, rent, bank account cash flow, employment and income signals, device and application metadata, and public records. It sits inside credit risk work, where the output feeds underwriting, line assignment, pricing, and the loss estimates that flow into securitisation and fixed income analysis. The population of interest is often thin file or no file borrowers, small businesses, and consumers in markets where bureau coverage is shallow. The aim is a more complete picture of repayment capacity and willingness than a single bureau score provides.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-10-07T14:08:57-05",
+    "built_at": "2026-10-08T00:08:35-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Economist",
@@ -28,23 +28,23 @@
     "page_uid": "1b958d49",
     "sections": [
         {
-            "body": "Credit scoring with alternative data means using information beyond the traditional credit bureau file to estimate the likelihood that a borrower repays. The classic inputs are repayment history, outstanding balances, account age and public records such as bankruptcies. Alternative data adds signals like utility and telecom payment records, rent payments, bank account cash flow, and in some consumer contexts device or behavioural data. In fixed income and credit risk the same idea appears at portfolio level, where non traditional signals are used to score small businesses, thin file borrowers and whole loan pools.",
+            "body": "Credit scoring with alternative data means estimating the likelihood that a borrower will repay by drawing on information beyond the traditional credit bureau file, such as utility and telecom payment records, rent, bank account cash flow, employment and income signals, device and application metadata, and public records. It sits inside credit risk work, where the output feeds underwriting, line assignment, pricing, and the loss estimates that flow into securitisation and fixed income analysis. The population of interest is often thin file or no file borrowers, small businesses, and consumers in markets where bureau coverage is shallow. The aim is a more complete picture of repayment capacity and willingness than a single bureau score provides.",
             "heading": "Scope"
         },
         {
-            "body": "The work runs on a data pipeline that ingests raw feeds, cleans and matches them to a borrower identity, and stores the result in a feature store that scoring models can query. Bureau data arrives through established credit reporting interfaces, while alternative sources such as bank transaction data or rental payment records usually arrive through aggregators or direct data sharing arrangements. Compute is modest by machine learning standards, since most production scorecards are still logistic regression or gradient boosted trees rather than large neural networks. Governance of the pipeline matters as much as the model, because a score is only as good as the identity matching and the freshness of the underlying records.",
+            "body": "The raw material is event level and messy: transaction streams, payment histories, telco records, payroll and open banking feeds, and identity and device signals. These arrive through bureau agreements, data aggregators, open banking interfaces, and direct lender relationships, and they land in a warehouse or lakehouse where they are joined to application and account data. Feature computation runs in batch and increasingly in streaming pipelines, with a feature store serving both training and live scoring. Model serving sits behind the decision engine, subject to latency budgets measured in milliseconds to seconds, and every score has to be reproducible for adverse action and dispute handling. Monitoring covers input drift, score distribution, and outcome performance once repayments mature.",
             "heading": "What it runs on"
         },
         {
-            "body": "Practitioners start by defining the outcome to predict, typically default or delinquency within a fixed window, and by assembling a labelled sample with enough bad cases to learn from. They build features from the alternative feeds, test them for stability over time, and check that each one is available at the moment a decision would actually be made. Models are validated on out of sample and out of time data, with attention to population stability and to whether the alternative data helps thin file borrowers or mainly reshuffles existing good risks. Because many of these models feed regulated decisions, documentation of variable choice, reject inference and monitoring thresholds is part of the method, not an afterthought.",
+            "body": "Practitioners start with a clear definition of the target, usually a serious delinquency or default within a fixed performance window, and a sample that reflects the population the model will actually see. Traditional logistic regression on bureau and application variables remains a common baseline because it is stable and easy to explain. Gradient boosted trees and, more recently, sequence models over transaction data are used where the signal is richer, and they are validated on out of time and out of sample cohorts rather than random splits. Feature engineering carries most of the weight: cash flow stability, balance volatility, payment timing, and trend measures. Work is judged on rank ordering, calibration, stability across cohorts, and the incremental lift over an existing scorecard, not on raw accuracy.",
             "heading": "How the work is done"
         },
         {
-            "body": "Alternative data sits inside a dense rulebook. In the United States, the Fair Credit Reporting Act governs what counts as a consumer report and how disputes are handled, while fair lending law constrains the use of variables that correlate with protected classes. Data protection regimes such as the GDPR in Europe add purpose limitation and access rights, and model risk guidance from banking supervisors expects validation, explainability and ongoing monitoring. Provenance is a live issue: a signal may be lawful to collect yet still be a poor basis for a credit decision if it is unstable, easily gamed or unavailable to the borrower at appeal. Firms typically keep an audit trail linking each score to the data version and the reason codes shown to the applicant.",
+            "body": "Alternative data raises questions that bureau data does not, including whether a variable is a lawful basis for a credit decision, whether it acts as a proxy for a protected characteristic, and whether the consumer can understand and contest the reason for a denial. In the United States, lenders work within the Fair Credit Reporting Act, the Equal Credit Opportunity Act, and adverse action notice requirements, and in Europe within the Consumer Credit Directive and the General Data Protection Regulation. Data provenance matters: consent, permissible purpose, contractual rights to use the data, and the ability to trace a score back to its inputs. Fair lending testing, disparate impact analysis, explainability methods, and model risk review are standard parts of the file. Documentation, versioning, and audit trails are what let a lender defend a decision months or years later.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The direction of travel is toward more standardised validation of alternative data and clearer rules on explainability, with supervisors asking for evidence that a signal predicts repayment rather than merely proxying for protected traits. Open banking style data sharing is widening the pool of usable records, which helps thin file and small business borrowers but also raises the stakes on consent and data quality. Expect continued convergence between credit risk modelling and fraud and identity tooling, since both draw on the same transaction level feeds. The open question is not whether alternative data improves coverage but how much of the gain survives scrutiny, drift and the next downturn.",
+            "body": "The direction of travel is toward richer cash flow and open banking data, more frequent rescoring, and models that update as new information arrives rather than once a quarter. Regulators and supervisors are converging on expectations for explainability, bias testing, and consumer control over data sharing, which pushes models toward simpler or post hoc explainable forms even where accuracy would favour complexity. Generative and large language models are being explored for document handling and analyst support rather than as the scoring engine itself. The open questions are how alternative data performs through a full credit cycle, how much of its lift survives when bureau coverage improves, and how lenders evidence fairness when the underlying variables are numerous and correlated.",
             "heading": "Where it is going"
         }
     ],
@@ -66,7 +66,7 @@
             "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/75ec9976/"
         }
     ],
-    "generated": "2026-10-07",
+    "generated": "2026-10-08",
     "parent_name": "Fixed Income and Credit Risk",
     "parent_path": "/ai-ecosystem/enterprise-applications-governance-and-tools/2566d1fe/",
     "refresh_every_days": 30
