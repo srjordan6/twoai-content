@@ -1,0 +1,91 @@
+{
+    "kev": 0,
+    "num": 378,
+    "uid": "d9f098c9",
+    "cves": [
+        {
+            "kev": false,
+            "cve_id": "CVE-2025-7647",
+            "product": "LlamaIndex",
+            "summary": "The llama-index-core package, up to version 0.12.44, contains a vulnerability in the `get_cache_dir()` function where a predictable, hardcoded directory path `/tmp/llama_index` is used on Linux systems without proper sec",
+            "headline": "LlamaIndex up to 0.12.44 uses a shared /tmp cache directory on Linux",
+            "published": "2025-09-27",
+            "cvss_score": 7.3,
+            "cvss_severity": "HIGH"
+        }
+    ],
+    "high": 1,
+    "name": "Creation of Temporary File With Insecure Permissions",
+    "count": 1,
+    "shape": "cwe",
+    "title": "CWE-378: Creation of Temporary File With Insecure Permissions",
+    "cwe_id": "CWE-378",
+    "latest": "2025-09-27",
+    "status": "Draft",
+    "ai_text": "In AI software this weakness shows up in developer facing tooling rather than in model serving or agent frameworks. The one CVE here is in LlamaIndex, a framework for building LLM applications, where versions up to 0.12.44 write cached data into a shared temporary directory on Linux. The insecure permissions on that shared location are the way in, since other local users or processes on the same machine can reach files they should not. That lets an attacker read or tamper with cached content belonging to another user, which in an LLM application can mean exposure of prompts, documents or indexed data, or corruption of what the framework later loads.",
+    "ai_model": "ollama:deepseek-v4.1-flash",
+    "built_at": "2026-10-09T06:29:55-05",
+    "critical": 0,
+    "page_uid": "d9f098c9",
+    "generated": "2026-10-09",
+    "mitre_url": "https://cwe.mitre.org/data/definitions/378.html",
+    "likelihood": "",
+    "abstraction": "Base",
+    "description": "Opening temporary files without appropriate measures or controls can leave the file, its contents and any function that it impacts vulnerable to attack.",
+    "mitigations": [
+        {
+            "phase": [
+                "Requirements"
+            ],
+            "description": "Many contemporary languages have functions which properly handle this condition. Older C temp file functions are especially susceptible."
+        },
+        {
+            "phase": [
+                "Implementation"
+            ],
+            "description": "Ensure that you use proper file permissions. This can be achieved by using a safe temp file function. Temporary files should be writable and readable only by the process that owns the file."
+        },
+        {
+            "phase": [
+                "Implementation"
+            ],
+            "description": "Randomize temporary file names. This can also be achieved by using a safe temp-file function. This will ensure that temporary files will not be created in predictable places."
+        }
+    ],
+    "consequences": [
+        {
+            "note": "If the temporary file can be read by the attacker, sensitive information may be in that file which could be revealed.",
+            "scope": [
+                "Confidentiality"
+            ],
+            "impact": [
+                "Read Application Data"
+            ]
+        },
+        {
+            "note": "If that file can be written to by the attacker, the file might be moved into a place to which the attacker does not have access. This will allow the attacker to gain selective resource access-control privileges.",
+            "scope": [
+                "Authorization",
+                "Other"
+            ],
+            "impact": [
+                "Other"
+            ]
+        },
+        {
+            "note": "Depending on the data stored in the temporary file, there is the potential for an attacker to gain an additional input vector which is trusted as non-malicious. It may be possible to make arbitrary changes to data structures, user information, or even process ownership.",
+            "scope": [
+                "Integrity",
+                "Other"
+            ],
+            "impact": [
+                "Other"
+            ]
+        }
+    ],
+    "ai_written_on": "2026-10-09",
+    "alternate_terms": [
+    ],
+    "refresh_every_days": 1,
+    "extended_description": ""
+}

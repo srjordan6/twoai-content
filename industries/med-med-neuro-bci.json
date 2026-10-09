@@ -4,7 +4,7 @@
     "slug": "med-neuro-bci",
     "shape": "art-topic",
     "title": "Brain Computer Interfaces",
-    "answer": "Brain computer interfaces are systems that read neural signals and translate them into commands or feedback, and in medicine they span assistive communication, motor restoration, epilepsy monitoring and experimental neuroprosthetics. The field sits inside neuroinformatics, where the signal processing, decoding models and clinical workflows meet. Scope here covers implanted electrodes, surface arrays and non invasive headsets, along with the software that turns raw voltage into something a clinician or device can act on.",
+    "answer": "Brain computer interfaces are systems that read neural activity and translate it into signals a machine can act on, or that deliver stimulation back into nervous tissue. In the clinical and research setting they span non invasive approaches such as scalp electroencephalography and functional near infrared spectroscopy, and implanted approaches such as electrode arrays placed on or in the cortex. They are used to restore or substitute function, for example cursor control, spelling, or communication for people with severe paralysis, and to probe how the brain encodes movement, attention and speech. The field sits between neuroinformatics, signal processing, clinical neurology and rehabilitation engineering, and it borrows heavily from machine learning for decoding.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-10-08T14:12:38-05",
+    "built_at": "2026-10-09T06:42:45-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Physician",
@@ -28,23 +28,23 @@
     "page_uid": "bf2e0053",
     "sections": [
         {
-            "body": "Brain computer interfaces are systems that read neural signals and translate them into commands or feedback, and in medicine they span assistive communication, motor restoration, epilepsy monitoring and experimental neuroprosthetics. The field sits inside neuroinformatics, where the signal processing, decoding models and clinical workflows meet. Scope here covers implanted electrodes, surface arrays and non invasive headsets, along with the software that turns raw voltage into something a clinician or device can act on.",
+            "body": "Brain computer interfaces are systems that read neural activity and translate it into signals a machine can act on, or that deliver stimulation back into nervous tissue. In the clinical and research setting they span non invasive approaches such as scalp electroencephalography and functional near infrared spectroscopy, and implanted approaches such as electrode arrays placed on or in the cortex. They are used to restore or substitute function, for example cursor control, spelling, or communication for people with severe paralysis, and to probe how the brain encodes movement, attention and speech. The field sits between neuroinformatics, signal processing, clinical neurology and rehabilitation engineering, and it borrows heavily from machine learning for decoding.",
             "heading": "Scope"
         },
         {
-            "body": "The hardware is electrodes, amplifiers, digitizers and a compute layer that must run in real time, often on a cart beside the bed or a small embedded board worn by the patient. Implanted systems add surgical placement, hermetic packaging and wireless telemetry, while non invasive systems lean on gel electrodes, dry sensors or optical methods. On the software side, the stack is signal conditioning, feature extraction and a decoder, with the decoder increasingly a learned model rather than a hand tuned filter.",
+            "body": "A typical system starts with sensors, which may be surface electrodes, implanted microelectrodes, or optical and magnetic sensors, plus amplifiers and digitizers that sample the signal at rates suited to the band of interest. Data then move through acquisition hardware and often a real time computer that must keep latency low enough for the user to feel control rather than delay. Decoding runs on general purpose CPUs, graphics processors, or dedicated embedded chips, and increasingly on edge hardware worn or carried by the user. Supporting infrastructure includes synchronization clocks, calibration rigs, electrode maintenance, and the clinical or laboratory networks that store recordings. Power, biocompatibility, cabling and wireless bandwidth are practical constraints that shape what can be built, especially for implanted devices.",
             "heading": "What it runs on"
         },
         {
-            "body": "Work typically starts with a recording session under a defined task, then artifact removal, bandpass filtering and epoching before any model sees the data. Decoders are trained per patient because electrode placement and cortical anatomy differ, and calibration sessions are repeated as the signal drifts. Evaluation uses held out trials and, for clinical claims, prospective testing against a defined endpoint such as cursor accuracy or word error rate. Teams usually pair a neuroscientist or clinician with an engineer, and the loop between session, retrain and session is the actual unit of work.",
+            "body": "The work begins with recording neural or hemodynamic signals, then cleaning them: filtering, removing artifacts such as eye blinks or muscle activity, and aligning trials to events. Features are extracted in the time, frequency or spatial domain, and a decoder maps those features to an intended output, whether a cursor direction, a selected letter, or a stimulation pattern. Modern pipelines lean on learned models, including recurrent and convolutional networks for continuous signals, and they are trained per user because electrode placement and anatomy differ. Evaluation uses held out trials, offline replay and closed loop sessions where the user actually operates the system, since offline accuracy often overstates real performance. Iteration is constant: recalibration, adaptation, and co design with the person using the device.",
             "heading": "How the work is done"
         },
         {
-            "body": "Neural data is among the most sensitive categories in existence, and it is covered by device regulation, human subjects review and data protection law at once. Consent has to address what happens to the signal after the trial ends, who holds the decoder weights and whether the implant can be explanted or the company can fold.Provenance matters too, since a decoder trained on one patient rarely transfers, so the record of which data trained which model is part of the safety file.",
+            "body": "Neural data are among the most sensitive records a person can generate, and they can carry information about intent, attention, and in some cases health status, so consent, de identification and data sharing agreements matter from the first recording. Implanted devices add surgical risk, long term biocompatibility questions, and the problem of what happens when a manufacturer stops supporting hardware that is inside someone's body. Regulation varies by jurisdiction, with devices generally falling under medical device rules when used for diagnosis or therapy, and research use governed by ethics boards and institutional review. Ownership of decoded signals, access by employers or insurers, and the possibility of inference beyond the original purpose are live questions. Provenance, versioning of models and firmware, and clear documentation of how a dataset was collected are basic safeguards.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "Near term progress is mostly in bandwidth, longevity and closed loop control, with stimulation and recording on the same implant. Speech and handwriting decoding have moved from lab demonstrations toward small trials, and non invasive systems are improving on comfort rather than on signal quality. The harder questions are commercial and ethical rather than purely technical, including who maintains a device for a decade and how neural data is governed once it leaves the clinic. Expect the regulatory and liability picture to move more slowly than the engineering.",
+            "body": "Near term progress is likely to come from better electrodes and less invasive recording, from decoders that need less calibration, and from speech and handwriting interfaces that have shown promise in research settings. Closed loop stimulation for conditions such as epilepsy and movement disorders is already an established clinical area, and the boundary between therapy and enhancement is being tested. Longer term questions concern durability of implants over years, wireless power and data, and whether generic decoders can transfer across people. On the informatics side, expect more emphasis on privacy preserving learning, standardized data formats, and shared benchmarks so results can be compared. The field will keep moving where engineering, clinical need and ethics move together.",
             "heading": "Where it is going"
         }
     ],
@@ -66,7 +66,7 @@
             "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/5324ae40/"
         }
     ],
-    "generated": "2026-10-08",
+    "generated": "2026-10-09",
     "parent_name": "Neuroinformatics and the Brain",
     "parent_path": "/ai-ecosystem/enterprise-applications-governance-and-tools/6f3efd38/",
     "refresh_every_days": 30

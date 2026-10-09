@@ -16,10 +16,10 @@
                     "name": "sglang"
                 }
             ],
-            "headline": "SGLang ZMQ decoder runs attacker code when data-parallel attention is exposed",
+            "headline": "SGLang deserializes untrusted ZMQ messages, letting a remote sender run code",
             "published": "2026-10-08",
-            "cvss_score": null,
-            "cvss_severity": ""
+            "cvss_score": 9.8,
+            "cvss_severity": "CRITICAL"
         },
         {
             "kev": false,
@@ -62,7 +62,7 @@
             "summary": "In Splunk MCP Server versions below 1.2.1, Splunk MCP Server could send the Splunk platform authentication token of a user who runs a custom Application Programming Interface (API) tool to the URL configured for that...",
             "entities": [
             ],
-            "headline": "Splunk MCP Server below 1.2.1 leaks a user's auth token to a tool's URL",
+            "headline": "Splunk MCP Server below 1.2.1 leaks auth token to a tool's URL",
             "published": "2026-10-07",
             "cvss_score": 5.3,
             "cvss_severity": "MEDIUM"
@@ -222,7 +222,7 @@
             "summary": "IBM Langflow OSS 1.0.0 through 1.12.2 could allow a remote authenticated attacker to obtain sensitive information due to improper authorization.",
             "entities": [
             ],
-            "headline": "Langflow 1.0.0 to 1.12.2 lets a logged in user read data they should not see",
+            "headline": "Langflow 1.0.0 to 1.12.2 lets a logged in user read data they should not access",
             "published": "2026-10-07",
             "cvss_score": 7.6,
             "cvss_severity": "HIGH"
@@ -524,7 +524,7 @@
             "summary": "A security vulnerability has been detected in vllm-project vLLM up to 0.31.0. This impacts the function conv_ssm_forward of the file vllm/model_executor/layers/mamba/mamba_mixer2.py of the component Completions Request...",
             "entities": [
             ],
-            "headline": "vLLM up to 0.31.0 has an out-of-bounds read in its completions handler",
+            "headline": "vLLM up to 0.31.0 out-of-bounds read in completions request handling",
             "published": "2026-10-06",
             "cvss_score": 2.1,
             "cvss_severity": "LOW"
@@ -12057,6 +12057,20 @@
         },
         {
             "kev": false,
+            "uid": "f00363da",
+            "cve_id": "CVE-2025-6515",
+            "vendor": "",
+            "product": "MCP",
+            "summary": "The MCP SSE endpoint in oatpp-mcp returns an instance pointer as the session ID, which is not unique nor cryptographically secure. This allows network attackers with access to the oatpp-mcp server to guess future...",
+            "entities": [
+            ],
+            "headline": "oatpp-mcp SSE endpoint lets attackers guess session IDs and hijack MCP sessions",
+            "published": "2025-10-20",
+            "cvss_score": 6.8,
+            "cvss_severity": "MEDIUM"
+        },
+        {
+            "kev": false,
             "uid": "ee31cbe3",
             "cve_id": "CVE-2025-34267",
             "vendor": "Flowise",
@@ -12163,6 +12177,154 @@
         },
         {
             "kev": false,
+            "uid": "6139a4fd",
+            "cve_id": "CVE-2025-61687",
+            "vendor": "Flowise",
+            "product": "Flowise",
+            "summary": "Flowise is a drag & drop user interface to build a customized large language model flow. A file upload vulnerability in version 3.0.7 of FlowiseAI allows authenticated users to upload arbitrary files without proper...",
+            "entities": [
+                {
+                    "uid": "336c2182",
+                    "href": "/companies/336c2182/",
+                    "kind": "company",
+                    "name": "Flowise"
+                }
+            ],
+            "headline": "Flowise 3.0.7 lets a signed-in user upload a Node.js web shell to the server",
+            "published": "2025-10-06",
+            "cvss_score": 8.3,
+            "cvss_severity": "HIGH"
+        },
+        {
+            "kev": false,
+            "uid": "0ea8250a",
+            "cve_id": "CVE-2025-50538",
+            "vendor": "Flowise",
+            "product": "Flowise",
+            "summary": "Flowise before 3.0.5 allows XSS via an IFRAME element when an admin views the chat log.",
+            "entities": [
+                {
+                    "uid": "336c2182",
+                    "href": "/companies/336c2182/",
+                    "kind": "company",
+                    "name": "Flowise"
+                }
+            ],
+            "headline": "Flowise before 3.0.5 lets a chat log run script in an admin's browser",
+            "published": "2025-10-06",
+            "cvss_score": 8.2,
+            "cvss_severity": "HIGH"
+        },
+        {
+            "kev": false,
+            "uid": "5a0431df",
+            "cve_id": "CVE-2025-29192",
+            "vendor": "Flowise",
+            "product": "Flowise",
+            "summary": "Flowise before 3.0.5 allows XSS via a FORM element and an INPUT element when an admin views the chat log.",
+            "entities": [
+                {
+                    "uid": "336c2182",
+                    "href": "/companies/336c2182/",
+                    "kind": "company",
+                    "name": "Flowise"
+                }
+            ],
+            "headline": "Flowise before 3.0.5 lets a chat log run script in an admin's browser",
+            "published": "2025-10-06",
+            "cvss_score": 8.2,
+            "cvss_severity": "HIGH"
+        },
+        {
+            "kev": false,
+            "uid": "3cfeceed",
+            "cve_id": "CVE-2025-8917",
+            "vendor": "",
+            "product": "ClearML",
+            "summary": "A vulnerability in allegroai/clearml version v2.0.1 allows for path traversal due to improper handling of symbolic and hard links in the `safe_extract` function. This flaw can lead to arbitrary file writes outside the...",
+            "entities": [
+            ],
+            "headline": "ClearML v2.0.1 archive extraction lets local user write files outside target dir",
+            "published": "2025-10-05",
+            "cvss_score": 5.8,
+            "cvss_severity": "MEDIUM"
+        },
+        {
+            "kev": false,
+            "uid": "209a2348",
+            "cve_id": "CVE-2025-59829",
+            "vendor": "",
+            "product": "Claude",
+            "summary": "Claude Code is an agentic coding tool. Versions below 1.0.120 failed to account for symlinks when checking permission deny rules. If a user explicitly denied Claude Code access to a file and Claude Code had access to a...",
+            "entities": [
+                {
+                    "uid": "2bb2bc9d",
+                    "href": "/ai-tools/claude-code/",
+                    "kind": "tool",
+                    "name": "Claude Code"
+                }
+            ],
+            "headline": "Claude Code below 1.0.120 can read a file a user denied, through a symlink",
+            "published": "2025-10-03",
+            "cvss_score": 2.3,
+            "cvss_severity": "LOW"
+        },
+        {
+            "kev": false,
+            "uid": "33ddb937",
+            "cve_id": "CVE-2025-59536",
+            "vendor": "",
+            "product": "Claude",
+            "summary": "Claude Code is an agentic coding tool. Versions before 1.0.111 were vulnerable to Code Injection due to a bug in the startup trust dialog implementation. Claude Code could be tricked to execute code contained in a...",
+            "entities": [
+                {
+                    "uid": "2bb2bc9d",
+                    "href": "/ai-tools/claude-code/",
+                    "kind": "tool",
+                    "name": "Claude Code"
+                }
+            ],
+            "headline": "Claude Code before 1.0.111 runs project code before you accept the trust dialog",
+            "published": "2025-10-03",
+            "cvss_score": 8.7,
+            "cvss_severity": "HIGH"
+        },
+        {
+            "kev": false,
+            "uid": "5921eeb7",
+            "cve_id": "CVE-2025-59163",
+            "vendor": "",
+            "product": "MCP",
+            "summary": "vet is an open source software supply chain security tool. Versions 1.12.4 and below are vulnerable to a DNS rebinding attack due to lack of HTTP Host and Origin header validation. Data from the vet scan sqlite3...",
+            "entities": [
+            ],
+            "headline": "vet 1.12.4 and below MCP server leaks scan database via DNS rebinding",
+            "published": "2025-09-29",
+            "cvss_score": 2.1,
+            "cvss_severity": "LOW"
+        },
+        {
+            "kev": false,
+            "uid": "37d978f6",
+            "cve_id": "CVE-2025-7647",
+            "vendor": "",
+            "product": "LlamaIndex",
+            "summary": "The llama-index-core package, up to version 0.12.44, contains a vulnerability in the `get_cache_dir()` function where a predictable, hardcoded directory path `/tmp/llama_index` is used on Linux systems without proper...",
+            "entities": [
+                {
+                    "uid": "2eb54277",
+                    "href": "/ai-ecosystem/technology-and-core-infrastructure/2eb54277/",
+                    "kind": "section_item",
+                    "name": "llama_index"
+                }
+            ],
+            "headline": "LlamaIndex up to 0.12.44 uses a shared /tmp cache directory on Linux",
+            "published": "2025-09-27",
+            "cvss_score": 7.3,
+            "cvss_severity": "HIGH"
+        },
+        {
+            "kev": false,
             "uid": "bec8f3b6",
             "cve_id": "CVE-2025-9784",
             "vendor": "",
@@ -12258,15 +12420,15 @@
     ],
     "name": "AI CVE tracker",
     "shape": "cve-list",
-    "total": 711,
+    "total": 720,
     "sources": {
         "kev": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
         "nvd": "https://nvd.nist.gov/",
         "cve_org": "https://www.cve.org/"
     },
-    "built_at": "2026-10-08T13:57:52-05",
+    "built_at": "2026-10-09T06:29:50-05",
     "page_uid": "9a078601",
-    "generated": "2026-10-08",
+    "generated": "2026-10-09",
     "pinned_news": [
         {
             "url": "/ai-news/9d251938/",

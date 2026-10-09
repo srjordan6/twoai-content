@@ -33,11 +33,11 @@
         }
     ],
     "reading": {
-        "body": "Power efficiency in a data center is measured by how much of the grid draw reaches the IT equipment and how much power each rack can absorb. PUE and DCiE describe the same ratio from opposite directions, and breaker-level load tracking shows how close each circuit runs to its rated capacity.\n\nThe density figure is the one that changes the AI math. Traditional enterprise racks ran 5 to 15 kW, while dense GPU training racks are specified at 40 to over 100 kW. A facility built for the first cannot host the second without more power per rack and more cooling to match, so rack density and PUE together set the ceiling on how much compute a given grid connection supports.\n\nWhat the data does not give is any actual PUE value, any site's measured load, or any comparison across operators or years. It defines the measures rather than reporting them. It also does not say where the power comes from or whether it arrives, which is the constraint that sits upstream of all of this.",
+        "body": "Power efficiency in a data center is measured by how much of the grid draw reaches the IT equipment and how hard each rack is pushed, and dense GPU racks now demand 40 to over 100 kW where traditional enterprise racks ran 5 to 15 kW.\n\nPUE and DCiE are the same fact stated two ways. PUE is total facility power divided by IT power, so a PUE of 1.5 means half again as much power goes to cooling, conversion, and lighting as goes to the servers. DCiE expresses IT energy as a percentage of total facility energy. Both describe overhead, not useful compute, and both are ratios, so a facility can improve its PUE while consuming more power in absolute terms.\n\nPower density per rack is the number that ties efficiency to AI capacity. A rack specified at 40 to over 100 kW draws several times what an enterprise rack drew, so the same building and the same grid connection support far fewer racks when those racks are GPU training hardware. Breaker-level load and peak draw make the constraint concrete: each circuit has a rated capacity, and the site can only run as many racks as its circuits and its supply can carry at peak.\n\nWhat this data does not give is any actual measured value for a specific facility. It defines the metrics and states the rack-density range, but no PUE figure, no DCiE figure, and no site-level load data appear here. It also does not cover where the power comes from, how it is cooled, or what it costs, which are separate subjects.",
         "model": "ollama:deepseek-v4.1-flash",
-        "generated_on": "2026-10-07"
+        "generated_on": "2026-10-09"
     },
-    "built_at": "2026-10-08T14:11:33-05",
+    "built_at": "2026-10-09T06:41:17-05",
     "page_uid": "3e00d925",
     "siblings": [
         {
@@ -69,6 +69,6 @@
             "name": "Financials and supply chain"
         }
     ],
-    "generated": "2026-10-08",
+    "generated": "2026-10-09",
     "refresh_every_days": 30
 }

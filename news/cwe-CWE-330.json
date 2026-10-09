@@ -1,0 +1,94 @@
+{
+    "kev": 0,
+    "num": 330,
+    "uid": "fa1a8a25",
+    "cves": [
+        {
+            "kev": false,
+            "cve_id": "CVE-2025-6515",
+            "product": "MCP",
+            "summary": "The MCP SSE endpoint in oatpp-mcp returns an instance pointer as the session ID, which is not unique nor cryptographically secure. This allows network attackers with access to the oatpp-mcp server to guess future session",
+            "headline": "oatpp-mcp SSE endpoint lets attackers guess session IDs and hijack MCP sessions",
+            "published": "2025-10-20",
+            "cvss_score": 6.8,
+            "cvss_severity": "MEDIUM"
+        }
+    ],
+    "high": 0,
+    "name": "Use of Insufficiently Random Values",
+    "count": 1,
+    "shape": "cwe",
+    "title": "CWE-330: Use of Insufficiently Random Values",
+    "cwe_id": "CWE-330",
+    "latest": "2025-10-20",
+    "status": "Stable",
+    "ai_text": "In AI software this weakness shows up in MCP servers, the small services that connect AI assistants to tools and data. The one CVE here is in oatpp-mcp, an MCP server built on the oatpp framework. Its SSE endpoint hands out session IDs that are not random enough, so the values can be guessed rather than being unpredictable. An attacker who can reach that endpoint can work out a valid session ID and take over an MCP session that belongs to someone else, which means riding along on a live AI tool connection. The flaw is reached over the network through the normal session setup path, no special access needed. It matters because MCP sessions often carry the trust and permissions of the AI agent using them.",
+    "ai_model": "ollama:deepseek-v4.1-flash",
+    "built_at": "2026-10-09T06:29:55-05",
+    "critical": 0,
+    "page_uid": "fa1a8a25",
+    "generated": "2026-10-09",
+    "mitre_url": "https://cwe.mitre.org/data/definitions/330.html",
+    "likelihood": "",
+    "abstraction": "Class",
+    "description": "The product uses insufficiently random numbers or values in a security context that depends on unpredictable numbers.",
+    "mitigations": [
+        {
+            "phase": [
+                "Architecture and Design"
+            ],
+            "description": "Use a well-vetted algorithm that is currently considered to be strong by experts in the field, and select well-tested implementations with adequate length seeds. In general, if a pseudo-random number generator is not advertised as being cryptographically secure, then it is probably a statistical PRNG and should not be used in security-sensitive contexts. Pseudo-random number generators can produce predictable numbers if the generator is known and the seed can be guessed. A 256-bit seed is a good starting point for producing a random enough number."
+        },
+        {
+            "phase": [
+                "Implementation"
+            ],
+            "description": "Consider a PRNG that re-seeds itself as needed from high quality pseudo-random output sources, such as hardware devices."
+        },
+        {
+            "phase": [
+                "Architecture and Design Requirements"
+            ],
+            "strategy": "Libraries or Frameworks",
+            "description": "Use products or modules that conform to FIPS 140-2 [REF-267] to avoid obvious entropy problems. Consult FIPS 140-2 Annex C (Approved Random Number Generators)."
+        }
+    ],
+    "consequences": [
+        {
+            "note": "When a protection mechanism relies on random values to restrict access to a sensitive resource, such as a session ID or a seed for generating a cryptographic key, then the resource being protected could be accessed by guessing the ID or key.",
+            "scope": [
+                "Confidentiality",
+                "Other"
+            ],
+            "impact": [
+                "Other"
+            ]
+        },
+        {
+            "note": "If product relies on unique, unguessable IDs to identify a resource, an attacker might be able to guess an ID for a resource that is owned by another user. The attacker could then read the resource, or pre-create a resource with the same ID to prevent the legitimate program from properly sending the resource to the intended user. For example, a product might maintain session information in a file whose name is based on a username. An attacker could pre-create this file for a victim user, then set the permissions so that the application cannot generate the session for the victim, preventing the victim from using the application.",
+            "scope": [
+                "Access Control",
+                "Other"
+            ],
+            "impact": [
+                "Bypass Protection Mechanism",
+                "Other"
+            ]
+        },
+        {
+            "note": "When an authorization or authentication mechanism relies on random values to restrict access to restricted functionality, such as a session ID or a seed for generating a cryptographic key, then an attacker may access the restricted functionality by guessing the ID or key.",
+            "scope": [
+                "Access Control"
+            ],
+            "impact": [
+                "Bypass Protection Mechanism",
+                "Gain Privileges or Assume Identity"
+            ]
+        }
+    ],
+    "ai_written_on": "2026-10-09",
+    "alternate_terms": [
+    ],
+    "refresh_every_days": 1,
+    "extended_description": ""
+}

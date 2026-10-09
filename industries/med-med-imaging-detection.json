@@ -4,7 +4,7 @@
     "slug": "med-imaging-detection",
     "shape": "art-topic",
     "title": "Pathology Detection and Scan Triage",
-    "answer": "Pathology detection and scan triage covers software that reads medical images to find signs of disease and software that decides which studies a radiologist should read first. Detection work spans chest radiographs, mammograms, CT of the head and chest, and MRI, and it usually flags a finding rather than issuing a diagnosis. Triage work sorts an existing worklist, moving studies that look urgent to the top so a reader sees them sooner. The two functions are often sold together, but they carry different risks and are regulated differently.",
+    "answer": "Pathology detection and scan triage covers the use of machine learning to find abnormalities in medical images and to sort imaging worklists by urgency. It spans modalities such as CT, MRI, X-ray, mammography and digital pathology slides, and it covers both detection, meaning flagging a finding, and triage, meaning ranking studies so the most time-critical ones are read first. The work sits inside radiology and pathology departments, where it supports rather than replaces the reading clinician. Related tasks include lesion measurement, change tracking across prior studies, and worklist prioritisation for suspected stroke, intracranial haemorrhage, pulmonary embolism or fractures.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-10-08T14:12:38-05",
+    "built_at": "2026-10-09T06:42:45-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Physician",
@@ -28,23 +28,23 @@
     "page_uid": "4c645674",
     "sections": [
         {
-            "body": "Pathology detection and scan triage covers software that reads medical images to find signs of disease and software that decides which studies a radiologist should read first. Detection work spans chest radiographs, mammograms, CT of the head and chest, and MRI, and it usually flags a finding rather than issuing a diagnosis. Triage work sorts an existing worklist, moving studies that look urgent to the top so a reader sees them sooner. The two functions are often sold together, but they carry different risks and are regulated differently.",
+            "body": "Pathology detection and scan triage covers the use of machine learning to find abnormalities in medical images and to sort imaging worklists by urgency. It spans modalities such as CT, MRI, X-ray, mammography and digital pathology slides, and it covers both detection, meaning flagging a finding, and triage, meaning ranking studies so the most time-critical ones are read first. The work sits inside radiology and pathology departments, where it supports rather than replaces the reading clinician. Related tasks include lesion measurement, change tracking across prior studies, and worklist prioritisation for suspected stroke, intracranial haemorrhage, pulmonary embolism or fractures.",
             "heading": "Scope"
         },
         {
-            "body": "These systems run on the imaging pipeline a hospital already has: the picture archiving and communication system, the radiology information system, and the modality worklist. A model is usually packaged as a container or service that receives images over standards such as DICOM and HL7 and returns a result to the viewer or the worklist. Some products run on servers inside the hospital, and some run in a vendor cloud, which raises questions about where patient images are stored and who can reach them. Compute ranges from a single GPU appliance to shared cluster capacity, and the site tracks 1,000 medical AI models across this and other clinical areas.",
+            "body": "These systems run on the imaging and pathology data already produced by scanners, slide scanners and the picture archiving and communication system, usually reached through standards such as DICOM and HL7 or FHIR. Training and inference need substantial compute, typically GPUs or specialised accelerators, either on premises in a hospital data centre or in a cloud environment under a business agreement. Deployed triage tools often sit inline with the radiology worklist, pushing a flagged study to the top of a queue and returning results into the reporting system. Storage, network bandwidth and latency matter because a triage alert that arrives after the report is signed has little value.",
             "heading": "What it runs on"
         },
         {
-            "body": "Most of these tools are trained on large sets of images that have been labeled by radiologists, either with a diagnosis, a bounding box around a finding, or a report sentence. Convolutional networks and, more recently, vision transformers are the common architectures, and training is judged against held out data using measures such as sensitivity, specificity, and the area under the receiver operating characteristic curve. Triage tools are evaluated differently, often by how much they shorten the time to a report for urgent cases rather than by accuracy alone. Deployment adds a monitoring layer, because image quality, scanner vendor, and patient mix at a new site can shift performance away from what was measured in the training study.",
+            "body": "Most detection models are trained on large sets of images with labels drawn from radiology reports, pathology reports or expert annotation, and many use convolutional or transformer architectures. Triage is usually framed as a ranking or prioritisation problem rather than a diagnosis, so the model outputs a probability or an urgency score that routes the study to a reader. Performance is judged with sensitivity, specificity, area under the receiver operating characteristic curve, and for triage, time to read and the rate of missed critical findings. Validation should use data from the site where the tool will run, because scanner models, protocols and patient mix shift the images and can degrade a model trained elsewhere. Clinicians remain in the loop, and the model output is treated as a prompt for review, not a final reading.",
             "heading": "How the work is done"
         },
         {
-            "body": "In the United States, most of these products reach the market through the FDA clearance pathways for software as a medical device, and in Europe they need a CE mark under the medical device rules. Clearance is tied to a stated intended use, a population, and often a specific scanner or protocol, so using the tool outside those bounds is a change in practice that a quality team should record.Provenance matters in both directions, meaning which model version produced a flag and which images and labels trained it, because a radiologist who overrides a flag needs to know what was overridden.",
+            "body": "In the United States, imaging AI intended for clinical use is generally regulated as a medical device, and in the European Union it falls under medical device rules, so clearance or certification, labelling and post market surveillance apply. Deployment raises questions about who is accountable for a missed finding, how alerts are logged, and whether the tool is used as a triage aid or as a diagnostic read. Patient data used for training and monitoring must be handled under privacy law such as HIPAA or GDPR, with de-identification, access control and audit trails. Sites also need to manage bias across age, sex, ethnicity and scanner type, and to keep a record of model version, validation data and any local changes. None of this is legal advice, and organisations should take their own regulatory and privacy counsel.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The near term is less about new architectures and more about fitting these tools into reading workflow without adding alerts that readers learn to ignore. Expect more work on prospective monitoring, on detecting when a model drifts at a new site, and on reporting standards that make a model's output legible in the patient record. Triage is likely to spread from stroke and intracranial hemorrhage into more routine queues, where the benefit is throughput rather than emergency speed. Regulation will keep tightening around post market surveillance and labeling, and the open question is how liability is shared when a cleared tool misses a finding that a human reader would also have missed.",
+            "body": "The direction of travel is toward tighter integration with reporting workflows, multimodal models that combine images with clinical text and laboratory results, and continuous monitoring that detects performance drift after go live. Triage is likely to expand from single findings toward broader worklist management, including scheduling and protocol selection, while pathology adoption follows the growth of whole slide imaging. Regulators and professional bodies are converging on expectations for prospective local validation, transparency and human oversight, which will shape how these tools are bought and reviewed. The open questions are how to prove benefit in real clinical outcomes, how to keep models current as scanners and populations change, and how to divide responsibility between the vendor, the institution and the reading clinician.",
             "heading": "Where it is going"
         }
     ],
@@ -66,7 +66,7 @@
             "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/1d532d36/"
         }
     ],
-    "generated": "2026-10-08",
+    "generated": "2026-10-09",
     "parent_name": "Diagnostic Imaging and Radiology",
     "parent_path": "/ai-ecosystem/enterprise-applications-governance-and-tools/13673d6a/",
     "refresh_every_days": 30

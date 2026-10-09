@@ -4,7 +4,7 @@
     "slug": "eco-altdata-satellite",
     "shape": "art-topic",
     "title": "Satellite Imagery",
-    "answer": "Satellite imagery as alternative data means using pictures of the Earth taken from orbit to answer questions that financial and economic analysts care about. The signals are physical and observable: parking lot occupancy at a retail chain, the pace of construction on a new plant, the area under a crop, the glow of a refinery at night, the number of ships waiting at a port. Because the data is collected independently of the companies being studied, it can be gathered before quarterly reports are published. Coverage is global, though the quality of the signal varies with cloud cover, resolution and how often a given location is imaged.",
+    "answer": "Satellite imagery as alternative data means using pictures of the Earth's surface, taken from orbit, as an input to economic and business analysis rather than as a map or a photograph. The subject covers the sensors that capture the images, the ground infrastructure that receives and processes them, the analysts and models that turn pixels into signals, and the questions of who may see what and when. It sits inside alternative data because the value is not the picture itself but the measurement it supports: parking lot occupancy, crop condition, construction progress, shipping traffic, night lights, emissions plumes. The field overlaps remote sensing, geospatial engineering, and quantitative research, and it is used by people who need to observe activity on the ground without sending anyone to look.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-10-08T14:12:38-05",
+    "built_at": "2026-10-09T06:42:45-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Economist",
@@ -28,23 +28,23 @@
     "page_uid": "76b14ef3",
     "sections": [
         {
-            "body": "Satellite imagery as alternative data means using pictures of the Earth taken from orbit to answer questions that financial and economic analysts care about. The signals are physical and observable: parking lot occupancy at a retail chain, the pace of construction on a new plant, the area under a crop, the glow of a refinery at night, the number of ships waiting at a port. Because the data is collected independently of the companies being studied, it can be gathered before quarterly reports are published. Coverage is global, though the quality of the signal varies with cloud cover, resolution and how often a given location is imaged.",
+            "body": "Satellite imagery as alternative data means using pictures of the Earth's surface, taken from orbit, as an input to economic and business analysis rather than as a map or a photograph. The subject covers the sensors that capture the images, the ground infrastructure that receives and processes them, the analysts and models that turn pixels into signals, and the questions of who may see what and when. It sits inside alternative data because the value is not the picture itself but the measurement it supports: parking lot occupancy, crop condition, construction progress, shipping traffic, night lights, emissions plumes. The field overlaps remote sensing, geospatial engineering, and quantitative research, and it is used by people who need to observe activity on the ground without sending anyone to look.",
             "heading": "Scope"
         },
         {
-            "body": "The raw material comes from two main sources: commercial satellite operators that sell tasking and archive access, and public programs such as the European Space Agency's Sentinel missions and NASA's Landsat, which provide free imagery at moderate resolution. On the ground, the work runs on cloud storage for large image archives, GPU compute for model training and inference, and geospatial libraries for handling coordinates and map projections. A typical pipeline pulls scenes on a schedule, crops them to the areas of interest, and stores derived counts rather than the full imagery. Costs scale with how much area is watched and how frequently it is refreshed.",
+            "body": "The chain starts with satellites in low Earth orbit carrying optical or radar instruments, and with the ground stations and downlink windows that move raw captures to processing centers. Optical sensors depend on daylight and clear skies, while synthetic aperture radar sees through cloud and darkness at the cost of harder interpretation. Providers then orthorectify, calibrate, and tile the imagery, and increasingly run cloud detection, super resolution, and object detection before anything is sold. Delivery is usually through cloud storage buckets, APIs, or tiled map services, with historical archives and tasking orders as separate products. The compute sits in ordinary data centers, and the practical bottleneck is often bandwidth, storage, and the cost of reprocessing a large archive when a model changes.",
             "heading": "What it runs on"
         },
         {
-            "body": "Analysts start by defining a physical proxy, something visible from orbit that moves with the economic quantity they want to track. They then build a labeled set, often by hand counting objects in a sample of images, and train a detection or segmentation model to find the same objects automatically. Change detection compares images of the same location over time to measure growth, decline or disruption. The resulting counts are cleaned for clouds, shadows and seasonal effects, then aggregated into a time series that can be compared against company disclosures or official statistics. Validation against known figures is what separates a usable signal from a suggestive picture.",
+            "body": "The work begins by defining a measurable question, such as how full a set of storage tanks is or how much land was planted, and then choosing a sensor and revisit rate that can answer it. Analysts build a time series of captures over the same location, align them to a common grid, and correct for angle, atmosphere, and season. Machine learning models, often convolutional or transformer based, detect objects, segment land cover, or estimate a continuous quantity from pixel values, and those outputs are validated against ground truth, public records, or physical models. The resulting signal is aggregated to a geography and a period, then joined to economic or financial data for study. Good practice includes documenting the model version, the training data, and the uncertainty, because a small change in threshold or cloud masking can move the final number.",
             "heading": "How the work is done"
         },
         {
-            "body": "Imagery is subject to national licensing rules, export controls and restrictions on how frequently certain locations may be imaged, and some countries limit the resolution that can be sold commercially. Privacy rules in several jurisdictions treat images of identifiable people or private property as sensitive, which pushes providers toward aggregation and away from publishing raw scenes. Provenance matters because a derived number is only as good as the image it came from, so buyers increasingly ask for the capture date, sensor, processing steps and model version behind a series. Contracts typically govern redistribution, and firms that resell signals must respect the original operator's terms.",
+            "body": "Rights and risk in satellite imagery turn on resolution, licensing, and privacy. Commercial licenses typically restrict redistribution, and some restrict derived statistics or require attribution, so a signal that looks public may not be resellable. Governments regulate imaging resolution and tasking for national security reasons, and export controls can follow the data and the software. Privacy rules vary by jurisdiction, and persistent overhead observation of identifiable places raises concerns even where the imagery is lawful. Provenance matters because analysts need to know the capture date, sensor, processing level, and any gap filling or interpolation, and because a model trained on one provider's archive may not transfer to another. Buyers also weigh material non public information rules when imagery reveals something a company has not disclosed.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "Falling launch costs and smaller satellites are increasing how often any given place is imaged, which shortens the lag between a real world event and a usable signal. Cheaper compute and open pretrained vision models are lowering the barrier for smaller firms to build their own detectors. At the same time, regulators are paying more attention to how such data is collected and resold, and buyers are asking harder questions about accuracy and audit trails. The likely direction is toward more frequent, more automated monitoring with clearer documentation of where each number came from.",
+            "body": "The direction of travel is more satellites, cheaper tasking, and faster revisit, which pushes the field from occasional snapshots toward near continuous observation. On board processing and edge inference promise to cut downlink needs by sending detections rather than raw pixels. Radar and hyperspectral instruments are becoming more accessible, and fusion of imagery with other geospatial layers is becoming standard. At the same time, the analytical edge is shifting from access to interpretation, since the same picture is available to many buyers and the differentiator is the model, the validation, and the understanding of what the pixels mean. Expect more attention to provenance, uncertainty reporting, and the line between legitimate observation and surveillance.",
             "heading": "Where it is going"
         }
     ],
@@ -66,7 +66,7 @@
             "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/90fd3828/"
         }
     ],
-    "generated": "2026-10-08",
+    "generated": "2026-10-09",
     "parent_name": "Alternative Data",
     "parent_path": "/ai-ecosystem/enterprise-applications-governance-and-tools/bb732840/",
     "refresh_every_days": 30

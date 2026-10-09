@@ -1,0 +1,73 @@
+{
+    "kev": 0,
+    "num": 61,
+    "uid": "cdb7d8b3",
+    "cves": [
+        {
+            "kev": false,
+            "cve_id": "CVE-2025-59829",
+            "product": "Claude",
+            "summary": "Claude Code is an agentic coding tool. Versions below 1.0.120 failed to account for symlinks when checking permission deny rules. If a user explicitly denied Claude Code access to a file and Claude Code had access to a s",
+            "headline": "Claude Code below 1.0.120 can read a file a user denied, through a symlink",
+            "published": "2025-10-03",
+            "cvss_score": 2.3,
+            "cvss_severity": "LOW"
+        }
+    ],
+    "high": 0,
+    "name": "UNIX Symbolic Link (Symlink) Following",
+    "count": 1,
+    "shape": "cwe",
+    "title": "CWE-61: UNIX Symbolic Link (Symlink) Following",
+    "cwe_id": "CWE-61",
+    "latest": "2025-10-03",
+    "status": "Incomplete",
+    "ai_text": "In AI software this weakness shows up in coding agents that run on a developer's own machine, where the agent is trusted to read project files but is supposed to respect the user's denials. CVE-2025-59829 is the example here, in Claude Code below version 1.0.120. The agent can be pointed at a symbolic link that resolves outside the folder the user allowed, so a file the user explicitly refused is read anyway. The reachable product is the Claude Code agent itself, not a model server or notebook. What it lets an attacker do is pull in content the user meant to keep out of the agent's context, which matters because that context then drives what the agent does next.",
+    "ai_model": "ollama:deepseek-v4.1-flash",
+    "built_at": "2026-10-09T06:29:55-05",
+    "critical": 0,
+    "page_uid": "cdb7d8b3",
+    "generated": "2026-10-09",
+    "mitre_url": "https://cwe.mitre.org/data/definitions/61.html",
+    "likelihood": "",
+    "abstraction": "Compound",
+    "description": "The product, when opening a file or directory, does not sufficiently account for when the file is a symbolic link that resolves to a target outside of the intended control sphere. This could allow an attacker to cause the product to operate on unauthorized files.",
+    "mitigations": [
+        {
+            "phase": [
+                "Implementation"
+            ],
+            "description": "Symbolic link attacks often occur when a program creates a tmp directory that stores files/links. Access to the directory should be restricted to the program as to prevent attackers from manipulating the files."
+        },
+        {
+            "phase": [
+                "Architecture and Design"
+            ],
+            "strategy": "Separation of Privilege",
+            "description": "Follow the principle of least privilege when assigning access rights to entities in a software system. Denying access to a file can prevent an attacker from replacing that file with a link to a sensitive file. Ensure good compartmentalization in the system to provide protected areas that can be trusted."
+        }
+    ],
+    "consequences": [
+        {
+            "scope": [
+                "Confidentiality",
+                "Integrity"
+            ],
+            "impact": [
+                "Read Files or Directories",
+                "Modify Files or Directories"
+            ]
+        }
+    ],
+    "ai_written_on": "2026-10-09",
+    "alternate_terms": [
+        {
+            "term": "Symlink following"
+        },
+        {
+            "term": "symlink vulnerability"
+        }
+    ],
+    "refresh_every_days": 1,
+    "extended_description": "A product that allows UNIX symbolic links (symlink) as part of paths whether in internal code or through user input can allow an attacker to spoof the symbolic link and traverse the file system to unintended locations or access arbitrary files. The symbolic link can permit an attacker to read/write/corrupt a file that they originally did not have permissions to access."
+}

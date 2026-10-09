@@ -1,0 +1,137 @@
+{
+    "kev": 0,
+    "num": 434,
+    "uid": "362017e7",
+    "cves": [
+        {
+            "kev": false,
+            "cve_id": "CVE-2025-61687",
+            "product": "Flowise",
+            "summary": "Flowise is a drag & drop user interface to build a customized large language model flow. A file upload vulnerability in version 3.0.7 of FlowiseAI allows authenticated users to upload arbitrary files without proper valid",
+            "headline": "Flowise 3.0.7 lets a signed-in user upload a Node.js web shell to the server",
+            "published": "2025-10-06",
+            "cvss_score": 8.3,
+            "cvss_severity": "HIGH"
+        }
+    ],
+    "high": 1,
+    "name": "Unrestricted Upload of File with Dangerous Type",
+    "count": 1,
+    "shape": "cwe",
+    "title": "CWE-434: Unrestricted Upload of File with Dangerous Type",
+    "cwe_id": "CWE-434",
+    "latest": "2025-10-06",
+    "status": "Draft",
+    "ai_text": "In AI software this weakness shows up in LLM application builders, where a user facing canvas accepts files that the server later runs. CVE-2025-61687 is the example here, in Flowise 3.0.7, a tool for wiring together chat and agent flows. A signed in user reaches it through the normal upload path for files used in a flow, and the server treats the uploaded content as executable rather than as data. That lets an attacker with an account place a Node.js web shell on the host and run commands there, turning a low privilege authoring account into control of the machine hosting the AI application.",
+    "ai_model": "ollama:deepseek-v4.1-flash",
+    "built_at": "2026-10-09T06:29:55-05",
+    "critical": 0,
+    "page_uid": "362017e7",
+    "generated": "2026-10-09",
+    "mitre_url": "https://cwe.mitre.org/data/definitions/434.html",
+    "likelihood": "",
+    "abstraction": "Base",
+    "description": "The product allows the upload or transfer of dangerous file types that are automatically processed within its environment.",
+    "mitigations": [
+        {
+            "phase": [
+                "Architecture and Design"
+            ],
+            "description": "Generate a new, unique filename for an uploaded file instead of using the user-supplied filename, so that no external input is used at all.[REF-422] [REF-423]"
+        },
+        {
+            "phase": [
+                "Architecture and Design"
+            ],
+            "strategy": "Enforcement by Conversion",
+            "description": "When the set of acceptable objects, such as filenames or URLs, is limited or known, create a mapping from a set of fixed input values (such as numeric IDs) to the actual filenames or URLs, and reject all other inputs."
+        },
+        {
+            "phase": [
+                "Architecture and Design"
+            ],
+            "description": "Consider storing the uploaded files outside of the web document root entirely. Then, use other mechanisms to deliver the files dynamically. [REF-423]"
+        },
+        {
+            "phase": [
+                "Implementation"
+            ],
+            "strategy": "Input Validation",
+            "description": "Assume all input is malicious. Use an accept known good input validation strategy, i.e., use a list of acceptable inputs that strictly conform to specifications. Reject any input that does not strictly conform to specifications, or transform it into something that does. When performing input validation, consider all potentially relevant properties, including length, type of input, the full range of acceptable values, missing or extra inputs, syntax, consistency across related fields, and conformance to business rules. As an example of business rule logic, boat may be syntactically valid because it only contains alphanumeric characters, but it is not valid if the input is only expected to contain colors such as red or blue. Do not rely exclusively on looking for malicious or malformed inputs. This is likely to miss at least one undesirable input, especially if the code's environment changes. This can give attackers enough room to bypass the intended validation. However, denylists can be useful for detecting potential attacks or determining which inputs are so malformed that they should be rejected outright. For example, limiting filenames to alphanumeric characters can help to restrict the introduction of unintended file extensions."
+        },
+        {
+            "phase": [
+                "Architecture and Design"
+            ],
+            "description": "Define a very limited set of allowable extensions and only generate filenames that end in these extensions. Consider the possibility of XSS (CWE-79) before allowing .html or .htm file types."
+        },
+        {
+            "phase": [
+                "Implementation"
+            ],
+            "strategy": "Input Validation",
+            "description": "Ensure that only one extension is used in the filename. Some web servers, including some versions of Apache, may process files based on inner extensions so that filename.php.gif is fed to the PHP interpreter.[REF-422] [REF-423]"
+        },
+        {
+            "phase": [
+                "Implementation"
+            ],
+            "description": "When running on a web server that supports case-insensitive filenames, perform case-insensitive evaluations of the extensions that are provided."
+        },
+        {
+            "phase": [
+                "Architecture and Design"
+            ],
+            "description": "For any security checks that are performed on the client side, ensure that these checks are duplicated on the server side, in order to avoid CWE-602. Attackers can bypass the client-side checks by modifying values after the checks have been performed, or by changing the client to remove the client-side checks entirely. Then, these modified values would be submitted to the server."
+        },
+        {
+            "phase": [
+                "Implementation"
+            ],
+            "description": "Do not rely exclusively on sanity checks of file contents to ensure that the file is of the expected type and size. It may be possible for an attacker to hide code in some file segments that will still be executed by the server. For example, GIF images may contain a free-form comments field."
+        },
+        {
+            "phase": [
+                "Implementation"
+            ],
+            "description": "Do not rely exclusively on the MIME content type or filename attribute when determining how to render a file. Validating the MIME content type and ensuring that it matches the extension is only a partial solution."
+        },
+        {
+            "phase": [
+                "Architecture and Design Operation"
+            ],
+            "strategy": "Environment Hardening",
+            "description": "Run your code using the lowest privileges that are required to accomplish the necessary tasks [REF-76]. If possible, create isolated accounts with limited privileges that are only used for a single task. That way, a successful attack will not immediately give the attacker access to the rest of the software or its environment. For example, database applications rarely need to run as the database administrator, especially in day-to-day operations."
+        },
+        {
+            "phase": [
+                "Architecture and Design Operation"
+            ],
+            "strategy": "Sandbox or Jail",
+            "description": "Run the code in a jail or similar sandbox environment that enforces strict boundaries between the process and the operating system. This may effectively restrict which files can be accessed in a particular directory or which commands can be executed by the software. OS-level examples include the Unix chroot jail, AppArmor, and SELinux. In general, managed code may provide some protection. For example, java.io.FilePermission in the Java SecurityManager allows the software to specify restrictions on file operations. This may not be a feasible solution, and it only limits the impact to the operating system; the rest of the application may still be subject to compromise. Be careful to avoid CWE-243 and other weaknesses related to jails.",
+            "effectiveness": "Limited"
+        }
+    ],
+    "consequences": [
+        {
+            "note": "Arbitrary code execution is possible if an uploaded file is interpreted and executed as code by the recipient. This is especially true for web-server extensions such as .asp and .php because these file types are often treated as automatically executable, even when file system permissions do not specify execution. For example, in Unix environments, programs typically cannot run unless the execute bit is set, but PHP programs may be executed by the web server without directly invoking them on the operating system.",
+            "scope": [
+                "Integrity",
+                "Confidentiality",
+                "Availability"
+            ],
+            "impact": [
+                "Execute Unauthorized Code or Commands"
+            ]
+        }
+    ],
+    "ai_written_on": "2026-10-09",
+    "alternate_terms": [
+        {
+            "term": "Unrestricted File Upload",
+            "description": "Used in vulnerability databases and elsewhere, but it is insufficiently precise. The phrase could be interpreted as the lack of restrictions on the size or number of uploaded files, which is a resource consumption issue."
+        }
+    ],
+    "refresh_every_days": 1,
+    "extended_description": ""
+}

@@ -2,9 +2,9 @@
     "shape": "incident",
     "title": "Alibaba to ban employees from using Anthropic's coding tool, source says",
     "reading": {
-        "body": "This is a case of a deployed tool carrying hidden logic that its users could not see. The markers were embedded in the system prompt Claude Code sends to the model, and they triggered on environment signals: the configured API base URL and the machine's timezone. The behaviour changed silently depending on where the tool was run and which endpoint it was pointed at, so the same product produced different output for different users without telling them.\n\nThe failure mode is a system used outside the conditions it was built for, or more precisely a system whose operators concealed the conditions under which it behaves differently. Catching it required reading the shipped binary rather than the documentation, since the domain and keyword lists were obfuscated as base64 strings behind an XOR key. A normal user had no way to observe the switch, and the reporting notes the marker was easy to bypass and left most users unaffected.\n\nWhat is not established is Anthropic's intent. The company described the mechanism as an experiment, and that characterisation is a statement by the company rather than an independent finding. The reported consequence at Alibaba, a workplace ban over alleged backdoor risks, rests on a source account and an allegation, not on a verified security assessment.",
+        "body": "This is a case of a deployed tool carrying hidden logic that changes its own output based on who is using it. The markers were embedded in the system prompt of Claude Code, and they altered a date string depending on the API base URL and timezone. The behaviour was conditional on environment configuration rather than on anything the user could see, so the tool behaved differently for different customers without saying so.\n\nThe failure sits at the point of deployment and distribution, not in the model's answers. A user reading the tool's output had no way to observe the altered separator or apostrophe, and the trigger lists were obfuscated as base64 strings decoded with an XOR key. Catching this would have required inspecting the shipped code and the system prompt directly, or a disclosure that the tool varied its output by host and region. The reporting describes the bypass as trivial, which indicates the mechanism was not built to withstand scrutiny.\n\nWhat is not established is Anthropic's intent. The company called the tracker an experiment, and the reporting attributes a motive of detecting resellers and distillation pipelines to the article's author rather than to a finding. Alibaba's reported ban rests on alleged backdoor risks, and an allegation is not a determination that a backdoor existed.",
         "model": "claude-haiku-4-5",
-        "generated_on": "2026-10-08"
+        "generated_on": "2026-10-09"
     },
     "reports": [
         {
@@ -32,12 +32,12 @@
             "published": "2026-10-03"
         }
     ],
-    "summary": "A blog post reports that Claude Code, Anthropic's coding agent, hides markers in the system prompt it sends to the model. The code checks the ANTHROPIC_BASE_URL setting and the system timezone. If the timezone is Asia/Shanghai or Asia/Urumqi, the date format changes from hyphens to slashes. If the API hostname matches a hidden list of domains or AI lab keywords, the apostrophe in the date sentence is swapped for a different Unicode character. The domain and keyword lists are stored as base64 strings and decoded with an XOR key.\n\nThe author inspected version 2.1.196 and found the binary signed by Anthropic. On their machine, with no base URL set and a Hong Kong timezone, the normal output appears. The article says the feature likely targets resellers, unauthorized gateways, and distillation pipelines, but calls the hidden approach a strange choice for a tool that asks for trust. It notes the marker is easy to bypass and that most normal users are unaffected.",
-    "built_at": "2026-10-08T13:15:33-05",
+    "summary": "A developer inspecting Claude Code version 2.1.196 found hidden markers in the system prompt. The tool silently alters the date string based on the API base URL and timezone. If the timezone is Asia/Shanghai or Asia/Urumqi, the date separator changes from a hyphen to a slash. If the hostname matches a hidden list of domains or AI lab keywords, the apostrophe in the date sentence changes to one of three similar Unicode characters. The domain and keyword lists are stored as base64 strings and decoded with XOR key 91.\n\nThe trigger is the ANTHROPIC_BASE_URL environment variable. If it is unset or points to the official Anthropic API, nothing changes. The decoded keyword list includes deepseek, moonshot, minimax, zhipu, and others, while the domain list covers Chinese tech firms and many proxy or reseller gateways. The author suggests Anthropic likely wants to detect resellers and distillation pipelines, but criticizes the hidden approach. The article says the bypass is trivial, and no next steps are stated.",
+    "built_at": "2026-10-09T05:29:08-05",
     "cite_url": "https://incidentdatabase.ai/cite/1723",
     "page_uid": "704be468",
     "title_en": "",
-    "generated": "2026-10-08",
+    "generated": "2026-10-09",
     "published": "2026-10-03",
     "title_lang": "",
     "incident_id": 1723,

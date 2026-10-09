@@ -4,7 +4,7 @@
     "slug": "sql-injection-ai",
     "shape": "art-topic",
     "title": "SQL Injection Through AI",
-    "answer": "SQL injection is the insertion of malicious query text into a database command, and it has a newer cousin in AI systems that generate SQL from user or document input. When a model turns natural language into a query, prompt injection can steer that generation toward harmful statements such as dropped tables, broad reads, or stacked commands. The generated SQL therefore needs the same controls as any untrusted input: least privilege, read only access where possible, and query review. This topic covers both the classic injection path and the model mediated path that produces it.",
+    "answer": "SQL injection is the insertion of malicious query text into a database command, and it has a newer cousin in systems where a language model writes the SQL. When an AI system generates SQL from user or document input, prompt injection can steer that generation toward harmful queries, so generated SQL needs the same controls as any untrusted input: least privilege, read only access where possible, and query review. The topic therefore sits at the meeting point of two older disciplines, database security and input handling, and one newer one, the behaviour of models that turn natural language into executable statements. The risk is not that the model is malicious but that it faithfully executes an instruction an attacker planted in text it was asked to read.",
     "crumbs": [
         {
             "name": "AI and SQL",
@@ -12,7 +12,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-10-08T14:12:39-05",
+    "built_at": "2026-10-09T06:42:45-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "AI and SQL",
@@ -20,23 +20,23 @@
     "page_uid": "ab2a7e43",
     "sections": [
         {
-            "body": "SQL injection is the insertion of malicious query text into a database command, and it has a newer cousin in AI systems that generate SQL from user or document input. When a model turns natural language into a query, prompt injection can steer that generation toward harmful statements such as dropped tables, broad reads, or stacked commands. The generated SQL therefore needs the same controls as any untrusted input: least privilege, read only access where possible, and query review. This topic covers both the classic injection path and the model mediated path that produces it.",
+            "body": "SQL injection is the insertion of malicious query text into a database command, and it has a newer cousin in systems where a language model writes the SQL. When an AI system generates SQL from user or document input, prompt injection can steer that generation toward harmful queries, so generated SQL needs the same controls as any untrusted input: least privilege, read only access where possible, and query review. The topic therefore sits at the meeting point of two older disciplines, database security and input handling, and one newer one, the behaviour of models that turn natural language into executable statements. The risk is not that the model is malicious but that it faithfully executes an instruction an attacker planted in text it was asked to read.",
             "heading": "Scope"
         },
         {
-            "body": "The stack usually starts with a model or agent that receives a request, a schema description, and sometimes retrieved documents, then emits SQL that a driver executes against a database such as PostgreSQL.The database itself, its driver, and the connection credentials are the last line before a query runs. Every page on this site is itself built from a PostgreSQL database, so the pattern is common rather than exotic.",
+            "body": "The stack is familiar to anyone who has built a data application: a database engine, a driver or connector, an application layer, and now a model or agent that sits between the request and the query. The model may run as a hosted API call, a local model on the same host, or a component inside an orchestration framework that also holds credentials and connection strings. Because the generated query is executed by the same account the application uses, the database permissions attached to that account define the real blast radius. Logging, query history, and connection pooling all matter here, since they determine what can be reconstructed after a bad query runs. Retrieval layers that feed documents into the prompt are part of this picture too, because they are a common route for injected text to reach the model.",
             "heading": "What it runs on"
         },
         {
-            "body": "Work begins by mapping where untrusted text can reach a query: chat prompts, uploaded files, web pages, and retrieved context all count. Teams then test generation paths with adversarial inputs, checking whether a model can be talked into unions, subqueries, comment tricks, or multiple statements. Defenses are layered, including parameterized queries, allow lists of tables and columns, read only roles, statement timeouts, and a review step before execution. Logging the generated SQL alongside the prompt that produced it makes failures reproducible.",
+            "body": "The work splits into generating the query, checking it, and running it under constraints. Generation usually means prompting a model with a schema description and a user request, sometimes with examples of valid queries. Checking can be done with a parser that rejects multiple statements, comments, and unexpected keywords, with a read only database role, or with a separate model asked to classify the query as safe or not. Running under constraints means row limits, timeouts, and a role that can only touch the tables the task needs. Testing follows the same pattern as classic injection testing, with payloads placed in the fields the model reads, including documents and retrieved passages rather than only the visible input box.",
             "heading": "How the work is done"
         },
         {
-            "body": "Ownership of generated SQL sits with the team that operates the database, not with the model provider, so access reviews and role design matter more than model choice. Provenance should record which prompt, document, or agent produced a query, and which credentials it used. Regulatory and audit expectations for data access apply the same way whether a human or a model wrote the statement. This is a description of practice, not legal advice, and any specific compliance question belongs with counsel.",
+            "body": "Ownership usually sits with the team that owns the data application, not with a separate AI group, because the database account and its permissions are the control that matters most. Policies tend to cover what the model is allowed to read, whether generated queries are reviewed before execution, and how prompts and retrieved documents are logged and retained. Provenance matters on both sides: where the input text came from, and which model version produced the query that ran. Review of generated SQL before it reaches production is common in regulated settings, and audit trails that tie a query back to the prompt that produced it are the usual way that review is made possible. Access reviews and credential rotation apply to the model's database account exactly as they would to any other service account.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "Expect more agents holding database credentials, which widens the surface for prompt driven injection. Work is moving toward sandboxed query execution, schema aware validation, and policy engines that inspect generated SQL before it runs.The practical direction is to treat model output as untrusted input by default.",
+            "body": "The direction of travel is toward treating model output as untrusted input by default, with guardrails placed at the database boundary rather than only in the prompt. Expect more use of read only replicas, query allowlists, and sandboxed execution for anything a model writes. Evaluation of prompt injection resistance is becoming a routine part of testing for data applications that use language models, alongside the older injection test suites. The open questions are how to attribute a harmful query when several components contributed to it, and how to keep review practical as the volume of generated queries grows. The underlying lesson is unchanged from the early days of SQL injection: the database should never trust the string it is handed.",
             "heading": "Where it is going"
         }
     ],
@@ -86,7 +86,7 @@
             "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/bfd29330/"
         }
     ],
-    "generated": "2026-10-08",
+    "generated": "2026-10-09",
     "parent_name": "AI and SQL",
     "parent_path": "/ai-ecosystem/enterprise-applications-governance-and-tools/3d344eab/",
     "refresh_every_days": 30

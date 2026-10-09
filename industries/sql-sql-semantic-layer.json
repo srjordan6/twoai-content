@@ -4,7 +4,7 @@
     "slug": "sql-semantic-layer",
     "shape": "art-topic",
     "title": "Semantic Layers",
-    "answer": "A semantic layer defines business terms, metrics and relationships on top of raw tables, so that revenue or active customer means one agreed thing. Text to SQL systems that use one produce far more consistent answers than systems reading raw column names. It sits between the warehouse and the people or models asking questions, and it is the difference between a query tool that guesses at schema and one that speaks the organisation's own vocabulary.",
+    "answer": "A semantic layer sits between raw database tables and the people or systems that query them, defining business terms, metrics and the relationships between them so that a phrase like revenue or active customer resolves to one agreed definition. It is not a database and not a dashboard, though it draws on both, and it typically holds dimensions, measures, hierarchies and join paths in a form that both humans and query tools can read. In the context of AI and SQL, its main value is that a text to SQL system working against a semantic layer produces far more consistent answers than one reading raw column names and guessing at their meaning.",
     "crumbs": [
         {
             "name": "AI and SQL",
@@ -12,7 +12,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-10-08T14:12:39-05",
+    "built_at": "2026-10-09T06:42:45-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "AI and SQL",
@@ -20,23 +20,23 @@
     "page_uid": "552cb1a1",
     "sections": [
         {
-            "body": "A semantic layer defines business terms, metrics and relationships on top of raw tables, so that revenue or active customer means one agreed thing. Text to SQL systems that use one produce far more consistent answers than systems reading raw column names. It sits between the warehouse and the people or models asking questions, and it is the difference between a query tool that guesses at schema and one that speaks the organisation's own vocabulary.",
+            "body": "A semantic layer sits between raw database tables and the people or systems that query them, defining business terms, metrics and the relationships between them so that a phrase like revenue or active customer resolves to one agreed definition. It is not a database and not a dashboard, though it draws on both, and it typically holds dimensions, measures, hierarchies and join paths in a form that both humans and query tools can read. In the context of AI and SQL, its main value is that a text to SQL system working against a semantic layer produces far more consistent answers than one reading raw column names and guessing at their meaning.",
             "heading": "Scope"
         },
         {
-            "body": "A semantic layer is usually a metadata service rather than a store of data. It holds definitions, joins, hierarchies and metric formulas, and it compiles those into SQL that runs against the underlying warehouse, most often PostgreSQL, Snowflake, BigQuery or Databricks. Model context protocol servers are one common way to expose those definitions to an assistant, and this site currently tracks 263 of them for SQL databases and warehouses out of 2526 active servers.",
+            "body": "A semantic layer usually runs as a metadata service alongside the warehouse or lakehouse, holding model definitions in version controlled files or a repository rather than inside any single report. It connects to the underlying tables through the warehouse's own query engine, so compute stays where the data lives and the layer mostly supplies definitions, joins and metric logic. Common deployment shapes include a standalone modelling server, a library embedded in a transformation project, or a managed feature of a cloud data platform, and access is typically granted per model or per domain rather than per table.",
             "heading": "What it runs on"
         },
         {
-            "body": "The work starts with modelling: naming entities, agreeing grain, writing metric definitions once and mapping them to physical columns. Those definitions are then served through an API or a query interface, and a text to SQL system retrieves the relevant terms before generating SQL rather than reading raw column names. Practitioners spend most of their time on curation and testing, checking that a question about active customers resolves to the same calculation every time, and on keeping the model in step with schema changes.",
+            "body": "Building one starts with interviewing the people who own the numbers, then encoding each metric once as a formula over base tables, with dimensions, filters and join paths declared explicitly. Model authors define entities, relationships and grain, test the definitions against known results, and publish them so that dashboards, notebooks and text to SQL assistants all resolve the same term to the same SQL. Maintenance is ongoing: when a source schema changes or a business rule shifts, the definition is edited in one place and every consumer inherits the change. Query tools then translate a question into a lookup against those definitions rather than into freehand SQL over raw columns.",
             "heading": "How the work is done"
         },
         {
-            "body": "Because a semantic layer concentrates meaning in one place, it also concentrates responsibility. Ownership of each metric needs to be clear, changes need review, and access rules should follow the definitions rather than being reimplemented in every downstream tool. Provenance matters too: a generated answer should be traceable to the metric version and the tables it drew on, so that an audit can reconstruct how a number was produced.",
+            "body": "Because a semantic layer concentrates meaning in one place, it also concentrates authority, so ownership and change control matter as much as the definitions themselves. Teams typically assign a named owner to each model or metric, require review before a definition is published, and keep a history of who changed a formula and why. Provenance runs from the reported number back through the metric definition to the source tables, which is what makes an audit or a dispute resolvable. Access rules, row level security and masking are often expressed in the layer too, so that a term carries the same permissions wherever it is used.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The direction of travel is toward semantic layers that assistants can read directly, so that definitions travel with the question instead of being rediscovered each time. Expect more standard ways to publish metrics and relationships to agents, and more emphasis on versioning and lineage as generated SQL becomes routine. The open question is not whether models can write SQL but whether the organisation can keep one agreed meaning for the words it asks about.",
+            "body": "The direction of travel is toward semantic layers that machine agents can read directly, exposing definitions, lineage and sample values in a form a language model can ground itself in before writing SQL. That shifts the modelling work from documenting dashboards to publishing machine readable contracts, and it raises the question of how much of a definition should be generated automatically versus reviewed by a person. Vendors and open source projects are converging on shared ways to describe metrics, which would let one definition travel across tools. The practical effect for teams is that the layer becomes the place where business meaning is settled, and the query interface, human or automated, becomes replaceable.",
             "heading": "Where it is going"
         }
     ],
@@ -86,7 +86,7 @@
             "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/bfd29330/"
         }
     ],
-    "generated": "2026-10-08",
+    "generated": "2026-10-09",
     "parent_name": "AI and SQL",
     "parent_path": "/ai-ecosystem/enterprise-applications-governance-and-tools/3d344eab/",
     "refresh_every_days": 30
