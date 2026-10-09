@@ -275,6 +275,16 @@
         },
         {
             "kev": false,
+            "cve_id": "CVE-2026-6857",
+            "product": "camel",
+            "summary": "A flaw was found in camel-infinispan. This vulnerability involves unsafe deserialization in the ProtoStream remote aggregation repository. A remote attacker with low privileges could exploit this by sending specially cra",
+            "headline": "",
+            "published": "2026-04-22",
+            "cvss_score": 7.5,
+            "cvss_severity": "HIGH"
+        },
+        {
+            "kev": false,
             "cve_id": "CVE-2025-67729",
             "product": "PyTorch",
             "summary": "LMDeploy is a toolkit for compressing, deploying, and serving LLMs. Prior to version 0.11.1, an insecure deserialization vulnerability exists in lmdeploy where torch.load() is called without the weights_only=True paramet",
@@ -284,9 +294,9 @@
             "cvss_severity": "HIGH"
         }
     ],
-    "high": 19,
+    "high": 20,
     "name": "Deserialization of Untrusted Data",
-    "count": 28,
+    "count": 29,
     "shape": "cwe",
     "title": "CWE-502: Deserialization of Untrusted Data",
     "cwe_id": "CWE-502",
@@ -294,7 +304,7 @@
     "status": "Draft",
     "ai_text": "In AI software this weakness shows up wherever models, checkpoints or cache files are loaded as data that can also carry code. The CVEs sit in model serving and training stacks, agent and tooling frameworks, and model hubs. Examples include MLflow, which loads crafted models that run code, NeMo, which runs attacker code from a malicious .pkl file, and Hugging Face Transformers, where checkpoint parsing lets a malicious file run code. The usual route is a shared or downloaded artifact, a model file, a cache entry or an uploaded checkpoint, that the product deserializes without checking. An attacker who supplies that artifact can run code on the host, often as the serving user.",
     "ai_model": "ollama:deepseek-v4.1-flash",
-    "built_at": "2026-10-09T06:29:55-05",
+    "built_at": "2026-10-09T12:09:44-05",
     "critical": 8,
     "page_uid": "a17c87cc",
     "generated": "2026-10-09",
