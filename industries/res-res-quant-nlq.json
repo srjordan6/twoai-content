@@ -4,7 +4,7 @@
     "slug": "res-quant-nlq",
     "shape": "art-topic",
     "title": "Asking Data Questions in Plain Language",
-    "answer": "Asking data questions in plain language covers the practice of putting a question to a dataset in ordinary words and getting back a computed answer, rather than writing SQL or a script by hand. It sits inside quantitative analysis and reproducible work because the value of the answer depends on the question being recorded, the data being fixed, and the result being repeatable by someone else. The scope runs from simple lookups and aggregations over a table to multi step questions that join several sources, and it stops short of open ended modelling where the question itself is the research. In practice it is the layer between a person who knows the data and a system that can query it.",
+    "answer": "Asking data questions in plain language covers the practice of putting a question to a dataset in ordinary words and getting back a result that can be checked, rather than writing SQL or a script by hand. It sits inside quantitative analysis and reproducible work because the value is not only the answer but the path taken to reach it, which someone else must be able to follow. The scope runs from a single analyst querying a table to a team building a shared layer over a warehouse, and it includes the awkward middle ground where a question is clear to a person but ambiguous to a machine.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-10-09T12:39:18-05",
+    "built_at": "2026-10-10T06:58:30-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Researcher",
@@ -28,23 +28,23 @@
     "page_uid": "1ec1ea4a",
     "sections": [
         {
-            "body": "Asking data questions in plain language covers the practice of putting a question to a dataset in ordinary words and getting back a computed answer, rather than writing SQL or a script by hand. It sits inside quantitative analysis and reproducible work because the value of the answer depends on the question being recorded, the data being fixed, and the result being repeatable by someone else. The scope runs from simple lookups and aggregations over a table to multi step questions that join several sources, and it stops short of open ended modelling where the question itself is the research. In practice it is the layer between a person who knows the data and a system that can query it.",
+            "body": "Asking data questions in plain language covers the practice of putting a question to a dataset in ordinary words and getting back a result that can be checked, rather than writing SQL or a script by hand. It sits inside quantitative analysis and reproducible work because the value is not only the answer but the path taken to reach it, which someone else must be able to follow. The scope runs from a single analyst querying a table to a team building a shared layer over a warehouse, and it includes the awkward middle ground where a question is clear to a person but ambiguous to a machine.",
             "heading": "Scope"
         },
         {
-            "body": "The usual setup is a database or a data warehouse holding the tables, a semantic layer or schema description that tells the system what the columns mean, and a language model that turns the question into a query. Execution happens against the real store, so the answer is computed from the data rather than recalled from the model's training. Supporting pieces include a query engine, a cache for repeated questions, and a log that records the question, the generated query, and the result. Where the data is sensitive, the model may only see the schema and never the rows.",
+            "body": "The work runs on a data store the question can reach, most often a relational warehouse or a columnar analytics database, plus a translation layer that turns the question into a query. That layer is usually a language model paired with a schema description, a set of table and column definitions, and sometimes a semantic model that fixes what terms like revenue or active customer mean. Results come back as tables or charts, and the surrounding tooling is the same as any analysis stack: version control, notebooks, a scheduler, and a place to record what was asked and what came back.",
             "heading": "What it runs on"
         },
         {
-            "body": "The work starts by pinning down what the question means in terms of tables, columns, filters and time windows, since most wrong answers come from ambiguity rather than from bad code. The system drafts a query, runs it, and the analyst checks the result against a known figure or a hand calculation before trusting it. Good practice keeps the generated query visible and versioned alongside the question, so a later reader can see exactly what was asked and what was run. Iteration is normal: the first phrasing often needs tightening, and the corrected phrasing is worth keeping as a test case.",
+            "body": "A plain language question is parsed into an intent, matched against the available tables and columns, and rendered as a query that the database executes. The hard part is not the translation but the grounding: the system needs to know which column holds the date, which join is correct, and which rows should be excluded. Good practice is to keep the generated query visible, run it against a known result where one exists, and treat the answer as a draft until a person confirms it. Reproducibility comes from storing the question, the generated query, the schema version, and the returned data together, so the same question can be re-run and compared later.",
             "heading": "How the work is done"
         },
         {
-            "body": "The main risks are silent errors, ambiguous questions that produce a confident but wrong number, and access to columns the asker should not see. Provenance matters because a plain language answer is only as good as the query behind it, so the generated query, the data snapshot, and the model version should all be retained. Permissions should be enforced at the data layer rather than by trusting the prompt, and results that feed decisions should be traceable to a specific run. This site links to original papers rather than to a search tool, and the same instinct applies here: keep the path back to the source visible.",
+            "body": "Because the system reads real tables, access control follows the data rather than the interface: a person asking a question should not see rows they could not otherwise query. Generated queries can be wrong in ways that look plausible, so provenance matters, meaning the question, the query, the schema and the timestamp should travel with the result. Sensitive fields need masking or exclusion before they reach a model, and any external service used for translation becomes part of the data flow that privacy and audit reviews must cover. Ownership of a wrong answer sits with the person who published it, not with the tool that drafted it.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The direction of travel is toward tighter coupling between the question, the schema and the test suite, so that a phrasing that once worked keeps working as tables change. Evaluation is maturing from spot checks to curated question sets with known answers, which makes regressions visible when a model or schema is updated. Expect more work on clarifying questions, where the system asks back instead of guessing, and on keeping the generated query readable enough for a reviewer to sign off. The unresolved part is trust: a fluent answer still needs a checkable query underneath it.",
+            "body": "The direction of travel is toward semantic layers that define metrics once and let both people and systems use them, which reduces the ambiguity that plain language introduces. Evaluation is maturing from spot checks toward benchmark question sets with known answers, so accuracy can be tracked rather than assumed. More questions will be answered conversationally inside existing analysis tools, which shifts the analyst's work toward defining terms, checking results, and maintaining the definitions everyone else relies on. The open question is how much of the translation can be trusted without a person in the loop, and that will be settled by practice rather than by any single release.",
             "heading": "Where it is going"
         }
     ],
@@ -66,7 +66,7 @@
             "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/a343378e/"
         }
     ],
-    "generated": "2026-10-09",
+    "generated": "2026-10-10",
     "parent_name": "Quantitative Analysis and Reproducible Work",
     "parent_path": "/ai-ecosystem/enterprise-applications-governance-and-tools/13698bd4/",
     "refresh_every_days": 30

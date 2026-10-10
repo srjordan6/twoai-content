@@ -4,7 +4,7 @@
     "slug": "sql-agent-access",
     "shape": "art-topic",
     "title": "Agent Database Access and Permissions",
-    "answer": "Agent database access and permissions covers the question of what an AI agent is allowed to read or change when it queries a database on someone's behalf. When an agent queries a database for a user, it should see only what that user may see. Row level security, scoped credentials, read only roles and audit logging are the controls that keep an agent from becoming a way around existing permissions. The topic sits at the join of AI and SQL, and it matters most wherever an agent is wired to a live production database rather than a copy.",
+    "answer": "Agent database access and permissions is the practice of letting an AI agent read from or write to a database without letting it exceed the rights of the person on whose behalf it acts. The agent is a new kind of client, but the permission model underneath it is the same one the database already enforces for applications and human users. The central question is identity: which database role the agent connects as, what that role can see, and how the action is attributed afterward. Row level security, scoped credentials, read only roles and audit logging are the controls that keep an agent from becoming a way around existing permissions.",
     "crumbs": [
         {
             "name": "AI and SQL",
@@ -12,7 +12,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-10-09T12:39:18-05",
+    "built_at": "2026-10-10T06:58:30-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "AI and SQL",
@@ -20,23 +20,23 @@
     "page_uid": "247e6dbd",
     "sections": [
         {
-            "body": "Agent database access and permissions covers the question of what an AI agent is allowed to read or change when it queries a database on someone's behalf. When an agent queries a database for a user, it should see only what that user may see. Row level security, scoped credentials, read only roles and audit logging are the controls that keep an agent from becoming a way around existing permissions. The topic sits at the join of AI and SQL, and it matters most wherever an agent is wired to a live production database rather than a copy.",
+            "body": "Agent database access and permissions is the practice of letting an AI agent read from or write to a database without letting it exceed the rights of the person on whose behalf it acts. The agent is a new kind of client, but the permission model underneath it is the same one the database already enforces for applications and human users. The central question is identity: which database role the agent connects as, what that role can see, and how the action is attributed afterward. Row level security, scoped credentials, read only roles and audit logging are the controls that keep an agent from becoming a way around existing permissions.",
             "heading": "Scope"
         },
         {
-            "body": "The plumbing is usually a database connection exposed to the agent through a tool interface, most often a Model Context Protocol server. This site currently tracks 2,627 active Model Context Protocol servers, 263 of them for SQL databases and warehouses, which shows how common that pattern has become. Underneath, the agent holds some credential, whether a shared service account, a per user token, or a short lived session, and that choice decides almost everything about what it can reach. The database itself does the rest of the work through roles, views and policies.",
+            "body": "The agent usually reaches the database through a connection pool or a service layer rather than a direct socket, and that layer is where credentials are issued and scoped. Common patterns include a short lived token or a per user database role, so the agent never holds a single all powerful login. Read replicas are often used for query heavy agents, and a separate write path is kept narrow and explicit. The database itself supplies the enforcement points: roles and grants, row level security policies, views, and query logging. Where the agent generates SQL, a parser or policy engine may sit in front of execution to reject statements outside the allowed shape.",
             "heading": "What it runs on"
         },
         {
-            "body": "In practice the work is done by pushing the permission decision down into the database rather than trusting the agent to filter results. Row level security policies keyed to the acting user, read only roles for anything exploratory, and views that expose only approved columns are the usual building blocks. The agent's queries are then generated against that constrained surface, and every statement is written to an audit log with the user, the session and the SQL text. Teams test the setup by replaying queries as different users and checking that the rows returned match what those users could see directly.",
+            "body": "The work starts by mapping what the agent is allowed to do to the roles and policies the database already has, rather than inventing a parallel permission system. Queries are typically parameterized and constrained to a known set of tables and columns, with row filters applied by the database using the acting user's identity. Read only access is the default for analytical and question answering agents, and any write path is separated, reviewed and logged. Audit logging records the user, the agent, the statement and the rows touched, which is what makes later review possible. Testing includes attempts to reach data the acting user should not see, so that policy gaps surface before real use.",
             "heading": "How the work is done"
         },
         {
-            "body": "The rights and risk side turns on provenance and accountability. If an agent reads data through a shared credential, the audit trail shows the agent and not the person, which breaks the link between access and identity that most policies assume. Scoped credentials, per user sessions and logging that records both the requesting user and the agent preserve that link. Data protection rules, contractual limits on the data, and internal access reviews all still apply, and an agent does not create an exemption from any of them. This page describes practice only and is not legal advice.",
+            "body": "Ownership is usually split: the data platform team owns roles and policies, the application or agent team owns how credentials are issued and rotated, and security or compliance reviews the audit trail. Access reviews check that agent roles still match the users and purposes they were created for, and that stale credentials are removed. Provenance matters because an agent action may be attributed to a user who never wrote the query, so logs need to distinguish the human request from the generated statement. Regulatory and internal policy obligations around data access apply to agent queries the same way they apply to any other client. Incidents are handled by revoking the scoped credential and tightening the policy, not by disabling logging.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The direction of travel is toward identity that follows the user all the way through the agent, with short lived tokens, policy expressed once and enforced at the database, and logs that can answer who saw what. As more SQL servers appear in the Model Context Protocol ecosystem, the interesting work is less about connecting an agent to a database and more about proving that the connection respects the permissions already in place. Expect the controls to consolidate around the database engine rather than around each agent framework.",
+            "body": "The direction of travel is toward finer grained, per request authorization, where the agent's effective permissions are computed at the moment of the query and expire quickly. More databases are exposing policy hooks and row level controls that an agent framework can call directly, which reduces the amount of permission logic that has to live in the agent itself. Expect more emphasis on verifiable audit trails and on distinguishing human intent from machine generated statements. The open problems are mostly about scale and clarity: keeping policies readable as they grow, and giving users a truthful account of what an agent did on their behalf.",
             "heading": "Where it is going"
         }
     ],
@@ -86,7 +86,7 @@
             "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/bfd29330/"
         }
     ],
-    "generated": "2026-10-09",
+    "generated": "2026-10-10",
     "parent_name": "AI and SQL",
     "parent_path": "/ai-ecosystem/enterprise-applications-governance-and-tools/3d344eab/",
     "refresh_every_days": 30

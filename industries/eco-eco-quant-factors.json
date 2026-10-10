@@ -4,7 +4,7 @@
     "slug": "eco-quant-factors",
     "shape": "art-topic",
     "title": "Non-Linear Factor Models",
-    "answer": "Non-linear factor models are quantitative return models in which the relationship between a stock's return and its underlying factors is not assumed to be a straight line. They extend the classical linear factor framework, where returns are modelled as a weighted sum of exposures, by allowing interactions, thresholds, curvature and regime dependence. In practice they are used to explain cross-sectional returns, build portfolios and attribute performance, and they sit alongside linear factor models rather than replacing them outright.",
+    "answer": "Non-linear factor models are quantitative tools that relate a large set of observable market and economic variables to asset returns through relationships that are not assumed to be straight lines. In classical factor models, a stock's expected return is a weighted sum of exposures to a handful of factors, and each exposure contributes in proportion to its size. Non-linear versions allow the contribution of a factor to change with its level, with the state of the market, or with the values of other factors, so that a signal can matter more in a stressed market than in a calm one. They sit within quantitative trading and overlap with statistical learning, regime modelling and risk attribution.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-10-09T12:39:18-05",
+    "built_at": "2026-10-10T06:58:30-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Economist",
@@ -28,23 +28,23 @@
     "page_uid": "4d8ed2c3",
     "sections": [
         {
-            "body": "Non-linear factor models are quantitative return models in which the relationship between a stock's return and its underlying factors is not assumed to be a straight line. They extend the classical linear factor framework, where returns are modelled as a weighted sum of exposures, by allowing interactions, thresholds, curvature and regime dependence. In practice they are used to explain cross-sectional returns, build portfolios and attribute performance, and they sit alongside linear factor models rather than replacing them outright.",
+            "body": "Non-linear factor models are quantitative tools that relate a large set of observable market and economic variables to asset returns through relationships that are not assumed to be straight lines. In classical factor models, a stock's expected return is a weighted sum of exposures to a handful of factors, and each exposure contributes in proportion to its size. Non-linear versions allow the contribution of a factor to change with its level, with the state of the market, or with the values of other factors, so that a signal can matter more in a stressed market than in a calm one. They sit within quantitative trading and overlap with statistical learning, regime modelling and risk attribution.",
             "heading": "Scope"
         },
         {
-            "body": "The work runs on standard quantitative research infrastructure: a point-in-time database of prices, fundamentals and factor exposures, plus a compute environment capable of fitting many models across a large universe. Because non-linear methods are data-hungry, the binding constraint is usually data quality and history length rather than raw compute. The site's own coverage of 117 listed AI-related instruments and 517 company pages illustrates the kind of universe and entity data such models are typically estimated on.",
+            "body": "The work runs on ordinary research infrastructure: a historical panel of prices, returns, fundamentals and macro series, stored in a time-series database or columnar files, plus a compute environment capable of fitting many models repeatedly. Practitioners typically use Python with libraries such as NumPy, pandas, scikit-learn, PyTorch or TensorFlow, and may use R for statistical work. Because non-linear models have more parameters than linear ones, the binding constraint is usually data quality and compute time for cross-validation rather than raw storage. Production deployment adds a scheduling layer that refits models on a rolling window and a serving path that delivers factor exposures or return forecasts to portfolio construction.",
             "heading": "What it runs on"
         },
         {
-            "body": "Practitioners start from a set of candidate factors, then let a non-linear model learn how exposures map to returns. Common choices include tree ensembles such as gradient boosted trees, kernel methods, splines and piecewise regressions, and neural networks, with cross-validation and out-of-sample testing used to guard against overfitting. The output is usually a fitted exposure-return surface or a set of conditional betas rather than a single coefficient per factor, and researchers spend most of their time on feature construction, regularisation and stability checks.",
+            "body": "The workflow starts with a clear definition of the target, such as next-period return, and a panel of candidate features built from prices, volumes, accounting data and macro indicators. The modeller then chooses a functional form: tree ensembles and gradient boosting for tabular data, neural networks for interactions among many inputs, splines or kernel methods for smooth non-linearities, and state-space or regime-switching models when the relationship is expected to change over time. Validation must respect time order, so walk-forward or purged cross-validation replaces random splits, and performance is judged on out-of-sample predictive power and on the economic value of the resulting portfolio after costs. Interpretation matters as much as accuracy, so practitioners use feature importance, partial dependence and Shapley values to check that the model is learning plausible relationships rather than noise.",
             "heading": "How the work is done"
         },
         {
-            "body": "Non-linear factor models raise familiar model risk concerns in sharper form, because their flexibility makes overfitting and spurious pattern discovery easier and their behaviour harder to explain to a risk committee or allocator. Firms therefore keep documentation of factor definitions, data lineage and model versions, and they monitor live performance against the research backtest.",
+            "body": "Non-linear factor models raise familiar concerns in a sharper form: they can fit noise, they can encode look-ahead bias if features are built carelessly, and their complexity makes them harder to explain to a risk committee or an allocator. Provenance of data, including point-in-time correctness and survivorship handling, is central, and any model used in live trading should be documented with its assumptions, its validation scheme and its known failure modes. Regulatory expectations around model risk management apply to trading models as they do elsewhere, and internal review usually covers data lineage, reproducibility and the ability of a second person to rerun the pipeline. This is a description of common practice, not legal or investment advice.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The direction of travel is toward models that combine non-linear flexibility with interpretability, so that a portfolio manager can see which factors and interactions are driving a position. Expect more use of regularised and constrained architectures, greater attention to regime shifts and non-stationarity, and tighter integration between factor research and execution. As alternative data and machine learning tooling mature, the practical question is less whether non-linear models can be fitted and more whether they can be trusted and maintained in production.",
+            "body": "Research is moving toward models that combine non-linear flexibility with economic structure, for example by constraining neural networks to respect no-arbitrage conditions or by blending learned factors with established risk factors. Regime-aware and online-learning approaches are being used to adapt exposures as market conditions change, and causal inference methods are being explored to separate genuine drivers from correlations that break down. At the same time, the cost of complexity is being taken more seriously, with simpler regularised models often preferred when their out-of-sample performance is comparable. The direction is toward models that are both flexible and auditable, rather than flexible at any price.",
             "heading": "Where it is going"
         }
     ],
@@ -66,7 +66,7 @@
             "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/79ef696a/"
         }
     ],
-    "generated": "2026-10-09",
+    "generated": "2026-10-10",
     "parent_name": "Quantitative Trading",
     "parent_path": "/ai-ecosystem/enterprise-applications-governance-and-tools/0ffda9ad/",
     "refresh_every_days": 30

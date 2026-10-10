@@ -4,7 +4,7 @@
     "slug": "sql-query-optimisation",
     "shape": "art-topic",
     "title": "AI Query Optimisation",
-    "answer": "AI query optimisation covers the systems that decide how a database executes a query, and the machine learning methods now used to make those decisions. A query optimiser picks join orders, access paths and index usage, and the newer work applies learned models to cost estimation, index recommendation and automatic tuning of settings. The appeal is better plans on workloads that defeat hand written rules, and the risk is that a learned choice is hard to explain when it goes wrong. This sits inside the broader field of AI and SQL, alongside the assistants and agents that write and run queries.",
+    "answer": "Query optimisers choose how a database executes a query, and AI query optimisation applies machine learning to parts of that job: estimating how many rows a step will return, recommending which indexes to build, and tuning configuration settings that shape the plan. The work sits between database engineering and applied machine learning, and it matters because a plan choice made by a model can be hard to explain when it goes wrong. A practitioner here is usually a database engineer or data platform lead rather than a machine learning specialist, and the goal is a plan that is fast and repeatable, not a model that is clever.",
     "crumbs": [
         {
             "name": "AI and SQL",
@@ -12,7 +12,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-10-09T12:39:18-05",
+    "built_at": "2026-10-10T06:58:30-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "AI and SQL",
@@ -20,23 +20,23 @@
     "page_uid": "5a695195",
     "sections": [
         {
-            "body": "AI query optimisation covers the systems that decide how a database executes a query, and the machine learning methods now used to make those decisions. A query optimiser picks join orders, access paths and index usage, and the newer work applies learned models to cost estimation, index recommendation and automatic tuning of settings. The appeal is better plans on workloads that defeat hand written rules, and the risk is that a learned choice is hard to explain when it goes wrong. This sits inside the broader field of AI and SQL, alongside the assistants and agents that write and run queries.",
+            "body": "Query optimisers choose how a database executes a query, and AI query optimisation applies machine learning to parts of that job: estimating how many rows a step will return, recommending which indexes to build, and tuning configuration settings that shape the plan. The work sits between database engineering and applied machine learning, and it matters because a plan choice made by a model can be hard to explain when it goes wrong. A practitioner here is usually a database engineer or data platform lead rather than a machine learning specialist, and the goal is a plan that is fast and repeatable, not a model that is clever.",
             "heading": "Scope"
         },
         {
-            "body": "The work runs on the database engine itself, most often PostgreSQL, MySQL or a cloud warehouse, with the optimiser either extended in place or shadowed by an external planner. Training and evaluation need query logs, schema statistics and execution traces, which are collected from production or from benchmark workloads replayed on test instances. Model Context Protocol servers are one route to that data, and this site tracks 263 of them for SQL databases and warehouses out of 2526 active servers. Every page on this site is itself built from a PostgreSQL database, so the same statistics and plan inspection tools are close at hand.",
+            "body": "The work runs against the database engine itself and the statistics it keeps, so the first dependency is a query workload that can be captured and replayed. Teams collect query text, execution plans, runtimes and schema metadata into a store, then train and evaluate models on that history, often on the same hardware class as production so timings mean something. Cloud warehouses and managed database services expose plan and statistics data through their own interfaces, which shapes what can be collected. Nothing here replaces the optimiser, it feeds it better inputs or adjusts the settings around it.",
             "heading": "What it runs on"
         },
         {
-            "body": "Practitioners start from the query workload and the plans the existing optimiser produces, then label those plans with real execution times rather than estimated costs. Learned components range from cardinality estimators trained on query fragments to reinforcement learning agents that pick join orders, and index advisors that score candidate index sets against sampled queries. Evaluation compares the learned planner against the baseline on latency, throughput and plan stability, with regression tests for queries where the model does worse. Because a plan is only as good as its cost model, teams keep a fallback to the rule based optimiser and log when the two disagree.",
+            "body": "The common pattern is to treat plan quality as a prediction problem: learn from past executions what a query shape will cost, then use that estimate where the optimiser's own statistics are weak. Index advisors search candidate index sets against a workload and score them by estimated benefit, and configuration tuners adjust memory and parallelism settings against measured throughput. Evaluation is done by replaying a workload and comparing plans, runtimes and resource use, with care taken to hold out queries so the model is not scored on what it memorised. Because plans are discrete and feedback is delayed, teams often keep a rule based fallback and a way to pin a known good plan.",
             "heading": "How the work is done"
         },
         {
-            "body": "The main governance question is explainability, since a learned plan that performs badly is difficult to justify to the person who owns the query. Teams keep the training data, model version and the plan chosen for each query so a decision can be reconstructed later, and they set limits on what the optimiser may change without review. Access to query logs and execution traces is restricted because those records often contain sensitive values, and index recommendations can alter write performance across an entire database. Nothing here is legal advice, and any change to a production database should follow the organisation's own change control.",
+            "body": "The main risk is opacity: when a learned estimate or a recommended index makes a query slower, the reason may not be visible in the plan, so teams need logging, versioning of models and statistics, and a rollback path. Changes to indexes or settings touch production data and cost, so they usually go through review and staged rollout rather than automatic application. Provenance matters too, since a model trained on one workload or schema version may not transfer, and that history should be recorded alongside the model. On medical, legal or financial data the usual access controls and retention rules apply to the workload data used for training, and none of this is a substitute for advice from the relevant specialist.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The direction of travel is toward optimisers that adapt to a workload as it shifts, rather than being retrained in occasional batches. That means tighter feedback loops from execution results back into the cost model, and more use of language models to translate a stated intent into a candidate plan for a human to approve. The open problems are stability, so a learned planner does not oscillate between plans, and portability, so a model trained on one schema is useful on another. Expect the rule based optimiser to remain as a reference point for some time, with learned components layered on top rather than replacing it outright.",
+            "body": "The direction of travel is tighter coupling between learned components and the optimiser, with learned cardinality estimates and index recommendations becoming ordinary features of managed database services rather than separate research projects. Expect more emphasis on explainability and on guardrails that bound how far a learned choice can deviate from a proven plan. Workloads will keep changing, so the practical question is less whether a model can beat the current optimiser on a benchmark and more whether it can be retrained, audited and reverted safely in a live system.",
             "heading": "Where it is going"
         }
     ],
@@ -86,7 +86,7 @@
             "path": "/ai-ecosystem/enterprise-applications-governance-and-tools/bfd29330/"
         }
     ],
-    "generated": "2026-10-09",
+    "generated": "2026-10-10",
     "parent_name": "AI and SQL",
     "parent_path": "/ai-ecosystem/enterprise-applications-governance-and-tools/3d344eab/",
     "refresh_every_days": 30
