@@ -4,7 +4,7 @@
     "slug": "sql-data-quality",
     "shape": "art-topic",
     "title": "Data Quality for AI",
-    "answer": "Data quality for AI covers the accuracy, completeness, consistency and timeliness of the rows an AI system reads. Tests written in SQL, lineage records and data contracts are the usual controls, because a model cannot tell a wrong value from a right one. In practice this means the same checks a warehouse team already runs, applied to the tables that feed retrieval, training and reporting. The work sits close to the database, not in a separate quality tool, since the rows and the checks live in the same place.",
+    "answer": "Data quality for AI covers the accuracy, completeness, consistency and timeliness of the rows an AI system reads. Tests written in SQL, lineage records and data contracts are the usual controls, because a model cannot tell a wrong value from a right one. The work sits at the boundary between the warehouse and the model, and it treats the table as the unit of concern rather than the pipeline alone. A feature that is stale, duplicated or null in the wrong place will be learned as if it were true.",
     "crumbs": [
         {
             "name": "AI and SQL",
@@ -12,7 +12,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-10-10T06:58:30-05",
+    "built_at": "2026-10-10T14:48:32-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "AI and SQL",
@@ -20,23 +20,23 @@
     "page_uid": "bfd29330",
     "sections": [
         {
-            "body": "Data quality for AI covers the accuracy, completeness, consistency and timeliness of the rows an AI system reads. Tests written in SQL, lineage records and data contracts are the usual controls, because a model cannot tell a wrong value from a right one. In practice this means the same checks a warehouse team already runs, applied to the tables that feed retrieval, training and reporting. The work sits close to the database, not in a separate quality tool, since the rows and the checks live in the same place.",
+            "body": "Data quality for AI covers the accuracy, completeness, consistency and timeliness of the rows an AI system reads. Tests written in SQL, lineage records and data contracts are the usual controls, because a model cannot tell a wrong value from a right one. The work sits at the boundary between the warehouse and the model, and it treats the table as the unit of concern rather than the pipeline alone. A feature that is stale, duplicated or null in the wrong place will be learned as if it were true.",
             "heading": "Scope"
         },
         {
-            "body": "The stack is mostly the warehouse or database itself: SQL test suites, scheduled checks, constraint enforcement and versioned transformation code. Lineage is captured from query logs and orchestration metadata, and data contracts are stored as schemas or configuration alongside the pipelines they govern. On this site, 263 of the 2,650 tracked Model Context Protocol servers connect to SQL databases and warehouses, which is where a large share of these checks now run. Every page on this site is itself built from a PostgreSQL database, so the same discipline applies to the content you are reading.",
+            "body": "The work runs on the same warehouses and lakehouses that hold the training and serving data, so SQL is the natural language for checks. Typical pieces are a scheduler that runs assertions on a cadence, a metadata store for lineage and column profiles, and a contract registry that records what each table promises to downstream consumers. Version control holds the test definitions, and alerting routes failures to the owning team. Some checks run at write time in the ingestion job, others run as scheduled queries against the landed table.",
             "heading": "What it runs on"
         },
         {
-            "body": "Teams write assertions in SQL, for example row counts, null rates, uniqueness, referential integrity and range checks, then run them on a schedule or at pipeline boundaries. Failures route to an owner, and thresholds decide whether a run blocks or merely warns. Lineage maps which upstream tables feed which downstream models, so a broken column can be traced to everything it touches. Data contracts formalise the agreement between producers and consumers, covering schema, types, freshness and acceptable null rates.",
+            "body": "Practitioners start by profiling columns to learn their real ranges, null rates and cardinality, then write assertions that encode those expectations. Common tests cover uniqueness of keys, referential integrity between tables, accepted values in a categorical column, freshness of a timestamp, and row count within an expected band. Lineage is traced from source table to feature to model so a failure can be attributed. Contracts formalise the agreed schema and semantics, and a failing test blocks the downstream job rather than warning quietly.",
             "heading": "How the work is done"
         },
         {
-            "body": "Ownership matters more than tooling: every critical table needs a named owner who answers for its quality. Contracts, lineage records and test results form the audit trail when a model produces a bad output and someone asks why. Access controls and retention rules apply to the quality metadata as well as the data, since lineage can reveal sensitive structure. Regulation and internal policy increasingly expect documented fitness for purpose, and quality evidence is how that is shown. Nothing here is legal advice, and specific obligations depend on the jurisdiction and the data involved.",
+            "body": "Ownership matters more than tooling: every table needs a named team accountable for its contents and for responding when a test fails. Contracts turn informal expectations into reviewable commitments, and lineage gives auditors a path from a model output back to the rows that produced it. Access controls and audit logs record who changed a definition and when. Where personal data is involved, quality checks also support deletion and correction requests, since a stale or duplicated record can outlive the request that should have removed it.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "Expect quality checks to move closer to the model, with contracts enforced at the point of retrieval rather than only at load. Agent and tool based access, including the SQL oriented Model Context Protocol servers tracked on this site, makes freshness and provenance checks part of the request path. Automated profiling and anomaly detection will draft tests that humans then review, which shifts effort from writing checks to deciding thresholds. The open question is whether quality signals become a first class input to model behaviour, or stay a separate report that nobody reads until something breaks.",
+            "body": "Expect more checks to be generated from observed data rather than hand written, with anomaly detection proposing thresholds that a human confirms. Contracts are moving from documents into machine readable registries that pipelines enforce automatically. Feature stores and vector indexes are pulling quality concerns closer to serving time, where freshness and drift matter as much as correctness at rest. The open question is how much of this a model can police itself, and the working answer so far is very little.",
             "heading": "Where it is going"
         }
     ],

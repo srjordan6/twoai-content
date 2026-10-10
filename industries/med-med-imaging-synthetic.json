@@ -4,7 +4,7 @@
     "slug": "med-imaging-synthetic",
     "shape": "art-topic",
     "title": "Synthetic Imaging from Existing Scans",
-    "answer": "Synthetic imaging from existing scans is the practice of generating new medical images, such as CT, MRI or X-ray views, from scans that already exist rather than acquiring new ones from a patient. It covers tasks like creating a missing contrast phase, translating one modality into another, or producing extra training examples for a model that has too few cases. In radiology it sits alongside reconstruction and image enhancement work, and it is usually treated as a data problem first and a clinical tool second.",
+    "answer": "Synthetic imaging from existing scans is the practice of generating new medical images, such as CT from MRI or contrast-enhanced views from non-contrast acquisitions, by learning the mapping between imaging modalities or between acquisition settings. It sits within diagnostic imaging and radiology, where the goal is usually to answer a clinical question with data that was not directly acquired, whether to spare a patient a second scan, a contrast dose, or a repeat exposure. The scope covers cross-modality translation, contrast synthesis, denoising and super-resolution, and the generation of paired training data for other models. It is distinct from reconstruction from raw acquisition data, because the input is already a formed image.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-10-10T06:58:30-05",
+    "built_at": "2026-10-10T14:48:31-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Physician",
@@ -28,23 +28,23 @@
     "page_uid": "c2e8947e",
     "sections": [
         {
-            "body": "Synthetic imaging from existing scans is the practice of generating new medical images, such as CT, MRI or X-ray views, from scans that already exist rather than acquiring new ones from a patient. It covers tasks like creating a missing contrast phase, translating one modality into another, or producing extra training examples for a model that has too few cases. In radiology it sits alongside reconstruction and image enhancement work, and it is usually treated as a data problem first and a clinical tool second.",
+            "body": "Synthetic imaging from existing scans is the practice of generating new medical images, such as CT from MRI or contrast-enhanced views from non-contrast acquisitions, by learning the mapping between imaging modalities or between acquisition settings. It sits within diagnostic imaging and radiology, where the goal is usually to answer a clinical question with data that was not directly acquired, whether to spare a patient a second scan, a contrast dose, or a repeat exposure. The scope covers cross-modality translation, contrast synthesis, denoising and super-resolution, and the generation of paired training data for other models. It is distinct from reconstruction from raw acquisition data, because the input is already a formed image.",
             "heading": "Scope"
         },
         {
-            "body": "The work runs on the same computing base as other medical imaging AI: graphics processors for training, hospital picture archiving and communication systems for source data, and increasingly cloud or on-premises clusters for larger jobs. Models are typically convolutional networks or newer generative architectures, and the output is stored as standard image files so it can be read in existing viewers. Because the input is patient data, the pipeline usually sits inside the same security and audit controls as the clinical archive.",
+            "body": "The work runs on paired or unpaired image datasets drawn from picture archiving and communication systems, often de-identified and curated into research cohorts. Training typically uses graphics processing units, either on premises or in a research cloud, with frameworks such as PyTorch or TensorFlow and architectures such as generative adversarial networks, diffusion models, or transformer-based image models. Inference can be deployed on a workstation or server, and some pipelines run close to the scanner. Storage, transfer, and de-identification infrastructure matter as much as compute, because image volumes are large and access is governed by institutional review and data use agreements.",
             "heading": "What it runs on"
         },
         {
-            "body": "A team starts by curating a set of real scans with the properties it wants to reproduce, then trains a generative model to map one image or series onto another. Quality is checked in two ways: image level measures such as similarity to a held out real scan, and reader studies where radiologists judge whether the synthetic image is plausible and whether it preserves the finding of interest. The common failure is a synthetic image that looks clean but alters or removes a lesion, so validation focuses on what must not change.",
+            "body": "A typical project starts by defining the clinical question and the image pair that would answer it, then assembling and harmonising data across scanners and protocols. Models are trained to map one image type to another, and evaluation goes beyond pixel similarity to task-based measures such as lesion detection, radiologist reader studies, and comparison against the real acquisition the synthetic image is meant to replace. Validation is usually retrospective first, with external datasets used to test generalisation across sites and equipment. The hardest part is often proving that a synthetic image preserves the diagnostic information a radiologist would rely on, rather than producing a plausible-looking image that omits or invents findings.",
             "heading": "How the work is done"
         },
         {
-            "body": "Synthetic images are not automatically exempt from regulation just because no new scan was taken, and their use in training or reporting raises questions about consent, de-identification and provenance. Teams are expected to document where each source scan came from, what transformation was applied, and which outputs were used for which purpose.Responsibility for a synthetic image that influences a report generally stays with the clinician and the institution, not the model.",
+            "body": "Synthetic images raise questions about provenance, because a generated image is not a record of what was actually measured, and that distinction must travel with the file. Regulatory pathways for imaging software, including device clearance regimes, apply when synthetic output is used in diagnosis, and institutions typically require review for research use of patient data. De-identification, data use agreements, and audit trails support accountability, while versioning of models and training data supports reproducibility. Risks include hallucinated anatomy, hidden bias from unrepresentative training cohorts, and downstream confusion if synthetic and acquired images are mixed without clear labelling. Responsibility for a diagnostic decision remains with the clinician, not the model.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "Near term work is likely to concentrate on narrow, well bounded uses such as filling in a missing sequence or augmenting rare findings for training, with clear labelling of synthetic content in the record. Wider adoption depends on shared ways to mark and trace generated images, and on evidence that models trained with synthetic data perform as well on real patients. The field is also watching how regulators treat generated medical images, since that will shape what can be deployed and what stays in research.",
+            "body": "The field is moving toward task-specific synthesis, where a generated image is judged by whether it supports a particular decision rather than by how realistic it looks. Prospective and multi-site validation, standardised reporting of model and data provenance, and clearer labelling of synthetic content are likely to shape adoption. Integration with clinical workflows, including how synthetic images appear in a radiology report and viewer, will determine whether the approach changes practice. Open questions include generalisation across scanners and populations, the limits of what can be synthesised without losing diagnostic signal, and how regulators and professional bodies will treat images that were never acquired.",
             "heading": "Where it is going"
         }
     ],

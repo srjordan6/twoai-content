@@ -4,7 +4,7 @@
     "slug": "law-litigation-opposing",
     "shape": "art-topic",
     "title": "Opposing Counsel and Docket Patterns",
-    "answer": "Opposing Counsel and Docket Patterns is the branch of litigation prediction that studies who is on the other side and how a case moves through the court, rather than what the law says. It covers attorney and firm histories, motion and continuance habits, settlement timing, judge assignment, and the pace of docket events in the relevant court. In practice it sits alongside judicial analytics, where the same case data is used to model outcomes and scheduling. The work is descriptive: it maps patterns that already exist in public filings, it does not predict what any particular lawyer will do next.",
+    "answer": "Opposing counsel and docket patterns is the study of how a specific lawyer, firm, or judge behaves across the cases they handle, drawn from the public record of court filings and rulings. It sits inside litigation prediction and judicial analytics, where the goal is to describe tendencies rather than to forecast any single outcome with certainty. The work covers filing habits, motion practice, settlement timing, and the language a party or bench tends to use. It is used by litigators preparing a case, by insurers and general counsel assessing exposure, and by researchers studying how courts actually operate.",
     "crumbs": [
         {
             "name": "Knowledge Based Professions and their Future",
@@ -20,7 +20,7 @@
         }
     ],
     "noindex": false,
-    "built_at": "2026-10-10T06:58:30-05",
+    "built_at": "2026-10-10T14:48:31-05",
     "category": "enterprise-applications-governance-and-tools",
     "expanded": true,
     "hub_name": "The AI Lawyer",
@@ -28,23 +28,23 @@
     "page_uid": "981ec578",
     "sections": [
         {
-            "body": "Opposing Counsel and Docket Patterns is the branch of litigation prediction that studies who is on the other side and how a case moves through the court, rather than what the law says. It covers attorney and firm histories, motion and continuance habits, settlement timing, judge assignment, and the pace of docket events in the relevant court. In practice it sits alongside judicial analytics, where the same case data is used to model outcomes and scheduling. The work is descriptive: it maps patterns that already exist in public filings, it does not predict what any particular lawyer will do next.",
+            "body": "Opposing counsel and docket patterns is the study of how a specific lawyer, firm, or judge behaves across the cases they handle, drawn from the public record of court filings and rulings. It sits inside litigation prediction and judicial analytics, where the goal is to describe tendencies rather than to forecast any single outcome with certainty. The work covers filing habits, motion practice, settlement timing, and the language a party or bench tends to use. It is used by litigators preparing a case, by insurers and general counsel assessing exposure, and by researchers studying how courts actually operate.",
             "heading": "Scope"
         },
         {
-            "body": "The raw material is court records, mainly PACER and the state court systems, plus docket feeds and the parties and counsel fields attached to each filing. Teams typically pull these into a warehouse, resolve attorney and firm names across courts, and link related cases such as consolidated actions or parallel suits. Commercial litigation analytics platforms and general purpose data tools sit on top of that store. Because the source is public record, the main infrastructure cost is cleaning and matching, not acquisition.",
+            "body": "The raw material is docket data, the running record of filings, orders, and hearing entries that courts publish, together with the text of briefs, opinions, and transcripts where those are available. Access usually comes through commercial legal research platforms and public court systems, and the data is stored in document databases and search indexes built for large text collections. Because docket formats vary by court and jurisdiction, much of the plumbing is parsing and normalisation rather than modelling. Standard office and cloud infrastructure is enough for most of this work, and the heavy lifting is text search and retrieval over millions of documents.",
             "heading": "What it runs on"
         },
         {
-            "body": "Analysts start by defining a cohort, for example all motions to dismiss filed in a district over several years, then extract event dates and outcomes from the docket text. Attorney and firm identities are normalized so that the same person is not counted twice under different spellings. From there the work is mostly counting and comparison: time to ruling, win rates on motion types, how often a firm settles before trial, how a judge handles extensions. Some teams add text models to classify motion types or to flag language in briefs, but the backbone is structured event data. Results are reported as distributions and base rates, not as a single confident forecast.",
+            "body": "Practitioners start by assembling a set of cases tied to a named counsel, firm, or judge, then clean the docket entries so that filings and orders line up correctly across courts. From there they extract features such as motion types, filing intervals, win and loss outcomes, and the phrasing used in briefs, and they compare a target's behaviour against a baseline of similar cases. Statistical summaries and text classification do most of the work, with language models used to read and label documents at scale. The output is a profile of tendencies, and any competent analyst treats it as a description of past behaviour rather than a prediction of what a particular lawyer will do next.",
             "heading": "How the work is done"
         },
         {
-            "body": "The data is public, but the people in it are not abstractions, and profiles of named attorneys and judges carry reputational risk if the underlying sample is thin or the matching is wrong. Firms that use these tools generally keep an audit trail of how a figure was produced, so a number can be defended if it is challenged. Some courts restrict bulk scraping or charge for access, and the terms of the data source govern reuse. Where a model informs strategy, the working assumption is that it supports a human judgment rather than replacing it. Nothing here is legal advice, and a pattern in past dockets is not a prediction about a live matter.",
+            "body": "The underlying records are public, but the analysis touches personal and professional reputations, so accuracy and provenance matter. A profile should be traceable to the specific dockets and documents it was built from, and it should be refreshed when a court corrects or seals a record. Rules of professional conduct, discovery obligations, and court orders on sealed filings all constrain what can be collected and reused, and some jurisdictions restrict scraping of court systems. Analysts also need to guard against bias in the data, since uneven reporting and settlement patterns can distort what a profile appears to show. Nothing here is legal advice, and a lawyer remains responsible for how any such profile is used in a matter.",
             "heading": "Rights, risk and provenance"
         },
         {
-            "body": "The direction of travel is toward finer granularity: not just win rates by judge, but event level timing by courtroom, by motion type, and by the pair of firms involved. Better entity resolution across state and federal systems would let the same analysis follow a dispute as it moves between courts. Language models are likely to take over more of the docket reading, which shifts effort from extraction to validation. The open question is how much of this becomes standard in case strategy and how much stays a specialist input. Growth in AI litigation itself, with 153 active AI lawsuits tracked on this site, gives the field more matters to study.",
+            "body": "The direction of travel is toward tighter integration with case management and research tools, so that a docket profile can be pulled up alongside a brief as it is drafted. Better entity resolution across courts and firms would make it easier to follow a lawyer or judge across jurisdictions, and clearer provenance standards would make the resulting profiles more defensible. Expect more attention to validation, since a tendency that does not hold up out of sample is worse than no profile at all. The open questions are how to handle sealed and confidential material, and how to keep these tools descriptive rather than predictive in ways that mislead.",
             "heading": "Where it is going"
         }
     ],
